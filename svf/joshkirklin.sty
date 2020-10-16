@@ -1,0 +1,245 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{joshkirklin}
+    [2015/12/26 JoshKirklin]
+
+%%%% Packages
+
+\RequirePackage{mathtools} % Mathtools
+\RequirePackage{amsthm} % Theorem environments
+\RequirePackage{amssymb} % Extra symbols
+\RequirePackage{tensor} % Tensor notation
+\RequirePackage{tikz} % TikZ
+\RequirePackage{graphicx} % Enable external graphic inclusion
+\RequirePackage[pdfusetitle]{hyperref} % Hyperref with pdfinfo
+\RequirePackage{xcolor} % Fancy colors
+\hypersetup{ % De-uglify pdf links
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\RequirePackage{microtype} % OCD proportions
+\RequirePackage{booktabs} % Prettier rules in tables
+\RequirePackage{siunitx} % Unit formatting
+\RequirePackage{lmodern}  % Better i18n Postscript version of Knuth's cm fonts
+\RequirePackage{enumitem} % Enable modifications to lists
+\RequirePackage{bm} % Bold math fonts
+\RequirePackage{slashed} % Dirac slashes
+\RequirePackage{cancel} % Notation cancellation
+\RequirePackage{bbm} % Set symbols
+\RequirePackage{framed} % Frames
+\RequirePackage[framemethod=TikZ]{mdframed} % Frames
+\RequirePackage{float} % More precise floats
+\RequirePackage{wrapfig} % Text wrap around floats
+\RequirePackage{subfig} % Sub figures
+\RequirePackage{calligra} % Calligra font
+\RequirePackage{totcount} % Total counters
+\RequirePackage{physics} % Lots of useful notation for physics
+\RequirePackage[nointegrals]{wasysym} % Astronomical symbols
+
+%%%% Command definitions
+
+% Remove paragraph indents
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+% Various symbols
+\newcommand{\trans}{} % Transpose
+\makeatletter
+\def\trans#1{%
+    \@ifnextchar^%
+    {\@trans{#1}}
+    {\@trans{#1}^{}}%
+}
+\def\@trans#1^#2{%
+    {#1}^{\intercal #2}%
+}
+\makeatother
+\newcommand{\herm}{} % Hermitian conjugate
+\makeatletter
+\def\herm#1{%
+    \@ifnextchar^%
+    {\@herm{#1}}
+    {\@herm{#1}^{}}%
+}
+\def\@herm#1^#2{%
+    {#1}^{\dagger #2}%
+}
+\makeatother
+\newcommand{\identity}{\mathbbm{1}} % Identity
+\DeclareMathOperator{\Exists}{\exists} % Exists
+\DeclareMathOperator{\Forall}{\forall} % For all
+\newcommand{\st}{\operatorname{s.t.}} % Such that
+\providecommand{\RR}{\mathbb{R}} % Reals
+\providecommand{\NN}{\mathbb{N}} % Naturals
+\providecommand{\ZZ}{\mathbb{Z}} % Integers
+\providecommand{\CC}{\mathbb{C}} % Complex numbers
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\fullfunction}[5]{%
+    \begin{matrix}
+        #1 & : & #2 & \rightarrow & #3 \\
+           &   & #4 & \mapsto     & #5
+    \end{matrix}%
+}
+\newcommand{\lint}[2][3]{\int\frac{\dd[#1]{#2}}{(2\pi)^{#1}}\frac{1}{2E_{\vb{#2}}}} % Lorentz invariant measure
+\newcommand{\normord}[1]{\mathop{:}\nolimits\!#1\!\mathop{:}\nolimits} % normal ordering
+
+% capital differentials
+
+\def\diffD{\mathrm{D}}
+\DeclareDocumentCommand\Differential{ o g d() }{ % Differential 'd'
+	% o: optional n for nth differential
+	% g: optional argument for readability and to control spacing
+	% d: long-form as in d(cos x)
+	\IfNoValueTF{#2}{
+		\IfNoValueTF{#3}
+			{\diffd\IfNoValueTF{#1}{}{^{#1}}}
+			{\mathinner{\diffd\IfNoValueTF{#1}{}{^{#1}}\argopen(#3\argclose)}}
+		}
+		{\mathinner{\diffD\IfNoValueTF{#1}{}{^{#1}}#2} \IfNoValueTF{#3}{}{(#3)}}
+	}
+\DeclareDocumentCommand\Dd{}{\Differential} % Shorthand for \Differential
+
+% Custom TikZ symbols
+
+\makeatletter
+\def\tikzsymbolthickness{0.12}
+\newcommand{\dalembertian}{%
+    \mathop{}\!\raisebox{-.12\height}{%
+        \begin{tikzpicture}[scale={0.72*\f@size},x=1pt,y=1pt]
+            \fill (0,0) rectangle (1,1);
+            \fill[white] (\tikzsymbolthickness,{\tikzsymbolthickness/2}) rectangle ({1-\tikzsymbolthickness/2},{1-\tikzsymbolthickness});
+        \end{tikzpicture}%
+    }%
+}
+\makeatother
+
+\RequirePackage{yfonts}
+
+% Theorem environments
+\newtheorem{theorem}{\raisebox{-.06\height}{\swabfamily\Large Theorem}}
+\newtheorem{lemma}{\raisebox{-.06\height}{\swabfamily\Large Lemma}}
+\newtheorem*{cor}{\raisebox{-.06\height}{\swabfamily\Large Corollary}}
+\theoremstyle{definition}
+\definecolor{ExampleColor}{rgb}{0.05,0.4,0.7}
+\newtheorem*{@eg}{Example}
+\newenvironment{eg}
+{\begin{@eg}
+    \def\FrameCommand
+    {%
+        \fboxsep=\FrameSep\fcolorbox{ExampleColor!40!black}{ExampleColor!4}%
+    }%
+    \MakeFramed{\hsize\hsize\advance\hsize-\width\FrameRestore}%
+}
+{%
+    \endMakeFramed
+    \end{@eg}
+}
+\makeatother
+\definecolor{DefinitionColor}{rgb}{0.29,0.5,0.13}
+\makeatletter
+\newtheorem*{@defn}{Definition}
+\newenvironment{defn}
+{\begin{@defn}
+    \def\FrameCommand
+    {%
+        {\color{DefinitionColor}\vrule width 0.2em}%
+        \hspace{0.em}%
+        \fboxsep=\FrameSep\colorbox{DefinitionColor!7}%
+    }%
+    \MakeFramed{\hsize\hsize\advance\hsize-\width\FrameRestore}%
+}
+{%
+    \endMakeFramed
+    \end{@defn}
+}
+\makeatother
+\makeatletter
+\newtheorem*{@unlectured}{Unlectured}
+\newenvironment{unlectured}{\begin{@unlectured}\begin{framed}}{\end{framed}\end{@unlectured}}
+\makeatother
+
+% Look of disapproval
+\newtotcounter{disapproval}
+\newcommand{\disapprove}{\stepcounter{disapproval}%
+    \begin{tikzpicture}[red,thick,scale=0.08]
+        \draw (1,-1.5) -- (3.6,-1.5);
+        \begin{scope}[xshift=130]
+            \draw (0,0) circle (1);
+            \fill (0,0) circle (0.3);
+            \draw (-1,1) -- (0.6,1)
+               .. controls (1,1.2) and (1,1.7) .. (0.5,1.75);
+        \end{scope}
+        \begin{scope}
+            \draw (0,0) circle (1);
+            \fill (0,0) circle (0.3);
+            \draw (-1,1) -- (0.6,1)
+               .. controls (1,1.2) and (1,1.7) .. (0.5,1.75);
+        \end{scope}
+    \end{tikzpicture}%
+}
+\newcommand{\disapprovemargin}{\marginpar[]{\disapprove}}
+\newcommand{\disapproval}{\total{disapproval}}
+
+% Feyman tikz
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{fermion/.style={%
+    thick,%
+    decoration={%
+        markings,%
+        mark=at position 0.53 with {\arrow{latex}}%
+    },%
+    postaction={decorate}%
+}}
+\tikzset{photon/.style={%
+    semithick,%
+    decorate,%
+    decoration=snake%
+}}
+\tikzset{gluon/.style={%
+    semithick,%
+    decorate,%
+    decoration={%
+        coil,%
+        aspect=0.8,%
+        segment length=4,%
+        amplitude=3%
+    }
+}}
+\providecommand\fermion{}
+\providecommand\photon{}
+\providecommand\gluon{}
+\renewcommand{\fermion}[3][]{\draw[fermion] (#2) -- (#3) node[midway, above, sloped] {#1}}
+\renewcommand{\photon}[3][]{\draw[photon] (#2) -- (#3) node[midway, above, sloped] {#1}}
+\renewcommand{\gluon}[3][]{\draw[gluon] (#2) -- (#3) node[midway, above, sloped] {#1}}
+
+\newcommand{\exvertex}[2]{\coordinate(#1) at (#2)}
+\newcommand{\invertex}[2]{\exvertex{#1}{#2}; \fill (#2) circle (0.05)}
+
+% Spiels
+
+\newcommand{\unlecturedspiel}{%
+    \begin{unlectured}
+        I may sometimes include sections that were not lectured; these will appear like so.
+    \end{unlectured}%
+}
+\newcommand{\disapprovalspiel}{%
+    I may sometimes only accept the mathematical validity of something with a certain amount of anger; such occasions will be indicated with a look of disapproval: \disapprove\addtocounter{disapproval}{-1}. There %
+    \ifnum\totvalue{disapproval}=1{%
+        is 1 such look %
+    }\else{%
+        are \total{disapproval} such looks %
+    }\fi%
+    of disapproval in these notes.%
+}
+\newcommand{\suggestionsspiel}{%
+    \begin{center}
+        Notes created using Josh Kirklin's packages \& classes.
+        Please send errors and suggestions to \url{cwp29@cam.ac.uk}. 
+    \end{center}%
+}
+
+\endinput

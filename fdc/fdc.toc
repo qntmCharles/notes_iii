@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Fluid motion in a rotating reference frame}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Local Cartesian coordinates}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Scale analysis.}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Taylor-Proudman Theorem}{4}{subsection.1.3}
+\contentsline {section}{\numberline {2}Departures from geostrophy}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Inertial (free) oscillations}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Ekman layer}{6}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Ekman transport}{7}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Ekman pumping}{7}{subsection.2.4}

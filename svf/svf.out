@@ -1,0 +1,22 @@
+\BOOKMARK [1][-]{section.1}{Basic Fluid Mechanics}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Mass Conservation}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{The Stress Tensor}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Momentum equation}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Energy equation}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{Newtonian Fluids}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.6}{Boundary conditions}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.7}{Reynolds number}{section.1}% 8
+\BOOKMARK [1][-]{section.2}{The Stokes Equations}{}% 9
+\BOOKMARK [2][-]{subsection.2.1}{Simple Properties}{section.2}% 10
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Instantaneous}{subsection.2.1}% 11
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Linear}{subsection.2.1}% 12
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Reversible}{subsection.2.1}% 13
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Forces balance}{subsection.2.1}% 14
+\BOOKMARK [3][-]{subsubsection.2.1.5}{Work balances dissipation}{subsection.2.1}% 15
+\BOOKMARK [2][-]{subsection.2.2}{Three Theorems Based on Dissipation Integrals}{section.2}% 16
+\BOOKMARK [2][-]{subsection.2.3}{Representation by Potentials}{section.2}% 17
+\BOOKMARK [2][-]{subsection.2.4}{Complex Variable Theory in 2D Flow}{section.2}% 18
+\BOOKMARK [2][-]{subsection.2.5}{Papkovich-Neuber Solution}{section.2}% 19
+\BOOKMARK [2][-]{subsection.2.6}{Solutions for points, spheres \(and cylinders\)}{section.2}% 20
+\BOOKMARK [3][-]{subsubsection.2.6.1}{Spherical harmonic functions}{subsection.2.6}% 21
+\BOOKMARK [2][-]{subsection.2.7}{Solution due to a point force}{section.2}% 22

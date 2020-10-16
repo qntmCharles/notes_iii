@@ -1,0 +1,14 @@
+\contentsline {section}{\numberline {1}Introduction to Non-Newtonian Fluids}{1}{section.1}
+\contentsline {section}{\numberline {2}Summary of Newtonian Fluid Mechanics}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Continuum approximation}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Conservation of mass}{2}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Mechanical equilibrium}{2}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Constitutive modelling}{3}{subsection.2.4}
+\contentsline {section}{\numberline {3}Phenomenology}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Shear-dependent viscosity}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Fluid memory}{6}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Normal stress differences}{6}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Extensional Viscosity}{8}{subsection.3.4}
+\contentsline {section}{\numberline {4}Generalised Newtonian Fluids}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}Power-law fluids}{10}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Pipe flow of a power-law fluid}{11}{subsection.4.2}

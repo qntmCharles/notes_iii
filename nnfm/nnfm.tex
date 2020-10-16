@@ -1,0 +1,832 @@
+\documentclass{jknotes}
+\usepackage{joshkirklin,pgfplots}
+
+\tikzset{
+    partial ellipse/.style args={#1:#2:#3}{
+        insert path={+ (#1:#3) arc (#1:#2:#3)}
+    }
+}
+
+\newcommand{\dunder}[1]{\underline{\underline{#1}}}
+\renewcommand{\trace}[1]{\text{tr}\left(#1\right)}
+\newcommand{\srate}{\dot{\gamma}}
+
+\begin{document}
+
+\institution{Cambridge Part III Maths}
+\title{Non-Newtonian Fluid Mechanics}
+\lecturer{Eric Lauga}
+\notetaker{Charles Powell}
+\date{Michaelmas 2020}
+
+\maketitle
+\suggestionsspiel
+\tableofcontents
+
+\section{Introduction to Non-Newtonian Fluids}
+\lecture{08/10/20}
+Newtonian fluids are typically characterised by 2 material properties:
+viscosity and density. We may also refer to Newtonian fluids as `simple
+fluids'.
+
+
+Non-Newtonian fluids may have many other material properties, for example
+intrinisic time, length and stress scales, and an intrinsic orientation. They
+often exhibit a mix of fluid and solid behaviour. We may also refer to
+non-Newtonian fluids as `complex fluids'.
+
+
+There are many examples of complex fluids readily apparent in our everyday
+lives, for example sand (wet or dry) and mud; lava and glass, both of which
+experience phase changes; ketchup; foam; paint; emulsions such as milk; liquid
+crystals used in screens; blood on very small scales.
+
+
+The goal of this course is to cover three main areas.
+\begin{itemize}
+	\item Phenomenology of non-Newtonian fluids -- how do they behave?
+	\item Mathematical modelling -- how do we quantify the behaviour?
+	\item Predictions (and limits) of models
+\end{itemize}
+
+\section{Summary of Newtonian Fluid Mechanics}
+\subsection{Continuum approximation}
+We describe fluids in terms of two main fields: \emph{density} $\rho(\bm{x},t)$  and
+\emph{velocity} $\bm{u}(\bm{x},t)$. We use the continuum approximation whereby the
+fluid is assumed to be a continuum rather than made up of discrete fluid
+particles. Under this assumption, the macroscopic properties of density and
+velocity are well-defined as `averages' of infinitesimal volume elements. 
+
+The velocity field is \emph{Eulerian}, meaning it is measured at a specific
+point in space and time, as opposed to following a material element
+(Lagrangian).
+
+\subsection{Conservation of mass}
+
+Conservation of mass can be expressed in the classical form of a conservation
+equation as:
+\begin{equation}
+	\frac{\partial \rho}{\partial t} + \nabla \cdot \left[ \rho \bm{u} \right]
+	= 0
+\end{equation}
+
+Expanding the flux term, this may be expressed in a form which relates the
+rate of change of density of a fluid element with the divergence of the
+flow:
+\begin{equation}
+	\frac{\diffD{\rho}}{\diffD{t}} = -\rho \nabla \cdot \bm{u}
+\end{equation}
+
+In this course we will assume that all fluids are incompressible, which is
+expressed mathematically as:
+\begin{equation}
+	\frac{\diffD{\rho}}{\diffD{t}} = 0 \iff \nabla \cdot \bm{u} = 0
+\end{equation}
+
+\subsection{Mechanical equilibrium}
+Newton's second law, i.e. conservation of momentum is expressed for a fluid
+using the \emph{Cauchy momentum equation}:
+\begin{equation}
+	\rho \frac{\diffD{\bm{u}}}{\diffD{t}} = \rho \left[ \frac{\partial
+	\bm{u}}{\partial t} + \bm{u} \cdot \nabla \bm{u}\right] = \nabla \cdot
+	\sigma + \bm{F}
+\end{equation}
+
+where $\nabla \cdot \sigma$ are the surface forces acting on the fluid and
+$\bm{F}$ are body forces which we will assume to be negligible unless
+otherwise stated.
+ 
+The Cauchy momentum equation is valid for all continuum fluids. To close the
+equation, we require an expression for $\sigma$.
+
+\begin{defn}
+The \emph{stress tensor} $\sigma$ is a symmetric second-rank tensor.
+\begin{center}
+\begin{tikzpicture}
+	\draw[rotate=45] (0,0) ellipse (30pt and 10pt);
+	\draw[->, thick] (0,0) -- (-.75,.75);
+	\node at (-0.4,0.65) {$\bm{n}$};
+	\node at (-1.3,0.1) {fluid 1};
+	\node at (1,-0.5) {fluid 2};
+\end{tikzpicture}
+\end{center}
+Physically, $\sigma_{ij}n_j$ is the $i\textsuperscript{th}$ component of the force per
+unit area from the motion of fluid 1 on fluid 2, where $\bm{n}$ is the
+surface normal pointing into fluid 1.
+\end{defn}
+
+\subsection{Constitutive modelling}
+The stress tensor is specified in terms of the deformation via \emph{constitutive
+modelling}.
+
+\begin{eg}{Newton's experiment\\}
+Consider two parallel plates of area $A$ separated a distance $h$ by a fluid.
+We consider the force $F$ required on the top plate to induce motion at speed
+$U$. Note that there is no force perpendicular to the plates if the fluid is
+Newtonian. This is not necessarily true for complex fluids.
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[scatter/classes={a={mark=x,draw=black}},yticklabels={,,},xticklabels={,,},xlabel={$U/h$},ylabel={$F/A$},xmin=0,xmax=5,ymin=0,ymax=5]
+		\addplot[scatter,only marks, scatter src = explicit symbolic]
+		table[meta = label] {
+			x y label 
+			0.98 1 a
+			1.5 1.48 a
+			2 2.03 a
+			2.43 2.39 a
+			3.03 3.01 a
+			3.45 3.55 a
+			4.01 4 a
+		};
+		\addplot[no marks, black, dashed]{x};
+	\end{axis}
+	\end{tikzpicture}
+\end{center}
+
+From experiment, we find $\sigma = F/A \propto U/h$. Note that $U/h$ has
+dimensions of time$^{-1}$. We define the \emph{shear rate} $\dot{\gamma} =
+U/h$ and the \emph{viscosity} $\eta$ via $\sigma = \eta \dot{\gamma}$.
+Viscosity is a constant material property, for example in water $\eta =
+10^{-3}\, \text{Pa}\cdot\text{s}$.
+
+\end{eg}
+
+We can now generalise for all Newtonian flows. We start by separating out an
+isotropic component of the shear tensor:
+\begin{equation}
+	\sigma_{ij} = -p \delta_{ij} + \tau_{ij}
+\end{equation}
+where $p$ is the \emph{dynamic pressure} and $\tau$ is the \emph{deviatoric
+stress}. The deviatoric stress may be a function of $u_i, \frac{\partial u_i}{\partial
+x_j}, \dots$; local or non-local in time or space; or a function of other
+material properties and parameters. For Newtonian fluids, we make five
+assumptions.
+
+\begin{enumerate}
+	\item Galilean invariance: the deviatoric stress cannot depend on $u_i$
+	\item Instaneous response: there is no dependence on the history of
+		deformation
+	\item Locality: no dependence on second or higher spatial derivatives
+	\item Linearity: $\tau_{ij}$ is linearly related to $\frac{\partial
+		u_m}{\partial x_n}$
+	\item Isotropy: the relationship is independent of reference frame, i.e.
+		isotropic
+\end{enumerate}
+
+We can satisfy 1, 2, 3, and 4 by writing
+\begin{equation}
+	\tau_{ij} = A_{ijkl}\frac{\partial u_k}{\partial x_l}
+\end{equation}
+where $A_{ijkl}$ is a fourth rank tensor. Using the form of the most general
+isotropic fourth rank tensor we may enforce isotropy.
+\begin{equation}
+	A_{ijkl} = A \delta_{ij} \delta_{kl} + B \delta_{ik}\delta_{jl} + C
+	\delta_{il}\delta_{jk}
+\end{equation}
+
+Since $\sigma$ is symmetric, $\tau$ is symmetric, therefore $A_{ijkl} =
+A_{jikl}$. This requires $B = C \equiv \eta$. Thus
+\begin{equation}
+	\begin{aligned}
+		\tau_{ij} &= A\delta_{ij} \frac{\partial u_k}{\partial x_k} + \eta
+		\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial
+		u_j}{\partial x_i} \right) \\
+		&= \eta \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial
+		u_j}{\partial x_i} \right) \\
+		&= 2 \eta e_{ij}
+	\end{aligned}
+\end{equation}
+
+since $\frac{\partial u_k}{\partial x_k} = \nabla \cdot \bm{u} = 0$. Note
+$e = \frac{1}{2}\left(\nabla \bm{u} + (\nabla \bm{u})^T\right)$ is the
+\emph{rate of strain} tensor. This is the \emph{Newtonian constitutive
+	relationship}. 
+	
+\begin{defn}
+	To exclude the factors of $2$ we define the \emph{shear rate}
+	$\dot{\gamma}_{ij} = 2 e_{ij}$ so that $\tau_{ij} = \eta
+	\dot{\gamma}_{ij}$.
+\end{defn}
+
+Combining the Cauchy momentum equation and Newtonian constitutive relationship
+yields the \emph{Navier-Stokes equations}
+\begin{equation}
+	\rho \frac{\diffD{\bm{u}}}{\diffD{t}} = - \nabla p + \eta \nabla^2 \bm{u}
+\end{equation}
+
+Consider a general body with intrinsic length scale $L$, velocity length scale
+$U$ and unsteady motion frequency scale $\omega$. Two dimensionless numbers
+are used to quantify the importance of inertia:
+\begin{equation}
+	\text{Re} = \frac{\rho U L}{\eta}, \hspace{2em} \text{Re}_\omega =
+	\frac{\rho \omega L^2}{\eta}
+\end{equation}
+
+We will assume throughout this course that $\text{Re} \ll 1$ and
+$\text{Re}_\omega \ll 1$ unless otherwise stated. In this no-inertia limit,
+the Navier-Stokes equations simplify to the \emph{Stokes equations}. For a
+general fluid these are:
+\begin{equation}
+	\nabla \cdot \sigma = 0
+\end{equation}
+
+Using the Newtonian constitutive relationship, the Stokes equations are:
+\begin{equation}
+	\bm{0} = -\nabla p + \eta \nabla^2 \bm{u}
+\end{equation}
+
+\begin{eg}{Newton's experiment revisited\\}
+	We will apply the above theory to Newton's experiment and show the same
+	results are obtained.
+
+	\begin{center}
+		\begin{tikzpicture}
+			\node at (0,2) {$y = h$};
+			\draw (0.6, 2) -- (5, 2);
+			\node at (0,0) {$y=0$};
+			\draw (0.6, 0) -- (5,0);
+			\node at (2.5, 2.5) {$U$};
+			\draw[->, thick] (2.15, 2.25) -- (2.85, 2.25);
+			\draw[->] (1,0.5) -- (1.6, 0.5) node[midway,below] {$\hat{\bm{x}}$};
+			\draw[->] (1,0.5) -- (1, 1.1) node[midway, left] {$\hat{\bm{y}}$};
+		\end{tikzpicture}
+	\end{center}
+
+	Assume the flow is unidirectional: $\bm{u} = u(y) \hat{\bm{x}}$. The
+	Stokes equations become
+	\begin{equation}
+	\begin{cases}
+		\frac{\partial p}{\partial x} = \eta \frac{\partial^2 u}{\partial y^2}
+		& = \text{const.}
+		\\
+		\frac{\partial  p}{\partial y} = 0 & \implies p=p(x)
+	\end{cases}
+	\end{equation}
+
+	Assuming there is no net pressure drop, $p = p(x) \equiv 0$. Applying the
+	boundary conditions we find 
+	\begin{equation}
+		u(y) = Uy/h \implies \dot{\gamma} = U/h
+	\end{equation}
+	as before. This is a \emph{shear} or \emph{Couette} flow.
+\end{eg}
+
+\lecture{13/10/20}
+\section{Phenomenology}
+
+There are four distinguishing properties of non-Newtonian fluids which differ
+to Newtonian fluids.
+
+\subsection{Shear-dependent viscosity}
+Newtonian fluids have a constant viscosity $\eta$ which is a constant of
+proportionality between shear stress $\sigma$ and shear rate $\dot{\gamma}$.
+For a complex fluid, $\eta$ is \emph{not} constant. We re-define viscosity as
+an implicit function of shear rate.
+\begin{defn}
+	Viscosity is defined via $\eta \equiv \frac{\sigma}{\dot{\gamma}} =
+	\eta(\dot{\gamma})$.
+\end{defn}
+
+We can broadly categorise complex fluids into two types: \emph{shear thinning}
+and \emph{shear thickening} fluids.
+
+\begin{center}
+\begin{tikzpicture}
+	\draw[->] (-0.1,0) -- (5,0) node[below] {$\dot{\gamma}$};
+	\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\eta$};
+	\draw[dashed] (0,1.2) -- (5, 1.2) node[right] {Newtonian};
+	\draw[smooth,samples=100,domain=0:5,blue] plot(\x, {1.2+0.5*exp(\x-4.8)});
+	\draw[smooth,samples=100,domain=0:5,red] plot(\x, {1.2-0.5*exp(\x-4.8)});
+	\draw (5, 1.9) node[right,blue] {shear-thickening};
+	\draw (5, 0.5) node[right,red] {shear-thinning};
+\end{tikzpicture}
+\end{center}
+
+Examples of shear-thinning fluids are polymer suspensions; paint; blood. These
+complex fluids have $\frac{\partial \eta}{\partial \dot{\gamma}} < 0$.
+
+Examples of shear-thickening fluids are: cornstarch in water; suspesions of
+colloidal particles. These complex fluids have $\frac{\partial \eta}{\partial
+\dot{\gamma}} > 0$.
+
+\begin{defn}
+	The zero-shear rate viscosity is $\eta_0 = \lim_{\dot{\gamma} \to 0}
+	\eta$.
+\end{defn}
+
+Note that some complex fluids have approximately constant viscosity (Boger
+fluids).
+
+\subsection{Fluid memory}
+Consider a step-shear flow, that is, Newton's experiment where the top place
+impulsively starts motion at $t=0^+$. The response of a Newtonian fluid is on
+an inertial timescale $\tau \sim h^2/\nu$ which is almost instantaneous,
+whilst a non-Newtonian fluid takes time to respond to adjust to the change in
+deformation: the jump occurs over some \emph{relaxation timescale} $\lambda$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\dot{\gamma}$};
+		\draw[->] (-0.1,0) -- (5,0) node[below] {$t$};
+		\draw (1, -0.1) -- (1, 0.1) node[below] {$t=0$};
+		\draw[blue,thick] (0,0) -- (1, 0);
+		\draw[blue,thick] (1, 1.2) -- (5, 1.2);
+		\draw[blue] (5, 1.4) node[right] {newtonian};
+		\draw[red] (5, 1) node[right] {complex};
+	\end{tikzpicture}
+	\qquad
+	\begin{tikzpicture}
+		\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\sigma$};
+		\draw[->] (-0.1,0) -- (5,0) node[below] {$t$};
+		\draw (1, -0.1) -- (1, 0.1) node[below] {$t=0$};
+		\draw[blue,thick] (0,0) -- (1, 0);
+		\draw[blue,thick] (1, 1.2) -- (5, 1.2);
+		\draw[red, thick, smooth, samples=100, domain=1:5] plot(\x, {1.2 -
+		exp(-\x+1.2)});
+		\draw[blue] (5, 1.4) node[right] {newtonian};
+		\draw[red] (5, 1) node[right] {complex};
+		\draw[<->] (1, 0.6) -- (3, 0.6) node[below, midway] {$\lambda$};
+	\end{tikzpicture}
+\end{center}
+
+The relationship between stress and deformation is \emph{history dependent}.
+Impulsively removing the applied shear (i.e. the plate impulsively comes to
+rest) results in \emph{stress relaxation} with $\sigma \sim e^{-t/\lambda}$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\dot{\gamma}$};
+		\draw[->] (-0.1,0) -- (5,0) node[below] {$t$};
+		\draw (2, -0.1) -- (2, 0.1);
+		\draw[blue,thick] (0,1.2) -- (2, 1.2);
+		\draw[blue,thick] (2, 0) -- (5, 0);
+		\draw[blue] (5, 1.4) node[right] {Newtonian};
+		\draw[red] (5, 1) node[right] {complex};
+	\end{tikzpicture}
+	\qquad
+	\begin{tikzpicture}
+		\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\sigma$};
+		\draw[->] (-0.1,0) -- (5,0) node[below] {$t$};
+		\draw (2, -0.1) -- (2, 0.1);
+		\draw[blue,thick] (0,1.2) -- (2, 1.2);
+		\draw[blue,thick] (2, 0) -- (5, 0);
+		\draw[red, thick, smooth, samples=100, domain=2:5] plot({\x},
+		{1.2*exp(-\x+2)});
+		\draw[blue] (5, 1.4) node[right] {Newtonian};
+		\draw[red] (5, 1) node[right] {complex};
+		\draw[<->] (2, 0.6) -- (4, 0.6) node[below, midway] {$\lambda$};
+	\end{tikzpicture}
+\end{center}
+
+The reverse is also true. Imposing a stress $\sigma$ and measuring the
+deformation $\dot{\gamma}$, complex fluids in general wil have a
+history-dependent response. This is called \emph{strain retardation} and
+$\lambda'$ is the \emph{retardation timescale}.
+
+\subsection{Normal stress differences}
+In Newton's experiment, a Newtonian fluid exerts no normal force $F_N$ on the moving
+plate, since linearity and reversibility ($U \to -U$) impies $F_N = -F_N
+\equiv 0$. We previously calculated 
+\begin{equation}
+	\bm{u} = \frac{Uy}{h}\hat{\bm{x}}, \hspace{2em} \dot{\gamma} = \frac{U}{h}
+\end{equation}
+Thus in the Newtonian case the stress tensor has the form
+\begin{equation}
+	\sigma = \begin{pmatrix}
+		-p_0 & \eta \dot{\gamma} & 0 \\
+		\eta \dot{\gamma} & -p_0 & 0 \\
+	0 & 0 & -p_0 \end{pmatrix}
+\end{equation}
+where $p_0$ is the external pressure. Note that the normal stresses are equal
+and constant.
+
+In the non-Newtonian case we have
+\begin{equation}
+	\sigma = \begin{pmatrix}
+		\sigma_{xx} & \eta)(\dot{\gamma}) \dot{\gamma} & 0 \\
+		\eta(\dot{\gamma}) \dot{\gamma} & \sigma_{yy} & 0 \\
+	0 & 0 & \sigma_{zz} \end{pmatrix}
+\end{equation}
+where in general normal stresses are not equal and not constant. Normal
+stresses include the external pressure, so the relevant quantity is the
+difference between normal stresses.
+\begin{defn}
+	The first and second \emph{normal stress differences} are
+	\begin{equation}
+		N_1 = \sigma_{xx} - \sigma_{yy}, \hspace{2em} N_2 = \sigma_{yy} -
+		\sigma_{zz}
+	\end{equation}
+\end{defn}
+
+Note the following.
+\begin{itemize}
+	\item For a Newtonian fluid, $N_1 = N_2 = 0$
+	\item Polymeric fluids (for example) have $N_1 > 0, N_2 < 0, \left|
+		N_2/N_1 \right| \sim 0.1$
+	\item $N_1$ and $N_2$ are defined only for steady shear flow
+	\item $N_1$ and $N_2$ will, in general, depend on $\dot{\gamma}$
+	\item Boger fluids have constant viscosity but they have non-zero $N_1$
+		and $N_2$
+\end{itemize}
+
+Reversibility implies $N_1$ and $N_2$ have to be \emph{even} functions of
+$\dot{\gamma}$. In the limit $\dot{\gamma} \to 0$, i.e. the Newtonian limit,
+we should have $N_1 \to 0, N_2 \to 0$. Thus the Taylor expansion of $N_1, N_2$
+near $\dot{\gamma} = 0$ is
+\begin{equation}
+	N_{1,2} = A_{1,2}\dot{\gamma}^2 + B_{1,2}\dot{\gamma}^4 + \dots
+\end{equation}
+
+\begin{defn}
+	The \emph{normal stress coefficients} are
+	\begin{equation}
+		\Psi_1 = \frac{N_1}{\dot{\gamma}^2}, \hspace{2em} \Psi_2 =
+		\frac{N_2}{\dot{\gamma}^2}
+	\end{equation}
+\end{defn}
+
+The physical consequence of having normal stress differences is the
+introduction of elastic tension along flow streamlines.
+
+Suppose $\sigma_{xx} = -p$. Thus compression $p > 0 \implies \sigma_{xx} < 0$
+and $N_1 > 0 \implies \sigma_{xx} > 0$ which can be thought of as `negative
+pressure' which acts as tension. An intuitive example is stretching of polymer
+molecules. This has many consequences on experiments and flow behaviour.
+
+\begin{eg}
+	Two examples of the consequences of normal stress differences are as
+	follows.
+	\begin{enumerate}
+		\item Rod-climbing (\emph{Weissenberg effect}).
+			\begin{center}
+				\begin{tikzpicture}
+					\draw (-2, 0) -- (2, 0);
+					\draw (-2,0) -- (-2, 2);
+					\draw (2,0) -- (2, 2);
+					\draw[fill=gray] (-0.2,1) rectangle ++ (0.4, 2);
+					\draw[blue,thick] (-2, 1.5) -- (-0.2, 1.5);
+					\draw[blue,thick] (2, 1.5) -- (0.2,1.5);
+					\draw[->] (0, 2.5) [partial ellipse = -180:60:0.55 and
+					0.15];
+					\draw (0.35, 2.8) node[right] {$\Omega$};
+					\draw[red, thick, smooth, samples=100, domain=-0.5:-0.2]
+					plot(\x, {1.5+(\x+0.5)^2});
+					\draw[red, thick, smooth, samples=100, domain=0.2:0.5]
+					plot(\x, {1.5+(\x-0.5)^2});
+				\end{tikzpicture}
+			\end{center}
+			Consider a vertical rod rotating at a constant rate $\Omega$
+			placed into a fluid. In a Newtonian fluid, viscous enough for
+			Stokes equations to apply, there is no change in the position of
+			the interface (blue).
+
+			In a non-Newtonian fluid, the interface climbs up the rod (red).
+			This is due to elastic tension: rotation creates circular
+			streamlines. Tension along circles creates \emph{hoop stress}
+			which `squeezes' the fluid and thus climbs up the rod.
+
+		\item  Particle migration in a pipe flow.
+			\begin{center}
+				\begin{tikzpicture}
+					\draw (-3, 1) -- (3, 1);
+					\draw (-3, -1) -- (3, -1);
+					\draw (-1, -1) -- (-1, 1);
+					\draw[smooth, domain=-1:1, blue, variable=\y] plot ({-\y * \y}, {\y});
+					\draw[->] (-1, 0) -- (0, 0);
+					\draw[->] (-1, 0.5) -- (-0.25, 0.5);
+					\draw[->] (-1, -0.5) -- (-0.25, -0.5);
+					\draw (1, -0.5) circle (0.2);
+					\draw[smooth,domain=-3:3,red] plot ({\x},
+					{-0.5-0.3*exp(-(\x-1)^2)});
+					\draw[thick,->] (1,-0.8) -- (1, -0.6);
+				\end{tikzpicture}
+			\end{center}
+			In the case of Newtonian Stokes flow, the flow has no component
+			perpendicular to the walls so a particle remains the same distance
+			from the wall as it moves along the pipe. In the non-Newtonian
+			case, hoop stress caused by curved streamlines lifts the particle
+			away from the wall.
+	\end{enumerate}
+\end{eg}
+
+\subsection{Extensional Viscosity}
+A shear flow is a \emph{weak flow}: there is algebraic growth of distances
+between particles. In a \emph{strong flow}, distances grow exponentially.
+
+Consider a fluid with extension in the $x$ and $y$ directions and compression
+in the $z$ direction: $\bm{u} +
+\dot{\varepsilon}\left(\frac{1}{2}x,\frac{1}{2}y, -z\right)$. We call
+$\dot{\varepsilon}$ the \emph{extension rate}. Note that this flow is
+incompressible. The shear rate tensor is
+\begin{equation}
+	\dunder{\dot{\gamma}} = \dot{\varepsilon}\begin{pmatrix} 1 & 0 & 0 \\ 0 &
+	1 & 0 \\ 0 & 0 & -2 \end{pmatrix}
+\end{equation}
+
+In the Newtonian case, the shear rate tensor is
+\begin{equation}
+	\dunder{\sigma} = \begin{pmatrix}
+		-p_0 + \eta \dot{\varepsilon} & 0  & 0 \\
+		0 & -p_0 + \eta \dot{\varepsilon} & 0 \\
+		0 & 0 & -p_0 -2 \eta \dot{\varepsilon} 
+	\end{pmatrix}
+\end{equation}
+
+\begin{defn}
+	The \emph{extensional viscosity} is
+	\begin{equation}
+		\eta_{\text{ext}} = \frac{\sigma_{xx}-\sigma_{zz}}{\dot{\varepsilon}}
+	\end{equation}
+	which has units of viscosity.
+\end{defn}
+
+Thus for the Newtonian fluid, $\eta_{\text{ext}} = 3\eta$ which is constant. 
+\begin{defn}
+	The \emph{Troutou ratio} is 
+	\begin{equation}
+		\text{Tr} = \frac{\eta_{\text{ext}}}{\eta}
+	\end{equation}
+\end{defn}
+
+By the above calculations, Newtonian fluids have $\text{Tr} = 3$.
+Non-Newtonian fluids tend to have $\text{Tr} \gg 1$ in some range of shear
+rates. Thus complex fluids have a very different response to strong flows
+compared with weak flows.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5, 0) node[below] {$\dot{\varepsilon}$};
+		\draw[thick,->] (0, -0.1) -- (0, 3) node[left] {Tr};
+		\draw[dashed] (-0.1, 1) -- (5, 1);
+		\draw (-0.1, 1) node[left] {$3$};
+		\draw[smooth,blue,domain=0:5] plot({\x},{1+1/(0.5+exp(-2*(\x-3)))});
+		\draw (5, 3) node[above] {$\text{Tr} \gg 1$};
+	\end{tikzpicture}
+\end{center}
+
+\section{Generalised Newtonian Fluids}
+
+We will focus on steady flows and fluids which are \emph{inelastic}. We will
+find how to incorporate shear-dependent viscosity into the constitutive
+relationship. One way is to generalise the Newtonian constitutive
+relationship to
+\begin{equation}
+	\dunder{\sigma} = -p \dunder{1} +
+	\eta(\dunder{\dot{\gamma}})\dunder{\dot{\gamma}}
+\end{equation}
+where $\eta(\dunder{\dot{\gamma}})$ is found empirically. These are called
+\emph{generalised Newtonian fluids} (GNF).
+
+We have a scalar function $\eta$ of a tensor $\dunder{\dot{\gamma}}$, which is
+not in general coordinate invariant. Thus $\eta$ must be a function of the
+\emph{invariants} of $\dunder{\dot{\gamma}}$. A rank $2$ tensor in $3$
+dimensions has $3$ invariants. These are combinations of trace, determinants,
+and eigenvalues. We choose as the three invariants:
+\begin{equation}
+	\trace{\dunder{\srate}}, \hspace{2em} \trace{\dunder{\srate} \cdot
+	\dunder{\srate}}, \hspace{2em} \trace{\dunder{\srate} \cdot
+\dunder{\srate} \cdot \dunder{\srate}}
+\end{equation}
+
+We always have $\trace{\dunder{\srate}} = 0$ because the flow is incompressible:
+\begin{equation}
+	\trace{\dunder{\srate}} = \dot{\gamma}_{ii} = \frac{\partial u_i}{\partial x_i} +
+	\frac{\partial u_i}{\partial x_i} = 2\nabla \cdot \bm{u} = 0
+\end{equation}
+
+Consider a simple shear flow $\bm{u} = \dot{\gamma} y \hat{\bm{x}}$. Then
+\begin{equation}
+	\begin{aligned}
+		\dunder{\srate} &= \begin{pmatrix} 0 & \srate & 0 \\ \srate & 0 & 0 \\
+		0 & 0 & 0 \end{pmatrix} \\
+			\dunder{\srate}\cdot\dunder{\srate} &= \begin{pmatrix} \srate^2 &
+			0 & 0 \\ 0 & \srate^2 & 0 \\ 0 & 0 & 0 \end{pmatrix} \\
+			\dunder{\srate}\cdot\dunder{\srate}\cdot\dunder{\srate} &=
+			\begin{pmatrix} 0 & \srate^3 & 0 \\ \srate^3 & 0 & 0 \\
+			0 & 0 & 0 \end{pmatrix}
+		\end{aligned}
+\end{equation}
+
+Thus $\trace{\dunder{\srate}\cdot\dunder{\srate}\cdot\dunder{\srate}} = 0$ and
+$\trace{\dunder{\srate}\cdot\dunder{\srate}} = 2\srate^2$. We assume all flows
+are approximately steady shear flow. Then
+$\trace{\dunder{\srate}\cdot\dunder{\srate}}$ is the only non-zero invariant
+and $\eta(\dunder{\srate}) =
+\eta(\trace{\dunder{\srate}\cdot\dunder{\srate}})$.
+
+\begin{defn}
+	The \emph{magnitude of shear rate} is
+	\begin{equation}
+		\srate \equiv
+		\left(\frac{\trace{\dunder{\srate}\cdot\dunder{\srate}}}{2}\right)^{1/2}
+		= \left(\frac{\dunder{\srate} : \dunder{\srate}}{2}\right)^{1/2}
+	\end{equation}
+	Note that $\srate \ge 0$ and for a simple shear flow the magnitude of
+	shear rate $\srate = \abs{\srate}$ which is the shear rate from steady
+	shear flow. Thus the definitions coincide.
+\end{defn}
+
+Note the second invariant $\trace{\dunder{\srate}\cdot\dunder{\srate}} =
+\dunder{\srate}:\dunder{\srate} \ge 0$ and is zero only when there is no
+deformation (since $\dunder{\srate}:\dunder{\srate}$ is proportional to
+viscous dissipation), i.e. rigid body motion.
+
+Recall for a simple shear flow, the shear stress is $\sigma =
+\eta(\srate)\srate$, thus the above definitions agree with measurements of
+shear-dependent viscosity.
+
+\subsection{Power-law fluids}
+There are many choices for the function $\eta(\srate)$ for a generalised
+Newtonian fluid. Here, we choose a \emph{power-law}
+\begin{equation}
+	\eta(\srate) \equiv \kappa \srate^{n-1}
+\end{equation}
+where $\kappa > 0$ and $n \in \ZZ$ is the \emph{power-index} of the fluid.
+Note $n=1$ for a Newtonian fluid. For dimensional consistency, we require
+$\left[\kappa\right] = \text{Pa}\cdot\text{s}^n$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5, 0) node[below] {$\log \eta$};
+		\draw[thick,->] (0, -0.1) -- (0, 3) node[left] {$\log \srate$};
+		\draw[dashed] (0,1) -- (5, 1) node[right] {$n=1$ (Newtonian)};
+		\draw[red] (0.5, 2.5) -- (4.5, 0.2) node[right] {$n < 1$
+		shear-thinning};
+		\draw[blue] (0.5, 0.7) -- (4.5, 2.8) node[right] {$n >1$
+		shear-thickening};
+	\end{tikzpicture}
+\end{center}
+
+Note that in the limit $\srate \to 0$, we cannot define a zero-shear rate
+viscosity $\eta_0$ unless $n=1$. Thus the model is problematic at small shear
+rates. The model is appropriate only for a finite range of shear rates.
+
+\begin{eg}
+	Newton's experiment with a power-law fluid. We assume there are no
+	external pressures, and the flow is unidirectional: $\bm{u} =
+	u(y)\hat{\bm{x}}$. We have
+	\begin{equation}
+		\dunder{\srate} = \begin{pmatrix} 0 & \frac{\partial u}{\partial y} &
+			0 \\ \frac{\partial  u}{\partial y} & 0 & 0 \\ 0 & 0 & 0
+		\end{pmatrix}
+	\end{equation}
+
+	Then the magnitude of shear rate $\srate = \abs{\frac{\partial u}{\partial
+	y}}$. To find the flow, we use the Cauchy equation in 2D:
+	\begin{equation}
+		\begin{aligned}
+			\frac{\partial p}{\partial y} &= 0 \\
+			\frac{\partial p}{\partial x} &= \frac{\partial \sigma_{xy}}{\partial y} 
+		\end{aligned}
+	\end{equation}
+	since $\sigma_{xy}$ is the only non-zero component of the shear stress.
+	The first equation implies $p = p(x)$ only, which combined with the second
+	implies $\sigma_{xy} = \text{const.}$. Note we have not used the
+	constitutive relationship yet: this is true for all GNFs. We have
+	\begin{equation}
+		\sigma_{xy} = \kappa \srate^{n-1} \srate = \kappa \srate^n = \kappa
+		\abs{\frac{\partial u}{\partial y}}^n = \text{const.}
+	\end{equation}
+
+	Thus $u_y$ is constant, i.e. $u$ is linear in $y$, as with a Newtonian
+	fluid. 
+\end{eg}
+
+If $\eta(\srate)\srate = \sigma$ is a one-to-one function of $\srate$ then the
+result is the same: $u$ varies linearly. A Couette flow $\bm{u} = Uy/h
+\hat{\bm{x}}$ is a \emph{viscometric flow}: this flow is realised for all
+constitutive relationships provided $\sigma$ is indeed a one-to-one function
+of $\srate$.
+
+How do experimentally measure $\eta(\srate)$? One method is a \emph{shear flow
+rheometer}:
+\begin{enumerate}
+	\item Impose $\srate$, measure $\sigma$ (or vice versa)
+	\item Measure $\eta = \sigma/\srate$
+	\item Repeat varying $\srate$ or $\sigma$
+\end{enumerate}
+
+\subsection{Pipe flow of a power-law fluid}
+Consider axisymmetric pressure-driven flow in a pipe of a power-law GNF. If
+the fluid was Newtonian, we would get Poiseuille flow with a parabolic flow
+profile.
+
+\begin{center}
+\begin{tikzpicture}
+	\draw (0,0) ellipse (0.6 and 1);
+	\draw (0,-1) -- (8,-1);
+	\draw (0, 1) -- (8,1);
+	\draw (8,0) [partial ellipse = -90:90:0.6 and
+	1];
+	\draw[dashed] (8,0) [partial ellipse = 90:270:0.6 and
+	1];
+	\draw[thick,blue,->] (4,0) -- (6, 0) node[right] {flow};
+	\draw (-2, 0) node {$p_0 + \Delta p$};
+	\draw (10, 0) node {$p_0$};
+	\draw[->] (0,0) -- (0,1) node[midway,right] {$R$};
+	\draw[<->] (0,-1.5) -- (8,-1.5) node[midway, below] {$L$};
+\end{tikzpicture}
+\end{center}
+
+We will use cylindrical coordinates $(r,\theta,z)$ and assume the flow is
+unidirectional: $\bm{u} = u(r)\hat{\bm{z}}$. Then
+\begin{equation}
+	\dunder{\srate} = \begin{pmatrix} 0 & 0 & \frac{\partial u}{\partial r} \\
+	0 & 0 & 0 \\ \frac{\partial u}{\partial r} & 0 & 0 \end{pmatrix}
+\end{equation}
+
+The magnitude of shear rate $\srate = \abs{\frac{\partial u}{\partial r}}$.
+The Cauchy equations in cylindrical coordinates are
+\begin{equation}
+	\begin{aligned}
+		\frac{\partial p}{\partial r} &= 0 \\
+		\frac{\partial p}{\partial \theta} &= 0 \\
+		\frac{\partial p}{\partial z} &= \frac{1}{r} \frac{\partial}{\partial
+		r} \left( r \sigma_{rz}\right)
+	\end{aligned}
+\end{equation}
+
+since $\sigma_{rz}$ is the only non-zero component of shear stress. The first
+two equations imply $p = p(z)$. Then $\frac{\partial p}{\partial z}$ is a
+function of $z$ only, but the RHS is a function of $r$ only. Thus each
+must be constant. Then
+\begin{equation}
+	\frac{\partial p}{\partial z} = -\frac{\Delta p}{L} \implies \sigma_{rz} =
+	-\frac{\Delta p}{2L} r + \frac{A}{r}
+\end{equation}
+
+The $A/r$ term is singular at $r=0$ thus $A \equiv 0$. Note these results are
+true for all guids - we have not yet used the fact this is a power-law fluid.
+
+Denote the \emph{magnitude of wall shear stress} as $\sigma_w$. In this case,
+$\sigma_w = \frac{\Delta p}{2L}R$.  To find the flow field, we need the
+constitutive relationship. For a GNF we have
+\begin{equation}
+	\sigma_{rz} = \eta\left(\abs{\frac{\partial u}{\partial r}}\right)
+	\frac{\partial u}{\partial r} = -\frac{\Delta p}{2L} r
+\end{equation}
+
+We expect $u$ to be at maximum when $r=0$, so expect $\frac{\partial
+u}{\partial r} < 0$. Thus $\abs{u_r} = -u_r$. For a power-law fluid, $\sigma =
+\kappa \srate^n$, thus
+\begin{equation}
+	\begin{aligned}
+		\kappa \abs{\frac{\partial u}{\partial r}}^n &= \frac{\Delta p}{2L} r
+		\\
+		\implies \abs{\frac{\partial u}{\partial r}} &= \left(\frac{\Delta p}{2
+		L \kappa}\right)^{1/n} r^{1/n} = -\frac{\partial u}{\partial r} \\
+		\implies u(r) &= C - \left(\frac{\Delta p}{2 L \kappa}\right)^{1/n}
+		\frac{n}{n+1} r^{\frac{n+1}{n}}
+	\end{aligned}
+\end{equation}
+
+Enforcing no-slip boundary conditions on the pipe wall $u(R) = 0$ and
+re-writing in terms of the wall shear stress we have
+\begin{equation}
+	u(r) = \left(\frac{\sigma_w}{\kappa R}\right)^{1/n} \frac{n}{n+1}\left(
+	R^{\frac{n+1}{n}} - r^{\frac{n+1}{n}}\right)
+\end{equation}
+
+We can calculate the mean flow speed $\bar{U}$:
+\begin{equation}
+	\bar{U} \equiv \frac{1}{\pi R^2} \iint u \, \diffd S = \frac{2}{R^2}
+	\int_0^R ru(r) \, \diffd r = \left(\frac{\sigma_w}{\kappa}\right)^{1/n}
+	\frac{nR}{3n+1}
+\end{equation}
+
+Finally, we can rewrite the solution as flow relative to the mean flow speed:
+\begin{equation}
+	\frac{u(r)}{\bar{U}} = \frac{3n+1}{n+1} \left[ 1-
+	\left(\frac{r}{R}\right)^{\frac{n+1}{n}}\right]
+\end{equation}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0, 1) -- (8, 1);
+		\draw (0, -1) -- (8, -1);
+		\draw[dashed] (2,1) -- (2,-1);
+		\draw[smooth,gray,domain=-1:1,variable=\y] plot ({3-\y*\y},{\y});
+		\draw[smooth,red,domain=-1:1,variable=\y] plot
+		({3-\y*\y*\y*\y*\y*\y*\y*\y},{\y});
+		\draw[gray] (5, 0.5) node {$n=1$ Newtonian};
+		\draw[red] (5, -0.5) node {$n < 1$ shear-thinning};
+	\end{tikzpicture}
+\end{center}
+
+Physically, we have high shear near the pipe walls, so low viscosity in a
+shear-thinning complex fluid. The flow rate is
+\begin{equation}
+	Q = \iint u \, \diffd S = \frac{\pi n}{3n+1} \left(\frac{\Delta p}{2 L
+	\kappa}\right)^{1/n} R^{3+\frac{1}{n}}
+\end{equation}
+
+FOr a Newtonian fluid, $Q \sim \Delta p R^4$ whereas for a power-law fluid $Q
+\sim \Delta p ^{1/n} R^{3+\frac{1}{n}}$. For a shear-thinning fluid with $n <
+1$, we thus have a very strong dependence on $\Delta p$ and $R$. In a device
+with $Q$ fixed, $\Delta p^{1/n} R^{3+\frac{1}{n}} = \text{const.}$ so $\Delta
+p \sim R^{-(3n+1)}$. For $n < 1$, it is therefore easier to push fluid through
+a pipe than with a Newtonian fluid.
+
+
+
+\end{document}

@@ -1,0 +1,162 @@
+\newcommand{\TikzInnerSep}{0.33mm}
+
+% Define new arc command
+% Syntax: [draw options] (center) (initial angle:final angle:radius)
+% https://tex.stackexchange.com/a/66220
+\def\centerarc[#1](#2)(#3:#4:#5){%
+	\draw [#1] ($(#2)+({#5*cos(#3)}, {#5*sin(#3)})$) arc (#3:#4:#5)%
+}
+
+% Redefine the rotation sequence for the tikz3d-plot to Euler-Angles:
+% z-x-z with alpha-beta-gamma (psi-theta-phi)
+% https://tex.stackexchange.com/q/118069/98906
+\newcommand{\tdseteulerzxz}{%
+	\renewcommand{\tdplotcalctransformrotmain}{%
+		%
+		% Determine the sin and cos of the specified angle in degrees
+		% \tdplotsinandcos{sin}{cos}{theta}
+		% - #1: Returns sin(#3)
+		% - #2: Returns cos(#3)
+		% - #3: User-specified angle theta
+		\tdplotsinandcos{\sinalpha}{\cosalpha}{\tdplotalpha} 
+		\tdplotsinandcos{\sinbeta}{\cosbeta}{\tdplotbeta}
+		\tdplotsinandcos{\singamma}{\cosgamma}{\tdplotgamma}
+		%
+		% Define trigonometric abbreviations
+		%
+		\tdplotmult{\sasb}{\sinalpha}{\sinbeta}
+		\tdplotmult{\sacb}{\sinalpha}{\cosbeta}
+		\tdplotmult{\sacbsg}{\sacb}{\singamma}
+		\tdplotmult{\sacbcg}{\sacb}{\cosgamma}
+		\tdplotmult{\sasg}{\sinalpha}{\singamma}
+		\tdplotmult{\sacg}{\sinalpha}{\cosgamma}
+		%
+		\tdplotmult{\sbsg}{\sinbeta}{\singamma}
+		\tdplotmult{\sbcg}{\sinbeta}{\cosgamma}
+		%
+		\tdplotmult{\casb}{\cosalpha}{\sinbeta}
+		\tdplotmult{\cacb}{\cosalpha}{\cosbeta}
+		\tdplotmult{\cacbsg}{\cacb}{\singamma}
+		\tdplotmult{\cacbcg}{\cacb}{\cosgamma}
+		\tdplotmult{\casg}{\cosalpha}{\singamma}
+		\tdplotmult{\cacg}{\cosalpha}{\cosgamma}
+		%
+		% Define the entries for the rotation matrix from the B-System to the I-System
+		% This is A_IB = (A_BI)^T
+		%
+		\pgfmathsetmacro{\raaeul}{+\cacg - \sacbsg}
+		\pgfmathsetmacro{\rabeul}{-\casg - \sacbcg}
+		\pgfmathsetmacro{\raceul}{+\sasb}
+		%
+		\pgfmathsetmacro{\rbaeul}{+\sacg + \cacbsg}
+		\pgfmathsetmacro{\rbbeul}{-\sasg + \cacbcg}
+		\pgfmathsetmacro{\rbceul}{-\casb}
+		%
+		\pgfmathsetmacro{\rcaeul}{+\sbsg}
+		\pgfmathsetmacro{\rcbeul}{+\sbcg}
+		\pgfmathsetmacro{\rcceul}{+\cosbeta}
+		%
+	}
+}
+
+% Redefine the rotation sequence for the tikz3d-plot to Cardan-Angles:
+% x-y-z with alpha-beta-gamma
+% https://tex.stackexchange.com/q/118069/98906
+\newcommand{\tdsetcardanxyz}{%
+	\renewcommand{\tdplotcalctransformrotmain}{%
+		%
+		% Determine the sin and cos of the specified angle in degrees
+		% \tdplotsinandcos{sin}{cos}{theta}
+		% - #1: Returns sin(#3)
+		% - #2: Returns cos(#3)
+		% - #3: User-specified angle theta
+		\tdplotsinandcos{\sinalpha}{\cosalpha}{\tdplotalpha} 
+		\tdplotsinandcos{\sinbeta}{\cosbeta}{\tdplotbeta}
+		\tdplotsinandcos{\singamma}{\cosgamma}{\tdplotgamma}
+		%
+		% Define trigonometric abbreviations
+		%
+		\tdplotmult{\sasb}{\sinalpha}{\sinbeta}
+		\tdplotmult{\sasbsg}{\sasb}{\singamma}
+		\tdplotmult{\sasbcg}{\sasb}{\cosgamma}
+		%
+		\tdplotmult{\sacb}{\sinalpha}{\cosbeta}
+		\tdplotmult{\sasg}{\sinalpha}{\singamma}
+		\tdplotmult{\sacg}{\sinalpha}{\cosgamma}
+		%
+		\tdplotmult{\casb}{\cosalpha}{\sinbeta}
+		\tdplotmult{\casbsg}{\casb}{\singamma}
+		\tdplotmult{\casbcg}{\casb}{\cosgamma}
+		%
+		\tdplotmult{\cacb}{\cosalpha}{\cosbeta}
+		\tdplotmult{\casg}{\cosalpha}{\singamma}
+		\tdplotmult{\cacg}{\cosalpha}{\cosgamma}
+		\tdplotmult{\cbsg}{\cosbeta}{\singamma}
+		\tdplotmult{\cbcg}{\cosbeta}{\cosgamma}
+		%
+		% Define the entries for the rotation matrix from the B-System to the I-System
+		% This is A_IB = (A_BI)^T
+		%
+		\pgfmathsetmacro{\raaeul}{+\cbcg}
+		\pgfmathsetmacro{\rabeul}{-\cbsg}
+		\pgfmathsetmacro{\raceul}{+\sinbeta}
+		%
+		\pgfmathsetmacro{\rbaeul}{+\casg + \sasbcg}
+		\pgfmathsetmacro{\rbbeul}{+\cacg - \sasbsg}
+		\pgfmathsetmacro{\rbceul}{-\sacb}
+		%
+		\pgfmathsetmacro{\rcaeul}{+\sasg - \casbcg}
+		\pgfmathsetmacro{\rcbeul}{+\sacg + \casbsg}
+		\pgfmathsetmacro{\rcceul}{+\cacb}
+		%
+	}
+}
+
+% Plot display orientation
+\tdplotsetmaincoords{70}{150}
+
+% Rotation angles Euler
+\pgfmathsetmacro{\zOneRot}{25}
+\pgfmathsetmacro{\xRot}{15}
+\pgfmathsetmacro{\zTwoRot}{30}
+
+\begin{tikzpicture}[x = 1.0cm, y = 1.0cm, z = 1.0cm, scale = 2.5, tdplot_main_coords]
+	\coordinate (Origin) at (0, 0, 0);
+	
+	% x_I
+	\draw [arrows = {}-{latex}, line width = 1.0pt] (Origin) -- (1, 0, 0)%
+		node[anchor = east, xshift = -1mm, inner sep = \TikzInnerSep]%
+			{$\VL{x}_I$};
+	% Set the FoR orientation
+	\tdseteulerzxz
+	\tdplotsetrotatedcoords{\zOneRot}{0}{0}
+	% x_1
+	\draw [tdplot_rotated_coords, arrows = {}-{latex}, line width = 1.0pt,red] (Origin) -- (1, 0, 0)%
+		node[anchor = north, yshift = -1mm, inner sep = \TikzInnerSep]%
+			{$\VL{x}_R$};
+	%
+	% y_1
+	\draw [tdplot_rotated_coords, arrows = {}-{latex}, line width = 1.0pt,red] (Origin) -- (0, 1, 0)%
+		node[anchor = west, xshift = +1mm, yshift = +1mm, inner sep = \TikzInnerSep]%
+			{$\VL{y}_R$};
+	%
+	% Draw selected axes over the grid
+	% y_I
+	\draw [arrows = {}-{latex}, line width = 1.0pt] (Origin) -- (0, 1, 0)%
+		node[anchor = north west, xshift = +1mm, inner sep = \TikzInnerSep]%
+			{$\VL{y}_I$};
+	%
+	% z_1
+	\draw [tdplot_rotated_coords, arrows = {}-{latex},red, line width = 1.0pt] (Origin) -- (0, 0, 1)%
+		node[anchor = south west, xshift = +1mm, yshift = -1mm, inner sep = \TikzInnerSep]%
+		{$\textcolor{black}{\VL{z}_I} \; \textcolor{black}{=} \; \textcolor{red}{\VL{z}_R}$};
+	
+	% Draw rotation arrow
+	\centerarc[tdplot_rotated_coords, canvas is yx plane at z=0.7, arrows = {latex}-{}](0, 0)(230 : 570 : 0.15)%
+		node[anchor = north west, xshift = +2mm, yshift = -3mm, inner sep = \TikzInnerSep]%
+		{$\left|\bm{\Omega}\right| = \frac{\mathrm{d}\theta}{\mathrm{d}t}$};
+
+	\centerarc[tdplot_rotated_coords, canvas is yx plane at z=0, arrows =
+	{latex}-{}](0,0)(90:90+\zOneRot:0.6) node[midway,anchor= south] {$\theta$};
+
+\end{tikzpicture}
