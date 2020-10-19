@@ -439,5 +439,170 @@ In general we have
 	w(z=-h) = \hat{\bm{z}} \cdot \nabla \times \frac{\bm{\tau}_w}{\rho f}
 \end{equation}
 
+\lecture{19/10/20}
+\section{Rotating shallow water equations}
+Consider a thin layer of fluid with constant density $\rho$. Define
+characteristic scales
+\begin{itemize}
+	\item length $L = \text{horiz.}, H = \text{vert.}$
+	\item velocity $U$
+	\item time $T$
+	\item pressure $P$
+\end{itemize}
+such that $\partial_x, \partial_y \sim \frac{1}{L}, \partial_z \sim
+\frac{1}{H}$. Define the \emph{aspect ratio} $\delta \equiv H/L$. We will
+assume $\delta \ll 1$. From continuity (incompressibility) we have
+\begin{equation}
+	\begin{aligned}
+		\frac{\partial w}{\partial z} &= -\frac{\partial u}{\partial x} -
+		\frac{\partial v}{\partial y}  \\
+		\implies \frac{w}{H} &= \mathcal{O}(U/L) \\
+		\implies w &= \mathcal{O}(\delta U)
+	\end{aligned}
+\end{equation}
+
+Using the traditional approximation and assuming the fluid is inviscid, the
+$x$-momentum equation
+\begin{align}
+	&\frac{\partial u}{\partial t} &&+ u \frac{\partial u}{\partial x} &&+v
+	\frac{\partial u}{\partial y} &&+ w\frac{\partial u}{\partial z} &&- fv &&=
+						&&-\frac{1}{\rho} \frac{\partial p}{\partial x}
+	\label{eq:swxmom}\\
+	\text{scaling:}\hspace{1em} &\frac{U}{T} &&\frac{U^2}{L} && \frac{U^2}{L}
+					&&\frac{wU}{H} &&fU &&= &&\frac{P}{\rho L}
+\end{align}
+
+Thus if $p_x$ appears at leading order then
+\begin{equation}
+	P \sim \rho U \max(L/T, U, fL)
+\end{equation}
+
+Similarly the $z$-momentum equation and its scalings are
+\begin{align}
+	&\frac{\partial w}{\partial t} &&+ u \frac{\partial w}{\partial x} &&+v
+	\frac{\partial w}{\partial y} &&+ w\frac{\partial w}{\partial z} &&=
+						&&-\frac{1}{\rho} \frac{\partial p}{\partial x} - g
+	\label{eq:swzmom} \\
+	\text{scaling:}\hspace{1em} &\frac{w}{T} &&\frac{Uw}{L} && \frac{Uw}{L}
+					&&\frac{w^2}{H} &&= &&\frac{P}{\rho H}
+\end{align}
+
+Hence $\frac{\diffD w}{\diffD t} \sim \max(\frac{w}{T}, \frac{Uw}{L})$. Comparing with the
+pressure term, we have
+\begin{align}
+	\frac{\frac{\diffD w}{\diffD t}}{\frac{1}{\rho}\frac{\partial p}{\partial
+		z}} &\sim \frac{\max(\frac{w}{T},
+		\frac{Uw}{L})}{\frac{U}{H}\max(\frac{L}{T}, \frac{U}{L}, f)}\\
+		&\sim \delta^2
+		\frac{\max(\frac{1}{T},\frac{U}{L})}{\max(\frac{1}{T},\frac{U}{L},f)}
+\end{align}
+
+Therefore to $\mathcal{O}(\delta^2)$ we have \emph{hydrostatic balance}. To
+this order, \eqref{eq:swzmom} becomes
+\begin{equation}
+	\frac{\partial p}{\partial z} - \rho g \implies p = \rho g (\eta - z)
+\end{equation}
+assuming $p = 0$ at $z = \eta(x,y,t)$. Similarly, we have $\frac{1}{\rho} p_x
+= g \eta_x$ and $\frac{1}{\rho} p_y = g \eta_y$. Hence horizontal acceleration
+(i.e. the LHS of \eqref{eq:swxmom}) is independent of $z$. Motivated by this,
+we \emph{assume} that horizontal velocity is also independent of $z$. For $\Ro
+\ll 1$, this follows from the Tayor-Proudman theorem.
+
+Re-writing \eqref{eq:swxmom} with these results we have
+\begin{align}
+	u_t + u u_x + v u_y -fv &= -g \eta_x \label{eq:swx}\\
+	v_t + u v_x + v v_y + fu &= -g \eta_y \label{eq:swy}
+\end{align}
+since $u_z = v_z = 0$ by assumption. Integrating the continuity equation gives
+\begin{equation}
+	w = -z(u_x + v_y) + A(x,y,t)
+\end{equation}
+where $A$ is to be determined by the boundary conditions. Requiring no normal
+flow at $z = -H_0 + h_b$ is imposed by $\bm{u}\cdot\hat{\bm{n}} = 0$ where
+$\bm{n} = \nabla(z-h_b)$. Thus
+\begin{equation}
+	-u\frac{\partial h_b}{\partial x} -v \frac{\partial h_b}{\partial y} + w = 0
+\end{equation}
+
+Hence
+\begin{equation}
+	A(x,y,t) = u \frac{\partial h_b}{\partial x} + v \frac{\partial
+	h_b}{\partial y} + (-H_0 + h_b) (u_x+v_y)
+\end{equation}
+
+The kinematic boundary condition at $z = \eta$ is $\frac{\diffD \eta}{\diffD
+t} = w$ which may be written as
+\begin{equation}
+	\eta_t + u \eta_x + v \eta_y - w = 0
+\end{equation}
+where $w = -\eta(u_x+v_y) + u \frac{\partial h_b}{\partial x} + v
+\frac{\partial h_b}{\partial y} + (-H_0 + h_b)(u_x+v_y)$. Combining these
+boundary conditions gives
+\begin{equation}
+	\eta_t + \left[ (H_0-h_b+\eta)u\right]_x + \left[ (H_0-h_b+\eta)v\right]_y
+	= 0 \label{eq:swcon}
+\end{equation}
+If $H \equiv H_0 - h_b + \eta$ is the total depth of the fluid, then since
+$H_t = \eta_t$,
+\begin{equation}
+	H_t + (uH)_x + (vH)_y = 0 \label{eq:swcon2}
+\end{equation}
+which is a statement of the conservation of volume (equivalently mass, since
+$\rho$ is constant). Equations \eqref{eq:swx}, \eqref{eq:swy}, and
+\eqref{eq:swcon} are the \emph{rotating shallow water} (SW) equations.
+
+\subsection{Potential vorticity (PV)}
+Denote the vertical vorticity by $\zeta = v_x - u_y$. Consider $\partial_x
+\eqref{eq:swy} - \partial_y \eqref{eq:swx}$, which gives
+\begin{equation}
+	\zeta_t +u\zeta_x + v\zeta_y + v f_y = -(\zeta + f)(u_x+v_y)
+\end{equation}
+Now from conservation of volume \eqref{eq:swcon2},
+\begin{equation} 
+	u_x + v_y = -\frac{1}{H} \frac{\diffD H}{\diffD t}
+\end{equation}
+Combining these relates the material derivative of $\zeta$ and $H$ by
+\begin{equation}
+	\frac{\diffD \zeta}{\diffD t} = \frac{\zeta + f}{H} \frac{\diffD H}{\diffD
+	t} \implies \frac{\diffD}{\diffD t}\left(\frac{\zeta + f}{H}\right) = 0
+	\label{eq:PV}
+\end{equation}
+
+Let $q \equiv \frac{\zeta + f}{H}$, the \emph{shallow water potential
+vorticity} (SWPV). SWPV is conserved following fluid motion. We call $\zeta$
+the \emph{relative vorticity} and $f$ the \emph{planetary vorticity}. $\zeta$
+and $f$ will change as a fluid moves to conserve SWPV (changing $f$) and
+angular momentum (changing depth).
+
+\begin{center}
+\begin{tikzpicture}
+	\draw[thick,->] (0,2.5) -- (0, 3.5);
+	\draw[->] (0, 3) [partial ellipse = -180:70:0.4 and 0.12];
+	\draw (0.5, 2.8) node {$\bm{\Omega}$};
+	\draw[smooth,domain=-3:3] plot({\x}, {1/(1+exp(3*\x))});
+	\draw[smooth,domain=-3:3] plot({\x}, {2});
+	\draw (3,2) node[right] {$z=0$};
+	\draw (3,0) node[right] {$z=-H$};
+	\draw[blue] (-2,0.998) -- (-2,2);
+	\draw[blue] (-1,0.953) -- (-1,2);
+	\draw[blue] (1.5,0.011) -- (1.5, 2);
+	\draw[blue] (2,0.002) -- (2,2);
+	\draw[thick,blue,->] (1.75, 1) [partial ellipse = -180:70:0.4 and 0.12];
+	\draw[blue,->] (-1.5, 1.5) [partial ellipse = -180:70:0.7 and 0.2];
+	\draw[red, thick, ->] (-0.25,1.25) -- (0.75, 1.25) node[midway,above]
+		{$\zeta$ increases};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+	\draw[thick,->] (-0.1,0) -- (2, 0) node[above] {$x$, East};
+	\draw[thick,->] (0,-0.1) -- (0, 4) node[right] {$y$, North};
+	\draw[thick,blue,->] (0.5, 3) arc(-180:150:0.3);
+	\draw[thick,blue,->] (0.5, 1) arc(-180:150:0.3);
+	\draw[thick,red,->] (0.8, 2.5) -- (0.8, 1.5) node[midway,right] {$f$
+		decreases, $\zeta$ increases};
+	\draw[blue] (1.1, 3) node[right] {$\zeta > 0$};
+\end{tikzpicture}
+\end{center}
+
 
 \end{document}

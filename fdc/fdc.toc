@@ -7,3 +7,5 @@
 \contentsline {subsection}{\numberline {2.2}Ekman layer}{6}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Ekman transport}{7}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Ekman pumping}{7}{subsection.2.4}
+\contentsline {section}{\numberline {3}Rotating shallow water equations}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Potential vorticity (PV)}{9}{subsection.3.1}
