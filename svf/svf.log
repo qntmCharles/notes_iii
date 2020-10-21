@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2019.8.21)  19 OCT 2020 13:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2019.8.21)  21 OCT 2020 14:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2538,22 +2538,22 @@ File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 116.
 
-[3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 889.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 889.
+[3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 996.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 996.
  (./svf.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 889.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 889.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 996.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 996.
 Package rerunfilecheck Info: File `svf.out' has not changed.
-(rerunfilecheck)             Checksum: A3CE8D9D55E891F6CB729C2C2BB7D9EA;1822.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 889.
+(rerunfilecheck)             Checksum: 962753F2F9309CAE069A20EB601E497D;2269.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 996.
  ) 
 Here is how much of TeX's memory you used:
- 44318 strings out of 493013
- 1002829 string characters out of 6135682
+ 44340 strings out of 493013
+ 1003175 string characters out of 6135682
  1308583 words of memory out of 5000000
- 47059 multiletter control sequences out of 15000+600000
- 73583 words of font info for 100 fonts, out of 8000000 for 9000
+ 47064 multiletter control sequences out of 15000+600000
+ 73998 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,13n,100p,10433b,933s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
@@ -2573,10 +2573,10 @@ fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 yfonts-t1/yswab.pfb>
-Output written on svf.pdf (13 pages, 382354 bytes).
+Output written on svf.pdf (15 pages, 391238 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
- 281 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 17621 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 366 PDF objects out of 1000 (max. 8388607)
+ 313 compressed objects within 4 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 17661 words of extra memory for PDF output out of 20736 (max. 10000000)
 

@@ -10,6 +10,7 @@
 \newcommand{\dunder}[1]{\underline{\underline{#1}}}
 \renewcommand{\trace}[1]{\text{tr}\left(#1\right)}
 \newcommand{\srate}{\dot{\gamma}}
+\usetikzlibrary{intersections, pgfplots.fillbetween}
 
 \begin{document}
 
@@ -706,7 +707,7 @@ rheometer}:
 	\item Repeat varying $\srate$ or $\sigma$
 \end{enumerate}
 
-\subsection{Pipe flow of a power-law fluid}
+\subsubsection{Pipe flow of a power-law fluid}
 Consider axisymmetric pressure-driven flow in a pipe of a power-law GNF. If
 the fluid was Newtonian, we would get Poiseuille flow with a parabolic flow
 profile.
@@ -826,6 +827,191 @@ FOr a Newtonian fluid, $Q \sim \Delta p R^4$ whereas for a power-law fluid $Q
 with $Q$ fixed, $\Delta p^{1/n} R^{3+\frac{1}{n}} = \text{const.}$ so $\Delta
 p \sim R^{-(3n+1)}$. For $n < 1$, it is therefore easier to push fluid through
 a pipe than with a Newtonian fluid.
+
+\subsection{Other models \& problems}
+\subsubsection{Carreau-Yasuda model}
+The Carreau-Yasuda model can be written
+\begin{equation}
+	\frac{\eta(\srate)-\eta_\infty}{\eta_0 - \eta_\infty} = \left[ 1 +
+	(\lambda \srate)^a\right)^{n-1}{a}
+\end{equation}
+for $n \le 1$. In this model, $\eta$ transitions smoothly from $\eta_0$ to
+$\eta_\infty$. In some finite range of shear rates, the model resembles a
+power-law fluid. In fact, a power-law fluid can be thought of as a `subset' of
+Carreau-Yasuda. The constant parameter $a$ is related to the curvature of the
+$\eta$ vs. $\srate$ curve, whilst $n$ is related to the steepness of the
+curve.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5,0) node[right] {$\log \srate$};
+		\draw[thick,->] (0,-0.1) -- (0, 3) node[left,midway] {$\log \eta$};
+		\draw[smooth,domain=0:4.9] plot({\x},{2/(1+exp(4*\x-10))+0.5});		
+		\draw[dashed] (5,0.5) -- (-0.1,0.5) node[left] {$\log \eta_0$};
+		\draw[dashed] (5,2.5) -- (-0.1, 2.5) node[left] {$\log \eta_\infty$};
+		\draw[dashed] (1.5,2.45) -- (1.5,-0.1) node[below] {$\mathcal{O}(\lambda^{-1})$};
+	\end{tikzpicture}
+\end{center}
+
+\subsubsection{Powell-Eyring \& Ellis models}
+The Powell-Eyring model is given by
+\begin{equation}
+	\frac{\eta(\srate)-\eta_\infty}{\eta_0 - \eta_\infty} =
+	\frac{\sinh^{-1}(\lambda \srate)}{\lambda \srate}
+\end{equation}
+
+Some models specify $\eta(\sigma)$ instead of $\eta(\srate)$, for example the
+Ellis model.
+\begin{equation}
+	\eta = \eta_0 \left[ 1 + \abs{\frac{\sigma}{\sigma_0}}^{1-n}\right]^{-1}
+\end{equation}
+
+There are several properties and issues associated with generalised Newtonian
+fluids.
+\begin{enumerate}
+	\item Empirical: GNFs are based on experiments rather than derived.
+	\item Instantaneous: GNFs have no memory (recall the step shear
+		experiment), so are not suitable for modelling unsteady flows. This
+		also means GNFs are instantaneously reversible which is undesired.
+	\item No normal stress differences.
+	\item Under extension, the Troutou ratio is $\text{Tr} = 3$ for GNFs, i.e.
+		there is no increase in extensional viscosity.
+
+	\item The behaviour of stress when $\srate \to 0$ is important. If
+		$\eta_0$ can be defined, then $\sigma \to 0$. If not, such as with a
+		power-law fluid, there is problematic behavoiur near $0$. The limit
+		$\srate \to 0$ is often used to recover Newtonian behaviour.
+\end{enumerate}
+
+\subsection{Rheometry}
+\emph{Rheometry} is the science and engineering of measuring material
+properties of fluids. For generalised Newtonian fluids, we need to measure
+$\eta(\srate)$. The `easy' method is to use a steady shear flow, which is
+simple in principle. However, we can only use a finite volume of fluid. A
+common solution is the \emph{parallel plate rheometer}, also known as a
+parallel disc rheometer. 
+
+Consider two coaxial rigid circular discs of radius $a$ held at a constant separation
+$h$. The bottom plate is held stationary whilst the upper plate rotates at a
+prescribed angular velocity $\Omega$. The variable $\srate$ is controlled in
+this experiment.
+
+\begin{center}
+\begin{tikzpicture}
+	\draw[thick] (0,0) ellipse (3 and 0.8);
+	\draw[thick] (0,-2) ellipse (3 and 0.8);
+	\draw[dashed, ->] (0,-3) -- (0,1.5) node[right] {$\hat{\bm{z}}$};
+	\draw[<->] (0,0) -- (1.6,0.65) node[midway,below] {$a$};
+	\draw[<->] (3.1, 0) -- (3.1, -2) node[midway,right] {$h$};
+	\draw[->] (0, 0) [partial ellipse = -180:-140:3.2 and
+	0.9];
+	\draw (-3, -0.7) node {$\Omega$};
+\end{tikzpicture}
+\end{center}
+
+The input-output relationship can be inverted to infer $\eta(\srate)$. Use
+cylindrical coordinates $(r, \theta, z)$ and look for an axisymmetric flow
+field $\bm{u} = u(r,z) \hat{\bm{\theta}}$. The shear rate tensor is
+\begin{equation}
+	\dunder{\srate} = \begin{pmatrix} 0 & r\frac{\partial}{\partial r} \left(
+		\frac{u}{r}\right) & 0 \\ r\frac{\partial}{\partial r} \left(
+	\frac{u}{r}\right) & 0 & \frac{\partial u}{\partial z} \\
+0 & \frac{\partial u}{\partial z} & 0 \end{pmatrix}
+\end{equation}
+
+Consider the steady Cauchy equation in cylindrical coordinates:
+\begin{align}
+	\frac{\partial p}{\partial \theta} &= 0 = \frac{1}{r^2} \frac{\partial
+		}{\partial r} \left( r^2 \tau_{r\theta}\right) + \frac{\partial}{\partial
+z}\left( \tau_{\theta z}\right) \\
+\frac{\partial p}{\partial r} &= 0 \\ \frac{\partial p}{\partial z} &= 0
+\end{align}
+
+
+We wish to find a viscometric flow solution. In the Newtonian case, we have
+\begin{equation}
+	0 = \frac{1}{r^2} \frac{\partial
+		}{\partial r} \left( r^3 \frac{\partial}{\partial r} \left(
+	\frac{u}{r}\right)\right) + \frac{\partial^2 u}{\partial z^2}\\
+\end{equation}
+
+To find a solution we require both terms vanish. Thus $u = A(r) z + B(r)$. The
+no-slip boundary condition $u = 0$ at $z=0$ and $u = \Omega r$ at $z = h$
+gives
+\begin{equation}
+	u(r,z) = \Omega r \frac{z}{h}
+\end{equation}
+
+Given this flow, the shear rate tensor becomes
+\begin{equation}
+	\dunder{\srate} = \begin{pmatrix} 0 & 0 & 0 \\ 
+		0 & 0 & \frac{r \Omega}{h} \\
+0 & \frac{r \Omega}{h} & 0 \end{pmatrix}
+\end{equation}
+
+Assume $\Omega > 0$, so the magnitude of the shear rate is $\srate =
+\abs{r\Omega/h}$. This solution is also a solution for a GNF: we have
+$\tau_{r\theta} = 0$ and 
+\begin{equation}
+	\tau_{\theta z} = \eta(\srate) \srate =
+	\eta(\frac{r\Omega}{h})\frac{r\Omega}{h} = \tau_{\theta z} (r)
+\end{equation}
+
+The torque exerted to rotate the top plate is $\bm{T} = T\hat{\bm{z}}$ where
+\begin{equation}
+	T = \int r \tau_{\theta z} \, \diffd S = 2\pi \int_0^a r^2 \eta(\srate)
+	\srate \, \diffd r
+\end{equation}
+
+This relationship can be used to infer $\eta(\srate)$ by a change of variable.
+Let $\srate_a = a\Omega/h$ be the shear rate at the edge of the disc.
+Substitute $r = a \srate/\srate_a$:
+\begin{equation}
+	T = 2\pi \int_0^{\srate_a} \frac{a^2}{\srate_a^2} \srate^2
+	\eta(\srate)\srate \frac{a}{\srate_a} \, \diffd \srate = 2\pi
+	\frac{a^3}{\srate_a^3} \int_0^{\srate_a} \eta(\srate) \srate^3 \, \diffd
+	\srate
+\end{equation}
+This is valid for all values of $\srate_a$. Rearranging and differentiating
+with respect to $\srate_a$ we have
+\begin{equation}
+	\eta(\srate_a) = \frac{1}{\srate_a^3} \frac{\diffd}{\diffd \srate^a}
+	\left[ \frac{T \srate_a^3}{2\pi a^3}\right]
+\end{equation}
+
+In an experiment, we control $\srate_a$, measure $T$, slightly change
+$\srate_a$, and repeat. Application of the above result then yields
+$\eta(\srate_a)$. Other geometries can also be used:
+\begin{itemize}
+	\item Taylor-Couette.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[name path =A] (0,0) ellipse (1 and 0.2);
+				\draw[name path =B] (0,0) ellipse (1.5 and 0.4);
+				\draw (0,-3) ellipse (1 and 0.2);
+				\draw (0,-3) ellipse (1.5 and 0.4);
+				\draw (1.5,0) -- (1.5, -3);
+				\draw (-1.5, 0) -- (-1.5, -3);
+				\draw (1, 0) -- (1, -3);
+				\draw (-1, 0) -- (-1, -3);
+				\tikzfillbetween[of=A and B]{blue, opacity=0.5}
+			\end{tikzpicture}
+		\end{center}
+	\item Cone and plate. Useful since $\alpha$ small implies the shear rate
+		$\srate$ is uniform.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (-2,0) -- (2,0) -- (2.8, 1.5) -- (-1.2, 1.5) -- (-2,0);
+				\draw (-1.4, 2.5) -- (0.2, 0.6) -- (1.8, 2.5);
+				\draw (0.2, 2.55) ellipse (1.6 and 0.4);
+				\draw (0.4, 0.85) arc (30:0:0.5);
+				\draw (0.7, 0.8) node {$\alpha$};
+				\draw[->] (0.2, 2.55) -- (0.2, 3.5);
+				\draw[->] (0.2, 3.2) [partial ellipse = -180:60:0.55 and
+				0.15];
+			\end{tikzpicture}
+		\end{center}
+\end{itemize}
 
 
 

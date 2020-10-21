@@ -563,7 +563,7 @@ Now from conservation of volume \eqref{eq:swcon2},
 \end{equation}
 Combining these relates the material derivative of $\zeta$ and $H$ by
 \begin{equation}
-	\frac{\diffD \zeta}{\diffD t} = \frac{\zeta + f}{H} \frac{\diffD H}{\diffD
+	\frac{\diffD \zeta}{\diffD t} + \frac{\diffD f}{\diffD t}= \frac{\zeta + f}{H} \frac{\diffD H}{\diffD
 	t} \implies \frac{\diffD}{\diffD t}\left(\frac{\zeta + f}{H}\right) = 0
 	\label{eq:PV}
 \end{equation}
@@ -603,6 +603,99 @@ angular momentum (changing depth).
 	\draw[blue] (1.1, 3) node[right] {$\zeta > 0$};
 \end{tikzpicture}
 \end{center}
+
+\lecture{21/10/20}
+\section{Small amplitude motions in rotating SW}
+Consider a stationary fluid with depth $H_s(x,y) = H_0 - h_b$. The fluid
+surface is then perturbed by $\eta(x,y,t)$ where $\eta \ll H_s$. The total
+depth is $H(x,y,t) = H_s + \eta$. For $\abs{\bm{u}}^2 \ll \abs{\bm{u}}$,
+linearise the shallow water equations:
+\begin{align}
+	u_t - fv &= -g \eta_x \label{swlin1} \\
+	v_t + fu &= -g \eta_y \label{swlin2}\\
+	\eta_t + (uH_s)_x + (vH_s)_y &= 0 \label{swlin3}
+\end{align}
+
+Assuming $f$ is constant, we have from $\partial_x \eqref{swlin1} + \partial_y
+\eqref{swlin2}$ and $\partial_y \eqref{swlin1} - \partial_x \eqref{swlin2}$:
+\begin{equation}
+	\partial_t \left[ \left(\partial_t^2 + f^2\right) \eta - \nabla
+		\cdot\left(gH_s \nabla \eta \right)\right] - fg J(H_s, \eta) = 0
+		\label{swlin6}
+\end{equation}
+where the Jacobian $J(a,b) = a_x b_y - a_y b_x$. For the velocity components
+we have
+\begin{align}
+	\left( \partial_t^2 + f^2\right)u &= -g\left( \eta_{xt} + f\eta_y\right)
+	\label{swlin4}\\
+	\left( \partial_t^2 + f^2\right)v &= -g\left( \eta_{yt} +
+	f\eta_x\right)\label{swlin5}
+\end{align}
+
+\subsection{Steady flows}
+We now assume $\partial_t = 0$. From \eqref{swlin4}, \eqref{swlin5},
+\begin{equation}
+	u = -\frac{g}{f}\eta_y, \hspace{2em} v = \frac{g}{f}\eta_x
+\end{equation}
+This is \emph{shallow water geostrophic balance}: the surface displacement
+$\eta$ acts as a streamfunction. Applying the steady assumption to
+\eqref{swlin6} gives $J(H_s, \eta) = 0$ which implies $\eta = \eta(H_s(x,y))$.
+Hence linearised steady geostrophic flow in shallow water follows contours of
+constant depth.  Steady PV conservation follows from \eqref{eq:PV} with
+$\partial_t = 0$ and assuming $\zeta \ll f$
+\begin{equation}
+	\bm{u} \cdot \nabla \frac{f}{H_s} = 0
+\end{equation}
+Thus when $f$ varies, the flow follows contours of constant $f/H_s$.
+
+\subsection{Waves in an unbounded domain}
+Assume $H_s$ is constant. From \eqref{swlin6}, we have
+\begin{equation}
+	\left( \partial_t^2 + f^2\right)\eta - gH_s \nabla^2 \eta = 0
+\end{equation}
+
+Seek plane wave solutions to this wave equation with ansatz $\eta = \eta_0
+\exp(i(kx+ly-\omega t))$. The dispersion relation is then
+\begin{equation}
+	\omega^2 = f^2 + gH_s (k^2 + l^2) \label{eq:poindisp}
+\end{equation}
+
+If $f = 0$, i.e. no rotation, then the frequency is $\omega = \pm \sqrt{gH_s}
+\abs{\bm{k}} = \omega_0$ and the phase speed is $\abs{c_p} =
+\frac{\abs{\omega}}{\abs{\bm{k}}} = \sqrt{gH_s} = c_0$. For $f \ne 0$, we get
+\emph{Poincar\'{e}} waves with
+\begin{equation}
+	\omega^2 > \omega_0^2, \hspace{2em} \abs{c_p} > c_0
+\end{equation}
+i.e. rotation increases the frequency and phase speed. Define the \emph{Rossby
+deformation scale} $R_D \equiv \frac{c_0}{f}$. From \eqref{eq:poindisp},
+\begin{equation}
+	\frac{\omega^2}{f^2} = 1 + R^2_D \abs{\bm{k}}^2
+\end{equation}
+
+Without loss of generality, let $l = 0$, by reorienting $x$ and $y$. If $\eta
+= \eta_0 \cos(kx-\omega t)$ then \eqref{swlin4}, \eqref{swlin5} imply the
+fluid velocity is
+\begin{align}
+	u &= \frac{\omega_0 \eta_0}{k H_s} \cos(kx-\omega t) \\
+	v &= \frac{f \eta_0}{k H_s}
+\end{align}
+Thus the motion is an ellipse, also known as a \emph{tidal ellipse}, which
+reduces to intertial circles if $\omega_0 = f$:
+\begin{equation}
+	u^2 + \frac{\omega_0^2}{f^2} v^2 = \frac{\omega_0^2 \eta_0^2}{k^2 H_s^2}
+\end{equation}
+Since $\omega > f$, the fluid moves anticylonically. The Rossby deformation
+scale $R_D$ is the length scale for which rotation becomes important. Consider
+short and long waves:
+\begin{itemize}
+	\item Short waves: $\abs{\bm{k}} R_D \gg 1$. We have $\omega^2 \to g H_s
+		\abs{\bm{k}}^2$ i.e. non-rotating shallow water gravity waves.
+	\item Long waves: $\abs{\bm{k}}R_D \ll 1$. We have $\omega^2 \to f^2$ i.e.
+		inertial waves where fluid moves in inertial circles. Gravity is not
+		involved.
+\end{itemize}
+
 
 
 \end{document}

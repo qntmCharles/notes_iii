@@ -11,4 +11,8 @@
 \contentsline {subsection}{\numberline {3.4}Extensional Viscosity}{8}{subsection.3.4}
 \contentsline {section}{\numberline {4}Generalised Newtonian Fluids}{9}{section.4}
 \contentsline {subsection}{\numberline {4.1}Power-law fluids}{10}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Pipe flow of a power-law fluid}{11}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.1.1}Pipe flow of a power-law fluid}{11}{subsubsection.4.1.1}
+\contentsline {subsection}{\numberline {4.2}Other models \& problems}{13}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Carreau-Yasuda model}{13}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Powell-Eyring \& Ellis models}{13}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Rheometry}{14}{subsection.4.3}

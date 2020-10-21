@@ -17,9 +17,14 @@
 \BOOKMARK [2][-]{subsection.2.3}{Representation by Potentials}{section.2}% 17
 \BOOKMARK [2][-]{subsection.2.4}{Complex Variable Theory in 2D Flow}{section.2}% 18
 \BOOKMARK [2][-]{subsection.2.5}{Papkovich-Neuber Solution}{section.2}% 19
-\BOOKMARK [2][-]{subsection.2.6}{Solutions for points, spheres \(and cylinders\)}{section.2}% 20
+\BOOKMARK [2][-]{subsection.2.6}{Solutions for points, spheres, and cylinders}{section.2}% 20
 \BOOKMARK [3][-]{subsubsection.2.6.1}{Spherical harmonic functions}{subsection.2.6}% 21
-\BOOKMARK [2][-]{subsection.2.7}{Solution due to a point force}{section.2}% 22
-\BOOKMARK [2][-]{subsection.2.8}{Source flow}{section.2}% 23
-\BOOKMARK [2][-]{subsection.2.9}{Force dipole, stresslet, rotlet}{section.2}% 24
-\BOOKMARK [2][-]{subsection.2.10}{Rigid sphere with velocity U}{section.2}% 25
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Solution due to a point force}{subsection.2.6}% 22
+\BOOKMARK [3][-]{subsubsection.2.6.3}{Source flow}{subsection.2.6}% 23
+\BOOKMARK [3][-]{subsubsection.2.6.4}{Force dipole, stresslet, rotlet}{subsection.2.6}% 24
+\BOOKMARK [3][-]{subsubsection.2.6.5}{Rigid sphere with velocity U}{subsection.2.6}% 25
+\BOOKMARK [3][-]{subsubsection.2.6.6}{Force and stress on a translating sphere}{subsection.2.6}% 26
+\BOOKMARK [3][-]{subsubsection.2.6.7}{Gravitational settling}{subsection.2.6}% 27
+\BOOKMARK [3][-]{subsubsection.2.6.8}{2D potentials}{subsection.2.6}% 28
+\BOOKMARK [2][-]{subsection.2.7}{Motion of rigid particles}{section.2}% 29
+\BOOKMARK [3][-]{subsubsection.2.7.1}{The resistance matrix}{subsection.2.7}% 30

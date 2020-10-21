@@ -9,3 +9,6 @@
 \contentsline {subsection}{\numberline {2.4}Ekman pumping}{7}{subsection.2.4}
 \contentsline {section}{\numberline {3}Rotating shallow water equations}{7}{section.3}
 \contentsline {subsection}{\numberline {3.1}Potential vorticity (PV)}{9}{subsection.3.1}
+\contentsline {section}{\numberline {4}Small amplitude motions in rotating SW}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}Steady flows}{10}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Waves in an unbounded domain}{10}{subsection.4.2}

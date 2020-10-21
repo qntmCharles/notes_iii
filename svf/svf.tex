@@ -576,7 +576,7 @@ Note the following.
 		easier to calculate.
 \end{enumerate}
 
-\subsection{Solutions for points, spheres (and cylinders)}
+\subsection{Solutions for points, spheres, and cylinders}
 A point or sphere has no intrinsic direction or orientation, thus solutions on
 these geometries should also have no intrinsic direction or orientation.
 
@@ -651,7 +651,7 @@ $\bm{G}$; $\bm{u} \times \x$; vorticity $\bm{\omega} = \nabla \times \bm{u}$.
 Products obey the obvious parity rules, e.g. helicity $\bm{u} \cdot
 \bm{\Omega}$ is a pseudo scalar.
 
-\subsection{Solution due to a point force}
+\subsubsection{Solution due to a point force}
 The Papkovich-Neuber solution due to a point force is a Green's function for
 the Stokes equations. This problem is also known as a `Stokeslet'. Consider
 the problem
@@ -752,7 +752,7 @@ flow can occur on much larger scales than (for example) charge interactions.
 \label{fig:stokeslet}
 \end{figure}
 
-\subsection{Source flow}
+\subsubsection{Source flow}
 Consider a source of strength $Q$ with $\nabla \cdot \bm{u} = Q \delta(\x)$.
 This is reffered to as a \emph{point volume source}. One can show the solution
 is
@@ -764,7 +764,7 @@ which is obtained using Papkovich-Neuber potentials
 	\chi = \alpha \frac{Q}{r}, \hspace{2em} \bm{\Phi} = \beta Q \nabla \inv{r}
 \end{equation}
 
-\subsection{Force dipole, stresslet, rotlet}
+\subsubsection{Force dipole, stresslet, rotlet}
 Further solutions for dipoles, quadrupoles, etc. can be found by taking
 gradients of the Stokeslet and source solutions. For example, consider a
 dipole.
@@ -841,7 +841,7 @@ The flow contribution from each of these components may then be calculated.
 
 Both the stresslet and rotlet decay as $\inv{r^2}$.
 
-\subsection{Rigid sphere with velocity U}
+\subsubsection{Rigid sphere with velocity U}
 Consider a rigid sphere of radius $a$ moving uniformly  with velocity
 $\bm{U}$ in a Stokes flow. We have $\nabla \cdot \bm{u} = 0$ and $\mu \nabla^2
 \bm{u} = \nabla p$ in $r > a$. We require $\bm{u} \to 0$ as $r \to \infty$ and
@@ -885,5 +885,112 @@ to the Stokeslet, are
 	\bm{x}}{r^3}
 \end{equation}
 
+\lecture{21/10/20}
+\subsubsection{Force and stress on a translating sphere}
+The flow at large distances is dominated by the $\inv{r}$ Stokeslet term with
+strength $\bm{F} = 6\pi \mu a \bm{U}$. Since the force across $r = `\infty'$
+must balance the force across $r=a$, we can see without further work that the
+force by the fluid on the sphere i.e. drag $=-6\pi \mu a \bm{U}$. In more
+detail:
+\begin{align}
+	\dunder{\sigma} &= -p \dunder{I} + \mu \left( \nabla \bm{u} + \nabla
+	\bm{u}^T\right) \\
+	&= -\frac{3}{2} \mu a \frac{\bm{U}\cdot\x}{r} + \frac{3}{4}\mu \left[
+	\left(-\frac{a}{r^3} - \frac{a^3}{r^5}\right)\left(\x \bm{U} + \bm{U}
+		\x\right)\right. \\
+		&+ \left.\left(\bm{U}\x + \x \bm{U} + 2\bm{U}\cdot\x
+		\dunder{I}\right)\left(\frac{a}{r^3} - \frac{a^3}{r^5}\right) +
+	\left(\bm{U}\cdot\x\right)\left(-\frac{3a}{r^5}+\frac{5a^3}{r^7}\right)2\x\x\right]
+	\\
+	\implies\dunder{\sigma}\cdot\bm{n}\mid_{r=a} &= -\frac{3}{2}\frac{\mu}{a}
+	(\bm{U}\cdot\bm{n})\bm{n} + \frac{3\mu}{4a}
+	\left[-2(\bm{n}(\bm{U}\cdot\bm{n}) + \bm{U}) +
+	(\bm{U}\cdot\bm{n})(-2)2\bm{n}\right] \\
+	&= -\frac{3\mu}{2a}\bm{U}
+\end{align}
 
+Thus the drag on the sphere is
+\begin{equation}
+	\bm{F} = \int_{r=a} \dunder{\sigma}\cdot \bm{n}\,\diffd S =
+	-\frac{3\mu}{2a} \bm{U} \cdot 4\pi a^2 = -6\pi \mu a \bm{U}
+\end{equation}
+as expected.
+
+\subsubsection{Gravitational settling}
+The force balance of weight, buoyancy, and drag gives the settling velocity of
+a rigid sphere in a Stokes flow.
+\begin{align}
+	\frac{4}{3}\pi a^3 \rho_s \bm{g} - \frac{4}{3}\pi a^3 \rho \bm{g} - 6\pi
+	\mu a \bm{U} &= 0 \\
+	\implies \bm{U} &= \frac{2a^2}{9\mu}(\rho_s - \rho)\bm{g} \propto a^2
+\end{align}
+
+\subsubsection{2D potentials}
+The harmonic functions in two-dimensions which are bounded as $r \to \infty$
+are
+\begin{equation}
+	\ln r, \hspace{1em} \nabla \ln r = \frac{\x}{r^2}, \hspace{1em} \nabla
+	\nabla \ln r = \frac{\dunder{I}}{r^2} - \frac{2\x\x}{r^4}, \hspace{1em}\dots
+\end{equation}
+Similar to the 3D spherical case, the harmonic functions in two-dimensions
+which are bounded as $r \to 0$ are
+\begin{equation}
+	1, \hspace{1em} r^2\nabla \ln r = \x, \hspace{1em}, \dots, \hspace{1em}
+	r^{2n} \nabla^n \ln r
+\end{equation}
+
+The 2D Stokeslet solution follows from the Papkovich-Neuber potentials
+$\bm{\Phi} = \frac{\bm{F}}{2\pi} \ln r$ which gives
+\begin{align}
+	\bm{u} &= \bm{F}\cdot\dunder{J}^{2D} \\
+	p &= \frac{\bm{F}\cdot\x}{2\pi r^2} \\
+	\dunder{\sigma} &= \bm{F} \cdot \dunder{\underline{K}}^{2D} \\
+	\dunder{J}^{2D} &= \frac{1}{4\pi \mu} \left( -\ln r \dunder{I} +
+	\frac{\x\x}{r^2}\right) \\
+	\dunder{\underline{K}}^{2D} &= -\frac{1}{\pi} \frac{\x\x\x}{r^4}
+\end{align}
+
+The 2D Stokeslet solution corresponds to a line force $\bm{F}$ \emph{per unit
+length}. Note that $\bm{u} \not\to 0$ as $r \to \infty$ for a line force,
+though $\bm{u} \to 0$ for line dipoles, line quadrupoles, etc.
+
+\subsection{Motion of rigid particles}
+\subsubsection{The resistance matrix}
+A rigid particle moving with velocity $\bm{U} + \bm{\Omega} \times \x$ through
+fluid otherwise at rest exerts a force $\bm{F}$ and a couple $\bm{G}$ on the
+fluid. By linearity,
+\begin{equation}
+\begin{pmatrix} \bm{F} \\ \bm{G}\end{pmatrix} = \begin{pmatrix} \dunder{A} & 
+\dunder{B} \\ \dunder{C} & \dunder{D} \end{pmatrix} \begin{pmatrix} \bm{U} \\
+\bm{\Omega} \end{pmatrix}
+\end{equation}
+where the tensors $\dunder{A} - \dunder{D}$ depend on the size, shape, and
+orientation of the body. We refer to this matrix as the \emph{resistance
+matrix}. We have 
+
+\begin{equation}
+	\int_{\text{body}} \bm{u}\cdot\dunder{\sigma}\cdot\bm{n}\,\diffd S = \int
+	(\bm{U} + \bm{\Omega}\times\x)\cdot\dunder{\sigma}\cdot\bm{n}\,\diffd S
+	= \bm{U} \cdot \bm{F} + \bm{\Omega} \cdot \bm{G}
+\end{equation}
+
+Similarly, from the reciprocal theorem (with $\bm{F} = 0$), for all $\bm{U}_1,
+\bm{\Omega}_1, \bm{U}_2, \bm{\Omega}_2$, 
+\begin{equation}
+	(\bm{U}_1, \bm{\Omega}_1)\begin{pmatrix} \dunder{A} & \dunder{B} \\
+	\dunder{C} & \dunder{D} \end{pmatrix} \begin{pmatrix} \bm{U}_2 \\
+	\bm{\Omega}_2\end{pmatrix} = 
+	(\bm{U}_2, \bm{\Omega}_2)\begin{pmatrix} \dunder{A} & \dunder{B} \\
+	\dunder{C} & \dunder{D} \end{pmatrix} \begin{pmatrix} \bm{U}_1 \\
+	\bm{\Omega}_1\end{pmatrix} = 
+	(\bm{U}_1, \bm{\Omega}_1)\begin{pmatrix} \dunder{A}^T & \dunder{C}^T \\
+	\dunder{B}^T & \dunder{D}^T \end{pmatrix} \begin{pmatrix} \bm{U}_2 \\
+	\bm{\Omega}_2\end{pmatrix}
+\end{equation}
+
+Hence $\dunder{A} = \dunder{A}^T$, $\dunder{D} = \dunder{D}^T$ so $\dunder{A}$
+and $\dunder{D}$ are diagonalisable, and $\dunder{B} = \dunder{C}^T$, i.e. the
+force from pure rotation is equal to the couple from pure translation. Since
+the viscous dissipation is positive, the resistance matrix is positive
+definite, so invertible.
 \end{document}
