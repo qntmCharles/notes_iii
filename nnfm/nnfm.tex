@@ -821,7 +821,7 @@ shear-thinning complex fluid. The flow rate is
 	\kappa}\right)^{1/n} R^{3+\frac{1}{n}}
 \end{equation}
 
-FOr a Newtonian fluid, $Q \sim \Delta p R^4$ whereas for a power-law fluid $Q
+For a Newtonian fluid, $Q \sim \Delta p R^4$ whereas for a power-law fluid $Q
 \sim \Delta p ^{1/n} R^{3+\frac{1}{n}}$. For a shear-thinning fluid with $n <
 1$, we thus have a very strong dependence on $\Delta p$ and $R$. In a device
 with $Q$ fixed, $\Delta p^{1/n} R^{3+\frac{1}{n}} = \text{const.}$ so $\Delta
@@ -833,7 +833,7 @@ a pipe than with a Newtonian fluid.
 The Carreau-Yasuda model can be written
 \begin{equation}
 	\frac{\eta(\srate)-\eta_\infty}{\eta_0 - \eta_\infty} = \left[ 1 +
-	(\lambda \srate)^a\right)^{n-1}{a}
+	(\lambda \srate)^a\right]^{n-1}{a}
 \end{equation}
 for $n \le 1$. In this model, $\eta$ transitions smoothly from $\eta_0$ to
 $\eta_\infty$. In some finite range of shear rates, the model resembles a
@@ -1013,6 +1013,166 @@ $\eta(\srate_a)$. Other geometries can also be used:
 		\end{center}
 \end{itemize}
 
+\lecture{22/10/20}
+\subsection{Variational approach}
+So far, we have found exact solutions only. For many GNF, no exact solutions
+are available so we must find approximate solutions. Here we consider a method
+relying on a form of energy minimisation. Conider a fluid volume V, bounded by
+a surface S, in the Stokes flow limit (no inertia). Assume $\bm{u} = \bm{u}_0$
+is prescribed on $S$. The total rate of energy dissipation is
+\begin{equation}
+	P = \int_V \frac{1}{2}\dunder{\sigma}:\dunder{\srate}\,\diffd V = \int_V
+	\frac{\eta}{2} \dunder{\srate}:\dunder{\srate} \, \diffd V \ge 0
+\end{equation}
+
+Recall the minimum dissipation theorem: solutions to Stokes equations minimise
+$P$ over all incompressible flows satisfying the same boundary conditions. The
+inequality $P_{\text{Stokes}} \le P$ can be shown directly, or we can use the
+calculus of variations. Define a Lagrangian
+\begin{equation}
+	\mathcal{L} \equiv P + \int_S \lambda \nabla \cdot \bm{u} \, \diffd V
+\end{equation}
+
+Variations with respect to $\lambda$ give $\nabla \cdot \bm{u} = 0$, and
+variations with respect to $\bm{u}$ give Stokes equations with pressure $p
+\propto \lambda$.
+
+To generalise this to GNF, consider the power density $f = \eta \srate^2$ for
+a Newtonian fluid. Analogously, for a GNF we define
+\begin{equation}
+	f = \int_0^{\srate} \eta(x)x\, \diffd x
+\end{equation}
+and a new Lagrangian
+\begin{equation}
+	\mathcal{L} = \mathcal{L}\left[\bm{u},\lambda\right] = \int_V f \, \diffd
+	V + \int_V \lambda \nabla \cdot \bm{u}\,\diffd V
+\end{equation}
+
+\subsubsection{Calculus of variations}
+Consider a functional $J$ of a vector field $\bm{y}(\bm{x})$ and of its
+spatial derivative. 
+\begin{equation}
+	J\left[\bm{y}\right] = \int_V F(x_i,y_j,y_{m,n}) \, \diffd V
+\end{equation}
+where $y_{m,n} \equiv \frac{\partial y_m}{\partial x_n}$ and $V$ is the total
+domain. The first variation of $J$ is $\delta J$ where
+\begin{equation}
+	J + \delta J = J\left[\bm{y}+\delta\bm{y}\right] = \int_V
+	F(\bm{x},\bm{y}+\delta\bm{y})\,\diffd V
+\end{equation}
+Taylor expand the integrand:
+\begin{equation}
+	F(\bm{x},\bm{y}+\delta\bm{y}) = F + \delta y_j \frac{\partial F}{\partial
+		y_j} + \delta y_{m,n} \frac{\partial F}{\partial y_{m,n}} + \dots
+\end{equation}
+Using integration by parts and writing $\delta y_{m,n} =
+\frac{\partial}{\partial x_n} \delta y_m$ we have
+\begin{equation}
+	\delta y_{m,n} \frac{\partial F}{\partial y_{m,n}} =
+	\frac{\partial}{\partial x_n}\left( \delta y_m \frac{\partial F}{\partial
+		y_{m,n}}\right) - \delta y_m \frac{\partial}{\partial x_n} \left(
+	\frac{\partial F}{\partial y_{m,n}}\right)
+\end{equation}
+
+The first term becomes a surface integral via Stokes' theorem, which may or
+may not vanish depending on boundary conditions. The first variation of $F$ is
+thus
+\begin{equation}
+	\delta F = \delta y_j \left[ \frac{\partial F}{\partial y_j} -
+		\frac{\partial}{\partial x_n} \left( \frac{\partial F}{\partial
+	y_{j,n}}\right)\right] + \text{boundary terms}
+\end{equation}
+
+Now $\delta J = 0$ for all $\delta y$ implies $\delta F = 0$ for all $\delta
+y$, giving the \emph{Euler-Lagrange equation}.
+\begin{equation}
+\frac{\partial F}{\partial y_j} - \frac{\partial}{\partial x_n} \left(
+\frac{\partial F}{\partial y_{j,n}}\right) = 0
+\end{equation}
+
+\subsubsection{Variational solution}
+Returning to our original set-up, denote $F_2 = \lambda \nabla \cdot \bm{u}$,
+$F_1 = \int_0^{\srate} \eta(x)x\,\diffd x$, so
+\begin{equation}
+	\mathcal{L}\left[\bm{u},\lambda\right] = \int_V F_1 + F_2\,\diffd V
+\end{equation}
+
+The Euler-Lagrange equation for $\lambda $ gives
+\begin{equation}
+	\frac{\partial}{\partial \lambda} \left( F_1 + F_2\right) = 0 \implies
+	\nabla \cdot \bm{u} = 0
+\end{equation}
+
+For variations with respect to $\bm{u}$, we have boundary terms involving
+$\delta \bm{u}$. Since $\delta \bm{u} = \bm{0}$ on $S$, the boundary terms
+vanish in this case. There is no explicit dependence on $\bm{u}$ in $F_1, F_2$
+so the Euler-Lagrange equation becomes
+\begin{equation}
+	\frac{\partial}{\partial x_n} \left( \frac{\partial F}{\partial
+	u_{j,n}}\right) = 0
+\end{equation}
+
+where $F \equiv F_1 + F_2$. By chain rule, 
+\begin{equation}
+	\frac{\partial F_1}{\partial u_{j,n}} = \frac{\partial \srate}{\partial
+	u_{j,n}} \frac{\partial F_1}{\partial \srate}
+\end{equation}
+We have $\frac{\partial F_1}{\partial \srate} = \eta(\srate) \srate$ and
+\begin{align}
+	\frac{\partial \srate}{\partial u_{j,n}} &=
+	\frac{1}{2\srate} \frac{\partial}{\partial u_{j,n}} \left( \frac{1}{2}
+	\dunder{\srate}:\dunder{\srate}\right) \\
+	&= \frac{1}{2\srate} \frac{\partial}{\partial u_{j,n}} \left( \frac{1}{2}
+	\srate_{pq} \srate_{pq}\right) \\
+	&= \frac{1}{2\srate} \frac{\partial}{\partial u_{j,n}}\left(
+u_{p,q}u_{p,q} + u_{p,q}u_{q,p}\right) \\
+&= \frac{1}{2\srate} \left( 2 u_{j,n} + 2u_{n,j}\right) \\
+&= \frac{\srate_{jn}}{\srate}
+\end{align}
+
+Now for $F_2 = \lambda \nabla \cdot \bm{u}$ we have
+\begin{align}
+	\frac{\partial}{\partial x_n} \left( \frac{\partial F-2}{\partial u_{j,n}}
+		\right) &= \frac{\partial}{\partial x_n} \left( \lambda
+		\frac{\partial}{\partial u_{j,n}} \frac{\partial u_i}{\partial x_i}
+	\right) \\
+	&= \frac{\partial}{\partial x_n} \left( \lambda \delta_{ij}
+\delta_{in}\right) \\
+&= \frac{\partial \lambda}{\partial x_j}
+\end{align}
+
+Thus the full Euler-Lagrange equation for $\bm{u}$ is
+\begin{equation}
+	\frac{\partial}{\partial x_n} \left[ \eta(\srate) \srate_{jn}\right] +
+	\frac{\partial \lambda}{\partial x_j} = 0
+\end{equation}
+for $j= 1, 2, 3$. Given $\lambda = -p$, this becomes the Cauchy equation for a
+GNF.
+\begin{equation}
+	-\nabla p + \nabla \cdot \left[ \eta(\srate) \dunder{\srate}\right] =
+	\bm{0}
+\end{equation}
+
+Pressure is used as a Lagrange multiplier to enforce incompressibility. Note:
+if the boundary conditions are different, e.g. $\dunder{\sigma} \cdot \bm{n}$
+is prescribed, we must distinguish surfaces where $\bm{u}$ is described and
+surfaces where $\dunder{\sigma} \cdot \bm{n}$ is prescribed, and add a surface
+integral to the Lagrangian.
+
+To generate approximate solutions to the Cauchy GNF equations, we note that
+the closer the value of $\mathcal{L}$ to its minimum, the better the
+approximation. Thus
+\begin{enumerate}
+	\item Use incompressible test functions $\bm{u}_\alpha$ where $\alpha$ is
+		a parameter
+	\item Substitute into Lagrangian, minimise with respect to $\alpha$
+	\item If the minimum of $\mathcal{L}$ is at $\alpha = \alpha^*$ then
+		$\bm{u}_{\alpha^*}$ is an approximate solution
+\end{enumerate}
+
+Integrals involved in $\mathcal{L}$ in general have to be evaluated
+numerically. Choice of test functions comes from physical intuition,
+computation, or experiment.
 
 
 \end{document}
