@@ -8,6 +8,7 @@
 \newcommand{\Ro}{Ro}
 \newcommand{\Ek}{E}
 \newcommand{\vare}{\varepsilon}
+\newcommand{\sgn}{\text{sgn}}
 
 \usepackage{tikz}
 \usepackage{tikz-3dplot}
@@ -695,6 +696,129 @@ short and long waves:
 		inertial waves where fluid moves in inertial circles. Gravity is not
 		involved.
 \end{itemize}
+
+\lecture{23/10/20}
+\section{Geostrophic adjustment}
+Consider the response of rotating shallow water to an initial state \emph{not}
+in geostrophic balance. Here, we consider $\eta(x,y,) = \eta_0 \sgn(x)$,
+$\bm{u}(x,y,0) = \bm{0}$, so the initial PV is $0$. 
+
+
+Assume $f$ is constant, the perturbation is small $\eta_0 \ll H$, the PV is
+small $\zeta \ll f$, and the bottom is flat $H_s = H_0$. Linearise the shallow
+water PV:
+\begin{equation}
+	q = \frac{f+\zeta}{H_0+\eta} = \frac{f}{H_0}\left(1+\frac{\zeta}{f} +
+		\dots\right)\left(1-\frac{\eta}{H_0}+\dots\right) \approx
+		\frac{f}{H_0}\left(1+\frac{\zeta}{f} - \frac{\eta}{H_0}\right)
+\end{equation}
+
+Since PV is conserved, we have
+\begin{equation}
+	\frac{\zeta}{f} - \frac{\eta}{H_0} = -\frac{\eta_0}{H_0} \sgn(x)
+	\hspace{2em} \forall t \label{eq:PVcons}
+\end{equation}
+
+By symmetry, $\partial_y \equiv 0$ so the PV is $\zeta = v_x$. The linearised
+shallow water equations in this case
+\begin{align}
+	u_t - fv &= -g\eta_x \\
+	v_t + fu &= 0 \\
+	\eta_t + H_0 u_x &= 0
+\end{align}
+
+Using these equations we have
+\begin{equation}
+	\zeta = v_x = \frac{u_{xt} + g\eta_{xx}}{f} = -\frac{1}{f H_0} \eta_{tt} +
+	\frac{g}{f}\eta_{xx}
+\end{equation}
+
+Now conservation of potential vorticity \eqref{eq:PVcons} gives
+\begin{equation}
+	\eta_{tt} - c^2 \eta_{xx} + f^2 \eta = f^2 \eta_0 \sgn(x)
+\end{equation}
+where $c^2 \equiv g H_0$. This is a \emph{Klein-Gordon equation} where the
+$f^2\eta$ term adds elasticity to the waves.
+
+\subsection{Steady solutions}
+Consider steady solutions. Owing to the step forcing, our BCs are to match
+$\eta_x$ and $\eta$ at $x=0$. We find
+\begin{equation}
+	\eta = \eta_0 \begin{cases} 1 - e^{-x/R_d} & x > 0 \\ -1 + e^{x/R_d} & x <
+	0 \end{cases} \label{eq:gasoln}
+\end{equation}
+where $R_d \equiv \sqrt{gH_0}/f$ is the \emph{deformation radius}. From the
+equations of geotrophic balance we have the velocity components
+\begin{equation}
+	u = 0, \hspace{2em} v = \frac{g \eta_0}{fR_d} e^{-\abs{x}/R_d}
+\end{equation}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-4,0) -- (4,0);
+		\draw[thick,->] (0,-1.5) -- (0,1.5);
+		\draw[smooth,domain=0:4,red] plot({\x},{1-exp(-2*\x)});
+		\draw[smooth,domain=-4:0,red] plot({\x},{-1+exp(2*\x)});
+		\draw[smooth,domain=0:4,blue] plot({\x},{exp(-2*\x)});
+		\draw[smooth,domain=-4:0,blue] plot({\x},{exp(2*\x)});
+		\draw[red,dashed] (-0.1,1) -- (4, 1) node[right] {$\eta_0$};
+		\draw[red,dashed] (0.1,-1) -- (-4, -1) node[left] {$-\eta_0$};
+		\draw[red] (-2, 1) node {$\eta$};
+		\draw[blue] (-2, 1.4) node {$v$};
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Transients}
+
+The steady solution \eqref{eq:gasoln} solves the geostrophic adjustment
+equation, but it does not match the initial conditions. We add this particular
+solution to a solution to the homogeneous equation
+\begin{equation}
+	\eta_{tt} - c^2 \eta_{xx} + f^2 \eta = 0
+\end{equation}
+with initial condition
+\begin{equation}
+	\eta = \eta_0 \sgn(x) - \eta_{\text{steady}} = \eta_0
+	e^{-\abs{x}/R_d}\sgn(x)
+\end{equation}
+
+We seek solutions of plane wave form
+\begin{equation}
+	\eta = \hat{\eta} e^{i(kx-\omega t)}
+\end{equation}
+with $\omega^2 = f^2 + c^2 k^2$. These are Poincar\'{e} waves.
+
+\subsection{Energetics}
+The change in potential energy per unit length in the $y$ direction is
+\begin{align}
+	PE_{\text{initial}} - PE_{\text{final}} &= \int_{-\infty}^\infty
+	\int_0^{\eta_i} \rho_0 g z \, \diffd z \, \diffd x - \int_{-\infty}^\infty
+	\rho_0 g z \, \diffd z\,\diffd x \\
+	&= 2\rho_0 g \left[ \int_0^\infty \frac{\eta_i^2}{2}\,\diffd x -
+\int_0^\infty \frac{\eta_f^2}{2}\,\diffd x \right] \\
+&= \rho_0 g \eta_0^2 \int_0^\infty \left[ 1- (1-e^{-x/R_d})^2\right] \, \diffd
+x\\
+&= \frac{3}{2}\rho_0 g \eta_0^2 R_d
+\end{align}
+
+The change in kinetic energy per unit length in the $y$ direction is
+\begin{align}
+	KE_{\text{initial}} - KE_{\text{final}} &= \int_{-\infty}^\infty
+	\int_{-H}^{\eta_i} \frac{1}{2} \rho_0 v_i^2 \,\diffd z\, \diffd x -
+	\int_{-\infty}^\infty \int_{-H}^{\eta_f} \frac{1}{2} \rho_0 v_f^2 \,\diffd
+	z\, \diffd x \\
+	&\approx 0 - \frac{1}{2}\rho_0 \int_{-\infty}^\infty H_s v^2_f \, \diffd x
+	\\
+	&= -\rho_0 H_s \int_0^\infty \frac{g^2 \eta_0^2}{f^2 R_d^2} e^{-2x/R_d} \,
+	\diffd x \\
+	&= -\rho_0 \frac{R_d^2 g \eta_0^2}{R_d^2}\cdot -\frac{R_d}{2} \cdot \left[
+e^{-2x/R_d} \right]_0^\infty \\
+&= -\rho_0 g \eta_0^2 \frac{R_d}{2}
+\end{align}
+Only $\frac{1}{3}$ of the potential energy released is converted into kinetic
+energy of the geostrophic flow. The remainder is radiated away by Poincar\'{e}
+waves.
+
+
 
 
 

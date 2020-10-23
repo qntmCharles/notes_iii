@@ -4,6 +4,7 @@
 \newcommand{\dunder}[1]{\underline{\underline{#1}}}
 \newcommand{\x}{\bm{x}}
 \newcommand{\inv}[1]{\frac{1}{#1}}
+\renewcommand{\u}{\bm{u}}
 
 \begin{document}
 
@@ -993,4 +994,130 @@ and $\dunder{D}$ are diagonalisable, and $\dunder{B} = \dunder{C}^T$, i.e. the
 force from pure rotation is equal to the couple from pure translation. Since
 the viscous dissipation is positive, the resistance matrix is positive
 definite, so invertible.
+
+\lecture{23/10/20}
+\begin{eg}
+	\hspace{2in}
+	\begin{enumerate}
+		\item A body with $3$ independent planes of reflectional symmetry has
+			$\dunder{B} = \dunder{C} = 0$.
+		\item A cube falls with the same speed (and no rotation) in all
+			orientations since $\dunder{A} \propto \dunder{I}$.
+		\item $\dunder{A}$ and $\dunder{D}$ are known for ellipsoids, and
+			therefore for rods and discs which are limits of ellipsoids.
+	\end{enumerate}
+\end{eg}
+
+The resistance matrix and its inverse the \emph{mobility matrix} are sometimes
+extended to describe a rigid particle placed in a background linear flow
+$\bm{u}^\infty = \bm{U}^\infty + \bm{\Omega}^\infty \times \x +
+\dunder{E}^\infty \cdot \x$, as 
+\begin{equation}
+\begin{pmatrix} \bm{F} \\ \bm{G} \\ \dunder{S} \end{pmatrix} = \begin{pmatrix}
+&&\\&12 \times 12 & \\ &&\end{pmatrix} \begin{pmatrix} \bm{U}-\bm{U}^\infty \\
+\bm{\Omega} - \bm{\Omega}^\infty \\ \dunder{E}^\infty \end{pmatrix}
+\end{equation}
+
+where $\dunder{S}$ is the stresslet exerted by the particle.
+
+
+If $\dunder{E}^\infty = 0$, a force-free, couple-free particle just translates
+and rotates with the flow. If $\dunder{E}^\infty \ne 0 $ then the particle
+generates a stresslet. In general, the extra dissipation
+\begin{equation}
+	\bm{F}\cdot(\bm{U} - \bm{U}^\infty) + \bm{G} \cdot (\bm{\Omega} -
+	\bm{\Omega}^\infty) + \dunder{S}:\dunder{E}^\infty
+\end{equation}
+is positive by the minimum dissipation theorem, thus the extended
+matrix is positive definite, so invertible.
+
+This is useful because it gives the leading order effects for a small particle
+of size $a$ in a flow of larger lengthscale $L$:
+\begin{equation}
+	\bm{u}^\infty(\x) = \bm{u}^\infty(0) + \x \cdot \nabla \bm{u}^\infty(0) +
+	\mathcal{O}(a^2/L^2)
+\end{equation}
+
+\subsection{Fax\'{e}n relations}
+Consider the behaviour of a rigid particle placed in an arbitrary unbounded
+Stokes flow $\bm{u}^\infty(\x)$. Can we find the particle motion $\u^P =
+\bm{U} + \bm{\Omega} \times \x$? Let $\u'$ be the \emph{perturbation flow}
+$\u' = \u - \u^\infty$, which has boundary conditions
+\begin{align}
+	\u' &\to 0 \hspace{1em} \text{as} \,\,\, \abs{\x} \to \infty \\
+	\u' &= \u^P - \u^\infty(\x) \hspace{1em} \text{on particle}
+\end{align}
+and $\hat{\u}$ a `test' flow due to particle translation with arbitrary
+velocity $\hat{\bm{V}}$. By linearity, 
+\begin{equation}
+	\hat{\dunder{\sigma}} = \hat{\dunder{\underline{\Sigma}}}(\x) \cdot
+	\hat{\bm{V}}
+\end{equation}
+for some third rank tensor $\hat{\dunder{\Sigma}}$. The reciprocal theorem for
+$\u'$ and $\hat{\u}$ gives
+\begin{equation}
+	\hat{\bm{V}} \cdot \int_{S_P} \dunder{\sigma}' \cdot \bm{n}\,\diffd S =
+	\hat{\bm{V}} \cdot \int (\u^P - \u^\infty(\x))\cdot
+	\hat{\dunder{\underline{\Sigma}}} \cdot \bm{n}\,\diffd S
+\end{equation}
+Now $\hat{\bm{V}}$ is arbitrary and contribution from $\int \u^P \cdot
+\hat{\dunder{\underline{\Sigma}}}\cdot\bm{n}\,\diffd S$ is given by
+\begin{equation}
+\begin{pmatrix} \bm{U} & \bm{\Sigma}\end{pmatrix} \begin{pmatrix} \dunder{A} &
+\dunder{B} \\ \dunder{B}^T & \dunder{D} \end{pmatrix} \begin{pmatrix}
+\hat{\bm{V}} \\ \bm{0} \end{pmatrix}
+\end{equation}
+
+Hence we have \emph{Fax\'{e}n's first formula}
+\begin{equation}
+	\bm{F} = \dunder{A}\cdot\bm{U} + \dunder{B} \cdot \bm{\Omega} - \int
+	\bm{u}^\infty(\x) \cdot
+	\hat{\dunder{\underline{\Sigma}}}\cdot\bm{n}\,\diffd S
+\end{equation}
+
+Similar Fax\'{e}n relations can be obtained for the couple $\bm{G}$ and
+stresslet $\dunder{S}$ exerted, by using other test flows.
+
+\begin{eg}
+	For a sphere, we have $\hat{\dunder{\underline{\Sigma}}}\cdot\bm{n} =
+	\frac{3\mu}{2a} \dunder{I}$ on $r=a$, where $\bm{n}$ is \emph{into} the
+	particle. We also have
+	\begin{equation}
+		\dunder{A} = 6\pi \mu a \dunder{I}, \hspace{2em} \dunder{B} = 0
+	\end{equation}
+	which gives a translation velocity
+	\begin{equation}
+		\bm{U} = \frac{\bm{F}}{6\pi\mu a} + \frac{1}{4\pi a^2} \int
+		\u^\infty(\x) \, \diffd S
+	\end{equation}
+	where the last term is an average of $\u^\infty$ over the surface.
+	Moreover, we can Taylor expand this far field velocity
+	\begin{equation}
+		\u^\infty(\x) = \u^\infty(\bm{0}) + \x \cdot \nabla \u^\infty(\bm{0})
+		+ \frac{1}{2}\x\x:\nabla\nabla \u^\infty(\bm{0}) + \dots
+	\end{equation}
+	Therefore we have
+	\begin{equation}
+		\frac{1}{4\pi a^2} \int_{r=a} \u^\infty(\x) \, \diffd S =
+		\u^\infty(\bm{0}) + 0 + \frac{1}{8\pi a^2} \int_{r=a} \x \x \, \diffd
+		S : \nabla \nabla \u^\infty(\bm{0}) + \dots
+	\end{equation}
+	Odd terms, for example $\int_{r=a} \x\x\x\,\diffd S = 0$ by symmetry. Even
+	terms are isotropic and give $\nabla^{2n} \u^\infty(\bm{0})$, but by
+	Stokes equations $\nabla^4 \u^\infty = \bm{0}$. Hence
+	\begin{equation}
+		\bm{U} = \frac{\bm{F}}{6\pi\mu a} + \u^\infty(\bm{0}) + \frac{a^2}{6}
+		\nabla^2 \u^\infty(\bm{0})
+	\end{equation}
+\end{eg}
+
+\paragraph{Application to two sedimenting spheres.}
+Consider two rigid spheres of radius $a$ sedimenting under a given force
+$\bm{F}$. We wish to calculate the flal speed $\bm{U}$ to
+$\mathcal{O}(a^3/R^3)$. One sphere moves in the far-field flow of the other
+sphere, which itself depends on the force, couple, and stresslet exerted at
+leading order. $\bm{F}$ and $\bm{G} = 0$ are the same for each sphere, hence
+this far field is the same as for an isolated sphere up to
+$\mathcal{O}(a^4/R^4)$. Fax\'{e}n gives an $\mathcal{O}(a^3/R^3)$ correction
+to $\bm{U}$ from the $\frac{a^2}{6}\nabla^2$ term.
 \end{document}
