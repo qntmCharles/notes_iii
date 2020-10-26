@@ -5,6 +5,7 @@
 \newcommand{\x}{\bm{x}}
 \newcommand{\inv}[1]{\frac{1}{#1}}
 \renewcommand{\u}{\bm{u}}
+\newcommand{\y}{\bm{y}}
 
 \begin{document}
 
@@ -1120,4 +1121,105 @@ leading order. $\bm{F}$ and $\bm{G} = 0$ are the same for each sphere, hence
 this far field is the same as for an isolated sphere up to
 $\mathcal{O}(a^4/R^4)$. Fax\'{e}n gives an $\mathcal{O}(a^3/R^3)$ correction
 to $\bm{U}$ from the $\frac{a^2}{6}\nabla^2$ term.
+
+\lecture{26/10/20}
+\subsection{Integral representations of Stokes flow}
+\subsubsection{Basic integral identity}
+Consider a Stokes flow $\u$ and a Stokeslet flow $\u^S$ due to a point force
+$\bm{F}$ at $\y$. We have $\nabla \cdot \u = \nabla \cdot \u^S = 0$ and
+\begin{equation}
+	\nabla \cdot \dunder{\sigma} = -\bm{f}, \hspace{2em} \nabla \cdot
+	\dunder{\sigma}^S = -\bm{F} \delta(\x-\y)
+\end{equation}
+
+Apply the reciprocal theorem with $\u_1 = \u, \u_2 = \u^S$. We have
+\begin{equation}
+	\int_V \u \cdot \bm{F} \delta(\x-\y) \, \diffd V + \int_{\partial V} \u
+	\cdot \left( \bm{F} \cdot
+		\dunder{\underline{K}}(\x-\y)\right)\cdot\bm{n}\,\diffd S = \int_v
+		\left( \bm{F} \cdot \dunder{J}(\x-\y)\right) \cdot \bm{f} \, \diffd V
+		+ \int_{\partial V} \left( \bm{F} \cdot
+		\dunder{J}(\x-\y)\right)\cdot\dunder{\sigma}\cdot\bm{n}\,\diffd S
+\end{equation}
+
+Note by definition $J$ is even and $K$ is odd, so $\dunder{J}(\x-\y) =
+\dunder{J}(\y-\x)$ and $\dunder{\underline{K}}(\x-\y) =
+-\dunder{\underline{K}}(\y-\x)$. Also, $\bm{F}$ is arbitrary so may be
+factored out by the quotient theorem. We also have from the sampling property
+of the delta function
+\begin{equation}
+	\int_V \phi(\x) \delta(\x-\y)\,\diffd V = \begin{cases} \phi(\y) & \y \in
+		V \\ 0 & \y \not\in V \\ \frac{1}{2}\phi(\y) & \y \in \partial V
+	\end{cases}
+\end{equation}
+Note we require $\y\in\partial V$ to be a smooth point of $\partial V$ for
+this to hold. Hence
+\begin{equation}
+	\int_V \dunder{J}(\y-\x)\cdot\bm{f}(\x)\,\diffd V + \int_{\partial V}
+	\dunder{J}(\y-\x)\cdot\dunder{\sigma}\cdot\bm{n}\,\diffd S +
+	\int_{\partial V}
+	\u(\x)\cdot\dunder{\underline{K}}(\y-\x)\cdot\bm{n}\,\diffd S =
+	\begin{cases}
+		\u(\y) & \y \in V \\ 0 & \y\not\in V \\ \frac{1}{2} \u(\y) & \y
+	\not\in \partial V \end{cases}
+\end{equation}
+
+\begin{enumerate}
+	\item The above follows the sign conventions: $\bm{n}$ is out of $v$, and
+		we have $\y - \x$ as  the argument.
+	\item $\bm{f}$ is often not included, i.e. there is no body force or
+		$\bm{f}$ is absorbed into modified pressure
+	\item The jump in the RHS comes from the $\dunder{\underline{K}}$ integral
+		which depends on $\inv{r}$ which jumps when $\y$ crosses $\partial
+		V$.
+	\item Usually we only know $\dunder{\sigma}\cdot\bm{n}$ or $\bm{u}$ on
+		$\partial V$. In general, we solve as an integral equation for
+		whichever is not specified with $\y \in \partial V$ and then
+		substitute to find $\u$ elsewhere.
+\end{enumerate}
+
+\subsubsection{Far-field approximations/multipole expansion for a moving body}
+For a body of size $a$ and for $\abs{\y} \gg a$ we have by Taylor expanding
+\begin{align}
+	\dunder{J}(\y-\x) &\approx \dunder{J}(\y) - \x \cdot \nabla \dunder{J}(\y)
+	+ \mathcal{O}(\frac{a^2}{y^3}) \\
+	\dunder{\underline{K}}(\y-\x) &\approx \dunder{\underline{K}}(\y) +
+	\mathcal{O}(\frac{a^2}{y^3})
+\end{align}
+Assuming $\bm{f} = 0$, substitute this into the basic integral representation
+to obtain after some messy algebra
+\begin{equation}
+	\u(\y) \approx \bm{F} \cdot \dunder{J}(\y) + \frac{\bm{G} \times
+		\y}{8\pi\mu \abs{\y}^3} + \frac{Q\y}{4\pi\abs{\y}^3} - \frac{3 (\y
+		\cdot \dunder{S} \cdot \y)\y}{8\pi\mu \abs{\y}^5} +
+		\mathcal{O}(\frac{a^2}{y^3})
+\end{equation}
+where the first term is $\mathcal{O}(\inv{y})$, the three following terms are
+$\mathcal{O}(\frac{a}{y^2})$ and (using $\bm{n}$ out of body)
+\begin{align}
+	\bm{F} &= -\int \dunder{\sigma}\cdot\bm{n}\,\diffd S = \text{force exerted
+	by body}\\
+	\bm{G} &= -\int \x \times \dunder{\sigma} \cdot \bm{n}\,\diffd S =
+	\text{couple exerted by body} \\
+	Q &= \int \u \cdot \bm{n} \,\diffd S = \text{source strength (vanishes for
+	rigid body)} \\
+	\dunder{S} &= \int \left[ \frac{1}{2} \left( \x
+			(\dunder{\sigma}\cdot\bm{n}) - 2 \mu \u \bm{n}\right) +
+			\frac{1}{2}\left( \x
+				(\dunder{\sigma}\cdot\bm{n}) - 2 \mu \u \bm{n}\right)^T -
+				\frac{1}{3}\dunder{I} \text{tr}\left( \x
+			(\dunder{\sigma}\cdot\bm{n}) - 2 \mu \u \bm{n}\right)\right] \,
+			\diffd S = \text{stresslet exerted}
+\end{align}
+
+Note the terms involving $\u$ in the integrand for $\dunder{S}$ vanish for a
+rigid body.
+
+\begin{enumerate}
+	\item The far-field of a moving body is related to the force exerted by
+		the body, not its velocity.
+	\item The far-field of a force-free, couple-free, incompressible body is a
+		stresslet.
+\end{enumerate}
+
 \end{document}

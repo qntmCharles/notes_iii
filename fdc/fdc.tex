@@ -580,8 +580,8 @@ angular momentum (changing depth).
 	\draw[thick,->] (0,2.5) -- (0, 3.5);
 	\draw[->] (0, 3) [partial ellipse = -180:70:0.4 and 0.12];
 	\draw (0.5, 2.8) node {$\bm{\Omega}$};
-	\draw[smooth,domain=-3:3] plot({\x}, {1/(1+exp(3*\x))});
-	\draw[smooth,domain=-3:3] plot({\x}, {2});
+	\draw[thick, smooth,domain=-3:3] plot({\x}, {1/(1+exp(3*\x))});
+	\draw[thick, smooth,domain=-3:3] plot({\x}, {2});
 	\draw (3,2) node[right] {$z=0$};
 	\draw (3,0) node[right] {$z=-H$};
 	\draw[blue] (-2,0.998) -- (-2,2);
@@ -589,7 +589,7 @@ angular momentum (changing depth).
 	\draw[blue] (1.5,0.011) -- (1.5, 2);
 	\draw[blue] (2,0.002) -- (2,2);
 	\draw[thick,blue,->] (1.75, 1) [partial ellipse = -180:70:0.4 and 0.12];
-	\draw[blue,->] (-1.5, 1.5) [partial ellipse = -180:70:0.7 and 0.2];
+	\draw[thick, blue,->] (-1.5, 1.5) [partial ellipse = -180:70:0.7 and 0.2];
 	\draw[red, thick, ->] (-0.25,1.25) -- (0.75, 1.25) node[midway,above]
 		{$\zeta$ increases};
 \end{tikzpicture}
@@ -818,6 +818,109 @@ Only $\frac{1}{3}$ of the potential energy released is converted into kinetic
 energy of the geostrophic flow. The remainder is radiated away by Poincar\'{e}
 waves.
 
+\lecture{26/10/20}
+\section{Quasi-geostrophic equations}
+Large scale motions in the ocean and atmosphere are associated with small
+Rossby number $\Ro \equiv \frac{U}{fL} \ll 1$. In this limit, the rotating
+shallow water equations are approximated by the SW quasi-geostrophic (SW QG)
+equation. Start from the SW PV equation:
+\begin{equation}
+	\frac{\diffD}{\diffD t}\left(\frac{\zeta + f}{H}\right) =
+	0\label{eq:PVcons2}
+\end{equation}
+
+\paragraph{Assumption 1: $\Ro \ll 1$}
+Assuming a small Rossby number implies the flow is close to geostrophic
+balance with
+\begin{equation}
+	f \hat{\bm{k}} \cross \bm{u} \approx -g \nabla \eta
+\end{equation}
+where $\hat{\bm{k}}$ is the vertical unit vector. Define the \emph{geostrophic
+streamfunction} $\psi \equiv \frac{g \eta}{f}$. In terms of this
+streamfunction we have
+\begin{align}
+	\bm{u} &\approx - \nabla \times (\psi \hat{\bm{k}}) \\
+	\zeta &= (\nabla \times \bm{u})\hat{\bm{k}} \approx \nabla^2 \psi
+\end{align}
+
+\paragraph{Assumption 2: small changes in $f$}
+Recall the Coriolis parameter $f = 2 \Omega \sin \theta$ where $\theta$ is
+latitude. Expand in a Taylor series about $\theta = \theta_0$ to get
+\begin{equation}
+	f = f_0 + y \frac{\diffd f}{\diffd y}\vert_{\theta_0} + \dots \approx f_0
+	+ \beta y
+\end{equation}
+where $y$ is in the direction of local North, $f_0 = 2\Omega \sin \theta_0$
+and $\beta$ is defined as
+\begin{equation}
+	\beta = \frac{1}{R} \frac{\diffd f}{\diffd \theta}\vert_{\theta_0} =
+\frac{2\Omega}{R} \cos \theta_0\end{equation}
+with $R$ the radius of Earth. For characteristic length scale $L$, assume
+$\frac{\beta L}{f_0} \ll 1$. This is the \emph{$\beta$-plane approximation}.
+
+\paragraph{Assumption 3: small changes in fluid height.}
+This is consistent with small Rossby number: from geostrophic balance, we know
+$\eta \sim \frac{f UL}{g}$ and $\frac{\eta}{H_0} \sim \frac{fUL}{gH_0} =
+\frac{U}{fL} \frac{L^2}{R_D^2}$. Therefore $\eta/H_0 \ll 1$ if $\Ro \ll
+\frac{R^2_D}{L^2}$. For $L \sim R_D$, $\Ro \ll 1$ implies $\eta/H_0 \ll 1$.
+Further, we assume $h_b/H_0 \ll 1$. 
+
+\paragraph{Quasi-geostrophic equations.} With these assumptions, SWPV becomes
+\begin{align}
+	\frac{\zeta + f}{H_0 - h_b + \eta} &\approx \frac{f_0}{H_0} \frac{1+
+		\frac{\beta y}{f_0} + \frac{\zeta}{f_0}}{1 - \frac{h_b}{H_0} +
+	\frac{\eta}{H_0}} \\
+	&\approx \frac{f_0}{H_0} \left(1+\frac{\beta y}{f_0} + \frac{\nabla^2
+\psi}{f_0} + \frac{h_b}{H_0} - \frac{f_0 \psi}{g H_0}\right) \\
+&= \frac{f_0}{H_0} P_g
+\end{align}
+where $P_g$ is the \emph{quasi-geostrophic potential vorticity} and $\zeta =
+\nabla^2 \psi, \eta = \frac{f_0 \psi}{g}$. Hence from SWPV conservation
+\eqref{eq:PVcons2},
+\begin{equation}
+	\frac{\partial P_g}{\partial t} + \bm{u} \cdot \nabla P_g \approx 0
+\end{equation}
+
+Using $\bm{u} \approx - \nabla \times (\psi \hat{\bm{k}})$, $\bm{u} = -\psi_y,
+v = \psi_x$ so
+\begin{equation}
+	\frac{\partial P_g}{\partial t} + J(\psi,P_g) \approx 0\label{eq:swqg}
+\end{equation}
+This is the \emph{shallow water Quasi-geostrophic} (SWQG) equation, which is
+one equaiton for one unknown $\psi$, as opposed to SWPV with 2 unknowns
+$\zeta, \eta$.
+
+\subsection{Waves in QG}
+Assume a flat bottom $h_b = 0$. Linearise \eqref{eq:swqg} about a state of
+rest (i.e. neglect terms $\mathcal{O}(\psi^2)$). Then
+\begin{equation}
+	\frac{\partial}{\partial t} \left( \nabla^2 \psi - \frac{f_0^2}{gH_0}
+	\psi\right) + \frac{\partial \psi}{\partial x}\beta = 0
+\end{equation}
+Seek plane wave solutions of the form
+\begin{equation}
+	\psi = \psi_0 e^{i(kx + ly - \omega t)}
+\end{equation}
+with dispersion relation
+\begin{equation}
+	\omega = \frac{-k \beta}{k^2 + l^2 + R_D{-2}}, \hspace{2em} R_D \equiv
+	\frac{\sqrt{gH_0}}{f_0}
+\end{equation}
+This is the \emph{Rossby wave dispersion relation}. Note $\omega = 0$ (i.e. no
+waves) if $\beta = 0$. Also, if $h_b = 0$ and $\beta = 0$ there are no wave
+solutions unlike rotating SW. Thus the QG system `filters' out Poincar\'{e}
+waves. Note that $\beta = \frac{2 \Omega}{R} \cos \theta \ge 0$, hence $c_p =
+\frac{\omega}{k} \le 0$. Rossby wave speed is always directed to the
+\emph{west}.
+
+Consider the size of the dynamic terms in $P_g$, specifically the ratio of
+relative vorticity to surface height
+\begin{equation}
+	\frac{\nabla^2 \psi}{-\frac{f_0^2 \psi}{g H_0}} \sim \frac{R_D^2}{L^2}
+\end{equation}
+
+Hence relativity vorticity dominates at scales small compared to $R_D$ whilst
+surface height dominates at scales large compared to $R_D$.
 
 
 

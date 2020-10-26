@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2019.8.21)  23 OCT 2020 16:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2019.8.21)  26 OCT 2020 14:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2561,62 +2561,66 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 132.
  [2] [3]
-<isobars.png, id=134, 623.32875pt x 452.69125pt>
+<isobars.png, id=144, 623.32875pt x 452.69125pt>
 File: isobars.png Graphic file (type png)
  <use isobars.png>
 Package pdftex.def Info: isobars.png used on input line 229.
 (pdftex.def)             Requested size: 186.64719pt x 135.55284pt.
- [4 <./isobars.png>] [5] [6] <ekman_spiral.jpg, id=191, 290.99867pt x 156.05203
+ [4 <./isobars.png>] [5] [6] <ekman_spiral.jpg, id=200, 290.99867pt x 156.05203
 pt>
 File: ekman_spiral.jpg Graphic file (type jpg)
 
 <use ekman_spiral.jpg>
 Package pdftex.def Info: ekman_spiral.jpg used on input line 405.
 (pdftex.def)             Requested size: 233.31255pt x 125.12276pt.
+ [7 <./ekman_spiral.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 448.
 
- (/usr/share/texmf/tex/latex/lm/omslmr.fd
+
+(/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 448.
- [7 <./ekman_spiral.jpg>] [8] [9] [10] [11] [12] [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 825.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 825.
+ [8] [9] [10] [11] [12] [13] [14]
+[15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 928.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 928.
  (./fdc.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 825.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 825.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 928.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 928.
 Package rerunfilecheck Info: File `fdc.out' has not changed.
-(rerunfilecheck)             Checksum: CF41A447D9DC9B88B148C8DCDB1EB2C8;1217.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 825.
+(rerunfilecheck)             Checksum: 1A39B0F4A7AD10906F4CE0943834D837;1341.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 928.
  ) 
 Here is how much of TeX's memory you used:
- 45461 strings out of 493013
- 1027691 string characters out of 6135682
- 1312583 words of memory out of 5000000
- 48183 multiletter control sequences out of 15000+600000
- 95631 words of font info for 115 fonts, out of 8000000 for 9000
+ 45493 strings out of 493013
+ 1028039 string characters out of 6135682
+ 1311583 words of memory out of 5000000
+ 48189 multiletter control sequences out of 15000+600000
+ 96383 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,13n,100p,10433b,884s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/l
-m/lm-rmtt.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-bx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-ro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on fdc.pdf (13 pages, 447908 bytes).
+m/lm-rmtt.enc}</usr/share/texmf/fonts/type1/public/lm/lmbsy10.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmib10.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmro10.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb>
+Output written on fdc.pdf (15 pages, 462219 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 291 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
- 25767 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 395 PDF objects out of 1000 (max. 8388607)
+ 320 compressed objects within 4 object streams
+ 77 named destinations out of 1000 (max. 500000)
+ 25783 words of extra memory for PDF output out of 29859 (max. 10000000)
 

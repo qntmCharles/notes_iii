@@ -30,3 +30,6 @@
 \contentsline {subsubsection}{\numberline {2.7.1}The resistance matrix}{14}{subsubsection.2.7.1}
 \contentsline {subsection}{\numberline {2.8}Fax\'{e}n relations}{15}{subsection.2.8}
 \contentsline {paragraph}{\nonumberline Application to two sedimenting spheres.}{16}{section*.3}
+\contentsline {subsection}{\numberline {2.9}Integral representations of Stokes flow}{16}{subsection.2.9}
+\contentsline {subsubsection}{\numberline {2.9.1}Basic integral identity}{16}{subsubsection.2.9.1}
+\contentsline {subsubsection}{\numberline {2.9.2}Far-field approximations/multipole expansion for a moving body}{17}{subsubsection.2.9.2}
