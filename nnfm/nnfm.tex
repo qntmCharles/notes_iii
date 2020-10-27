@@ -565,6 +565,7 @@ compared with weak flows.
 	\end{tikzpicture}
 \end{center}
 
+\lecture{15/10/20}
 \section{Generalised Newtonian Fluids}
 
 We will focus on steady flows and fluids which are \emph{inelastic}. We will
@@ -708,6 +709,7 @@ rheometer}:
 \end{enumerate}
 
 \subsubsection{Pipe flow of a power-law fluid}
+\label{sec:pipe}
 Consider axisymmetric pressure-driven flow in a pipe of a power-law GNF. If
 the fluid was Newtonian, we would get Poiseuille flow with a parabolic flow
 profile.
@@ -828,6 +830,7 @@ with $Q$ fixed, $\Delta p^{1/n} R^{3+\frac{1}{n}} = \text{const.}$ so $\Delta
 p \sim R^{-(3n+1)}$. For $n < 1$, it is therefore easier to push fluid through
 a pipe than with a Newtonian fluid.
 
+\lecture{20/10/20}
 \subsection{Other models \& problems}
 \subsubsection{Carreau-Yasuda model}
 The Carreau-Yasuda model can be written
@@ -1174,5 +1177,181 @@ Integrals involved in $\mathcal{L}$ in general have to be evaluated
 numerically. Choice of test functions comes from physical intuition,
 computation, or experiment.
 
+\lecture{27/10/20}
+\section{Yield-Stress Fluids}
+Some fluids only flow when subject to stress above some threshold. We call
+this threshold a \emph{yield-stress}, denoted by $\sigma_y$. Fluids with such
+a property are \emph{yield-stress fluids} or \emph{viscoplastic fluids}.
+Examples are mayonnaise; jelly; peanut butter; mud; and hair gel. Graphically,
+$\sigma_y$ is the non-zero $\srate$-intercept of $\sigma(\srate)$. Beyond the
+yield-stress, the fluid may have Newtonian, shear-thinning, shear-thickening,
+or some other behaviour. 
+
+The simplest model of a yield-stress fluid is a \emph{Bingham fluid} where the
+behaviour is Newtonian beyond the yield-stress. For $-\infty < \srate <
+\infty$ we have
+\begin{equation}
+	\begin{cases}
+		\srate = 0 & \abs{\sigma} < \sigma_y \\
+		\sigma = \text{sgn}(\srate)\sigma_y + \eta \srate & \abs{\sigma} > \sigma_y
+	\end{cases}
+\end{equation}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-2, 0) -- (2,0) node[right] {$\srate$};
+		\draw[thick,->] (0,-2) -- (0, 2) node[left] {$\sigma$};
+		\draw (0.1, 0.5) -- (-0.1, 0.5) node[left] {$\sigma_y$};
+		\draw (0.1, -0.5) -- (-0.1, -0.5) node[left] {$-\sigma_y$};
+		\draw[red] (0, -0.5) -- (0, 0.5);
+		\draw[red] (0, 0.5) -- (2, 1.8);
+		\draw[red] (0, -0.5) -- (-2, -1.8);
+	\end{tikzpicture}
+\end{center}
+
+Alternatively, non-linear behaviour after yield is described by the
+\emph{Herschel-Bulkley model} where the fluid has power-law behaviour after
+yield. 
+\begin{equation}
+	\begin{cases}
+		\srate = 0 & \abs{\sigma} < \sigma_y \\
+		\sigma = \text{sgn}(\srate)\sigma_y + \kappa \abs{\srate}^{n-1} \srate
+		& \abs{\sigma} > \sigma_y 
+	\end{cases}
+\end{equation}
+
+Typical flow problem of yield-stress fluids separates the domain into two
+regions.
+\begin{enumerate}
+	\item Yielded domain: the fluid flows in regions where $\abs{\sigma} >
+		\sigma_y$
+	\item Unyielded domain: where $\abs{\sigma} < \sigma_y$, there is no
+		deformation i.e. rigid body motion only
+\end{enumerate}
+
+The surface separating the yielded and unyielded regions is the \emph{yield
+surface}. On this surface, $\sigma = \sigma_y$ by definition, which implicitly
+defines the surface. Physically, we expect high shear at boundaries, and thus
+yielding close to these boundaries.
+
+\subsection{Pressure-driven flow of a Bingham fluid in a pipe}
+This problem illustrates a steady flow problem and the location of the yield
+surface. We will use cylindrical coordinates, and assume the flow is
+unidirectional with $\bm{u} = u(r) \hat{\bm{z}}$.
+
+\begin{center}
+\begin{tikzpicture}
+	\draw (0,0) ellipse (0.6 and 1);
+	\draw (0,-1) -- (8,-1);
+	\draw (0, 1) -- (8,1);
+	\draw (8,0) [partial ellipse = -90:90:0.6 and
+	1];
+	\draw[dashed] (8,0) [partial ellipse = 90:270:0.6 and
+	1];
+	\draw[thick,blue,->] (4,0) -- (6, 0) node[right] {flow};
+	\draw (-2, 0) node {$p_0 + \Delta p$};
+	\draw (10, 0) node {$p_0$};
+	\draw[->] (0,0) -- (0,1) node[midway,right] {$R$};
+	\draw[<->] (0,-1.5) -- (8,-1.5) node[midway, below] {$L$};
+\end{tikzpicture}
+\end{center}
+
+The Cauchy equation in cylindrical polars (as seen in section~\ref{sec:pipe})
+gives
+\begin{equation}
+	\frac{\partial p}{\partial z} = \frac{1}{r} \frac{\partial}{\partial r}
+	\left( r \sigma_{rz} \right) = -\frac{\Delta p}{L}
+\end{equation}
+thus as before we find
+\begin{equation}
+	\sigma_{rz} = -\frac{\Delta p}{2L} r
+\end{equation}
+We wish to find where the fluid yields. Clearly near $r=0$ the stress is small
+so the fluid is unyielded. The yield surface is defined by $\abs{\sigma} =
+\sigma_y$ thus is defined by
+\begin{equation}
+	r = r_y = \frac{2L}{\Delta p} \sigma_y
+\end{equation}
+Recall $R$ is the radius of the pipe. Comparing $R$ with $r_y$,
+\begin{enumerate}
+	\item if $r_y \ge R$ the shear stress is below yield stress thoughout the
+		pipe, thus there is no flow. Equivalently, this occurs for pressure
+		differences $\Delta p \le \frac{2L}{R} \sigma_y$.
+	\item if $r_y < R$ (equivalently $\Delta p > \frac{2L}{R} \sigma_y$) the
+		fluid yields in $r_y \le r \le R$, and is unyielded is in $0 \le r \le
+		r_y$.
+\end{enumerate}
+
+We solve case $2.$ exactly. Flow in the yielded region has $\srate =
+\frac{\partial u}{\partial r} < 0$. For a Bingham fluid $\sigma =
+\text{sgn}(\srate) \sigma_y + \eta \srate$. Therefore we have
+\begin{equation}
+	\sigma_{rz} = -\sigma_y + \eta \frac{\partial u}{\partial r}
+\end{equation}
+Now $\sigma_{rz} = -\frac{\Delta p}{2L} r$ can be rewritten in terms of the
+yield surface as $\sigma_{rz} = -\sigma_y \frac{r}{r_y}$. Thus we must solve
+\begin{equation}
+	\frac{\partial u}{\partial r} = \frac{\sigma_y}{\eta}\left( 1 -
+	\frac{r}{r_y}\right)
+\end{equation}
+Note $r = r_y$ implies $\frac{\partial u}{\partial r} = 0$ which gives
+$\abs{\sigma} = \sigma_y$ as expected. We have
+\begin{equation}
+u(r) = \frac{\sigma_y}{\eta} \left(r - \frac{r^2}{2r_y}\right) + c
+\end{equation}
+The constant of integration is determined by the no-slip boundary condition on
+$r=R$, $u(R) = 0$. Finally we have for $r_y \le r \le R$
+\begin{equation}
+	u(r) = \frac{\sigma_y}{\eta} \left( r - \frac{r^2}{2r_y} - R +
+	\frac{R^2}{2r_y}\right)
+\end{equation}
+
+In the unyielded region we have plug flow $u = \text{const.}$. For $0 \le r
+\le r_y$: velocity $u = U_y = u_{\text{yielded}}(r_y)$ by continuity.
+\begin{equation}
+	\implies U_y = \frac{\sigma_y}{\eta} \left( \frac{r_y}{2} - R +
+	\frac{R^2}{2r_y}\right) \ge 0
+\end{equation}
+
+The flow profile in the pipe is a combination of parabolic and constant
+velocity.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (-3, 1) -- (3, 1);
+		\draw[thick] (-3, -1) -- (3, -1);
+		\draw (0, 1) -- (0, -1);
+		\draw[dashed] (-3, 0.5) -- (3, 0.5) node[right] {$r=r_y$};
+		\draw[dashed] (-3, -0.5) -- (3, -0.5);
+		\draw[smooth,blue,domain=-1:-0.5,variable=\y] plot({1-\y*\y},{\y});
+		\draw[smooth,blue,domain=1:0.5,variable=\y] plot({1-\y*\y},{\y});
+		\draw[blue] (0.75, 0.5) -- (0.75, -0.5);
+		\draw (1, 0) node[blue,right] {unyielded};
+		\draw (1, 0.75) node[blue,right] {yielded};
+	\end{tikzpicture}
+\end{center}
+
+The flow rate $Q$ vanishes if $r_y \ge R$. For $r_y \le R$, 
+\begin{align}
+	Q &= 2\pi \int_0^R r u(r) \, \diffd r \\
+	  &= 2\pi \int_0^{r_y} rU_y \, \diffd r + 2\pi \int_{r_y}^R ru(r) \,
+	\diffd r \\
+	&= \dots \\
+	&= \frac{\Delta p \pi R^4}{8\mu L} \left[ 1 - \frac{4}{3}\frac{r_y}{R} +
+	\frac{1}{3} \left( \frac{r_y}{R}\right)^3\right]
+\end{align}
+
+The constant factor outside the brackets is the \emph{Hagen-Poiseuille flow
+rate} for a Newtonian fluid.
+\begin{itemize}
+	\item If $r_y = 0$ the fluid is yielded everywhere and we have the
+		Newtonian solution for Poiseuille flow in a pipe.
+	\item If $r_y = R$ the fluid is unyielded everywhere and $Q = 0$.
+	\item The term in brackets is always smaller than $1$, thus
+		$Q_{\text{yield-stress}} \le Q_{\text{Newtonian}}$
+\end{itemize}
+
+This problem is doable because it is a steady problem. It is much more
+difficult if the yield surface has unsteady motion, in which case inertia is
+needed.
 
 \end{document}
