@@ -350,7 +350,7 @@ the fluid must be viscously dissipated instantaneously. We have
 The first term is the work done by surface forces at the boundary, and the
 second term is the work done by body forces.
 
-\subsection{Three Theorems Based on Dissipation Integrals}
+\subsubsection{Three Theorems Based on Dissipation Integrals}
 \begin{lemma}
 	\label{l1}
 	If $\bm{u}^I$ is an incompressible flow and $\bm{u}^S$ is a Stokes flow
@@ -421,6 +421,7 @@ since $\bm{u}^I = 0$ on $\partial V$ and $\bm{F}^S = 0$ on $V$. Thus
 
 \begin{eg}
 	\begin{enumerate}
+		\hspace{2in}
 		\item Consider an irregularly shaped body in a Stokes flow with
 			inscribing circle $S_1$ with radius $a_1$ and circumscribing
 			circle $S_2$ with radius $a_2$. Suppose the body experiences a
@@ -517,7 +518,7 @@ Similarly, in axisymmetric spherical polars, $\bm{u} = \nabla \times
 Many exact solutions can be found in coordinate systems where the operators
 $\nabla^2, \nabla^4, E^2$, etc are separable.
 
-\subsection{Complex Variable Theory in 2D Flow}
+\subsubsection{Complex Variable Theory in 2D Flow}
 Writing $z = x+iy, \bar{z} = x-iy$ gives
 \begin{equation}
 	\nabla^2 = 4 \frac{\partial^2}{\partial z \partial \bar{z}}
@@ -531,7 +532,7 @@ Similarly $\nabla^4 \psi = 0$ implies $\psi$ can be written as $\psi =
 We can find clever exact solutions to difficult problems using this theory,
 but it is limited to 2D.
 
-\subsection{Papkovich-Neuber Solution}
+\subsubsection{Papkovich-Neuber Solution}
 Let $p = \nabla^2 \pi$ where
 \begin{equation}
 	\pi(\bm{x}) = -\frac{1}{4\pi} \int \frac{p(\bm{x'})}{\left|
@@ -578,6 +579,7 @@ Note the following.
 		easier to calculate.
 \end{enumerate}
 
+\lecture{16/10/20}
 \subsection{Solutions for points, spheres, and cylinders}
 A point or sphere has no intrinsic direction or orientation, thus solutions on
 these geometries should also have no intrinsic direction or orientation.
@@ -756,7 +758,7 @@ flow can occur on much larger scales than (for example) charge interactions.
 
 \subsubsection{Source flow}
 Consider a source of strength $Q$ with $\nabla \cdot \bm{u} = Q \delta(\x)$.
-This is reffered to as a \emph{point volume source}. One can show the solution
+This is referred to as a \emph{point volume source}. One can show the solution
 is
 \begin{equation}
 	\bm{u} = \frac{Q\x}{4\pi r^3}
@@ -1222,4 +1224,130 @@ rigid body.
 		stresslet.
 \end{enumerate}
 
+\lecture{28/10/20}
+\subsubsection{Representation for droplets}
+Consider a droplet occupying a volume $V_1$ with viscosity $\lambda \mu$ in a
+surrounding fluid volume $V_2$ with viscosity $\mu$. Let $\bm{n}$ be
+\emph{out} of the droplet. Use viscosity $\mu$ in the Stokeslet tensor
+$\dunder{J}$. We assume for simplicity that there is no body force, $\bm{f} =
+0$, and the far field is at rest, $\bm{u} \to 0$ as $r \to \infty$. Applying
+the basic integral identity to each of $V_1$ and $V_2$ we have
+\begin{align}
+	\int_{\partial V} \frac{1}{\lambda} \dunder{J} \cdot \dunder{\sigma_1}
+	\cdot \bm{n} + \u_1 \cdot \dunder{\underline{K}} \cdot \bm{n} \, \diffd S
+	&= \begin{cases} \u_1 & \y \in V_1 \\ 0 & \y \in V_2 \\ \frac{1}{2}\u_1 &
+	\y \in \partial V \end{cases} \label{eq:drop1} \\
+	-\int_{\partial V} \frac{1}{\lambda} \dunder{J} \cdot \dunder{\sigma_2}
+	\cdot \bm{n} + \u_2 \cdot \dunder{\underline{K}} \cdot \bm{n} \, \diffd S
+	&= \begin{cases} \u_2 & 0 \in V_1 \\ \u_2 & \y \in V_2 \\ \frac{1}{2}\u_2 &
+	\y \in \partial V \end{cases} \label{eq:drop2} \\
+\end{align}
+Note the $-$ sign in \eqref{eq:drop2} is because $\bm{n}$ points into $V_2$.
+Now $\u_1 = \u_2 = \u$ (say) on $\partial V$. So $\lambda$\eqref{eq:drop2} +
+\eqref{eq:drop1} implies
+\begin{equation}
+	\int_{\partial V} \dunder{J}(\y-\x) \cdot (\dunder{\sigma_1} \cdot \bm{n}
+	- \dunder{\sigma_2} \cdot \bm{n})\,\diffd S_x + (\lambda-1) \int_{\partial
+		V} \u \cdot \dunder{\underline{K}}(\y-\x)\cdot\bm{n}\,\diffd S_x =
+		\begin{cases} \lambda \u_1 & \y \in V_1 \\ \u_2 & \y \in V_2 \\
+		\frac{1}{2}(\lambda+1)\u & \y \in \partial V \end{cases}
+\end{equation}
+
+This integral equation is the basis for powerful numerical methods to
+determine droplet shapes and evolution. 
+
+\begin{eg}
+	Relaxation of a drop under constant surface tension. The flow is driven by
+	$\dunder{\sigma_2} \cdot \bm{n} - \dunder{\sigma_1} \cdot \bm{n} = \gamma
+	(\nabla \cdot \bm{n})\bm{n}$. We consider $\y \in \partial V$ to find the
+	interfacial motion:
+	\begin{enumerate}
+		\item $\lambda = 1$: we have 
+			\begin{equation}
+				\u(\y) = -\gamma \int_{\partial V} (\nabla \cdot
+				\bm{n})\bm{n}\cdot\dunder{J}(\y-\x)\,\diffd S_x
+			\end{equation}
+			hence the interfacial velocity is determined directly by the
+			current shape of the droplet. It requires only an integral of the
+			forcing over the boundary (a `membrane' of Stokeslets) to
+			determine $\u$.
+		\item $\lambda \ne 1$: to solve the integral equation
+			\begin{equation}
+				\frac{\lambda + 1}{2} \u(\y) = -\gamma \int_{\partial V}
+				(\nabla \cdot \bm{n})\bm{n}\cdot\dunder{J}\,\diffd S_x +
+				(\lambda -1) \int_{\partial V} \u(\x) \cdot
+				\dunder{\underline{K}} \cdot \bm{n} \, \diffd S_x
+			\end{equation}
+			for $\u$, we discretize the integrals and invert the resulting
+			matrix equation. The integral equation is singular (so the matrix
+			equation is singular) if $\lambda = 0$ or $\lambda = \infty$. The
+			null eigenmodes are the $6$ rigid body motions ($\lambda =
+			\infty$) and bubble enlargement ($\lambda = 0$); the corresponding
+			solubility conditions are the consistency conditions on boundary
+			conditions.
+	\end{enumerate}
+\end{eg}
+\subsubsection{Representation by Stokeslets alone}
+Consider the flow outside a moving body, e.g. swimming micro-organisms. Though
+we are interested in the flow $\u$ in $V$, we imagine a flow $\u^*$ in $V^*$
+with $\mu^* = \mu$ and $\u^* = \u$ on $\partial V$. Such a flow exists if
+$\int_{\partial V} \u \cdot \bm{n} \, \diffd S = 0$.
+\begin{center}
+	\begin{tikzpicture}[scale=0.4]
+		\draw[fill=gray] plot[smooth, tension=.7] coordinates {(-3.5, 0.5) (-3,
+		2.5) (-1,3.5) (1.5,3) (4,3.5) (5,2.5) (5,0.5) (2.5,-2)
+		(0,-1.5) (-3,-2) (-3.5,0.5)};
+		\draw[thick,->] (1.5,3) -- (3, 4.5) node[right] {$\bm{n}$};
+		\draw (1,1) node {$V^*$};
+		\draw (7,2) node {$V, \mu$};
+	\end{tikzpicture}
+\end{center}
+
+The previous result for drops gives
+\begin{equation}
+	\u(\y) = \int_{\partial V} \dunder{J}(\y-\x) \cdot \bm{f}_S(\x) \, \diffd
+	S
+\end{equation}
+where $\bm{f}_S = (\dunder{\sigma}^* - \dunder{\sigma})\cdot\bm{n}$ is the
+Stokeslet density. Note:
+\begin{enumerate}
+	\item $\dunder{\sigma}^*$ may not be the real stress in $V^*$ unless the
+		body really is fluid with $\mu = \mu^*$.
+	\item If the body is rigid then $\u^*$ is rigid-body motion and
+		$\dunder{\sigma}^* = \bm{0}$. In this case $\bm{f}_S$ is the stress
+		$-\dunder{\sigma}\cdot\bm{n}$ exerted by the body on the fluid. The
+		external flow depends \emph{only} on $\dunder{\sigma}\cdot\bm{n}$ and
+		\emph{not} on $\u$.
+\end{enumerate}
+
+
+\section{Approximations and applications}
+\subsection{Slender-body theory}
+Consider the case of a solid, perhaps flexible, body e.g. flagellum, or fibre
+in a flow. Our aim is to calculate resistance to prescribed motion
+$\bm{V}(s) = \dot{\bm{X}}$ in background flow $\u^\infty(\x)$. 
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw plot [smooth cycle] coordinates {(-2,0) (-1.8, 0.2) (0, 0.1) (1,
+		-0.2) (1.9, 0.1) (2, 0.2) (1.9, 0) (1, -0.4) (0, -0.1) (-1.8, 0)};
+		\draw[blue,dashed] plot [smooth] coordinates {(-2.5, 0) (-1.8, 0.1) (0,
+		0) (1, -0.3) (2, 0.1) (2.5, 0.2)};
+		\draw[thick] (-1, 0.07) ellipse (0.08 and 0.1);
+		\draw (-3, -1) node {cross-section $\varepsilon R(s, \theta) \ll L$};
+		\draw (-3, -1.2) node {radius of curvature of centre-line};
+		\draw[->] (-2.5, -0.8) -- (-1.1, -0.1);
+		\draw (3, 0) node {centreline $\bm{X}(s,t)$};
+		\draw (3, -0.3) node {arc length $s \in \left[-L,L\right]$};
+		\draw (2.3, 0.3) node {$s=L$};
+		\draw (-2.2, 0.3) node {$s=-L$};
+	\end{tikzpicture}
+\end{center}
+
+Since the body is slender, we can approximate the surface distribution of
+Stokeslets by a distribution along the centreline, i.e.
+\begin{equation}
+	\u(\y) = \u^\infty(\y) + \int_{-L}^L \dunder{J}(\y - \bm{X}(s)) \cdot
+	\bm{f}(s) \, \diffd s
+\end{equation}
 \end{document}
