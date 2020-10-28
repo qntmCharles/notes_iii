@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2019.8.21)  27 OCT 2020 14:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2019.8.21)  28 OCT 2020 19:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2566,22 +2566,22 @@ main' is somewhere in the layer list (or set '/tikz/fill between/on layer='). o
 n input line 1000.
 
 [15] [16] [17] [18] [19] [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1357.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1357.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1370.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1370.
  (./nnfm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1357.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1357.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1370.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1370.
 
 Package rerunfilecheck Info: File `nnfm.out' has not changed.
 (rerunfilecheck)             Checksum: B66AA8D9DA0E4F1DB7CDBB1C4672F4BE;1666.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1357.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1370.
  ) 
 Here is how much of TeX's memory you used:
- 45921 strings out of 493013
- 1044820 string characters out of 6135682
+ 46022 strings out of 493013
+ 1046883 string characters out of 6135682
  1309585 words of memory out of 5000000
- 48628 multiletter control sequences out of 15000+600000
- 64713 words of font info for 100 fonts, out of 8000000 for 9000
+ 48727 multiletter control sequences out of 15000+600000
+ 64796 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,14n,100p,10434b,1933s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
@@ -2601,7 +2601,7 @@ ro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb>
-Output written on nnfm.pdf (20 pages, 426941 bytes).
+Output written on nnfm.pdf (20 pages, 428939 bytes).
 PDF statistics:
  338 PDF objects out of 1000 (max. 8388607)
  293 compressed objects within 3 object streams

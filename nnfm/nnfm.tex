@@ -1033,37 +1033,35 @@ $P$ over all incompressible flows satisfying the same boundary conditions. The
 inequality $P_{\text{Stokes}} \le P$ can be shown directly, or we can use the
 calculus of variations. Define a Lagrangian
 \begin{equation}
-	\mathcal{L} \equiv P + \int_S \lambda \nabla \cdot \bm{u} \, \diffd V
+	\mathcal{L} \equiv P + \int_V \lambda \nabla \cdot \bm{u} \, \diffd V
 \end{equation}
 
 Variations with respect to $\lambda$ give $\nabla \cdot \bm{u} = 0$, and
 variations with respect to $\bm{u}$ give Stokes equations with pressure $p
-\propto \lambda$.
-
-To generalise this to GNF, consider the power density $f = \eta \srate^2$ for
-a Newtonian fluid. Analogously, for a GNF we define
+\propto \lambda$. To generalise this to GNF, consider the power density $f =
+\frac{1}{2}\eta \srate^2$ for a Newtonian fluid. Analogously, for a GNF we define
 \begin{equation}
 	f = \int_0^{\srate} \eta(x)x\, \diffd x
 \end{equation}
 and a new Lagrangian
 \begin{equation}
-	\mathcal{L} = \mathcal{L}\left[\bm{u},\lambda\right] = \int_V f \, \diffd
+	\mathcal{L} \equiv \mathcal{L}\left[\bm{u},\lambda\right] = \int_V f \, \diffd
 	V + \int_V \lambda \nabla \cdot \bm{u}\,\diffd V
 \end{equation}
 
 \subsubsection{Calculus of variations}
-Consider a functional $J$ of a vector field $\bm{y}(\bm{x})$ and of its
-spatial derivative. 
+Consider a functional $J$ of a vector field $\bm{y}(\bm{x})$ and its
+spatial derivatives $y_{m,n} \equiv \frac{\partial y_m}{\partial x_n}$;
 \begin{equation}
 	J\left[\bm{y}\right] = \int_V F(x_i,y_j,y_{m,n}) \, \diffd V
 \end{equation}
-where $y_{m,n} \equiv \frac{\partial y_m}{\partial x_n}$ and $V$ is the total
-domain. The first variation of $J$ is $\delta J$ where
+where $V$ is the total domain. The \emph{first variation} of $J$ is $\delta J$ where
 \begin{equation}
 	J + \delta J = J\left[\bm{y}+\delta\bm{y}\right] = \int_V
 	F(\bm{x},\bm{y}+\delta\bm{y})\,\diffd V
 \end{equation}
-Taylor expand the integrand:
+To determine an explicit expression for the first variation, first Taylor
+expand the integrand:
 \begin{equation}
 	F(\bm{x},\bm{y}+\delta\bm{y}) = F + \delta y_j \frac{\partial F}{\partial
 		y_j} + \delta y_{m,n} \frac{\partial F}{\partial y_{m,n}} + \dots
@@ -1071,7 +1069,7 @@ Taylor expand the integrand:
 Using integration by parts and writing $\delta y_{m,n} =
 \frac{\partial}{\partial x_n} \delta y_m$ we have
 \begin{equation}
-	\delta y_{m,n} \frac{\partial F}{\partial y_{m,n}} =
+	\delta y_{m,n} \frac{\partial F}{\partial y_{m,n}} = 
 	\frac{\partial}{\partial x_n}\left( \delta y_m \frac{\partial F}{\partial
 		y_{m,n}}\right) - \delta y_m \frac{\partial}{\partial x_n} \left(
 	\frac{\partial F}{\partial y_{m,n}}\right)
@@ -1086,8 +1084,8 @@ thus
 	y_{j,n}}\right)\right] + \text{boundary terms}
 \end{equation}
 
-Now $\delta J = 0$ for all $\delta y$ implies $\delta F = 0$ for all $\delta
-y$, giving the \emph{Euler-Lagrange equation}.
+Now requiring $\delta J = 0$ for all $\delta y$ is equivalent to requiring
+$\delta F = 0$ for all $\delta y$, giving the \emph{Euler-Lagrange equation}.
 \begin{equation}
 \frac{\partial F}{\partial y_j} - \frac{\partial}{\partial x_n} \left(
 \frac{\partial F}{\partial y_{j,n}}\right) = 0
@@ -1100,7 +1098,8 @@ $F_1 = \int_0^{\srate} \eta(x)x\,\diffd x$, so
 	\mathcal{L}\left[\bm{u},\lambda\right] = \int_V F_1 + F_2\,\diffd V
 \end{equation}
 
-The Euler-Lagrange equation for $\lambda $ gives
+Note that we are using $\bm{y} \equiv \bm{u}$ here.  The Euler-Lagrange
+equation for $\lambda $ gives
 \begin{equation}
 	\frac{\partial}{\partial \lambda} \left( F_1 + F_2\right) = 0 \implies
 	\nabla \cdot \bm{u} = 0
@@ -1127,17 +1126,17 @@ We have $\frac{\partial F_1}{\partial \srate} = \eta(\srate) \srate$ and
 	\dunder{\srate}:\dunder{\srate}\right) \\
 	&= \frac{1}{2\srate} \frac{\partial}{\partial u_{j,n}} \left( \frac{1}{2}
 	\srate_{pq} \srate_{pq}\right) \\
-	&= \frac{1}{2\srate} \frac{\partial}{\partial u_{j,n}}\left(
-u_{p,q}u_{p,q} + u_{p,q}u_{q,p}\right) \\
+	&= \frac{1}{4\srate} \frac{\partial}{\partial u_{j,n}}\left(
+u_{p,q}u_{p,q} + 2u_{p,q}u_{q,p} + u_{q,p}u_{q,p}\right) \\
 &= \frac{1}{2\srate} \left( 2 u_{j,n} + 2u_{n,j}\right) \\
 &= \frac{\srate_{jn}}{\srate}
 \end{align}
 
 Now for $F_2 = \lambda \nabla \cdot \bm{u}$ we have
 \begin{align}
-	\frac{\partial}{\partial x_n} \left( \frac{\partial F-2}{\partial u_{j,n}}
+	\frac{\partial}{\partial x_n} \left( \frac{\partial F_2}{\partial u_{j,n}}
 		\right) &= \frac{\partial}{\partial x_n} \left( \lambda
-		\frac{\partial}{\partial u_{j,n}} \frac{\partial u_i}{\partial x_i}
+		\frac{\partial u_{i,i}}{\partial u_{j,n}}
 	\right) \\
 	&= \frac{\partial}{\partial x_n} \left( \lambda \delta_{ij}
 \delta_{in}\right) \\
@@ -1160,7 +1159,7 @@ Pressure is used as a Lagrange multiplier to enforce incompressibility. Note:
 if the boundary conditions are different, e.g. $\dunder{\sigma} \cdot \bm{n}$
 is prescribed, we must distinguish surfaces where $\bm{u}$ is described and
 surfaces where $\dunder{\sigma} \cdot \bm{n}$ is prescribed, and add a surface
-integral to the Lagrangian.
+integral to the Lagrangian (see Example Sheet 1).
 
 To generate approximate solutions to the Cauchy GNF equations, we note that
 the closer the value of $\mathcal{L}$ to its minimum, the better the
@@ -1180,8 +1179,8 @@ computation, or experiment.
 \lecture{27/10/20}
 \section{Yield-Stress Fluids}
 Some fluids only flow when subject to stress above some threshold. We call
-this threshold a \emph{yield-stress}, denoted by $\sigma_y$. Fluids with such
-a property are \emph{yield-stress fluids} or \emph{viscoplastic fluids}.
+this threshold the \emph{yield-stress}, denoted by $\sigma_y$. Fluids with such
+a property are called \emph{yield-stress fluids} or \emph{viscoplastic fluids}.
 Examples are mayonnaise; jelly; peanut butter; mud; and hair gel. Graphically,
 $\sigma_y$ is the non-zero $\srate$-intercept of $\sigma(\srate)$. Beyond the
 yield-stress, the fluid may have Newtonian, shear-thinning, shear-thickening,
@@ -1197,18 +1196,6 @@ behaviour is Newtonian beyond the yield-stress. For $-\infty < \srate <
 	\end{cases}
 \end{equation}
 
-\begin{center}
-	\begin{tikzpicture}
-		\draw[thick,->] (-2, 0) -- (2,0) node[right] {$\srate$};
-		\draw[thick,->] (0,-2) -- (0, 2) node[left] {$\sigma$};
-		\draw (0.1, 0.5) -- (-0.1, 0.5) node[left] {$\sigma_y$};
-		\draw (0.1, -0.5) -- (-0.1, -0.5) node[left] {$-\sigma_y$};
-		\draw[red] (0, -0.5) -- (0, 0.5);
-		\draw[red] (0, 0.5) -- (2, 1.8);
-		\draw[red] (0, -0.5) -- (-2, -1.8);
-	\end{tikzpicture}
-\end{center}
-
 Alternatively, non-linear behaviour after yield is described by the
 \emph{Herschel-Bulkley model} where the fluid has power-law behaviour after
 yield. 
@@ -1220,7 +1207,23 @@ yield.
 	\end{cases}
 \end{equation}
 
-Typical flow problem of yield-stress fluids separates the domain into two
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-2, 0) -- (2,0) node[right] {$\srate$};
+		\draw[thick,->] (0,-2) -- (0, 2) node[left] {$\sigma$};
+		\draw (0.1, 0.5) -- (-0.1, 0.5) node[left] {$\sigma_y$};
+		\draw (-0.1, -0.5) -- (0.1, -0.5) node[right] {$-\sigma_y$};
+		\draw[red] (0, -0.5) -- (0, 0.5);
+		\draw[red] (0, 0.5) -- (2, 1.8) node[right] {Bingham};
+		\draw[red] (0, -0.5) -- (-2, -1.8);
+		\draw[blue] (-2,-1.3) -- (2,1.3) node[right] {Newtonian};
+		\draw[green, smooth] plot[domain=0:2] ({\x},{0.5+0.4*\x*\x});
+		\draw[green, smooth] plot[domain=-2:0] ({\x},{-0.5-0.4*\x*\x});
+		\draw[green] (2,2.2) node[right] {Herschel-Bulkley};
+	\end{tikzpicture}
+\end{center}
+
+A typical flow problem of yield-stress fluids separates the domain into two
 regions.
 \begin{enumerate}
 	\item Yielded domain: the fluid flows in regions where $\abs{\sigma} >
@@ -1232,7 +1235,7 @@ regions.
 The surface separating the yielded and unyielded regions is the \emph{yield
 surface}. On this surface, $\sigma = \sigma_y$ by definition, which implicitly
 defines the surface. Physically, we expect high shear at boundaries, and thus
-yielding close to these boundaries.
+expect the yield surface is close to these boundaries.
 
 \subsection{Pressure-driven flow of a Bingham fluid in a pipe}
 This problem illustrates a steady flow problem and the location of the yield
@@ -1266,9 +1269,9 @@ thus as before we find
 \begin{equation}
 	\sigma_{rz} = -\frac{\Delta p}{2L} r
 \end{equation}
-We wish to find where the fluid yields. Clearly near $r=0$ the stress is small
+We wish to find the yield surface. Clearly near $r=0$ the stress is small
 so the fluid is unyielded. The yield surface is defined by $\abs{\sigma} =
-\sigma_y$ thus is defined by
+\sigma_y$ thus we have
 \begin{equation}
 	r = r_y = \frac{2L}{\Delta p} \sigma_y
 \end{equation}
@@ -1278,11 +1281,11 @@ Recall $R$ is the radius of the pipe. Comparing $R$ with $r_y$,
 		pipe, thus there is no flow. Equivalently, this occurs for pressure
 		differences $\Delta p \le \frac{2L}{R} \sigma_y$.
 	\item if $r_y < R$ (equivalently $\Delta p > \frac{2L}{R} \sigma_y$) the
-		fluid yields in $r_y \le r \le R$, and is unyielded is in $0 \le r \le
+		fluid yields in $r_y \le r \le R$, and is unyielded in $0 \le r \le
 		r_y$.
 \end{enumerate}
 
-We solve case $2.$ exactly. Flow in the yielded region has $\srate =
+We solve case 2 exactly. Flow in the yielded region has $\srate =
 \frac{\partial u}{\partial r} < 0$. For a Bingham fluid $\sigma =
 \text{sgn}(\srate) \sigma_y + \eta \srate$. Therefore we have
 \begin{equation}
@@ -1306,8 +1309,9 @@ $r=R$, $u(R) = 0$. Finally we have for $r_y \le r \le R$
 	\frac{R^2}{2r_y}\right)
 \end{equation}
 
-In the unyielded region we have plug flow $u = \text{const.}$. For $0 \le r
-\le r_y$: velocity $u = U_y = u_{\text{yielded}}(r_y)$ by continuity.
+In the unyielded region we have plug flow $u =$ constant.  For $0 \le r \le
+r_y$, the rigid body velocity $u = U_y = u_{\text{yielded}}(r_y)$ by
+continuity.
 \begin{equation}
 	\implies U_y = \frac{\sigma_y}{\eta} \left( \frac{r_y}{2} - R +
 	\frac{R^2}{2r_y}\right) \ge 0
@@ -1317,7 +1321,7 @@ The flow profile in the pipe is a combination of parabolic and constant
 velocity.
 \begin{center}
 	\begin{tikzpicture}
-		\draw[thick] (-3, 1) -- (3, 1);
+		\draw[thick] (-3, 1) -- (3, 1) node[right] {$r=R$};
 		\draw[thick] (-3, -1) -- (3, -1);
 		\draw (0, 1) -- (0, -1);
 		\draw[dashed] (-3, 0.5) -- (3, 0.5) node[right] {$r=r_y$};
@@ -1327,10 +1331,19 @@ velocity.
 		\draw[blue] (0.75, 0.5) -- (0.75, -0.5);
 		\draw (1, 0) node[blue,right] {unyielded};
 		\draw (1, 0.75) node[blue,right] {yielded};
+		\draw[blue,->] (0,0.4) -- (0.75, 0.4);
+		\draw[blue,->] (0,0.2) -- (0.75, 0.2);
+		\draw[blue,->] (0,0) -- (0.75,0);
+		\draw[blue,->] (0,-0.4) -- (0.75, -0.4);
+		\draw[blue,->] (0,-0.2) -- (0.75, -0.2);
+		\draw[blue,->] (0,0.6) -- (0.6, 0.6);
+		\draw[blue,->] (0,0.8) -- (0.3, 0.8);
+		\draw[blue,->] (0,-0.6) -- (0.6, -0.6);
+		\draw[blue,->] (0,-0.8) -- (0.3, -0.8);
 	\end{tikzpicture}
 \end{center}
 
-The flow rate $Q$ vanishes if $r_y \ge R$. For $r_y \le R$, 
+The flow rate $Q$ vanishes if $r_y \ge R$. For $r_y < R$, 
 \begin{align}
 	Q &= 2\pi \int_0^R r u(r) \, \diffd r \\
 	  &= 2\pi \int_0^{r_y} rU_y \, \diffd r + 2\pi \int_{r_y}^R ru(r) \,
@@ -1351,7 +1364,7 @@ rate} for a Newtonian fluid.
 \end{itemize}
 
 This problem is doable because it is a steady problem. It is much more
-difficult if the yield surface has unsteady motion, in which case inertia is
-needed.
+difficult in the unsteady case since the yield surface has unsteady motion, in
+which case inertia is needed.
 
 \end{document}
