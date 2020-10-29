@@ -10,6 +10,7 @@
 \newcommand{\dunder}[1]{\underline{\underline{#1}}}
 \renewcommand{\trace}[1]{\text{tr}\left(#1\right)}
 \newcommand{\srate}{\dot{\gamma}}
+\renewcommand{\u}{\bm{u}}
 \usetikzlibrary{intersections, pgfplots.fillbetween}
 
 \begin{document}
@@ -1366,5 +1367,208 @@ rate} for a Newtonian fluid.
 This problem is doable because it is a steady problem. It is much more
 difficult in the unsteady case since the yield surface has unsteady motion, in
 which case inertia is needed.
+
+\lecture{29/10/20}
+\subsection{Unsteady dynamics of yield surface}
+Here we include inertia to allow the yield surface to go from one steady state
+to another. Specifically, we consider a problem similar to Stokes' 1st
+problem, to illustrate the complexity of solving for the yield surface. In
+Stokes' 1st problem, a rigid plate at $y=0$ impulsively starts to move at
+$t=0$. The momentum `diffuses' into the fluid as $y \sim \sqrt{\nu t}$.
+
+Consider a Bingham fluid in $y > 0$ with yield stress $\sigma_y$, viscosity
+$\eta$, density $\rho$ and a rigid plate at $y=0$. For $t < 0$, we have a
+semi-infinite shear flow $\u = \srate y \hat{\bm{x}}$. Note: we require
+$\sigma = \eta \srate > \sigma_y$ to ensure there is flow everywhere. At
+$t=0$, the plate starts to move with the flow such that the stress exerted on
+the plate suddenly changes to $\sigma_0 < \sigma_y$. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5, 0) node[below] {$x$};
+		\draw[thick,->] (0,-0.1) -- (0, 3) node[left] {$y$};
+		\draw[blue] (1,0) -- (1,3);
+		\draw[dashed,blue] (2,0) -- (2, 1);
+		\draw[dashed,blue] (2.2,1.6) -- (3,3);
+		\draw[dashed,blue] plot [smooth] coordinates {(2,1) (2.1, 1.4)
+		(2.2,1.6)};
+		\draw[dashed] (0.5,1.2) -- (2.5,1.2) node[right] {$y=y_0(t)$};
+		\draw[blue] (3, 0.5) node {plug};
+		\draw[blue] (4, 2.2) node {steady shear};
+		\draw[blue,->] (1,0.25) -- (2, 0.25);
+		\draw[blue,->] (1,0.5) -- (2, 0.5);
+		\draw[blue,->] (1,0.75) -- (2, 0.75);
+		\draw[blue,->] (1,1.75) -- (2.25,1.75);
+		\draw[blue,->] (1,2) -- (2.39,2);
+		\draw[blue,->] (1,2.25) -- (2.53,2.25);
+		\draw[blue,->] (1,2.5) -- (2.67,2.5);
+	\end{tikzpicture}
+\end{center}
+
+Physically, the unyielded domain appears near $y=0$ and propagates into the
+yielded region. Let $y=y_0(t)$ be the yielded surface, so that $0 \le y \le
+y_0$ is the unyielded region region and $y > y_0$ is the unyielded region. On
+the yield surface, we require $\abs{\sigma} = \sigma_y$ by definition, and
+also require the velocity to be continuous across the yield surface.
+
+Assuming the flow is unidirectional with $\u = u(y,t)\hat{\bm{x}}$, the Cauchy
+equation with inertia is valid in both the yielded and unyielded domain:
+\begin{equation}
+	\rho \frac{\partial u}{\partial t} = \frac{\partial \sigma}{\partial y}
+\end{equation}
+
+\paragraph{Yielded region.} We have $\sigma = \sigma_{xy} = \sigma_y + \eta
+\frac{\partial u}{\partial y}$, since $\srate = \frac{\partial u}{\partial y}
+\ge 0$. Thus the Cauchy equation becomes
+\begin{equation}
+	\frac{\partial u}{\partial t} = \nu \frac{\partial^2 u}{\partial y^2}
+\end{equation}
+where $\nu = \eta/\rho$ is the kinematic viscosity. This is a diffusion
+equation; as in Stokes' 1st problem, the yield surface has diffusive dynamics
+$y_0 \sim \sqrt{\nu t}$. Look for a similarity solution with dimensionless
+variable $s \equiv \frac{y}{\sqrt{\nu t}}$. Then
+\begin{align}
+	u(y,t) &= \srate y f(s)\\
+	\frac{\partial u}{\partial t} &= -\frac{1}{2}\frac{s}{t} \srate y
+	\frac{\diffd f}{\diffd s} \\
+	\frac{\partial u}{\partial y} &= \srate f + \srate s \frac{\diffd
+	f}{\diffd s} \\
+	\frac{\partial^2 u}{\partial y^2} = 2 \frac{\srate s}{y} \frac{\diffd
+	f}{\diffd s} + \srate \frac{s^2}{y}\frac{\diffd^2 f}{\diffd s^2}
+\end{align}
+
+The Cauchy equation is now
+\begin{equation}
+	-\frac{1}{2}\frac{s}{t}\srate y \frac{\diffd f}{\diffd s} = \nu \left[ 2
+		\frac{\srate s}{y} \frac{\diffd f}{\diffd s} + \frac{\srate s^2}{y}
+	\frac{\diffd^2 f}{\diffd s^2} \right] 
+\end{equation}
+Dividing by $\nu \srate s/ y$ and rearranging we have the ODE
+\begin{equation}
+	\left( 2+ \frac{s^2}{2}\right) \frac{\diffd f}{\diffd s} + \frac{\diffd^2
+	f}{\diffd s^2} = 0
+\end{equation}
+
+Since the ODE is second order, we require two boundary conditions:
+\begin{enumerate}
+	\item Match steady shear as $y \to \infty$, i.e. $f(s) \to 1$.
+	\item At yield surface, $\sigma(y_0^+) = \sigma(y_0^-) = \sigma_y$.
+		Equivalently, $u_y = 0$ at $y = y_0$. Thus we require
+		\begin{equation}
+			\srate f + \srate s \frac{\diffd f}{\diffd s } = 0
+		\end{equation}
+		at $y = y_0$. Writing the location of the yield surface as $y_0 =
+		\theta \sqrt{\nu t}$ with $\theta$ unknown we have
+		\begin{equation}
+			f(\theta) + \theta f'(\theta) = 0
+		\end{equation}
+\end{enumerate}
+
+\paragraph{Unyielded region.} The same Cauchy equation holds, $\rho \partial_t
+u = \partial_y \sigma$. The flow in this region is a plug, so $u$ does not
+depend on $y$. Thus $\partial_y \sigma$ is constant, i.e. $\sigma$ is linear
+in $y$ in this region. Now note at $y=y_0, \sigma=\sigma_y$ and at $y=0,
+\sigma=\sigma_0$. So
+\begin{equation}
+	\frac{\partial \sigma}{\partial y} = \frac{\sigma_y - \sigma_0}{y_0} =
+		\frac{\sigma_y - \sigma_0}{\theta \sqrt{\nu t}}
+\end{equation}
+
+Thus the Cauchy equation becomes
+\begin{equation}
+	\rho \frac{\partial u}{\partial t} = \frac{\sigma_y - \sigma_0}{\theta
+	\sqrt{\nu t}}
+\end{equation}
+Integrating from $t' = 0$ to $t' = t$, we have
+\begin{equation}
+	\rho u_{\text{unyielded}} = 2 \frac{\sigma_y - \sigma_0}{\theta \nu^{1/2}}
+	t^{1/2}
+\end{equation}
+Note $u_{\text{unyielded}} = u_{\text{yielded}}(y_0) = \srate y_0 f(\theta) =
+\srate \theta \sqrt{\nu t} f(\theta)$, so
+\begin{align}
+	\rho \srate \theta \sqrt{\nu t} f(\theta) &= 2 \frac{\sigma_y -
+	\sigma_0}{\theta \nu^{1/2}}t^{1/2}\\
+	\implies \theta^2 f(\theta) &= 2 \xi
+\end{align}
+where $\xi = \frac{\sigma_y - \sigma_0}{\eta \srate}$ is a dimensionless
+control parameter, i.e. it is imposed on the system. This equation implicitly
+defines $\theta$.
+
+\paragraph{Yield surface.}
+Now the ODE for $f$ gives
+\begin{equation}
+	\frac{\diffd f}{\diffd s} = \frac{B}{s^2} e^{-\frac{s^2}{4}}
+\end{equation}
+Integrating and using $f(s \to \infty) = 1$ we have
+\begin{equation}
+	f(s) = 1 + \frac{C}{s} e^{-s^2/4} - \frac{\sqrt{\pi}}{2}C
+	\text{erfc}(s/2)
+\end{equation}
+where $\text{erfc}(x) \equiv \frac{2}{\sqrt{\pi}} \int_x^\infty e^{-u^2} \,
+\diffd u$ is the \emph{complementary error function}. To determine $C$, we
+apply the BC $u_y = 0$ at the yield surface, i.e. $f(\theta) + \theta
+f'(\theta) = 0$
+\begin{align}
+	\implies C &= \frac{2}{\sqrt{\pi} \text{erfc}(\theta/2)} \\
+	\implies f(s) &= 1 + \frac{\frac{2}{s} e^{-s^2/4} -
+	\sqrt{\pi}\text{erfc}(s/2)}{\sqrt{\pi} \text{erfc}(\theta/2)}
+\end{align}
+The only remaining unknown is $\theta$. Applying the condition $\theta^2
+f(\theta) = 2\xi$, we have
+\begin{equation}
+	\frac{\theta e^{-\theta^2/4}}{\sqrt{\pi}\text{erfc}(\theta/2)} = \xi =
+	\frac{\sigma_y - \sigma_0}{\eta\srate}
+\end{equation}
+which is an implicit one-to-one equation for $\theta$, so $\theta$ can be
+found numerically. Thus we have a full analytic solution up to an implicit
+equation for $\theta$.
+
+\section{Linear Viscoelastic Fluids}
+Recall from phenomenology that some complex fluids have stresses which depend
+on the history of deformation. Generalised Newtonian fluids and yield-stress
+fluids have no such memory.
+
+\subsection{Viscous vs. elastic}
+Consider fluids that have both a viscous \emph{and} elastic response to
+deformation. Viscous response means that stress is proportional to rate of
+deformation, whilst an elastic response means stress is proportional to
+deformation. For example, polymer molecules are sheared and stretched by the
+flow, and provide an elastic response.
+
+Recall Newton's experiment. Consider two points marked at the same $x$ on the
+top and bottom plate at the same time, and the change in the mark as time
+passes. The change in position is $d$, the \emph{shear displacement}.
+\begin{center}
+	\begin{tikzpicture}
+		\node at (0,2) {$y = h$};
+		\draw (0.6, 2) -- (5, 2);
+		\node at (0,0) {$y=0$};
+		\draw (0.6, 0) -- (5,0);
+		\node at (2.5, 2.5) {$U$};
+		\draw[->, thick] (2.15, 2.25) -- (2.85, 2.25);
+		\draw[->] (1,0.5) -- (1.6, 0.5) node[midway,below] {$\hat{\bm{x}}$};
+		\draw[->] (1,0.5) -- (1, 1.1) node[midway, left] {$\hat{\bm{y}}$};
+		\draw[red,fill] (2,0) circle (0.1);
+		\draw[red,fill] (2,2) circle (0.1);
+		\draw[red] (2,1.7) node {$t=0$};
+		\draw[blue,fill] (3,2) circle (0.1);
+		\draw[blue] (2,0) circle (0.1);
+		\draw[blue] (3,1.7) node {$t>0$};
+		\draw[blue,<->] (2,1.3) -- (3,1.3);
+		\draw[blue] (2.3, 1.1) node[right] {$d = $ shear displacement};
+	\end{tikzpicture}
+\end{center}
+
+We then define \emph{shear strain} $\gamma = \frac{d}{h}$, dimensionless, and
+as usual have shear rate $\srate = \frac{U}{h} = \frac{\diffd \gamma}{\diffd
+t}$. The viscous response (Newtonian) is $\sigma = \frac{F}{A} = \eta \srate$
+where $\eta$ is the viscosity. The \emph{elastic} response, in analogy with a
+spring $F \propto kx$, we have $\sigma = G \gamma$ where $G$ is the
+\emph{shear modulus} and has units of stress.
+
+Physically, a \emph{dashpot} simulates viscous response, whilst a spring
+simulates elastic response. The simplest viscoelastic materials can be thought
+of as a linear combination of dashpots and springs.
 
 \end{document}
