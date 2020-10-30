@@ -4,6 +4,7 @@
 \usepackage{xcolor}
 \usepackage{wrapfig}
 \usepackage{placeins}
+\usepackage{cancel}
 \newcommand{\VL}[1]{\mathbf{#1}}
 \newcommand{\Ro}{Ro}
 \newcommand{\Ek}{E}
@@ -1039,7 +1040,7 @@ Note here we are using the horizontal gradient $\nabla \equiv (\partial_x,
 \partial_y)$. Consider $\nabla \times \eqref{eq:wbc2} \cdot \hat{\bm{k}}$ with
 $\zeta \ll f$. Then
 \begin{equation}
-	\beta \psi_x = w(y) + \nu \nabla^4 \psi
+	\beta \psi_x = w(y) + \nu \nabla^4 \psi\label{eq:wbcODE}
 \end{equation}
 The PDE is now fourth order, so we need four boundary conditions.
 
@@ -1063,7 +1064,147 @@ The PDE is now fourth order, so we need four boundary conditions.
 \end{center}
 
 In region I we have $\psi \approx \psi_I + \psi^{(1)}$ and in region II we
-have $\psi \approx \psi_I + \psi^{(2)}$.
+have $\psi \approx \psi_I + \psi^{(2)}$. The full solution is $\psi = \psi_I +
+\psi^{(1)} + \psi^{(2)}$ with interior flow $\psi_I = x\frac{w(y)}{\beta} +
+G(y)$.
+
+\lecture{30/10/20}
+\paragraph{Region I.} Let $\varepsilon = \nu$ with $\vare \ll 1$. Define a
+rescaled coordinate $\tilde{x} \equiv \frac{x}{\vare^a}$ with $\partial_x =
+\vare^{-a}\partial_{\tilde{x}}$. Note: if $a > 0$ then $\partial_x \gg
+\partial_y$. This is the \emph{method of undetermined coefficients}. From the
+PDE \eqref{eq:wbcODE} for $\psi$ we have
+\begin{equation}
+	\cancel{\beta \psi_x^I} + \beta \vare^{-a} \tilde{\psi}_{\tilde{x}}^{(1)}
+	= \vare^{1-4a} \tilde{\psi}^{(1)}_{\tilde{x}\tilde{x}\tilde{x}\tilde{x}}
+	+ \cancel{w} 
+\end{equation}
+Matching exponents, we have $a = \frac{1}{3}$. Hence 
+\begin{equation}
+	\beta \tilde{\psi}_{\tilde{x}}^{(1)} =
+	\tilde{\psi}^{(1)}_{\tilde{x}\tilde{x}\tilde{x}\tilde{x}}\label{eq:wbcODE2}
+\end{equation}
+
+Seek solutions of the form $\tilde{\psi} = \tilde{\psi}_0 e^{r\tilde{x}}$.
+Then $r^4 - \beta r = 0$ so $r =0, \beta^{1/3}, -\frac{1}{2}\beta^{1/3} \pm
+i\frac{\sqrt{3}}{2}\beta^{1/3}$. The general solution is therefore
+\begin{equation}
+	\tilde{\psi}^{(1)} = A(y) + B(y)e^{\beta^{1/3} \tilde{x}} +
+	C(y)e^{-\beta^{1/3}\frac{\tilde{x}}{2}}e^{i\frac{\sqrt{3}}{2}\beta^{1/3}\tilde{x}}
+	+ D(y)e^{-\beta^{1/3}\frac{\tilde{x}}{2}}e^{-i\frac{\sqrt{3}}{2}\beta^{1/3}\tilde{x}}
+\end{equation}
+
+In order for the interior and boundary layer flows to match asymptotically, we
+apply the \emph{matching condition} $\lim_{\tilde{x} \to \infty}
+\tilde{\psi}^{(1)} = 0$. Thus $A(y) = B(y) = 0$. For convenience we re-define
+$C$ and $D$ to get
+\begin{equation}
+	\tilde{\psi}^{(1)} = C(y)e^{-\beta^{1/3}\frac{\tilde{x}}{2}} \cos \left(
+	\frac{\sqrt{3}}{2}\beta^{1/3}\tilde{x} + D(y)\right)
+\end{equation}
+
+We now apply the boundary conditions. $\psi = 0$ at $x = 0$ gives
+$\tilde{\psi}^{(1)} = -\psi^I\mid_{x=0}$. Hence
+\begin{equation}
+	C(y)\cos D(y) = -G(y)
+\end{equation}
+$\psi_x = 0$ at $x=0$ gives $\psi_x^{(1)} = -\psi_x^I\mid_{x=0}$. Hence
+\begin{align}
+	\vare^{-1/3}\tilde{\psi}_{\tilde{x}}^{(1)} &= -\frac{w(y)}{\beta} \\
+	\vare^{-1/3}(-\frac{1}{2}\beta^{1/3})C(y)\cos D(y) -
+	\vare^{-1/3}\frac{\sqrt{3}}{2} \beta^{1/3}C(y)\sin D(y) &=
+	-\frac{w(y)}{\beta}
+\end{align}
+
+Since $\vare \ll 1$ and can be taken arbitrarily small, we require
+\begin{align}
+	-\frac{1}{2}\cos D(y) &= \frac{\sqrt{3}}{2}\sin D(y) \\
+	\implies \tan D(y) &= -\frac{1}{\sqrt{3}} \\
+	\implies D(y) &= -\frac{\pi}{6}
+\end{align}
+
+Combining the boundary conditions we also have $C(y) =
+-\frac{2}{\sqrt{3}}G(y)$. Finally we have
+\begin{equation}
+	\tilde{\psi}^{(1)} =-\frac{2}{\sqrt{3}} G(y)e^{-\beta^{1/3}\frac{\tilde{x}}{2}} \cos \left(
+	\frac{\sqrt{3}}{2}\beta^{1/3}\tilde{x} -\frac{\pi}{6}\right)
+\end{equation}
+
+\paragraph{Region II.} Here, we define a rescaled coordinate $\tilde{x} =
+\frac{x-L}{\vare^{1/3}}$. The same PDE is satisfied in region II, so the
+general solution is the same. Here, the matching condition is $\lim_{\tilde{x}
+\to -\infty} \tilde{\psi}^{(2)} = 0$ which gives $A(y) = C(y) = D(y) = 0$, so
+\begin{equation}
+	\tilde{\psi}^{(2)} = B(y)e^{\beta^{1/3}\tilde{x}}
+\end{equation}
+
+We now apply the boundary conditions. $\psi_x = 0$ at $x = L$
+gives
+\begin{align}
+	\vare^{-1/3} \tilde{\psi}^{(2)} &= -\psi_x^I \hspace{1em} \text{at}
+	\hspace{1em} x=L\\
+	\vare^{-1/3}\beta^{1/3}B(y) &= -\frac{w(y)}{\beta} \\
+	\implies B(y) &= -\frac{\vare^{1/3}w(y)}{\beta^{4/3}}
+\end{align}
+
+To enforce $\psi = 0$ at $x = L$, note $\lim_{\vare \to 0} B(y) = 0$, so
+$\tilde{\psi}^{(2)}\mid_{x=L} \to 0$ as $\vare \to 0$ so we instead require
+$\psi^I\mid_{x=L} = 0$.
+\begin{equation}
+	\implies G(y) = -\frac{w(y) L}{\beta}
+\end{equation}
+Hence we have
+\begin{equation}
+	\tilde{\psi}^{(2)} = -\vare^{1/3} w(y)\beta^{-4/3}
+	e^{\beta^{1/3}\tilde{x}}
+\end{equation}
+
+\paragraph{Full solution.} The full solution $\psi = \psi^I + \psi^{(1)} +
+\psi^{(2)}$ is
+\begin{align}
+	\psi &= \frac{x-L}{\beta} w(y)  &&\text{interior}\\
+			   &+ \frac{2w(y)L}{\sqrt{3}\beta} e^{-\beta^{1/3}
+	\frac{x}{2\nu^{1/3}}} \cos\left(\frac{\sqrt{3}}{2}\beta^{1/3}\nu^{-1/3}x -
+\frac{\pi}{6}\right) \hspace{.5in} &&\text{western boundary correction}\\
+&- \nu^{1/3}\beta^{-4/3}w(y)e^{\beta^{1/3}\frac{x-L}{\nu^{1/3}}} 
+&&\text{eastern boundary correction} \label{eq:wbc}
+\end{align}
+
+Note that the Eastern boundary correction is $\mathcal{O}(\nu^{1/3})$ whilst
+the Western boundary correction is $\mathcal{O}(1)$.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{wbc.png}
+	\caption{Streamlines of $\psi$ defined by \eqref{eq:wbc} demonstrating
+	western boundary currents.}
+\end{figure}
+
+\paragraph{Physical explanation.} The cause of western boundary currents can
+be physically explained by vorticity.  The wind stress curl $w < 0$ inputs
+negative vorticity in the interior flow. The flow in the western boundary
+layer inputs positive vorticity to compensate.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- (8,0) -- (8,3) -- (0,3) -- (0,0);
+		\draw[red,->] (4,2) -- (4,1);
+		\draw[red,->] (3,2) -- (3,1);
+		\draw[red,->] (5,2) -- (5,1);
+		\draw[red] (4, 2.5) node {Sverdrup flow};
+		\draw[blue,->] (1,0.5) -- (1,2);
+		\draw[blue,->] (0.75,0.5) -- (0.75,1.5);
+		\draw[blue,->] (0.5,0.5) -- (0.5,1);
+		\draw[blue,dashed,->] (0.75,1.9) arc (0:270:0.2);
+		\draw[green,->] (7,0.5) -- (7,2);
+		\draw[green,->] (7.25,0.5) -- (7.25,1.5);
+		\draw[green,->] (7.5,0.5) -- (7.5,1);
+		\draw[green,dashed,->] (7.25,1.9) arc (180:-90:0.2);
+		\draw (1, -1) node {friction adds positive vorticity};
+		\draw[thick,->] (0.75, -0.7) -- (0.75, 0.3);
+		\draw (7, -1) node {friction adds negative vorticity};
+		\draw[thick,->] (7.25, -0.7) -- (7.25, 0.3);
+	\end{tikzpicture}
+\end{center}
 
 
 \end{document}

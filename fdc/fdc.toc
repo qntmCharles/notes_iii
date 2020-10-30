@@ -26,3 +26,7 @@
 \contentsline {section}{\numberline {7}Large scale ocean circulation}{15}{section.7}
 \contentsline {subsection}{\numberline {7.1}Sverdrup flow}{15}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Western boundary currents}{16}{subsection.7.2}
+\contentsline {paragraph}{\nonumberline Region I.}{17}{section*.10}
+\contentsline {paragraph}{\nonumberline Region II.}{18}{section*.11}
+\contentsline {paragraph}{\nonumberline Full solution.}{18}{section*.12}
+\contentsline {paragraph}{\nonumberline Physical explanation.}{19}{section*.14}
