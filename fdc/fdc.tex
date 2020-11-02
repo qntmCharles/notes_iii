@@ -905,7 +905,7 @@ Seek plane wave solutions of the form
 \end{equation}
 with dispersion relation
 \begin{equation}
-	\omega = \frac{-k \beta}{k^2 + l^2 + R_D{-2}}, \hspace{2em} R_D \equiv
+	\omega = \frac{-k \beta}{k^2 + l^2 + R_D^{-2}}, \hspace{2em} R_D \equiv
 	\frac{\sqrt{gH_0}}{f_0}
 \end{equation}
 This is the \emph{Rossby wave dispersion relation}. Note $\omega = 0$ (i.e. no
@@ -1175,7 +1175,7 @@ the Western boundary correction is $\mathcal{O}(1)$.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\textwidth]{wbc.png}
-	\caption{Streamlines of $\psi$ defined by \eqref{eq:wbc} demonstrating
+	\caption{Streamlines of $\psi$ demonstrating
 	western boundary currents.}
 \end{figure}
 
@@ -1206,5 +1206,114 @@ layer inputs positive vorticity to compensate.
 	\end{tikzpicture}
 \end{center}
 
+\lecture{2/11/20}
+\section{Stratification and internal gravity waves}
+\subsection{Boussinesq approximation}
+We will consider stably stratified flow under the \emph{Boussinesq
+approximation}: we assume the density $\rho$ may be split into two parts
+$\rho_0$ and $\rho'$ with $\rho_0$ constant and $\rho'/\rho_0 \ll 1$. The
+pressure may then also be split into two parts, $p_0(z)$, such that
+$-p_0'(z) = \rho_0 g$, and the remainder $p'$. The vertical component of the
+momentum equations may then be written
+\begin{align}
+	\frac{\diffD w}{\diffD t} &= -\frac{1}{\rho_0 + \rho'}\frac{\partial
+		p_0}{\partial z} - \frac{1}{\rho_0 + \rho'} \frac{\partial
+	p'}{\partial z} - g \\
+	&= -\frac{1}{\rho_0} \frac{\partial p_0}{\partial z} + \frac{\partial
+p_0}{\partial z} \left[ \frac{1}{\rho_0} - \frac{1}{\rho_0 + \rho'}\right] -
+\frac{\partial p'}{\partial z} \frac{1}{\rho_0 + \rho'} - g \\
+&\approx -\frac{1}{\rho_0} \frac{\partial p'}{\partial z} -
+\frac{\rho'}{\rho_0} g
+\end{align}
+where terms including $\rho'$ are discarded unless multiplying $g$. The
+\emph{Boussinesq equations} are therefore
+\begin{align}
+	\frac{\diffD \u}{\diffD t} + \bm{f} \times \u &= -\frac{1}{\rho_0} \nabla
+	p' + \frac{\rho'}{\rho_0}\bm{g} \\
+	\nabla \cdot \u &= 0 \\
+	\frac{\diffD \rho'}{\diffD t} &= 0
+\end{align}
+
+These equations make clear the role of buoyancy: a light fluid parcel
+experiences an upward force and a heavy fluid parcel experiences a downward
+force. 
+
+It iss further useful to write $\rho'(x,y,z,t) = \rho_s (z) +
+\tilde{\rho}(x,y,z,t)$ where $\rho_s(z)$ is a \emph{background} or
+\emph{reference} density and $\tilde{\rho}$ is the \emph{dissturbance
+density} which is zero for fluid at rest.
+
+The stability of the reference density state is determined by the
+\emph{buoyancy frequency} or \emph{Brunt-V\"{a}is\"{a}la frequency} $N$
+defined by
+\begin{equation}
+	N^2 = -\frac{g}{\rho_0} \frac{\diffd \rho_s}{\diffd z}
+\end{equation}
+
+\subsection{Stratification in the atmosphere and ocean}
+In the ocean, the buoyancy frequency $N$ is typically $10^{-2} s^{-1}$ in the
+upper ocean where stratification is strong, and $5 \times 10^{-4} s^{-1}$ in
+the deep ocean, where stratification is weak.
+
+In the atmosphere, calculating $N$ needs to take account of compressibility,
+because the density $\rho$ is not conserved by a fluid parcel in reversible,
+dissipationless motion. The quantity that is instead conserved is the
+\emph{potential temperature}
+\begin{equation}
+	\theta = T \left(\frac{p}{p_0}\right)^{-2/7}
+\end{equation}
+where $T$ is temperature. The corresponding buoyancy frequency is
+\begin{equation}
+	N^2 = -\frac{g}{\theta} \frac{\diffd \theta}{\diffd z}
+\end{equation}
+
+In this course we will use the Boussinesq approximation for the atmosphere and
+ocean, despite issues with compressibility.
+
+\subsection{Small-ampltiude motion about a state of rest}
+We linearise about a resting state with density structure represented by the
+buoyancy frequency $N$. For simplicity, background rotation is ignored for the
+time being. We define the \emph{buoyancy} $\sigma = \rho' g/\rho_0$ for
+convenience.
+
+\begin{align}
+	\tilde{\bm{u}}_t &= -\frac{1}{\rho_0} \nabla \tilde{p} + \tilde{\sigma}
+	\hat{\bm{z}} \\
+	\nabla \cdot \tilde{\u} &= 0 \\
+	\tilde{\sigma} + N^2 \tilde{w} &= 0
+\end{align}
+
+where the notation $\tilde{\u}$ denotes the disturbance quantities away from a
+state of rest. These can be combined into a single equation for $\tilde{w}$:
+\begin{equation}
+	\nabla^2 \tilde{w}_tt + N^2(\tilde{w}_{xx} + \tilde{w}_{yy}) = 0
+\end{equation}
+
+Assuming $N^2$ is constant, seek plane wave solutions $\tilde{w} =
+\hat{w}e^{i(kx + ly + mz - \omega t)}$. This gives a dispersion relation
+\begin{equation}
+	\omega^2 = N^2 \frac{k^2 + l^2}{k^2 + l^2 + m^2}
+\end{equation}
+
+Note that if $N^2 > 0$ we get oscillatory motion, and if $N^2 < 0$ we get
+exponentially growing disturbances. We also have $0 \le \abs{\omega} \le N$
+with the lower limit achieved in the limit $k^2 + l^2 \ll m^2$. Define $\theta
+= \tan^{-1}(m(k^2+l^2)^{-1/2})$, the angle a surface of constant phase makes
+with the vertical. Then $\omega = \pm N \cos \theta$. Owing to
+incompressibility $\nabla \cdot \u = 0$, the velocity vector is perpendicular
+to $\bm{k}$. Thus $\theta$ is also the angle that fluid parcel trajectories
+make with the vertical.
+
+The fact $\abs{\omega} \le N$ implies only disturbances with a sufficiently
+low frequency can propagate as waves. Localised forcing with frequency greater
+than $N$ will remain localised rather than propagating. 
+
+Further, note the group velocity is
+\begin{equation}
+	\bm{c}_g \equiv \frac{\partial \omega}{\partial \bm{k}} = \pm
+	\frac{N}{(k^2+l^2)^{1/2} (k^2+l^2+m^2)^{3/2}} (km^2, lm^2, -m(k^2+l^2))
+\end{equation}
+which gives $\bm{c}_g \cdot \bm{k} = 0$, i.e. the group velocity is
+perpendicular to phase surfaces.
 
 \end{document}

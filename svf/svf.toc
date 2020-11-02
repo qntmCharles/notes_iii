@@ -37,3 +37,7 @@
 \contentsline {subsubsection}{\numberline {2.6.4}Representation by Stokeslets alone}{19}{subsubsection.2.6.4}
 \contentsline {section}{\numberline {3}Approximations and applications}{19}{section.3}
 \contentsline {subsection}{\numberline {3.1}Slender-body theory}{19}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Marangoni Flows}{22}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Boundary conditions}{22}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Thermophoresis}{23}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Thermal problem}{23}{subsubsection.3.2.3}

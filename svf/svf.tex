@@ -1,5 +1,5 @@
 \documentclass{jknotes}
-\usepackage{joshkirklin,pgfplots}
+\usepackage{joshkirklin,pgfplots,cancel}
 
 \newcommand{\dunder}[1]{\underline{\underline{#1}}}
 \newcommand{\x}{\bm{x}}
@@ -7,6 +7,18 @@
 \renewcommand{\u}{\bm{u}}
 \newcommand{\y}{\bm{y}}
 \newcommand{\X}{\bm{X}}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+\pgfplotsset{compat = 1.3}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\tikzset{
+    partial ellipse/.style args={#1:#2:#3}{
+        insert path={+ (#1:#3) arc (#1:#2:#3)}
+    }
+}
 
 \begin{document}
 
@@ -1522,4 +1534,255 @@ Note the following:
 	which implies $U = \frac{1}{2}a^2k\omega$.
 \end{eg}
 
+\lecture{2/11/20}
+\subsection{Marangoni Flows}
+The surface tension $\gamma$ between two immiscible fluids depends on the
+fluids properties;
+\begin{itemize}
+	\item temperature - $\gamma$ decreases as $T$ increases. For water,
+		$\inv{\gamma}\frac{\diffd \gamma}{\diffd T} \sim -\frac{1}{50 K}$. For
+		example, \emph{Marangoni convection}. Heat applied to a fluid with
+		surface tension generates circulation:
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (-3, 2) -- (-3, 0) -- (3, 0) -- (3, 2);
+				\draw[red] (0, -1) node {heat};
+				\draw[red,->] (0, -0.8) -- (0, -0.2);
+				\draw[red,->] (0.5, -0.8) -- (0.5, -0.2);
+				\draw[red,->] (-0.5, -0.8) -- (-0.5, -0.2);
+				\draw plot [smooth] coordinates {(-3,1.4) (-2, 1.3) (-1,
+				1) (0, 0.9) (1, 1) (2, 1.3) (3, 1.4)};
+				\draw[blue] (0, 1.75) node{high $T$};
+				\draw[blue] (0, 1.4) node{low $\gamma$};
+				\draw[blue,->] (2, 0.7) [partial ellipse = 180:-90:0.7 and 0.35];
+				\draw[blue,->] (-2, 0.7) [partial ellipse = 0:270:0.7 and 0.35];
+				\draw[blue] (2.35, 2.05) node{low $T$};
+				\draw[blue] (2.35, 1.7) node{high $\gamma$};
+				\draw[red,thick,->] (0.7, 0.95) -- (2, 1.35)
+				node[midway,above] {stress};
+				\draw[red,thick,->] (-0.7, 0.95) -- (-2, 1.35)
+				node[midway,above] {stress};
+			\end{tikzpicture}
+		\end{center}
+	\item concentration of surfactants (surface active agents) - usually
+		$\gamma$ decreases as the concentration $C$ increases. For example,
+		detergent molecules spread over a surface. Detergent molecules have
+		hydrophobic tails and hydrophilic heads.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[blue] (-3, 0) -- (3, 0);
+				\draw (-3, 0.5) node {air};
+				\draw (-3, -0.5) node {water};
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+				(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+				0.2) (0.02, 0.22)};
+				\begin{scope}[shift={(0.2,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(0.4,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(0.8,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(1.2,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(1.9,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(2.8,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(-0.2,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(-0.4,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(-0.8,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(-1.2,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(-1.9,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\begin{scope}[shift={(-2.8,0)}]
+				\draw (0, -0.1) circle (0.06);
+				\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+				-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+			(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+		0.2) (0.02, 0.22)};
+				\end{scope}
+				\draw[red] (0, 0.85) node{high $C$};
+				\draw[red] (0, 0.5) node{low $\gamma$};
+				\draw[red] (2.5, 0.85) node{low $C$};
+				\draw[red] (2.5, 0.5) node{high $\gamma$};
+			\end{tikzpicture}
+			\qquad
+			\begin{tikzpicture}
+				\draw (0,0) circle (0.4);
+				\draw plot[smooth,tension=.75] coordinates {(0,0.4) (0.1, 0.5)
+				(0, 0.6) (-0.1, 0.7) (0, 0.8) (0.1, 0.9) (0, 1) (-0.1, 1.1)
+			(0, 1.2) (0.1, 1.3) (0, 1.4) (-0.1, 1.5) (0, 1.6) (0.1, 1.7) (0,
+		1.8) (-0.1, 1.9) (0, 2)};
+		\draw (0.5, 2) node[right] {hydrophobic tail};
+		\draw (0.5, 0) node[right] {hydrophilic head};
+			\end{tikzpicture}
+		\end{center}
+		Another example is alcohol in water; `wine tears' creep up the side to
+		form a rim on the meniscus due to high surface tension due to
+		evaporating alcohol decreasing concentration.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (-3, 2) -- (-3, 0) -- (3, 0) -- (3, 2);
+				\draw[blue] plot[smooth,tension=.6] coordinates {(-3, 1.5) (-2.9,
+				1.3) (-2.7, 1.15) (-2.4, 1) (-2, 1) (-1, 1) (0,1) (1,1) (2,1)
+				(2.4, 1) (2.7, 1.15) (2.9, 1.3) (3, 1.5)};
+				\draw[blue] (-3, 1.5) arc (-90:90:0.05);
+				\draw[blue] (3, 1.5) arc (270:90:0.05);
+				\draw[red,->] (-2.4, 1.2) arc (-60:-20:1);
+				\draw[red,->] (-2.7, 1.35) arc (-60:-20:1);
+				\draw[red] (-2, 2.15) node {\small evaporation};
+				\draw[red,->] (2.4, 1.2) arc (240:200:1);
+				\draw[red,->] (2.7, 1.35) arc (240:200:1);
+				\draw[blue] (3.1, 1.65) node[right] {low $C$};
+				\draw[blue] (3.1, 1.3) node[right] {high $\gamma$};
+				\draw[blue] (0,0.65) node {high $C$};
+				\draw[blue] (0,0.3) node {low $\gamma$};
+			\end{tikzpicture}
+		\end{center}
+\end{itemize}
+
+\subsubsection{Boundary conditions}
+Surface tension can be represented by a surface stress (in $N \cdot m^{-1}$,
+derived from a surface energy in $J \cdot m^{-2}$) acting isotropically across
+lines in the surface with stress tensor
+\begin{equation}
+	\dunder{\sigma}^S = \gamma \left( \dunder{I} - \bm{n}\bm{n}\right)
+\end{equation}
+The force balance on an arbitrary small area of the interface gives
+\begin{equation}
+	\nabla_S \cdot \dunder{\sigma}^S + \left[ \dunder{\sigma} \cdot
+	\bm{n}\right]^+_- = 0
+\end{equation}
+where $\bm{n}$ points out of the fluid and $\nabla_S = \left(\dunder{I} -
+\bm{n}\bm{n}\right) \cdot \nabla$ is the gradient operator in the surface.
+Hence the jump in fluid stress is
+\begin{align}
+	\left[ \dunder{\sigma} \cdot \bm{n}\right]^+_- &= -\nabla_S \cdot \gamma
+	\left( \dunder{I} - \bm{n}\bm{n}\right) \cdot \nabla_S \gamma + \gamma
+	\left( \nabla_S \cdot \bm{n}\right)\bm{n} + \gamma \cancel{(\bm{n}\cdot
+	\nabla_S)} \bm{n}\\
+	&= -\nabla_S \gamma + \gamma \kappa \bm{n}
+\end{align}
+The first term is the surface gradient of $\gamma$ and the second is tension
+$\times$ curvature.
+
+Equivalently, in perpendicular and parallel components we have
+\begin{align}
+	\left[ \bm{n} \cdot \dunder{\sigma} \cdot \bm{n}\right]^+_- &= \gamma
+	\kappa \\
+	\left[ \bm{n} \times \dunder{\sigma} \cdot \bm{n}\right]^+_- &= -\bm{n}
+	\times \nabla_S \gamma
+\end{align}
+
+\subsubsection{Thermophoresis}
+An immiscible drop in a temperature gradient migrates from cold regions to
+hot.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) circle (1);
+		\draw[red] (-4, 0) node {cold};
+		\draw[red] (4, 0) node {hot};
+		\draw (1.1, 0) node[right] {low $\gamma$};
+		\draw (-1.1, 0) node[left] {high $\gamma$};
+		\draw[thick,blue,->] (0.7071,-0.7071) arc (-45:-135:1);
+		\draw[thick,blue,->] (0.7071,0.7071) arc (45:135:1);
+		\draw[thick,->] (-0.5, 0) -- (0.5, 0);
+		\draw[thick,->] (1.5, 1) -- (3, 1) node[midway,above] {$(\nabla
+		T)^\infty = H$};
+	\end{tikzpicture}
+\end{center}
+
+Consider a scaling argument.  We have $\nabla T \sim H a \implies \nabla
+\gamma \sim H a \gamma'$ where $\gamma' = \frac{\diffd \gamma}{\diffd T} < 0$.
+The driving force $F$ from $\nabla \gamma$ acting across the equator length
+$\sim a$ implies $F \sim H a^2 \gamma'$. Now $\sigma \sim \frac{\mu U}{a}$
+acts over an area $\sim a^2$ to give viscous resistance $\sim \mu U a$ (c.f.
+drag on a sphere). Hence
+\begin{equation}
+	U \sim \frac{\gamma' H a}{\mu}
+\end{equation}
+
+Typical values are $H \sim 1^{\circ} C/cm, \gamma' \sim 1
+\text{dyn}/cm/^{\circ} C, a \sim 10^{-2} cm, \rho \sim 1 g \cdot cm^{-3}, \nu
+\sim 10^{-2} cm$. Therefore $U \sim 1 cm\cdot s^{-1}$.
+
+\subsubsection{Thermal problem}
+Consider the problem
+\begin{equation}
+	\frac{\partial T}{\partial t} + \u \cdot \nabla T = \kappa \nabla^2 T
+\end{equation}
+with boundary conditions $\nabla T \to \bm{H}$ as $\abs{\x} \to \infty$ and
+\begin{equation}
+	\left[ T\right]^+_- = \left[ k \bm{n} \cdot \nabla T\right]^+_- = 0
+	\hspace{2em} \text{on} \,\, \abs{\x} = a
+\end{equation}
+where $k$ is the conductivity ($\bm{q} = -k \nabla T$) and $\kappa =
+\frac{k}{\rho C_p}$ is the thermal diffusivity. Assume the \emph{Peclet}
+number satisfies
+\begin{equation}
+	\text{Pe} = \frac{U a}{\kappa} = \frac{\text{advection}}{\text{diffusion}}
+	\ll 1
+\end{equation}
 \end{document}
