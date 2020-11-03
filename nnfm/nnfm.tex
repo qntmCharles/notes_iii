@@ -1571,4 +1571,215 @@ Physically, a \emph{dashpot} simulates viscous response, whilst a spring
 simulates elastic response. The simplest viscoelastic materials can be thought
 of as a linear combination of dashpots and springs.
 
+\subsection{Maxwell fluids}
+The most famous linear viscoelastic fluid (LVF) is a \emph{Maxwell fluid};
+modelled by a dashpot and a spring in \emph{series}. We expect elastic
+behaviour on short timescales and viscous on long timescales. An example of a
+Maxwell fluid is a fluid with elastic inclusions such as droplets or vesicles.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-3, 0) -- (-2, 0);
+		\draw[fill] (-2, 0) circle (0.05);
+		\draw (-2, 0) -- (-1.9, 0.2) -- (-1.7, -0.2) -- (-1.5, 0.2) -- (-1.3,
+		-0.2) -- (-1.1, 0.2) -- (-0.9, -0.2) -- (-0.8,0);
+		\draw[fill] (-0.8, 0) circle (0.05);
+		\draw (-0.8,0) -- (1,0);
+		\draw (1,0.3) -- (1, -0.3);
+		\draw (0.5, 0.3) -- (1.5, 0.3) -- (1.5, -0.3) -- (0.5, -0.3);
+		\draw (1.5, 0) -- (3, 0);
+		\draw (-1.5, -0.8) node {1: spring, $G$};
+		\draw (1.5, -0.8) node {2: dashpot, $\eta$};
+	\end{tikzpicture}
+\end{center}
+
+We can derive the constitutive relationship from this model. We have
+\begin{align}
+	\sigma_1 &= G \gamma_1 \hspace{2em} \text{spring}\\
+	\sigma_2 &= \eta \srate_2 \hspace{2em} \text{dashpot} \\
+\end{align}
+
+The total stress and strain follow by analogy with circuits (cf. Kirkhoff's
+laws). Strain is analogous to potential difference and stress is analogous to
+current. Therefore
+\begin{align}
+	\text{total strain} \hspace{1em}  \gamma &= \gamma_1 + \gamma_2 \\
+	\text{total stress}  \hspace{1em} \sigma &= \sigma_1 = \sigma_2
+\end{align}
+
+The total rate of strain is 
+\begin{align}
+	\dot{\gamma} &= \srate_1 + \srate_2 = \frac{\dot{\sigma}_1}{G} +
+	\frac{\sigma_2}{\eta} = \frac{\dot{\sigma}}{G} + \frac{\sigma}{\eta}\\ 
+	\implies \sigma + \frac{\eta}{G} \dot{\sigma} &= \eta \srate
+\end{align}
+This is the constitutive relationship for a Maxwell fluid. $\lambda \equiv
+\frac{\eta}{G}$ is the \emph{relaxation timescale} for stress.
+
+\paragraph{Intepretation of $\lambda$.} Consider a sudden cessation of
+deformation, that is
+\begin{equation}
+	\begin{cases} \srate = 0 & t \ge 0 \\ \sigma = \sigma_0 & t < 0
+	\end{cases}
+\end{equation}
+Thus for $t > 0$ we have $\sigma + \lambda \dot{\sigma} = 0$ with boundary
+conditions $\sigma(t=0) = \sigma_0$. Thus
+\begin{equation}
+	\sigma(t) = \sigma_0 e^{-\frac{t}{\lambda}}
+\end{equation}
+Hence we have exponential relaxation of stress on timescale $\lambda$. Note
+$\lambda$ is the timescale for adjustments in stress to changes in
+deformation, whilst deformation adjusts instantaneously to changes in stress.
+
+\paragraph{Behaviour at short vs. long timescales.} Consider a Maxwell fluid
+for $t \ll \lambda$ and $t \gg \lambda$. 
+
+\begin{itemize}
+	\item On short timescales $t \ll \lambda$, we have $\lambda \dot{\sigma}
+		\gg \sigma$ hence the Maxwell fluid has $\lambda \dot{\sigma} \sim
+		\eta \srate$. This is an elastic response.
+	\item On long timescales $t \gg \lambda$, we have $\lambda \dot{\sigma}
+		\ll \sigma$ so the Maxwell fluid has $\sigma \sim \eta \srate$ which
+		is a viscous response.
+\end{itemize}
+
+\subsection{Kelvin-Voigt fluid}
+Here we consider a similar idea to introduce a fluid with the opposite
+behaviour to a Maxwell fluid. Consider a spring and dashpot in
+\emph{parallel}. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-3, 0) -- (-1.5, 0);
+		\draw[fill] (-1.5, 0) circle (0.05);
+		\draw (-1.5, 0) -- (-1.4, 0.2) -- (-1.2, -0.2) -- (-1, 0.2) -- (-0.8,
+		-0.2) -- (-0.6, 0.2) -- (-0.4, -0.2) -- (-0.3,0);
+		\draw[fill] (-0.3, 0) circle (0.05);
+		\draw (-0.3,0) -- (1,0);
+		\draw (-3, -2) -- (-1, -2);
+		\draw (-1,-1.7) -- (-1, -2.3);
+		\draw (-1.5, -1.7) -- (-0.5, -1.7) -- (-0.5, -2.3) -- (-1.5, -2.3);
+		\draw (-0.5, -2) -- (1, -2);
+		\draw (-1, 0.8) node {1: spring, $G$};
+		\draw (-1, -2.8) node {2: dashpot, $\eta$};
+		\draw (-5, -1) -- (-3, -1);
+		\draw (-3,0) -- (-3, -2);
+		\draw (1,0) -- (1, -2);
+		\draw (1, -1) -- (3, -1);
+	\end{tikzpicture}
+\end{center}
+
+We have individual stresses
+\begin{align}
+	\sigma_1 &= G \gamma_1 \hspace{2em} \text{spring}\\
+	\sigma_2 &= \eta \srate_2 \hspace{2em} \text{dashpot} \\
+\end{align}
+as before. In parallel, the total strain is $\gamma = \gamma_1 + \gamma_2$ and
+the total stress is
+\begin{equation}
+	\sigma = \sigma_1 + \sigma_2 = G\gamma_2 + \eta \srate_2 = G\left[ \gamma
+	+ \frac{\eta}{G} \srate\right]
+\end{equation}
+Hence the constitutive relationship for a Kelvin-Voigt fluid is
+\begin{equation}
+	\sigma = G \left[ \gamma + \hat{\lambda}\srate\right]
+\end{equation}
+where $\hat{\lambda}$ is the \emph{retardation timescale}, the timescale for
+deformation to adjust to changes in stress. Note: stress adjusts
+instantaneously to changes in deformation in this case.
+\begin{itemize}
+	\item On short timescales, we have $\hat{\lambda} \srate \gg \gamma$ so $\sigma
+		\sim G \hat{\lambda} \srate$ is a viscous response.
+	\item On long timescales, we have $\hat{\lambda} \srate \ll \gamma$ so
+		$\sigma \sim G \gamma$ which is an elastic response.
+\end{itemize}
+
+The properties of Kelvin-Voigt fluids are opposite to those of a Maxwell
+fluid. Since a Kelvin-Voigt fluid behaves as an elastic material at long
+times, it is also referred to as a viscoelastic \emph{material} or
+\emph{solid}.
+
+\subsection{Jeffreys fluid}
+We wish to construct a LVF that has a viscous response at both \emph{short}
+and \emph{long} timescales. Thus we require two distinct timescales. A
+Jeffreys fluid has a dashpot and Kelvin-Voigt fluid in series.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-5, -0.7) -- (-4,-0.7) -- (-4, -1.3) -- (-5, -1.3);
+		\draw (-4.5, -0.7) -- (-4.5, -1.3);
+		\draw (-6,-1) -- (-4.5, -1);
+		\draw (-4.5, -1.8) node {1: dashpot, $\eta_1$};
+		\draw (-3, 0) -- (-1.5, 0);
+		\draw[fill] (-1.5, 0) circle (0.05);
+		\draw (-1.5, 0) -- (-1.4, 0.2) -- (-1.2, -0.2) -- (-1, 0.2) -- (-0.8,
+		-0.2) -- (-0.6, 0.2) -- (-0.4, -0.2) -- (-0.3,0);
+		\draw[fill] (-0.3, 0) circle (0.05);
+		\draw (-0.3,0) -- (1,0);
+		\draw (-3, -2) -- (-1, -2);
+		\draw (-1,-1.7) -- (-1, -2.3);
+		\draw (-1.5, -1.7) -- (-0.5, -1.7) -- (-0.5, -2.3) -- (-1.5, -2.3);
+		\draw (-0.5, -2) -- (1, -2);
+		\draw (-1, 0.8) node {2: spring, $G_2$};
+		\draw (-1, -2.8) node {2: dashpot, $\eta_2$};
+		\draw (-5, -1) -- (-3, -1);
+		\draw (-3,0) -- (-3, -2);
+		\draw (1,0) -- (1, -2);
+		\draw (1, -1) -- (3, -1);
+	\end{tikzpicture}
+\end{center}
+
+The total strain is $\gamma = \gamma_1 + \gamma_2$ where $\gamma_1$ is the
+strain of the lone dashpot and $\gamma_2$ is the total strain of the
+Kelvin-Voigt fluid. The total stress is $\sigma = \sigma_1 = \sigma_2$. We
+have
+\begin{align}
+	\sigma = \sigma_1 &= \eta_1 \srate_1 \\
+	\sigma = \sigma_2 &= G_2 \gamma_2 + \eta_2 \srate_2 = \left[ G_2 + \eta_2
+	\frac{\partial}{\partial t}\right] \gamma_2
+\end{align}
+
+To find the constitutive relationship, first differentiate the total strain:
+\begin{equation}
+	\srate = \srate_1 + \srate_2 = \frac{\sigma}{\eta_1} + \srate_2
+\end{equation}
+Now apply the operator $\left[ G_2 + \eta_2 \frac{\partial}{\partial
+t}\right]$.
+\begin{align}
+	\left[ G_2 + \eta_2 \partial_t\right] \srate &= \frac{1}{\eta_1} \left[
+		G_2 + \eta_2 \partial_t\right]\sigma + \partial_t \left[ (G_2 + \eta_2
+	\partial_t) \gamma_2\right] \\
+	&= \frac{G_2}{\eta_1}\sigma + \left( \frac{\eta_2}{\eta_1}+1\right)
+	\dot{\sigma}
+\end{align}
+
+Thus the constitutive relationship for a Jeffreys fluid is
+\begin{equation}
+	\eta_1 \left( 1 + \lambda_1 \frac{\partial}{\partial t} \right)
+	\srate = \left( 1 + \lambda_2\frac{\partial}{\partial
+	t}\right) \sigma
+\end{equation}
+where the timescales are
+\begin{align}
+	\text{relaxation timescale} \hspace{1em} \lambda_1 &=
+	\frac{\eta_1+\eta_2}{G_2} \\
+	\text{retardation timescale} \hspace{1em} \lambda_2 &= \frac{\eta_2}{G_2}
+\end{align}
+
+The fluid has both relaxation and retardation, with $\lambda \ge \lambda_2$.
+Typically, $\lambda_1/\lambda_2$ could be large. If $\lambda_2 = 0$ we have a
+Maxwell fluid.
+
+\begin{itemize}
+	 \item On short timescales $t \ll \lambda_1, \lambda_2$ we have $\lambda_1
+		 \dot{\sigma} \sim \eta \lambda_2 \partial_t \srate \implies \sigma
+		 \sim \eta\frac{\lambda_2}{\lambda_1} \srate$ which is a viscous
+		 response.
+	\item On long timescales $t \gg \lambda_1, \lambda_2$ we have $\sigma \sim
+		\eta \srate$ which is a viscous response.
+	\item On intermediate timescales $\lambda_2 \ll t \ll \lambda_1$ we have
+		$\lambda_1 \dot{\sigma} \sim \eta \srate \implies \sigma \sim
+		\frac{\eta}{\lambda_1} \srate$ which is an elastic response.
+\end{itemize}
+
 \end{document}
