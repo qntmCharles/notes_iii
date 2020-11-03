@@ -30,7 +30,7 @@
 \contentsline {paragraph}{\nonumberline Region II.}{18}{section*.11}
 \contentsline {paragraph}{\nonumberline Full solution.}{18}{section*.12}
 \contentsline {paragraph}{\nonumberline Physical explanation.}{19}{section*.14}
-\contentsline {section}{\numberline {8}Stratification and internal gravity waves}{19}{section.8}
+\contentsline {section}{\numberline {8}Stratification}{19}{section.8}
 \contentsline {subsection}{\numberline {8.1}Boussinesq approximation}{19}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Stratification in the atmosphere and ocean}{20}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}Small-ampltiude motion about a state of rest}{20}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.2}Atmosphere \& ocean stratification}{20}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Internal gravity waves}{20}{subsection.8.3}

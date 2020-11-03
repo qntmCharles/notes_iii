@@ -1207,13 +1207,14 @@ layer inputs positive vorticity to compensate.
 \end{center}
 
 \lecture{2/11/20}
-\section{Stratification and internal gravity waves}
+\section{Stratification}
 \subsection{Boussinesq approximation}
 We will consider stably stratified flow under the \emph{Boussinesq
 approximation}: we assume the density $\rho$ may be split into two parts
 $\rho_0$ and $\rho'$ with $\rho_0$ constant and $\rho'/\rho_0 \ll 1$. The
 pressure may then also be split into two parts, $p_0(z)$, such that
-$-p_0'(z) = \rho_0 g$, and the remainder $p'$. The vertical component of the
+$-p_0'(z) = \rho_0 g$, and the remainder $p'$. This says $p_0(z)$ is the
+hydrostatic pressure and $p'$ is the excess. The vertical component of the
 momentum equations may then be written
 \begin{align}
 	\frac{\diffD w}{\diffD t} &= -\frac{1}{\rho_0 + \rho'}\frac{\partial
@@ -1236,12 +1237,10 @@ where terms including $\rho'$ are discarded unless multiplying $g$. The
 
 These equations make clear the role of buoyancy: a light fluid parcel
 experiences an upward force and a heavy fluid parcel experiences a downward
-force. 
-
-It iss further useful to write $\rho'(x,y,z,t) = \rho_s (z) +
+force. It is further useful to write $\rho'(x,y,z,t) = \rho_s (z) +
 \tilde{\rho}(x,y,z,t)$ where $\rho_s(z)$ is a \emph{background} or
-\emph{reference} density and $\tilde{\rho}$ is the \emph{dissturbance
-density} which is zero for fluid at rest.
+\emph{reference} density and $\tilde{\rho}$ is the \emph{disturbance density}
+which is zero for fluid at rest.
 
 The stability of the reference density state is determined by the
 \emph{buoyancy frequency} or \emph{Brunt-V\"{a}is\"{a}la frequency} $N$
@@ -1250,7 +1249,7 @@ defined by
 	N^2 = -\frac{g}{\rho_0} \frac{\diffd \rho_s}{\diffd z}
 \end{equation}
 
-\subsection{Stratification in the atmosphere and ocean}
+\subsection{Atmosphere \& ocean stratification}
 In the ocean, the buoyancy frequency $N$ is typically $10^{-2} s^{-1}$ in the
 upper ocean where stratification is strong, and $5 \times 10^{-4} s^{-1}$ in
 the deep ocean, where stratification is weak.
@@ -1270,7 +1269,7 @@ where $T$ is temperature. The corresponding buoyancy frequency is
 In this course we will use the Boussinesq approximation for the atmosphere and
 ocean, despite issues with compressibility.
 
-\subsection{Small-ampltiude motion about a state of rest}
+\subsection{Internal gravity waves}
 We linearise about a resting state with density structure represented by the
 buoyancy frequency $N$. For simplicity, background rotation is ignored for the
 time being. We define the \emph{buoyancy} $\sigma = \rho' g/\rho_0$ for
@@ -1286,7 +1285,7 @@ convenience.
 where the notation $\tilde{\u}$ denotes the disturbance quantities away from a
 state of rest. These can be combined into a single equation for $\tilde{w}$:
 \begin{equation}
-	\nabla^2 \tilde{w}_tt + N^2(\tilde{w}_{xx} + \tilde{w}_{yy}) = 0
+	\nabla^2 \tilde{w}_{tt} + N^2(\tilde{w}_{xx} + \tilde{w}_{yy}) = 0
 \end{equation}
 
 Assuming $N^2$ is constant, seek plane wave solutions $\tilde{w} =
