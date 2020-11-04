@@ -1688,22 +1688,22 @@ Surface tension can be represented by a surface stress (in $N \cdot m^{-1}$,
 derived from a surface energy in $J \cdot m^{-2}$) acting isotropically across
 lines in the surface with stress tensor
 \begin{equation}
-	\symsf{\sigma}^S = \gamma \left( \symsf{I} - \symbf{n}\symbf{n}\right)
+	\symsf{\sigma}^s = \gamma \left( \symsf{I} - \symbf{n}\symbf{n}\right)
 \end{equation}
 The force balance on an arbitrary small area of the interface gives
 \begin{equation}
-	\nabla_S \cdot \symsf{\sigma}^S + \left[ \symsf{\sigma} \cdot
+	\nabla_s \cdot \symsf{\sigma}^s + \left[ \symsf{\sigma} \cdot
 	\symbf{n}\right]^+_- = 0
 \end{equation}
 where $\symbf{n}$ points out of the fluid and $\nabla_S = \left(\symsf{I} -
 \symbf{n}\symbf{n}\right) \cdot \nabla$ is the gradient operator in the surface.
 Hence the jump in fluid stress is
 \begin{align}
-	\left[ \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\nabla_S \cdot \gamma
-	\left( \symsf{I} - \symbf{n}\symbf{n}\right) \cdot \nabla_S \gamma + \gamma
-	\left( \nabla_S \cdot \symbf{n}\right)\symbf{n} + \gamma \cancel{(\symbf{n}\cdot
+	\left[ \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\nabla_s \cdot \gamma
+	\left( \symsf{I} - \symbf{n}\symbf{n}\right) \cdot \nabla_s \gamma + \gamma
+	\left( \nabla_s \cdot \symbf{n}\right)\symbf{n} + \gamma \cancel{(\symbf{n}\cdot
 	\nabla_S)} \symbf{n}\\
-	&= -\nabla_S \gamma + \gamma \kappa \symbf{n}
+	&= -\nabla_s \gamma + \gamma \kappa \symbf{n}
 \end{align}
 The first term is the surface gradient of $\gamma$ and the second is tension
 $\times$ curvature.
@@ -1713,7 +1713,7 @@ Equivalently, in perpendicular and parallel components we have
 	\left[ \symbf{n} \cdot \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= \gamma
 	\kappa \\
 	\left[ \symbf{n} \times \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\symbf{n}
-	\times \nabla_S \gamma
+	\times \nabla_s \gamma
 \end{align}
 
 \subsubsection{Thermophoresis}
@@ -1749,7 +1749,7 @@ Typical values are $H \sim 1^{\circ} C/cm, \gamma' \sim 1
 \text{dyn}/cm/^{\circ} C, a \sim 10^{-2} cm, \rho \sim 1 g \cdot cm^{-3}, \nu
 \sim 10^{-2} cm$. Therefore $U \sim 1 cm\cdot s^{-1}$.
 
-\subsubsection{Thermal problem}
+\paragraph{Thermal problem.}
 Consider the problem
 \begin{equation}
 	\frac{\partial T}{\partial t} + \symbf{u} \cdot \nabla T = \kappa \nabla^2 T
@@ -1766,4 +1766,195 @@ number satisfies
 	\text{Pe} = \frac{U a}{\kappa} = \frac{\text{advection}}{\text{diffusion}}
 	\ll 1
 \end{equation}
+
+For $\text{Pe} \ll 1$, the problem reduces to solving $\nabla^2 T = 0$. Then,
+for example, with an insulating drop ($k_1 \ll k_2$)
+\begin{equation}
+	T = T_0 + \symbf{H}\cdot\x \left(1+\frac{a^3}{2r^3}\right)
+\end{equation}
+and on $r =a$, $T = T_0 + \frac{3}{2}\symbf{H}\cdot\x$. Hence
+\begin{equation}
+	\gamma(T) = \gamma_0 + \gamma' (T-T_0) = \gamma_0 + \frac{3}{2}\gamma'
+	\symbf{H}\cdot\x
+\end{equation}
+
+\paragraph{Fluid problem.}
+The flow is driven by an interfacial force density 
+\begin{align}
+	\symbf{f}_s &= \symsf{\sigma}_1 \cdot \symbf{n} - \symsf{\sigma}_2 \cdot
+	\symbf{n} \\
+	&= \nabla_s \gamma - \gamma \symbf{n}\nabla_s \cdot \symbf{n} \\
+	&= \left( \symsf{I}-\symbf{n}\symbf{n}\right) \cdot \frac{3}{2}\gamma'
+	\symbf{H} - \frac{2}{a} \left( \gamma_0 + \frac{3}{2}\gamma'
+	\symbf{H}\cdot\x\right)\symbf{n} \\
+	&= -\frac{2}{a}\gamma_0 \symbf{n} + \frac{3}{2}\gamma'
+	\symbf{H}\left(\symsf{I}-3\symbf{n}\symbf{n}\right)
+\end{align}
+where the second term drives the motion. For the simple case of equal
+viscosities, $\lambda = 1$,
+\begin{align}
+	\symbf{u}(\y) &= \int_{r=a} \symsf{J}(\y-\x) \cdot \symbf{f}_s(\x) \cdot
+	\diffd S \\
+	&= \frac{3\gamma'}{16 \pi \mu} \symbf{H} \cdot \int \left(\symsf{I} - 3
+	\symbf{n}\symbf{n}\right) \cdot \left( \frac{\symsf{I}}{R} +
+	\frac{\symbf{R}\symbf{R}}{R^3}\right) \, \diffd S \hspace{1em}
+	\text{where} \, \, \, \symbf{R} = \y - \x \\
+	&= \frac{3 \gamma' a}{16 \pi \mu} \symbf{H} \cdot \symsf{G}(\y/a)
+\end{align}
+where, by symmetry of the integral and dimensions,
+\begin{equation}
+	\symsf{G} = \alpha(r/a) \symsf{I} + \beta(r/a)
+	\hat{\symbf{y}} \hat{\symbf{y}}
+\end{equation}
+and $\hat{\symbf{y}} = \symbf{y}/a$. To determine the functions $\alpha,
+\beta$ one can evaluate $G_{ii} = 3\alpha + \beta$ and $\hat{y}_i G_{ij}
+\hat{y}_j = \alpha + \beta$. 
+
+Now $\symbf{u} \cdot \hat{\symbf{y}} = \frac{3\gamma' a}{16 \pi \mu} (\alpha+\beta)
+\symbf{H}\cdot\hat{\symbf{y}}$ which shows the spherical drop remains
+spherical and translates with velocity
+\begin{equation}
+	\symbf{U} = \frac{3 \gamma' a}{16 \pi \mu} \left( \alpha(1) +
+	\beta(1)\right) = -\frac{1}{5} \frac{a}{\mu} \gamma \symbf{H}
+\end{equation}
+
+\subsection{Surfactant effects}
+The concentration $C$ in a small material area of interface $\delta $ changes
+due to
+\begin{enumerate}
+	\item surface diffusion with flux $- D_s \nabla_s C$, where $D_s \sim
+		10^{-9} m^2 s^{-1}$ typically
+	\item absorbtion from the bulk fluid, if soluble, with rate $-k(C-C_0)$
+		from chemical equilibrium and (linearised) kinetics $k \sim 10^3
+		s^{-1}$
+	\item change of area $\Delta (\delta A\, C) = 0 \implies \Delta C =
+		-\frac{C}{\delta A} \Delta \delta A$. To get material
+		$\frac{\diffd}{\diffd t} \delta A$, consider a material volume
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (0,0) ellipse (1 and 0.5);
+				\draw[fill=gray] (.4,2) ellipse (1 and 0.5);
+				\draw[thick,->] (1,0) -- (1.4, 2) node[midway,right]
+				{$\symbf{\delta l}$};
+				\draw (-1,0) -- (-0.6, 2);
+				\draw[thick,->] (.4, 2) -- (.4, 2.8) node[left] {$\symbf{n}\delta A$};
+			\end{tikzpicture}
+		\end{center}
+		Now $\delta V = \symbf{\delta l} \cdot \symbf{n} \delta A$. Hence
+		\begin{equation}
+			\frac{\diffd}{\diffd t} \delta V = \frac{\diffd}{\diffd t}
+			\left[\symbf{\delta l}\right] \cdot \symbf{n} \delta A + \symbf{\delta l} \cdot
+			\frac{\diffd}{\diffd t}\left[ \symbf{n} \delta A\right]
+		\end{equation}
+		We have $\frac{\diffd}{\diffd t} \delta V = \delta V \nabla \cdot
+		\symbf{u}$ and $\frac{\diffd}{\diffd t} \symbf{\delta l} =
+		(\symbf{\delta l} \cdot \nabla) \symbf{u}$ which, since $\symbf{\delta
+		l}$ is arbitrary, gives
+		\begin{equation}
+			\frac{\diffd}{\diffd t} \left[ \symbf{n} \delta A \right] = \left(
+			\symsf{I} \nabla \cdot \symbf{u} - \nabla \symbf{u} \right) \cdot
+			\symbf{n} \delta A
+		\end{equation}
+		Taking the dot product with $\symbf{n}$ and noting $\symbf{n} \cdot
+		\dot{\symbf{n}} = 0$ we have
+		\begin{align}
+			\frac{\diffd}{\diffd t} \delta A &= \left( \nabla \cdot \symbf{u}
+			- \symbf{n} \symbf{n} : \nabla \symbf{u}\right) \delta A \\
+			&= \nabla_s \cdot \symbf{u} \delta A \\
+			&= \delta A \nabla_s \cdot \left[ \symbf{u}_s + (\symbf{u}\cdot
+			\symbf{n})\symbf{n}\right] \\
+			&= \delta A \left[ \nabla_s \cdot \symbf{u}_s +
+			(\symbf{u}\cdot\symbf{n})\nabla_s \cdot \symbf{n} +
+		\cancel{(\symbf{n}\cdot \nabla_s)(\symbf{u}\cdot\symbf{n})}\right]
+		\end{align}
+		Hence we have the \emph{transport equation}
+		\begin{equation}
+			\frac{\diffD C}{\diffD t} = -C \left[ \nabla_s \cdot \symbf{u}_s +
+			(\symbf{u}\cdot\symbf{n})\symbf{n}\right] + D_s \nabla_s^2 C -
+			k(C-C_0)
+		\end{equation}
+\end{enumerate}
+
+\begin{eg}
+	\hspace{1in}
+	\begin{enumerate}
+		\item \emph{Chemophoresis} -- migration in a background concentration
+			gradient $\nabla C^\infty$
+		\item \emph{Rigidifcation of interfaces} -- for example flow past a
+			bubble.
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[thick] (0,0) circle (1);
+					\draw[blue,<-] plot[smooth,domain=-3:3,variable=\y]
+					({0.6+exp(-0.5*\y*\y)},{\y});
+					\draw[blue,<-] plot[smooth,domain=-3:3,variable=\y]
+					({-0.6-exp(-0.5*\y*\y)},{\y});
+					\draw[thick,->] (2.5, 0.3) -- (2.5, -0.3) node[right]
+					{$\symbf{g}$};
+					\draw[blue,<-] (0.5, 0) [partial ellipse = 0:360:0.3 and 0.6];
+					\draw[blue,<-] (-0.5, 0) [partial ellipse = 180:-180:0.3 and 0.6];
+					\draw[red,->] (-0.5, 0) [partial ellipse = -110:-180:0.4
+					and 0.7];
+					\draw[red,->] (0.5, 0) [partial ellipse = -70:0:0.4 and 0.7];
+					\draw (-.8, -0.4) node[red,left] {\tiny $\gamma$ gradient};
+					\draw (0, 0.8) node[red] {\tiny high $\gamma$};
+					\draw (0, -0.8) node[red] {\tiny low $\gamma$};
+					
+					\begin{scope}[shift={(0,-1.3)}]
+						\draw[fill] (0, 0.28) circle (0.06);
+						\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+						-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+					(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+				0.2) (0.02, 0.22)};
+					\end{scope}
+					\begin{scope}[shift={(0.2,-1.27)},rotate=10]
+						\draw[fill] (0, 0.28) circle (0.06);
+						\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+						-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+					(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+				0.2) (0.02, 0.22)};
+					\end{scope}
+					\begin{scope}[shift={(-0.2,-1.27)},rotate=-10]
+						\draw[fill] (0, 0.28) circle (0.06);
+						\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+						-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+					(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+				0.2) (0.02, 0.22)};
+					\end{scope}
+					\begin{scope}[shift={(0.4,-1.21)},rotate=20]
+						\draw[fill] (0, 0.28) circle (0.06);
+						\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+						-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+					(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+				0.2) (0.02, 0.22)};
+					\end{scope}
+					\begin{scope}[shift={(-0.4,-1.21)},rotate=-20]
+						\draw[fill] (0, 0.28) circle (0.06);
+						\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+						-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+					(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+				0.2) (0.02, 0.22)};
+					\end{scope}
+					\begin{scope}[shift={(-0.8,-1)},rotate=-40]
+						\draw[fill] (0, 0.28) circle (0.06);
+						\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+						-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+					(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+				0.2) (0.02, 0.22)};
+					\end{scope}
+					\begin{scope}[shift={(0.8,-1)},rotate=40]
+						\draw[fill] (0, 0.28) circle (0.06);
+						\draw plot[smooth,tension=.5] coordinates {(0, -0.04) (0.02,
+						-0.02) (0, 0) (-0.02, 0.02) (0, 0.04) (0.02, 0.06) (0, 0.08)
+					(-0.02, 0.1) (0, 0.12) (0.02, 0.14) (0, 0.16) (-0.02, 0.18) (0,
+				0.2) (0.02, 0.22)};
+					\end{scope}
+				\end{tikzpicture}
+			\end{center}
+			Flow produces a concentration gradient $\nabla C$, which produces
+			a surface tension gradient $\nabla \gamma$, which produces an
+			opposing flow. In practice, a small contamination has a big effect.
+	\end{enumerate}
+\end{eg}
+
 \end{document}

@@ -40,4 +40,6 @@
 \contentsline {subsection}{\numberline {3.2}Marangoni Flows}{22}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Boundary conditions}{23}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Thermophoresis}{23}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Thermal problem}{24}{subsubsection.3.2.3}
+\contentsline {paragraph}{\nonumberline Thermal problem.}{24}{section*.4}
+\contentsline {paragraph}{\nonumberline Fluid problem.}{24}{section*.5}
+\contentsline {subsection}{\numberline {3.3}Surfactant effects}{25}{subsection.3.3}

@@ -1312,7 +1312,132 @@ Further, note the group velocity is
 	\bm{c}_g \equiv \frac{\partial \omega}{\partial \bm{k}} = \pm
 	\frac{N}{(k^2+l^2)^{1/2} (k^2+l^2+m^2)^{3/2}} (km^2, lm^2, -m(k^2+l^2))
 \end{equation}
-which gives $\bm{c}_g \cdot \bm{k} = 0$, i.e. the group velocity is
-perpendicular to phase surfaces.
+which gives $\bm{c}_g \cdot \bm{k} = 0$, i.e. the group velocity points along
+surfaces of constant phase.
+
+\lecture{4/11/20}
+\section{3D quasi-geostrophic equations}
+\subsection{Basic facts about rotation \& stratification}
+\begin{enumerate}
+	\item Assuming the buoyancy frequency $N$ is constant and $\bm{f}$ is
+		vertical, the dispersion relation for small amplitude waves is
+		\begin{equation}
+			\omega^2 = \frac{N^2 k^2 + f^2 m^2}{k^2 + m^2}
+		\end{equation}
+		where $\bm{k} = (k,l,m)$. Thus the relative strength of stratification
+		vs. rotation is $N/L$ vs. $f/D$, where $L$ is the horizonal
+		lengthscale and $D$ is the vertical lengthscale.
+	\item Typically, $N \gg f$. In the deep ocean, $N \sim 10^{-3} s^{-1}$ and
+		in the upper ocean and atmosphere $N \sim 10^{-2} s^{-1}$, whilst $f
+		\sim 10^{-4} s^{-1}$.
+	\item Rotation is important only if $L \gg D$, which implies vertical
+		velocities are much smaller than horizontal velocities. Hence the
+		\emph{hydrostatic approximation} is valid. 
+	\item Given $L \gg D$, the Coriolis force may be neglected in the vertical
+		momentum equation, and in the horizontal momentum equation only the
+		part of the Coriolis force associateds with the horizontal velocity is
+		important. This can be seen as follows: let $\bm{f} = \bm{f}_h +
+		\bm{f}_v$ and $\bm{u} = \bm{u}_h + \bm{u}_v$, where $_h$ and $_v$
+		denote horizontal and vertical components respectively. Then,
+		\begin{equation}
+			\bm{f} \times \bm{f} = \bm{f}_h \times \bm{u}_h + \bm{f}_v \times
+			\bm{u}_h + \bm{f}_h \times \bm{u}_v + \cancel{\bm{f}_v \times
+			\bm{u}_h} \approx \bm{f}_h \times \bm{u}_h + \bm{f}_v \times
+			\bm{u}_h
+		\end{equation}
+		where we have assumed $\abs{\bm{u}_v} \ll \abs{\bm{u}_h}$. At low
+		latitude, this assumption fails since $\bm{f}_v \ll \bm{f}_h$.
+		Following the traditional approximation, only the $\bm{f}_v \times
+		\bm{u}_h$ contribution is retained in the horizontal momentum
+		equation. This is equivalent to replacing $\bm{f}$ with its vertical
+		component only.
+	\item Given the above assumptions, as well as assuming the fluid layer is
+		thin compared to the radius of the Earth, we get the \emph{primitive
+		equations}. 
+\end{enumerate}
+
+Further, we invoke the $\beta$-plane approximation $f = f_0 + \beta y$. The
+full $3D$ Boussinesq primite equations on a $\beta$-plane are
+\begin{align}
+	\frac{\diffD u}{\diffD t} - (f_0+\beta y)v &= -\frac{1}{\rho_0} p'_x \\
+	\frac{\diffD v}{\diffD t} + (f_0 + \beta y) u &= -\frac{1}{\rho_0} p'_y \\
+	p'_z &= -\rho' g \\
+	\frac{\diffD \rho'}{\diffD t} &= \\
+	\nabla \cdot \bm{u} &= 0
+\end{align}
+
+This set of equations is formed of three \emph{prognostic} equations which can
+be used to evolve the five dependent variables, and two instantaneous
+constraints. There are strong similarities to the shallow water equations on a
+$\beta$-plane: at small Rossby number, the shallow water equations have two
+fast modes (e.g. Poincar\'{e} waves \& Kelvin waves for the shallow-water
+equations, internal gravity waves for the primitive equations) and one slow
+mode of waves which are close to geostrophic balance.
+
+\subsection{Thermal wind equation}
+When the Rossby number is small, we expect the flow to be close to geostrophic
+balance, so that
+\begin{align}
+	-fv &= -\frac{1}{\rho_0} p'_x \\
+	fu &= -\frac{1}{\rho_0} p'_y
+\end{align}
+Differentiating with respect to $z$ and using the hydrostatic relation, we
+have the \emph{thermal wind equations}
+\begin{align}
+	fv_z &= -\frac{g}{\rho_0} \rho'_x \\
+	fu_z &= \frac{g}{\rho_0} \rho'_y
+\end{align}
+Here, the density perturbation $\rho'$ can be viewed analogously to
+temperature. 
+
+\subsection{Potential vorticity}
+In the shallow-water equations, the shallow-water potential vorticity was
+conserved. Under the Boussinesq primite equations, instead the
+\emph{Rossby-Ertal potential vorticity} P is conserved materially, where
+\begin{equation}
+	P = \frac{1}{\rho_0} (\bm{f} +\bm{zeta})\cdot \nabla \rho'
+\end{equation}
+In terms of velocities this is equivalent to
+\begin{equation}
+	P = \frac{1}{\rho_0} \left[ (f_v + v_x - u_y) \rho'_z + u_z \rho'_y -
+		v_z
+	\rho'_x\right]
+\end{equation}
+Note that forcing and dissipation terms are not yet included. These will give
+rise to features in the $P$ field which can affect or drive the evolution of
+the flow.
+
+\subsection{3D quasi-geostrophic equations}
+Following the same procedure as with the shallow-water equations, we aim to
+find a prognostic equations for the slow (close to geostrophic balance) motion
+from the Boussinesq primite equations on a $\beta$-plane.
+
+We write $\rho'(x,y,z,t) = \rho_s(z) + \tilde{\rho}(x,y,z,t)$ where
+$\rho_s(z)$ is in hydrostatic balance, and write $p'(x,y,z,t) = p_s(z) +
+\tilde{p}(x,y,z,t)$ where each term is in hydrostatic balance with the
+corresponding density term, i.e.
+\begin{align}
+	\frac{\diffd p_s}{\diffd z} &= -\rho_s g \\
+	\frac{\partial \tilde{p}}{\partial z} &= - \tilde{\rho} g
+\end{align}
+The density equation $\frac{\diffD \rho'}{\diffD t} = 0$ thus becomes
+\begin{equation}
+	\frac{\diffD \tilde{\rho}}{\diffD t} + w \frac{\diffd \rho_s}{\diffd z} =
+	0
+\end{equation}
+
+The velocity vield is divided into a part which is in geostrophic balance with
+the pressure field (assuming constant $f_0$) and a remainder, the
+\emph{ageostrophic velocity}:
+\begin{equation}
+	\bm{u} = \bm{u}_g + \bm{u}_a \hspace{2em} \text{where} \,\,\, f_0 \bm{k}
+	\times \bm{u}_g = -\frac{1}{\rho_0} \nabla_h \tilde{p}
+\end{equation}
+
+Note that the vertical component of the geostrophic velocity $\bm{u}_g$ is
+zero, and $\nabla \cdot \bm{u}_g = 0$. We also assume that the $y$-lengthscale
+$L_y$ is sufficiently small that $\beta L_y \ll f_0$. Then if $\Ro \ll 1$, it
+follows that $\abs{\bm{u}_a} \ll \abs{\bm{u}_g}$.
+
 
 \end{document}
