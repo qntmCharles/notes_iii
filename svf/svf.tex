@@ -1,24 +1,5 @@
 \documentclass{jknotes}
-\usepackage{joshkirklin,pgfplots,cancel}
-
-\newcommand{\dunder}[1]{\underline{\underline{#1}}}
-\newcommand{\x}{\bm{x}}
-\newcommand{\inv}[1]{\frac{1}{#1}}
-\renewcommand{\u}{\bm{u}}
-\newcommand{\y}{\bm{y}}
-\newcommand{\X}{\bm{X}}
-
-\usepackage{tikz}
-\usepackage{tikz-3dplot}
-\usepackage{pgfplots}
-\pgfplotsset{compat = 1.3}
-\usetikzlibrary{arrows}
-\usetikzlibrary{calc}
-\tikzset{
-    partial ellipse/.style args={#1:#2:#3}{
-        insert path={+ (#1:#3) arc (#1:#2:#3)}
-    }
-}
+\usepackage{/home/cwp/notes/joshkirklin}
 
 \begin{document}
 
@@ -34,14 +15,14 @@
 
 \section{Basic Fluid Mechanics}
 \lecture{09/10/20}
-`Infinitesimal' fluid particles have well-defined density $\rho(\bm{x},t)$,
-velocity $\bm{u}(\bm{x},t)$ and pressure $p(\bm{x},t)$ where $\bm{x}(t)$ is
+`Infinitesimal' fluid particles have well-defined density $\rho(\symbf{x},t)$,
+velocity $\symbf{u}(\symbf{x},t)$ and pressure $p(\symbf{x},t)$ where $\symbf{x}(t)$ is
 the position of the fluid particles.
 
 \begin{defn}
 	The \emph{Eulerian} or \emph{material} derivative
 	\begin{equation}
-		\frac{\diffD}{\diffD{t}} = \frac{\partial}{\partial t} + \bm{u}\cdot
+		\frac{\diffD}{\diffD{t}} = \frac{\partial}{\partial t} + \symbf{u}\cdot
 		\nabla
 	\end{equation}
 	is the rate of change following the fluid particle.
@@ -50,28 +31,28 @@ the position of the fluid particles.
 \subsection{Mass Conservation}
 In general, we have
 \begin{equation}
-\frac{\partial \rho}{\partial t} + \nabla \cdot \left(\rho \bm{u}\right) = 0
-\iff \frac{\diffD{\rho}}{\diffD{t}} + \rho \nabla \cdot \bm{u} = 0
+\frac{\partial \rho}{\partial t} + \nabla \cdot \left(\rho \symbf{u}\right) = 0
+\iff \frac{\diffD{\rho}}{\diffD{t}} + \rho \nabla \cdot \symbf{u} = 0
 \end{equation}
 
 For an incompressible fluid, $\frac{\diffD{\rho}}{\diffD{t}} = 0 \iff \nabla
-\cdot \bm{u} = 0$
+\cdot \symbf{u} = 0$
 
 \subsection{The Stress Tensor}
-The \emph{stress} $\bm{\tau}$ is the force per unit area acting across a
+The \emph{stress} $\symbf{\tau}$ is the force per unit area acting across a
 surface. Force balance on an `infinitesimal' fluid tetahedron shows that the
-stress $\bm{\tau}$ is linearly related to the surface normal $\bm{n}$:
+stress $\symbf{\tau}$ is linearly related to the surface normal $\symbf{n}$:
 \begin{equation}
-	\bm{\tau} = \sigma \cdot \bm{n}
+	\symbf{\tau} = \sigma \cdot \symbf{n}
 \end{equation}
-where $\sigma$ is the \emph{stress tensor} and $\bm{\tau}$ is stress exerted
-by the outside fluid on the inside of a surface with outward normal $\bm{n}$.
+where $\sigma$ is the \emph{stress tensor} and $\symbf{\tau}$ is stress exerted
+by the outside fluid on the inside of a surface with outward normal $\symbf{n}$.
 Angular momentum balance shows that $\sigma$ is symmetric in most fluids.
 
 \subsection{Momentum equation}
 The \emph{Cauchy momentum equation} states in general
 \begin{equation}
-	\frac{\diffD{\bm{u}}}{\diffD{t}} = \bm{F} + \nabla \cdot \sigma
+	\frac{\diffD{\symbf{u}}}{\diffD{t}} = \symbf{F} + \nabla \cdot \sigma
 \end{equation}
 
 \subsection{Energy equation}
@@ -82,8 +63,8 @@ equation with the fluid velocity and integrating over a volume. We have
 	\mathcal{D} = \int_V e_{ij} \sigma_{ij} \,\diffd{V} = \int_V e:\sigma \,
 	\diffd{V}
 \end{equation}
-where $e_{ij} = \frac{1}{2}\left(\nabla \bm{u} + \left(\nabla
-\bm{u}\right)^T\right)$ is the \emph{rate of strain} tensor. Note $e_{ii} = 0$
+where $e_{ij} = \frac{1}{2}\left(\nabla \symbf{u} + \left(\nabla
+\symbf{u}\right)^T\right)$ is the \emph{rate of strain} tensor. Note $e_{ii} = 0$
 by incompressibility and $e_{ij} = e_{ji}$. 
 
 The rate of working by external surface forces on the fluid is
@@ -105,15 +86,15 @@ If the fluid is also incompressible, then the stress tensor takes the form
 \end{equation}
 where $\mu$ is the \emph{dynamic viscosity} and $2 \mu e_{ij}$ is the
 \emph{deviatoric stress}. Note that there is no dependence on the vorticity
-$\bm{\omega} = \nabla \times \bm{u}$.
+$\symbf{\omega} = \nabla \times \symbf{u}$.
 
 For an incompressible Newtonian fluid with uniform viscosity we have the
 \emph{Navier-Stokes equations}
 \begin{equation}
 	\begin{aligned}
-		\rho \frac{\diffD{\bm{u}}}{\diffD{t}} &= - \nabla p + \bm{F} + \mu
-			\nabla^2 \bm{u} \\
-			\nabla \cdot \bm{u} &=0
+		\rho \frac{\diffD{\symbf{u}}}{\diffD{t}} &= - \nabla p + \symbf{F} + \mu
+			\nabla^2 \symbf{u} \\
+			\nabla \cdot \symbf{u} &=0
 	\end{aligned}
 \end{equation}
 
@@ -122,35 +103,35 @@ The rate of viscous dissipation is
 	\mathcal{D} = 2 \mu \int e_{ij} e_{ij} \, \diffd{V}
 \end{equation}
 
-Often body forces are conservative $\bm{F} = -\nabla \phi$ and we incorporate
-$\bm{F}$ into a \emph{modified pressure} $p + \phi$.
+Often body forces are conservative $\symbf{F} = -\nabla \phi$ and we incorporate
+$\symbf{F}$ into a \emph{modified pressure} $p + \phi$.
 
 \subsection{Boundary conditions}
 Kinematic boundary conditions on a fluid-fluid interface are
 \begin{itemize}
-	\item $\left[ \bm{u} \cdot \bm{n} \right]^+_- = 0$ by mass conservation
-	\item $\left[ \bm{u} \times \bm{n} \right]^+_- = \bm{0}$ to avoid infinite
+	\item $\left[ \symbf{u} \cdot \symbf{n} \right]^+_- = 0$ by mass conservation
+	\item $\left[ \symbf{u} \times \symbf{n} \right]^+_- = \symbf{0}$ to avoid infinite
 		stresses
 \end{itemize}
 
 Kinematic boundary conditions on a rigid boundary are
 \begin{itemize}
-	\item No flux: $\bm{u} \cdot \bm{n} = 0$
-	\item No slip: $\bm{u} \times \bm{n} = \bm{0}$
+	\item No flux: $\symbf{u} \cdot \symbf{n} = 0$
+	\item No slip: $\symbf{u} \times \symbf{n} = \symbf{0}$
 \end{itemize}
 
 Dynamic boundary conditions in the absence of surface tension are 
 \begin{equation}
-	\left[\sigma \cdot \bm{n}\right]^+_- = \bm{0}
+	\left[\sigma \cdot \symbf{n}\right]^+_- = \symbf{0}
 \end{equation}
 Note that modified pressure should not be used here.
 
 With surface tension included, the condition becomes
 \begin{equation}
-	\left[ \sigma \cdot \bm{n} \right]^+_- = \gamma \kappa \bm{n} - \nabla_s
+	\left[ \sigma \cdot \symbf{n} \right]^+_- = \gamma \kappa \symbf{n} - \nabla_s
 	\gamma
 \end{equation}
-where $\kappa = \nabla_s \cdot \bm{n}$ is the \emph{curvature} and $\gamma$ is
+where $\kappa = \nabla_s \cdot \symbf{n}$ is the \emph{curvature} and $\gamma$ is
 the \emph{surface tension}.
 
 \subsection{Reynolds number}
@@ -158,8 +139,8 @@ Suppose $U, L, L/U$ are representative velocity, length, and time scales of
 the flow. Then
 \begin{equation}
 	\begin{aligned}
-		\rho \frac{\diffD{\bm{u}}}{\diffD{t}} &\sim \rho \frac{U^2}{L} \\
-		\mu \nabla^2 \bm{u} &\sim \mu \frac{U}{L^2}
+		\rho \frac{\diffD{\symbf{u}}}{\diffD{t}} &\sim \rho \frac{U^2}{L} \\
+		\mu \nabla^2 \symbf{u} &\sim \mu \frac{U}{L^2}
 	\end{aligned}
 \end{equation}
 
@@ -175,8 +156,8 @@ If $\text{Re} \ll 1$ then inertia is negligible and we have the \emph{Stokes
 equations}
 \begin{equation}
 	\begin{aligned}
-		\mu \nabla^2 \bm{u} &= \nabla p - \bm{F} \\
-		\nabla \cdot \bm{u} &= 0
+		\mu \nabla^2 \symbf{u} &= \nabla p - \symbf{F} \\
+		\nabla \cdot \symbf{u} &= 0
 	\end{aligned}
 \end{equation}
 
@@ -202,7 +183,7 @@ Stokes equations are useful in many regimes.
 
 There are some caveats which come with the use of intrinsic length scales.
 \begin{itemize}
-	\item $\bm{u} \cdot \nabla$ and $\nabla^2$ may not involve the same length
+	\item $\symbf{u} \cdot \nabla$ and $\nabla^2$ may not involve the same length
 		scale $L$, e.g. in lubrication theory there is a short length scale
 		for the depth of the flow, which is small compared to other length
 		scales of the flow.
@@ -215,8 +196,8 @@ There are some caveats which come with the use of intrinsic length scales.
 \section{The Stokes Equations}
 \begin{equation}
 	\begin{aligned}
-		\nabla \cdot \sigma &= \mu \nabla^2 \bm{u} - \nabla p = - \bm{F} \\
-		\nabla \cdot \bm{u} &= 0
+		\nabla \cdot \sigma &= \mu \nabla^2 \symbf{u} - \nabla p = - \symbf{F} \\
+		\nabla \cdot \symbf{u} &= 0
 	\end{aligned}
 \end{equation}
 
@@ -228,12 +209,12 @@ applied forces, and responds immediately to changes. With moving boundaries
 (i.e. changing boundary conditions) the flow is \emph{quasi-steady}.
 
 \subsubsection{Linear}
-The Stokes equations are linear in $\bm{F}, p$, and $\bm{u}$. Therefore the
+The Stokes equations are linear in $\symbf{F}, p$, and $\symbf{u}$. Therefore the
 fluid response is proportional to forcing and solutions for a given geometry
 can be superposed.
 
 \subsubsection{Reversible}
-If all the forces change sign, then $\bm{u}$ changes sign. Thus if we reverse
+If all the forces change sign, then $\symbf{u}$ changes sign. Thus if we reverse
 all the forces and the history of their application, the flow returns to its
 original state. Reversibility can sometimes be used with a symmetry to rule
 out certain behaviours of the flow.
@@ -263,12 +244,12 @@ out certain behaviours of the flow.
 		\draw (-2.2,-0.4) -- (-2,- 0.3);
 		\draw (-2.2,-0.2) -- (-2,- 0.1);
 		\draw (0,0) circle (10pt);
-		\draw [->,thick] (0,0) -- (0.4,-1.3) node[right, midway] {$\bm{u}$};
-		\draw [->, thick] (0,0) -- (0,-1) node[left, midway] {$\bm{F}$};
+		\draw [->,thick] (0,0) -- (0.4,-1.3) node[right, midway] {$\symbf{u}$};
+		\draw [->, thick] (0,0) -- (0,-1) node[left, midway] {$\symbf{F}$};
 	\end{tikzpicture}
 
-	Applying reversibility, change $\bm{F} \to -\bm{F}$ so $\bm{u} \to
-	-\bm{u}$:\\
+	Applying reversibility, change $\symbf{F} \to -\symbf{F}$ so $\symbf{u} \to
+	-\symbf{u}$:\\
 	\begin{tikzpicture}
 		\draw (-2,2) -- (-2,-2);
 		\draw (-2.2, 1.8) -- (-2, 1.9);
@@ -291,8 +272,8 @@ out certain behaviours of the flow.
 		\draw (-2.2,-0.4) -- (-2,- 0.3);
 		\draw (-2.2,-0.2) -- (-2,- 0.1);
 		\draw (0,0) circle (10pt);
-		\draw [->,thick] (0,0) -- (-0.4,1.3) node[left, midway] {$\bm{u}$};
-		\draw [->, thick] (0,0) -- (0,1) node[right, midway] {$\bm{F}$};
+		\draw [->,thick] (0,0) -- (-0.4,1.3) node[left, midway] {$\symbf{u}$};
+		\draw [->, thick] (0,0) -- (0,1) node[right, midway] {$\symbf{F}$};
 	\end{tikzpicture}\\
 	Now apply symmetry: reflect the geometry top to bottom.\\
 	\begin{tikzpicture}
@@ -317,26 +298,26 @@ out certain behaviours of the flow.
 		\draw (-2.2,-0.4) -- (-2,- 0.3);
 		\draw (-2.2,-0.2) -- (-2,- 0.1);
 		\draw (0,0) circle (10pt);
-		\draw [->,thick] (0,0) -- (-0.4,-1.3) node[left, midway] {$\bm{u}$};
-		\draw [->, thick] (0,0) -- (0,-1) node[right, midway] {$\bm{F}$};
+		\draw [->,thick] (0,0) -- (-0.4,-1.3) node[left, midway] {$\symbf{u}$};
+		\draw [->, thick] (0,0) -- (0,-1) node[right, midway] {$\symbf{F}$};
 	\end{tikzpicture}
 
 	Comparing with the original situation, we see there can be no lateral
-	component of $\bm{u}$.
+	component of $\symbf{u}$.
 \end{eg}
 
 \subsubsection{Forces balance}
 Since there is no inertia, the forces must balance. From the equations,
 \begin{equation}
-	\nabla \cdot \sigma = - \bm{F} \implies \int_{\partial V} \sigma \cdot
-	\bm{n} \,\diffd S + \int_V \bm{F} \,\diffd V = \bm{0}
+	\nabla \cdot \sigma = - \symbf{F} \implies \int_{\partial V} \sigma \cdot
+	\symbf{n} \,\diffd S + \int_V \symbf{F} \,\diffd V = \symbf{0}
 \end{equation}
 
 This is a consistency check on stress boundary conditions. 
 
 Similarly, in the absence of fluid sources,
 \begin{equation}
-	\nabla \cdot \bm{u} = 0 \implies \int_{\partial V} \bm{u} \cdot \bm{n} \,
+	\nabla \cdot \symbf{u} = 0 \implies \int_{\partial V} \symbf{u} \cdot \symbf{n} \,
 	\diffd S = 0
 \end{equation}
 
@@ -355,8 +336,8 @@ the fluid must be viscously dissipated instantaneously. We have
 	&= \int \sigma_{ij} \frac{\partial u_i}{\partial x_j} + p e_{ii} \, \diffd V \\
 	&= \int \frac{\partial}{\partial x_j} \sigma_{ij} u_i - u_i \frac{\partial
 	\sigma_{ij}}{\partial x_j} \, \diffd V \\
-	&= \int_{\partial V} \bm{u} \cdot \sigma \cdot \bm{n} \, \diffd S + \int
-	\bm{u} \cdot \bm{F} \, \diffd V
+	&= \int_{\partial V} \symbf{u} \cdot \sigma \cdot \symbf{n} \, \diffd S + \int
+	\symbf{u} \cdot \symbf{F} \, \diffd V
 	\end{aligned}
 \end{equation}
 
@@ -366,42 +347,42 @@ second term is the work done by body forces.
 \subsubsection{Three Theorems Based on Dissipation Integrals}
 \begin{lemma}
 	\label{l1}
-	If $\bm{u}^I$ is an incompressible flow and $\bm{u}^S$ is a Stokes flow
-	with body force $\bm{F}^S$ then 
+	If $\symbf{u}^I$ is an incompressible flow and $\symbf{u}^S$ is a Stokes flow
+	with body force $\symbf{F}^S$ then 
 	\begin{equation}
-		2\mu \int e^{I} : e^{S} \, \diffd V = \int_{\partial V} \bm{u}^I \cdot
-		\sigma^S \cdot \bm{n} \, \diffd S + \int_V \bm{u}^I \cdot \bm{F}^S \,
+		2\mu \int e^{I} : e^{S} \, \diffd V = \int_{\partial V} \symbf{u}^I \cdot
+		\sigma^S \cdot \symbf{n} \, \diffd S + \int_V \symbf{u}^I \cdot \symbf{F}^S \,
 		\diffd V
 	\end{equation}
 \end{lemma}
 Proof. Same as `work balances dissipation'.
 
 \begin{theorem}
-	Uniqueness theorem. Suppose $\bm{u}_1, \bm{u}_2$ are Stokes flows with the
-	same boundary conditions and body forces, i.e. $\bm{F}_1 = \bm{F}_2$ in
-	$V$ and either $\bm{u}_1 = \bm{u}_2$ or $\sigma_1 \cdot \bm{n} = \sigma_2
-	\cdot \bm{n}$ on $\partial V$. Then $\bm{u}_1 = \bm{u}_2$.
+	Uniqueness theorem. Suppose $\symbf{u}_1, \symbf{u}_2$ are Stokes flows with the
+	same boundary conditions and body forces, i.e. $\symbf{F}_1 = \symbf{F}_2$ in
+	$V$ and either $\symbf{u}_1 = \symbf{u}_2$ or $\sigma_1 \cdot \symbf{n} = \sigma_2
+	\cdot \symbf{n}$ on $\partial V$. Then $\symbf{u}_1 = \symbf{u}_2$.
 \end{theorem}
 
-Proof. Let $\bm{u}^* = \bm{u}_1 - \bm{u}_2$. From lemma~\ref{l1}, 
+Proof. Let $\symbf{u}^* = \symbf{u}_1 - \symbf{u}_2$. From lemma~\ref{l1}, 
 \begin{equation}
 	2\mu \int_V e^* : e^* \, \diffd V = 0
 \end{equation}
 
-Thus $e^* = 0$ in $V$. Hence we can deduce $\bm{u}^*$ consists entirely of
-rigid body motion: $\bm{u}^* = \bm{U} + \bm{\Omega} \times \bm{u}$. Using the
-boundary conditions, we have $\bm{U} = \bm{\Omega} = 0$ thus $\bm{u}_1 =
-\bm{u}_2$, i.e. Stokes flows are unique.
+Thus $e^* = 0$ in $V$. Hence we can deduce $\symbf{u}^*$ consists entirely of
+rigid body motion: $\symbf{u}^* = \symbf{U} + \symbf{\Omega} \times \symbf{u}$. Using the
+boundary conditions, we have $\symbf{U} = \symbf{\Omega} = 0$ thus $\symbf{u}_1 =
+\symbf{u}_2$, i.e. Stokes flows are unique.
 
 \lecture{14/10/20}
 \begin{theorem}
-	Reciprocal theorem. If $\bm{u}_1$ and $\bm{u}_2$ are Stokes flows in $V$
+	Reciprocal theorem. If $\symbf{u}_1$ and $\symbf{u}_2$ are Stokes flows in $V$
 	then
 	\begin{equation}
-		\int_{\partial V} \bm{u}_1 \cdot \sigma_2 \cdot \bm{n} \, \diffd S +
-		\int_V \bm{u}_1 \cdot \bm{F}_2 \, \diffd V = 
-		\int_{\partial V} \bm{u}_2 \cdot \sigma_1 \cdot \bm{n} \, \diffd S +
-		\int_V \bm{u}_2 \cdot \bm{F}_1 \, \diffd V
+		\int_{\partial V} \symbf{u}_1 \cdot \sigma_2 \cdot \symbf{n} \, \diffd S +
+		\int_V \symbf{u}_1 \cdot \symbf{F}_2 \, \diffd V = 
+		\int_{\partial V} \symbf{u}_2 \cdot \sigma_1 \cdot \symbf{n} \, \diffd S +
+		\int_V \symbf{u}_2 \cdot \symbf{F}_1 \, \diffd V
 	\end{equation}
 
 	That is, work done by forces of flow 1 against flow 2 = work done by
@@ -413,7 +394,7 @@ Proof. Apply the lemma twice.
 \begin{theorem}
 	Minimum Dissipation theorem. Among all the incompressible flows in $V$
 	that satisfy given velocity boundary conditions, the dissipation is
-	minimised by the Stokes flow $\bm{u}^S$ with $\bm{F}^s = \bm{0}$
+	minimised by the Stokes flow $\symbf{u}^S$ with $\symbf{F}^s = \symbf{0}$
 	satisfying the same velocity boundary conditions.
 \end{theorem}
 
@@ -426,8 +407,8 @@ Proof. We have
 	\end{aligned}
 \end{equation}
 
-Applying the lemma with $\bm{u}^I = \bm{u}^S - \bm{u}$, the last term is $0$
-since $\bm{u}^I = 0$ on $\partial V$ and $\bm{F}^S = 0$ on $V$. Thus
+Applying the lemma with $\symbf{u}^I = \symbf{u}^S - \symbf{u}$, the last term is $0$
+since $\symbf{u}^I = 0$ on $\partial V$ and $\symbf{F}^S = 0$ on $V$. Thus
 \begin{equation}
 	0 \le \mathcal{D} - \mathcal{D}^S
 \end{equation}
@@ -438,7 +419,7 @@ since $\bm{u}^I = 0$ on $\partial V$ and $\bm{F}^S = 0$ on $V$. Thus
 		\item Consider an irregularly shaped body in a Stokes flow with
 			inscribing circle $S_1$ with radius $a_1$ and circumscribing
 			circle $S_2$ with radius $a_2$. Suppose the body experiences a
-			force $\bm{F}$ and has uniform velocity $\bm{U}$.
+			force $\symbf{F}$ and has uniform velocity $\symbf{U}$.
 		\begin{center}
 			\begin{tikzpicture}[scale=0.4]
 				\draw plot[smooth, tension=.7] coordinates {(-3.5, 0.5) (-3,
@@ -449,16 +430,16 @@ since $\bm{u}^I = 0$ on $\partial V$ and $\bm{F}^S = 0$ on $V$. Thus
 				\draw[dashed] (0.61,0.76) circle (4.8);
 				\draw (3.2, 1.8) node {$S_1$};
 				\draw[thick, ->] (0.61,0.76) -- (0.61, -4) node [left, midway]
-				{$\bm{F}$};
+				{$\symbf{F}$};
 				\draw[thick, ->] (0.61,0.76) -- (2, -3) node [right, midway]
-				{$\bm{U}$};
+				{$\symbf{U}$};
 			\end{tikzpicture}
 		\end{center}
-		Applying the theorem by taking $\bm{U}^S$ to be the Stokes flow past
-		$S_1$ and $\bm{U}^I$ to be the Stokes flow past $S_2$ superposed with
+		Applying the theorem by taking $\symbf{U}^S$ to be the Stokes flow past
+		$S_1$ and $\symbf{U}^I$ to be the Stokes flow past $S_2$ superposed with
 		solid body motion in the gap between $S_1$ and $S_2$, we have
 		\begin{equation}
-			(6\pi \mu a_1 U)U \le \bm{F} \cdot \bm{U} \le (6\pi \mu a_2 U)U
+			(6\pi \mu a_1 U)U \le \symbf{F} \cdot \symbf{U} \le (6\pi \mu a_2 U)U
 		\end{equation}
 
 	\item Adding \emph{rigid} particles to a Stokes flow with given
@@ -487,17 +468,17 @@ since $\bm{u}^I = 0$ on $\partial V$ and $\bm{F}^S = 0$ on $V$. Thus
 				node[right,midway] {$\Omega$};
 			\end{tikzpicture}
 		\end{center}
-	\item Inertia increases drag: consider $\rho \frac{\diffD \bm{u}}{\diffD
-		t}$ as $\bm{F}$.
+	\item Inertia increases drag: consider $\rho \frac{\diffD \symbf{u}}{\diffD
+		t}$ as $\symbf{F}$.
 \end{enumerate}
 \end{eg}
 
 \subsection{Representation by Potentials}
-Assume $\bm{F}$ = 0, or that $\bm{F}$ is conservative and absorbed by the
+Assume $\symbf{F}$ = 0, or that $\symbf{F}$ is conservative and absorbed by the
 modified pressure. Consider the Stokes equations
 \begin{align}
-	\mu \nabla^2 \bm{u} &= \nabla p \label{stokes1} \\
-	\nabla \cdot \bm{u} &= 0 \label{stokes2}
+	\mu \nabla^2 \symbf{u} &= \nabla p \label{stokes1} \\
+	\nabla \cdot \symbf{u} &= 0 \label{stokes2}
 \end{align}
 
 From these equations we have
@@ -505,21 +486,21 @@ From these equations we have
 	\begin{aligned}
 		\nabla \cdot \eqref{stokes1} \& \eqref{stokes2} &\implies \nabla^2 p = 0 \implies
 		p \hspace{.6em} \text{is harmonic} \\
-		\nabla \times \eqref{stokes1} &\implies \nabla^2 \bm{\omega} = 0
-		\implies \text{vorticity}\hspace{.6em}\bm{\omega} = \nabla \times
-		\bm{u} \hspace{.6em} \text{is harmonic} \\
-		\nabla^2  \eqref{stokes1} &\implies \nabla^4 \bm{u} = \bm{0} \implies
-		\bm{u} \hspace{.6em} \text{is \emph{bi-harmonic}}
+		\nabla \times \eqref{stokes1} &\implies \nabla^2 \symbf{\omega} = 0
+		\implies \text{vorticity}\hspace{.6em}\symbf{\omega} = \nabla \times
+		\symbf{u} \hspace{.6em} \text{is harmonic} \\
+		\nabla^2  \eqref{stokes1} &\implies \nabla^4 \symbf{u} = \symbf{0} \implies
+		\symbf{u} \hspace{.6em} \text{is \emph{bi-harmonic}}
 	\end{aligned}
 \end{equation}
 
-In two dimensions, we can use a stream-function so that $\bm{u} = \nabla
+In two dimensions, we can use a stream-function so that $\symbf{u} = \nabla
 \times (0,0,\psi)$. Then
 \begin{equation}
 	\omega_z = -\nabla^2 \psi \implies \nabla^4 \psi = 0
 \end{equation}
 
-Similarly, in axisymmetric spherical polars, $\bm{u} = \nabla \times
+Similarly, in axisymmetric spherical polars, $\symbf{u} = \nabla \times
 (0,0,\frac{\Psi}{r \sin \theta})$. Then $\omega_\phi = -\frac{E^2 \Psi}{r\sin
 \theta}$ and $E^4 \Psi = 0$ where
 \begin{equation}
@@ -548,47 +529,47 @@ but it is limited to 2D.
 \subsubsection{Papkovich-Neuber Solution}
 Let $p = \nabla^2 \pi$ where
 \begin{equation}
-	\pi(\bm{x}) = -\frac{1}{4\pi} \int \frac{p(\bm{x'})}{\left|
-	\bm{x}-\bm{x'}\right|} \, \diffd V
+	\pi(\symbf{x}) = -\frac{1}{4\pi} \int \frac{p(\symbf{x'})}{\left|
+	\symbf{x}-\symbf{x'}\right|} \, \diffd V
 \end{equation}
 
-Then the Stokes equations can be written $\nabla^2 \left( \mu \bm{u} - \nabla
+Then the Stokes equations can be written $\nabla^2 \left( \mu \symbf{u} - \nabla
 \pi\right) = 0$. Thus
 \begin{equation}
-	\mu \bm{u} = \nabla \pi - \bm{\Phi}
+	\mu \symbf{u} = \nabla \pi - \symbf{\Phi}
 \end{equation}
-where $\nabla^2 \bm{\Phi} = 0$. Now $\nabla \cdot \bm{u} = 0$ implies
-$\nabla^2 \pi = \nabla \cdot \bm{\Phi}$. Then
+where $\nabla^2 \symbf{\Phi} = 0$. Now $\nabla \cdot \symbf{u} = 0$ implies
+$\nabla^2 \pi = \nabla \cdot \symbf{\Phi}$. Then
 \begin{equation}
-	\pi = \frac{1}{2}\left(\bm{x}\cdot\bm{\Phi} + \chi\right)
+	\pi = \frac{1}{2}\left(\symbf{x}\cdot\symbf{\Phi} + \chi\right)
 \end{equation}
-where $\nabla^2 \psi = 0$. Thus \emph{any} Stokes flow with $\bm{F} = 0$ can
-be written in terms of a harmonic vector $\bm{\Phi}$ and a harmonic scalar
+where $\nabla^2 \chi = 0$. Thus \emph{any} Stokes flow with $\symbf{F} = 0$ can
+be written in terms of a harmonic vector $\symbf{\Phi}$ and a harmonic scalar
 $\chi$. The Stokes equations are then
 \begin{equation}
 	\begin{aligned}
-		2\mu \bm{u} &= \nabla \left(\bm{x} \cdot \bm{\Phi} + \chi\right) -
-	2\bm{\Phi} \\
-	p &= \nabla \cdot \bm{\Phi}
+		2\mu \symbf{u} &= \nabla \left(\symbf{x} \cdot \symbf{\Phi} + \chi\right) -
+	2\symbf{\Phi} \\
+	p &= \nabla \cdot \symbf{\Phi}
 \end{aligned}
 \end{equation}
 which may also be re-written with the $2\mu$ factor absorbed by $p$.
 
 Note the following.
 \begin{enumerate}
-	\item Any irrotational flow $2 \mu \bm{u} = \nabla \chi$ is also a Stokes
-		flow, though $p = 0$ and $\dunder{\sigma} = \nabla \nabla \chi$ which
+	\item Any irrotational flow $2 \mu \symbf{u} = \nabla \chi$ is also a Stokes
+		flow, though $p = 0$ and $\symsf{\sigma} = \nabla \nabla \chi$ which
 		is different from an inviscid irrotational flow.
 	\item It is sometimes possible to find a harmonic scalar $\phi$ with
-		$\chi = \bm{x} \cdot \nabla \phi - 2 \phi$. If so, $\chi$ can be
-		eliminated by writing $\bm{\Phi}' = \bm{\Phi} + \nabla \phi$. For
+		$\chi = \symbf{x} \cdot \nabla \phi - 2 \phi$. If so, $\chi$ can be
+		eliminated by writing $\symbf{\Phi}' = \symbf{\Phi} + \nabla \phi$. For
 		example, if $\chi$ has a spherical harmonic expansion we can eliminate
 		all of the terms except the uniform strain $\chi/2\mu = \frac{1}{2}
-		\bm{x} \cdot \dunder{E} \cdot \bm{x} \iff \bm{u} = \dunder{E} \cdot
-		\bm{x}$, since $\chi = r^n Y_n^m(\theta,\phi) \iff \phi =
+		\symbf{x} \cdot \symsf{E} \cdot \symbf{x} \iff \symbf{u} = \symsf{E} \cdot
+		\symbf{x}$, since $\chi = r^n Y_n^m(\theta,\phi) \iff \phi =
 		\frac{r^n}{n-2} Y_n^m(\theta,\phi)$ which fails for $n=2$.
-	\item Conversely, if $\bm{\Phi} = \nabla \phi$ then we can get the same
-		$\bm{u}$ from $\chi = \bm{x} \cdot \nabla \phi - 2\phi$, which is
+	\item Conversely, if $\symbf{\Phi} = \nabla \phi$ then we can get the same
+		$\symbf{u}$ from $\chi = \symbf{x} \cdot \nabla \phi - 2\phi$, which is
 		easier to calculate.
 \end{enumerate}
 
@@ -624,7 +605,7 @@ where $P_n^m$ are \emph{associated Legendre functions} and $0 \le m \le n$.
 Recall the following results.
 \begin{equation}
 	\begin{aligned}
-		\nabla \x &= \dunder{I} \\
+		\nabla \x &= \symsf{I} \\
 		\nabla r &= \frac{\x}{r} \\
 		\nabla f(r) &= f'(r) \nabla r = f'(r) \frac{\x}{r}
 	\end{aligned}
@@ -634,7 +615,7 @@ Hence we have
 \begin{equation}
 	\begin{aligned}
 		\nabla \inv{r} &= -\frac{\x}{r^3} \\
-		\nabla \nabla \inv{r} &= -\frac{\dunder{I}}{r^3} +
+		\nabla \nabla \inv{r} &= -\frac{\symsf{I}}{r^3} +
 		\frac{3\x\cdot\x}{r^5} \\
 		\nabla_i \nabla_j \nabla_k \inv{r} &= \nabla_i \left(
 		-\frac{\delta_{jk}}{r^3} + \frac{3x_j\cdot x_k}{r^5}\right)\\
@@ -645,14 +626,14 @@ Hence we have
 
 Note: these depend only on $\x$ and $r$ and thus have no preferred direction,
 as hoped. We can use these functions to form Papkovich-Neuber potentials
-$\bm{\Phi}$ and $\chi$ by multiplying the harmonic functions above by constant
+$\symbf{\Phi}$ and $\chi$ by multiplying the harmonic functions above by constant
 scalars, vectors or tensors and taking an appropriate number of dot products,
 e.g. the following are all harmonic vectors
 \begin{equation}
-	\bm{A} \inv{r}, \hspace{1em} \dunder{B} \cdot \nabla \inv{r},
-	\hspace{1em} C \nabla \inv{r}, \hspace{1em} (\bm{D} \cdot \nabla)\nabla
-	\inv{r}, \hspace{1em} (\dunder{E}:\nabla\nabla)\nabla\inv{r}, \hspace{1em}
-	\bm{\Omega} \times \nabla \inv{r}
+	\symbf{A} \inv{r}, \hspace{1em} \symsf{B} \cdot \nabla \inv{r},
+	\hspace{1em} C \nabla \inv{r}, \hspace{1em} (\symbf{D} \cdot \nabla)\nabla
+	\inv{r}, \hspace{1em} (\symsf{E}:\nabla\nabla)\nabla\inv{r}, \hspace{1em}
+	\symbf{\Omega} \times \nabla \inv{r}
 \end{equation}
 
 It is useful to distinguish between \emph{true} and \emph{pseudo} tensors.
@@ -661,12 +642,12 @@ True / pseudo tensors keep / change sign upon reflection, e.g.
 	T_{ijk}' = \pm R_{il} R_{jm} R_{kn} T_{lmn}
 \end{equation}
 
-Examples of true vectors are velocity $\bm{u}$; force $\bm{F}$; position $\x$;
- del $\nabla$; identity $\dunder{I}$.
-Examples of pseudo vectors are angular velocity $\bm{\Omega}$; torque
-$\bm{G}$; $\bm{u} \times \x$; vorticity $\bm{\omega} = \nabla \times \bm{u}$.
-Products obey the obvious parity rules, e.g. helicity $\bm{u} \cdot
-\bm{\Omega}$ is a pseudo scalar.
+Examples of true vectors are velocity $\symbf{u}$; force $\symbf{F}$; position $\x$;
+ del $\nabla$; identity $\symsf{I}$.
+Examples of pseudo vectors are angular velocity $\symbf{\Omega}$; torque
+$\symbf{G}$; $\symbf{u} \times \x$; vorticity $\symbf{\omega} = \nabla \times \symbf{u}$.
+Products obey the obvious parity rules, e.g. helicity $\symbf{u} \cdot
+\symbf{\Omega}$ is a pseudo scalar.
 
 \subsubsection{Solution due to a point force}
 The Papkovich-Neuber solution due to a point force is a Green's function for
@@ -674,78 +655,78 @@ the Stokes equations. This problem is also known as a `Stokeslet'. Consider
 the problem
 \begin{equation}
 	\begin{aligned}
-		\nabla \cdot \dunder{\sigma} &= \mu \nabla^2 \bm{u} - \nabla p = -
-		\bm{F} \delta(\x) \\
-		\nabla \cdot \bm{u} &= 0
+		\nabla \cdot \symsf{\sigma} &= \mu \nabla^2 \symbf{u} - \nabla p = -
+		\symbf{F} \delta(\x) \\
+		\nabla \cdot \symbf{u} &= 0
 	\end{aligned}
 \end{equation}
-with $\bm{u} \to 0$ at infinity. The answer must be linear in $\bm{F}$, but
-otherwise has no orientation. The only choice is $\bm{\Phi} = \alpha
-\frac{\bm{F}}{r}$. We could have tried $\bm{F} \times \nabla \inv{r}$, but
-this is a pseudo vector whilst $\bm{\Phi}$ and $\chi$ need to be true since
-$\bm{u}$ is true. Similar arguments rule out other harmonic functions.
+with $\symbf{u} \to 0$ at infinity. The answer must be linear in $\symbf{F}$, but
+otherwise has no orientation. The only choice is $\symbf{\Phi} = \alpha
+\frac{\symbf{F}}{r}$. We could have tried $\symbf{F} \times \nabla \inv{r}$, but
+this is a pseudo vector whilst $\symbf{\Phi}$ and $\chi$ need to be true since
+$\symbf{u}$ is true. Similar arguments rule out other harmonic functions.
 
 \lecture{19/10/20}
 We have
 \begin{equation}
 	\begin{aligned}
-		2\mu \bm{u} &= \alpha \left( \nabla \left( \frac{\bm{F} \cdot
+		2\mu \symbf{u} &= \alpha \left( \nabla \left( \frac{\symbf{F} \cdot
 			\x}{r}\right) - 2
-		\frac{\bm{F}}{r}\right) \\
-		&= \alpha \left( \frac{\bm{F} \cdot \dunder{I}}{r} -
-	\frac{(\bm{F}\cdot\x)\x}{r^3} - 2\frac{\bm{F}}{r}\right) \\
-	&= -\alpha \left( \frac{\bm{F}}{r} + \frac{(\bm{F}\cdot\x)\x}{r^3}\right)
+		\frac{\symbf{F}}{r}\right) \\
+		&= \alpha \left( \frac{\symbf{F} \cdot \symsf{I}}{r} -
+	\frac{(\symbf{F}\cdot\x)\x}{r^3} - 2\frac{\symbf{F}}{r}\right) \\
+	&= -\alpha \left( \frac{\symbf{F}}{r} + \frac{(\symbf{F}\cdot\x)\x}{r^3}\right)
 \end{aligned}
 \end{equation}
 
 Thus the stress tensor is
 \begin{equation}
-	\dunder{\sigma} = \mu \left( \nabla \bm{u} + \nabla \bm{u}^T\right) -
-	\left(\nabla \cdot \bm{\Phi}\right)\dunder{I} = 3\alpha (\bm{F} \cdot
-	\bm{x}) \frac{\x \x}{r^5}
+	\symsf{\sigma} = \mu \left( \nabla \symbf{u} + \nabla \symbf{u}^T\right) -
+	\left(\nabla \cdot \symbf{\Phi}\right)\symsf{I} = 3\alpha (\symbf{F} \cdot
+	\symbf{x}) \frac{\x \x}{r^5}
 \end{equation}
 
-On any sphere $r=R$, $\bm{n} = \frac{\x}{R}$, and
+On any sphere $r=R$, $\symbf{n} = \frac{\x}{R}$, and
 \begin{equation}
 	\begin{aligned}
-		2\mu \bm{u}\cdot\bm{n} &= -\frac{2\alpha}{R} \bm{F}\cdot\bm{n} \\
-		\dunder{\sigma} \cdot \bm{n} &= 3 \alpha \frac{(\bm{F} \cdot
-		\bm{n}) \bm{n}}{R^2}
+		2\mu \symbf{u}\cdot\symbf{n} &= -\frac{2\alpha}{R} \symbf{F}\cdot\symbf{n} \\
+		\symsf{\sigma} \cdot \symbf{n} &= 3 \alpha \frac{(\symbf{F} \cdot
+		\symbf{n}) \symbf{n}}{R^2}
 	\end{aligned}
 \end{equation}
 
 To determine the constant $\alpha$ we can consider the surface volume flux and
 the surface stress. The surface volume flux is
 \begin{equation}
-	\int_{r=R} \bm{u}\cdot\bm{n}\,\diffd S = -\frac{\alpha \bm{F}}{\mu R}
-	\cdot \int_{r=R} \bm{n} \, \diffd S = 0
+	\int_{r=R} \symbf{u}\cdot\symbf{n}\,\diffd S = -\frac{\alpha \symbf{F}}{\mu R}
+	\cdot \int_{r=R} \symbf{n} \, \diffd S = 0
 \end{equation}
 which does not provide any information on $\alpha$. The surface forces should
-equal $-\bm{F}$. We have
+equal $-\symbf{F}$. We have
 \begin{equation}
-	-\bm{F} = \int_{r=R} \dunder{\sigma} \cdot \bm{n} \, \diffd S = 3\alpha
-	\bm{F} \cdot \int_{r=R} \bm{n} \bm{n} \, \frac{\diffd S}{R^2} = 3 \alpha
-	\bm{F} \cdot \frac{4\pi}{3} \dunder{I} = 4\pi \alpha \bm{F}
+	-\symbf{F} = \int_{r=R} \symsf{\sigma} \cdot \symbf{n} \, \diffd S = 3\alpha
+	\symbf{F} \cdot \int_{r=R} \symbf{n} \symbf{n} \, \frac{\diffd S}{R^2} = 3 \alpha
+	\symbf{F} \cdot \frac{4\pi}{3} \symsf{I} = 4\pi \alpha \symbf{F}
 \end{equation}
 
 Hence we choose $\alpha = -1/4\pi$. Thus the final solution is
 \begin{equation}
-	\bm{u} = \bm{F} \cdot \dunder{J}(\x), \hspace{2em} \dunder{\sigma} =
-	\bm{F} \cdot \dunder{\underline{K}}(\x), \hspace{2em} p =
-	\frac{\bm{F}\cdot\x}{4\pi r^3}
+	\symbf{u} = \symbf{F} \cdot \symsf{J}(\x), \hspace{2em} \symsf{\sigma} =
+	\symbf{F} \cdot \symsf{K}(\x), \hspace{2em} p =
+	\frac{\symbf{F}\cdot\x}{4\pi r^3}
 \end{equation}
-where $\dunder{J}$ is the \emph{Oseen tensor}:
+where $\symsf{J}$ is the \emph{Oseen tensor}:
 \begin{equation}
-	\dunder{J} = \frac{1}{8\pi \mu} \left( \frac{\dunder{I}}{r} +
-		\frac{\x\x}{r^3}\right), \hspace{2em} \dunder{\underline{K}} =
+	\symsf{J} = \frac{1}{8\pi \mu} \left( \frac{\symsf{I}}{r} +
+		\frac{\x\x}{r^3}\right), \hspace{2em} \symsf{K} =
 		-\frac{3}{4\pi} \frac{\x\x\x}{r^5}
 \end{equation}
 
-Finally, from incompressibility $\nabla \cdot \bm{u} = 0$ and the Stokes
-equations $\nabla \cdot \dunder{\sigma} = -\bm{F}\delta(\x)$, we deduce
+Finally, from incompressibility $\nabla \cdot \symbf{u} = 0$ and the Stokes
+equations $\nabla \cdot \symsf{\sigma} = -\symbf{F}\delta(\x)$, we deduce
 \begin{equation}
-	\nabla \cdot \dunder{J} = 0, \hspace{2em} \nabla \cdot
-	\dunder{\underline{K}} = - \dunder{I}\delta(\x)
+	\nabla \cdot \symsf{J} = 0, \hspace{2em} \nabla \cdot
+	\symsf{K} = - \symsf{I}\delta(\x)
 \end{equation}
 
 Note that the velocity scales as $u \propto \inv{r}$: see
@@ -762,7 +743,7 @@ flow can occur on much larger scales than (for example) charge interactions.
 	\draw[smooth,domain=-2:2,blue,->] plot({\x},{-0.05*\x*\x-0.1});
 	\draw[smooth,domain=-2:2,blue,->] plot({\x},{0});
 	\draw[fill=black] (-0.5,0) circle (0.1);
-	\draw[thick,->] (-0.5, 0) -- (1, 0) node[below] {$\bm{F}$};
+	\draw[thick,->] (-0.5, 0) -- (1, 0) node[below] {$\symbf{F}$};
 \end{tikzpicture}
 \end{center}
 \caption{Stokeslet solution for a point force.}
@@ -770,15 +751,15 @@ flow can occur on much larger scales than (for example) charge interactions.
 \end{figure}
 
 \subsubsection{Source flow}
-Consider a source of strength $Q$ with $\nabla \cdot \bm{u} = Q \delta(\x)$.
+Consider a source of strength $Q$ with $\nabla \cdot \symbf{u} = Q \delta(\x)$.
 This is referred to as a \emph{point volume source}. One can show the solution
 is
 \begin{equation}
-	\bm{u} = \frac{Q\x}{4\pi r^3}
+	\symbf{u} = \frac{Q\x}{4\pi r^3}
 \end{equation}
 which is obtained using Papkovich-Neuber potentials
 \begin{equation}
-	\chi = \alpha \frac{Q}{r}, \hspace{2em} \bm{\Phi} = \beta Q \nabla \inv{r}
+	\chi = \alpha \frac{Q}{r}, \hspace{2em} \symbf{\Phi} = \beta Q \nabla \inv{r}
 \end{equation}
 
 \subsubsection{Force dipole, stresslet, rotlet}
@@ -788,20 +769,20 @@ dipole.
 
 \begin{center}
 	\begin{tikzpicture}
-		\draw[fill] (0,0) circle (0.1) node[right] {$\x = \bm{0}$};
-		\draw[fill] (0,1) circle (0.1) node[left] {$\x = \bm{d}$};
-		\draw[thick, ->] (0,0) -- (-1,-0.5) node[above] {$-\bm{F}$};
-		\draw[thick, ->] (0,1) -- (1, 1.5) node[right] {$\bm{F}$};
+		\draw[fill] (0,0) circle (0.1) node[right] {$\x = \symbf{0}$};
+		\draw[fill] (0,1) circle (0.1) node[left] {$\x = \symbf{d}$};
+		\draw[thick, ->] (0,0) -- (-1,-0.5) node[above] {$-\symbf{F}$};
+		\draw[thick, ->] (0,1) -- (1, 1.5) node[right] {$\symbf{F}$};
 	\end{tikzpicture}
 \end{center}
 
 The Stokeslet solution is
 \begin{equation}
-	\bm{u} = \bm{F}\cdot\dunder{J} (\x-\bm{d}) - \bm{F} \cdot \dunder{J}(\x) =
-	\bm{F} \cdot (-\bm{d}\cdot\nabla)\dunder{J}(\x) + \text{h.o.t.}
+	\symbf{u} = \symbf{F}\cdot\symsf{J} (\x-\symbf{d}) - \symbf{F} \cdot \symsf{J}(\x) =
+	\symbf{F} \cdot (-\symbf{d}\cdot\nabla)\symsf{J}(\x) + \text{h.o.t.}
 \end{equation}
 
-Take the limit $\bm{d} \to \bm{0}$ with $\bm{F}\bm{d}$ fixed and split $-F_i
+Take the limit $\symbf{d} \to \symbf{0}$ with $\symbf{F}\symbf{d}$ fixed and split $-F_i
 d_j$ into
 \begin{enumerate}
 	\item An isotropic part $-\frac{1}{3} F_k d_k \delta_{ij}$
@@ -811,12 +792,12 @@ d_j$ into
 			\delta_{ij}
 		\end{equation}
 	\item An antisymmetric part $-\frac{1}{2}\varepsilon_{ijk} G_k$ where
-		$\bm{G} = \bm{d} \times \bm{F}$
+		$\symbf{G} = \symbf{d} \times \symbf{F}$
 \end{enumerate}
 
 The flow contribution from each of these components may then be calculated.
 \begin{enumerate}
-	\item The isotropic component gives no flow since $\nabla \cdot \dunder{J}
+	\item The isotropic component gives no flow since $\nabla \cdot \symsf{J}
 		= 0$
 	\item This component is a \emph{stresslet} representing the following
 		components of motion
@@ -824,24 +805,24 @@ The flow contribution from each of these components may then be calculated.
 			\begin{tikzpicture}[scale=0.7]
 				\draw[fill] (0,1) circle (0.1);
 				\draw[fill] (0,-1) circle (0.1);
-				\draw[thick,->] (0,2) -- (0,1.1) node[right] {$\bm{F}$};
-				\draw[thick,->] (0,-2) -- (0,-1.1) node[right] {$-\bm{F}$};
+				\draw[thick,->] (0,2) -- (0,1.1) node[right] {$\symbf{F}$};
+				\draw[thick,->] (0,-2) -- (0,-1.1) node[right] {$-\symbf{F}$};
 				\draw[fill] (-7,0) circle (0.1);
 				\draw[fill] (-5,0) circle (0.1);
-				\draw[thick,->] (-7,0) -- (-8,0) node[left] {$-\bm{F}$};
-				\draw[thick,->] (-5,0) -- (-4,0) node[right] {$\bm{F}$};
+				\draw[thick,->] (-7,0) -- (-8,0) node[left] {$-\symbf{F}$};
+				\draw[thick,->] (-5,0) -- (-4,0) node[right] {$\symbf{F}$};
 				\draw[fill] (7,0) circle (0.1);
 				\draw[fill] (5,0) circle (0.1);
 				\draw[fill] (6, 1) circle (0.1);
 				\draw[fill] (6, -1) circle (0.1);
-				\draw[thick,->] (7,0) -- (7.8, 0) node[right] {$\bm{F}/2$};
+				\draw[thick,->] (7,0) -- (7.8, 0) node[right] {$\symbf{F}/2$};
 				\draw[thick,->] (5,0) -- (4.2, 0);
 				\draw[thick,->] (6, 1.9) -- (6,1.1);
 				\draw[thick,->] (6,-1.9) -- (6,-1.1);
 			\end{tikzpicture}
 		\end{center}
 
-	\item This component is a \emph{rotlet} due to a point torque $\bm{G}$.
+	\item This component is a \emph{rotlet} due to a point torque $\symbf{G}$.
 		\begin{center}
 			\begin{tikzpicture}
 				\draw[fill] (0,0.5) circle (0.1);
@@ -860,25 +841,25 @@ Both the stresslet and rotlet decay as $\inv{r^2}$.
 
 \subsubsection{Rigid sphere with velocity U}
 Consider a rigid sphere of radius $a$ moving uniformly  with velocity
-$\bm{U}$ in a Stokes flow. We have $\nabla \cdot \bm{u} = 0$ and $\mu \nabla^2
-\bm{u} = \nabla p$ in $r > a$. We require $\bm{u} \to 0$ as $r \to \infty$ and
-$\bm{u} = \bm{U}$ on the sphere's surface $r=a$. The sphere is isotropic, so
-we need harmonic functions of $\x, \bm{U}$ which are linear in $\bm{U}$; decay
+$\symbf{U}$ in a Stokes flow. We have $\nabla \cdot \symbf{u} = 0$ and $\mu \nabla^2
+\symbf{u} = \nabla p$ in $r > a$. We require $\symbf{u} \to 0$ as $r \to \infty$ and
+$\symbf{u} = \symbf{U}$ on the sphere's surface $r=a$. The sphere is isotropic, so
+we need harmonic functions of $\x, \symbf{U}$ which are linear in $\symbf{U}$; decay
 at $\infty$; and are true tensors. We choose
 \begin{equation}
-	\frac{1}{2\mu} \bm{\Phi} = \alpha \bm{U} \inv{r}, \hspace{2em}
-	\frac{1}{2\mu} \chi = \beta \bm{u} \cdot \nabla \inv{r}
+	\frac{1}{2\mu} \symbf{\Phi} = \alpha \symbf{U} \inv{r}, \hspace{2em}
+	\frac{1}{2\mu} \chi = \beta \symbf{u} \cdot \nabla \inv{r}
 \end{equation}
 
 This gives a solution which is a superposition of a Stokeslet and a source
 dipole
 \begin{equation}
-	\bm{u} = -\alpha \left( \frac{\bm{U}}{r} +
-		\frac{(\bm{U}\cdot\x)\x}{r^3}\right) + \beta \left(
-	-\frac{\bm{U}}{r^3} + 3 \frac{(\bm{U}\cdot\x)\x}{r^5}\right)
+	\symbf{u} = -\alpha \left( \frac{\symbf{U}}{r} +
+		\frac{(\symbf{U}\cdot\x)\x}{r^3}\right) + \beta \left(
+	-\frac{\symbf{U}}{r^3} + 3 \frac{(\symbf{U}\cdot\x)\x}{r^5}\right)
 \end{equation}
 
-Enforcing the boundary condition $\bm{u} = \bm{U}$ on $r=a$ requires
+Enforcing the boundary condition $\symbf{u} = \symbf{U}$ on $r=a$ requires
 \begin{equation}
 	\begin{aligned}
 		-\frac{\alpha}{a} - \frac{\beta}{a^3} &= 1, \hspace{2em}
@@ -889,47 +870,47 @@ Enforcing the boundary condition $\bm{u} = \bm{U}$ on $r=a$ requires
 
 Thus the final solution for a sphere in a Stokes flow is
 \begin{equation}
-	\bm{u} = \frac{3}{4}\bm{U}\left(\frac{a}{r} + \frac{a^3}{3r^3} \right) +
-	\frac{3}{4} \frac{(\bm{U}\cdot\x)\x}{r^2} \left( \frac{a}{r} -
+	\symbf{u} = \frac{3}{4}\symbf{U}\left(\frac{a}{r} + \frac{a^3}{3r^3} \right) +
+	\frac{3}{4} \frac{(\symbf{U}\cdot\x)\x}{r^2} \left( \frac{a}{r} -
 	\frac{a^3}{r^3}\right)
 \end{equation}
 
 The corresponding pressure and vorticity, both of which are harmonic and due
 to the Stokeslet, are
 \begin{equation}
-	p = \frac{3}{2}\mu a \frac{\bm{U}\cdot\x}{r^3}, \hspace{2em}\bm{\omega} =
-	-\frac{1}{\mu} \nabla \times \bm{\Phi} = \frac{3a}{2}\frac{\bm{U} \times
-	\bm{x}}{r^3}
+	p = \frac{3}{2}\mu a \frac{\symbf{U}\cdot\x}{r^3}, \hspace{2em}\symbf{\omega} =
+	-\frac{1}{\mu} \nabla \times \symbf{\Phi} = \frac{3a}{2}\frac{\symbf{U} \times
+	\symbf{x}}{r^3}
 \end{equation}
 
 \lecture{21/10/20}
 \subsubsection{Force and stress on a translating sphere}
 The flow at large distances is dominated by the $\inv{r}$ Stokeslet term with
-strength $\bm{F} = 6\pi \mu a \bm{U}$. Since the force across $r = `\infty'$
+strength $\symbf{F} = 6\pi \mu a \symbf{U}$. Since the force across $r = `\infty'$
 must balance the force across $r=a$, we can see without further work that the
-force by the fluid on the sphere i.e. drag $=-6\pi \mu a \bm{U}$. In more
+force by the fluid on the sphere i.e. drag $=-6\pi \mu a \symbf{U}$. In more
 detail:
 \begin{align}
-	\dunder{\sigma} &= -p \dunder{I} + \mu \left( \nabla \bm{u} + \nabla
-	\bm{u}^T\right) \\
-	&= -\frac{3}{2} \mu a \frac{\bm{U}\cdot\x}{r} + \frac{3}{4}\mu \left[
-	\left(-\frac{a}{r^3} - \frac{a^3}{r^5}\right)\left(\x \bm{U} + \bm{U}
+	\symsf{\sigma} &= -p \symsf{I} + \mu \left( \nabla \symbf{u} + \nabla
+	\symbf{u}^T\right) \\
+	&= -\frac{3}{2} \mu a \frac{\symbf{U}\cdot\x}{r} + \frac{3}{4}\mu \left[
+	\left(-\frac{a}{r^3} - \frac{a^3}{r^5}\right)\left(\x \symbf{U} + \symbf{U}
 		\x\right)\right. \\
-		&+ \left.\left(\bm{U}\x + \x \bm{U} + 2\bm{U}\cdot\x
-		\dunder{I}\right)\left(\frac{a}{r^3} - \frac{a^3}{r^5}\right) +
-	\left(\bm{U}\cdot\x\right)\left(-\frac{3a}{r^5}+\frac{5a^3}{r^7}\right)2\x\x\right]
+		&+ \left.\left(\symbf{U}\x + \x \symbf{U} + 2\symbf{U}\cdot\x
+		\symsf{I}\right)\left(\frac{a}{r^3} - \frac{a^3}{r^5}\right) +
+	\left(\symbf{U}\cdot\x\right)\left(-\frac{3a}{r^5}+\frac{5a^3}{r^7}\right)2\x\x\right]
 	\\
-	\implies\dunder{\sigma}\cdot\bm{n}\mid_{r=a} &= -\frac{3}{2}\frac{\mu}{a}
-	(\bm{U}\cdot\bm{n})\bm{n} + \frac{3\mu}{4a}
-	\left[-2(\bm{n}(\bm{U}\cdot\bm{n}) + \bm{U}) +
-	(\bm{U}\cdot\bm{n})(-2)2\bm{n}\right] \\
-	&= -\frac{3\mu}{2a}\bm{U}
+	\implies\symsf{\sigma}\cdot\symbf{n}\mid_{r=a} &= -\frac{3}{2}\frac{\mu}{a}
+	(\symbf{U}\cdot\symbf{n})\symbf{n} + \frac{3\mu}{4a}
+	\left[-2(\symbf{n}(\symbf{U}\cdot\symbf{n}) + \symbf{U}) +
+	(\symbf{U}\cdot\symbf{n})(-2)2\symbf{n}\right] \\
+	&= -\frac{3\mu}{2a}\symbf{U}
 \end{align}
 
 Thus the drag on the sphere is
 \begin{equation}
-	\bm{F} = \int_{r=a} \dunder{\sigma}\cdot \bm{n}\,\diffd S =
-	-\frac{3\mu}{2a} \bm{U} \cdot 4\pi a^2 = -6\pi \mu a \bm{U}
+	\symbf{F} = \int_{r=a} \symsf{\sigma}\cdot \symbf{n}\,\diffd S =
+	-\frac{3\mu}{2a} \symbf{U} \cdot 4\pi a^2 = -6\pi \mu a \symbf{U}
 \end{equation}
 as expected.
 
@@ -937,9 +918,9 @@ as expected.
 The force balance of weight, buoyancy, and drag gives the settling velocity of
 a rigid sphere in a Stokes flow.
 \begin{align}
-	\frac{4}{3}\pi a^3 \rho_s \bm{g} - \frac{4}{3}\pi a^3 \rho \bm{g} - 6\pi
-	\mu a \bm{U} &= 0 \\
-	\implies \bm{U} &= \frac{2a^2}{9\mu}(\rho_s - \rho)\bm{g} \propto a^2
+	\frac{4}{3}\pi a^3 \rho_s \symbf{g} - \frac{4}{3}\pi a^3 \rho \symbf{g} - 6\pi
+	\mu a \symbf{U} &= 0 \\
+	\implies \symbf{U} &= \frac{2a^2}{9\mu}(\rho_s - \rho)\symbf{g} \propto a^2
 \end{align}
 
 \subsubsection{2D potentials}
@@ -947,7 +928,7 @@ The harmonic functions in two-dimensions which are bounded as $r \to \infty$
 are
 \begin{equation}
 	\ln r, \hspace{1em} \nabla \ln r = \frac{\x}{r^2}, \hspace{1em} \nabla
-	\nabla \ln r = \frac{\dunder{I}}{r^2} - \frac{2\x\x}{r^4}, \hspace{1em}\dots
+	\nabla \ln r = \frac{\symsf{I}}{r^2} - \frac{2\x\x}{r^4}, \hspace{1em}\dots
 \end{equation}
 Similar to the 3D spherical case, the harmonic functions in two-dimensions
 which are bounded as $r \to 0$ are
@@ -957,56 +938,56 @@ which are bounded as $r \to 0$ are
 \end{equation}
 
 The 2D Stokeslet solution follows from the Papkovich-Neuber potentials
-$\bm{\Phi} = \frac{\bm{F}}{2\pi} \ln r$ which gives
+$\symbf{\Phi} = \frac{\symbf{F}}{2\pi} \ln r$ which gives
 \begin{align}
-	\bm{u} &= \bm{F}\cdot\dunder{J}^{2D} \\
-	p &= \frac{\bm{F}\cdot\x}{2\pi r^2} \\
-	\dunder{\sigma} &= \bm{F} \cdot \dunder{\underline{K}}^{2D} \\
-	\dunder{J}^{2D} &= \frac{1}{4\pi \mu} \left( -\ln r \dunder{I} +
+	\symbf{u} &= \symbf{F}\cdot\symsf{J}^{2D} \\
+	p &= \frac{\symbf{F}\cdot\x}{2\pi r^2} \\
+	\symsf{\sigma} &= \symbf{F} \cdot \symsf{K}^{2D} \\
+	\symsf{J}^{2D} &= \frac{1}{4\pi \mu} \left( -\ln r \symsf{I} +
 	\frac{\x\x}{r^2}\right) \\
-	\dunder{\underline{K}}^{2D} &= -\frac{1}{\pi} \frac{\x\x\x}{r^4}
+	\symsf{K}^{2D} &= -\frac{1}{\pi} \frac{\x\x\x}{r^4}
 \end{align}
 
-The 2D Stokeslet solution corresponds to a line force $\bm{F}$ \emph{per unit
-length}. Note that $\bm{u} \not\to 0$ as $r \to \infty$ for a line force,
-though $\bm{u} \to 0$ for line dipoles, line quadrupoles, etc.
+The 2D Stokeslet solution corresponds to a line force $\symbf{F}$ \emph{per unit
+length}. Note that $\symbf{u} \not\to 0$ as $r \to \infty$ for a line force,
+though $\symbf{u} \to 0$ for line dipoles, line quadrupoles, etc.
 
 \subsection{Motion of rigid particles}
 \subsubsection{The resistance matrix}
-A rigid particle moving with velocity $\bm{U} + \bm{\Omega} \times \x$ through
-fluid otherwise at rest exerts a force $\bm{F}$ and a couple $\bm{G}$ on the
+A rigid particle moving with velocity $\symbf{U} + \symbf{\Omega} \times \x$ through
+fluid otherwise at rest exerts a force $\symbf{F}$ and a couple $\symbf{G}$ on the
 fluid. By linearity,
 \begin{equation}
-\begin{pmatrix} \bm{F} \\ \bm{G}\end{pmatrix} = \begin{pmatrix} \dunder{A} & 
-\dunder{B} \\ \dunder{C} & \dunder{D} \end{pmatrix} \begin{pmatrix} \bm{U} \\
-\bm{\Omega} \end{pmatrix}
+\begin{pmatrix} \symbf{F} \\ \symbf{G}\end{pmatrix} = \begin{pmatrix} \symsf{A} & 
+\symsf{B} \\ \symsf{C} & \symsf{D} \end{pmatrix} \begin{pmatrix} \symbf{U} \\
+\symbf{\Omega} \end{pmatrix}
 \end{equation}
-where the tensors $\dunder{A} - \dunder{D}$ depend on the size, shape, and
+where the tensors $\symsf{A} - \symsf{D}$ depend on the size, shape, and
 orientation of the body. We refer to this matrix as the \emph{resistance
 matrix}. We have 
 
 \begin{equation}
-	\int_{\text{body}} \bm{u}\cdot\dunder{\sigma}\cdot\bm{n}\,\diffd S = \int
-	(\bm{U} + \bm{\Omega}\times\x)\cdot\dunder{\sigma}\cdot\bm{n}\,\diffd S
-	= \bm{U} \cdot \bm{F} + \bm{\Omega} \cdot \bm{G}
+	\int_{\text{body}} \symbf{u}\cdot\symsf{\sigma}\cdot\symbf{n}\,\diffd S = \int
+	(\symbf{U} + \symbf{\Omega}\times\x)\cdot\symsf{\sigma}\cdot\symbf{n}\,\diffd S
+	= \symbf{U} \cdot \symbf{F} + \symbf{\Omega} \cdot \symbf{G}
 \end{equation}
 
-Similarly, from the reciprocal theorem (with $\bm{F} = 0$), for all $\bm{U}_1,
-\bm{\Omega}_1, \bm{U}_2, \bm{\Omega}_2$, 
+Similarly, from the reciprocal theorem (with $\symbf{F} = 0$), for all $\symbf{U}_1,
+\symbf{\Omega}_1, \symbf{U}_2, \symbf{\Omega}_2$, 
 \begin{equation}
-	(\bm{U}_1, \bm{\Omega}_1)\begin{pmatrix} \dunder{A} & \dunder{B} \\
-	\dunder{C} & \dunder{D} \end{pmatrix} \begin{pmatrix} \bm{U}_2 \\
-	\bm{\Omega}_2\end{pmatrix} = 
-	(\bm{U}_2, \bm{\Omega}_2)\begin{pmatrix} \dunder{A} & \dunder{B} \\
-	\dunder{C} & \dunder{D} \end{pmatrix} \begin{pmatrix} \bm{U}_1 \\
-	\bm{\Omega}_1\end{pmatrix} = 
-	(\bm{U}_1, \bm{\Omega}_1)\begin{pmatrix} \dunder{A}^T & \dunder{C}^T \\
-	\dunder{B}^T & \dunder{D}^T \end{pmatrix} \begin{pmatrix} \bm{U}_2 \\
-	\bm{\Omega}_2\end{pmatrix}
+	(\symbf{U}_1, \symbf{\Omega}_1)\begin{pmatrix} \symsf{A} & \symsf{B} \\
+	\symsf{C} & \symsf{D} \end{pmatrix} \begin{pmatrix} \symbf{U}_2 \\
+	\symbf{\Omega}_2\end{pmatrix} = 
+	(\symbf{U}_2, \symbf{\Omega}_2)\begin{pmatrix} \symsf{A} & \symsf{B} \\
+	\symsf{C} & \symsf{D} \end{pmatrix} \begin{pmatrix} \symbf{U}_1 \\
+	\symbf{\Omega}_1\end{pmatrix} = 
+	(\symbf{U}_1, \symbf{\Omega}_1)\begin{pmatrix} \symsf{A}^T & \symsf{C}^T \\
+	\symsf{B}^T & \symsf{D}^T \end{pmatrix} \begin{pmatrix} \symbf{U}_2 \\
+	\symbf{\Omega}_2\end{pmatrix}
 \end{equation}
 
-Hence $\dunder{A} = \dunder{A}^T$, $\dunder{D} = \dunder{D}^T$ so $\dunder{A}$
-and $\dunder{D}$ are diagonalisable, and $\dunder{B} = \dunder{C}^T$, i.e. the
+Hence $\symsf{A} = \symsf{A}^T$, $\symsf{D} = \symsf{D}^T$ so $\symsf{A}$
+and $\symsf{D}$ are diagonalisable, and $\symsf{B} = \symsf{C}^T$, i.e. the
 force from pure rotation is equal to the couple from pure translation. Since
 the viscous dissipation is positive, the resistance matrix is positive
 definite, so invertible.
@@ -1016,33 +997,33 @@ definite, so invertible.
 	\hspace{2in}
 	\begin{enumerate}
 		\item A body with $3$ independent planes of reflectional symmetry has
-			$\dunder{B} = \dunder{C} = 0$.
+			$\symsf{B} = \symsf{C} = 0$.
 		\item A cube falls with the same speed (and no rotation) in all
-			orientations since $\dunder{A} \propto \dunder{I}$.
-		\item $\dunder{A}$ and $\dunder{D}$ are known for ellipsoids, and
+			orientations since $\symsf{A} \propto \symsf{I}$.
+		\item $\symsf{A}$ and $\symsf{D}$ are known for ellipsoids, and
 			therefore for rods and discs which are limits of ellipsoids.
 	\end{enumerate}
 \end{eg}
 
 The resistance matrix and its inverse the \emph{mobility matrix} are sometimes
 extended to describe a rigid particle placed in a background linear flow
-$\bm{u}^\infty = \bm{U}^\infty + \bm{\Omega}^\infty \times \x +
-\dunder{E}^\infty \cdot \x$, as 
+$\symbf{u}^\infty = \symbf{U}^\infty + \symbf{\Omega}^\infty \times \x +
+\symsf{E}^\infty \cdot \x$, as 
 \begin{equation}
-\begin{pmatrix} \bm{F} \\ \bm{G} \\ \dunder{S} \end{pmatrix} = \begin{pmatrix}
-&&\\&12 \times 12 & \\ &&\end{pmatrix} \begin{pmatrix} \bm{U}-\bm{U}^\infty \\
-\bm{\Omega} - \bm{\Omega}^\infty \\ \dunder{E}^\infty \end{pmatrix}
+\begin{pmatrix} \symbf{F} \\ \symbf{G} \\ \symsf{S} \end{pmatrix} = \begin{pmatrix}
+&&\\&12 \times 12 & \\ &&\end{pmatrix} \begin{pmatrix} \symbf{U}-\symbf{U}^\infty \\
+\symbf{\Omega} - \symbf{\Omega}^\infty \\ \symsf{E}^\infty \end{pmatrix}
 \end{equation}
 
-where $\dunder{S}$ is the stresslet exerted by the particle.
+where $\symsf{S}$ is the stresslet exerted by the particle.
 
 
-If $\dunder{E}^\infty = 0$, a force-free, couple-free particle just translates
-and rotates with the flow. If $\dunder{E}^\infty \ne 0 $ then the particle
+If $\symsf{E}^\infty = 0$, a force-free, couple-free particle just translates
+and rotates with the flow. If $\symsf{E}^\infty \ne 0 $ then the particle
 generates a stresslet. In general, the extra dissipation
 \begin{equation}
-	\bm{F}\cdot(\bm{U} - \bm{U}^\infty) + \bm{G} \cdot (\bm{\Omega} -
-	\bm{\Omega}^\infty) + \dunder{S}:\dunder{E}^\infty
+	\symbf{F}\cdot(\symbf{U} - \symbf{U}^\infty) + \symbf{G} \cdot (\symbf{\Omega} -
+	\symbf{\Omega}^\infty) + \symsf{S}:\symsf{E}^\infty
 \end{equation}
 is positive by the minimum dissipation theorem, thus the extended
 matrix is positive definite, so invertible.
@@ -1050,116 +1031,116 @@ matrix is positive definite, so invertible.
 This is useful because it gives the leading order effects for a small particle
 of size $a$ in a flow of larger lengthscale $L$:
 \begin{equation}
-	\bm{u}^\infty(\x) = \bm{u}^\infty(0) + \x \cdot \nabla \bm{u}^\infty(0) +
+	\symbf{u}^\infty(\x) = \symbf{u}^\infty(0) + \x \cdot \nabla \symbf{u}^\infty(0) +
 	\mathcal{O}(a^2/L^2)
 \end{equation}
 
 \subsection{Fax\'{e}n relations}
 Consider the behaviour of a rigid particle placed in an arbitrary unbounded
-Stokes flow $\bm{u}^\infty(\x)$. Can we find the particle motion $\u^P =
-\bm{U} + \bm{\Omega} \times \x$? Let $\u'$ be the \emph{perturbation flow}
-$\u' = \u - \u^\infty$, which has boundary conditions
+Stokes flow $\symbf{u}^\infty(\x)$. Can we find the particle motion $\symbf{u}^P =
+\symbf{U} + \symbf{\Omega} \times \x$? Let $\symbf{u}'$ be the \emph{perturbation flow}
+$\symbf{u}' = \symbf{u} - \symbf{u}^\infty$, which has boundary conditions
 \begin{align}
-	\u' &\to 0 \hspace{1em} \text{as} \,\,\, \abs{\x} \to \infty \\
-	\u' &= \u^P - \u^\infty(\x) \hspace{1em} \text{on particle}
+	\symbf{u}' &\to 0 \hspace{1em} \text{as} \,\,\, \abs{\x} \to \infty \\
+	\symbf{u}' &= \symbf{u}^P - \symbf{u}^\infty(\x) \hspace{1em} \text{on particle}
 \end{align}
-and $\hat{\u}$ a `test' flow due to particle translation with arbitrary
-velocity $\hat{\bm{V}}$. By linearity, 
+and $\hat{\symbf{u}}$ a `test' flow due to particle translation with arbitrary
+velocity $\hat{\symbf{V}}$. By linearity, 
 \begin{equation}
-	\hat{\dunder{\sigma}} = \hat{\dunder{\underline{\Sigma}}}(\x) \cdot
-	\hat{\bm{V}}
+	\hat{\symsf{\sigma}} = \hat{\symsf{\Sigma}}(\x) \cdot
+	\hat{\symbf{V}}
 \end{equation}
-for some third rank tensor $\hat{\dunder{\Sigma}}$. The reciprocal theorem for
-$\u'$ and $\hat{\u}$ gives
+for some third rank tensor $\hat{\symsf{\Sigma}}$. The reciprocal theorem for
+$\symbf{u}'$ and $\hat{\symbf{u}}$ gives
 \begin{equation}
-	\hat{\bm{V}} \cdot \int_{S_P} \dunder{\sigma}' \cdot \bm{n}\,\diffd S =
-	\hat{\bm{V}} \cdot \int (\u^P - \u^\infty(\x))\cdot
-	\hat{\dunder{\underline{\Sigma}}} \cdot \bm{n}\,\diffd S
+	\hat{\symbf{V}} \cdot \int_{S_P} \symsf{\sigma}' \cdot \symbf{n}\,\diffd S =
+	\hat{\symbf{V}} \cdot \int (\symbf{u}^P - \symbf{u}^\infty(\x))\cdot
+	\hat{\symsf{\Sigma}} \cdot \symbf{n}\,\diffd S
 \end{equation}
-Now $\hat{\bm{V}}$ is arbitrary and contribution from $\int \u^P \cdot
-\hat{\dunder{\underline{\Sigma}}}\cdot\bm{n}\,\diffd S$ is given by
+Now $\hat{\symbf{V}}$ is arbitrary and contribution from $\int \symbf{u}^P \cdot
+\hat{\symsf{\Sigma}}\cdot\symbf{n}\,\diffd S$ is given by
 \begin{equation}
-\begin{pmatrix} \bm{U} & \bm{\Sigma}\end{pmatrix} \begin{pmatrix} \dunder{A} &
-\dunder{B} \\ \dunder{B}^T & \dunder{D} \end{pmatrix} \begin{pmatrix}
-\hat{\bm{V}} \\ \bm{0} \end{pmatrix}
+\begin{pmatrix} \symbf{U} & \symbf{\Sigma}\end{pmatrix} \begin{pmatrix} \symsf{A} &
+\symsf{B} \\ \symsf{B}^T & \symsf{D} \end{pmatrix} \begin{pmatrix}
+\hat{\symbf{V}} \\ \symbf{0} \end{pmatrix}
 \end{equation}
 
 Hence we have \emph{Fax\'{e}n's first formula}
 \begin{equation}
-	\bm{F} = \dunder{A}\cdot\bm{U} + \dunder{B} \cdot \bm{\Omega} - \int
-	\bm{u}^\infty(\x) \cdot
-	\hat{\dunder{\underline{\Sigma}}}\cdot\bm{n}\,\diffd S
+	\symbf{F} = \symsf{A}\cdot\symbf{U} + \symsf{B} \cdot \symbf{\Omega} - \int
+	\symbf{u}^\infty(\x) \cdot
+	\hat{\symsf{\Sigma}}\cdot\symbf{n}\,\diffd S
 \end{equation}
 
-Similar Fax\'{e}n relations can be obtained for the couple $\bm{G}$ and
-stresslet $\dunder{S}$ exerted, by using other test flows.
+Similar Fax\'{e}n relations can be obtained for the couple $\symbf{G}$ and
+stresslet $\symsf{S}$ exerted, by using other test flows.
 
 \begin{eg}
-	For a sphere, we have $\hat{\dunder{\underline{\Sigma}}}\cdot\bm{n} =
-	\frac{3\mu}{2a} \dunder{I}$ on $r=a$, where $\bm{n}$ is \emph{into} the
+	For a sphere, we have $\hat{\symsf{\Sigma}}\cdot\symbf{n} =
+	\frac{3\mu}{2a} \symsf{I}$ on $r=a$, where $\symbf{n}$ is \emph{into} the
 	particle. We also have
 	\begin{equation}
-		\dunder{A} = 6\pi \mu a \dunder{I}, \hspace{2em} \dunder{B} = 0
+		\symsf{A} = 6\pi \mu a \symsf{I}, \hspace{2em} \symsf{B} = 0
 	\end{equation}
 	which gives a translation velocity
 	\begin{equation}
-		\bm{U} = \frac{\bm{F}}{6\pi\mu a} + \frac{1}{4\pi a^2} \int
-		\u^\infty(\x) \, \diffd S
+		\symbf{U} = \frac{\symbf{F}}{6\pi\mu a} + \frac{1}{4\pi a^2} \int
+		\symbf{u}^\infty(\x) \, \diffd S
 	\end{equation}
-	where the last term is an average of $\u^\infty$ over the surface.
+	where the last term is an average of $\symbf{u}^\infty$ over the surface.
 	Moreover, we can Taylor expand this far field velocity
 	\begin{equation}
-		\u^\infty(\x) = \u^\infty(\bm{0}) + \x \cdot \nabla \u^\infty(\bm{0})
-		+ \frac{1}{2}\x\x:\nabla\nabla \u^\infty(\bm{0}) + \dots
+		\symbf{u}^\infty(\x) = \symbf{u}^\infty(\symbf{0}) + \x \cdot \nabla \symbf{u}^\infty(\symbf{0})
+		+ \frac{1}{2}\x\x:\nabla\nabla \symbf{u}^\infty(\symbf{0}) + \dots
 	\end{equation}
 	Therefore we have
 	\begin{equation}
-		\frac{1}{4\pi a^2} \int_{r=a} \u^\infty(\x) \, \diffd S =
-		\u^\infty(\bm{0}) + 0 + \frac{1}{8\pi a^2} \int_{r=a} \x \x \, \diffd
-		S : \nabla \nabla \u^\infty(\bm{0}) + \dots
+		\frac{1}{4\pi a^2} \int_{r=a} \symbf{u}^\infty(\x) \, \diffd S =
+		\symbf{u}^\infty(\symbf{0}) + 0 + \frac{1}{8\pi a^2} \int_{r=a} \x \x \, \diffd
+		S : \nabla \nabla \symbf{u}^\infty(\symbf{0}) + \dots
 	\end{equation}
 	Odd terms, for example $\int_{r=a} \x\x\x\,\diffd S = 0$ by symmetry. Even
-	terms are isotropic and give $\nabla^{2n} \u^\infty(\bm{0})$, but by
-	Stokes equations $\nabla^4 \u^\infty = \bm{0}$. Hence
+	terms are isotropic and give $\nabla^{2n} \symbf{u}^\infty(\symbf{0})$, but by
+	Stokes equations $\nabla^4 \symbf{u}^\infty = \symbf{0}$. Hence
 	\begin{equation}
-		\bm{U} = \frac{\bm{F}}{6\pi\mu a} + \u^\infty(\bm{0}) + \frac{a^2}{6}
-		\nabla^2 \u^\infty(\bm{0})
+		\symbf{U} = \frac{\symbf{F}}{6\pi\mu a} + \symbf{u}^\infty(\symbf{0}) + \frac{a^2}{6}
+		\nabla^2 \symbf{u}^\infty(\symbf{0})
 	\end{equation}
 \end{eg}
 
 \paragraph{Application to two sedimenting spheres.}
 Consider two rigid spheres of radius $a$ sedimenting under a given force
-$\bm{F}$. We wish to calculate the flal speed $\bm{U}$ to
+$\symbf{F}$. We wish to calculate the flal speed $\symbf{U}$ to
 $\mathcal{O}(a^3/R^3)$. One sphere moves in the far-field flow of the other
 sphere, which itself depends on the force, couple, and stresslet exerted at
-leading order. $\bm{F}$ and $\bm{G} = 0$ are the same for each sphere, hence
+leading order. $\symbf{F}$ and $\symbf{G} = 0$ are the same for each sphere, hence
 this far field is the same as for an isolated sphere up to
 $\mathcal{O}(a^4/R^4)$. Fax\'{e}n gives an $\mathcal{O}(a^3/R^3)$ correction
-to $\bm{U}$ from the $\frac{a^2}{6}\nabla^2$ term.
+to $\symbf{U}$ from the $\frac{a^2}{6}\nabla^2$ term.
 
 \lecture{26/10/20}
 \subsection{Integral representations of Stokes flow}
 \subsubsection{Basic integral identity}
-Consider a Stokes flow $\u$ and a Stokeslet flow $\u^S$ due to a point force
-$\bm{F}$ at $\y$. We have $\nabla \cdot \u = \nabla \cdot \u^S = 0$ and
+Consider a Stokes flow $\symbf{u}$ and a Stokeslet flow $\symbf{u}^S$ due to a point force
+$\symbf{F}$ at $\y$. We have $\nabla \cdot \symbf{u} = \nabla \cdot \symbf{u}^S = 0$ and
 \begin{equation}
-	\nabla \cdot \dunder{\sigma} = -\bm{f}, \hspace{2em} \nabla \cdot
-	\dunder{\sigma}^S = -\bm{F} \delta(\x-\y)
+	\nabla \cdot \symsf{\sigma} = -\symbf{f}, \hspace{2em} \nabla \cdot
+	\symsf{\sigma}^S = -\symbf{F} \delta(\x-\y)
 \end{equation}
 
-Apply the reciprocal theorem with $\u_1 = \u, \u_2 = \u^S$. We have
+Apply the reciprocal theorem with $\symbf{u}_1 = \symbf{u}, \symbf{u}_2 = \symbf{u}^S$. We have
 \begin{equation}
-	\int_V \u \cdot \bm{F} \delta(\x-\y) \, \diffd V + \int_{\partial V} \u
-	\cdot \left( \bm{F} \cdot
-		\dunder{\underline{K}}(\x-\y)\right)\cdot\bm{n}\,\diffd S = \int_v
-		\left( \bm{F} \cdot \dunder{J}(\x-\y)\right) \cdot \bm{f} \, \diffd V
-		+ \int_{\partial V} \left( \bm{F} \cdot
-		\dunder{J}(\x-\y)\right)\cdot\dunder{\sigma}\cdot\bm{n}\,\diffd S
+	\int_V \symbf{u} \cdot \symbf{F} \delta(\x-\y) \, \diffd V + \int_{\partial V} \symbf{u}
+	\cdot \left( \symbf{F} \cdot
+		\symsf{K}(\x-\y)\right)\cdot\symbf{n}\,\diffd S = \int_v
+		\left( \symbf{F} \cdot \symsf{J}(\x-\y)\right) \cdot \symbf{f} \, \diffd V
+		+ \int_{\partial V} \left( \symbf{F} \cdot
+		\symsf{J}(\x-\y)\right)\cdot\symsf{\sigma}\cdot\symbf{n}\,\diffd S
 \end{equation}
 
-Note by definition $J$ is even and $K$ is odd, so $\dunder{J}(\x-\y) =
-\dunder{J}(\y-\x)$ and $\dunder{\underline{K}}(\x-\y) =
--\dunder{\underline{K}}(\y-\x)$. Also, $\bm{F}$ is arbitrary so may be
+Note by definition $J$ is even and $K$ is odd, so $\symsf{J}(\x-\y) =
+\symsf{J}(\y-\x)$ and $\symsf{K}(\x-\y) =
+-\symsf{K}(\y-\x)$. Also, $\symbf{F}$ is arbitrary so may be
 factored out by the quotient theorem. We also have from the sampling property
 of the delta function
 \begin{equation}
@@ -1170,64 +1151,64 @@ of the delta function
 Note we require $\y\in\partial V$ to be a smooth point of $\partial V$ for
 this to hold. Hence
 \begin{equation}
-	\int_V \dunder{J}(\y-\x)\cdot\bm{f}(\x)\,\diffd V + \int_{\partial V}
-	\dunder{J}(\y-\x)\cdot\dunder{\sigma}\cdot\bm{n}\,\diffd S +
+	\int_V \symsf{J}(\y-\x)\cdot\symbf{f}(\x)\,\diffd V + \int_{\partial V}
+	\symsf{J}(\y-\x)\cdot\symsf{\sigma}\cdot\symbf{n}\,\diffd S +
 	\int_{\partial V}
-	\u(\x)\cdot\dunder{\underline{K}}(\y-\x)\cdot\bm{n}\,\diffd S =
+	\symbf{u}(\x)\cdot\symsf{K}(\y-\x)\cdot\symbf{n}\,\diffd S =
 	\begin{cases}
-		\u(\y) & \y \in V \\ 0 & \y\not\in V \\ \frac{1}{2} \u(\y) & \y
+		\symbf{u}(\y) & \y \in V \\ 0 & \y\not\in V \\ \frac{1}{2} \symbf{u}(\y) & \y
 	\not\in \partial V \end{cases}
 \end{equation}
 
 \begin{enumerate}
-	\item The above follows the sign conventions: $\bm{n}$ is out of $v$, and
+	\item The above follows the sign conventions: $\symbf{n}$ is out of $v$, and
 		we have $\y - \x$ as  the argument.
-	\item $\bm{f}$ is often not included, i.e. there is no body force or
-		$\bm{f}$ is absorbed into modified pressure
-	\item The jump in the RHS comes from the $\dunder{\underline{K}}$ integral
+	\item $\symbf{f}$ is often not included, i.e. there is no body force or
+		$\symbf{f}$ is absorbed into modified pressure
+	\item The jump in the RHS comes from the $\symsf{K}$ integral
 		which depends on $\inv{r}$ which jumps when $\y$ crosses $\partial
 		V$.
-	\item Usually we only know $\dunder{\sigma}\cdot\bm{n}$ or $\bm{u}$ on
+	\item Usually we only know $\symsf{\sigma}\cdot\symbf{n}$ or $\symbf{u}$ on
 		$\partial V$. In general, we solve as an integral equation for
 		whichever is not specified with $\y \in \partial V$ and then
-		substitute to find $\u$ elsewhere.
+		substitute to find $\symbf{u}$ elsewhere.
 \end{enumerate}
 
 \subsubsection{Far-field approximations/multipole expansion for a moving body}
 For a body of size $a$ and for $\abs{\y} \gg a$ we have by Taylor expanding
 \begin{align}
-	\dunder{J}(\y-\x) &\approx \dunder{J}(\y) - \x \cdot \nabla \dunder{J}(\y)
+	\symsf{J}(\y-\x) &\approx \symsf{J}(\y) - \x \cdot \nabla \symsf{J}(\y)
 	+ \mathcal{O}(\frac{a^2}{y^3}) \\
-	\dunder{\underline{K}}(\y-\x) &\approx \dunder{\underline{K}}(\y) +
+	\symsf{K}(\y-\x) &\approx \symsf{K}(\y) +
 	\mathcal{O}(\frac{a^2}{y^3})
 \end{align}
-Assuming $\bm{f} = 0$, substitute this into the basic integral representation
+Assuming $\symbf{f} = 0$, substitute this into the basic integral representation
 to obtain after some messy algebra
 \begin{equation}
-	\u(\y) \approx \bm{F} \cdot \dunder{J}(\y) + \frac{\bm{G} \times
+	\symbf{u}(\y) \approx \symbf{F} \cdot \symsf{J}(\y) + \frac{\symbf{G} \times
 		\y}{8\pi\mu \abs{\y}^3} + \frac{Q\y}{4\pi\abs{\y}^3} - \frac{3 (\y
-		\cdot \dunder{S} \cdot \y)\y}{8\pi\mu \abs{\y}^5} +
+		\cdot \symsf{S} \cdot \y)\y}{8\pi\mu \abs{\y}^5} +
 		\mathcal{O}(\frac{a^2}{y^3})
 \end{equation}
 where the first term is $\mathcal{O}(\inv{y})$, the three following terms are
-$\mathcal{O}(\frac{a}{y^2})$ and (using $\bm{n}$ out of body)
+$\mathcal{O}(\frac{a}{y^2})$ and (using $\symbf{n}$ out of body)
 \begin{align}
-	\bm{F} &= -\int \dunder{\sigma}\cdot\bm{n}\,\diffd S = \text{force exerted
+	\symbf{F} &= -\int \symsf{\sigma}\cdot\symbf{n}\,\diffd S = \text{force exerted
 	by body}\\
-	\bm{G} &= -\int \x \times \dunder{\sigma} \cdot \bm{n}\,\diffd S =
+	\symbf{G} &= -\int \x \times \symsf{\sigma} \cdot \symbf{n}\,\diffd S =
 	\text{couple exerted by body} \\
-	Q &= \int \u \cdot \bm{n} \,\diffd S = \text{source strength (vanishes for
+	Q &= \int \symbf{u} \cdot \symbf{n} \,\diffd S = \text{source strength (vanishes for
 	rigid body)} \\
-	\dunder{S} &= \int \left[ \frac{1}{2} \left( \x
-			(\dunder{\sigma}\cdot\bm{n}) - 2 \mu \u \bm{n}\right) +
+	\symsf{S} &= \int \left[ \frac{1}{2} \left( \x
+			(\symsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right) +
 			\frac{1}{2}\left( \x
-				(\dunder{\sigma}\cdot\bm{n}) - 2 \mu \u \bm{n}\right)^T -
-				\frac{1}{3}\dunder{I} \text{tr}\left( \x
-			(\dunder{\sigma}\cdot\bm{n}) - 2 \mu \u \bm{n}\right)\right] \,
+				(\symsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right)^T -
+				\frac{1}{3}\symsf{I} \text{tr}\left( \x
+			(\symsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right)\right] \,
 			\diffd S = \text{stresslet exerted}
 \end{align}
 
-Note the terms involving $\u$ in the integrand for $\dunder{S}$ vanish for a
+Note the terms involving $\symbf{u}$ in the integrand for $\symsf{S}$ vanish for a
 rigid body.
 
 \begin{enumerate}
@@ -1240,30 +1221,30 @@ rigid body.
 \lecture{28/10/20}
 \subsubsection{Representation for droplets}
 Consider a droplet occupying a volume $V_1$ with viscosity $\lambda \mu$ in a
-surrounding fluid volume $V_2$ with viscosity $\mu$. Let $\bm{n}$ be
+surrounding fluid volume $V_2$ with viscosity $\mu$. Let $\symbf{n}$ be
 \emph{out} of the droplet. Use viscosity $\mu$ in the Stokeslet tensor
-$\dunder{J}$. We assume for simplicity that there is no body force, $\bm{f} =
-0$, and the far field is at rest, $\bm{u} \to 0$ as $r \to \infty$. Applying
+$\symsf{J}$. We assume for simplicity that there is no body force, $\symbf{f} =
+0$, and the far field is at rest, $\symbf{u} \to 0$ as $r \to \infty$. Applying
 the basic integral identity to each of $V_1$ and $V_2$ we have
 \begin{align}
-	\int_{\partial V} \frac{1}{\lambda} \dunder{J} \cdot \dunder{\sigma_1}
-	\cdot \bm{n} + \u_1 \cdot \dunder{\underline{K}} \cdot \bm{n} \, \diffd S
-	&= \begin{cases} \u_1 & \y \in V_1 \\ 0 & \y \in V_2 \\ \frac{1}{2}\u_1 &
+	\int_{\partial V} \frac{1}{\lambda} \symsf{J} \cdot \symsf{\sigma_1}
+	\cdot \symbf{n} + \symbf{u}_1 \cdot \symsf{K} \cdot \symbf{n} \, \diffd S
+	&= \begin{cases} \symbf{u}_1 & \y \in V_1 \\ 0 & \y \in V_2 \\ \frac{1}{2}\symbf{u}_1 &
 	\y \in \partial V \end{cases} \label{eq:drop1} \\
-	-\int_{\partial V} \frac{1}{\lambda} \dunder{J} \cdot \dunder{\sigma_2}
-	\cdot \bm{n} + \u_2 \cdot \dunder{\underline{K}} \cdot \bm{n} \, \diffd S
-	&= \begin{cases} \u_2 & 0 \in V_1 \\ \u_2 & \y \in V_2 \\ \frac{1}{2}\u_2 &
+	-\int_{\partial V} \frac{1}{\lambda} \symsf{J} \cdot \symsf{\sigma_2}
+	\cdot \symbf{n} + \symbf{u}_2 \cdot \symsf{K} \cdot \symbf{n} \, \diffd S
+	&= \begin{cases} \symbf{u}_2 & 0 \in V_1 \\ \symbf{u}_2 & \y \in V_2 \\ \frac{1}{2}\symbf{u}_2 &
 	\y \in \partial V \end{cases} \label{eq:drop2} \\
 \end{align}
-Note the $-$ sign in \eqref{eq:drop2} is because $\bm{n}$ points into $V_2$.
-Now $\u_1 = \u_2 = \u$ (say) on $\partial V$. So $\lambda$\eqref{eq:drop2} +
+Note the $-$ sign in \eqref{eq:drop2} is because $\symbf{n}$ points into $V_2$.
+Now $\symbf{u}_1 = \symbf{u}_2 = \symbf{u}$ (say) on $\partial V$. So $\lambda$\eqref{eq:drop2} +
 \eqref{eq:drop1} implies
 \begin{equation}
-	\int_{\partial V} \dunder{J}(\y-\x) \cdot (\dunder{\sigma_1} \cdot \bm{n}
-	- \dunder{\sigma_2} \cdot \bm{n})\,\diffd S_x + (\lambda-1) \int_{\partial
-		V} \u \cdot \dunder{\underline{K}}(\y-\x)\cdot\bm{n}\,\diffd S_x =
-		\begin{cases} \lambda \u_1 & \y \in V_1 \\ \u_2 & \y \in V_2 \\
-		\frac{1}{2}(\lambda+1)\u & \y \in \partial V \end{cases}
+	\int_{\partial V} \symsf{J}(\y-\x) \cdot (\symsf{\sigma_1} \cdot \symbf{n}
+	- \symsf{\sigma_2} \cdot \symbf{n})\,\diffd S_x + (\lambda-1) \int_{\partial
+		V} \symbf{u} \cdot \symsf{K}(\y-\x)\cdot\symbf{n}\,\diffd S_x =
+		\begin{cases} \lambda \symbf{u}_1 & \y \in V_1 \\ \symbf{u}_2 & \y \in V_2 \\
+		\frac{1}{2}(\lambda+1)\symbf{u} & \y \in \partial V \end{cases}
 \end{equation}
 
 This integral equation is the basis for powerful numerical methods to
@@ -1271,27 +1252,27 @@ determine droplet shapes and evolution.
 
 \begin{eg}
 	Relaxation of a drop under constant surface tension. The flow is driven by
-	$\dunder{\sigma_2} \cdot \bm{n} - \dunder{\sigma_1} \cdot \bm{n} = \gamma
-	(\nabla \cdot \bm{n})\bm{n}$. We consider $\y \in \partial V$ to find the
+	$\symsf{\sigma_2} \cdot \symbf{n} - \symsf{\sigma_1} \cdot \symbf{n} = \gamma
+	(\nabla \cdot \symbf{n})\symbf{n}$. We consider $\y \in \partial V$ to find the
 	interfacial motion:
 	\begin{enumerate}
 		\item $\lambda = 1$: we have 
 			\begin{equation}
-				\u(\y) = -\gamma \int_{\partial V} (\nabla \cdot
-				\bm{n})\bm{n}\cdot\dunder{J}(\y-\x)\,\diffd S_x
+				\symbf{u}(\y) = -\gamma \int_{\partial V} (\nabla \cdot
+				\symbf{n})\symbf{n}\cdot\symsf{J}(\y-\x)\,\diffd S_x
 			\end{equation}
 			hence the interfacial velocity is determined directly by the
 			current shape of the droplet. It requires only an integral of the
 			forcing over the boundary (a `membrane' of Stokeslets) to
-			determine $\u$.
+			determine $\symbf{u}$.
 		\item $\lambda \ne 1$: to solve the integral equation
 			\begin{equation}
-				\frac{\lambda + 1}{2} \u(\y) = -\gamma \int_{\partial V}
-				(\nabla \cdot \bm{n})\bm{n}\cdot\dunder{J}\,\diffd S_x +
-				(\lambda -1) \int_{\partial V} \u(\x) \cdot
-				\dunder{\underline{K}} \cdot \bm{n} \, \diffd S_x
+				\frac{\lambda + 1}{2} \symbf{u}(\y) = -\gamma \int_{\partial V}
+				(\nabla \cdot \symbf{n})\symbf{n}\cdot\symsf{J}\,\diffd S_x +
+				(\lambda -1) \int_{\partial V} \symbf{u}(\x) \cdot
+				\symsf{K} \cdot \symbf{n} \, \diffd S_x
 			\end{equation}
-			for $\u$, we discretize the integrals and invert the resulting
+			for $\symbf{u}$, we discretize the integrals and invert the resulting
 			matrix equation. The integral equation is singular (so the matrix
 			equation is singular) if $\lambda = 0$ or $\lambda = \infty$. The
 			null eigenmodes are the $6$ rigid body motions ($\lambda =
@@ -1302,15 +1283,15 @@ determine droplet shapes and evolution.
 \end{eg}
 \subsubsection{Representation by Stokeslets alone}
 Consider the flow outside a moving body, e.g. swimming micro-organisms. Though
-we are interested in the flow $\u$ in $V$, we imagine a flow $\u^*$ in $V^*$
-with $\mu^* = \mu$ and $\u^* = \u$ on $\partial V$. Such a flow exists if
-$\int_{\partial V} \u \cdot \bm{n} \, \diffd S = 0$.
+we are interested in the flow $\symbf{u}$ in $V$, we imagine a flow $\symbf{u}^*$ in $V^*$
+with $\mu^* = \mu$ and $\symbf{u}^* = \symbf{u}$ on $\partial V$. Such a flow exists if
+$\int_{\partial V} \symbf{u} \cdot \symbf{n} \, \diffd S = 0$.
 \begin{center}
 	\begin{tikzpicture}[scale=0.4]
 		\draw[fill=gray] plot[smooth, tension=.7] coordinates {(-3.5, 0.5) (-3,
 		2.5) (-1,3.5) (1.5,3) (4,3.5) (5,2.5) (5,0.5) (2.5,-2)
 		(0,-1.5) (-3,-2) (-3.5,0.5)};
-		\draw[thick,->] (1.5,3) -- (3, 4.5) node[right] {$\bm{n}$};
+		\draw[thick,->] (1.5,3) -- (3, 4.5) node[right] {$\symbf{n}$};
 		\draw (1,1) node {$V^*$};
 		\draw (7,2) node {$V, \mu$};
 	\end{tikzpicture}
@@ -1318,19 +1299,19 @@ $\int_{\partial V} \u \cdot \bm{n} \, \diffd S = 0$.
 
 The previous result for drops gives
 \begin{equation}
-	\u(\y) = \int_{\partial V} \dunder{J}(\y-\x) \cdot \bm{f}_S(\x) \, \diffd
+	\symbf{u}(\y) = \int_{\partial V} \symsf{J}(\y-\x) \cdot \symbf{f}_S(\x) \, \diffd
 	S
 \end{equation}
-where $\bm{f}_S = (\dunder{\sigma}^* - \dunder{\sigma})\cdot\bm{n}$ is the
+where $\symbf{f}_S = (\symsf{\sigma}^* - \symsf{\sigma})\cdot\symbf{n}$ is the
 Stokeslet density. Note:
 \begin{enumerate}
-	\item $\dunder{\sigma}^*$ may not be the real stress in $V^*$ unless the
+	\item $\symsf{\sigma}^*$ may not be the real stress in $V^*$ unless the
 		body really is fluid with $\mu = \mu^*$.
-	\item If the body is rigid then $\u^*$ is rigid-body motion and
-		$\dunder{\sigma}^* = \bm{0}$. In this case $\bm{f}_S$ is the stress
-		$-\dunder{\sigma}\cdot\bm{n}$ exerted by the body on the fluid. The
-		external flow depends \emph{only} on $\dunder{\sigma}\cdot\bm{n}$ and
-		\emph{not} on $\u$.
+	\item If the body is rigid then $\symbf{u}^*$ is rigid-body motion and
+		$\symsf{\sigma}^* = \symbf{0}$. In this case $\symbf{f}_S$ is the stress
+		$-\symsf{\sigma}\cdot\symbf{n}$ exerted by the body on the fluid. The
+		external flow depends \emph{only} on $\symsf{\sigma}\cdot\symbf{n}$ and
+		\emph{not} on $\symbf{u}$.
 \end{enumerate}
 
 
@@ -1338,7 +1319,7 @@ Stokeslet density. Note:
 \subsection{Slender-body theory}
 Consider the case of a solid, perhaps flexible, body e.g. flagellum, or fibre
 in a flow. Our aim is to calculate resistance to prescribed motion
-$\bm{V}(s) = \dot{\bm{X}}$ in background flow $\u^\infty(\x)$. 
+$\symbf{V}(s) = \dot{\symbf{X}}$ in background flow $\symbf{u}^\infty(\x)$. 
 
 \begin{center}
 	\begin{tikzpicture}[scale=2]
@@ -1350,7 +1331,7 @@ $\bm{V}(s) = \dot{\bm{X}}$ in background flow $\u^\infty(\x)$.
 		\draw (-1, -1) node {cross-section $\varepsilon R(s, \theta) \ll L$ \&
 		radius of curvature of centreline};
 		\draw[->] (-2.5, -0.8) -- (-1.1, -0.1);
-		\draw (3, 0) node {centreline $\bm{X}(s,t)$};
+		\draw (3, 0) node {centreline $\symbf{X}(s,t)$};
 		\draw (3, -0.3) node {arc length $s \in \left[-L,L\right]$};
 		\draw (2.3, 0.3) node {$s=L$};
 		\draw (-2.2, 0.3) node {$s=-L$};
@@ -1360,13 +1341,13 @@ $\bm{V}(s) = \dot{\bm{X}}$ in background flow $\u^\infty(\x)$.
 Since the body is slender, we can approximate the surface distribution of
 Stokeslets by a distribution along the centreline, i.e.
 \begin{equation}
-	\u(\y) = \u^\infty(\y) + \int_{-L}^L \dunder{J}(\y - \bm{X}(s)) \cdot
-	\bm{f}(s) \, \diffd s
+	\symbf{u}(\y) = \symbf{u}^\infty(\y) + \int_{-L}^L \symsf{J}(\y - \symbf{X}(s)) \cdot
+	\symbf{f}(s) \, \diffd s
 \end{equation}
 
 \lecture{30/10/20}
 Note the integral is the first term in a far-field expansion for a ring of
-Stokeslets. Consider a point $\y = \X(s_0) + \varepsilon \bm{R}(s_0,\theta)$
+Stokeslets. Consider a point $\y = \X(s_0) + \varepsilon \symbf{R}(s_0,\theta)$
 on the surface of the body. 
 \begin{center}
 	\begin{tikzpicture}
@@ -1408,13 +1389,13 @@ so:
 We see the integral is dominated by the contribution from $\varepsilon R \ll
 \abs{s-s_0} \ll L$, where
 \begin{align}
-	\bm{f}(s) &\approx \bm{f}(s_0) \\
+	\symbf{f}(s) &\approx \symbf{f}(s_0) \\
 	\y - \X(s) &\approx \X'(s_0) (s_0-s)
 \end{align}
 Hence we have
 \begin{equation}
-	\bm{V}(s_0) = \u^\infty(\X(s_0)) + \frac{1}{8\pi \mu} \left( \dunder{I} +
-		\X'(s_0) \X'(s_0)\right) \cdot \bm{f}(s_0) \left[ \int_L^{s_0 -
+	\symbf{V}(s_0) = \symbf{u}^\infty(\X(s_0)) + \frac{1}{8\pi \mu} \left( \symsf{I} +
+		\X'(s_0) \X'(s_0)\right) \cdot \symbf{f}(s_0) \left[ \int_L^{s_0 -
 		\mathcal{O}(\varepsilon)} + \int_{s_0+\mathcal{O}(\varepsilon)}^L
 	\frac{\diffd s}{\abs{s-s_0}}\right]
 \end{equation}
@@ -1422,13 +1403,13 @@ Hence we have
 The integral $\left[ \cdot \right] \sim 2 \log \frac{1}{\varepsilon} +
 \mathcal{O}(1)$ and since $\abs{\X'} = 1$,
 \begin{equation}
-	\left[\dunder{I} + \X' \X'\right]^{-1} = \dunder{I} - \frac{1}{2}\X'\X'
+	\left[\symsf{I} + \X' \X'\right]^{-1} = \symsf{I} - \frac{1}{2}\X'\X'
 \end{equation}
 Thus we have the \emph{leading-order slender-body approximation}
 \begin{equation}
-	\bm{f}(s_0) \approx \frac{4\pi \mu}{\log \frac{1}{\varepsilon}} \left(
-		\dunder{I} - \frac{1}{2} \X'\X' \right)\cdot\left(\bm{V}(s_0) -
-	\u^\infty(\X(s_0))\right)
+	\symbf{f}(s_0) \approx \frac{4\pi \mu}{\log \frac{1}{\varepsilon}} \left(
+		\symsf{I} - \frac{1}{2} \X'\X' \right)\cdot\left(\symbf{V}(s_0) -
+	\symbf{u}^\infty(\X(s_0))\right)
 \end{equation}
 
 Note the following:
@@ -1440,8 +1421,8 @@ Note the following:
 	\item  There exists an ad hoc generalisation, called \emph{resistive force
 		theory}, of the form
 		\begin{equation}
-			\bm{f} = \left[ k_{\perp} \dunder{I} + (k_{\parallel} - k_{\perp})
-			\X' \X'\right] \cdot \left[ \u - \u^\infty\right]
+			\symbf{f} = \left[ k_{\perp} \symsf{I} + (k_{\parallel} - k_{\perp})
+			\X' \X'\right] \cdot \left[ \symbf{u} - \symbf{u}^\infty\right]
 		\end{equation}
 		where
 		\begin{equation}
@@ -1456,39 +1437,39 @@ Note the following:
 \end{enumerate}
 
 \begin{eg}
-	Translation of a rigid straight rod with velocity $\bm{V}(s)$, centre-line
-	tangent vector $\X'(s) = \bm{p}$ both constant, and no background flow
-	$\u^\infty = \bm{0}$.
+	Translation of a rigid straight rod with velocity $\symbf{V}(s)$, centre-line
+	tangent vector $\X'(s) = \symbf{p}$ both constant, and no background flow
+	$\symbf{u}^\infty = \symbf{0}$.
 	\begin{center}
 		\begin{tikzpicture}
 			\draw (1.5,2) -- (2, 1.5) -- (-1.5,-2) -- (-2,-1.5) -- (1.5, 2);
-			\draw[thick,->] (0,0) -- (0,-1) node[right] {$\bm{V}$};
+			\draw[thick,->] (0,0) -- (0,-1) node[right] {$\symbf{V}$};
 			\draw[thick,->] (-0.5,0.5) -- (0.5,1.5) node[midway,above]
-			{$\bm{p}$};
+			{$\symbf{p}$};
 		\end{tikzpicture}
 	\end{center}
 
-	If the rod falls perpendicular to its velocity (broadside) then $\bm{p} \cdot
-	\bm{V} = 0$ so
+	If the rod falls perpendicular to its velocity (broadside) then $\symbf{p} \cdot
+	\symbf{V} = 0$ so
 	\begin{equation}
-		\bm{f} = \frac{4\pi\mu}{\log \frac{1}{\varepsilon}} \bm{V},
-		\hspace{2em} \bm{F} = \frac{8\pi\mu L}{\log
-		\frac{1}{\varepsilon}}\bm{V}
+		\symbf{f} = \frac{4\pi\mu}{\log \frac{1}{\varepsilon}} \symbf{V},
+		\hspace{2em} \symbf{F} = \frac{8\pi\mu L}{\log
+		\frac{1}{\varepsilon}}\symbf{V}
 	\end{equation}
 
 	If the rod falls parallel to its velocity (lengthwise), we have
-	$(\bm{p}\cdot\bm{V})\bm{p} = \bm{V}$ so
+	$(\symbf{p}\cdot\symbf{V})\symbf{p} = \symbf{V}$ so
 	\begin{equation}
-		\bm{f} = \frac{2\pi\mu}{\log \frac{1}{\varepsilon}} \bm{V},
-		\hspace{2em} \bm{F} = \frac{4\pi\mu L}{\log
-		\frac{1}{\varepsilon}}\bm{V}
+		\symbf{f} = \frac{2\pi\mu}{\log \frac{1}{\varepsilon}} \symbf{V},
+		\hspace{2em} \symbf{F} = \frac{4\pi\mu L}{\log
+		\frac{1}{\varepsilon}}\symbf{V}
 	\end{equation}
 
 	\begin{enumerate}
 		\item The rod falls lengthwise only twice as fast as broadside.
-		\item The drag $\bm{F}$ scales with $L$, not $\varepsilon R$, apart
-			from $\log \frac{1}{\varepsilon}$, c.f. $\bm{F} = 6\pi\mu a
-			\bm{U}$ for a sphere.
+		\item The drag $\symbf{F}$ scales with $L$, not $\varepsilon R$, apart
+			from $\log \frac{1}{\varepsilon}$, c.f. $\symbf{F} = 6\pi\mu a
+			\symbf{U}$ for a sphere.
 		\item Finite length more important than inertia if $\varepsilon =
 			\frac{a}{L} \gg \text{Re}$.
 		\end{enumerate}
@@ -1508,16 +1489,16 @@ Note the following:
 			
 	Suppose the centreline is
 	\begin{equation}
-		\bm{X}(s) = (-Ut+s, a\cos(ks-\omega t))
+		\symbf{X}(s) = (-Ut+s, a\cos(ks-\omega t))
 	\end{equation}
 	i.e. a linearised wave with $a k \ll 1$. Then
 	\begin{align}
-		\bm{V}(s) &= (-U, a\omega\sin(ks-\omega t)) \\
+		\symbf{V}(s) &= (-U, a\omega\sin(ks-\omega t)) \\
 		\X'(s) &= (1, -ak\sin(ks-\omega t))
 	\end{align}
 	Write $S = \sin(ks-\omega t)$. Slender-body theory gives
 	\begin{align}
-		\bm{f} &= \frac{4\pi\mu}{\log \frac{1}{\varepsilon}} \begin{pmatrix} 1-
+		\symbf{f} &= \frac{4\pi\mu}{\log \frac{1}{\varepsilon}} \begin{pmatrix} 1-
 			\frac{1}{2} & \frac{1}{2}akS \\ \frac{1}{2} akS & 1-
 		\frac{1}{2}(akS)^2 \end{pmatrix} \begin{pmatrix} -U \\ a\omega S
 		\end{pmatrix} \\
@@ -1525,12 +1506,12 @@ Note the following:
 		-\frac{1}{2}U + \frac{1}{2}a^2k\omega S^2 \\ -\frac{1}{2}akUS + a\omega S
 	\end{pmatrix}
 	\end{align}
-	Time averaging $\bm{f}$ gives
+	Time averaging $\symbf{f}$ gives
 	\begin{equation}
-		\langle \bm{f}\rangle = \frac{2\pi\mu}{\log \frac{1}{\varepsilon}}
+		\langle \symbf{f}\rangle = \frac{2\pi\mu}{\log \frac{1}{\varepsilon}}
 	\begin{pmatrix} -U + \frac{1}{2}a^2k\omega \\ \end{pmatrix}
 	\end{equation}
-	There is no net force on the body, therefore $\langle \bm{f}\rangle = 0$
+	There is no net force on the body, therefore $\langle \symbf{f}\rangle = 0$
 	which implies $U = \frac{1}{2}a^2k\omega$.
 \end{eg}
 
@@ -1707,31 +1688,31 @@ Surface tension can be represented by a surface stress (in $N \cdot m^{-1}$,
 derived from a surface energy in $J \cdot m^{-2}$) acting isotropically across
 lines in the surface with stress tensor
 \begin{equation}
-	\dunder{\sigma}^S = \gamma \left( \dunder{I} - \bm{n}\bm{n}\right)
+	\symsf{\sigma}^S = \gamma \left( \symsf{I} - \symbf{n}\symbf{n}\right)
 \end{equation}
 The force balance on an arbitrary small area of the interface gives
 \begin{equation}
-	\nabla_S \cdot \dunder{\sigma}^S + \left[ \dunder{\sigma} \cdot
-	\bm{n}\right]^+_- = 0
+	\nabla_S \cdot \symsf{\sigma}^S + \left[ \symsf{\sigma} \cdot
+	\symbf{n}\right]^+_- = 0
 \end{equation}
-where $\bm{n}$ points out of the fluid and $\nabla_S = \left(\dunder{I} -
-\bm{n}\bm{n}\right) \cdot \nabla$ is the gradient operator in the surface.
+where $\symbf{n}$ points out of the fluid and $\nabla_S = \left(\symsf{I} -
+\symbf{n}\symbf{n}\right) \cdot \nabla$ is the gradient operator in the surface.
 Hence the jump in fluid stress is
 \begin{align}
-	\left[ \dunder{\sigma} \cdot \bm{n}\right]^+_- &= -\nabla_S \cdot \gamma
-	\left( \dunder{I} - \bm{n}\bm{n}\right) \cdot \nabla_S \gamma + \gamma
-	\left( \nabla_S \cdot \bm{n}\right)\bm{n} + \gamma \cancel{(\bm{n}\cdot
-	\nabla_S)} \bm{n}\\
-	&= -\nabla_S \gamma + \gamma \kappa \bm{n}
+	\left[ \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\nabla_S \cdot \gamma
+	\left( \symsf{I} - \symbf{n}\symbf{n}\right) \cdot \nabla_S \gamma + \gamma
+	\left( \nabla_S \cdot \symbf{n}\right)\symbf{n} + \gamma \cancel{(\symbf{n}\cdot
+	\nabla_S)} \symbf{n}\\
+	&= -\nabla_S \gamma + \gamma \kappa \symbf{n}
 \end{align}
 The first term is the surface gradient of $\gamma$ and the second is tension
 $\times$ curvature.
 
 Equivalently, in perpendicular and parallel components we have
 \begin{align}
-	\left[ \bm{n} \cdot \dunder{\sigma} \cdot \bm{n}\right]^+_- &= \gamma
+	\left[ \symbf{n} \cdot \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= \gamma
 	\kappa \\
-	\left[ \bm{n} \times \dunder{\sigma} \cdot \bm{n}\right]^+_- &= -\bm{n}
+	\left[ \symbf{n} \times \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\symbf{n}
 	\times \nabla_S \gamma
 \end{align}
 
@@ -1771,14 +1752,14 @@ Typical values are $H \sim 1^{\circ} C/cm, \gamma' \sim 1
 \subsubsection{Thermal problem}
 Consider the problem
 \begin{equation}
-	\frac{\partial T}{\partial t} + \u \cdot \nabla T = \kappa \nabla^2 T
+	\frac{\partial T}{\partial t} + \symbf{u} \cdot \nabla T = \kappa \nabla^2 T
 \end{equation}
-with boundary conditions $\nabla T \to \bm{H}$ as $\abs{\x} \to \infty$ and
+with boundary conditions $\nabla T \to \symbf{H}$ as $\abs{\x} \to \infty$ and
 \begin{equation}
-	\left[ T\right]^+_- = \left[ k \bm{n} \cdot \nabla T\right]^+_- = 0
+	\left[ T\right]^+_- = \left[ k \symbf{n} \cdot \nabla T\right]^+_- = 0
 	\hspace{2em} \text{on} \,\, \abs{\x} = a
 \end{equation}
-where $k$ is the conductivity ($\bm{q} = -k \nabla T$) and $\kappa =
+where $k$ is the conductivity ($\symbf{q} = -k \nabla T$) and $\kappa =
 \frac{k}{\rho C_p}$ is the thermal diffusivity. Assume the \emph{Peclet}
 number satisfies
 \begin{equation}
