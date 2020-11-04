@@ -1756,9 +1756,10 @@ t}\right]$.
 
 Thus the constitutive relationship for a Jeffreys fluid is
 \begin{equation}
-	\eta_1 \left( 1 + \lambda_1 \frac{\partial}{\partial t} \right)
-	\srate = \left( 1 + \lambda_2\frac{\partial}{\partial
-	t}\right) \sigma
+	\left( 1 + \lambda_1\frac{\partial}{\partial
+	t}\right) \sigma=
+	\eta_1 \left( 1 + \lambda_2 \frac{\partial}{\partial t} \right)
+	\srate 
 \end{equation}
 where the timescales are
 \begin{align}
@@ -1767,20 +1768,20 @@ where the timescales are
 	\text{retardation timescale} \hspace{1em} \lambda_2 &= \frac{\eta_2}{G_2}
 \end{align}
 
-The fluid has both relaxation and retardation, with $\lambda \ge \lambda_2$.
+The fluid has both relaxation and retardation, with $\lambda_1 \ge \lambda_2$.
 Typically, $\lambda_1/\lambda_2$ could be large. If $\lambda_2 = 0$ we have a
 Maxwell fluid.
 
 \begin{itemize}
 	 \item On short timescales $t \ll \lambda_1, \lambda_2$ we have $\lambda_1
-		 \dot{\sigma} \sim \eta \lambda_2 \partial_t \srate \implies \sigma
-		 \sim \eta\frac{\lambda_2}{\lambda_1} \srate$ which is a viscous
+		 \dot{\sigma} \sim \eta_1 \lambda_2 \partial_t \srate \implies \sigma
+		 \sim \eta_1\frac{\lambda_2}{\lambda_1} \srate$ which is a viscous
 		 response.
 	\item On long timescales $t \gg \lambda_1, \lambda_2$ we have $\sigma \sim
-		\eta \srate$ which is a viscous response.
+		\eta_1 \srate$ which is a viscous response.
 	\item On intermediate timescales $\lambda_2 \ll t \ll \lambda_1$ we have
-		$\lambda_1 \dot{\sigma} \sim \eta \srate \implies \sigma \sim
-		\frac{\eta}{\lambda_1} \srate$ which is an elastic response.
+		$\lambda_1 \dot{\sigma} \sim \eta_1 \srate \implies \sigma \sim
+		\frac{\eta_1}{\lambda_1} \srate$ which is an elastic response.
 \end{itemize}
 
 \end{document}

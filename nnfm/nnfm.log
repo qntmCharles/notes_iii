@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2019.8.21)  3 NOV 2020 13:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2019.8.21)  4 NOV 2020 09:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2565,15 +2565,15 @@ main' is somewhere in the layer list (or set '/tikz/fill between/on layer='). o
 n input line 1001.
 
 [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1786.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1786.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1787.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1787.
  (./nnfm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1786.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1786.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1787.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1787.
 
 Package rerunfilecheck Info: File `nnfm.out' has not changed.
 (rerunfilecheck)             Checksum: D0571B215BBC8A3A11E0AF4292345419;2077.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1786.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1787.
  ) 
 Here is how much of TeX's memory you used:
  46075 strings out of 493013
@@ -2600,7 +2600,7 @@ ro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb>
-Output written on nnfm.pdf (26 pages, 457868 bytes).
+Output written on nnfm.pdf (26 pages, 457879 bytes).
 PDF statistics:
  405 PDF objects out of 1000 (max. 8388607)
  353 compressed objects within 4 object streams
