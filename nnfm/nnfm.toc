@@ -32,3 +32,7 @@
 \contentsline {paragraph}{\nonumberline Behaviour at short vs. long timescales.}{24}{section*.6}
 \contentsline {subsection}{\numberline {6.3}Kelvin-Voigt fluid}{24}{subsection.6.3}
 \contentsline {subsection}{\numberline {6.4}Jeffreys fluid}{25}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}General framework}{26}{subsection.6.5}
+\contentsline {paragraph}{\nonumberline Steady flow.}{27}{section*.7}
+\contentsline {subsection}{\numberline {6.6}Interpretation of relaxation modulus}{27}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.7}Stokes' 1\textsuperscript {st} problem}{28}{subsection.6.7}

@@ -1,5 +1,5 @@
 \documentclass{jknotes}
-\usepackage{joshkirklin,pgfplots}
+\usepackage{joshkirklin,pgfplots,ulem}
 
 \tikzset{
     partial ellipse/.style args={#1:#2:#3}{
@@ -1783,5 +1783,225 @@ Maxwell fluid.
 		$\lambda_1 \dot{\sigma} \sim \eta_1 \srate \implies \sigma \sim
 		\frac{\eta_1}{\lambda_1} \srate$ which is an elastic response.
 \end{itemize}
+
+\lecture{5/11/20}
+\subsection{General framework}
+What is the most general constitutive relationship for a linear viscoelastic
+fluid? The constitutive relationship for a \emph{general linear viscoelastic
+fluid} (GLVF)  can be written as
+\begin{equation}
+	\sigma(t) = \int_{-\infty}^t G(t-t')\srate(t')\,\diffd t'
+\end{equation}
+where $G(s)$ is the \emph{relaxation modulus} of the fluid. $G$ is a positive
+function which is decreasing in $s$, reflecting the fact memory fades over
+time. $G$ has dimensions of stress. By causality, $G(s) = 0$ so that future
+changes in shear rate do not influence the present stress.
+
+\begin{itemize}
+	\item A Newtonian fluid has $G_{\text{N}}(s) = 2 \eta \delta(s)$, using the
+		convention that
+		\begin{equation}
+			\int_{\infty}^t \delta(t-t')\,\diffd t' = \frac{1}{2}
+		\end{equation}
+	\item A Maxwell fluid's relaxation modulus can be calculated from its
+		constitutive relationship.
+		\begin{align}
+			\sigma + \lambda \dot{\sigma} &= \eta \srate \\
+			\implies \lambda \frac{\diffd}{\diffd t}\left[\sigma
+			e^{t/\lambda}\right] &= \eta \srate e^{t/\lambda} \\
+			\sigma(t) &= \int_{\infty}^t \frac{\eta}{\lambda} \srate(t')
+				e^{\frac{t'-t}{\lambda}} \, \diffd t'
+		\end{align}
+		This is the Maxwell fluid constitutive relationship in integral form.
+		Hence
+		\begin{equation}
+			G_{\text{M}}(s) = \frac{\eta}{\lambda} e^{-s/\lambda}
+		\end{equation}
+		which shows a Maxwell fluid has an exponential loss of memory. Note
+		that $\eta$ has units of stress $\times$ time, and $\lambda$ has units
+		of time. Thus $G$ has units of stress as expected.
+	\item A \emph{generalised} Maxwell fluid has relaxation modulus
+		\begin{equation}
+			G_{\text{GMF}}(s) = \sum_{i=1}^N \frac{\eta_i}{\lambda_i}
+			e^{-\frac{s}{\lambda_i}}
+		\end{equation}
+\end{itemize}
+
+Generalising the scalar relationship, we get a tensorial relationship for
+deviatoric stress
+\begin{equation}
+	\dunder{\tau}(t) = \int_{-\infty}^t G(t-t') \dunder{\srate}(t')\,\diffd t'
+\end{equation}
+Note that $G$ is still a scalar.
+
+\paragraph{Steady flow.} Consider a steady flow with $\dunder{\srate}(t') =
+\dunder{\srate}$ a constant tensor. Then
+\begin{equation}
+	\dunder{\tau}(t) = \dunder{\srate} \int_{\infty}^t G(t-t') \, \diffd t' =
+	\left[ \int_0^\infty G(s) \, \diffd s \right] \dunder{\srate}
+\end{equation}
+which is the Newtonian constitutive relationship. Thus if the flow is steady,
+stress is Newtonian with $\dunder{\tau} = \eta \dunder{\srate}$ and $\eta =
+\int_0^\infty G(s) \, \diffd s$. Hence Newtonian solutions to previous
+problems are the same for a GLVF if the flow is steady. To see the consequence
+of viscoelastic behaviour, we require unsteady motion where unsteady boundary
+conditions and inertia are involved.
+
+\subsection{Interpretation of relaxation modulus}
+All experiments (shear flows and others) with a sudden start/stop require
+consideration of inertia. We wish to find a limit in which we can neglect
+inertia. Consider a simple shear flow setup, with sudden motion of one of the
+plates. The steady state is reached on a timescale $\tau \sim \frac{h^2}{\nu}$
+where $h$ is the gap between the plates and $\nu = \frac{\eta}{\rho}$ is the
+kinematic viscosity. Typical values of $\nu$ are $\nu \sim 10^{-6} m^2 s^{-1}$
+for water and $\nu \sim 10^{-3} m^2 s^{-1}$ for glycerol. If $\tau$ is much
+smaller than any of the elastic timescales (e.g. relaxation or retardation
+times) then we can neglect inertia.
+
+\begin{eg}\hspace{1in}
+	\begin{itemize}
+		\item Consider glycerol in a setup with $h \sim 100 \mu m, \tau \sim
+			10^{-5} s$. Then we can neglect inertia if $10^{-5} s \ll
+			\lambda$.
+		\item Consider a cone and plate geometry with small angle $\beta$.
+			Typically $R \sim 1 cm, h \sim 100 \mu m$. Water has $\nu \sim
+			10^{-6} m^2 s^{-1}$ so $\tau \sim 10^{-2} s$ and we can neglect
+			inertia if $10^{-2} s \ll \lambda$.
+	\end{itemize}
+\end{eg}
+
+Within this assumption, we can interpret $G(s)$. Consider stress relaxation
+after a sudden (short) shearing displacement. 
+\begin{equation}
+	\begin{cases}
+		t < t_0 - \varepsilon & \text{no motion} \\
+		t_0 - \varepsilon < t < t_0 & \text{constant shear rate} \,\,\,
+		\srate = \frac{\gamma_0}{\varepsilon} \\
+		t_0 < t & \text{stop displacement, no motion}
+	\end{cases}
+\end{equation}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5, 0) node[right] {$t$};
+		\draw[thick,->] (0, -0.1) -- (0, 3) node[left] {$\srate$};
+		\draw[red] (0,0) -- (1, 0);
+		\draw[red] (1, 2) -- (2, 2);
+		\draw[red] (2, 0) -- (4.5, 0);
+		\draw (1,0.1) -- (1, -0.1) node[below] {$t_0 - \varepsilon$};
+		\draw (2, 0.1) -- (2, -0.1) node[below] {$t_0$};
+		\draw[dashed] (1,2) -- (-0.1, 2) node[left]
+		{$\frac{\gamma_0}{\varepsilon}$};
+	\end{tikzpicture}
+	\qquad
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5, 0) node[right] {$t$};
+		\draw[thick,->] (0, -0.1) -- (0, 3) node[left] {$\gamma$};
+		\draw[red] (0,0) -- (1, 0);
+		\draw[red] (1,0) -- (2, 2);
+		\draw[red] (2,2) -- (4.5, 2);
+		\draw (1,0.1) -- (1, -0.1) node[below] {$t_0 - \varepsilon$};
+		\draw (2, 0.1) -- (2, -0.1) node[below] {$t_0$};
+		\draw[dashed] (2,2) -- (-0.1, 2) node[left] {$\gamma_0$};
+	\end{tikzpicture}
+\end{center}
+
+The shear stress is
+\begin{align}
+	\sigma = \sigma(t) &= \int_{-\infty}^t G(t-t') \srate(t') \, \diffd t' \\
+													 &=
+	\int_{t_0-\varepsilon}^{t_0} G(t-t') \srate(t') \, \diffd t' \\
+	&= \frac{\gamma_0}{\varepsilon} \int_{t_0-\varepsilon}^{t_0} G(t-t') \,
+	\diffd t'
+\end{align}
+In the limit $\varepsilon \to 0$ we get
+\begin{equation}
+	\sigma(t) \to \gamma_0 G(t-t_0) \,\,\,\text{as}\,\,\, \varepsilon \to 0
+\end{equation}
+Thus the interpretation is that $G$ is the (scaled) stress response to
+instantaneous shear displacement.
+
+\subsection{Stokes' 1\textsuperscript{st} problem}
+Consider an impulsively started plate in a semi-infinite fluid. In the
+Newtonian case, this problem is classically used to gain intutition about
+diffusion of vorticity and momentum. Suppose the flow is unidirectional with
+$\bm{u} = u(y) \hat{\bm{x}}$. Then from the Cauchy equation we have
+\begin{equation}
+	\rho \frac{\partial u}{\partial t} = \eta \frac{\partial^2 u}{\partial
+	y^2} 
+\end{equation}
+The solution is a \emph{similarity solution} with $u = Uf(y,\nu,t) =
+Uf(\frac{y}{\sqrt{\nu t}})$. Thus the diffusion dynamics reach $y \sim
+\sqrt{\nu t}$ at time $t$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5,0);
+		\fill[gray] (0,0) rectangle (5,-0.4);
+		\draw[->] (0.5,0.5) -- (1, 0.5) node[right] {$x$};
+		\draw[->] (0.5,0.5) -- (0.5, 1) node[left] {$y$};
+		\draw (2.5, 1) node {fluid};
+		\draw[->] (2, -0.2) -- (3, -0.2) node[midway,below] {$u = \begin{cases} 0 & t <
+		0 \\ U & t>0\end{cases}$};
+	\end{tikzpicture}
+\end{center}
+
+A Maxwell fluid with relaxation timescale instead has similarity
+solution
+\begin{equation}
+	u = Uf(y,\nu,t,\lambda) = Uf(\frac{y}{\sqrt{\nu t}},\frac{t}{\lambda})
+\end{equation}
+This is in fact significantly more complicated. Equations satisfied by
+$u(y,t)$ are now
+\begin{align}
+	\sigma + \lambda \frac{\partial \sigma}{\partial t} &= \eta \srate = \eta
+	\frac{\partial u}{\partial y} &&\text{constitutive relationship} \\
+	\rho \frac{\partial u}{\partial t} &= \frac{\partial \sigma}{\partial y} 
+									   &&\text{Cauchy equation}
+\end{align}
+
+Applying the operator $\left[1+\lambda \partial_t\right]$ to the Cauchy
+equation gives
+\begin{equation}
+	\frac{\partial u}{\partial t} + \lambda \frac{\partial^2 u}{\partial t^2}
+	= \nu \frac{\partial^2 u}{\partial y^2}
+\end{equation}
+This can be solved explicitly via Fourier transforms. Instead, we will
+consider short and long timescales.
+\begin{itemize}
+	\item Short times $t \ll \lambda$ give $\lambda \ddot{u} \gg \dot{u}$,
+		hence
+		\begin{equation}
+			\lambda \frac{\partial^2 u}{\partial t^2} \approx
+			\nu\frac{\partial^2 u}{\partial y^2}
+		\end{equation}
+		This is a wave equation for $u$ with wavespeed $c =
+		\sqrt{\nu/\lambda}$. For glycerol, $\nu \sim 10^{-3} m^2 s^{-1}$ and
+		$\lambda \sim 1s$ so $c \sim 1cm s^{-1}$.
+	\item Long times $t \gg \lambda$ give $\lambda \ddot{u} \ll \dot{u}$ hence
+		\begin{equation}
+			\frac{\partial u}{\partial t} = \nu \frac{\partial^2 u}{\partial
+			y^2}
+		\end{equation}
+		This is a diffusion equation for $u$ as in the Newtonian case.
+	\item Transition times $t \sim \lambda$: there is a finite extent $\Delta$
+		of fluid subject to wave dynamics, with
+		\begin{equation}
+			\Delta \sim c t \sim c \lambda = \sqrt{\nu \lambda}
+		\end{equation}
+		For glycerol, $\Delta \sim 1 cm$. $\Delta$ increases with $\lambda$
+		and $\eta$, and is independent of $U$ as expected by linearity.
+\end{itemize}
+
+Suppose instead we have a GLVF. In this case, $u$ satisfies
+\begin{equation}
+	\sigma = \sigma(y,t) = \int_{-\infty}^t G(t-t') \srate(y,t') \, \diffd t'
+	= \int_{-\infty}^t G(t-t') \frac{\partial u}{\partial y}(y,t') \, \diffd t'
+\end{equation}
+Then the Cauchy equation $\rho u_t = \sigma_y$ gives
+\begin{equation}
+	\rho \frac{\partial u}{\partial t} = \int_{-\infty}^t G(t-t')
+	\frac{\partial^2 u}{\partial y^2}(y,t')\,\diffd t'
+\end{equation}
 
 \end{document}
