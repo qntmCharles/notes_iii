@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Basic Fluid Mechanics}{2}{section.1}
 \contentsline {subsection}{\numberline {1.1}Mass Conservation}{2}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}The Stress Tensor}{2}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Momentum equation}{2}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.3}Momentum equation}{3}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Energy equation}{3}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Newtonian Fluids}{3}{subsection.1.5}
 \contentsline {subsection}{\numberline {1.6}Boundary conditions}{3}{subsection.1.6}
@@ -12,34 +12,36 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Linear}{5}{subsubsection.2.1.2}
 \contentsline {subsubsection}{\numberline {2.1.3}Reversible}{5}{subsubsection.2.1.3}
 \contentsline {subsubsection}{\numberline {2.1.4}Forces balance}{6}{subsubsection.2.1.4}
-\contentsline {subsubsection}{\numberline {2.1.5}Work balances dissipation}{6}{subsubsection.2.1.5}
+\contentsline {subsubsection}{\numberline {2.1.5}Work balances dissipation}{7}{subsubsection.2.1.5}
 \contentsline {subsubsection}{\numberline {2.1.6}Three Theorems Based on Dissipation Integrals}{7}{subsubsection.2.1.6}
-\contentsline {subsection}{\numberline {2.2}Representation by Potentials}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.2}Representation by Potentials}{9}{subsection.2.2}
 \contentsline {subsubsection}{\numberline {2.2.1}Complex Variable Theory in 2D Flow}{9}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}Papkovich-Neuber Solution}{9}{subsubsection.2.2.2}
-\contentsline {subsection}{\numberline {2.3}Solutions for points, spheres, and cylinders}{9}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.3}Solutions for points, spheres, and cylinders}{10}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}Spherical harmonic functions}{10}{subsubsection.2.3.1}
 \contentsline {subsubsection}{\numberline {2.3.2}Solution due to a point force}{11}{subsubsection.2.3.2}
 \contentsline {subsubsection}{\numberline {2.3.3}Source flow}{12}{subsubsection.2.3.3}
 \contentsline {subsubsection}{\numberline {2.3.4}Force dipole, stresslet, rotlet}{12}{subsubsection.2.3.4}
 \contentsline {subsubsection}{\numberline {2.3.5}Rigid sphere with velocity U}{13}{subsubsection.2.3.5}
-\contentsline {subsubsection}{\numberline {2.3.6}Force and stress on a translating sphere}{13}{subsubsection.2.3.6}
+\contentsline {subsubsection}{\numberline {2.3.6}Force and stress on a translating sphere}{14}{subsubsection.2.3.6}
 \contentsline {subsubsection}{\numberline {2.3.7}Gravitational settling}{14}{subsubsection.2.3.7}
 \contentsline {subsubsection}{\numberline {2.3.8}2D potentials}{14}{subsubsection.2.3.8}
-\contentsline {subsection}{\numberline {2.4}Motion of rigid particles}{14}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}The resistance matrix}{14}{subsubsection.2.4.1}
-\contentsline {subsection}{\numberline {2.5}Fax\'{e}n relations}{15}{subsection.2.5}
-\contentsline {paragraph}{\nonumberline Application to two sedimenting spheres.}{16}{section*.3}
+\contentsline {subsection}{\numberline {2.4}Motion of rigid particles}{15}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}The resistance matrix}{15}{subsubsection.2.4.1}
+\contentsline {subsection}{\numberline {2.5}Fax\'{e}n relations}{16}{subsection.2.5}
+\contentsline {paragraph}{\nonumberline Application to two sedimenting spheres.}{17}{section*.3}
 \contentsline {subsection}{\numberline {2.6}Integral representations of Stokes flow}{17}{subsection.2.6}
 \contentsline {subsubsection}{\numberline {2.6.1}Basic integral identity}{17}{subsubsection.2.6.1}
-\contentsline {subsubsection}{\numberline {2.6.2}Far-field approximations/multipole expansion for a moving body}{17}{subsubsection.2.6.2}
+\contentsline {subsubsection}{\numberline {2.6.2}Far-field approximations/multipole expansion for a moving body}{18}{subsubsection.2.6.2}
 \contentsline {subsubsection}{\numberline {2.6.3}Representation for droplets}{18}{subsubsection.2.6.3}
 \contentsline {subsubsection}{\numberline {2.6.4}Representation by Stokeslets alone}{19}{subsubsection.2.6.4}
-\contentsline {section}{\numberline {3}Approximations and applications}{19}{section.3}
-\contentsline {subsection}{\numberline {3.1}Slender-body theory}{19}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Marangoni Flows}{22}{subsection.3.2}
+\contentsline {section}{\numberline {3}Approximations and applications}{20}{section.3}
+\contentsline {subsection}{\numberline {3.1}Slender-body theory}{20}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Marangoni Flows}{23}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Boundary conditions}{23}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}Thermophoresis}{23}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2}Thermophoresis}{24}{subsubsection.3.2.2}
 \contentsline {paragraph}{\nonumberline Thermal problem.}{24}{section*.4}
-\contentsline {paragraph}{\nonumberline Fluid problem.}{24}{section*.5}
+\contentsline {paragraph}{\nonumberline Fluid problem.}{25}{section*.5}
 \contentsline {subsection}{\numberline {3.3}Surfactant effects}{25}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Deformation of droplets.}{27}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Small deformations}{28}{subsubsection.3.4.1}

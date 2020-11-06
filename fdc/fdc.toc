@@ -39,3 +39,8 @@
 \contentsline {subsection}{\numberline {9.2}Thermal wind equation}{22}{subsection.9.2}
 \contentsline {subsection}{\numberline {9.3}Potential vorticity}{22}{subsection.9.3}
 \contentsline {subsection}{\numberline {9.4}3D quasi-geostrophic equations}{23}{subsection.9.4}
+\contentsline {paragraph}{\nonumberline Primitive equations.}{23}{section*.15}
+\contentsline {paragraph}{\nonumberline Approximation validity.}{23}{section*.16}
+\contentsline {paragraph}{\nonumberline Quasi-geostrophic potential vorticity.}{24}{section*.17}
+\contentsline {paragraph}{\nonumberline Boundary conditions.}{25}{section*.18}
+\contentsline {paragraph}{\nonumberline Physical interpretation of QGPV.}{25}{section*.19}

@@ -1957,4 +1957,123 @@ due to
 	\end{enumerate}
 \end{eg}
 
+\lecture{6/11/20}
+A steady flow in the frame of the bubble has $\frac{\partial C}{\partial t} =
+0$ and $\symbf{u} \cdot \symbf{n} = 0$. Consider a linearised calculation with
+$C = C_0 + C'(x)$ where $C' \ll C_0$. Then the transport equation reduces to
+\begin{equation}
+	D_s \nabla^2 C' - kC' = C_0 \nabla_s \cdot \symbf{u}_s
+\end{equation}
+where the non-linear terms $C' \nabla_s \cdot \symbf{u}_s$ and $\symbf{u}_s
+\cdot \nabla_s C'$ have been neglected. This is a linear problem in the rise
+velocity $\symbf{U}$ and from spherical symmetry
+\begin{equation}
+	\symbf{u}_s = A \left( \symsf{I} - \symbf{n}\symbf{n}\right)\cdot\symbf{U}
+\end{equation}
+for some $A$. To calculate $\nabla_s \cdot \symbf{u}_s$, note
+\begin{align}
+	\nabla_s \symbf{n} &= \left( \symsf{I} - \symbf{n}\symbf{n}\right)\cdot
+	\nabla \frac{\x}{a} = \frac{1}{a} \left( \symsf{I} -
+	\symbf{n}\symbf{n}\right) \\
+	\nabla_s \cdot \symbf{n} &= \frac{2}{a} \\
+	\implies \nabla_s \cdot \symbf{u}_s &= -A \left[ (\nabla_s \cdot
+		\symbf{n})\symbf{n} +
+		\cancel{(\symbf{n}\cdot\nabla_s)}\symbf{n}\right]\cdot\symbf{U} =
+		-\frac{2}{a} A\symbf{U}\cdot\symbf{n}
+\end{align}
+Guessing $C' \propto \symbf{U}\cdot\symbf{n}$, and since 
+\begin{equation}
+	\nabla_s^2(\symbf{U}\cdot\symbf{n}) = \nabla_s \cdot \left[
+	\frac{1}{a}\left(\symsf{I}-\symbf{n}\symbf{n}\right)\cdot\symbf{U}\right]
+	= -\frac{2}{a^2}\symbf{U}\cdot\symbf{n}
+\end{equation}
+we find 
+\begin{equation}
+	C' = \frac{2C_0 A \frac{\symbf{U}\cdot\symbf{n}}{a}}{k + 2\frac{D_s}{a^2}}
+\end{equation}
+Therefore the linearisation $C' \ll C_0$ is valid if $\frac{UA}{D_s} \ll 1$
+(fast diffusion) or $\frac{U}{ka} \ll 1$ (fast absorption). The problem is
+completed by using a Papkovich-Neuber representation inside and outside with
+boundary conditions
+\begin{align}
+	\symbf{u} \to -\symbf{U} \,\,\, \text{as}\,\,\, &r \to \infty \\
+	\symbf{u} \,\,\,\text{finite at} \,\,\, &r = 0 \\
+	\symbf{u}= \symbf{u}_s \,\,\, \text{at} \,\,\, &r = a^+_-\\
+	\left[\symbf{n} \times \symsf{\sigma}\cdot\symbf{n}\right]^+_- =
+	-\symbf{n} \times \nabla C' \frac{\diffd \gamma}{\diffd C} \,\,\,
+	\text{at} \,\,\, &r = a
+\end{align}
+
+These are 5 conditions for 4 potentials and $A$. We find the drag on the
+bubble is
+\begin{equation}
+	\symbf{F} = -4\pi \mu a \symbf{U} \left(
+	\frac{\frac{3}{2}(\lambda^*+\lambda)+1}{\lambda^*+\lambda+1}\right)
+\end{equation}
+where
+\begin{equation}
+	\lambda^* = -\frac{\frac{1}{3}a C_0 \frac{\diffd \gamma}{\diffd C}}{(a^2 k
+	+ 2D_s)\mu}
+\end{equation}
+Note as $\lambda^* \to \infty$ we get a `rigid' sphere.
+
+\subsection{Deformation of droplets.}
+To leading order, a small force-free droplet moves with the flow
+$\symbf{u}^\infty$ and is deformed by the local gradient
+$(\symbf{x}\cdot\nabla)\symbf{u}^\infty$ against the restoring action of
+surface tension. We assume the background flow is composed of a straining
+component with symmetric traceless $\symsf{E}$ and a rotational component with
+angular velocity $\symbf{\Omega}$. Hence $\symbf{u} \to \symbf{\Omega} \times
+\x + \symsf{E}\cdot\x$ as $\abs{\x} \to \infty$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) ellipse (1 and 1.1);
+		\draw[->] (-2, 0.5) arc (-90:0:0.8);
+		\draw[->] (-2, -0.5) arc (90:0:0.8);
+		\draw[->] (2, 0.5) arc (-90:-180:0.8);
+		\draw[->] (2, -0.5) arc (90:180:0.8);
+		\draw (2, 1) node {$\symsf{E}$};
+		\draw (0,0) node {$\lambda \mu$};
+		\draw (-0.2, 1.3) node {$\mu$};
+		\draw[->] (1,0) -- (1.5, 0) node[right] {$\symbf{n}$};
+		\draw[->] (-2.5,1) arc (150:210:2);
+		\draw (-3, 0.3) node {$\symbf{\Omega}$};
+	\end{tikzpicture}
+\end{center}
+
+The importance of viscous stress vs. surface tension is characterised by the
+\emph{capillary number} $\text{Ca}$ where 
+\begin{equation}
+	\frac{\text{viscous stresses}}{\text{surface tension}} \sim \frac{\mu
+	E}{\gamma/a} = \text{Ca} = \frac{\mu U}{\gamma}
+\end{equation}
+
+\subsubsection{Small deformations}
+Here we consider $\text{Ca} \ll 1$ and a droplet with small deformation in a
+pure strain flow $\symbf{u}^\infty = \symsf{E}\cdot\x$. Deformation is due to
+symmetric traceless $\symsf{E}$. Hence for small (linearised) deformations we
+expect
+\begin{equation}
+	r= a\left[ 1 + \frac{\x \cdot \symsf{D}\cdot\x}{r^2}\right]
+\end{equation}
+where $\symsf{D}$ is symmetric, traceless (from volume conservation), and
+$\mathcal{O}(\text{Ca})$. The surface normal is then
+\begin{align}
+	\symbf{n} &= \nabla \left( r - a\left[1 + \frac{\x \cdot
+\symsf{D}\cdot\x}{r^2}\right]\right) \\
+&= \frac{\x}{r} - 2a \left( \frac{\symsf{D}\cdot\x}{r^2} -
+\frac{(\x\cdot\symsf{D}\cdot\x)\x}{r^4}\right) + \mathcal{O}(\symsf{D}^2)
+\end{align}
+
+Note $\abs{\symbf{n}} =1$ to $\mathcal{O}(\symsf{D}^2)$ as required. Also,
+$\abs{\symbf{n}} = 1$ implies $\symbf{n}\cdot(\symbf{n}\cdot\nabla)\symbf{n} =
+0$. Hence 
+\begin{align}
+	\nabla_s \cdot \symbf{n} &= \nabla \cdot \symbf{n} \\
+		&= \frac{2}{r} + 6a \left.\frac{\x \cdot \symsf{D}\cdot\x}{r^4}\right|_s \\ 
+	 &= \frac{2}{a} + 4\frac{\x \cdot \symsf{D}\cdot\x}{a^3} +
+	\mathcal{O}(\symsf{D}^2)
+\end{align}
+
 \end{document}

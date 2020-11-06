@@ -10,6 +10,7 @@
 \newcommand{\Ek}{E}
 \newcommand{\vare}{\varepsilon}
 \newcommand{\sgn}{\text{sgn}}
+\newcommand{\Bu}{Bu}
 \renewcommand{\u}{\bm{u}}
 
 \usepackage{tikz}
@@ -1272,7 +1273,7 @@ ocean, despite issues with compressibility.
 \subsection{Internal gravity waves}
 We linearise about a resting state with density structure represented by the
 buoyancy frequency $N$. For simplicity, background rotation is ignored for the
-time being. We define the \emph{buoyancy} $\sigma = \rho' g/\rho_0$ for
+time being. We define the \emph{buoyancy} $\sigma = -\rho' g/\rho_0$ for
 convenience.
 
 \begin{align}
@@ -1395,7 +1396,7 @@ In the shallow-water equations, the shallow-water potential vorticity was
 conserved. Under the Boussinesq primite equations, instead the
 \emph{Rossby-Ertal potential vorticity} P is conserved materially, where
 \begin{equation}
-	P = \frac{1}{\rho_0} (\bm{f} +\bm{zeta})\cdot \nabla \rho'
+	P = \frac{1}{\rho_0} (\bm{f} +\bm{\zeta})\cdot \nabla \rho'
 \end{equation}
 In terms of velocities this is equivalent to
 \begin{equation}
@@ -1408,9 +1409,10 @@ rise to features in the $P$ field which can affect or drive the evolution of
 the flow.
 
 \subsection{3D quasi-geostrophic equations}
-Following the same procedure as with the shallow-water equations, we aim to
-find a prognostic equations for the slow (close to geostrophic balance) motion
-from the Boussinesq primite equations on a $\beta$-plane.
+\paragraph{Primitive equations.} Following the same procedure as with the
+shallow-water equations, we aim to find a prognostic equations for the slow
+(close to geostrophic balance) motion from the Boussinesq primitive equations
+on a $\beta$-plane.
 
 We write $\rho'(x,y,z,t) = \rho_s(z) + \tilde{\rho}(x,y,z,t)$ where
 $\rho_s(z)$ is in hydrostatic balance, and write $p'(x,y,z,t) = p_s(z) +
@@ -1437,7 +1439,162 @@ the pressure field (assuming constant $f_0$) and a remainder, the
 Note that the vertical component of the geostrophic velocity $\bm{u}_g$ is
 zero, and $\nabla \cdot \bm{u}_g = 0$. We also assume that the $y$-lengthscale
 $L_y$ is sufficiently small that $\beta L_y \ll f_0$. Then if $\Ro \ll 1$, it
-follows that $\abs{\bm{u}_a} \ll \abs{\bm{u}_g}$.
+follows that $\abs{\bm{u}_a} \ll \abs{\bm{u}_g}$. Thus we are domain limited
+in latitude.
+
+\lecture{6/11/20}
+The primitive equations may now be written
+\begin{align}
+	\left[ \frac{\partial}{\partial t} + (\bm{u}_g+\bm{u}_a)\cdot
+	\nabla\right] (u_g + u_a) - f_0 (v_g + v_a) - \beta y (v_g + v_a) &=
+	-\frac{1}{\rho_0} \frac{\partial \tilde{p}}{\partial x} \label{eq:prim1}\\
+	\left[ \frac{\partial}{\partial t} + (\bm{u}_g+\bm{u}_a)\cdot
+	\nabla\right] (v_g + v_a) + f_0 (u_g + u_a) + \beta y (u_g + u_a) &=
+	-\frac{1}{\rho_0} \frac{\partial \tilde{p}}{\partial y}\label{eq:prim2} \\
+	-\frac{\partial \tilde{p}}{\partial z} - \tilde{\rho} g &= 0 \\
+	\left[\frac{\partial}{\partial t} + (\bm{u}_g+\bm{u}_a)\cdot
+	\nabla\right] \tilde{\rho} + w_a \frac{\diffd \rho_s}{\diffd z} &= 0 \\
+	\frac{\partial u_a}{\partial x} + \frac{\partial v_a}{\partial y} +
+	\frac{\partial w_a}{\partial z} &= 0
+\end{align}
+
+\paragraph{Approximation validity.} Given that $\Ro \ll 1$ we may approximate
+$\frac{\diffD \bm{u}}{\diffD t}$ by $\frac{\diffD_g \bm{u}_g}{\diffD t}$ where
+$\frac{\diffD_g}{\diffD t} = \partial_t + \bm{u}_g \cdot \nabla$, and also
+$\beta y \u$ can be approximated by $\beta y \u_g$. 
+
+Note that $f_0(u_a, v_a)$ and $\beta y(u_g, v_g)$ are of similar size. Hence
+the requirement $\beta L_y / f_0 \ll 1$ is better expressed by $\beta L_y/f_0
+\sim \Ro$. Also, $w_a \frac{\diffd \rho_s}{\diffd z}$ is retained, but $w_a
+\frac{\diffd \tilde{\rho}}{\diffd z}$ is not, which requires $\abs{\diffd
+\tilde{\rho}/\diffd z} \ll \abs{\diffd \rho_s / \diffd z}$. Denoting the
+horizontal scale as $L$ and the vertical scale as $D$, the thermal wind
+equation gives $g \tilde{\rho}/L \rho_0 \sim f_0 U/D$ where $U$ is the typical
+horizontal velocity scale. Hence we have
+\begin{equation}
+	\frac{\tilde{\rho}_z}{\rho_{s,z}} \sim \frac{f_0 U L \rho_0}{gD^2
+	\rho_{s,z}} = \frac{U}{f_0 L} \left( \frac{L f_0}{N D}\right)^2 = \Ro \Bu
+\end{equation}
+where $\Bu \equiv (L f_0 / D N)^2$ is the \emph{Burger number}. For our
+approximation to be valid, we require $\Ro \Bu \ll 1$. If $\Bu \sim 1$, then
+this is implied by $\Ro \ll 1$.  
+
+\paragraph{Quasi-geostrophic potential vorticity.} 
+To reduce the primitive equations to a single
+prognostic equation, we eliminate $\u_a$ by taking the curl of horizontal
+momentum, i.e. $\partial_x \eqref{eq:prim2} - \partial_y \eqref{eq:prim1}$.
+The non-divergence of geostrophic velocity then gives a vorticity equation
+\begin{equation}
+	\frac{\diffD_g}{\diffD t} \left[ \frac{\partial v_g}{\partial x} -
+		\frac{\partial u_g}{\partial y} \right] + \beta v_g + f_0 \left[
+		\frac{\partial u_a}{\partial x} + \frac{\partial v_a}{\partial y}
+	\right] = 0
+\end{equation}
+Finally, we eliminate $u_a, v_a$ and $w_a$ using the remaining primitive
+equations to give
+\begin{equation}
+	\frac{\diffD_g}{\diffD t} \left[ \frac{\partial v_g}{\partial x} -
+		\frac{\partial u_g}{\partial y} \right] + \beta v_g +
+		f_0\frac{\partial}{\partial z} \left[ \frac{\diffD_g
+		\tilde{\rho}}{\diffD t} / \frac{\diffd \rho_s}{\diffd z}\right] = 0
+\end{equation}
+
+We now define a streamfunction $\psi = \frac{\tilde{p}}{\rho_0 f_0}$ analogous
+to the geostrophic streamfunction. Then $u = -\psi_y, v = \psi_x$ from
+hydrostatic balance $\tilde{\rho} = - \rho_0 f_0 \psi_z / g$. Our prognostic
+equation, called the \emph{quasi-geostrophic potential vorticity equation} is
+then
+\begin{equation}
+	\frac{\diffD_g}{\diffD t} \left[ \psi_{xx} + \psi_{yy} + \left(\frac{f_0^2
+	\psi_z}{N^2}\right)_z \right] + \beta \psi_x = 0
+\end{equation}
+or equivalently $\frac{\diffD_g q}{\diffD t} = 0$ where $q$ is the
+quasi-geostrophic potential vorticity
+\begin{equation}
+	q = \psi_{xx} + \psi_{yy} + \left( \frac{f_0^2 \psi_z}{N^2}\right)_z +
+	\beta y
+\end{equation}
+and $N^2 = -\frac{g}{\rho_0} \frac{\diffd \rho_s}{\diffd z}$. In terms of the
+QGPV, the (geostrophic) material derivative is
+\begin{equation}
+	\frac{\diffD_g}{\diffD t} = \frac{\partial}{\partial y} - \psi_y
+	\frac{\partial}{\partial y} + \psi_x \frac{\partial}{\partial y}
+\end{equation}
+Under the quasi-geostrophic approximation, $q$ is conserved following the
+horizontal geostrophic flow. The QGPV equation is an approximation to the
+statemenet of material conservation of Rossby-Ertel potential vorticity
+following the flow along $\rho'$ surfaces in a Boussinesq flow, or $\theta$
+surfaces in a compressible flow.
+
+If $q$ is known, then $\psi$ can be calculated via the \emph{potential
+vorticity inversion operator}
+\begin{equation}
+	\psi = \left[\partial_x^2 + \partial_y^2 + \partial_z
+	\left(\frac{f_0^2}{N^2} \partial_z\right)\right]^{-1} (q-\beta y)
+\end{equation}
+Application of this operator requires boundary conditions on $\psi$ or its
+derivatives.
+
+\paragraph{Boundary conditions.}
+\begin{itemize}
+	\item At rigid side boundaries, we require the normal component of $\u$ is
+		zero (no flux condition), which requires $\psi$ constant along the
+		boundary.
+	\item At rigid top or bottom boundaries, we require the kinematic boundary
+		condition to be satisfied, i.e. $\frac{\diffD z}{\diffD t} = w =
+		\frac{\diffD h}{\diffD t}$ on the boundary $z = z_b +h$ where $z_b$ is
+		constant and $h$ is the topographic perturbation. We may express $w_a$
+		in terms of other variables via the density equation to get
+		\begin{equation}
+			w \sim w_a = -\frac{\diffD_g \tilde{\rho}}{\diffD t}
+			\left(\frac{\diffd \rho_s}{\diffd z}\right)^{-1} = \frac{\diffD
+			h}{\diffD t} \approx \frac{\diffD_g h}{\diffD t}
+		\end{equation}
+		Hence $h \sim \tilde{\rho}\left(\frac{\diffd \rho_s}{\diffd
+		z}\right)^{-1} \sim D \left( \frac{U}{f_0 L}\right) \left(\frac{L^2
+		f_0^2}{N^2 D^2}\right) = \Ro \Bu D$, so we require $h \ll D$. The
+		boundary condition may then be linearised, so that it can be applied
+		at $z = z_b$.  Writing $\tilde{\rho}$ in terms of $\psi$, we have
+		\begin{equation} 
+			\frac{\diffD_g}{\diffD t} \psi_z = -\frac{N^2}{f_0}
+			\frac{\diffD_g}{\diffD t} h 
+		\end{equation} 
+		at $z = z_b$. This is a prognostic equation for $\psi_z$ at the bottom
+		surface which relates (physically) to material rate of change of
+		density or temperature.
+\end{itemize}
+
+\paragraph{Physical interpretation of QGPV.} 
+The density or temperature at horizontal boundaries have similar importance to
+the QGPV in the interior of the flow. The physical interpretations of different
+contributions to the quasi-geostrophic potential vorticity $q$ are
+\begin{align}
+	q \,\,\,= \hspace{3em}&\hspace{1em}\psi_{xx} + \psi_{yy} \hspace{3em}+ &&\left( \frac{f_0^2}{N^2} \psi_z
+	\right)_z \hspace{3em}+ && \hspace{1em}\beta y \\
+	&\text{relative vorticity} && \text{stretching} && \text{planetary
+vorticity}	
+\end{align}
+The stretching measures vertical gradients in density perturbations, i.e. the
+amount by which nearby density surfaces move apart or together. The ratio of
+the relativity vorticity term to the stretching term is $1/\Bu$. If $\Bu \ll
+1$ then relative vorticity dominates, whilst if $\Bu \gg 1$ then stretching
+dominates. If $\Bu \sim 1$ the terms are comparable and the ratio of
+horizontal to vertical scales $L/D \sim N /f_0$ is implied by this condition
+as is called \emph{Prandtl's ratio of scales}.
+
+The 3D quasi-geostrophic equations have a structural similarity to the
+equations of 2D vortex dynamics, in that there is a non-local dependence of
+$\psi$ on $q$. In 2D vortex dynamics, the non-locality is purely horizontal,
+whilst in the 3D quasi-geostrophic equations the non-locality is also in the
+vertical and the PV field in a localised region at a given level influences
+the $\psi$ field outside that region on the same level \emph{and} at other
+levels.
+
+If $N$ is constant in height, then the PV operator is isotropic in scales
+coordinates $x, y, Nz/f_0$. The evolution equations are not isotropic since
+the flow only has horizontal components. Therefore we expect solutions of the
+QG equations to tend towards isotropy in the coordinates above, but the
+isotropy is likely not exact.
 
 
 \end{document}
