@@ -1703,14 +1703,16 @@ where $\symbf{n}$ points out of the fluid and $\nabla_S = \left(\symsf{I} -
 \symbf{n}\symbf{n}\right) \cdot \nabla$ is the gradient operator in the surface.
 Hence the jump in fluid stress is
 \begin{align}
-	\left[ \symbfsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\nabla_s \cdot \gamma
-	\left( \symsf{I} - \symbf{n}\symbf{n}\right) \cdot \nabla_s \gamma + \gamma
+	\left[ \symbfsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\nabla_s \cdot
+	\gamma \left( \symsf{I} - \symbf{n}\symbf{n}\right)\\
+		&= -\left( \symsf{I} - \symbf{n}\symbf{n}\right) \cdot \nabla_s \gamma + \gamma
 	\left( \nabla_s \cdot \symbf{n}\right)\symbf{n} + \gamma \cancel{(\symbf{n}\cdot
 	\nabla_S)} \symbf{n}\\
 	&= -\nabla_s \gamma + \gamma \kappa \symbf{n}
 \end{align}
 The first term is the surface gradient of $\gamma$ and the second is tension
-$\times$ curvature.
+$\times$ curvature, where curvature is denoted by $\kappa \equiv \nabla_s
+\cdot \symbf{n}$.
 
 Equivalently, in perpendicular and parallel components we have
 \begin{align}
@@ -1969,7 +1971,8 @@ $C = C_0 + C'(x)$ where $C' \ll C_0$. Then the transport equation reduces to
 	D_s \nabla^2 C' - kC' = C_0 \nabla_s \cdot \symbf{u}_s
 \end{equation}
 where the non-linear terms $C' \nabla_s \cdot \symbf{u}_s$ and $\symbf{u}_s
-\cdot \nabla_s C'$ have been neglected. This is a linear problem in the rise
+\cdot \nabla_s C'$ have been neglected. Note $k$ vanishes if the fluid is
+insoluble. This is a linear problem in the rise
 velocity $\symbf{U}$ and from spherical symmetry we deduce
 \begin{equation}
 	\symbf{u}_s = A \left( \symsf{I} - \symbf{n}\symbf{n}\right)\cdot\symbf{U}

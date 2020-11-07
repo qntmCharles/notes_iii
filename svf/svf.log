@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  7 NOV 2020 15:57
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  7 NOV 2020 16:40
  restricted system commands enabled.
 **svf.tex
 (./svf.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.106 seconds
+luaotfload | main : initialization completed in 0.108 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -749,7 +749,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip75
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 20.
+Package hyperref Info: Option `colorlinks' set `true' on input line 21.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2016/05/14 v2.6a Micro-typographical refinements (RS)
@@ -2544,7 +2544,10 @@ h LuaLaTeX
 . 
 . Defining command \eqqcolon with sig. '' on line 1965.
 .................................................
-)) (/usr/share/texlive/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
@@ -2695,12 +2698,12 @@ File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Differential with sig. ' o g d() ' on line 124.
+. Defining command \Differential with sig. ' o g d() ' on line 140.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Dd with sig. '' on line 125.
+. Defining command \Dd with sig. '' on line 141.
 .................................................
  (/usr/share/texlive/texmf-dist/tex/latex/yfonts/yfonts.sty
 Package: yfonts 2003/01/08 v1.3 (WaS)
@@ -3183,29 +3186,29 @@ Overfull \hbox (23.32442pt too wide) in paragraph at lines 1213--1213
 
 [18] [19] [20] [21] [22] [23] [24] [25]
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 5.00008pt on input line 1903.
+(Font)              scaled to size 5.00008pt on input line 1905.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 4.99992pt on input line 1903.
+(Font)              scaled to size 4.99992pt on input line 1905.
  [26] [27] [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2083.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2083.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2087.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2087.
  (./svf.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2083.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2083.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2087.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2087.
 Package rerunfilecheck Info: File `svf.out' has not changed.
 (rerunfilecheck)             Checksum: E0A0C6EEC7CC6CEF183CDB8B357DBA09;3416.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2083.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2087.
 )
 
 Here is how much of LuaTeX's memory you used:
- 52918 strings out of 494577
+ 52948 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 30454 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 3707 glue, 1 kern, 1004 attribute, 64 glue_spec, 10
-04 attribute_list, 1 write nodes
-   avail lists: 1:1,2:2653,3:909,4:152,5:303,6:1795,7:622,8:99,9:580,10:16,11:14
+ 30582 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 3723 glue, 1 kern, 1008 attribute, 64 glue_spec, 10
+08 attribute_list, 1 write nodes
+   avail lists: 1:1,2:2675,3:906,4:152,5:303,6:1795,7:667,8:99,9:580,10:16,11:14
 2
- 55195 multiletter control sequences out of 65536+600000
+ 55218 multiletter control sequences out of 65536+600000
  88 fonts using 18400247 bytes
  74i,19n,108p,8841b,924s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/font
@@ -3223,7 +3226,7 @@ lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/yfonts-t1/yswab.pfb>
 
-Output written on svf.pdf (28 pages, 227673 bytes).
+Output written on svf.pdf (28 pages, 228115 bytes).
 
 PDF statistics: 547 PDF objects out of 1000 (max. 8388607)
  453 compressed objects within 5 object streams
