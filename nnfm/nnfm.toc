@@ -25,7 +25,7 @@
 \contentsline {paragraph}{\nonumberline Yielded region.}{21}{section*.2}
 \contentsline {paragraph}{\nonumberline Unyielded region.}{22}{section*.3}
 \contentsline {paragraph}{\nonumberline Yield surface.}{22}{section*.4}
-\contentsline {section}{\numberline {6}Linear Viscoelastic Fluids}{22}{section.6}
+\contentsline {section}{\numberline {6}Linear Viscoelastic Fluids}{23}{section.6}
 \contentsline {subsection}{\numberline {6.1}Viscous vs. elastic}{23}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Maxwell fluids}{23}{subsection.6.2}
 \contentsline {paragraph}{\nonumberline Intepretation of $\mitlambda $.}{24}{section*.5}

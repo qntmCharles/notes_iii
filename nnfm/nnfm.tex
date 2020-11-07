@@ -1526,8 +1526,9 @@ equation for $\theta$.
 
 \section{Linear Viscoelastic Fluids}
 Recall from phenomenology that some complex fluids have stresses which depend
-on the history of deformation. Generalised Newtonian fluids and yield-stress
-fluids have no such memory.
+on the history of deformation, i.e. they have memory. Generalised Newtonian
+fluids and yield-stress fluids have no such memory. To model complex fluids
+with memory, we must incorporate \emph{elasticity}.
 
 \subsection{Viscous vs. elastic}
 Consider fluids that have both a viscous \emph{and} elastic response to
@@ -1610,7 +1611,7 @@ current. Therefore
 
 The total rate of strain is 
 \begin{align}
-	\srate &= \srate_1 + \srate_2 = \frac{\dot{\sigma}_1}{G} +
+	\srate = \srate_1 + \srate_2 &= \frac{\dot{\sigma}_1}{G} +
 	\frac{\sigma_2}{\eta} = \frac{\dot{\sigma}}{G} + \frac{\sigma}{\eta}\\ 
 	\implies \sigma + \frac{\eta}{G} \dot{\sigma} &= \eta \srate
 \end{align}
@@ -1629,7 +1630,7 @@ conditions $\sigma(t=0) = \sigma_0$. Thus
 	\sigma(t) = \sigma_0 e^{-\frac{t}{\lambda}}
 \end{equation}
 Hence we have exponential relaxation of stress on timescale $\lambda$. Note
-$\lambda$ is the timescale for adjustments in stress to changes in
+$\lambda$ is the timescale for adjustments in stress due to changes in
 deformation, whilst deformation adjusts instantaneously to changes in stress.
 
 \paragraph{Behaviour at short vs. long timescales.} Consider a Maxwell fluid
