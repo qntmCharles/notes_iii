@@ -1,5 +1,9 @@
 \documentclass{jknotes}
-\usepackage{/home/cwp/notes/joshkirklin}
+\usepackage{../joshkirklin}
+
+\setmathfont{Latin Modern Math}
+\setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
+\setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
 
 \begin{document}
 
@@ -558,7 +562,7 @@ which may also be re-written with the $2\mu$ factor absorbed by $p$.
 Note the following.
 \begin{enumerate}
 	\item Any irrotational flow $2 \mu \symbf{u} = \nabla \chi$ is also a Stokes
-		flow, though $p = 0$ and $\symsf{\sigma} = \nabla \nabla \chi$ which
+		flow, though $p = 0$ and $\symbfsf{\sigma} = \nabla \nabla \chi$ which
 		is different from an inviscid irrotational flow.
 	\item It is sometimes possible to find a harmonic scalar $\phi$ with
 		$\chi = \symbf{x} \cdot \nabla \phi - 2 \phi$. If so, $\chi$ can be
@@ -655,7 +659,7 @@ the Stokes equations. This problem is also known as a `Stokeslet'. Consider
 the problem
 \begin{equation}
 	\begin{aligned}
-		\nabla \cdot \symsf{\sigma} &= \mu \nabla^2 \symbf{u} - \nabla p = -
+		\nabla \cdot \symbfsf{\sigma} &= \mu \nabla^2 \symbf{u} - \nabla p = -
 		\symbf{F} \delta(\x) \\
 		\nabla \cdot \symbf{u} &= 0
 	\end{aligned}
@@ -681,7 +685,7 @@ We have
 
 Thus the stress tensor is
 \begin{equation}
-	\symsf{\sigma} = \mu \left( \nabla \symbf{u} + \nabla \symbf{u}^T\right) -
+	\symbfsf{\sigma} = \mu \left( \nabla \symbf{u} + \nabla \symbf{u}^T\right) -
 	\left(\nabla \cdot \symbf{\Phi}\right)\symsf{I} = 3\alpha (\symbf{F} \cdot
 	\symbf{x}) \frac{\x \x}{r^5}
 \end{equation}
@@ -690,7 +694,7 @@ On any sphere $r=R$, $\symbf{n} = \frac{\x}{R}$, and
 \begin{equation}
 	\begin{aligned}
 		2\mu \symbf{u}\cdot\symbf{n} &= -\frac{2\alpha}{R} \symbf{F}\cdot\symbf{n} \\
-		\symsf{\sigma} \cdot \symbf{n} &= 3 \alpha \frac{(\symbf{F} \cdot
+		\symbfsf{\sigma} \cdot \symbf{n} &= 3 \alpha \frac{(\symbf{F} \cdot
 		\symbf{n}) \symbf{n}}{R^2}
 	\end{aligned}
 \end{equation}
@@ -704,14 +708,14 @@ the surface stress. The surface volume flux is
 which does not provide any information on $\alpha$. The surface forces should
 equal $-\symbf{F}$. We have
 \begin{equation}
-	-\symbf{F} = \int_{r=R} \symsf{\sigma} \cdot \symbf{n} \, \diffd S = 3\alpha
+	-\symbf{F} = \int_{r=R} \symbfsf{\sigma} \cdot \symbf{n} \, \diffd S = 3\alpha
 	\symbf{F} \cdot \int_{r=R} \symbf{n} \symbf{n} \, \frac{\diffd S}{R^2} = 3 \alpha
 	\symbf{F} \cdot \frac{4\pi}{3} \symsf{I} = 4\pi \alpha \symbf{F}
 \end{equation}
 
 Hence we choose $\alpha = -1/4\pi$. Thus the final solution is
 \begin{equation}
-	\symbf{u} = \symbf{F} \cdot \symsf{J}(\x), \hspace{2em} \symsf{\sigma} =
+	\symbf{u} = \symbf{F} \cdot \symsf{J}(\x), \hspace{2em} \symbfsf{\sigma} =
 	\symbf{F} \cdot \symsf{K}(\x), \hspace{2em} p =
 	\frac{\symbf{F}\cdot\x}{4\pi r^3}
 \end{equation}
@@ -723,7 +727,7 @@ where $\symsf{J}$ is the \emph{Oseen tensor}:
 \end{equation}
 
 Finally, from incompressibility $\nabla \cdot \symbf{u} = 0$ and the Stokes
-equations $\nabla \cdot \symsf{\sigma} = -\symbf{F}\delta(\x)$, we deduce
+equations $\nabla \cdot \symbfsf{\sigma} = -\symbf{F}\delta(\x)$, we deduce
 \begin{equation}
 	\nabla \cdot \symsf{J} = 0, \hspace{2em} \nabla \cdot
 	\symsf{K} = - \symsf{I}\delta(\x)
@@ -891,7 +895,7 @@ must balance the force across $r=a$, we can see without further work that the
 force by the fluid on the sphere i.e. drag $=-6\pi \mu a \symbf{U}$. In more
 detail:
 \begin{align}
-	\symsf{\sigma} &= -p \symsf{I} + \mu \left( \nabla \symbf{u} + \nabla
+	\symbfsf{\sigma} &= -p \symsf{I} + \mu \left( \nabla \symbf{u} + \nabla
 	\symbf{u}^T\right) \\
 	&= -\frac{3}{2} \mu a \frac{\symbf{U}\cdot\x}{r} + \frac{3}{4}\mu \left[
 	\left(-\frac{a}{r^3} - \frac{a^3}{r^5}\right)\left(\x \symbf{U} + \symbf{U}
@@ -900,7 +904,7 @@ detail:
 		\symsf{I}\right)\left(\frac{a}{r^3} - \frac{a^3}{r^5}\right) +
 	\left(\symbf{U}\cdot\x\right)\left(-\frac{3a}{r^5}+\frac{5a^3}{r^7}\right)2\x\x\right]
 	\\
-	\implies\symsf{\sigma}\cdot\symbf{n}\mid_{r=a} &= -\frac{3}{2}\frac{\mu}{a}
+	\implies\symbfsf{\sigma}\cdot\symbf{n}\mid_{r=a} &= -\frac{3}{2}\frac{\mu}{a}
 	(\symbf{U}\cdot\symbf{n})\symbf{n} + \frac{3\mu}{4a}
 	\left[-2(\symbf{n}(\symbf{U}\cdot\symbf{n}) + \symbf{U}) +
 	(\symbf{U}\cdot\symbf{n})(-2)2\symbf{n}\right] \\
@@ -909,7 +913,7 @@ detail:
 
 Thus the drag on the sphere is
 \begin{equation}
-	\symbf{F} = \int_{r=a} \symsf{\sigma}\cdot \symbf{n}\,\diffd S =
+	\symbf{F} = \int_{r=a} \symbfsf{\sigma}\cdot \symbf{n}\,\diffd S =
 	-\frac{3\mu}{2a} \symbf{U} \cdot 4\pi a^2 = -6\pi \mu a \symbf{U}
 \end{equation}
 as expected.
@@ -942,7 +946,7 @@ $\symbf{\Phi} = \frac{\symbf{F}}{2\pi} \ln r$ which gives
 \begin{align}
 	\symbf{u} &= \symbf{F}\cdot\symsf{J}^{2D} \\
 	p &= \frac{\symbf{F}\cdot\x}{2\pi r^2} \\
-	\symsf{\sigma} &= \symbf{F} \cdot \symsf{K}^{2D} \\
+	\symbfsf{\sigma} &= \symbf{F} \cdot \symsf{K}^{2D} \\
 	\symsf{J}^{2D} &= \frac{1}{4\pi \mu} \left( -\ln r \symsf{I} +
 	\frac{\x\x}{r^2}\right) \\
 	\symsf{K}^{2D} &= -\frac{1}{\pi} \frac{\x\x\x}{r^4}
@@ -967,8 +971,8 @@ orientation of the body. We refer to this matrix as the \emph{resistance
 matrix}. We have 
 
 \begin{equation}
-	\int_{\text{body}} \symbf{u}\cdot\symsf{\sigma}\cdot\symbf{n}\,\diffd S = \int
-	(\symbf{U} + \symbf{\Omega}\times\x)\cdot\symsf{\sigma}\cdot\symbf{n}\,\diffd S
+	\int_{\text{body}} \symbf{u}\cdot\symbfsf{\sigma}\cdot\symbf{n}\,\diffd S = \int
+	(\symbf{U} + \symbf{\Omega}\times\x)\cdot\symbfsf{\sigma}\cdot\symbf{n}\,\diffd S
 	= \symbf{U} \cdot \symbf{F} + \symbf{\Omega} \cdot \symbf{G}
 \end{equation}
 
@@ -1047,18 +1051,18 @@ $\symbf{u}' = \symbf{u} - \symbf{u}^\infty$, which has boundary conditions
 and $\hat{\symbf{u}}$ a `test' flow due to particle translation with arbitrary
 velocity $\hat{\symbf{V}}$. By linearity, 
 \begin{equation}
-	\hat{\symsf{\sigma}} = \hat{\symsf{\Sigma}}(\x) \cdot
+	\hat{\symbfsf{\sigma}} = \hat{\symbfsf{\Sigma}}(\x) \cdot
 	\hat{\symbf{V}}
 \end{equation}
-for some third rank tensor $\hat{\symsf{\Sigma}}$. The reciprocal theorem for
+for some third rank tensor $\hat{\symbfsf{\Sigma}}$. The reciprocal theorem for
 $\symbf{u}'$ and $\hat{\symbf{u}}$ gives
 \begin{equation}
-	\hat{\symbf{V}} \cdot \int_{S_P} \symsf{\sigma}' \cdot \symbf{n}\,\diffd S =
+	\hat{\symbf{V}} \cdot \int_{S_P} \symbfsf{\sigma}' \cdot \symbf{n}\,\diffd S =
 	\hat{\symbf{V}} \cdot \int (\symbf{u}^P - \symbf{u}^\infty(\x))\cdot
-	\hat{\symsf{\Sigma}} \cdot \symbf{n}\,\diffd S
+	\hat{\symbfsf{\Sigma}} \cdot \symbf{n}\,\diffd S
 \end{equation}
 Now $\hat{\symbf{V}}$ is arbitrary and contribution from $\int \symbf{u}^P \cdot
-\hat{\symsf{\Sigma}}\cdot\symbf{n}\,\diffd S$ is given by
+\hat{\symbfsf{\Sigma}}\cdot\symbf{n}\,\diffd S$ is given by
 \begin{equation}
 \begin{pmatrix} \symbf{U} & \symbf{\Sigma}\end{pmatrix} \begin{pmatrix} \symsf{A} &
 \symsf{B} \\ \symsf{B}^T & \symsf{D} \end{pmatrix} \begin{pmatrix}
@@ -1069,14 +1073,14 @@ Hence we have \emph{Fax\'{e}n's first formula}
 \begin{equation}
 	\symbf{F} = \symsf{A}\cdot\symbf{U} + \symsf{B} \cdot \symbf{\Omega} - \int
 	\symbf{u}^\infty(\x) \cdot
-	\hat{\symsf{\Sigma}}\cdot\symbf{n}\,\diffd S
+	\hat{\symbfsf{\Sigma}}\cdot\symbf{n}\,\diffd S
 \end{equation}
 
 Similar Fax\'{e}n relations can be obtained for the couple $\symbf{G}$ and
 stresslet $\symsf{S}$ exerted, by using other test flows.
 
 \begin{eg}
-	For a sphere, we have $\hat{\symsf{\Sigma}}\cdot\symbf{n} =
+	For a sphere, we have $\hat{\symbfsf{\Sigma}}\cdot\symbf{n} =
 	\frac{3\mu}{2a} \symsf{I}$ on $r=a$, where $\symbf{n}$ is \emph{into} the
 	particle. We also have
 	\begin{equation}
@@ -1124,8 +1128,8 @@ to $\symbf{U}$ from the $\frac{a^2}{6}\nabla^2$ term.
 Consider a Stokes flow $\symbf{u}$ and a Stokeslet flow $\symbf{u}^S$ due to a point force
 $\symbf{F}$ at $\y$. We have $\nabla \cdot \symbf{u} = \nabla \cdot \symbf{u}^S = 0$ and
 \begin{equation}
-	\nabla \cdot \symsf{\sigma} = -\symbf{f}, \hspace{2em} \nabla \cdot
-	\symsf{\sigma}^S = -\symbf{F} \delta(\x-\y)
+	\nabla \cdot \symbfsf{\sigma} = -\symbf{f}, \hspace{2em} \nabla \cdot
+	\symbfsf{\sigma}^S = -\symbf{F} \delta(\x-\y)
 \end{equation}
 
 Apply the reciprocal theorem with $\symbf{u}_1 = \symbf{u}, \symbf{u}_2 = \symbf{u}^S$. We have
@@ -1135,7 +1139,7 @@ Apply the reciprocal theorem with $\symbf{u}_1 = \symbf{u}, \symbf{u}_2 = \symbf
 		\symsf{K}(\x-\y)\right)\cdot\symbf{n}\,\diffd S = \int_v
 		\left( \symbf{F} \cdot \symsf{J}(\x-\y)\right) \cdot \symbf{f} \, \diffd V
 		+ \int_{\partial V} \left( \symbf{F} \cdot
-		\symsf{J}(\x-\y)\right)\cdot\symsf{\sigma}\cdot\symbf{n}\,\diffd S
+		\symsf{J}(\x-\y)\right)\cdot\symbfsf{\sigma}\cdot\symbf{n}\,\diffd S
 \end{equation}
 
 Note by definition $J$ is even and $K$ is odd, so $\symsf{J}(\x-\y) =
@@ -1152,7 +1156,7 @@ Note we require $\y\in\partial V$ to be a smooth point of $\partial V$ for
 this to hold. Hence
 \begin{equation}
 	\int_V \symsf{J}(\y-\x)\cdot\symbf{f}(\x)\,\diffd V + \int_{\partial V}
-	\symsf{J}(\y-\x)\cdot\symsf{\sigma}\cdot\symbf{n}\,\diffd S +
+	\symsf{J}(\y-\x)\cdot\symbfsf{\sigma}\cdot\symbf{n}\,\diffd S +
 	\int_{\partial V}
 	\symbf{u}(\x)\cdot\symsf{K}(\y-\x)\cdot\symbf{n}\,\diffd S =
 	\begin{cases}
@@ -1168,7 +1172,7 @@ this to hold. Hence
 	\item The jump in the RHS comes from the $\symsf{K}$ integral
 		which depends on $\inv{r}$ which jumps when $\y$ crosses $\partial
 		V$.
-	\item Usually we only know $\symsf{\sigma}\cdot\symbf{n}$ or $\symbf{u}$ on
+	\item Usually we only know $\symbfsf{\sigma}\cdot\symbf{n}$ or $\symbf{u}$ on
 		$\partial V$. In general, we solve as an integral equation for
 		whichever is not specified with $\y \in \partial V$ and then
 		substitute to find $\symbf{u}$ elsewhere.
@@ -1193,18 +1197,18 @@ to obtain after some messy algebra
 where the first term is $\mathcal{O}(\inv{y})$, the three following terms are
 $\mathcal{O}(\frac{a}{y^2})$ and (using $\symbf{n}$ out of body)
 \begin{align}
-	\symbf{F} &= -\int \symsf{\sigma}\cdot\symbf{n}\,\diffd S = \text{force exerted
+	\symbf{F} &= -\int \symbfsf{\sigma}\cdot\symbf{n}\,\diffd S = \text{force exerted
 	by body}\\
-	\symbf{G} &= -\int \x \times \symsf{\sigma} \cdot \symbf{n}\,\diffd S =
+	\symbf{G} &= -\int \x \times \symbfsf{\sigma} \cdot \symbf{n}\,\diffd S =
 	\text{couple exerted by body} \\
 	Q &= \int \symbf{u} \cdot \symbf{n} \,\diffd S = \text{source strength (vanishes for
 	rigid body)} \\
 	\symsf{S} &= \int \left[ \frac{1}{2} \left( \x
-			(\symsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right) +
+			(\symbfsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right) +
 			\frac{1}{2}\left( \x
-				(\symsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right)^T -
+				(\symbfsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right)^T -
 				\frac{1}{3}\symsf{I} \text{tr}\left( \x
-			(\symsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right)\right] \,
+			(\symbfsf{\sigma}\cdot\symbf{n}) - 2 \mu \symbf{u} \symbf{n}\right)\right] \,
 			\diffd S = \text{stresslet exerted}
 \end{align}
 
@@ -1227,11 +1231,11 @@ $\symsf{J}$. We assume for simplicity that there is no body force, $\symbf{f} =
 0$, and the far field is at rest, $\symbf{u} \to 0$ as $r \to \infty$. Applying
 the basic integral identity to each of $V_1$ and $V_2$ we have
 \begin{align}
-	\int_{\partial V} \frac{1}{\lambda} \symsf{J} \cdot \symsf{\sigma_1}
+	\int_{\partial V} \frac{1}{\lambda} \symsf{J} \cdot \symbfsf{\sigma_1}
 	\cdot \symbf{n} + \symbf{u}_1 \cdot \symsf{K} \cdot \symbf{n} \, \diffd S
 	&= \begin{cases} \symbf{u}_1 & \y \in V_1 \\ 0 & \y \in V_2 \\ \frac{1}{2}\symbf{u}_1 &
 	\y \in \partial V \end{cases} \label{eq:drop1} \\
-	-\int_{\partial V} \frac{1}{\lambda} \symsf{J} \cdot \symsf{\sigma_2}
+	-\int_{\partial V} \frac{1}{\lambda} \symsf{J} \cdot \symbfsf{\sigma_2}
 	\cdot \symbf{n} + \symbf{u}_2 \cdot \symsf{K} \cdot \symbf{n} \, \diffd S
 	&= \begin{cases} \symbf{u}_2 & 0 \in V_1 \\ \symbf{u}_2 & \y \in V_2 \\ \frac{1}{2}\symbf{u}_2 &
 	\y \in \partial V \end{cases} \label{eq:drop2} \\
@@ -1240,8 +1244,8 @@ Note the $-$ sign in \eqref{eq:drop2} is because $\symbf{n}$ points into $V_2$.
 Now $\symbf{u}_1 = \symbf{u}_2 = \symbf{u}$ (say) on $\partial V$. So $\lambda$\eqref{eq:drop2} +
 \eqref{eq:drop1} implies
 \begin{equation}
-	\int_{\partial V} \symsf{J}(\y-\x) \cdot (\symsf{\sigma_1} \cdot \symbf{n}
-	- \symsf{\sigma_2} \cdot \symbf{n})\,\diffd S_x + (\lambda-1) \int_{\partial
+	\int_{\partial V} \symsf{J}(\y-\x) \cdot (\symbfsf{\sigma_1} \cdot \symbf{n}
+	- \symbfsf{\sigma_2} \cdot \symbf{n})\,\diffd S_x + (\lambda-1) \int_{\partial
 		V} \symbf{u} \cdot \symsf{K}(\y-\x)\cdot\symbf{n}\,\diffd S_x =
 		\begin{cases} \lambda \symbf{u}_1 & \y \in V_1 \\ \symbf{u}_2 & \y \in V_2 \\
 		\frac{1}{2}(\lambda+1)\symbf{u} & \y \in \partial V \end{cases}
@@ -1252,7 +1256,7 @@ determine droplet shapes and evolution.
 
 \begin{eg}
 	Relaxation of a drop under constant surface tension. The flow is driven by
-	$\symsf{\sigma_2} \cdot \symbf{n} - \symsf{\sigma_1} \cdot \symbf{n} = \gamma
+	$\symbfsf{\sigma_2} \cdot \symbf{n} - \symbfsf{\sigma_1} \cdot \symbf{n} = \gamma
 	(\nabla \cdot \symbf{n})\symbf{n}$. We consider $\y \in \partial V$ to find the
 	interfacial motion:
 	\begin{enumerate}
@@ -1302,15 +1306,15 @@ The previous result for drops gives
 	\symbf{u}(\y) = \int_{\partial V} \symsf{J}(\y-\x) \cdot \symbf{f}_S(\x) \, \diffd
 	S
 \end{equation}
-where $\symbf{f}_S = (\symsf{\sigma}^* - \symsf{\sigma})\cdot\symbf{n}$ is the
+where $\symbf{f}_S = (\symbfsf{\sigma}^* - \symbfsf{\sigma})\cdot\symbf{n}$ is the
 Stokeslet density. Note:
 \begin{enumerate}
-	\item $\symsf{\sigma}^*$ may not be the real stress in $V^*$ unless the
+	\item $\symbfsf{\sigma}^*$ may not be the real stress in $V^*$ unless the
 		body really is fluid with $\mu = \mu^*$.
 	\item If the body is rigid then $\symbf{u}^*$ is rigid-body motion and
-		$\symsf{\sigma}^* = \symbf{0}$. In this case $\symbf{f}_S$ is the stress
-		$-\symsf{\sigma}\cdot\symbf{n}$ exerted by the body on the fluid. The
-		external flow depends \emph{only} on $\symsf{\sigma}\cdot\symbf{n}$ and
+		$\symbfsf{\sigma}^* = \symbf{0}$. In this case $\symbf{f}_S$ is the stress
+		$-\symbfsf{\sigma}\cdot\symbf{n}$ exerted by the body on the fluid. The
+		external flow depends \emph{only} on $\symbfsf{\sigma}\cdot\symbf{n}$ and
 		\emph{not} on $\symbf{u}$.
 \end{enumerate}
 
@@ -1688,18 +1692,18 @@ Surface tension can be represented by a surface stress (in $N \cdot m^{-1}$,
 derived from a surface energy in $J \cdot m^{-2}$) acting isotropically across
 lines in the surface with stress tensor
 \begin{equation}
-	\symsf{\sigma}^s = \gamma \left( \symsf{I} - \symbf{n}\symbf{n}\right)
+	\symbfsf{\sigma}^s = \gamma \left( \symsf{I} - \symbf{n}\symbf{n}\right)
 \end{equation}
 The force balance on an arbitrary small area of the interface gives
 \begin{equation}
-	\nabla_s \cdot \symsf{\sigma}^s + \left[ \symsf{\sigma} \cdot
+	\nabla_s \cdot \symbfsf{\sigma}^s + \left[ \symbfsf{\sigma} \cdot
 	\symbf{n}\right]^+_- = 0
 \end{equation}
 where $\symbf{n}$ points out of the fluid and $\nabla_S = \left(\symsf{I} -
 \symbf{n}\symbf{n}\right) \cdot \nabla$ is the gradient operator in the surface.
 Hence the jump in fluid stress is
 \begin{align}
-	\left[ \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\nabla_s \cdot \gamma
+	\left[ \symbfsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\nabla_s \cdot \gamma
 	\left( \symsf{I} - \symbf{n}\symbf{n}\right) \cdot \nabla_s \gamma + \gamma
 	\left( \nabla_s \cdot \symbf{n}\right)\symbf{n} + \gamma \cancel{(\symbf{n}\cdot
 	\nabla_S)} \symbf{n}\\
@@ -1710,9 +1714,9 @@ $\times$ curvature.
 
 Equivalently, in perpendicular and parallel components we have
 \begin{align}
-	\left[ \symbf{n} \cdot \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= \gamma
+	\left[ \symbf{n} \cdot \symbfsf{\sigma} \cdot \symbf{n}\right]^+_- &= \gamma
 	\kappa \\
-	\left[ \symbf{n} \times \symsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\symbf{n}
+	\left[ \symbf{n} \times \symbfsf{\sigma} \cdot \symbf{n}\right]^+_- &= -\symbf{n}
 	\times \nabla_s \gamma
 \end{align}
 
@@ -1781,7 +1785,7 @@ and on $r =a$, $T = T_0 + \frac{3}{2}\symbf{H}\cdot\x$. Hence
 \paragraph{Fluid problem.}
 The flow is driven by an interfacial force density 
 \begin{align}
-	\symbf{f}_s &= \symsf{\sigma}_1 \cdot \symbf{n} - \symsf{\sigma}_2 \cdot
+	\symbf{f}_s &= \symbfsf{\sigma}_1 \cdot \symbf{n} - \symbfsf{\sigma}_2 \cdot
 	\symbf{n} \\
 	&= \nabla_s \gamma - \gamma \symbf{n}\nabla_s \cdot \symbf{n} \\
 	&= \left( \symsf{I}-\symbf{n}\symbf{n}\right) \cdot \frac{3}{2}\gamma'
@@ -1999,7 +2003,7 @@ boundary conditions
 	\symbf{u} \to -\symbf{U} \,\,\, \text{as}\,\,\, &r \to \infty \\
 	\symbf{u} \,\,\,\text{finite at} \,\,\, &r = 0 \\
 	\symbf{u}= \symbf{u}_s \,\,\, \text{at} \,\,\, &r = a^+_-\\
-	\left[\symbf{n} \times \symsf{\sigma}\cdot\symbf{n}\right]^+_- =
+	\left[\symbf{n} \times \symbfsf{\sigma}\cdot\symbf{n}\right]^+_- =
 	-\symbf{n} \times \nabla C' \frac{\diffd \gamma}{\diffd C} \,\,\,
 	\text{at} \,\,\, &r = a
 \end{align}
