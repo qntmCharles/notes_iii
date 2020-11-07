@@ -1,30 +1,9 @@
 \documentclass{jknotes}
-\usepackage{joshkirklin,pgfplots}
+\usepackage{../joshkirklin}
 
-\usepackage{xcolor}
-\usepackage{wrapfig}
-\usepackage{placeins}
-\usepackage{cancel}
-\newcommand{\VL}[1]{\mathbf{#1}}
-\newcommand{\Ro}{Ro}
-\newcommand{\Ek}{E}
-\newcommand{\vare}{\varepsilon}
-\newcommand{\sgn}{\text{sgn}}
-\newcommand{\Bu}{Bu}
-\renewcommand{\u}{\bm{u}}
-
-\usepackage{tikz}
-\usepackage{tikz-3dplot}
-\usepackage{pgfplots}
-\pgfplotsset{compat = 1.3}
-\usetikzlibrary{arrows}
-\usetikzlibrary{calc}
-
-\tikzset{
-    partial ellipse/.style args={#1:#2:#3}{
-        insert path={+ (#1:#3) arc (#1:#2:#3)}
-    }
-}
+\setmathfont{Latin Modern Math}
+\setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
+\setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
 
 \begin{document}
 
@@ -42,16 +21,16 @@
 \section{Fluid motion in a rotating reference frame}
 In a non-rotating frame, the \emph{Navier-Stokes} equations are
 \begin{equation}
-	\rho \frac{\diffD \bm{u}}{\diffD t} = -\nabla p - \rho \nabla \phi + \rho
-	\bm{F}
+	\rho \frac{\diffD \symbf{u}}{\diffD t} = -\nabla p - \rho \nabla \phi + \rho
+	\symbf{F}
 	\label{ns}
 \end{equation}
 
 The body forces are assumed to be conservative with potential $\phi$, e.g.
-$\phi = gz$ for gravitational force. $\bm{F}$ is the frictional force.
+$\phi = gz$ for gravitational force. $\symbf{F}$ is the frictional force.
 
 Consider a reference frame rotating about the $z$-axis with constant angular
-velocity $\bm{\Omega}$. Axes in the inertial frame are denoted with a
+velocity $\symbf{\Omega}$. Axes in the inertial frame are denoted with a
 subscript $_I$ and axes in the rotating frame are denoted with a subscript
 $_R$.
 
@@ -59,24 +38,24 @@ $_R$.
 \input{pic}
 \end{center}
 
-For a point with position vector $\bm{x}$ and velocity $\bm{u}_R =
-\left(\frac{\diffd \bm{x}}{\diffd t}\right)_R$ in the rotating reference
+For a point with position vector $\symbf{x}$ and velocity $\symbf{u}_R =
+\left(\frac{\diffd \symbf{x}}{\diffd t}\right)_R$ in the rotating reference
 frame
 \begin{equation}
-	\left(\frac{\diffd \bm{x}}{\diffd t}\right)_I = 
-	\left(\frac{\diffd \bm{x}}{\diffd t}\right)_R + \bm{\Omega} \times \bm{x}
+	\left(\frac{\diffd \symbf{x}}{\diffd t}\right)_I = 
+	\left(\frac{\diffd \symbf{x}}{\diffd t}\right)_R + \symbf{\Omega} \times \symbf{x}
 \end{equation}
-or equivalently $\bm{u}_I = \bm{u}_R + \bm{\Omega} \times \bm{x}$. Hence the
+or equivalently $\symbf{u}_I = \symbf{u}_R + \symbf{\Omega} \times \symbf{x}$. Hence the
 acceleration is
 \begin{equation}
 	\begin{aligned}
-		\left(\frac{\diffd \bm{u}}{\diffd t}\right)_I &= 
-	\left(\frac{\diffd}{\diffd t}\left[ \bm{u}_R + \bm{\Omega} \times \bm{x}
-			\right]\right)_R + \bm{\Omega} \times \left( \bm{u}_R +
-		\bm{\Omega} \times \bm{x}\right)_R \\
-		&= \left(\frac{\diffd \bm{u}_R}{\diffd t}\right)_R + 2 \bm{\Omega}
-		\times \bm{u}_R + \bm{\Omega} \times \left( \bm{\Omega} \times
-		\bm{x}\right)
+		\left(\frac{\diffd \symbf{u}}{\diffd t}\right)_I &= 
+	\left(\frac{\diffd}{\diffd t}\left[ \symbf{u}_R + \symbf{\Omega} \times \symbf{x}
+			\right]\right)_R + \symbf{\Omega} \times \left( \symbf{u}_R +
+		\symbf{\Omega} \times \symbf{x}\right)_R \\
+		&= \left(\frac{\diffd \symbf{u}_R}{\diffd t}\right)_R + 2 \symbf{\Omega}
+		\times \symbf{u}_R + \symbf{\Omega} \times \left( \symbf{\Omega} \times
+		\symbf{x}\right)
 	\end{aligned}
 \end{equation}
 
@@ -86,17 +65,17 @@ accelertion}. Note that we can write the centrifugal acceleration in the form
 of a conservative force
 \begin{equation}
 	\begin{aligned}
-		\bm{\Omega} \times \left( \bm{\Omega} \times \bm{x}\right) &= \nabla
+		\symbf{\Omega} \times \left( \symbf{\Omega} \times \symbf{x}\right) &= \nabla
 	\phi_c \\
-	\phi_c &= -\frac{1}{2} \left| \bm{\Omega} \times \bm{x} \right|^2
+	\phi_c &= -\frac{1}{2} \left| \symbf{\Omega} \times \symbf{x} \right|^2
 \end{aligned}
 \end{equation}
 
 Hence the Navier-Stokes equations in a rotating reference frame are
 \begin{equation}
-	\rho \left( \frac{\diffD \bm{u}}{\diffD t} + 2 \bm{\Omega} \times
-	\bm{u}\right) = - \nabla p - \rho \nabla \left( \phi + \phi_c\right) +
-	\rho \bm{F} \label{nsrot}
+	\rho \left( \frac{\diffD \symbf{u}}{\diffD t} + 2 \symbf{\Omega} \times
+	\symbf{u}\right) = - \nabla p - \rho \nabla \left( \phi + \phi_c\right) +
+	\rho \symbf{F} \label{nsrot}
 \end{equation}
 
 We group the potential terms into a \emph{geopotential} $\Phi \equiv \phi +
@@ -108,7 +87,7 @@ We group the potential terms into a \emph{geopotential} $\Phi \equiv \phi +
 \begin{tikzpicture}
 \filldraw [draw=black,fill=blue] (0,0) ellipse (2.3 and 2);
 \filldraw [draw=black,fill=white] (0,0) circle (2);
-\draw [dashed, ->] (0,0) -- (0,2.4) node[right] {$\hat{\bm{z}}$};
+\draw [dashed, ->] (0,0) -- (0,2.4) node[right] {$\hat{\symbf{z}}$};
 \end{tikzpicture}
 \caption{Geopotential ocean surface relative to a spherical Earth.}
 \label{fig:oblate}
@@ -132,21 +111,21 @@ coordinates} (figure~\ref{fig:lcc}).
 		\draw (0.6,0) arc (0:30:0.6) node[anchor = south] {$\theta$};
 		\draw[->] (0,1.3) -- (0, 1.9);
 		\draw[->] (0, 1.7) [partial ellipse = -180:70:0.3 and 0.1];
-		\draw[->] (1.3, 0.75) -- (1.9,1.1) node[right] {\small $\hat{\bm{z}}$};
+		\draw[->] (1.3, 0.75) -- (1.9,1.1) node[right] {\small $\hat{\symbf{z}}$};
 		\draw[->] (1.3, 0.75) -- (1.3 - 0.35, 0.75 + 0.6) node[above] {\small
-		$\hat{\bm{y}}$};
-		\draw (1.3, 0.75) circle (0.1) node[right] {\small $\hat{\bm{x}}$};
+		$\hat{\symbf{y}}$};
+		\draw (1.3, 0.75) circle (0.1) node[right] {\small $\hat{\symbf{x}}$};
 	\end{tikzpicture}
 	\caption{Local Cartesian coordinates}
 	\label{fig:lcc}
 	\end{center}
 \end{figure}
 
-In this coordinate system $\bm{\Omega} = (0, \Omega \cos \theta, \Omega \sin
-\theta)$. Hence if $\bm{u} = (u, v, w)$ then
+In this coordinate system $\symbf{\Omega} = (0, \Omega \cos \theta, \Omega \sin
+\theta)$. Hence if $\symbf{u} = (u, v, w)$ then
 \begin{equation}
 	\begin{aligned}
-		2 \bm{\Omega} \times \bm{u} &= (2\Omega w \cos \theta - 2 \Omega v \sin
+		2 \symbf{\Omega} \times \symbf{u} &= (2\Omega w \cos \theta - 2 \Omega v \sin
 		\theta, 2 \Omega u \sin \theta, -2\Omega u \cos \theta) \\
 		&= (-fv + f^* w, fu - f^* u)
 	\end{aligned}
@@ -169,8 +148,8 @@ $f^* \equiv 2 \Omega \cos \theta$.
 We can simplify the Coriolis acceleration expression; often $f^* w \ll f v$
 and $f^* u \ll g$. Hence
 \begin{equation}
-	2 \bm{\Omega} \times \bm{u} \approx (-fv, fu, 0) = f \hat{\bm{z}} \times
-	\bm{u}
+	2 \symbf{\Omega} \times \symbf{u} \approx (-fv, fu, 0) = f \hat{\symbf{z}} \times
+	\symbf{u}
 \end{equation}
 
 This is the \emph{traditional approximation}. This is \emph{not} always a good
@@ -178,24 +157,24 @@ approximation, particularly at intermediate scales.
 
 \subsection{Scale analysis.}
 Define characteristic scales for length $L$, time $T$, and velocity $U$.
-Non-dimensional variables are denoted with a superscript star: $\bm{u}^* =
-\bm{u}/U$, etc.
+Non-dimensional variables are denoted with a superscript star: $\symbf{u}^* =
+\symbf{u}/U$, etc.
 
-Using these scalings with $\bm{F} = \nu \nabla^2 \bm{u}$ we have
+Using these scalings with $\symbf{F} = \nu \nabla^2 \symbf{u}$ we have
 \begin{equation}
-	\frac{U}{T} \frac{\partial \bm{u}^*}{\partial t^*} + \frac{U^2}{L}
-	\bm{u}^* \cdot \nabla^* \bm{u}^* + fU \hat{\bm{z}} \times \bm{u}^* =
+	\frac{U}{T} \frac{\partial \symbf{u}^*}{\partial t^*} + \frac{U^2}{L}
+	\symbf{u}^* \cdot \nabla^* \symbf{u}^* + fU \hat{\symbf{z}} \times \symbf{u}^* =
 	-\frac{1}{\rho} \nabla \left(p + \rho \Phi\right) + \frac{\nu U}{L^2} \nabla_*^2
-		\bm{u}^*
+		\symbf{u}^*
 \end{equation}
 
 Dividing through by $fU$ leaves the Coriolis acceleration term $\text{ord}(1)$ with
 other terms scaled relatively.
 \begin{equation}
-	\frac{1}{fT} \frac{\partial \bm{u}^*}{\partial t^*} + \text{Ro}	\bm{u}^*
-	\cdot \nabla^* \bm{u}^* + \hat{\bm{z}} \times \bm{u}^* =
+	\frac{1}{fT} \frac{\partial \symbf{u}^*}{\partial t^*} + \text{Ro}	\symbf{u}^*
+	\cdot \nabla^* \symbf{u}^* + \hat{\symbf{z}} \times \symbf{u}^* =
 	-\frac{1}{\rho f U} \nabla \left(p + \rho \Phi\right) + \text{E} \nabla_*^2
-		\bm{u}^*
+		\symbf{u}^*
 \end{equation}
 where $\text{Ro} \equiv \frac{U}{fL}$ is the \emph{Rossby number} and
 $\text{E} \equiv \frac{\nu}{fL^2}$ is the \emph{Ekman number}.
@@ -207,7 +186,7 @@ $\text{E} \equiv \frac{\nu}{fL^2}$ is the \emph{Ekman number}.
 
 \lecture{14/10/2020}
 Further, if $T = L/U$, then $\text{Ro} = U/fL = 1/fT$. For small \Ro, \Ek, 
-on surfaces of constant $\Phi$, $f \hat{\bm{z}} \times \bm{u} \approx
+on surfaces of constant $\Phi$, $f \hat{\symbf{z}} \times \symbf{u} \approx
 -\frac{1}{\rho}\nabla p$.  This is \emph{geostrophic balance}. In components,
 we have
 \begin{equation}
@@ -218,9 +197,9 @@ we have
 \end{equation}
 The equations of geostrophic balance can be arranged to give the horizontal
 velocity:
-$\bm{u}_H$
+$\symbf{u}_H$
 \begin{equation}
-	\bm{u}_H \equiv (u,v) = \frac{1}{\rho f} \hat{\bm{z}} \times \nabla p
+	\symbf{u}_H \equiv (u,v) = \frac{1}{\rho f} \hat{\symbf{z}} \times \nabla p
 \end{equation}
 
 Horizontal velocity is perpendicular to $\nabla p$ and hence parallel to
@@ -237,20 +216,20 @@ figure~\ref{fig:isobars}).
 
 In the Northern Hemisphere, air moves clockwise around high $p$ and
 anticlockwise around low $p$. A \emph{cyclonic} rotation is in the same sense
-as $\bm{\Omega}$, \emph{anticyclonic} in the opposite sense as $\bm{\Omega}$.
+as $\symbf{\Omega}$, \emph{anticyclonic} in the opposite sense as $\symbf{\Omega}$.
 
 \subsection{Taylor-Proudman Theorem}
 Consider an incompressible, ideal fluid in geostrophic balance (small \Ro,
 \Ek)
 \begin{align}
-	\nabla \cdot \bm{u} &= 0\\
-	2 \bm{\Omega} \times \bm{u} &= -\frac{1}{\rho}\nabla p \label{tpt}
+	\nabla \cdot \symbf{u} &= 0\\
+	2 \symbf{\Omega} \times \symbf{u} &= -\frac{1}{\rho}\nabla p \label{tpt}
 \end{align}
 
 Taking the curl of \eqref{tpt} we have
 \begin{equation}
 	\begin{aligned}
-		\nabla \times \left( \bm{\Omega} \times \bm{u}\right) &= \vare_{ijk}
+		\nabla \times \left( \symbf{\Omega} \times \symbf{u}\right) &= \vare_{ijk}
 		\partial_j \vare_{klm} \Omega_l u_m \\
 		&= \vare_{kij} \vare_{klm} \Omega_l \partial_j u_m \\
 		&= \left(\delta_{il} \delta_{jm} - \delta_{im} \delta_{jl}\right)
@@ -261,23 +240,23 @@ Taking the curl of \eqref{tpt} we have
 
 The first term is $0$ by incompressibility. Thus
 \begin{equation}
-	-\nabla \times \left(\bm{\Omega} \times \bm{u}\right) = \bm{\Omega} \cdot
-	\nabla \bm{u} = 0
+	-\nabla \times \left(\symbf{\Omega} \times \symbf{u}\right) = \symbf{\Omega} \cdot
+	\nabla \symbf{u} = 0
 \end{equation}
 
-For $\bm{\Omega} = (0, 0, \Omega)$, this implies $\frac{\partial w}{\partial
+For $\symbf{\Omega} = (0, 0, \Omega)$, this implies $\frac{\partial w}{\partial
 z} = 0$. If $w = 0$ on some horizontal surface (e.g. ground) then $w=0$
 everywhere. 
 
 Also, $u_x + v_y = 0$, i.e. horizontal velocity is non-divergent in
-geostrophic balance. Fluid moves in `columns' parallel to $\bm{\Omega}$,
+geostrophic balance. Fluid moves in `columns' parallel to $\symbf{\Omega}$,
 called \emph{Taylor columns}.
 
 \section{Departures from geostrophy}
 Consider an incompressible, rotating fluid with constant density $\rho_0$ with
-angular velocity $\bm{\Omega} = (0, 0, f/2)$. Assume small ampltiude motions
-(i.e. $\abs{\bm{u}}^2 \ll \abs{\bm{u}}$), i.e. neglect $\bm{u}\cdot \nabla
-\bm{u}$ and $\nu \nabla^2 \bm{u}$. From \eqref{nsrot},
+angular velocity $\symbf{\Omega} = (0, 0, f/2)$. Assume small ampltiude motions
+(i.e. $\abs{\symbf{u}}^2 \ll \abs{\symbf{u}}$), i.e. neglect $\symbf{u}\cdot \nabla
+\symbf{u}$ and $\nu \nabla^2 \symbf{u}$. From \eqref{nsrot},
 
 \begin{align}
 	u_t - fv &= -\frac{p_x}{\rho_0} \label{nsrot1} \\
@@ -314,28 +293,28 @@ and dispersion relation
 	\draw[->,thick] (-0.1,0) -- (5,0) node[below]{horizontal};
 	\draw[->,thick] (0,-0.1) -- (0,3) node[left]{$z$};
 	\draw[->] (0, 2.5) [partial ellipse = -180:70:0.3 and 0.1];
-	\draw (0.2,2.5) node[right] {$\bm{\Omega}$};
+	\draw (0.2,2.5) node[right] {$\symbf{\Omega}$};
 	\draw[->] (0,0) -- (3, 2);
-	\draw (3.1, 2.1) node[right] {$\bm{k} = (k, l, m)$};
+	\draw (3.1, 2.1) node[right] {$\symbf{k} = (k, l, m)$};
 	\draw (0.9,0) arc (0:30:1);
 	\draw (1.05,0.3) node {$\theta$};
 	\draw[dashed] (1.66, 2.5) -- (2.95,0.58) node[midway,right] {lines of phase};
-	\draw[->,thick, red] (1.5, 2.5) -- (2.25, 3) node[right] {$\bm{c}_p$};
-	\draw[->,thick, red] (1.5,2.5) -- (1.97, 1.8) node[left] {$\bm{c}_g$};
+	\draw[->,thick, red] (1.5, 2.5) -- (2.25, 3) node[right] {$\symbf{c}_p$};
+	\draw[->,thick, red] (1.5,2.5) -- (1.97, 1.8) node[left] {$\symbf{c}_g$};
 \end{tikzpicture}
 \end{center}
 
 This is the dispersion relation for rotating internal waves. They have phase
-speed $\bm{c}_p = w/\bm{k}$ and group velocity 
+speed $\symbf{c}_p = w/\symbf{k}$ and group velocity 
 \begin{equation}
-	\bm{c}_g = \frac{\partial w}{\partial \bm{k}} = \pm f \frac{(-km, -lm, k^2
-		+ l^2)}{\abs{\bm{k}}^{3/2}}
+	\symbf{c}_g = \frac{\partial w}{\partial \symbf{k}} = \pm f \frac{(-km, -lm, k^2
+		+ l^2)}{\abs{\symbf{k}}^{3/2}}
 \end{equation}
-Note that $\bm{c}_p\cdot\bm{c}_g = 0$. Also note $\abs{\omega} \le \abs{f}$.
+Note that $\symbf{c}_p\cdot\symbf{c}_g = 0$. Also note $\abs{\omega} \le \abs{f}$.
 
 \lecture{16/10/2020}
 \subsection{Inertial (free) oscillations}
-Assume $\nabla p = \bm{0}$.  The $x$ and $y$ components of geostrophic balance
+Assume $\nabla p = \symbf{0}$.  The $x$ and $y$ components of geostrophic balance
 \eqref{nsrot1}, \eqref{nsrot2} give
 \begin{equation}
 	u_{tt} + f^2 u = 0
@@ -357,12 +336,12 @@ with radius $\frac{2U}{f}$.
 
 \subsection{Ekman layer}
 Look for a \emph{steady} ocean response to a constant wind stress
-$\bm{\tau}_w$. Use local Cartesian coordinates and make the following assumptions:
+$\symbf{\tau}_w$. Use local Cartesian coordinates and make the following assumptions:
 \begin{enumerate}
 	\item Steady, i.e. $\partial_t \equiv 0$
 	\item Neglect horizontal variations, i.e. $\partial_x = \partial_y = 0$
 	\item Neglect surface waves, i.e. $w(z=0) = 0$
-	\item No flow in deep ocean, i.e. $\lim_{z \to -\infty} \bm{u} = \bm{0}$
+	\item No flow in deep ocean, i.e. $\lim_{z \to -\infty} \symbf{u} = \symbf{0}$
 	\item Constant density $\rho$
 	\item Traditional approximation
 \end{enumerate}
@@ -378,8 +357,8 @@ Define the \emph{complex velocity} $\mathcal{V} \equiv u+iv$. Then
 	\mathcal{V}_{zz} = \frac{if}{\nu} \mathcal{V} \label{compvel}
 \end{equation}
 
-Without loss of generality, assume $\bm{\tau}_w$ is aligned with the $x$-axis:
-$\bm{\tau}_w = (\tau_w, 0) = (\rho \nu u_z, 0)$. Boundary conditions for
+Without loss of generality, assume $\symbf{\tau}_w$ is aligned with the $x$-axis:
+$\symbf{\tau}_w = (\tau_w, 0) = (\rho \nu u_z, 0)$. Boundary conditions for
 \eqref{compvel} are
 \begin{equation}
 	\begin{aligned}
@@ -412,8 +391,8 @@ figure~\ref{fig:ekman}.
 
 \subsection{Ekman transport}
 Integrate the horizontal momentum equations \eqref{hmom1},\eqref{hmom2} to the
-base of the Ekman layer where $\nu \bm{u}_z \approx 0$ at $z=-h$. Since $\nu
-\bm{u}_z (z=0) = (\tau_w/\rho, 0)$, the \emph{Ekman transport} $\bm{U}_T$ is
+base of the Ekman layer where $\nu \symbf{u}_z \approx 0$ at $z=-h$. Since $\nu
+\symbf{u}_z (z=0) = (\tau_w/\rho, 0)$, the \emph{Ekman transport} $\symbf{U}_T$ is
 \begin{equation}
 	\begin{aligned}
 		U_T &\equiv \int_{-h}^0 u \, \diffd z = 0 \\
@@ -440,7 +419,7 @@ Thus for $h$ constant,
 
 In general we have
 \begin{equation}
-	w(z=-h) = \hat{\bm{z}} \cdot \nabla \times \frac{\bm{\tau}_w}{\rho f}
+	w(z=-h) = \hat{\symbf{z}} \cdot \nabla \times \frac{\symbf{\tau}_w}{\rho f}
 \end{equation}
 
 \lecture{19/10/20}
@@ -522,8 +501,8 @@ since $u_z = v_z = 0$ by assumption. Integrating the continuity equation gives
 	w = -z(u_x + v_y) + A(x,y,t)
 \end{equation}
 where $A$ is to be determined by the boundary conditions. Requiring no normal
-flow at $z = -H_0 + h_b$ is imposed by $\bm{u}\cdot\hat{\bm{n}} = 0$ where
-$\bm{n} = \nabla(z-h_b)$. Thus
+flow at $z = -H_0 + h_b$ is imposed by $\symbf{u}\cdot\hat{\symbf{n}} = 0$ where
+$\symbf{n} = \nabla(z-h_b)$. Thus
 \begin{equation}
 	-u\frac{\partial h_b}{\partial x} -v \frac{\partial h_b}{\partial y} + w = 0
 \end{equation}
@@ -582,7 +561,7 @@ angular momentum (changing depth).
 \begin{tikzpicture}
 	\draw[thick,->] (0,2.5) -- (0, 3.5);
 	\draw[->] (0, 3) [partial ellipse = -180:70:0.4 and 0.12];
-	\draw (0.5, 2.8) node {$\bm{\Omega}$};
+	\draw (0.5, 2.8) node {$\symbf{\Omega}$};
 	\draw[thick, smooth,domain=-3:3] plot({\x}, {1/(1+exp(3*\x))});
 	\draw[thick, smooth,domain=-3:3] plot({\x}, {2});
 	\draw (3,2) node[right] {$z=0$};
@@ -594,7 +573,7 @@ angular momentum (changing depth).
 	\draw[thick,blue,->] (1.75, 1) [partial ellipse = -180:70:0.4 and 0.12];
 	\draw[thick, blue,->] (-1.5, 1.5) [partial ellipse = -180:70:0.7 and 0.2];
 	\draw[red, thick, ->] (-0.25,1.25) -- (0.75, 1.25) node[midway,above]
-		{$\zeta, H \uparrow$};
+		{$\zeta, H \symbf{u}parrow$};
 \end{tikzpicture}
 \qquad
 \begin{tikzpicture}
@@ -612,7 +591,7 @@ angular momentum (changing depth).
 \section{Small amplitude motions in rotating SW}
 Consider a stationary fluid with depth $H_s(x,y) = H_0 - h_b$. The fluid
 surface is then perturbed by $\eta(x,y,t)$ where $\eta \ll H_s$. The total
-depth is $H(x,y,t) = H_s + \eta$. For $\abs{\bm{u}}^2 \ll \abs{\bm{u}}$,
+depth is $H(x,y,t) = H_s + \eta$. For $\abs{\symbf{u}}^2 \ll \abs{\symbf{u}}$,
 linearise the shallow water equations:
 \begin{align}
 	u_t - fv &= -g \eta_x \label{swlin1} \\
@@ -648,7 +627,7 @@ Hence linearised steady geostrophic flow in shallow water follows contours of
 constant depth.  Steady PV conservation follows from \eqref{eq:PV} with
 $\partial_t = 0$ and assuming $\zeta \ll f$
 \begin{equation}
-	\bm{u} \cdot \nabla \frac{f}{H_s} = 0
+	\symbf{u} \cdot \nabla \frac{f}{H_s} = 0
 \end{equation}
 Thus when $f$ varies, the flow follows contours of constant $f/H_s$.
 
@@ -665,8 +644,8 @@ Seek plane wave solutions to this wave equation with ansatz $\eta = \eta_0
 \end{equation}
 
 If $f = 0$, i.e. no rotation, then the frequency is $\omega = \pm \sqrt{gH_s}
-\abs{\bm{k}} = \omega_0$ and the phase speed is $\abs{c_p} =
-\frac{\abs{\omega}}{\abs{\bm{k}}} = \sqrt{gH_s} = c_0$. For $f \ne 0$, we get
+\abs{\symbf{k}} = \omega_0$ and the phase speed is $\abs{c_p} =
+\frac{\abs{\omega}}{\abs{\symbf{k}}} = \sqrt{gH_s} = c_0$. For $f \ne 0$, we get
 \emph{Poincar\'{e}} waves with
 \begin{equation}
 	\omega^2 > \omega_0^2, \hspace{2em} \abs{c_p} > c_0
@@ -674,7 +653,7 @@ If $f = 0$, i.e. no rotation, then the frequency is $\omega = \pm \sqrt{gH_s}
 i.e. rotation increases the frequency and phase speed. Define the \emph{Rossby
 deformation scale} $R_D \equiv \frac{c_0}{f}$. From \eqref{eq:poindisp},
 \begin{equation}
-	\frac{\omega^2}{f^2} = 1 + R^2_D \abs{\bm{k}}^2
+	\frac{\omega^2}{f^2} = 1 + R^2_D \abs{\symbf{k}}^2
 \end{equation}
 
 Without loss of generality, let $l = 0$, by reorienting $x$ and $y$. If $\eta
@@ -693,9 +672,9 @@ Since $\omega > f$, the fluid moves anticylonically. The Rossby deformation
 scale $R_D$ is the length scale for which rotation becomes important. Consider
 short and long waves:
 \begin{itemize}
-	\item Short waves: $\abs{\bm{k}} R_D \gg 1$. We have $\omega^2 \to g H_s
-		\abs{\bm{k}}^2$ i.e. non-rotating shallow water gravity waves.
-	\item Long waves: $\abs{\bm{k}}R_D \ll 1$. We have $\omega^2 \to f^2$ i.e.
+	\item Short waves: $\abs{\symbf{k}} R_D \gg 1$. We have $\omega^2 \to g H_s
+		\abs{\symbf{k}}^2$ i.e. non-rotating shallow water gravity waves.
+	\item Long waves: $\abs{\symbf{k}}R_D \ll 1$. We have $\omega^2 \to f^2$ i.e.
 		inertial waves where fluid moves in inertial circles. Gravity is not
 		involved.
 \end{itemize}
@@ -704,7 +683,7 @@ short and long waves:
 \section{Geostrophic adjustment}
 Consider the response of rotating shallow water to an initial state \emph{not}
 in geostrophic balance. Here, we consider $\eta(x,y,) = \eta_0 \sgn(x)$,
-$\bm{u}(x,y,0) = \bm{0}$, so the initial PV is $0$. 
+$\symbf{u}(x,y,0) = \symbf{0}$, so the initial PV is $0$. 
 
 
 Assume $f$ is constant, the perturbation is small $\eta_0 \ll H$, the PV is
@@ -836,14 +815,14 @@ equation. Start from the SW PV equation:
 Assuming a small Rossby number implies the flow is close to geostrophic
 balance with
 \begin{equation}
-	f \hat{\bm{k}} \cross \bm{u} \approx -g \nabla \eta
+	f \symbf{\hat{k}} \times \symbf{u} \approx -g \nabla \eta
 \end{equation}
-where $\hat{\bm{k}}$ is the vertical unit vector. Define the \emph{geostrophic
+where $\hat{\symbf{k}}$ is the vertical unit vector. Define the \emph{geostrophic
 streamfunction} $\psi \equiv \frac{g \eta}{f}$. In terms of this
 streamfunction we have
 \begin{align}
-	\bm{u} &\approx - \nabla \times (\psi \hat{\bm{k}}) \\
-	\zeta &= (\nabla \times \bm{u})\hat{\bm{k}} \approx \nabla^2 \psi
+	\symbf{u} &\approx - \nabla \times (\psi \hat{\symbf{k}}) \\
+	\zeta &= (\nabla \times \symbf{u})\hat{\symbf{k}} \approx \nabla^2 \psi
 \end{align}
 
 \paragraph{Assumption 2: small changes in $f$}
@@ -881,10 +860,10 @@ where $P_g$ is the \emph{quasi-geostrophic potential vorticity} and $\zeta =
 \nabla^2 \psi, \eta = \frac{f_0 \psi}{g}$. Hence from SWPV conservation
 \eqref{eq:PVcons2},
 \begin{equation}
-	\frac{\partial P_g}{\partial t} + \bm{u} \cdot \nabla P_g \approx 0
+	\frac{\partial P_g}{\partial t} + \symbf{u} \cdot \nabla P_g \approx 0
 \end{equation}
 
-Using $\bm{u} \approx - \nabla \times (\psi \hat{\bm{k}})$, $\bm{u} = -\psi_y,
+Using $\symbf{u} \approx - \nabla \times (\psi \hat{\symbf{k}})$, $\symbf{u} = -\psi_y,
 v = \psi_x$ so
 \begin{equation}
 	\frac{\partial P_g}{\partial t} + J(\psi,P_g) \approx 0\label{eq:swqg}
@@ -941,10 +920,10 @@ to the west also. These are Rossby waves.
 		\draw[thick,->] (0, -0.1) -- (0, 3) node[left] {$y$};
 		\draw[thick,blue,->] (1.5, 3) arc(150:-180:1);
 		\draw[blue] (2.35, 2.5) node {$\zeta < 0$};
-		\draw[red] (1.2, 1) node {$f \uparrow$};
+		\draw[red] (1.2, 1) node {$f \symbf{u}parrow$};
 		\draw[red] (1.2, 0.6) node {$\zeta \downarrow$};
 		\draw[red] (3.2, 1) node {$f \downarrow$};
-		\draw[red] (3.2, 0.6) node {$\zeta \uparrow$};
+		\draw[red] (3.2, 0.6) node {$\zeta \symbf{u}parrow$};
 		\draw[thick] (0.6, 2.5) node {\Huge$\Leftarrow$};
 	\end{tikzpicture}
 	\qquad
@@ -954,8 +933,8 @@ to the west also. These are Rossby waves.
 		\draw[thick,->] (0, -0.1) -- (0, 3) node[left] {$y$};
 		\draw[thick,blue,->] (1.5, 3) arc(150:-180:1);
 		\draw[blue] (2.35, 2.5) node {$\eta > 0$};
-		\draw[red] (1.2, 1) node {$f \uparrow$};
-		\draw[red] (1.2, 0.6) node {$\eta \uparrow$};
+		\draw[red] (1.2, 1) node {$f \symbf{u}parrow$};
+		\draw[red] (1.2, 0.6) node {$\eta \symbf{u}parrow$};
 		\draw[red] (3.2, 1) node {$f \downarrow$};
 		\draw[red] (3.2, 0.6) node {$\eta \downarrow$};
 		\draw[thick] (0.6, 2.5) node {\Huge$\Leftarrow$};
@@ -965,37 +944,37 @@ to the west also. These are Rossby waves.
 \section{Large scale ocean circulation}
 \subsection{Sverdrup flow}
 Seek steady solutions for rotating shallow water driven by a wind stress
-$\bm{\tau}_w$. We have
+$\symbf{\tau}_w$. We have
 \begin{align}
-	\frac{\diffD \u}{\diffD t} + f \hat{\bm{k}}\times\u &= -g \nabla \eta +
-	\frac{\bm{\tau}_w}{\rho H} \label{eq:lsoc1} \\
-	H_t + \nabla \cdot (\u H) &= 0 \label{eq:lsoc2}
+	\frac{\diffD \symbf{u}}{\diffD t} + f \hat{\symbf{k}}\times\symbf{u} &= -g \nabla \eta +
+	\frac{\symbf{\tau}_w}{\rho H} \label{eq:lsoc1} \\
+	H_t + \nabla \cdot (\symbf{u} H) &= 0 \label{eq:lsoc2}
 \end{align}
 
-Consider $\nabla \times \eqref{eq:lsoc1} \cdot \hat{\bm{k}}$ and
+Consider $\nabla \times \eqref{eq:lsoc1} \cdot \hat{\symbf{k}}$ and
 \eqref{eq:lsoc2} which implies modified PV conservation
 \begin{equation}
 	\frac{\diffD}{\diffD t} \left( \frac{\zeta + f}{H}\right) = \frac{1}{H}
-	\nabla \times \left( \frac{\bm{\tau}_w}{\rho H} \right) \cdot
-	\hat{\bm{k}} \label{eq:lsocPV}
+	\nabla \times \left( \frac{\symbf{\tau}_w}{\rho H} \right) \cdot
+	\hat{\symbf{k}} \label{eq:lsocPV}
 \end{equation}
 
 Thus we see frictional forcing modifies PV conservation. Assuming $H$ is
 constant, $\zeta \ll f$ ($\Ro \ll 1$), and using the $\beta$-plane
 approximation $f = f_0 + \beta y$, \eqref{eq:lsocPV} becomes
 \begin{equation}
-	\beta v = \frac{1}{\rho H} \left(\nabla \times \bm{\tau}_w\right) \cdot
-	\hat{\bm{k}}\label{eq:sb}
+	\beta v = \frac{1}{\rho H} \left(\nabla \times \symbf{\tau}_w\right) \cdot
+	\hat{\symbf{k}}\label{eq:sb}
 \end{equation}
 This is called \emph{Sverdrup balance}. Physically, the North/South advection
-of planetary vorticity $\bm{u}\cdot\nabla f$ balances the vorticity input by
+of planetary vorticity $\symbf{u}\cdot\nabla f$ balances the vorticity input by
 wind.
 
 \subsection{Western boundary currents}
 Consider steady circulation in a rectangular basin, driven by a wind stress
 curl
 \begin{equation}
-	w(y) = \frac{\left(\nabla \times \bm{\tau}_w\right)\cdot\hat{\bm{k}}}{\rho
+	w(y) = \frac{\left(\nabla \times \symbf{\tau}_w\right)\cdot\hat{\symbf{k}}}{\rho
 	H} \label{eq:wbc1}
 \end{equation}
 
@@ -1023,8 +1002,8 @@ curl
 	\end{tikzpicture}
 \end{center}
 
-From \eqref{eq:sb}, $w < 0 \implies v < 0$. Recall $\u = -\nabla \times \psi
-\hat{\bm{k}}$. Boundary conditions are no normal flow at the boundaries, i.e.
+From \eqref{eq:sb}, $w < 0 \implies v < 0$. Recall $\symbf{u} = -\nabla \times \psi
+\hat{\symbf{k}}$. Boundary conditions are no normal flow at the boundaries, i.e.
 $\psi$ is constant. Sverdrup balance \eqref{eq:sb} $\beta \psi_x = w(y)$ gives
 \begin{equation}
 	\psi = \frac{xw(y)}{\beta} + G(y)
@@ -1034,11 +1013,11 @@ boundary conditions at both $x=0$ and $x=L$. Hence we need extra terms and
 boundary layers. Following Musk, we include horizontal friction in
 \eqref{eq:lsoc1}:
 \begin{equation}
-	\frac{\diffD \u}{\diffD t} + f \hat{\bm{k}}\times\u = -g \nabla \eta +
-	\frac{\bm{\tau}_w}{\rho H} + \nu \nabla^2 \u \label{eq:wbc2}
+	\frac{\diffD \symbf{u}}{\diffD t} + f \hat{\symbf{k}}\times\symbf{u} = -g \nabla \eta +
+	\frac{\symbf{\tau}_w}{\rho H} + \nu \nabla^2 \symbf{u} \label{eq:wbc2}
 \end{equation}
 Note here we are using the horizontal gradient $\nabla \equiv (\partial_x,
-\partial_y)$. Consider $\nabla \times \eqref{eq:wbc2} \cdot \hat{\bm{k}}$ with
+\partial_y)$. Consider $\nabla \times \eqref{eq:wbc2} \cdot \hat{\symbf{k}}$ with
 $\zeta \ll f$. Then
 \begin{equation}
 	\beta \psi_x = w(y) + \nu \nabla^4 \psi\label{eq:wbcODE}
@@ -1230,9 +1209,9 @@ p_0}{\partial z} \left[ \frac{1}{\rho_0} - \frac{1}{\rho_0 + \rho'}\right] -
 where terms including $\rho'$ are discarded unless multiplying $g$. The
 \emph{Boussinesq equations} are therefore
 \begin{align}
-	\frac{\diffD \u}{\diffD t} + \bm{f} \times \u &= -\frac{1}{\rho_0} \nabla
-	p' + \frac{\rho'}{\rho_0}\bm{g} \\
-	\nabla \cdot \u &= 0 \\
+	\frac{\diffD \symbf{u}}{\diffD t} + \symbf{f} \times \symbf{u} &= -\frac{1}{\rho_0} \nabla
+	p' + \frac{\rho'}{\rho_0}\symbf{g} \\
+	\nabla \cdot \symbf{u} &= 0 \\
 	\frac{\diffD \rho'}{\diffD t} &= 0
 \end{align}
 
@@ -1277,13 +1256,13 @@ time being. We define the \emph{buoyancy} $\sigma = -\rho' g/\rho_0$ for
 convenience.
 
 \begin{align}
-	\tilde{\bm{u}}_t &= -\frac{1}{\rho_0} \nabla \tilde{p} + \tilde{\sigma}
-	\hat{\bm{z}} \\
-	\nabla \cdot \tilde{\u} &= 0 \\
+	\tilde{\symbf{u}}_t &= -\frac{1}{\rho_0} \nabla \tilde{p} + \tilde{\sigma}
+	\hat{\symbf{z}} \\
+	\nabla \cdot \tilde{\symbf{u}} &= 0 \\
 	\tilde{\sigma} + N^2 \tilde{w} &= 0
 \end{align}
 
-where the notation $\tilde{\u}$ denotes the disturbance quantities away from a
+where the notation $\tilde{\symbf{u}}$ denotes the disturbance quantities away from a
 state of rest. These can be combined into a single equation for $\tilde{w}$:
 \begin{equation}
 	\nabla^2 \tilde{w}_{tt} + N^2(\tilde{w}_{xx} + \tilde{w}_{yy}) = 0
@@ -1300,8 +1279,8 @@ exponentially growing disturbances. We also have $0 \le \abs{\omega} \le N$
 with the lower limit achieved in the limit $k^2 + l^2 \ll m^2$. Define $\theta
 = \tan^{-1}(m(k^2+l^2)^{-1/2})$, the angle a surface of constant phase makes
 with the vertical. Then $\omega = \pm N \cos \theta$. Owing to
-incompressibility $\nabla \cdot \u = 0$, the velocity vector is perpendicular
-to $\bm{k}$. Thus $\theta$ is also the angle that fluid parcel trajectories
+incompressibility $\nabla \cdot \symbf{u} = 0$, the velocity vector is perpendicular
+to $\symbf{k}$. Thus $\theta$ is also the angle that fluid parcel trajectories
 make with the vertical.
 
 The fact $\abs{\omega} \le N$ implies only disturbances with a sufficiently
@@ -1310,22 +1289,22 @@ than $N$ will remain localised rather than propagating.
 
 Further, note the group velocity is
 \begin{equation}
-	\bm{c}_g \equiv \frac{\partial \omega}{\partial \bm{k}} = \pm
+	\symbf{c}_g \equiv \frac{\partial \omega}{\partial \symbf{k}} = \pm
 	\frac{N}{(k^2+l^2)^{1/2} (k^2+l^2+m^2)^{3/2}} (km^2, lm^2, -m(k^2+l^2))
 \end{equation}
-which gives $\bm{c}_g \cdot \bm{k} = 0$, i.e. the group velocity lies in
+which gives $\symbf{c}_g \cdot \symbf{k} = 0$, i.e. the group velocity lies in
 surfaces of constant phase.
 
 \lecture{4/11/20}
 \section{3D quasi-geostrophic equations}
 \subsection{Basic facts about rotation \& stratification}
 \begin{enumerate}
-	\item Assuming the buoyancy frequency $N$ is constant and $\bm{f}$ is
+	\item Assuming the buoyancy frequency $N$ is constant and $\symbf{f}$ is
 		vertical, the dispersion relation for small amplitude waves is
 		\begin{equation}
 			\omega^2 = \frac{N^2 k^2 + f^2 m^2}{k^2 + m^2}
 		\end{equation}
-		where $\bm{k} = (k,l,m)$. Thus the relative strength of stratification
+		where $\symbf{k} = (k,l,m)$. Thus the relative strength of stratification
 		vs. rotation is $N/L$ vs. $f/D$, where $L$ is the horizonal
 		lengthscale and $D$ is the vertical lengthscale.
 	\item Typically, $N \gg f$. In the deep ocean, $N \sim 10^{-3} s^{-1}$ and
@@ -1337,20 +1316,20 @@ surfaces of constant phase.
 	\item Given $L \gg D$, the Coriolis force may be neglected in the vertical
 		momentum equation, and in the horizontal momentum equation only the
 		part of the Coriolis force associateds with the horizontal velocity is
-		important. This can be seen as follows: let $\bm{f} = \bm{f}_h +
-		\bm{f}_v$ and $\bm{u} = \bm{u}_h + \bm{u}_v$, where $_h$ and $_v$
+		important. This can be seen as follows: let $\symbf{f} = \symbf{f}_h +
+		\symbf{f}_v$ and $\symbf{u} = \symbf{u}_h + \symbf{u}_v$, where $_h$ and $_v$
 		denote horizontal and vertical components respectively. Then,
 		\begin{equation}
-			\bm{f} \times \bm{f} = \bm{f}_h \times \bm{u}_h + \bm{f}_v \times
-			\bm{u}_h + \bm{f}_h \times \bm{u}_v + \cancel{\bm{f}_v \times
-			\bm{u}_h} \approx \bm{f}_h \times \bm{u}_h + \bm{f}_v \times
-			\bm{u}_h
+			\symbf{f} \times \symbf{f} = \symbf{f}_h \times \symbf{u}_h + \symbf{f}_v \times
+			\symbf{u}_h + \symbf{f}_h \times \symbf{u}_v + \cancel{\symbf{f}_v \times
+			\symbf{u}_h} \approx \symbf{f}_h \times \symbf{u}_h + \symbf{f}_v \times
+			\symbf{u}_h
 		\end{equation}
-		where we have assumed $\abs{\bm{u}_v} \ll \abs{\bm{u}_h}$. At low
-		latitude, this assumption fails since $\bm{f}_v \ll \bm{f}_h$.
-		Following the traditional approximation, only the $\bm{f}_v \times
-		\bm{u}_h$ contribution is retained in the horizontal momentum
-		equation. This is equivalent to replacing $\bm{f}$ with its vertical
+		where we have assumed $\abs{\symbf{u}_v} \ll \abs{\symbf{u}_h}$. At low
+		latitude, this assumption fails since $\symbf{f}_v \ll \symbf{f}_h$.
+		Following the traditional approximation, only the $\symbf{f}_v \times
+		\symbf{u}_h$ contribution is retained in the horizontal momentum
+		equation. This is equivalent to replacing $\symbf{f}$ with its vertical
 		component only.
 	\item Given the above assumptions, as well as assuming the fluid layer is
 		thin compared to the radius of the Earth, we get the \emph{primitive
@@ -1364,7 +1343,7 @@ full $3D$ Boussinesq primite equations on a $\beta$-plane are
 	\frac{\diffD v}{\diffD t} + (f_0 + \beta y) u &= -\frac{1}{\rho_0} p'_y \\
 	p'_z &= -\rho' g \\
 	\frac{\diffD \rho'}{\diffD t} &= \\
-	\nabla \cdot \bm{u} &= 0
+	\nabla \cdot \symbf{u} &= 0
 \end{align}
 
 This set of equations is formed of three \emph{prognostic} equations which can
@@ -1396,7 +1375,7 @@ In the shallow-water equations, the shallow-water potential vorticity was
 conserved. Under the Boussinesq primite equations, instead the
 \emph{Rossby-Ertal potential vorticity} P is conserved materially, where
 \begin{equation}
-	P = \frac{1}{\rho_0} (\bm{f} +\bm{\zeta})\cdot \nabla \rho'
+	P = \frac{1}{\rho_0} (\symbf{f} +\symbf{\zeta})\cdot \nabla \rho'
 \end{equation}
 In terms of velocities this is equivalent to
 \begin{equation}
@@ -1432,36 +1411,36 @@ The velocity vield is divided into a part which is in geostrophic balance with
 the pressure field (assuming constant $f_0$) and a remainder, the
 \emph{ageostrophic velocity}:
 \begin{equation}
-	\bm{u} = \bm{u}_g + \bm{u}_a \hspace{2em} \text{where} \,\,\, f_0 \bm{k}
-	\times \bm{u}_g = -\frac{1}{\rho_0} \nabla_h \tilde{p}
+	\symbf{u} = \symbf{u}_g + \symbf{u}_a \hspace{2em} \text{where} \,\,\, f_0 \symbf{k}
+	\times \symbf{u}_g = -\frac{1}{\rho_0} \nabla_h \tilde{p}
 \end{equation}
 
-Note that the vertical component of the geostrophic velocity $\bm{u}_g$ is
-zero, and $\nabla \cdot \bm{u}_g = 0$. We also assume that the $y$-lengthscale
+Note that the vertical component of the geostrophic velocity $\symbf{u}_g$ is
+zero, and $\nabla \cdot \symbf{u}_g = 0$. We also assume that the $y$-lengthscale
 $L_y$ is sufficiently small that $\beta L_y \ll f_0$. Then if $\Ro \ll 1$, it
-follows that $\abs{\bm{u}_a} \ll \abs{\bm{u}_g}$. Thus we are domain limited
+follows that $\abs{\symbf{u}_a} \ll \abs{\symbf{u}_g}$. Thus we are domain limited
 in latitude.
 
 \lecture{6/11/20}
 The primitive equations may now be written
 \begin{align}
-	\left[ \frac{\partial}{\partial t} + (\bm{u}_g+\bm{u}_a)\cdot
+	\left[ \frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
 	\nabla\right] (u_g + u_a) - f_0 (v_g + v_a) - \beta y (v_g + v_a) &=
 	-\frac{1}{\rho_0} \frac{\partial \tilde{p}}{\partial x} \label{eq:prim1}\\
-	\left[ \frac{\partial}{\partial t} + (\bm{u}_g+\bm{u}_a)\cdot
+	\left[ \frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
 	\nabla\right] (v_g + v_a) + f_0 (u_g + u_a) + \beta y (u_g + u_a) &=
 	-\frac{1}{\rho_0} \frac{\partial \tilde{p}}{\partial y}\label{eq:prim2} \\
 	-\frac{\partial \tilde{p}}{\partial z} - \tilde{\rho} g &= 0 \\
-	\left[\frac{\partial}{\partial t} + (\bm{u}_g+\bm{u}_a)\cdot
+	\left[\frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
 	\nabla\right] \tilde{\rho} + w_a \frac{\diffd \rho_s}{\diffd z} &= 0 \\
 	\frac{\partial u_a}{\partial x} + \frac{\partial v_a}{\partial y} +
 	\frac{\partial w_a}{\partial z} &= 0
 \end{align}
 
 \paragraph{Approximation validity.} Given that $\Ro \ll 1$ we may approximate
-$\frac{\diffD \bm{u}}{\diffD t}$ by $\frac{\diffD_g \bm{u}_g}{\diffD t}$ where
-$\frac{\diffD_g}{\diffD t} = \partial_t + \bm{u}_g \cdot \nabla$, and also
-$\beta y \u$ can be approximated by $\beta y \u_g$. 
+$\frac{\diffD \symbf{u}}{\diffD t}$ by $\frac{\diffD_g \symbf{u}_g}{\diffD t}$ where
+$\frac{\diffD_g}{\diffD t} = \partial_t + \symbf{u}_g \cdot \nabla$, and also
+$\beta y \symbf{u}$ can be approximated by $\beta y \symbf{u}_g$. 
 
 Note that $f_0(u_a, v_a)$ and $\beta y(u_g, v_g)$ are of similar size. Hence
 the requirement $\beta L_y / f_0 \ll 1$ is better expressed by $\beta L_y/f_0
@@ -1481,7 +1460,7 @@ this is implied by $\Ro \ll 1$.
 
 \paragraph{Quasi-geostrophic potential vorticity.} 
 To reduce the primitive equations to a single
-prognostic equation, we eliminate $\u_a$ by taking the curl of horizontal
+prognostic equation, we eliminate $\symbf{u}_a$ by taking the curl of horizontal
 momentum, i.e. $\partial_x \eqref{eq:prim2} - \partial_y \eqref{eq:prim1}$.
 The non-divergence of geostrophic velocity then gives a vorticity equation
 \begin{equation}
@@ -1537,7 +1516,7 @@ derivatives.
 
 \paragraph{Boundary conditions.}
 \begin{itemize}
-	\item At rigid side boundaries, we require the normal component of $\u$ is
+	\item At rigid side boundaries, we require the normal component of $\symbf{u}$ is
 		zero (no flux condition), which requires $\psi$ constant along the
 		boundary.
 	\item At rigid top or bottom boundaries, we require the kinematic boundary

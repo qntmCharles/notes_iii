@@ -28,7 +28,7 @@
 \contentsline {section}{\numberline {6}Linear Viscoelastic Fluids}{22}{section.6}
 \contentsline {subsection}{\numberline {6.1}Viscous vs. elastic}{23}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Maxwell fluids}{23}{subsection.6.2}
-\contentsline {paragraph}{\nonumberline Intepretation of $\lambda $.}{24}{section*.5}
+\contentsline {paragraph}{\nonumberline Intepretation of $\mitlambda $.}{24}{section*.5}
 \contentsline {paragraph}{\nonumberline Behaviour at short vs. long timescales.}{24}{section*.6}
 \contentsline {subsection}{\numberline {6.3}Kelvin-Voigt fluid}{24}{subsection.6.3}
 \contentsline {subsection}{\numberline {6.4}Jeffreys fluid}{25}{subsection.6.4}

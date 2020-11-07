@@ -1,5 +1,5 @@
 \documentclass{jknotes}
-\usepackage{joshkirklin,pgfplots,ulem}
+\usepackage{../joshkirklin}
 
 \tikzset{
     partial ellipse/.style args={#1:#2:#3}{
@@ -7,10 +7,10 @@
     }
 }
 
-\newcommand{\dunder}[1]{\underline{\underline{#1}}}
-\renewcommand{\trace}[1]{\text{tr}\left(#1\right)}
-\newcommand{\srate}{\dot{\gamma}}
-\renewcommand{\u}{\bm{u}}
+\setmathfont{Latin Modern Math}
+\setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
+\setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
+
 \usetikzlibrary{intersections, pgfplots.fillbetween}
 
 \begin{document}
@@ -53,8 +53,8 @@ The goal of this course is to cover three main areas.
 
 \section{Summary of Newtonian Fluid Mechanics}
 \subsection{Continuum approximation}
-We describe fluids in terms of two main fields: \emph{density} $\rho(\bm{x},t)$  and
-\emph{velocity} $\bm{u}(\bm{x},t)$. We use the continuum approximation whereby the
+We describe fluids in terms of two main fields: \emph{density} $\rho(\symbf{x},t)$  and
+\emph{velocity} $\symbf{u}(\symbf{x},t)$. We use the continuum approximation whereby the
 fluid is assumed to be a continuum rather than made up of discrete fluid
 particles. Under this assumption, the macroscopic properties of density and
 velocity are well-defined as `averages' of infinitesimal volume elements. 
@@ -68,7 +68,7 @@ point in space and time, as opposed to following a material element
 Conservation of mass can be expressed in the classical form of a conservation
 equation as:
 \begin{equation}
-	\frac{\partial \rho}{\partial t} + \nabla \cdot \left[ \rho \bm{u} \right]
+	\frac{\partial \rho}{\partial t} + \nabla \cdot \left[ \rho \symbf{u} \right]
 	= 0
 \end{equation}
 
@@ -76,26 +76,26 @@ Expanding the flux term, this may be expressed in a form which relates the
 rate of change of density of a fluid element with the divergence of the
 flow:
 \begin{equation}
-	\frac{\diffD{\rho}}{\diffD{t}} = -\rho \nabla \cdot \bm{u}
+	\frac{\diffD{\rho}}{\diffD{t}} = -\rho \nabla \cdot \symbf{u}
 \end{equation}
 
 In this course we will assume that all fluids are incompressible, which is
 expressed mathematically as:
 \begin{equation}
-	\frac{\diffD{\rho}}{\diffD{t}} = 0 \iff \nabla \cdot \bm{u} = 0
+	\frac{\diffD{\rho}}{\diffD{t}} = 0 \iff \nabla \cdot \symbf{u} = 0
 \end{equation}
 
 \subsection{Mechanical equilibrium}
 Newton's second law, i.e. conservation of momentum is expressed for a fluid
 using the \emph{Cauchy momentum equation}:
 \begin{equation}
-	\rho \frac{\diffD{\bm{u}}}{\diffD{t}} = \rho \left[ \frac{\partial
-	\bm{u}}{\partial t} + \bm{u} \cdot \nabla \bm{u}\right] = \nabla \cdot
-	\sigma + \bm{F}
+	\rho \frac{\diffD{\symbf{u}}}{\diffD{t}} = \rho \left[ \frac{\partial
+	\symbf{u}}{\partial t} + \symbf{u} \cdot \nabla \symbf{u}\right] = \nabla \cdot
+	\sigma + \symbf{F}
 \end{equation}
 
 where $\nabla \cdot \sigma$ are the surface forces acting on the fluid and
-$\bm{F}$ are body forces which we will assume to be negligible unless
+$\symbf{F}$ are body forces which we will assume to be negligible unless
 otherwise stated.
  
 The Cauchy momentum equation is valid for all continuum fluids. To close the
@@ -107,13 +107,13 @@ The \emph{stress tensor} $\sigma$ is a symmetric second-rank tensor.
 \begin{tikzpicture}
 	\draw[rotate=45] (0,0) ellipse (30pt and 10pt);
 	\draw[->, thick] (0,0) -- (-.75,.75);
-	\node at (-0.4,0.65) {$\bm{n}$};
+	\node at (-0.4,0.65) {$\symbf{n}$};
 	\node at (-1.3,0.1) {fluid 1};
 	\node at (1,-0.5) {fluid 2};
 \end{tikzpicture}
 \end{center}
 Physically, $\sigma_{ij}n_j$ is the $i\textsuperscript{th}$ component of the force per
-unit area from the motion of fluid 1 on fluid 2, where $\bm{n}$ is the
+unit area from the motion of fluid 1 on fluid 2, where $\symbf{n}$ is the
 surface normal pointing into fluid 1.
 \end{defn}
 
@@ -146,8 +146,8 @@ Newtonian. This is not necessarily true for complex fluids.
 \end{center}
 
 From experiment, we find $\sigma = F/A \propto U/h$. Note that $U/h$ has
-dimensions of time$^{-1}$. We define the \emph{shear rate} $\dot{\gamma} =
-U/h$ and the \emph{viscosity} $\eta$ via $\sigma = \eta \dot{\gamma}$.
+dimensions of time$^{-1}$. We define the \emph{shear rate} $\srate =
+U/h$ and the \emph{viscosity} $\eta$ via $\sigma = \eta \srate$.
 Viscosity is a constant material property, for example in water $\eta =
 10^{-3}\, \text{Pa}\cdot\text{s}$.
 
@@ -199,21 +199,21 @@ A_{jikl}$. This requires $B = C \equiv \eta$. Thus
 	\end{aligned}
 \end{equation}
 
-since $\frac{\partial u_k}{\partial x_k} = \nabla \cdot \bm{u} = 0$. Note
-$e = \frac{1}{2}\left(\nabla \bm{u} + (\nabla \bm{u})^T\right)$ is the
+since $\frac{\partial u_k}{\partial x_k} = \nabla \cdot \symbf{u} = 0$. Note
+$e = \frac{1}{2}\left(\nabla \symbf{u} + (\nabla \symbf{u})^T\right)$ is the
 \emph{rate of strain} tensor. This is the \emph{Newtonian constitutive
 	relationship}. 
 	
 \begin{defn}
 	To exclude the factors of $2$ we define the \emph{shear rate}
-	$\dot{\gamma}_{ij} = 2 e_{ij}$ so that $\tau_{ij} = \eta
-	\dot{\gamma}_{ij}$.
+	$\srate_{ij} = 2 e_{ij}$ so that $\tau_{ij} = \eta
+	\srate_{ij}$.
 \end{defn}
 
 Combining the Cauchy momentum equation and Newtonian constitutive relationship
 yields the \emph{Navier-Stokes equations}
 \begin{equation}
-	\rho \frac{\diffD{\bm{u}}}{\diffD{t}} = - \nabla p + \eta \nabla^2 \bm{u}
+	\rho \frac{\diffD{\symbf{u}}}{\diffD{t}} = - \nabla p + \eta \nabla^2 \symbf{u}
 \end{equation}
 
 Consider a general body with intrinsic length scale $L$, velocity length scale
@@ -234,7 +234,7 @@ general fluid these are:
 
 Using the Newtonian constitutive relationship, the Stokes equations are:
 \begin{equation}
-	\bm{0} = -\nabla p + \eta \nabla^2 \bm{u}
+	\symbf{0} = -\nabla p + \eta \nabla^2 \symbf{u}
 \end{equation}
 
 \begin{eg}{Newton's experiment revisited\\}
@@ -249,12 +249,12 @@ Using the Newtonian constitutive relationship, the Stokes equations are:
 			\draw (0.6, 0) -- (5,0);
 			\node at (2.5, 2.5) {$U$};
 			\draw[->, thick] (2.15, 2.25) -- (2.85, 2.25);
-			\draw[->] (1,0.5) -- (1.6, 0.5) node[midway,below] {$\hat{\bm{x}}$};
-			\draw[->] (1,0.5) -- (1, 1.1) node[midway, left] {$\hat{\bm{y}}$};
+			\draw[->] (1,0.5) -- (1.6, 0.5) node[midway,below] {$\hat{\symbf{x}}$};
+			\draw[->] (1,0.5) -- (1, 1.1) node[midway, left] {$\hat{\symbf{y}}$};
 		\end{tikzpicture}
 	\end{center}
 
-	Assume the flow is unidirectional: $\bm{u} = u(y) \hat{\bm{x}}$. The
+	Assume the flow is unidirectional: $\symbf{u} = u(y) \hat{\symbf{x}}$. The
 	Stokes equations become
 	\begin{equation}
 	\begin{cases}
@@ -268,7 +268,7 @@ Using the Newtonian constitutive relationship, the Stokes equations are:
 	Assuming there is no net pressure drop, $p = p(x) \equiv 0$. Applying the
 	boundary conditions we find 
 	\begin{equation}
-		u(y) = Uy/h \implies \dot{\gamma} = U/h
+		u(y) = Uy/h \implies \srate = U/h
 	\end{equation}
 	as before. This is a \emph{shear} or \emph{Couette} flow.
 \end{eg}
@@ -281,12 +281,12 @@ to Newtonian fluids.
 
 \subsection{Shear-dependent viscosity}
 Newtonian fluids have a constant viscosity $\eta$ which is a constant of
-proportionality between shear stress $\sigma$ and shear rate $\dot{\gamma}$.
+proportionality between shear stress $\sigma$ and shear rate $\srate$.
 For a complex fluid, $\eta$ is \emph{not} constant. We re-define viscosity as
 an implicit function of shear rate.
 \begin{defn}
-	Viscosity is defined via $\eta \equiv \frac{\sigma}{\dot{\gamma}} =
-	\eta(\dot{\gamma})$.
+	Viscosity is defined via $\eta \equiv \frac{\sigma}{\srate} =
+	\eta(\srate)$.
 \end{defn}
 
 We can broadly categorise complex fluids into two types: \emph{shear thinning}
@@ -294,7 +294,7 @@ and \emph{shear thickening} fluids.
 
 \begin{center}
 \begin{tikzpicture}
-	\draw[->] (-0.1,0) -- (5,0) node[below] {$\dot{\gamma}$};
+	\draw[->] (-0.1,0) -- (5,0) node[below] {$\srate$};
 	\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\eta$};
 	\draw[dashed] (0,1.2) -- (5, 1.2) node[right] {Newtonian};
 	\draw[smooth,samples=100,domain=0:5,blue] plot(\x, {1.2+0.5*exp(\x-4.8)});
@@ -305,14 +305,14 @@ and \emph{shear thickening} fluids.
 \end{center}
 
 Examples of shear-thinning fluids are polymer suspensions; paint; blood. These
-complex fluids have $\frac{\partial \eta}{\partial \dot{\gamma}} < 0$.
+complex fluids have $\frac{\partial \eta}{\partial \srate} < 0$.
 
 Examples of shear-thickening fluids are: cornstarch in water; suspesions of
 colloidal particles. These complex fluids have $\frac{\partial \eta}{\partial
-\dot{\gamma}} > 0$.
+\srate} > 0$.
 
 \begin{defn}
-	The zero-shear rate viscosity is $\eta_0 = \lim_{\dot{\gamma} \to 0}
+	The zero-shear rate viscosity is $\eta_0 = \lim_{\srate \to 0}
 	\eta$.
 \end{defn}
 
@@ -328,7 +328,7 @@ deformation: the jump occurs over some \emph{relaxation timescale} $\lambda$.
 
 \begin{center}
 	\begin{tikzpicture}
-		\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\dot{\gamma}$};
+		\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\srate$};
 		\draw[->] (-0.1,0) -- (5,0) node[below] {$t$};
 		\draw (1, -0.1) -- (1, 0.1) node[below] {$t=0$};
 		\draw[blue,thick] (0,0) -- (1, 0);
@@ -357,7 +357,7 @@ rest) results in \emph{stress relaxation} with $\sigma \sim e^{-t/\lambda}$.
 
 \begin{center}
 	\begin{tikzpicture}
-		\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\dot{\gamma}$};
+		\draw[->] (0,-0.1) -- (0,2.5) node[left] {$\srate$};
 		\draw[->] (-0.1,0) -- (5,0) node[below] {$t$};
 		\draw (2, -0.1) -- (2, 0.1);
 		\draw[blue,thick] (0,1.2) -- (2, 1.2);
@@ -381,7 +381,7 @@ rest) results in \emph{stress relaxation} with $\sigma \sim e^{-t/\lambda}$.
 \end{center}
 
 The reverse is also true. Imposing a stress $\sigma$ and measuring the
-deformation $\dot{\gamma}$, complex fluids in general wil have a
+deformation $\srate$, complex fluids in general wil have a
 history-dependent response. This is called \emph{strain retardation} and
 $\lambda'$ is the \emph{retardation timescale}.
 
@@ -390,13 +390,13 @@ In Newton's experiment, a Newtonian fluid exerts no normal force $F_N$ on the mo
 plate, since linearity and reversibility ($U \to -U$) impies $F_N = -F_N
 \equiv 0$. We previously calculated 
 \begin{equation}
-	\bm{u} = \frac{Uy}{h}\hat{\bm{x}}, \hspace{2em} \dot{\gamma} = \frac{U}{h}
+	\symbf{u} = \frac{Uy}{h}\hat{\symbf{x}}, \hspace{2em} \srate = \frac{U}{h}
 \end{equation}
 Thus in the Newtonian case the stress tensor has the form
 \begin{equation}
 	\sigma = \begin{pmatrix}
-		-p_0 & \eta \dot{\gamma} & 0 \\
-		\eta \dot{\gamma} & -p_0 & 0 \\
+		-p_0 & \eta \srate & 0 \\
+		\eta \srate & -p_0 & 0 \\
 	0 & 0 & -p_0 \end{pmatrix}
 \end{equation}
 where $p_0$ is the external pressure. Note that the normal stresses are equal
@@ -405,8 +405,8 @@ and constant.
 In the non-Newtonian case we have
 \begin{equation}
 	\sigma = \begin{pmatrix}
-		\sigma_{xx} & \eta)(\dot{\gamma}) \dot{\gamma} & 0 \\
-		\eta(\dot{\gamma}) \dot{\gamma} & \sigma_{yy} & 0 \\
+		\sigma_{xx} & \eta)(\srate) \srate & 0 \\
+		\eta(\srate) \srate & \sigma_{yy} & 0 \\
 	0 & 0 & \sigma_{zz} \end{pmatrix}
 \end{equation}
 where in general normal stresses are not equal and not constant. Normal
@@ -426,24 +426,24 @@ Note the following.
 	\item Polymeric fluids (for example) have $N_1 > 0, N_2 < 0, \left|
 		N_2/N_1 \right| \sim 0.1$
 	\item $N_1$ and $N_2$ are defined only for steady shear flow
-	\item $N_1$ and $N_2$ will, in general, depend on $\dot{\gamma}$
+	\item $N_1$ and $N_2$ will, in general, depend on $\srate$
 	\item Boger fluids have constant viscosity but they have non-zero $N_1$
 		and $N_2$
 \end{itemize}
 
 Reversibility implies $N_1$ and $N_2$ have to be \emph{even} functions of
-$\dot{\gamma}$. In the limit $\dot{\gamma} \to 0$, i.e. the Newtonian limit,
+$\srate$. In the limit $\srate \to 0$, i.e. the Newtonian limit,
 we should have $N_1 \to 0, N_2 \to 0$. Thus the Taylor expansion of $N_1, N_2$
-near $\dot{\gamma} = 0$ is
+near $\srate = 0$ is
 \begin{equation}
-	N_{1,2} = A_{1,2}\dot{\gamma}^2 + B_{1,2}\dot{\gamma}^4 + \dots
+	N_{1,2} = A_{1,2}\srate^2 + B_{1,2}\srate^4 + \dots
 \end{equation}
 
 \begin{defn}
 	The \emph{normal stress coefficients} are
 	\begin{equation}
-		\Psi_1 = \frac{N_1}{\dot{\gamma}^2}, \hspace{2em} \Psi_2 =
-		\frac{N_2}{\dot{\gamma}^2}
+		\Psi_1 = \frac{N_1}{\srate^2}, \hspace{2em} \Psi_2 =
+		\frac{N_2}{\srate^2}
 	\end{equation}
 \end{defn}
 
@@ -516,18 +516,18 @@ A shear flow is a \emph{weak flow}: there is algebraic growth of distances
 between particles. In a \emph{strong flow}, distances grow exponentially.
 
 Consider a fluid with extension in the $x$ and $y$ directions and compression
-in the $z$ direction: $\bm{u} +
+in the $z$ direction: $\symbf{u} +
 \dot{\varepsilon}\left(\frac{1}{2}x,\frac{1}{2}y, -z\right)$. We call
 $\dot{\varepsilon}$ the \emph{extension rate}. Note that this flow is
 incompressible. The shear rate tensor is
 \begin{equation}
-	\dunder{\dot{\gamma}} = \dot{\varepsilon}\begin{pmatrix} 1 & 0 & 0 \\ 0 &
+	\symbfsf{\srate} = \dot{\varepsilon}\begin{pmatrix} 1 & 0 & 0 \\ 0 &
 	1 & 0 \\ 0 & 0 & -2 \end{pmatrix}
 \end{equation}
 
 In the Newtonian case, the shear rate tensor is
 \begin{equation}
-	\dunder{\sigma} = \begin{pmatrix}
+	\symbfsf{\sigma} = \begin{pmatrix}
 		-p_0 + \eta \dot{\varepsilon} & 0  & 0 \\
 		0 & -p_0 + \eta \dot{\varepsilon} & 0 \\
 		0 & 0 & -p_0 -2 \eta \dot{\varepsilon} 
@@ -574,64 +574,64 @@ find how to incorporate shear-dependent viscosity into the constitutive
 relationship. One way is to generalise the Newtonian constitutive
 relationship to
 \begin{equation}
-	\dunder{\sigma} = -p \dunder{1} +
-	\eta(\dunder{\dot{\gamma}})\dunder{\dot{\gamma}}
+	\symbfsf{\sigma} = -p \symsf{1} +
+	\eta(\symbfsf{\srate})\symbfsf{\srate}
 \end{equation}
-where $\eta(\dunder{\dot{\gamma}})$ is found empirically. These are called
+where $\eta(\symbfsf{\srate})$ is found empirically. These are called
 \emph{generalised Newtonian fluids} (GNF).
 
-We have a scalar function $\eta$ of a tensor $\dunder{\dot{\gamma}}$, which is
+We have a scalar function $\eta$ of a tensor $\symbfsf{\srate}$, which is
 not in general coordinate invariant. Thus $\eta$ must be a function of the
-\emph{invariants} of $\dunder{\dot{\gamma}}$. A rank $2$ tensor in $3$
+\emph{invariants} of $\symbfsf{\srate}$. A rank $2$ tensor in $3$
 dimensions has $3$ invariants. These are combinations of trace, determinants,
 and eigenvalues. We choose as the three invariants:
 \begin{equation}
-	\trace{\dunder{\srate}}, \hspace{2em} \trace{\dunder{\srate} \cdot
-	\dunder{\srate}}, \hspace{2em} \trace{\dunder{\srate} \cdot
-\dunder{\srate} \cdot \dunder{\srate}}
+	\trace{\symbfsf{\srate}}, \hspace{2em} \trace{\symbfsf{\srate} \cdot
+	\symbfsf{\srate}}, \hspace{2em} \trace{\symbfsf{\srate} \cdot
+\symbfsf{\srate} \cdot \symbfsf{\srate}}
 \end{equation}
 
-We always have $\trace{\dunder{\srate}} = 0$ because the flow is incompressible:
+We always have $\trace{\symbfsf{\srate}} = 0$ because the flow is incompressible:
 \begin{equation}
-	\trace{\dunder{\srate}} = \dot{\gamma}_{ii} = \frac{\partial u_i}{\partial x_i} +
-	\frac{\partial u_i}{\partial x_i} = 2\nabla \cdot \bm{u} = 0
+	\trace{\symbfsf{\srate}} = \srate_{ii} = \frac{\partial u_i}{\partial x_i} +
+	\frac{\partial u_i}{\partial x_i} = 2\nabla \cdot \symbf{u} = 0
 \end{equation}
 
-Consider a simple shear flow $\bm{u} = \dot{\gamma} y \hat{\bm{x}}$. Then
+Consider a simple shear flow $\symbf{u} = \srate y \hat{\symbf{x}}$. Then
 \begin{equation}
 	\begin{aligned}
-		\dunder{\srate} &= \begin{pmatrix} 0 & \srate & 0 \\ \srate & 0 & 0 \\
+		\symbfsf{\srate} &= \begin{pmatrix} 0 & \srate & 0 \\ \srate & 0 & 0 \\
 		0 & 0 & 0 \end{pmatrix} \\
-			\dunder{\srate}\cdot\dunder{\srate} &= \begin{pmatrix} \srate^2 &
+			\symbfsf{\srate}\cdot\symbfsf{\srate} &= \begin{pmatrix} \srate^2 &
 			0 & 0 \\ 0 & \srate^2 & 0 \\ 0 & 0 & 0 \end{pmatrix} \\
-			\dunder{\srate}\cdot\dunder{\srate}\cdot\dunder{\srate} &=
+			\symbfsf{\srate}\cdot\symbfsf{\srate}\cdot\symbfsf{\srate} &=
 			\begin{pmatrix} 0 & \srate^3 & 0 \\ \srate^3 & 0 & 0 \\
 			0 & 0 & 0 \end{pmatrix}
 		\end{aligned}
 \end{equation}
 
-Thus $\trace{\dunder{\srate}\cdot\dunder{\srate}\cdot\dunder{\srate}} = 0$ and
-$\trace{\dunder{\srate}\cdot\dunder{\srate}} = 2\srate^2$. We assume all flows
+Thus $\trace{\symbfsf{\srate}\cdot\symbfsf{\srate}\cdot\symbfsf{\srate}} = 0$ and
+$\trace{\symbfsf{\srate}\cdot\symbfsf{\srate}} = 2\srate^2$. We assume all flows
 are approximately steady shear flow. Then
-$\trace{\dunder{\srate}\cdot\dunder{\srate}}$ is the only non-zero invariant
-and $\eta(\dunder{\srate}) =
-\eta(\trace{\dunder{\srate}\cdot\dunder{\srate}})$.
+$\trace{\symbfsf{\srate}\cdot\symbfsf{\srate}}$ is the only non-zero invariant
+and $\eta(\symbfsf{\srate}) =
+\eta(\trace{\symbfsf{\srate}\cdot\symbfsf{\srate}})$.
 
 \begin{defn}
 	The \emph{magnitude of shear rate} is
 	\begin{equation}
 		\srate \equiv
-		\left(\frac{\trace{\dunder{\srate}\cdot\dunder{\srate}}}{2}\right)^{1/2}
-		= \left(\frac{\dunder{\srate} : \dunder{\srate}}{2}\right)^{1/2}
+		\left(\frac{\trace{\symbfsf{\srate}\cdot\symbfsf{\srate}}}{2}\right)^{1/2}
+		= \left(\frac{\symbfsf{\srate} : \symbfsf{\srate}}{2}\right)^{1/2}
 	\end{equation}
 	Note that $\srate \ge 0$ and for a simple shear flow the magnitude of
 	shear rate $\srate = \abs{\srate}$ which is the shear rate from steady
 	shear flow. Thus the definitions coincide.
 \end{defn}
 
-Note the second invariant $\trace{\dunder{\srate}\cdot\dunder{\srate}} =
-\dunder{\srate}:\dunder{\srate} \ge 0$ and is zero only when there is no
-deformation (since $\dunder{\srate}:\dunder{\srate}$ is proportional to
+Note the second invariant $\trace{\symbfsf{\srate}\cdot\symbfsf{\srate}} =
+\symbfsf{\srate}:\symbfsf{\srate} \ge 0$ and is zero only when there is no
+deformation (since $\symbfsf{\srate}:\symbfsf{\srate}$ is proportional to
 viscous dissipation), i.e. rigid body motion.
 
 Recall for a simple shear flow, the shear stress is $\sigma =
@@ -666,10 +666,10 @@ rates. The model is appropriate only for a finite range of shear rates.
 
 \begin{eg}
 	Newton's experiment with a power-law fluid. We assume there are no
-	external pressures, and the flow is unidirectional: $\bm{u} =
-	u(y)\hat{\bm{x}}$. We have
+	external pressures, and the flow is unidirectional: $\symbf{u} =
+	u(y)\hat{\symbf{x}}$. We have
 	\begin{equation}
-		\dunder{\srate} = \begin{pmatrix} 0 & \frac{\partial u}{\partial y} &
+		\symbfsf{\srate} = \begin{pmatrix} 0 & \frac{\partial u}{\partial y} &
 			0 \\ \frac{\partial  u}{\partial y} & 0 & 0 \\ 0 & 0 & 0
 		\end{pmatrix}
 	\end{equation}
@@ -696,8 +696,8 @@ rates. The model is appropriate only for a finite range of shear rates.
 \end{eg}
 
 If $\eta(\srate)\srate = \sigma$ is a one-to-one function of $\srate$ then the
-result is the same: $u$ varies linearly. A Couette flow $\bm{u} = Uy/h
-\hat{\bm{x}}$ is a \emph{viscometric flow}: this flow is realised for all
+result is the same: $u$ varies linearly. A Couette flow $\symbf{u} = Uy/h
+\hat{\symbf{x}}$ is a \emph{viscometric flow}: this flow is realised for all
 constitutive relationships provided $\sigma$ is indeed a one-to-one function
 of $\srate$.
 
@@ -733,9 +733,9 @@ profile.
 \end{center}
 
 We will use cylindrical coordinates $(r,\theta,z)$ and assume the flow is
-unidirectional: $\bm{u} = u(r)\hat{\bm{z}}$. Then
+unidirectional: $\symbf{u} = u(r)\hat{\symbf{z}}$. Then
 \begin{equation}
-	\dunder{\srate} = \begin{pmatrix} 0 & 0 & \frac{\partial u}{\partial r} \\
+	\symbfsf{\srate} = \begin{pmatrix} 0 & 0 & \frac{\partial u}{\partial r} \\
 	0 & 0 & 0 \\ \frac{\partial u}{\partial r} & 0 & 0 \end{pmatrix}
 \end{equation}
 
@@ -904,7 +904,7 @@ this experiment.
 \begin{tikzpicture}
 	\draw[thick] (0,0) ellipse (3 and 0.8);
 	\draw[thick] (0,-2) ellipse (3 and 0.8);
-	\draw[dashed, ->] (0,-3) -- (0,1.5) node[right] {$\hat{\bm{z}}$};
+	\draw[dashed, ->] (0,-3) -- (0,1.5) node[right] {$\hat{\symbf{z}}$};
 	\draw[<->] (0,0) -- (1.6,0.65) node[midway,below] {$a$};
 	\draw[<->] (3.1, 0) -- (3.1, -2) node[midway,right] {$h$};
 	\draw[->] (0, 0) [partial ellipse = -180:-140:3.2 and
@@ -915,9 +915,9 @@ this experiment.
 
 The input-output relationship can be inverted to infer $\eta(\srate)$. Use
 cylindrical coordinates $(r, \theta, z)$ and look for an axisymmetric flow
-field $\bm{u} = u(r,z) \hat{\bm{\theta}}$. The shear rate tensor is
+field $\symbf{u} = u(r,z) \hat{\symbf{\theta}}$. The shear rate tensor is
 \begin{equation}
-	\dunder{\srate} = \begin{pmatrix} 0 & r\frac{\partial}{\partial r} \left(
+	\symbfsf{\srate} = \begin{pmatrix} 0 & r\frac{\partial}{\partial r} \left(
 		\frac{u}{r}\right) & 0 \\ r\frac{\partial}{\partial r} \left(
 	\frac{u}{r}\right) & 0 & \frac{\partial u}{\partial z} \\
 0 & \frac{\partial u}{\partial z} & 0 \end{pmatrix}
@@ -948,7 +948,7 @@ gives
 
 Given this flow, the shear rate tensor becomes
 \begin{equation}
-	\dunder{\srate} = \begin{pmatrix} 0 & 0 & 0 \\ 
+	\symbfsf{\srate} = \begin{pmatrix} 0 & 0 & 0 \\ 
 		0 & 0 & \frac{r \Omega}{h} \\
 0 & \frac{r \Omega}{h} & 0 \end{pmatrix}
 \end{equation}
@@ -961,7 +961,7 @@ $\tau_{r\theta} = 0$ and
 	\eta(\frac{r\Omega}{h})\frac{r\Omega}{h} = \tau_{\theta z} (r)
 \end{equation}
 
-The torque exerted to rotate the top plate is $\bm{T} = T\hat{\bm{z}}$ where
+The torque exerted to rotate the top plate is $\symbf{T} = T\hat{\symbf{z}}$ where
 \begin{equation}
 	T = \int r \tau_{\theta z} \, \diffd S = 2\pi \int_0^a r^2 \eta(\srate)
 	\srate \, \diffd r
@@ -1022,11 +1022,11 @@ $\eta(\srate_a)$. Other geometries can also be used:
 So far, we have found exact solutions only. For many GNF, no exact solutions
 are available so we must find approximate solutions. Here we consider a method
 relying on a form of energy minimisation. Conider a fluid volume V, bounded by
-a surface S, in the Stokes flow limit (no inertia). Assume $\bm{u} = \bm{u}_0$
+a surface S, in the Stokes flow limit (no inertia). Assume $\symbf{u} = \symbf{u}_0$
 is prescribed on $S$. The total rate of energy dissipation is
 \begin{equation}
-	P = \int_V \frac{1}{2}\dunder{\sigma}:\dunder{\srate}\,\diffd V = \int_V
-	\frac{\eta}{2} \dunder{\srate}:\dunder{\srate} \, \diffd V \ge 0
+	P = \int_V \frac{1}{2}\symbfsf{\sigma}:\symbfsf{\srate}\,\diffd V = \int_V
+	\frac{\eta}{2} \symbfsf{\srate}:\symbfsf{\srate} \, \diffd V \ge 0
 \end{equation}
 
 Recall the minimum dissipation theorem: solutions to Stokes equations minimise
@@ -1034,11 +1034,11 @@ $P$ over all incompressible flows satisfying the same boundary conditions. The
 inequality $P_{\text{Stokes}} \le P$ can be shown directly, or we can use the
 calculus of variations. Define a Lagrangian
 \begin{equation}
-	\mathcal{L} \equiv P + \int_V \lambda \nabla \cdot \bm{u} \, \diffd V
+	\mathcal{L} \equiv P + \int_V \lambda \nabla \cdot \symbf{u} \, \diffd V
 \end{equation}
 
-Variations with respect to $\lambda$ give $\nabla \cdot \bm{u} = 0$, and
-variations with respect to $\bm{u}$ give Stokes equations with pressure $p
+Variations with respect to $\lambda$ give $\nabla \cdot \symbf{u} = 0$, and
+variations with respect to $\symbf{u}$ give Stokes equations with pressure $p
 \propto \lambda$. To generalise this to GNF, consider the power density $f =
 \frac{1}{2}\eta \srate^2$ for a Newtonian fluid. Analogously, for a GNF we define
 \begin{equation}
@@ -1046,25 +1046,25 @@ variations with respect to $\bm{u}$ give Stokes equations with pressure $p
 \end{equation}
 and a new Lagrangian
 \begin{equation}
-	\mathcal{L} \equiv \mathcal{L}\left[\bm{u},\lambda\right] = \int_V f \, \diffd
-	V + \int_V \lambda \nabla \cdot \bm{u}\,\diffd V
+	\mathcal{L} \equiv \mathcal{L}\left[\symbf{u},\lambda\right] = \int_V f \, \diffd
+	V + \int_V \lambda \nabla \cdot \symbf{u}\,\diffd V
 \end{equation}
 
 \subsubsection{Calculus of variations}
-Consider a functional $J$ of a vector field $\bm{y}(\bm{x})$ and its
+Consider a functional $J$ of a vector field $\symbf{y}(\symbf{x})$ and its
 spatial derivatives $y_{m,n} \equiv \frac{\partial y_m}{\partial x_n}$;
 \begin{equation}
-	J\left[\bm{y}\right] = \int_V F(x_i,y_j,y_{m,n}) \, \diffd V
+	J\left[\symbf{y}\right] = \int_V F(x_i,y_j,y_{m,n}) \, \diffd V
 \end{equation}
 where $V$ is the total domain. The \emph{first variation} of $J$ is $\delta J$ where
 \begin{equation}
-	J + \delta J = J\left[\bm{y}+\delta\bm{y}\right] = \int_V
-	F(\bm{x},\bm{y}+\delta\bm{y})\,\diffd V
+	J + \delta J = J\left[\symbf{y}+\delta\symbf{y}\right] = \int_V
+	F(\symbf{x},\symbf{y}+\delta\symbf{y})\,\diffd V
 \end{equation}
 To determine an explicit expression for the first variation, first Taylor
 expand the integrand:
 \begin{equation}
-	F(\bm{x},\bm{y}+\delta\bm{y}) = F + \delta y_j \frac{\partial F}{\partial
+	F(\symbf{x},\symbf{y}+\delta\symbf{y}) = F + \delta y_j \frac{\partial F}{\partial
 		y_j} + \delta y_{m,n} \frac{\partial F}{\partial y_{m,n}} + \dots
 \end{equation}
 Using integration by parts and writing $\delta y_{m,n} =
@@ -1093,22 +1093,22 @@ $\delta F = 0$ for all $\delta y$, giving the \emph{Euler-Lagrange equation}.
 \end{equation}
 
 \subsubsection{Variational solution}
-Returning to our original set-up, denote $F_2 = \lambda \nabla \cdot \bm{u}$,
+Returning to our original set-up, denote $F_2 = \lambda \nabla \cdot \symbf{u}$,
 $F_1 = \int_0^{\srate} \eta(x)x\,\diffd x$, so
 \begin{equation}
-	\mathcal{L}\left[\bm{u},\lambda\right] = \int_V F_1 + F_2\,\diffd V
+	\mathcal{L}\left[\symbf{u},\lambda\right] = \int_V F_1 + F_2\,\diffd V
 \end{equation}
 
-Note that we are using $\bm{y} \equiv \bm{u}$ here.  The Euler-Lagrange
+Note that we are using $\symbf{y} \equiv \symbf{u}$ here.  The Euler-Lagrange
 equation for $\lambda $ gives
 \begin{equation}
 	\frac{\partial}{\partial \lambda} \left( F_1 + F_2\right) = 0 \implies
-	\nabla \cdot \bm{u} = 0
+	\nabla \cdot \symbf{u} = 0
 \end{equation}
 
-For variations with respect to $\bm{u}$, we have boundary terms involving
-$\delta \bm{u}$. Since $\delta \bm{u} = \bm{0}$ on $S$, the boundary terms
-vanish in this case. There is no explicit dependence on $\bm{u}$ in $F_1, F_2$
+For variations with respect to $\symbf{u}$, we have boundary terms involving
+$\delta \symbf{u}$. Since $\delta \symbf{u} = \symbf{0}$ on $S$, the boundary terms
+vanish in this case. There is no explicit dependence on $\symbf{u}$ in $F_1, F_2$
 so the Euler-Lagrange equation becomes
 \begin{equation}
 	\frac{\partial}{\partial x_n} \left( \frac{\partial F}{\partial
@@ -1124,7 +1124,7 @@ We have $\frac{\partial F_1}{\partial \srate} = \eta(\srate) \srate$ and
 \begin{align}
 	\frac{\partial \srate}{\partial u_{j,n}} &=
 	\frac{1}{2\srate} \frac{\partial}{\partial u_{j,n}} \left( \frac{1}{2}
-	\dunder{\srate}:\dunder{\srate}\right) \\
+	\symbfsf{\srate}:\symbfsf{\srate}\right) \\
 	&= \frac{1}{2\srate} \frac{\partial}{\partial u_{j,n}} \left( \frac{1}{2}
 	\srate_{pq} \srate_{pq}\right) \\
 	&= \frac{1}{4\srate} \frac{\partial}{\partial u_{j,n}}\left(
@@ -1133,7 +1133,7 @@ u_{p,q}u_{p,q} + 2u_{p,q}u_{q,p} + u_{q,p}u_{q,p}\right) \\
 &= \frac{\srate_{jn}}{\srate}
 \end{align}
 
-Now for $F_2 = \lambda \nabla \cdot \bm{u}$ we have
+Now for $F_2 = \lambda \nabla \cdot \symbf{u}$ we have
 \begin{align}
 	\frac{\partial}{\partial x_n} \left( \frac{\partial F_2}{\partial u_{j,n}}
 		\right) &= \frac{\partial}{\partial x_n} \left( \lambda
@@ -1144,7 +1144,7 @@ Now for $F_2 = \lambda \nabla \cdot \bm{u}$ we have
 &= \frac{\partial \lambda}{\partial x_j}
 \end{align}
 
-Thus the full Euler-Lagrange equation for $\bm{u}$ is
+Thus the full Euler-Lagrange equation for $\symbf{u}$ is
 \begin{equation}
 	\frac{\partial}{\partial x_n} \left[ \eta(\srate) \srate_{jn}\right] +
 	\frac{\partial \lambda}{\partial x_j} = 0
@@ -1152,25 +1152,25 @@ Thus the full Euler-Lagrange equation for $\bm{u}$ is
 for $j= 1, 2, 3$. Given $\lambda = -p$, this becomes the Cauchy equation for a
 GNF.
 \begin{equation}
-	-\nabla p + \nabla \cdot \left[ \eta(\srate) \dunder{\srate}\right] =
-	\bm{0}
+	-\nabla p + \nabla \cdot \left[ \eta(\srate) \symbfsf{\srate}\right] =
+	\symbf{0}
 \end{equation}
 
 Pressure is used as a Lagrange multiplier to enforce incompressibility. Note:
-if the boundary conditions are different, e.g. $\dunder{\sigma} \cdot \bm{n}$
-is prescribed, we must distinguish surfaces where $\bm{u}$ is described and
-surfaces where $\dunder{\sigma} \cdot \bm{n}$ is prescribed, and add a surface
+if the boundary conditions are different, e.g. $\symbfsf{\sigma} \cdot \symbf{n}$
+is prescribed, we must distinguish surfaces where $\symbf{u}$ is described and
+surfaces where $\symbfsf{\sigma} \cdot \symbf{n}$ is prescribed, and add a surface
 integral to the Lagrangian (see Example Sheet 1).
 
 To generate approximate solutions to the Cauchy GNF equations, we note that
 the closer the value of $\mathcal{L}$ to its minimum, the better the
 approximation. Thus
 \begin{enumerate}
-	\item Use incompressible test functions $\bm{u}_\alpha$ where $\alpha$ is
+	\item Use incompressible test functions $\symbf{u}_\alpha$ where $\alpha$ is
 		a parameter
 	\item Substitute into Lagrangian, minimise with respect to $\alpha$
 	\item If the minimum of $\mathcal{L}$ is at $\alpha = \alpha^*$ then
-		$\bm{u}_{\alpha^*}$ is an approximate solution
+		$\symbf{u}_{\alpha^*}$ is an approximate solution
 \end{enumerate}
 
 Integrals involved in $\mathcal{L}$ in general have to be evaluated
@@ -1241,7 +1241,7 @@ expect the yield surface is close to these boundaries.
 \subsection{Pressure-driven flow of a Bingham fluid in a pipe}
 This problem illustrates a steady flow problem and the location of the yield
 surface. We will use cylindrical coordinates, and assume the flow is
-unidirectional with $\bm{u} = u(r) \hat{\bm{z}}$.
+unidirectional with $\symbf{u} = u(r) \hat{\symbf{z}}$.
 
 \begin{center}
 \begin{tikzpicture}
@@ -1378,7 +1378,7 @@ $t=0$. The momentum `diffuses' into the fluid as $y \sim \sqrt{\nu t}$.
 
 Consider a Bingham fluid in $y > 0$ with yield stress $\sigma_y$, viscosity
 $\eta$, density $\rho$ and a rigid plate at $y=0$. For $t < 0$, we have a
-semi-infinite shear flow $\u = \srate y \hat{\bm{x}}$. Note: we require
+semi-infinite shear flow $\symbf{u} = \srate y \hat{\symbf{x}}$. Note: we require
 $\sigma = \eta \srate > \sigma_y$ to ensure there is flow everywhere. At
 $t=0$, the plate starts to move with the flow such that the stress exerted on
 the plate suddenly changes to $\sigma_0 < \sigma_y$. 
@@ -1411,7 +1411,7 @@ y_0$ is the unyielded region region and $y > y_0$ is the unyielded region. On
 the yield surface, we require $\abs{\sigma} = \sigma_y$ by definition, and
 also require the velocity to be continuous across the yield surface.
 
-Assuming the flow is unidirectional with $\u = u(y,t)\hat{\bm{x}}$, the Cauchy
+Assuming the flow is unidirectional with $\symbf{u} = u(y,t)\hat{\symbf{x}}$, the Cauchy
 equation with inertia is valid in both the yielded and unyielded domain:
 \begin{equation}
 	\rho \frac{\partial u}{\partial t} = \frac{\partial \sigma}{\partial y}
@@ -1547,8 +1547,8 @@ passes. The change in position is $d$, the \emph{shear displacement}.
 		\draw (0.6, 0) -- (5,0);
 		\node at (2.5, 2.5) {$U$};
 		\draw[->, thick] (2.15, 2.25) -- (2.85, 2.25);
-		\draw[->] (1,0.5) -- (1.6, 0.5) node[midway,below] {$\hat{\bm{x}}$};
-		\draw[->] (1,0.5) -- (1, 1.1) node[midway, left] {$\hat{\bm{y}}$};
+		\draw[->] (1,0.5) -- (1.6, 0.5) node[midway,below] {$\hat{\symbf{x}}$};
+		\draw[->] (1,0.5) -- (1, 1.1) node[midway, left] {$\hat{\symbf{y}}$};
 		\draw[red,fill] (2,0) circle (0.1);
 		\draw[red,fill] (2,2) circle (0.1);
 		\draw[red] (2,1.7) node {$t=0$};
@@ -1610,7 +1610,7 @@ current. Therefore
 
 The total rate of strain is 
 \begin{align}
-	\dot{\gamma} &= \srate_1 + \srate_2 = \frac{\dot{\sigma}_1}{G} +
+	\srate &= \srate_1 + \srate_2 = \frac{\dot{\sigma}_1}{G} +
 	\frac{\sigma_2}{\eta} = \frac{\dot{\sigma}}{G} + \frac{\sigma}{\eta}\\ 
 	\implies \sigma + \frac{\eta}{G} \dot{\sigma} &= \eta \srate
 \end{align}
@@ -1830,18 +1830,18 @@ changes in shear rate do not influence the present stress.
 Generalising the scalar relationship, we get a tensorial relationship for
 deviatoric stress
 \begin{equation}
-	\dunder{\tau}(t) = \int_{-\infty}^t G(t-t') \dunder{\srate}(t')\,\diffd t'
+	\symbfsf{\tau}(t) = \int_{-\infty}^t G(t-t') \symbfsf{\srate}(t')\,\diffd t'
 \end{equation}
 Note that $G$ is still a scalar.
 
-\paragraph{Steady flow.} Consider a steady flow with $\dunder{\srate}(t') =
-\dunder{\srate}$ a constant tensor. Then
+\paragraph{Steady flow.} Consider a steady flow with $\symbfsf{\srate}(t') =
+\symbfsf{\srate}$ a constant tensor. Then
 \begin{equation}
-	\dunder{\tau}(t) = \dunder{\srate} \int_{\infty}^t G(t-t') \, \diffd t' =
-	\left[ \int_0^\infty G(s) \, \diffd s \right] \dunder{\srate}
+	\symbfsf{\tau}(t) = \symbfsf{\srate} \int_{\infty}^t G(t-t') \, \diffd t' =
+	\left[ \int_0^\infty G(s) \, \diffd s \right] \symbfsf{\srate}
 \end{equation}
 which is the Newtonian constitutive relationship. Thus if the flow is steady,
-stress is Newtonian with $\dunder{\tau} = \eta \dunder{\srate}$ and $\eta =
+stress is Newtonian with $\symbfsf{\tau} = \eta \symbfsf{\srate}$ and $\eta =
 \int_0^\infty G(s) \, \diffd s$. Hence Newtonian solutions to previous
 problems are the same for a GLVF if the flow is steady. To see the consequence
 of viscoelastic behaviour, we require unsteady motion where unsteady boundary
@@ -1925,7 +1925,7 @@ instantaneous shear displacement.
 Consider an impulsively started plate in a semi-infinite fluid. In the
 Newtonian case, this problem is classically used to gain intutition about
 diffusion of vorticity and momentum. Suppose the flow is unidirectional with
-$\bm{u} = u(y) \hat{\bm{x}}$. Then from the Cauchy equation we have
+$\symbf{u} = u(y) \hat{\symbf{x}}$. Then from the Cauchy equation we have
 \begin{equation}
 	\rho \frac{\partial u}{\partial t} = \eta \frac{\partial^2 u}{\partial
 	y^2} 

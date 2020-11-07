@@ -340,7 +340,7 @@ the fluid must be viscously dissipated instantaneously. We have
 	&= \int \sigma_{ij} \frac{\partial u_i}{\partial x_j} + p e_{ii} \, \diffd V \\
 	&= \int \frac{\partial}{\partial x_j} \sigma_{ij} u_i - u_i \frac{\partial
 	\sigma_{ij}}{\partial x_j} \, \diffd V \\
-	&= \int_{\partial V} \symbf{u} \cdot \sigma \cdot \symbf{n} \, \diffd S + \int
+	&= \int_{\partial V} \symbf{u} \cdot \symbfsf{\sigma} \cdot \symbf{n} \, \diffd S + \int
 	\symbf{u} \cdot \symbf{F} \, \diffd V
 	\end{aligned}
 \end{equation}
@@ -1760,7 +1760,7 @@ Consider the problem
 \end{equation}
 with boundary conditions $\nabla T \to \symbf{H}$ as $\abs{\x} \to \infty$ and
 \begin{equation}
-	\left[ T\right]^+_- = \left[ k \symbf{n} \cdot \nabla T\right]^+_- = 0
+	\left[ T\,\right]^+_- = \left[ k \symbf{n} \cdot \nabla T\,\right]^+_- = 0
 	\hspace{2em} \text{on} \,\, \abs{\x} = a
 \end{equation}
 where $k$ is the conductivity ($\symbf{q} = -k \nabla T$) and $\kappa =
@@ -1970,11 +1970,11 @@ $C = C_0 + C'(x)$ where $C' \ll C_0$. Then the transport equation reduces to
 \end{equation}
 where the non-linear terms $C' \nabla_s \cdot \symbf{u}_s$ and $\symbf{u}_s
 \cdot \nabla_s C'$ have been neglected. This is a linear problem in the rise
-velocity $\symbf{U}$ and from spherical symmetry
+velocity $\symbf{U}$ and from spherical symmetry we deduce
 \begin{equation}
 	\symbf{u}_s = A \left( \symsf{I} - \symbf{n}\symbf{n}\right)\cdot\symbf{U}
 \end{equation}
-for some $A$. To calculate $\nabla_s \cdot \symbf{u}_s$, note
+for some constant $A$ to be determined. To calculate $\nabla_s \cdot \symbf{u}_s$, note
 \begin{align}
 	\nabla_s \symbf{n} &= \left( \symsf{I} - \symbf{n}\symbf{n}\right)\cdot
 	\nabla \frac{\x}{a} = \frac{1}{a} \left( \symsf{I} -
@@ -1985,6 +1985,7 @@ for some $A$. To calculate $\nabla_s \cdot \symbf{u}_s$, note
 		\cancel{(\symbf{n}\cdot\nabla_s)}\symbf{n}\right]\cdot\symbf{U} =
 		-\frac{2}{a} A\symbf{U}\cdot\symbf{n}
 \end{align}
+using the curvature $\kappa = \frac{2}{a}$ for a sphere of radius $a$.
 Guessing $C' \propto \symbf{U}\cdot\symbf{n}$, and since 
 \begin{equation}
 	\nabla_s^2(\symbf{U}\cdot\symbf{n}) = \nabla_s \cdot \left[
@@ -1996,9 +1997,9 @@ we find
 	C' = \frac{2C_0 A \frac{\symbf{U}\cdot\symbf{n}}{a}}{k + 2\frac{D_s}{a^2}}
 \end{equation}
 Therefore the linearisation $C' \ll C_0$ is valid if $\frac{UA}{D_s} \ll 1$
-(fast diffusion) or $\frac{U}{ka} \ll 1$ (fast absorption). The problem is
-completed by using a Papkovich-Neuber representation inside and outside with
-boundary conditions
+(fast diffusion) or $\frac{U}{ka} \ll 1$ (fast adsorption). The problem is
+completed by using a Papkovich-Neuber representation inside and outside the
+droplet with boundary conditions
 \begin{align}
 	\symbf{u} \to -\symbf{U} \,\,\, \text{as}\,\,\, &r \to \infty \\
 	\symbf{u} \,\,\,\text{finite at} \,\,\, &r = 0 \\

@@ -7,6 +7,7 @@
 \RequirePackage{mathtools} % Mathtools
 \RequirePackage{amsthm} % Theorem environments
 \RequirePackage{amssymb} % Extra symbols
+\RequirePackage{amsmath}
 \RequirePackage{tensor} % Tensor notation
 \RequirePackage{tikz} % TikZ
 \RequirePackage{graphicx} % Enable external graphic inclusion
@@ -37,6 +38,7 @@
 \RequirePackage{physics} % Lots of useful notation for physics
 \RequirePackage[nointegrals]{wasysym} % Astronomical symbols
 \RequirePackage[bold-style=ISO]{unicode-math} %Tensors, vectors,etc
+\RequirePackage{placeins}
 
 %%%% Tikz setup
 \RequirePackage{tikz}
@@ -60,6 +62,20 @@
 \renewcommand{\u}{\symbf{u}}
 \newcommand{\y}{\symbf{y}}
 \newcommand{\X}{\symbf{X}}
+
+
+% NNFM notation
+\newcommand{\srate}{\dot{\gamma}}
+\renewcommand{\trace}[1]{\text{tr}\left(#1\right)}
+
+% FDC notation
+\newcommand{\VL}[1]{\mathbf{#1}}
+\newcommand{\Ro}{Ro}
+\newcommand{\Ek}{E}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Bu}{Bu}
+
 
 % Remove paragraph indents
 \newlength\tindent
