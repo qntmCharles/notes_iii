@@ -1194,8 +1194,9 @@ approximation}: we assume the density $\rho$ may be split into two parts
 $\rho_0$ and $\rho'$ with $\rho_0$ constant and $\rho'/\rho_0 \ll 1$. The
 pressure may then also be split into two parts, $p_0(z)$, such that
 $-p_0'(z) = \rho_0 g$, and the remainder $p'$. This says $p_0(z)$ is the
-hydrostatic pressure and $p'$ is the excess. The vertical component of the
-momentum equations may then be written
+hydrostatic pressure and $p'$ is the excess, whilst $\rho_0$ is the density
+component in hydrostatic balance, and stratification arises from $\rho'$. The
+vertical component of the momentum equations may then be written
 \begin{align}
 	\frac{\diffD w}{\diffD t} &= -\frac{1}{\rho_0 + \rho'}\frac{\partial
 		p_0}{\partial z} - \frac{1}{\rho_0 + \rho'} \frac{\partial
@@ -1214,13 +1215,14 @@ where terms including $\rho'$ are discarded unless multiplying $g$. The
 	\nabla \cdot \symbf{u} &= 0 \\
 	\frac{\diffD \rho'}{\diffD t} &= 0
 \end{align}
+where no assumption has been placed on the direction of $\symbf{f}$. 
 
-These equations make clear the role of buoyancy: a light fluid parcel
-experiences an upward force and a heavy fluid parcel experiences a downward
-force. It is further useful to write $\rho'(x,y,z,t) = \rho_s (z) +
-\tilde{\rho}(x,y,z,t)$ where $\rho_s(z)$ is a \emph{background} or
-\emph{reference} density and $\tilde{\rho}$ is the \emph{disturbance density}
-which is zero for fluid at rest.
+These equations make clear the role of buoyancy: a light fluid parcel ($\rho'
+<0$) experiences an upward force and a heavy fluid parcel ($\rho' > 0$)
+experiences a downward force. It is further useful to write $\rho'(x,y,z,t) =
+\rho_s (z) + \tilde{\rho}(x,y,z,t)$ where $\rho_s(z)$ is a \emph{background}
+or \emph{reference} density and $\tilde{\rho}$ is the \emph{disturbance
+density} which is zero for fluid at rest.
 
 The stability of the reference density state is determined by the
 \emph{buoyancy frequency} or \emph{Brunt-V\"{a}is\"{a}la frequency} $N$
@@ -1269,23 +1271,38 @@ state of rest. These can be combined into a single equation for $\tilde{w}$:
 \end{equation}
 
 Assuming $N^2$ is constant, seek plane wave solutions $\tilde{w} =
-\hat{w}e^{i(kx + ly + mz - \omega t)}$. This gives a dispersion relation
+\hat{w}e^{i(kx + ly + mz - \omega t)}$ (real part implicit). This gives a
+dispersion relation
 \begin{equation}
 	\omega^2 = N^2 \frac{k^2 + l^2}{k^2 + l^2 + m^2}
 \end{equation}
 
-Note that if $N^2 > 0$ we get oscillatory motion, and if $N^2 < 0$ we get
-exponentially growing disturbances. We also have $0 \le \abs{\omega} \le N$
-with the lower limit achieved in the limit $k^2 + l^2 \ll m^2$. Define $\theta
-= \tan^{-1}(m(k^2+l^2)^{-1/2})$, the angle a surface of constant phase makes
-with the vertical. Then $\omega = \pm N \cos \theta$. Owing to
-incompressibility $\nabla \cdot \symbf{u} = 0$, the velocity vector is perpendicular
-to $\symbf{k}$. Thus $\theta$ is also the angle that fluid parcel trajectories
-make with the vertical.
-
-The fact $\abs{\omega} \le N$ implies only disturbances with a sufficiently
-low frequency can propagate as waves. Localised forcing with frequency greater
-than $N$ will remain localised rather than propagating. 
+\begin{itemize}
+	\item If $N^2 > 0$ we get oscillatory motion, and if $N^2 < 0$ we get
+		exponentially growing disturbances.
+	\item We have $0 \le \abs{\omega} \le N$ with the lower limit achieved in
+		the limit $k^2 + l^2 \ll m^2$. 
+	\item Define $\theta = \tan^{-1}(m(k^2+l^2)^{-1/2})$, so that $\theta$ is
+		the angle a surface of constant phase makes with the vertical, so that
+		$\omega = \pm N \cos \theta$. Recall
+		surfaces of constant phase are perpendicular to $\symbf{k}$. 
+	\item Owing to incompressibility $\nabla \cdot \symbf{u} = 0$, $\symbf{k}
+		\cdot \hat{\symbf{u}} = 0$ i.e. the velocity vector is perpendicular
+		to the wavevector, hence the velocity vector lies in surfaces of constant
+		phase. Thus $\theta$ is also the angle that fluid parcel
+		trajectories make with the vertical.
+	\item Since $\abs{\omega} \le N$, only disturbances with a sufficiently
+		low frequency can propagate as waves.  Localised forcing with
+		frequency greater than $N$ will remain localised rather than
+		propagating. 
+	\item In the limit $\theta \to 0$, surfaces of constant phase are vertical
+		and the wavevector is horizontal with $\omega \approx \pm N$.
+	\item In the limit $\theta \to \frac{\pi}{2}$, surfaces of constant phase
+		are horizontal and the wavevector is vertical with $\omega \approx 0$.
+	\item Note that the angle of the phase surfaces is independent of wave
+		amplitude. Hence waves on a range of spatial scales all have phase
+		surfaces oriented in the same direction.
+\end{itemize}  
 
 Further, note the group velocity is
 \begin{equation}
@@ -1299,8 +1316,9 @@ surfaces of constant phase.
 \section{3D quasi-geostrophic equations}
 \subsection{Basic facts about rotation \& stratification}
 \begin{enumerate}
-	\item Assuming the buoyancy frequency $N$ is constant and $\symbf{f}$ is
-		vertical, the dispersion relation for small amplitude waves is
+	\item Assuming the buoyancy frequency $N$ is constant and $\symbf{f} = f
+		\hat{\symbf{z}}$ is vertical, the dispersion relation for small
+		amplitude waves is
 		\begin{equation}
 			\omega^2 = \frac{N^2 k^2 + f^2 m^2}{k^2 + m^2}
 		\end{equation}
@@ -1315,22 +1333,24 @@ surfaces of constant phase.
 		\emph{hydrostatic approximation} is valid. 
 	\item Given $L \gg D$, the Coriolis force may be neglected in the vertical
 		momentum equation, and in the horizontal momentum equation only the
-		part of the Coriolis force associateds with the horizontal velocity is
+		part of the Coriolis force associated with the horizontal velocity is
 		important. This can be seen as follows: let $\symbf{f} = \symbf{f}_h +
 		\symbf{f}_v$ and $\symbf{u} = \symbf{u}_h + \symbf{u}_v$, where $_h$ and $_v$
 		denote horizontal and vertical components respectively. Then,
 		\begin{equation}
-			\symbf{f} \times \symbf{f} = \symbf{f}_h \times \symbf{u}_h + \symbf{f}_v \times
+			\symbf{f} \times \symbf{u} = \symbf{f}_h \times \symbf{u}_h + \symbf{f}_v \times
 			\symbf{u}_h + \symbf{f}_h \times \symbf{u}_v + \cancel{\symbf{f}_v \times
-			\symbf{u}_h} \approx \symbf{f}_h \times \symbf{u}_h + \symbf{f}_v \times
+			\symbf{u}_v} \approx \symbf{f}_h \times \symbf{u}_h + \symbf{f}_v \times
 			\symbf{u}_h
 		\end{equation}
 		where we have assumed $\abs{\symbf{u}_v} \ll \abs{\symbf{u}_h}$. At low
-		latitude, this assumption fails since $\symbf{f}_v \ll \symbf{f}_h$.
-		Following the traditional approximation, only the $\symbf{f}_v \times
-		\symbf{u}_h$ contribution is retained in the horizontal momentum
-		equation. This is equivalent to replacing $\symbf{f}$ with its vertical
-		component only.
+		latitude, this approximation fails since $\symbf{f}_v \ll \symbf{f}_h$.
+		Following the traditional approximation, the horizontal component of the
+		Coriolis force is negligible under the hydrostatic approximation
+		compared to other terms in the vertical momentum equations.
+		Hence only the $\symbf{f}_v \times \symbf{u}_h$ contribution is
+		retained in the horizontal momentum equations. This is equivalent to
+		replacing $\symbf{f}$ with its vertical component only.
 	\item Given the above assumptions, as well as assuming the fluid layer is
 		thin compared to the radius of the Earth, we get the \emph{primitive
 		equations}. 
@@ -1349,10 +1369,10 @@ full $3D$ Boussinesq primite equations on a $\beta$-plane are
 This set of equations is formed of three \emph{prognostic} equations which can
 be used to evolve the five dependent variables, and two instantaneous
 constraints. There are strong similarities to the shallow water equations on a
-$\beta$-plane: at small Rossby number, the shallow water equations have two
-fast modes (e.g. Poincar\'{e} waves \& Kelvin waves for the shallow-water
-equations, internal gravity waves for the primitive equations) and one slow
-mode of waves which are close to geostrophic balance.
+$\beta$-plane: at small Rossby number, the shallow water equations have
+`fast' modes (e.g. Poincar\'{e} waves \& Kelvin waves for the shallow-water
+equations, internal gravity waves for the primitive equations) and `slow'
+modes of waves which are close to geostrophic balance.
 
 \subsection{Thermal wind equation}
 When the Rossby number is small, we expect the flow to be close to geostrophic
@@ -1368,12 +1388,13 @@ have the \emph{thermal wind equations}
 	fu_z &= \frac{g}{\rho_0} \rho'_y
 \end{align}
 Here, the density perturbation $\rho'$ can be viewed analogously to
-temperature. 
+temperature. These equations relate vertical changes in velocity with
+horizontal changes in density.
 
 \subsection{Potential vorticity}
 In the shallow-water equations, the shallow-water potential vorticity was
-conserved. Under the Boussinesq primite equations, instead the
-\emph{Rossby-Ertal potential vorticity} P is conserved materially, where
+conserved. Under the Boussinesq primitive equations, instead the
+\emph{Rossby-Ertal potential vorticity} $P$ is conserved materially, where
 \begin{equation}
 	P = \frac{1}{\rho_0} (\symbf{f} +\symbf{\zeta})\cdot \nabla \rho'
 \end{equation}
@@ -1383,9 +1404,9 @@ In terms of velocities this is equivalent to
 		v_z
 	\rho'_x\right]
 \end{equation}
-Note that forcing and dissipation terms are not yet included. These will give
-rise to features in the $P$ field which can affect or drive the evolution of
-the flow.
+Note that forcing and dissipation terms are not yet included. These will alter
+the material conservation of $P$, giving rise to features in the $P$ field
+which can affect or drive the evolution of the flow.
 
 \subsection{3D quasi-geostrophic equations}
 \paragraph{Primitive equations.} Following the same procedure as with the
@@ -1393,8 +1414,10 @@ shallow-water equations, we aim to find a prognostic equations for the slow
 (close to geostrophic balance) motion from the Boussinesq primitive equations
 on a $\beta$-plane.
 
-We write $\rho'(x,y,z,t) = \rho_s(z) + \tilde{\rho}(x,y,z,t)$ where
-$\rho_s(z)$ is in hydrostatic balance, and write $p'(x,y,z,t) = p_s(z) +
+First, we write $\rho'(x,y,z,t) = \rho_s(z) + \tilde{\rho}(x,y,z,t)$ where
+$\rho_s(z)$ represents density variation in a hydrostatically balanced state
+with no motion, and $\tilde{\rho}$ is associated with motion of the fluid when
+it is disturbed from said resting state. We also write $p'(x,y,z,t) = p_s(z) +
 \tilde{p}(x,y,z,t)$ where each term is in hydrostatic balance with the
 corresponding density term, i.e.
 \begin{align}
@@ -1408,7 +1431,7 @@ The density equation $\frac{\diffD \rho'}{\diffD t} = 0$ thus becomes
 \end{equation}
 
 The velocity vield is divided into a part which is in geostrophic balance with
-the pressure field (assuming constant $f_0$) and a remainder, the
+the pressure field (assuming constant Coriolis parameter $f=f_0$) and a remainder, the
 \emph{ageostrophic velocity}:
 \begin{equation}
 	\symbf{u} = \symbf{u}_g + \symbf{u}_a \hspace{2em} \text{where} \,\,\, f_0 \symbf{k}
@@ -1416,19 +1439,19 @@ the pressure field (assuming constant $f_0$) and a remainder, the
 \end{equation}
 
 Note that the vertical component of the geostrophic velocity $\symbf{u}_g$ is
-zero, and $\nabla \cdot \symbf{u}_g = 0$. We also assume that the $y$-lengthscale
-$L_y$ is sufficiently small that $\beta L_y \ll f_0$. Then if $\Ro \ll 1$, it
-follows that $\abs{\symbf{u}_a} \ll \abs{\symbf{u}_g}$. Thus we are domain limited
-in latitude.
+zero, and $\nabla \cdot \symbf{u}_g = 0$. We also assume that the latitudinal
+($y$) lengthscale $L_y$ is sufficiently small that $\beta L_y \ll f_0$. Then
+if $\Ro \ll 1$, it follows that $\abs{\symbf{u}_a} \ll \abs{\symbf{u}_g}$.
+Thus we are domain limited in latitude.
 
 \lecture{6/11/20}
 The primitive equations may now be written
 \begin{align}
 	\left[ \frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
-	\nabla\right] (u_g + u_a) - f_0 (v_g + v_a) - \beta y (v_g + v_a) &=
+	\nabla\right] (u_g + u_a) - (f_0+\beta y) (v_g + v_a) &=
 	-\frac{1}{\rho_0} \frac{\partial \tilde{p}}{\partial x} \label{eq:prim1}\\
 	\left[ \frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
-	\nabla\right] (v_g + v_a) + f_0 (u_g + u_a) + \beta y (u_g + u_a) &=
+	\nabla\right] (v_g + v_a) + (f_0+\beta y) (u_g + u_a)&=
 	-\frac{1}{\rho_0} \frac{\partial \tilde{p}}{\partial y}\label{eq:prim2} \\
 	-\frac{\partial \tilde{p}}{\partial z} - \tilde{\rho} g &= 0 \\
 	\left[\frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
@@ -1437,26 +1460,32 @@ The primitive equations may now be written
 	\frac{\partial w_a}{\partial z} &= 0
 \end{align}
 
-\paragraph{Approximation validity.} Given that $\Ro \ll 1$ we may approximate
-$\frac{\diffD \symbf{u}}{\diffD t}$ by $\frac{\diffD_g \symbf{u}_g}{\diffD t}$ where
-$\frac{\diffD_g}{\diffD t} = \partial_t + \symbf{u}_g \cdot \nabla$, and also
-$\beta y \symbf{u}$ can be approximated by $\beta y \symbf{u}_g$. 
-
-Note that $f_0(u_a, v_a)$ and $\beta y(u_g, v_g)$ are of similar size. Hence
+\paragraph{Approximation validity.}
+\begin{itemize}
+	\item Given that $\Ro \ll 1$ we may approximate $\frac{\diffD
+		\symbf{u}}{\diffD t}$ by $\frac{\diffD_g \symbf{u}_g}{\diffD t}$ where
+		$\frac{\diffD_g}{\diffD t} = \partial_t + \symbf{u}_g \cdot \nabla$
+	\item Also $\beta y \symbf{u}$ can be approximated by $\beta y
+		\symbf{u}_g$. 
+	\item Note that $f_0(u_a, v_a)$ and $\beta y(u_g, v_g)$ are of similar size. Hence
 the requirement $\beta L_y / f_0 \ll 1$ is better expressed by $\beta L_y/f_0
-\sim \Ro$. Also, $w_a \frac{\diffd \rho_s}{\diffd z}$ is retained, but $w_a
-\frac{\diffd \tilde{\rho}}{\diffd z}$ is not, which requires $\abs{\diffd
-\tilde{\rho}/\diffd z} \ll \abs{\diffd \rho_s / \diffd z}$. Denoting the
-horizontal scale as $L$ and the vertical scale as $D$, the thermal wind
-equation gives $g \tilde{\rho}/L \rho_0 \sim f_0 U/D$ where $U$ is the typical
-horizontal velocity scale. Hence we have
-\begin{equation}
-	\frac{\tilde{\rho}_z}{\rho_{s,z}} \sim \frac{f_0 U L \rho_0}{gD^2
-	\rho_{s,z}} = \frac{U}{f_0 L} \left( \frac{L f_0}{N D}\right)^2 = \Ro \Bu
-\end{equation}
-where $\Bu \equiv (L f_0 / D N)^2$ is the \emph{Burger number}. For our
-approximation to be valid, we require $\Ro \Bu \ll 1$. If $\Bu \sim 1$, then
-this is implied by $\Ro \ll 1$.  
+\sim \Ro$. 
+	\item Also, $w_a \frac{\diffd \rho_s}{\diffd z}$ is retained, but $w_a
+		\frac{\diffd \tilde{\rho}}{\diffd z}$ is not, which requires
+		$\abs{\diffd \tilde{\rho}/\diffd z} \ll \abs{\diffd \rho_s / \diffd
+		z}$. Denoting the horizontal scale as $L$ and the vertical scale as
+		$D$, the thermal wind equation gives $g \tilde{\rho}/L \rho_0 \sim f_0
+		U/D$ where $U$ is the typical horizontal velocity scale. Hence we have
+		\begin{equation} 
+			\frac{\tilde{\rho}_z}{\rho_{s,z}} \sim \frac{f_0 U L
+			\rho_0}{gD^2 \rho_{s,z}} = \frac{U}{f_0 L} \left( \frac{L f_0}{N
+			D}\right)^2 = \Ro \Bu 
+		\end{equation} where $\Bu \equiv (L f_0 / D
+		N)^2$ is the \emph{Burger number} and we have used $\frac{N^2 D}{g}
+		\sim \rho_s / \rho_0$ which follows from the definition of $N$. For
+		our approximation to be valid, we require $\Ro \Bu \ll 1$. If $\Bu
+		\sim 1$, then this is implied by $\Ro \ll 1$.  
+\end{itemize}
 
 \paragraph{Quasi-geostrophic potential vorticity.} 
 To reduce the primitive equations to a single
