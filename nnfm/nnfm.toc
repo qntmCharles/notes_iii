@@ -36,3 +36,6 @@
 \contentsline {paragraph}{\nonumberline Steady flow.}{27}{section*.7}
 \contentsline {subsection}{\numberline {6.6}Interpretation of relaxation modulus}{27}{subsection.6.6}
 \contentsline {subsection}{\numberline {6.7}Stokes' 1\textsuperscript {st} problem}{28}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.8}Oscillatory Rheology}{29}{subsection.6.8}
+\contentsline {subsection}{\numberline {6.9}Further properties}{32}{subsection.6.9}
+\contentsline {subsection}{\numberline {6.10}Frame dependence (translation)}{33}{subsection.6.10}

@@ -45,3 +45,6 @@
 \contentsline {subsection}{\numberline {3.3}Surfactant effects}{25}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Deformation of droplets.}{27}{subsection.3.4}
 \contentsline {subsubsection}{\numberline {3.4.1}Small deformations}{28}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Larger deformations}{29}{subsubsection.3.4.2}
+\contentsline {paragraph}{\nonumberline Large deformations at $\mitlambda \ll 1$.}{29}{section*.6}
+\contentsline {subsection}{\numberline {3.5}Rayleigh-Plateau Instability}{30}{subsection.3.5}

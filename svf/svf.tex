@@ -2084,4 +2084,172 @@ $\abs{\symbf{n}} = 1$ implies $\symbf{n}\cdot(\symbf{n}\cdot\nabla)\symbf{n} =
 	\mathcal{O}(\symsf{D}^2)
 \end{align}
 
+\lecture{9/11/20}
+To solve the problem, use a Papkovich-Neuber solution with
+\begin{align}
+	&\chi = \frac{1}{2} \x \cdot \symsf{E}\cdot\x + \frac{a^5}{3}
+	\symsf{Q}:\nabla\nabla\inv{r}, &&\symbf{\Phi} = \frac{a^2}{3}
+	\symsf{P}\cdot \nabla \inv{r} && r > a \\
+	&\chi = \frac{1}{2}\x\cdot\symsf{e}\cdot\x, && \symbf{\Phi} =
+	\frac{r^7}{6a^2} \symsf{p}:\nabla\nabla\nabla\inv{r} && r < a
+\end{align}
+where
+\begin{itemize}
+	\item the second rank tensors $\symsf{P},\symsf{Q},\symsf{p},\symsf{e}$
+		are linearly dependent on $\symsf{D}, \symsf{E}$, and hence are all
+		symmetric and traceless;
+	\item the use of $\chi$ is forced by strain; the contribution of
+		$\symsf{Q}$ to $\chi$ is equivalent to $\symbf{\Phi} = \frac{a^5}{r^5}
+		\symsf{Q}:\nabla\nabla\nabla\inv{r}$;
+	\item the coefficients are used to get the dimensions correction and to
+		reduce numerical factors.
+\end{itemize}
+
+The fluid velocity is then
+\begin{equation}
+	\symbf{u} = \begin{cases}
+		\symsf{e}\cdot\x + \left(\frac{5r^2}{a^2}\symsf{p}\cdot\x -
+		\frac{2}{a^2} (\x\cdot\symsf{p}\cdot\x)\x\right) & \text{inside} \\
+		\symsf{E}\cdot\x + \frac{a^3}{r^5}(\x\cdot\symsf{P}\cdot\x)\x + \left(
+			\frac{2a^5}{r^5}\symsf{Q}\cdot\x -
+			\frac{5a^5}{r^7}(\x\cdot\symsf{Q}\cdot\x)\x\right) &
+			\text{outside}
+	\end{cases}
+\end{equation}
+and similar expressions for $\symbfsf{\sigma}\cdot\symbf{n}$ on $r=a$ for
+linearised BCs. Our boundary conditions are continuity of normal velocity;
+continuity of tangential velocity; continuity of tangential stress; and jump
+in normal stress equal to $\frac{2\gamma}{\mu a} \symsf{D}$. The kinematic
+boundary condition $\symbf{u}\cdot\symbf{n} = \dot{r} = a \symbf{n} \cdot
+\dot{\symsf{D}}(t)\cdot\symbf{n}$ gives
+\begin{equation}
+	\frac{\diffd \symsf{D}}{\diffd t} = \frac{5}{2\lambda+3}\symsf{E} -
+	\frac{\gamma}{\mu a}
+	\frac{40(\lambda+1)}{(2\lambda+3)(19\lambda+16)}\symsf{D}
+\end{equation}
+which tends monotonically to a linearised state
+\begin{equation}
+	\symsf{D} = \frac{19\lambda+16}{8(\lambda+1)} \frac{\mu a}{\gamma}
+	\symsf{E}
+\end{equation}
+
+\subsubsection{Larger deformations}
+Experiments and numerics show that the deformation increases monotonically in
+the capillary number $\text{Ca}$ up to a critical value
+$\text{Ca}_{\text{crit}}$ where the drop breaks. This critical value of
+$\text{Ca}$ depends on the flow type and viscosity ratio $\lambda$. Taylor
+(1934) showed that large $\lambda$ drops do not break in a simple shear. Since
+a simple shear flow is composed of rotation and strain, we find the drop
+rotates nearly rigidly with angular velocity $\symbf{\Omega}$ and sees an
+oscillating strain tensor $\symsf{E}$, with steady deformation $\sim
+\frac{\text{Ca}}{\lambda}$. In pure strain, we find $\text{Ca}_{\text{crit}}
+\sim \lambda^{-1/6}$ for small $\lambda$ and $\text{Ca}_{\text{crit}}$ tends
+to $\sim 0.1$ as $\lambda \to \infty$. Large $\lambda$ drops just take longer
+to extend and break. Small $\lambda$ drops (bubbles) are hard to break.
+
+\paragraph{Large deformations at $\lambda \ll 1$.}
+In experiment, we see drops extending axisymmetrically and forming pointed
+ends. We assume the drop is defined by $r=R(z)$ with $-L \le z \le L$ and $L
+\gg R_0$, the maximum width of the droplet.
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+	\draw[thick,smooth] plot [domain=-2.582:2.582] ({\x},{0.03*\x*\x-0.2});
+	\draw[thick,smooth] plot [domain=-2.582:2.582] ({\x},{-0.03*\x*\x+0.2});
+	\draw (0, 0.3) node {$r=R_0$};
+	\draw[->] (0,0) -- (0, 0.2);
+	\draw[dashed] (-3, 0) -- (3, 0);
+	\draw (-2.8, -0.1) node {$z=-L$};
+	\draw (2.8, -0.1) node {$z=L$};
+	\draw (1.6, 0.25) node {$r=R(z)$};
+	\draw[->] (1.3, 0) -- (1.3, 0.15);
+	\draw[blue,<-] (2, 0.8) [partial ellipse = -90:-160:1 and 0.35];
+	\draw[blue,<-] (-2, 0.8) [partial ellipse = -90:-20:1 and 0.35];
+	\draw[blue,<-] (-2, -0.8) [partial ellipse = 90:20:1 and 0.35];
+	\draw[blue,<-] (2, -0.8) [partial ellipse = 90:160:1 and 0.35];
+\end{tikzpicture}
+\end{center}
+
+Since $\lambda \ll 1$, we neglect the shear stress exerted by the internal
+flow, so that $u_z^{\text{ext}} = Ez \sim EL$. We start by neglecting pressure
+gradients in the bubble: moving along the bubble with a material slice of the
+external fluid, we see a circular hole of radius $R(z)$ collapsing with
+velocity $E z \frac{\diffd R}{\diffd z}$ with strain rate $\sim
+\frac{\text{velocity}}{r}$, due to a stress difference $\frac{\gamma}{R}$
+between inside and out. Hence 
+\begin{equation}
+	\mu E \sim \frac{\gamma}{R_0} \implies \frac{a}{R_0} \sim \text{Ca}
+\end{equation}
+The volume constraint gives $R_0^2 L \sim a^3$ so that $\frac{L}{R_0} \sim
+\text{Ca}^3$. The flow inside the drop is (nearly) Poiseuille, but with wall
+velocity $Ez$ and no net flux. 
+\begin{center}
+	\begin{tikzpicture}
+		\begin{scope}[shift={(-3,0)}]
+		\draw[thick] (-2, 1) -- (2, 1);
+		\draw[thick] (-2, -1) -- (2, -1);
+		\draw[dashed] (0,1) -- (0,-1);
+		\draw[smooth,blue] plot[domain=-1:1,variable=\y] ({\y*\y-0.5},{\y});
+		\draw[blue,->] (0,0) -- (-0.5,0);
+		\draw[blue,->] (0,0.85) -- (0.22, 0.85);
+		\draw[blue,->] (0,-0.85) -- (0.22, -0.85);
+		\draw[red,->] (0, 1.2) -- (0.5, 1.2) node[midway,above] {$Ez$};
+		\draw[red,->] (0, -1.2) -- (0.5, -1.2) node[midway,below] {$Ez$};
+		\draw (-1.5, 0) node {local};
+		\end{scope}
+		\begin{scope}[shift={(3,0)},scale=1.5]
+		\draw (0,0.5) node {global};
+		\draw[thick,smooth] plot [domain=-2.582:2.582] ({\x},{0.03*\x*\x-0.2});
+		\draw[thick,smooth] plot [domain=-2.582:2.582] ({\x},{-0.03*\x*\x+0.2});
+		\draw[->] (-1.4, 0) -- (-1, 0);
+		\draw[->] (1.4,0) -- (1, 0);
+		\draw (-1.65, 0) node {$p+$};
+		\draw (1.65, 0) node {$p+$};
+		\draw (0,0) node {$p-$};
+		\draw[thick,red,<-] (-1.4, 0.1412) -- (-1.2, 0.1568);
+		\draw[thick,red,<-] (-1.4, -0.1412) -- (-1.2, -0.1568);
+		\draw[thick,red,<-] (1.4, 0.1412) -- (1.2, 0.1568);
+		\draw[thick,red,<-] (1.4, -0.1412) -- (1.2, -0.1568);
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+To balance the pressure gradient we require 
+\begin{equation}
+	\frac{\Delta p}{L} \sim \frac{\lambda \mu E L}{R_0^2}
+\end{equation}
+This is possible provided $\Delta p \le \frac{\gamma}{R_0}$, i.e. $\lambda \ll
+\frac{\gamma}{R_0 \mu E} \frac{R_0^2}{L^2}$. Note the factor $\gamma/R_0 \mu
+E \sim 1$ so
+\begin{equation}
+	\lambda \ll \frac{R_0^2}{L^2} \sim \text{Ca}^{-6}
+\end{equation}
+
+\subsection{Rayleigh-Plateau Instability}
+Consider small axisymmetric perturbations to the shape of a cylinder of one
+fluid surrounded by another.
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[thick,smooth] plot[domain=-2:2] ({\x},{0.5-0.1*exp(-5*\x*\x)});
+		\draw[thick,smooth] plot[domain=-2:2] ({\x},{-0.5+0.1*exp(-5*\x*\x)});
+		\draw[dashed,opacity=0.5] (-2,0) -- (2,0);
+		\draw[->] (-1.5, 0) -- (-1.3, 0) node[below,right] {$w$};
+		\draw[->] (-1.5, 0) -- (-1.5, 0.2) node[left,above] {$u$};
+		\draw[->] (1.3, 0) -- (1.5, 0) node[below,right] {$z$};
+		\draw[->] (1.3, 0) -- (1.3, 0.2) node[left,above] {$r$};
+		\draw (0,0) ellipse (0.1 and 0.4);
+		\draw (0,0.6) node {$r=a+\eta(z,t)$};
+	\end{tikzpicture}
+\end{center}
+
+The cylinder has radius $r=a+\eta(z,t)$ with $\eta \ll a$ and $\eta_z \ll 1$.
+The surface normal is
+\begin{equation}
+	\symbf{n} = (1,0,-\eta_z) + \mathcal{O}(\eta^2)
+\end{equation}
+Hence
+\begin{equation}
+	\nabla \cdot \symbf{n} = \frac{1}{r} - \eta_{zz} \approx
+	\frac{1}{a}-\frac{\eta}{a^2} - \eta_{zz} + \mathcal{O}(\eta^2)
+\end{equation}
+
 \end{document}

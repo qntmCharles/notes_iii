@@ -2005,4 +2005,264 @@ Then the Cauchy equation $\rho u_t = \sigma_y$ gives
 	\frac{\partial^2 u}{\partial y^2}(y,t')\,\diffd t'
 \end{equation}
 
+\lecture{10/11/20}
+\subsection{Oscillatory Rheology}
+
+Recall \emph{rheology} is the science of measuring the mechanical properties
+of complex fluids. The `devices' used are \emph{rheometers}. For example, a
+Couette device is used for simple shear flow. This devices requires large
+strains which is a common problem for rheometers. We can avoid this constraint
+by considering oscillatory rheometers, which only require small strains. There
+are four classical ways to implement such a device.
+\begin{enumerate}
+	\item Couette device -- uniform shear
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick] (-2,1) -- (2,1);
+				\draw[thick] (-2,-1) -- (2,-1);
+				\fill[left color=blue!25,right color=blue!25,middle color=blue,opacity=0.2]
+				(-2,1) -- (2,1) -- (2,-1) -- (-2,-1) -- (-2,1);
+				\draw[<->] (-1, 1.1) -- (1, 1.1);
+			\end{tikzpicture}
+		\end{center}
+
+	\item Parallel discs -- non-uniform shear
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[<->] (0, 2) [partial ellipse = -10:30:2.2 and
+				0.8];
+				\fill[left color=blue!25,right color=blue!25,middle color=blue,opacity=0.2]
+				(-2,2) -- (2,2) -- (2,0) -- (-2,0) -- (-2, 2);
+				\draw[thick,fill=white] (0,2) ellipse (2 and 0.6);
+				\draw[thick] (0,0) [partial ellipse = -180:0:2 and 0.6];
+			\end{tikzpicture}
+		\end{center}
+	\item Taylor-Couette device -- non-uniform shear
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick,name path =A] (0,0) ellipse (1 and 0.2);
+				\draw[thick,name path =B] (0,0) ellipse (1.5 and 0.4);
+				\draw (0,-3) ellipse (1 and 0.2);
+				\draw[thick] (0,-3) [partial ellipse = -180:0:1.5 and 0.4];
+				\draw (0,-3) [partial ellipse = 0:180:1.5 and 0.4];
+				\draw[<->] (0,0) [partial ellipse = -10:30:1.6 and 0.5];
+				\draw[thick] (1.5,0) -- (1.5, -3);
+				\draw[thick] (-1.5, 0) -- (-1.5, -3);
+				\draw (1, 0) -- (1, -3);
+				\draw (-1, 0) -- (-1, -3);
+				\tikzfillbetween[of=A and B]{blue, opacity=0.2}
+			\end{tikzpicture}
+		\end{center}
+	\item Cone-and-plate -- approximately uniform shear
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (-2,0) -- (2,0) -- (2.8, 1.5) -- (-1.2, 1.5) -- (-2,0);
+				\draw (-1.4, 2.5) -- (0.2, 0.6) -- (1.8, 2.5);
+				\draw (0.2, 2.55) ellipse (1.6 and 0.4);
+				\draw (0.4, 0.85) arc (30:0:0.5);
+				\draw (0.7, 0.8) node {$\alpha$};
+				\draw[->] (0.2, 2.55) -- (0.2, 3.5);
+				\draw[<->] (0.2, 3.2) [partial ellipse = -180:60:0.55 and
+				0.15];
+				\fill[right color = blue!25, middle color = blue, left color =
+				blue, opacity=0.2] (0.2,0.6) -- (1.8, 2.5) -- (1.8,
+				0.6);
+				\fill[right color = blue, left color = blue!25, middle color = blue, opacity=0.2]
+				(0.2,0.6) -- (-1.4, 2.5) -- (-1.4,
+				0.6);
+			\end{tikzpicture}
+		\end{center}
+\end{enumerate}
+
+Consider oscillation with shear rate $\srate = \srate_0 \cos \omega t$ where
+$\gamma_0$ is the amplitude of shear strain and $\srate_0 = \gamma_0 \omega$.
+The shear stress for a GLVF is then
+\begin{align}
+	\sigma = \sigma(t) &= \int_{-\infty}^t G(t-t') \srate_0 \cos (\omega t' )\,
+			\diffd t' \\
+			&\stackrel{\mathmakebox[\widthof{=}]{s=t-t'}}{=} \int_0^\infty G(s) \cos
+			(\omega(t-s)) \,
+			\diffd s \\
+			&= \srate_0 \cos \omega t \left[ \int_0^\infty G(s) \cos \omega s
+		\, \diffd s \right] \\
+		&+ \srate_0 \sin \omega t \left[ \int_0^\infty G(s) \sin \omega s
+	\,\diffd s \right]
+\end{align}
+where the first term is in phase with the shear rate, and the second term is
+in phase with the deformation. We can rewrite the shear stress as
+\begin{equation}
+	\sigma = \gamma_0 \left[ G'(\omega) \sin \omega t + G''(\omega) \cos
+	\omega t \right]
+\end{equation}
+where
+\begin{align}
+	G'(\omega) &= \omega \int_0^\infty G(s) \sin \omega s \, \diffd s
+						   &&\text{storage modulus} \\
+	G''(\omega) &= \omega \int_0^\infty G(s) \cos \omega s \, \diffd s
+							   &&\text{loss modulus}
+\end{align}
+The \emph{storage modulus} is analogous to the storage of elastic potential
+energy in a spring, i.e. this component of the stress is a result of elastic
+behaviour. Similarly, the loss modulus is analogous to the dissipation of
+energy due to friction and is a result of viscous behaviour. 
+\begin{itemize}
+	\item The term in $G'$ has $\sigma \propto \gamma = \gamma_0 \sin \omega
+		t$ and hence $G'$ is interpreted as an elastic constant, analogous to
+		$k$ for a spring. 
+	\item The term in $G''$ has $\sigma \propto \srate = \gamma_) \omega \cos
+		\omega t$. Note that
+		\begin{equation}
+			\gamma_0 G''(\omega) \cos \omega t = \srate_0
+			\frac{G''(\omega)}{\omega} \cos \omega t
+		\end{equation}
+		so we interpret $G''/\omega$ as a viscosity and define 
+		\begin{equation}
+			\eta'(\omega) = \frac{G''(\omega)}{\omega} = \int_0^\infty G(s)
+			\cos \omega s \, \diffd s
+		\end{equation}
+\end{itemize}
+
+Finally, with these definitions, we have
+\begin{equation}
+	\sigma = \gamma_0 G'(\omega) \sin \omega t + \srate_0 \eta'(\omega) \cos
+	\omega t
+\end{equation}
+Note if the fluid is Newtonian, $G' = 0$ and $\eta' = \eta$. We can write $G'$
+and $G''$ in a complex formulation:
+\begin{equation}
+	G^*(\omega) = G'' + i G' = \omega \int_0^\infty G(s) e^{i\omega s} \,
+	\diffd s
+\end{equation}
+hence $G^*(\omega)$ is proportional to the Fourier Transform of $G(s)$.
+
+\begin{eg}
+	Consider a Maxwell fluid with $G(s) = \frac{\eta}{\lambda}e^{-s/\lambda}$.
+	Then
+	\begin{align}
+		G^*(\omega) &= \omega \int_0^\infty \frac{\eta}{\lambda}
+		e^{-s/\lambda}e^{i\omega s} \, \diffd s \\
+		&= \frac{\eta \omega}{\lambda} \int_0^\infty e^{(i\omega -
+		\frac{1}{\lambda})s}\,\diffd s \\
+		&= - \frac{\eta \omega}{\lambda} \frac{1}{i\omega -\frac{1}{\lambda}}
+		\\
+		&= \frac{\eta \omega}{1-i\lambda \omega}
+	\end{align}
+	Taking real and imaginary parts we have
+	\begin{align}
+		G'(\omega) = \Im\left[G^*\right] &=
+		\frac{\eta\lambda\omega^2}{1+(\lambda\omega)^2} \\
+		G''(\omega) = \Re\left[ G^*\right] &= \frac{\eta\omega}{1+(\lambda\omega)^2}
+	\end{align}
+	\begin{center}
+		\begin{tikzpicture}[scale=2];
+			\draw[thick,->] (-0.1, 0) -- (5, 0) node[right,below]
+			{$\omega$};
+			\draw[thick,->] (0, -0.1) -- (0, 1.5);
+			\draw[red,smooth] plot[domain=0:4.5] ({\x},{2*\x*\x/(1+2*\x*\x)});
+			\draw[blue,smooth] plot[domain=0:4.5] ({\x},{sqrt(2)*\x/(1+2*\x*\x)});
+			\draw[red] (4.8, 1) node {$G'(\omega)$};
+			\draw[blue] (4.8, 0.2) node {$G''(\omega)$};
+			\draw[blue] (0.5, 1.2) node {$\sim \omega$};
+			\draw[red] (0.55, 1) node {$\sim \omega^2$};
+			\draw[blue] (3.5, 1.4) node {$\sim \omega^{-1}$};
+			\draw[red] (3.45, 1.2) node {$\sim \omega^0$};
+		\end{tikzpicture}
+	\end{center}
+	The maximum of $G''(x) = \frac{1}{1+x^2}$ occurs at $x=1$ hence the
+	maximum of $G''(\omega)$ is at $\lambda\omega = 1$. Thus at maximum,
+	$\omega = \frac{1}{\lambda}$ which can be used to estimate $\lambda$
+	experimentally. We can define a new dimensionless number, the
+	\emph{Deborah number} $\lambda \omega = \text{De} =
+	\frac{\lambda}{\omega^{-1}}$ which is a ratio of two timescales. If
+	$\text{De} \ll 1$, then $\lambda \ll \omega^{-1}$ and the Maxwell fluid
+	has short memory, so an approximately Newtonian response. If $\text{De}
+	\gg1 $, then $\lambda \gg\omega^{-1}$ and there are strong elastic
+	effects.
+\end{eg}
+
+\subsection{Further properties}
+The generalised linear visco-elastic fluid model allows modelling of fluids
+with memory and history-dependent shear rate / stress relationships. However,
+there are four main issues with LVFs:
+\begin{enumerate}
+	\item \emph{Constant viscosity in steady flow}, so the viscosity is
+		independent of shear rate and we cannot model shear-thinning or
+		thickening behaviour. Recall we found
+		\begin{equation}
+			\symbfsf{\tau} = \symbfsf{\srate}\eta
+		\end{equation}
+		where $\eta = \int_0^\infty G(s) \, \diffd s$.
+	\item \emph{No normal stress differences.} Recall steady shear flow has
+		\begin{align}
+			\symbfsf{\srate} &= \begin{pmatrix} 0 & \srate & 0 \\ \srate & 0 &
+			0 \\ 0 & 0 & 0 \end{pmatrix} \\
+			\symbfsf{\sigma} &= \begin{pmatrix} -p_0 & \eta \srate & 0 \\ \eta
+			\srate & -p_0 & 0 \\ 0 & 0 & -p_0 \end{pmatrix}
+		\end{align}
+		Thus $N_1 = N_2 = 0$.
+
+	\item \emph{No change in extensional viscosity.} Recall a steady
+		extensional flow has
+		\begin{align}
+			\symbfsf{\srate} &= \dot{\vare} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 &
+			0 \\ 0 & 0 & -2 \end{pmatrix} \\
+			\symbfsf{\sigma} &= \begin{pmatrix} -p_0 + \eta \dot{\vare} & 0 &0
+				\\ 0 & -p_0 + \eta \dot{\vare} & 0 \\ 0 & 0 & -p_0 - 2 \eta
+			\dot{\vare} \end{pmatrix}
+		\end{align}
+		Hence $\eta_{\text{ext}} = 3 \eta$ and $\text{Tr} = 3$ as for a
+		Newtonian fluid.
+
+	\item The GLVF constitutive relationship is \emph{not objective}: it
+		depends on the frame in which it is evaluated.
+\end{enumerate}
+
+\subsection{Frame dependence (translation)}
+We have two issues to solve: translation of frame, and rotation of frame. TO
+solve the issue of frame translation independence, we use familiar tools from
+continuum mechanics. To enforce Galilean invariance, we will use
+\emph{material derivatives} instead of partial time derivatives, i.e. replace
+$\partial_t$ with $\frac{\diffD}{\diffD t} = \partial_t +
+\symbf{u}\cdot\nabla$.
+
+Consider two frames of reference. Frame 1 is stationary, whilst frame 2 moves
+relative to frame 1 with constant velocity $\symbf{U}$. Then
+\begin{align}
+	\x^{(1)} &= \x^{(2)} + \symbf{U}t \\
+	\symbf{u}^{(1)} &= \symbf{u}^{(2)} + \symbf{U}
+\end{align}
+
+The stress in frame 1 and 2 may be written
+\begin{align}
+	\symbfsf{\sigma}^{(1)} &= \symbfsf{\sigma}^{(1)}(\x^{(1)},t) \\
+	\symbfsf{\sigma}^{(2)} &= \symbfsf{\sigma}^{(2)}(\x^{(2)},t)
+\end{align}
+Now from Galilean invariance we have
+\begin{equation}
+	\symbfsf{\sigma}(\x^{(2)},t) = \symbfsf{\sigma}^{(1)}(\x^{(1)},t) =
+	\symbfsf{\sigma}^{(1)}(\x^{(2)}+\symbf{U}t,t)
+\end{equation}
+Therefore the material derivative of $\symbfsf{\sigma}^{(2)}$ is
+\begin{align}
+	\frac{\diffD \symbfsf{\sigma}^{(2)}}{\diffD t} &= \frac{\partial
+	\symbfsf{\sigma}^{(2)}}{\partial t} + \symbf{u}^{(2)}\cdot \nabla
+	\symbfsf{\sigma}^{(2)} \\
+	&= \frac{\partial}{\partial t} \left[ \symbfsf{\sigma}^{(1)}(\x^{(2)} +
+\symbf{U}t,t)\right] + \symbf{u}^{(2)}\cdot\nabla \symbfsf{\sigma}^{(2)} \\
+&= \frac{\partial\symbfsf{\sigma}^{(1)}}{\partial t} +
+\cancel{\symbf{U}\cdot\nabla\symbfsf{\sigma}^{(1)}} +
+\left(\symbf{u}^{(1)}-\cancel{\symbf{U}}\right)\cdot\nabla\symbfsf{\sigma}^{(1)}
+\\
+&= \frac{\diffD \symbfsf{\sigma}^{(1)}}{\diffD t}
+\end{align}
+Hence the material derivative is independent of the frame translation velocity
+$\symbf{U}$. A Maxwell fluid previously had constitutive relationship
+$\symbfsf{\sigma} +\lambda \frac{\partial \symbfsf{\sigma}}{\partial t} = \eta
+\symbfsf{\srate}$. Now, we have
+\begin{equation}
+	\symbfsf{\sigma} + \lambda \frac{\diffD \symbfsf{\sigma}}{\diffD t} = \eta
+	\symbfsf{\srate}
+\end{equation}
+However, this is still dependent on frame if rotation is present.
+
 \end{document}
