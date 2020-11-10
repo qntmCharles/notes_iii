@@ -1514,7 +1514,7 @@ equation, called the \emph{quasi-geostrophic potential vorticity equation} is
 then
 \begin{equation}
 	\frac{\diffD_g}{\diffD t} \left[ \psi_{xx} + \psi_{yy} + \left(\frac{f_0^2
-	\psi_z}{N^2}\right)_z \right] + \beta \psi_x = 0
+	\psi_z}{N^2}\right)_z \right] + \beta \psi_x = 0\label{eq:qgpv}
 \end{equation}
 or equivalently $\frac{\diffD_g q}{\diffD t} = 0$ where $q$ is the
 quasi-geostrophic potential vorticity
@@ -1604,5 +1604,188 @@ the flow only has horizontal components. Therefore we expect solutions of the
 QG equations to tend towards isotropy in the coordinates above, but the
 isotropy is likely not exact.
 
+\lecture{3/11/20}
+\subsubsection{Quasi-geostrophic `point vortex'}
+Here we will consider an illustrative simple 3D quasi-geostrophic flow
+calculation known as a `point vortex', i.e. we assume
+\begin{equation}
+	q = U L^2 \delta(x,y, Nz/f_0)
+\end{equation}
+where $\delta(\x)$ is the Dirac delta function and solve
+\begin{equation}
+	\psi_{xx} + \psi_{yy} + \left[ \frac{f_0^2}{N^2} \psi_z\right]_z = UL^2
+	\delta(x,y,z)
+\end{equation}
+for $\psi(x,y,z)$. We assume that $N$ is constant and that the $\beta y$ term
+in QGPV can be neglected. $U$ and $L$ are respectively a constant velocity and
+a constant length, to give dimensional consistency. First, rescale $z$ by
+defining $\bar{z} = Nz/f_0$. In Cartesians $(x,y,\bar{z})$, we now have a 3D
+Laplacian and we deduce the solution with $\psi \to 0$ as $\abs{x}, \abs{y},
+\abs{\bar{z}}$ tend to infinity is
+\begin{equation}
+	\psi(x,y,z) = -\frac{UL^2}{4\pi} \frac{1}{\sqrt{x^2+y^2+\bar{z}^2}} =
+	-\frac{1}{4\pi} \frac{1}{(x^2+y^2+N^2z^2/f_0^2)^{1/2}}
+\end{equation}
+The horizontal velocity components are then
+\begin{equation}
+	(u,v) = \frac{UL^2}{4\pi} \frac{(-y,x)}{(x^2+y^2+N^2z^2/f_0)^{3/2}}
+\end{equation}
+and the density perturbation is given by
+\begin{equation}
+	\tilde{\rho} = -\frac{f \rho_0}{g} \psi_z = -\frac{f \rho_0 U L^2}{4\pi g}
+	\frac{z}{(x^2+y^2+N^2z^2/f_0^2)^{3/2}}
+\end{equation}
+Far from the point vortex, the sum of the relative vorticity and the
+stretching term in $q$ is zero, but, consistent with the fact the circulation
+(both velocity and density perturbations) extend away from the point vortex,
+they are individually non-zero.
+
+\section{Waves \& instabilities in 3D QG}
+\subsection{Framework}
+Consider the quasi-geostrophic potential vorticity equation \eqref{eq:qgpv} as
+a starting point and consider small-amplitude disturbances to a background
+(geostrophic) flow which satisfies these equations. The background flow is
+assumed to be only in the $x$-direction and to depend only on $y$, i.e.
+\begin{equation}
+	(u_g,v_g) = (U(y,z), 0)
+\end{equation}
+There is a corresponding background quasi-geostrophic stream function
+$\Psi(y,z)$ such that $U = -\Psi_y$ and a background quasi-geostrophic
+potential vorticity $Q(y,z) = \Psi_{yy} + (f_0\Psi_z/N^2)_z + \beta y$.
+
+As opposed to deriving the Boussinesq approximation, we will now use the prime
+$()'$ notation to denote disturbance quantities. The quasi-geostrophic
+equations retaining only linear terms in disturbance quantities are
+\begin{equation}
+	\left[ \frac{\partial}{\partial t} + U(y,z) \frac{\partial}{\partial
+	x}\right](\psi'_{xx} + \psi'_{yy} + (\frac{f_0^2}{N^2} \psi'_z)_z) +
+	(\beta - U_{yy} - (\frac{f_0^2}{N^2} U_z)_z)\psi'_x = 0
+\end{equation}
+The boundary condition at any boundary for top and bottom is here  illustrated
+for $z=0$,
+\begin{equation}
+	\left[\frac{\partial}{\partial t} + U(y,0) \frac{\partial}{\partial
+		x}\right] \psi'_z + U_z(y,0) \psi'_x = -\frac{N^2}{f_0} \left[
+			\frac{\partial}{\partial t} + U(y,0) \frac{\partial}{\partial x}
+		\right] h'
+\end{equation}
+
+\begin{itemize}
+	\item The quantity $\beta - U_{yy} - (f_0^2 U_z / N^2)_z$ plays a
+		potentially important role: this is the $y$-gradient of QGPV in the
+		background state.
+	\item The quantity $U_z(y,0)$ in the boundary condition, which is
+		proportional to the $y$-gradient of density at $z=0$ may also be
+		important.
+	\item Note that the boundary condition is derived from the density
+		equation $\frac{\diffD \rho'}{\diffD t} = 0$, and the density
+		distribution at the boundary has similar status in the equtions to the
+		interior distribution of QGPV.
+\end{itemize}
+
+\subsection{Rossby waves -- vertical modes}
+Consider the $3D$ quasi-geostrophic equations in an oceanic configuration with
+a free surface at $z=0$ in the resting undisturbed state, and a flat bottom at
+$z = -H$ with buoyancy frequency $N(z)$ which is not assumed constant. Assume
+that in the undisturbed state the height of the free surface is
+\begin{equation}
+	z = \eta'(x,y,t)
+\end{equation}
+and assume disturbances are suitably small that we may estimate $p(x,y,0,t) =
+p_{\text{atm}} + \rho_0 g \eta'$. Then at $z=0$ we have $\rho_0 g w =
+\frac{\diffD_g \tilde{p}(z=0)}{\diffD t}$. Using the expression for pressure
+and vertical velocity under the quasi-geostrophic approximation, the boundary
+condition at $z=0$ is
+\begin{equation}
+	\frac{\diffD_g \psi'_z}{\diffD t} + \frac{N^2}{g} \frac{\diffD_g
+	\psi'}{\diffD t} = 0
+\end{equation}
+Similarly, at $z=-H$ the boundary condition is
+\begin{equation}
+	\frac{\diffD_g \psi'_z}{\diffD t} = 0 
+\end{equation}
+
+The QGPV equation then reduces to
+\begin{equation}
+	\left( \psi'_{xx} + \psi'_{yy} + (\frac{f_0^2}{N^2}
+	\psi'_z)_z\right)_t + \beta \psi'_x = 0
+\end{equation}
+
+Seek solutions of the form $\psi'(x,y,z,t) = \phi(x,y,t) P(z)$ where $P$
+satisfies
+\begin{equation}
+	\frac{\diffd}{\diffd z} \left[ \frac{1}{N^2} \frac{\diffd P}{\diffd
+	z}\right] = -\frac{1}{gh} P
+\end{equation}
+for consistency, where $h$ is a suitably constant and at $z=0$ $P$ satisfies
+$P_z + (N^2/g)P = 0$ and at $z=-H$ $P$ satisfies $P_z = 0$. This is an
+eigenvalue for $h$, called the \emph{vertical structure equation}, and we
+expect a countable sequence of possible values $h_1 > h_2 > \dots > 0$, with
+the maximum value $h_1$ corresponding to the simplest possible structure for
+$P(z)$.
+
+\begin{itemize}
+	\item The height $g/N^2$ is typically large compared to the depth $H$ (or
+		the vertical length scale associated with variations in
+		stratification). Thus the boundary condition at $z=0$ can be
+		approximated by $P_z = 0$. This is the \emph{rigid lid approximation},
+		equivalent to imposing zero vertical velocity. 
+	\item Using the rigid lid approximation, the boundary condition gives $P$
+		non-zero at $z=0$ and the solution may therefore be used to give a
+		good first estimate of the pressure variation at $z=0$ and hence the
+		variation in free-surface height.
+	\item If $N = N_0$ constant then the largest value $h_1 = N_0^2
+		H^2/g\pi^2$, i.e.
+		\begin{equation}
+			(gh_1)^{1/2} = N_0 H/\pi
+		\end{equation}
+		In this case, $P_1(z)$ has a single zero in the interior layer. The
+		vertical displacement corresponds to $P_1'(z)$ which has a single
+		maximum in the interior of the layer. This is the \emph{first
+			baroclinic mode}\footnote{Baroclinic means `with vertical
+			structure', where $P$ is not simply related to $\rho$, whereas
+		barotropic means $p$ is a function of $\rho$ at all levels.}. For
+		realistic ocean stratification, we typically find $(gh_1)^{1/2}
+		\approx 3 ms^{-1}$ and the second baroclinic mode $(gh_2)^{1/2}
+		\approx 1 ms^{-1}$.
+		\begin{center}
+			\begin{tikzpicture}[scale=3];
+				\draw[thick,->] (-1,0) -- (1,0) node[below,right] {$\rho(z)$};
+				\draw[thick,->] (0,0) -- (0,1.2) node[left]{$z$};
+				\draw[smooth,blue] plot[domain=0:1,variable=\y]
+				({1/(1+exp(-10*(\y-0.5)))-0.5},{\y});
+				\draw[dashed] (-1,1) -- (1, 1) node [right,below] {$z=0$};
+				\draw (-0.5, -0.1) node {$z=-H$};
+			\end{tikzpicture}
+		\end{center}
+	\item Given $h_i$ and $P_i(z)$ the corresponding equation for
+		$\phi_i(x,y,t)$, describing the horizontal structure of the
+		$i$\textsuperscript{th} mode is
+		\begin{equation}
+			\left( \phi_{ixx} + \phi_{iyy} - \frac{f_0^2}{gh_i}
+			\phi_i\right)_t + \beta \phi_{ix} = 0
+		\end{equation}
+		which is the quasi-geostrophic equation for shallow water of depth
+		$h_i$. 
+	\item We have reduced the three-dimensional problem to an equivalent set
+		of single layer problem, one for each mode, with the layer depths
+		determined as eigenvalues of the vertical structure equation.
+	\item For each vertical mode there is a corresponding Rossby radius of
+		deformation given by
+		\begin{equation}
+			L_{iR} = \frac{(gh_i){1/2}}{f_0}
+		\end{equation}
+		THe first baroclinic mode has $L_{1R} \approx 30 km$, and the second
+		$L_{2R} \approx 10 km$ at mid-latitutes.
+	\item For scales much greater than $L_{R}$ the single-layer dispersion
+		relation implies that the phase and group velocities are westward and
+		given by $\beta L_R^2$. The waves are non-dispersive in this limit.
+		For the first baroclinic mode, this gives a Rossby wave speed of
+		approximately $1.5 \times 10^{-2} ms^{-1}$ which is extremely small,
+		and makes observation difficult.
+	\item The wave speed increases towards the equator, but the formula breaks
+		as the equator is approached and we must instead consider equatorial
+		Rossby waves (later in course).
+\end{itemize}
 
 \end{document}

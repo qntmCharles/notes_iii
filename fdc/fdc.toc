@@ -44,3 +44,7 @@
 \contentsline {paragraph}{\nonumberline Quasi-geostrophic potential vorticity.}{24}{section*.17}
 \contentsline {paragraph}{\nonumberline Boundary conditions.}{25}{section*.18}
 \contentsline {paragraph}{\nonumberline Physical interpretation of QGPV.}{25}{section*.19}
+\contentsline {subsubsection}{\numberline {9.4.1}Quasi-geostrophic `point vortex'}{26}{subsubsection.9.4.1}
+\contentsline {section}{\numberline {10}Waves \& instabilities in 3D QG}{26}{section.10}
+\contentsline {subsection}{\numberline {10.1}Framework}{26}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Rossby waves -- vertical modes}{27}{subsection.10.2}
