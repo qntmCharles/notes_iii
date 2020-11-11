@@ -1824,7 +1824,7 @@ spherical and translates with velocity
 	\beta(1)\right) = -\frac{1}{5} \frac{a}{\mu} \gamma \symbf{H}
 \end{equation}
 
-\subsection{Surfactant effects}
+\subsubsection{Surfactant effects}
 The concentration $C$ in a small material area of interface $\delta $ changes
 due to
 \begin{enumerate}
@@ -2251,5 +2251,180 @@ Hence
 	\nabla \cdot \symbf{n} = \frac{1}{r} - \eta_{zz} \approx
 	\frac{1}{a}-\frac{\eta}{a^2} - \eta_{zz} + \mathcal{O}(\eta^2)
 \end{equation}
+\lecture{11/11/20}
+The $\eta/a^2$ term accounts of azimuthal curvature and the $\eta_{zz}$ term
+accounts for axial curvature. Consider disturbances of the form $\eta =
+\hat{\eta} e^{st} \cos kz$. Then
+\begin{equation}
+	\nabla \cdot \symbf{n} = \frac{1}{a} - \frac{1-k^2 a^2}{a^2} \eta
+\end{equation}
+The disturbance is stabilised by axial curvature which acts to reduce the
+disturbance, and is destabilised by azimuthal curvature which acts to
+constrict the cylinder further.
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[thick,smooth] plot[domain=-2:2] ({\x},{0.3+0.05*\x*\x});
+		\draw[thick,smooth] plot[domain=-2:2] ({\x},{-0.3-0.05*\x*\x});
+		\draw[smooth,blue] plot [domain=-1:1] ({\x},{0.4+0.05*\x*\x});
+		\draw[smooth,blue] plot [domain=-1:1] ({\x},{-0.4-0.05*\x*\x});
+		\draw[red] (0,0) ellipse (0.1 and 0.3);
+		\draw[red] (2, 0) ellipse (0.16 and 0.5);
+		\draw[red,->] (0,0.3) -- (0, 0.15);
+		\draw[red,->] (0,-0.3) -- (0, -0.15);
+		\draw[red,->] (2,0.5) -- (2, 0.3);
+		\draw[red,->] (2,-0.5) -- (2, -0.3);
+		\draw[blue,->] (0.5, 0.4125) -- (0.47, 0.7);
+		\draw[blue,->] (-0.5, 0.4125) -- (-0.47, 0.7);
+		\draw[blue,->] (0.5, -0.4125) -- (0.47, -0.7);
+		\draw[blue,->] (-0.5, -0.4125) -- (-0.47, -0.7);
+		\draw[red] (0.3, 0) node {$\frac{\eta}{a^2}$};
+		\draw[blue] (0, 0.6) node {$\eta_{zz}$};
+	\end{tikzpicture}
+\end{center}
+
+The disturbance is unstable to long wavelengths with $k^2 a^2 < 1$. The growth
+rate $s$ depends on the dynamics. The full case including inertia, internal
+and external pressure, and internal and external viscosity is given by
+Tomotika (1935). We will sketch the simple case of no inertia and no external
+viscosity. The linearised boundary conditions are
+\begin{align}
+	\text{kinematic} \hspace{3em}\eta_t &= \left.u\right|_{r=a} \hspace{2em}
+	\text{neglecting} \,\, w \eta_z \\
+	 \implies \eta &= \frac{u}{s} \,\,\,\text{on}\,r=a \\ 
+	 \text{dynamic}\hspace{1em}
+	 \left[ \symbfsf{\sigma}\cdot\symbf{n}\right]_-^+ &= \gamma (\nabla \cdot
+	 \symbf{n})\symbf{n} \\
+	\symbfsf{\sigma}_{\text{out}} &= 0 
+\end{align}
+Hence the stress components are, on $r=a$,
+\begin{align}
+	\frac{\partial u}{\partial z} + \frac{\partial w}{\partial r} &= 0
+																																				&&\text{tangential}\\
+	\cancel{-p_0}-p + 2\mu \frac{\partial u}{\partial r} &= \gamma \left(
+	\frac{1-k^2a^2}{a^2}\right) \frac{u}{s} - \cancel{\frac{\gamma}{a}}
+	&&\text{normal}
+\end{align}
+where in the normal component the balanced terms $-p_0 = -\frac{\gamma}{a}$
+are excluded since they play no role in the dynamics. To find the Stokes flow
+inside the cylinder, we need the axisymmetric harmonic functions which are
+proportional to $\cos kz$, derived by separation of variables. We have
+\begin{align}
+	\chi &= A I_0(kr) \cos kz \\
+	\symbf{\Phi} &= (BI_1(kr) \cos  kz, 0,0)
+\end{align}
+where $I_0$ and $I_1$ are modified Bessel functions which are well behaved at
+the origin. Note that the $\hat{\symbf{z}}$ component of $\symbf{\Phi}$
+vanishes to avoid $w \propto z$ as we only want oscillatory motion in the $z$
+direction. Note also that $I_0'(x) = I_1(x)$ and $xI_0 = (x I_x(x))'$. We find
+\begin{align}
+	u &= (AkI_1 + Bkr I_0 - 2BI_1) \cos kz \\
+	w &= (-AkI_0 - Bkr I_1) \sin kz \\
+	p &= 2 \mu B k I_0 \cos kz
+\end{align}
+Applying the boundary conditions yields the growth rate as
+\begin{equation}
+	s = \frac{\gamma}{2\mu a} (1-k^2 a^2) \frac{I_1(ka)^2}{k^2 a^2 I_0(ka)^2
+	- (1+k^2 a^2) I_1(ka)^2}
+\end{equation}
+as derived by Lord Rayleigh (1892).
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1,0) -- (5, 0) node[right] {$ka$};
+		\draw[thick,->] (0, -1) -- (0,1.4) node[left] {$s$};
+		\draw[blue,smooth] plot[domain=0:3.6] ({\x},{1.2+1/(\x-4)});
+		\draw (0.1, 0.95) -- (-0.1, 0.95) node[left] {$\frac{\gamma}{6\mu a}$};
+		\draw (3.16,0.1) -- (3.16, -0.1) node[below] {$1$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item The most unstable disturbance has infinite wavelength since this
+		minimises the internal deformation and we have ignored external drag.
+		A cylindrical bubble in viscous fluid is also most unstable at
+		infinite wavelengths, since it minimises external $\frac{\partial
+		u}{\partial z}$ and ignores internal Poiseuille flow.
+	\item If $0 < \lambda < \infty$ then the maximum $s$ is at finite $k$.
+	\begin{center}
+		\begin{tikzpicture}
+				\draw[thick,->] (-0.1,0) -- (5, 0) node[right] {$ka$};
+				\draw[thick,->] (0, -1) -- (0,1.4) node[left] {$s$};
+				\draw (3.16,0.1) -- (3.16, -0.1) node[below] {$1$};
+				\draw[blue,smooth] plot[tension=0.8] coordinates {(0,0) (0.5, 0.2) (1, 0.5)
+				(1.5, 1) (2, 1.15) (2.5, 0.9) (3, 0.3)  (3.7, -1.2)};
+			\end{tikzpicture}
+		\end{center}
+	\item Consider the scaling requierd to be able to neglect inertia. Suppose
+		$ak = \mathcal{O}(1)$, then we have from the boundary conditions
+		\begin{equation}
+			\frac{\mu u}{a^2} \sim \frac{p}{a} \sim \frac{\gamma}{a^2},
+			\hspace{2em} u \sim as 
+		\end{equation}
+		Thus we find the growth rate scales as $s \sim \frac{\gamma}{\mu a}$
+		as we expected from the solution. If inertia is much smaller than
+		viscous terms then we have
+		\begin{equation}
+			\rho u s \ll \frac{\mu u}{a^2} \implies \frac{\mu ^2}{\gamma \rho
+			a} \gg 1
+		\end{equation}
+	\item There are interesting self-similar dynamics in the non-linear regime
+		as the point of breakup is reached.
+\end{enumerate}
+
+\subsection{Long Thin Flows I: Lubrication Theory}
+Here we consider thin flow with (at least one) effectively no-slip boundary.
+Denote the fluid depth as $h$ and the horizontal lengthscale $L$. We assume $h
+\ll L$.
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[thick] (0,0) -- (5, 0);
+		\fill[middle color = gray, bottom color = gray!20] (0,0) -- (5,0) -- (5, -0.5) -- (0, -0.5);
+		\draw[->] (4.2, 0.1) -- (4.4, 0.1) node[below,right] {$w$};
+		\draw[->] (4.2, 0.1) -- (4.2, 0.3) node[left,above] {$u$};
+		\draw[->] (0.2, 0) -- (0.4, 0) node[below,right] {$x$};
+		\draw[->] (0.2, 0) -- (0.2, 0.2) node[left,above] {$z$};
+		\draw[smooth,blue] plot coordinates {(0,0.6) (1, 0.5) (1.3, 0.4) (1.6,
+		0.35) (2, 0.5) (3, 0.4) (4, 0.5) (5, 0.3)};
+		\draw[<->] (2.5,0) -- (2.5, 0.45) node[midway, left] {$h$};
+		\draw[<->] (1, 1) -- (4, 1) node[midway,above] {$L$};
+	\end{tikzpicture}
+\end{center}
+
+Assume the velocity gradients satisfy $\partial_x \sim \frac{1}{L} \ll
+\frac{1}{h} \sim \partial_z$. Consider the scalings for the governing
+equations. From incompressibility we have
+\begin{equation}
+	\nabla \cdot \symbf{u} = 0 \implies \frac{u}{L} \sim \frac{w}{h} \implies
+	w \ll u
+\end{equation}
+From Navier-Stokes we have
+\begin{align}
+	&\text{NS (steady)} && \rho (\symbf{u}\cdot\nabla)\symbf{u}\hspace{2em} =
+	&&-\nabla p
+	\hspace{2em}+ &&\mu \nabla^2 \symbf{u} &&\\
+	  &\parallel \text{to boundary} &&\rho \frac{u^2}{L} &&\,\,\, \frac{p}{L} && \mu
+	\left(\frac{u}{L^2}\right. + &&\left.\frac{u}{h^2}\right)\\
+	&\implies &&\frac{u h}{\nu} \frac{h}{L} && \frac{p}{\left(\frac{\mu uL}{h^2}\right)}
+	&&\frac{h^2}{L^2} && 1
+\end{align}
+Hence we can neglect inertia provided the \emph{modified Reynolds number}
+$\frac{u h}{\nu} \frac{h}{L} \ll 1$. Note we can also approximate $\nabla^2$
+by $\frac{\partial^2}{\partial z^2}$, and we expect $p \sim \frac{\mu u
+L}{h^2}$ (cf. pipe flow). The component perpendicular to the boundary scales
+as
+\begin{align}
+	&\text{NS (steady)} && \rho (\symbf{u}\cdot\nabla)\symbf{u}\hspace{2em} =
+	&&-\nabla p
+	\hspace{2em}+ &&\mu \nabla^2 \symbf{u} &&\\
+		&\perp \text{to boundary} && \frac{\rho u w}{L} && \frac{p}{h} && \mu\left( \frac{w}{L^2}\right. +
+								&&\left.  \frac{w}{h^2}\right)\\
+					   &\implies && \left( \frac{u h}{\nu}\right)
+	\frac{h^2}{L^2} && 1 && \frac{h^4}{L^4} +&&\frac{h^2}{L^2}
+\end{align}
+so at leading order we have $\frac{\partial p}{\partial z} = 0$, i.e. $p =
+p(x,y,t)$ only.
+
 
 \end{document}

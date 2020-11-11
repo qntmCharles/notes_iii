@@ -48,3 +48,6 @@
 \contentsline {section}{\numberline {10}Waves \& instabilities in 3D QG}{26}{section.10}
 \contentsline {subsection}{\numberline {10.1}Framework}{26}{subsection.10.1}
 \contentsline {subsection}{\numberline {10.2}Rossby waves -- vertical modes}{27}{subsection.10.2}
+\contentsline {subsection}{\numberline {10.3}Baroclinic instability}{29}{subsection.10.3}
+\contentsline {paragraph}{\nonumberline Comments.}{30}{section*.20}
+\contentsline {paragraph}{\nonumberline Density transport.}{30}{section*.21}

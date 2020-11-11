@@ -1788,4 +1788,118 @@ $P(z)$.
 		Rossby waves (later in course).
 \end{itemize}
 
+\lecture{11/11/20}
+\subsection{Baroclinic instability}
+Here we consider a flow for which disturbances that are small-amplitude
+initially may grow substantially in ampltiude.  In the atmosphere and ocean,
+an important instability mechanism is associated with sloping density
+surfaces, i.e. horizontal density gradients, present due to vertical shear.
+Here we consider a problem due to Eady. Consider a basic state on an
+$f$-plane, with constant buoyancy frequency $N$ and flow in the $x$-direction
+$U = \Lambda z$, so that $\psi_0 = -\Lambda z y$, $\Lambda > 0$. We use the
+rigid lid approximation with horizontal rigid boundaries at $z=0$ and $z= H$.
+
+The $y$-gradient of the QGPV is
+\begin{equation}
+	\beta - U_yy - (\frac{f_0^2}{N^2} U_z)_z = -(\frac{f_0^2}{N^2} \Lambda)_z
+	= 0
+\end{equation}
+Hence the linearised QGPV equation reduces to
+\begin{equation}
+	q'_t + \Lambda z q'_x = 0
+\end{equation}
+where $q'(x,y,z,t) = q'(x-\Lambda z t, y, z, 0)$. Physically, this says the
+$q'$ field at any level is advected by the horizontal flow. Thus the $q'$
+field is of no consequence in the analysis of possible instability and we
+choose $q'(x,y,z,0)= 0$ for convenience. The boundary conditions are
+\begin{align}
+	\psi'_{zt} - \Lambda \psi'_x &= 0 &&\text{at}\,\,\, z=0 \\
+	\psi'_{zt}+\Lambda H \psi'_{zx} - \Lambda \psi'_x &= 0 &&\text{at} \,\,\,z
+	=H
+\end{align}
+and the interior flow satisfies
+\begin{equation}
+	\psi'_{xx} + \psi'_{yy} + \frac{f_0^2}{N^2} \psi'_{zz} = 0
+\end{equation}
+
+Seek plane wave solutions of the form
+\begin{equation}
+	\psi' = \Re\left[ \hat{\psi}(z) e^{i(kx + ly - kct)}\right]
+\end{equation}
+with this form, $c$ is the complex phase speed in the $x$-direction. There
+will be an instability if $k \Im\left[c\right] > 0$. Note wlog we can take $k
+> 0$. Substituting into the interior equation we find 
+\begin{align}
+	\hat{\psi}_{zz} - \mu^2 \hat{\psi} &= 0\\
+	\mu &= \frac{N_0}{f_0} (l^2+k^2)^{1/2} \\
+	\implies \hat{\psi} &= A e^{\mu z} + Be^{-\mu z}
+\end{align}
+
+Substituting into the boundary conditions and solving for $c$ we find
+\begin{equation}
+	c = \frac{1}{2} \Lambda H \left[ 1 \pm \sqrt{F(\mu H)}\right]
+\end{equation}
+where
+\begin{equation}
+	F(\mu H) = 1-4\frac{\coth \mu H}{\mu H} + \frac{4}{\mu^2 H^2}
+\end{equation}
+
+It can be shown that $F$ is an increasing function with $F(\mu H) \to 1$ as
+$\mu H \to \infty$. Hence there is an instability if $\mu H < \hat{\mu}_c =
+0.2399$ where $F(\hat{\mu}_c) = 0$. The growth rate is given by
+\begin{equation}
+	k\Im\left[c\right] = \frac{f_0 \Lambda}{N} \frac{k}{(k^2+l^2)^{1/2}}\left[
+	\frac{1}{2}\mu H \sqrt{-F(\mu H)}\right]
+\end{equation}
+
+\paragraph{Comments.}
+\begin{itemize}
+	\item The formula for the growth rate shows that for given $\mu$ the
+		growth rate is maximised when $l$ is zero. Hence the maximum growth
+		rate will occur when $\frac{1}{2}\mu H \sqrt{-F(\mu H)}$ is maximised
+		over $\mu$, and for this value of $\mu$, when $l = 0$. The maximum
+		value is in fact $0.31$ when $\mu H = 1.61$.
+	\item Hence the maximum growth rate in the Eady problem is $0.31 \frac{f_0
+		\Lambda}{N}$, i.e. proportional to the vertical shear $\Lambda$. In
+		this case, the $x$-wavenumber $k$ is $1.61 f_0/NH$ and $l = 0$.
+	\item In the limit $\mu H \to \infty$, $c/\Lambda H \to 1/\mu H$ or
+		$c/\Lambda H \to 1 - 1/\Mu H$. In the first case, $B \gg A$ and the
+		wave is \emph{bottom trapped}. In the second case $A \sim B$ and since
+		$\mu H \gg 1$, the wave is \emph{top trapped}. The top wave propagates
+		in the negative $x$-direction (against the flow) and the bottom wave
+		propagates with the flow.
+	\item If there is only a lower boundary, we find dispersion relation $c =
+		\Lambda/\mu$ hence we have an eastward travelling wave trapped at the
+		lower boundary (for positive vertical shear). 
+	\item The propagation mechanism may be understood in terms of circulation
+		induced by a surface density change. Anomalies in the boundary density
+		influence the interior $\psi$, which generates a flow which supports
+		the anomalies.
+	\item In the case of two boundaries, the instability mechanism results
+		from the phase locking of the trapped top and bottom waves. The fact
+		the instability occurs only for sufficiently small $\mu H$ is because
+		at larger $\mu H$ the interaction between the boundary waves is too
+		weak.
+	\item If there were instead side boundaries at $y = 0$ and $y = L$ then $l
+		= \pm n \pi /L$ would be quantised with $n = 1, 2, \dots$. 
+\end{itemize}
+
+\paragraph{Density transport.}
+Consider the density transport by the growing wave. The density flux in the
+$y$-direction is $\bar{\rho' v'}$ where the bar represents an $x$-average. In
+terms of the QG streamfunction, we have
+\begin{align}
+	\bar{\rho' v'} &= - \frac{\rho_0 f_0}{g}\bar{\psi'_x \psi'_z}\\
+	&= \dots\\
+	&= \frac{2k\mu^2}{f_0} \frac{\diffd \rho_s}{\diffd z} \frac{\abs{A}^2
+\Lambda \Im\left[c\right]}{\abs{c^*\mu -\Lambda}^2} < 0
+\end{align}
+Hence the density flux is negative, i.e. light fluid is transported in the
+positive $y$-direction and heavy fluid in the negative $y$-direction, tending
+to weaken the $y$-gradient of density and hence release some of the potential
+energy of the background state.
+
+Thus a growing disturbance on a basic state with a positive density gradient
+equtor to pole produces a poleward flux of light fluid, and an equatorward
+flux of heavy fluid. This is a \emph{baroclinic instability}. 
 \end{document}
