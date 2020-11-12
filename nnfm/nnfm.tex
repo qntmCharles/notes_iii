@@ -2217,13 +2217,15 @@ there are four main issues with LVFs:
 		depends on the frame in which it is evaluated.
 \end{enumerate}
 
-\subsection{Frame dependence (translation)}
-We have two issues to solve: translation of frame, and rotation of frame. TO
+\subsection{Frame dependence}
+We have two issues to solve: translation of frame, and rotation of frame. To
 solve the issue of frame translation independence, we use familiar tools from
 continuum mechanics. To enforce Galilean invariance, we will use
 \emph{material derivatives} instead of partial time derivatives, i.e. replace
 $\partial_t$ with $\frac{\diffD}{\diffD t} = \partial_t +
 \symbf{u}\cdot\nabla$.
+
+\subsubsection{Translation}
 
 Consider two frames of reference. Frame 1 is stationary, whilst frame 2 moves
 relative to frame 1 with constant velocity $\symbf{U}$. Then
@@ -2264,5 +2266,266 @@ $\symbfsf{\sigma} +\lambda \frac{\partial \symbfsf{\sigma}}{\partial t} = \eta
 	\symbfsf{\srate}
 \end{equation}
 However, this is still dependent on frame if rotation is present.
+
+\lecture{12/11/20}
+\subsubsection{Rotation}
+Consider a simple shear flow on a rotating table, with lab basis vectors
+$\symbf{e}_{1,2,3}$ and rotating basis vectors $\symbf{e}_{x,y,z}$.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,fill=gray!50] (0,0) circle (2);
+		\draw[->] (2.2, 0) arc (0:40:2.2);
+		\draw (2.3, 0.8) node {$\Omega$};
+		\draw[->] (-0.5, 0.3) -- (0.5, 0.3) node[midway,above] {$U$};
+		\draw (-0.5, -0.3) -- (0.5, -0.3);
+		\draw[dashed] (0, 0.3) -- (0, -0.3);
+		\draw (0,-0.3) -- (0.3,0.3);
+		\draw[->] (-1.5,0) -- (-1, 0) node [right] {$\symbf{e}_x$};
+		\draw[->] (-1.5,0) -- (-1.5, 0.5) node [above] {$\symbf{e}_y$};
+		\draw[->] (-1.5,0) circle (0.1);
+		\draw (-1.7, -0.2) node {$\symbf{e}_z$};
+		\draw[->] (-4,0) -- (-3.5, 0) node [right] {$\symbf{e}_1$};
+		\draw[->] (-4,0) -- (-4, 0.5) node [above] {$\symbf{e}_2$};
+		\draw[->] (-4,0) circle (0.1);
+		\draw (-4.2, -0.2) node {$\symbf{e}_3$};
+	\end{tikzpicture}
+\end{center}
+If the rotation vector $\symbf{\Omega}$ is along $\symbf{e}_z$ then
+\begin{equation}
+	\begin{pmatrix} \symbf{e}_x(t) \\ \symbf{e}_y(t) \\ \symbf{e}_z
+	\end{pmatrix} = \begin{pmatrix} \cos \Omega t & \sin \Omega t & 0 \\ -\sin
+	\Omega t & \cos \Omega t & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix}
+	\symbf{e}_1 \\ \symbf{e}_2 \\ \symbf{e}_3 \end{pmatrix}
+\end{equation}
+
+Note that the two frames coincide at $t=0$. The flow has velocity $\symbf{u} =
+\srate y \symbf{e}_x +$ rotation. In the table frame, the rotation does not
+contribute to $\symbfsf{\srate}$ so we have
+\begin{align}
+	\symbfsf{\srate} &= \begin{pmatrix} 0 & \srate & 0 \\ \srate & 0 & 0 \\ 0 &
+	0 & 0 \end{pmatrix} = \srate (\symbf{e}_x\symbf{e}_y +
+	\symbf{e}_y\symbf{e}_x) \\
+	\implies \symbfsf{\tau} &= \int_{-\infty}^t G(t-t') \symbfsf{\srate} \,
+	\diffd t' = \symbfsf{\srate} \int_{-\infty}^t G(t-t')\,\diffd t' =
+	\eta_{\{x,y\}} \symbfsf{\srate}
+\end{align}
+where for any linear viscoelastic fluid,
+\begin{equation}
+	\eta_{\{x,y\}} = \int_0^\infty G(s) \, \diffd s
+\end{equation}
+In the lab frame, we use the expressions for $\symbf{e}_{x,y,z}$ in terms of
+$\symbf{e}_{1,2,3}$ to get
+\begin{align}
+	\symbfsf{\srate} &= \srate (\symbf{e}_x\symbf{e}_y +
+	\symbf{e}_y\symbf{e}_x) \\
+	&= \srate \begin{pmatrix} -\sin(2\Omega t) & \cos(2\Omega t) & 0 \\
+\cos(2\Omega t) & \sin(2\Omega t) & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\end{align}
+with respect to the $\symbf{e}_{1,2,3}$ basis. The relevant deviatoric stress
+$\symbfsf{\tau}_{12}$ in the lab frame is then
+\begin{align}
+	\symbfsf{\tau}_{12} &= \int_{-\infty}^t G(t-t') \srate \cos 2 \Omega t' \,
+	\diffd t' \\
+	&\stackrel{\mathmakebox[\widthof{=}]{s=t-t'}}{=} \int_0^\infty G(s) \srate
+	\cos 2 \Omega (t-s) \, \diffd s
+\end{align}
+
+At $t=0$, both frames coincide so we expect the viscosity is the same in both
+frames at this time. We find
+\begin{equation}
+	\left.\symbfsf{\tau}_{12}\right|_{t=0} = \srate \int_0^\infty G(s) \cos 2
+		\Omega s \, \diffd s = \eta_{\{1,2\}}\srate
+\end{equation}
+where $\eta_{\{1,2\}} = \int_0^\infty G(s)\cos 2\Omega s \, \diffd s \ne
+\eta_{\{x,y\}}$. Hence we find the viscosity depends on the frame used to
+evaluate it. This is a fundamental problem with the LVF constitutive
+relaetionship. We can fix this by introducing \emph{objective derivatives} for
+tensors.  Note $G(s)$ has support when $s = \mathcal{O}(\lambda)$. Therefore
+in the integral for $\eta_{\{1,2\}}$, if $\Omega \lambda \ll 1$ then $\cos 2
+\Omega s \sim 1$ so the viscosities agree. Hence we can use the LVF model for
+flows with small velocity gradients or very short memory.
+
+\section{Objective Derivatives}
+\subsection{Oldroyd's axioms}
+Newtonian fluid mechanics was developed in the 19\textsuperscript{th} century.
+The theory of complex fluids was developed in the 20\textsuperscript{th}
+century. In the 1950s, there was intense research to set up a rigorous
+mathematical framework for continuum mechanics. There are two different
+approaches:
+\begin{itemize}
+	\item \emph{Bottom up:} start with a microscopic model and from this form
+		field equations via averaging. For example, polymers, statistical
+		physics, ensemble avergaging gives field equations for density and
+		velocity.
+	\item \emph{Top down:} axiomatic approach. Consider all terms that are
+		admissible in a hydrodynamic equation based on symmetries or
+		invariance principles. Fit the resulting free parameters to
+		experimental data.
+\end{itemize}
+
+The game changer was Professor James Oldroyd who specified four axioms a
+constituve equation must satisfy. A constitutive relationship must be based
+on:
+\begin{enumerate}
+	\item the relative motion of the neighbourhood of the (current) particle;
+	\item the history of the strain tensor associated with the particles;
+	\item physical constants defining the behaviour of the material (and obey
+		its symmetries);
+	\item a \emph{convective} coordinate system that is \emph{embedded} in the
+		material and is \emph{deforming} with it, i.e. can only involve
+		derivatives that do not depend on the frame where they are evaluated
+		but instead need to be \emph{intrinsic}.
+\end{enumerate}
+
+Thus far, we have satisfied the first three axioms. Axiom 4 requires the
+introduce of `new' tensor derivatives.
+
+\subsection{Upper-convected derivative}
+Consider two frames.
+\begin{enumerate}
+	\item The `lab' Cartesian frame with basis vectors $\symbf{e}_i$ and
+		coordinates $x_i$.
+	\item Curvilinear coordinates deforming with the flow (\emph{covariant})
+		with basis vectors $\symbf{g}_j$ and coordinates $a_j$.
+\end{enumerate}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[step=1,blue,thin] (0.5,0.5) grid (5.5,5.5);
+		\draw[thick,->](2,2) -- (3,2) node[right] {$\symbf{e}_1$};
+		\draw[thick,->](2,2) -- (2,3) node[above] {$\symbf{e}_2$};
+		\draw[thick,->] (2,2) -- (1.3, 1.3) node[left] {$\symbf{e}_3$};
+	\end{tikzpicture}
+	\qquad
+	\begin{tikzpicture}
+		\foreach \off in {0,1,2} {
+			\draw[blue,thin] plot[smooth,tension=1] coordinates
+			{(0+\off,0-1.2*\off) (1+\off,0.5-1.2*\off) (2+\off,0.3-1.2*\off)
+		(3+\off, 0.4-1.2*\off) (4+\off,1-1.2*\off)} ;};
+		\foreach \off in {0,1,2} {
+			\draw[blue,thin] plot[smooth,tension=1] coordinates
+			{(0.2+\off,1+0.2*\off) (1.2+\off, 0+0.2*\off) (2+\off,
+			-0.6+0.2*\off) (2.6+\off, -1.4+0.2*\off) (3.2+\off, -2.8+0.2*\off)
+			(4+\off, -3.5+0.2*\off)};
+		 };
+		 \draw[thick,->] (3.45, -0.95) -- (4.1, -0.8) node[right]
+		 {$\symbf{g}_1$};
+		 \draw[thick,->] (3.45, -0.95) -- (3.15, -0.4) node[above]
+		 {$\symbf{g}_2$};
+		 \draw[thick,->] (3.45, -0.95) -- (3.25, -1.2) node[below]
+		 {$\symbf{g}_3$};
+	\end{tikzpicture}
+\end{center}
+
+The covariant vectors $\symbf{g}_i$ are \emph{material vectors}, meaning they
+may change in length and orientation with the deforming material. The stress
+tensor in each frame is
+\begin{equation}
+	\symbfsf{\sigma} = \begin{cases} \sigma_{mn} \symbf{e}_m \symbf{e}_n &
+		\text{lab frame} \\ \hat{\sigma}_{ij} \symbf{g}_i \symbf{g}_j &
+		\text{covariant frame}
+	\end{cases}
+\end{equation}
+
+A material point $\symbf{x}$ is represented as $\symbf{x} = x_j \symbf{e}_j$
+in the lap frame and $\symbf{x} = a_j \symbf{g}_j$ in the covariant frame.
+Hence by definition
+\begin{equation}
+	\symbf{g}_i = \frac{\partial \symbf{x}}{\partial a_i} =
+	\frac{\partial}{\partial a_i} \left[ x_j \symbf{e}_j\right] =
+	\frac{\partial x_j}{\partial a_i} \symbf{e}_j
+\end{equation}
+Define the \emph{deformation gradient tensor} $\symsf{F}$ such that
+\begin{equation}
+	\symsf{F}_{ij} = \frac{\partial x_j}{\partial a_i}
+\end{equation}
+Then $\symbf{g}_i = F_{ij} \symbf{e}_j$. Using this frame transformation rule,
+we can form a tensor transformation rule for $\symbfsf{\sigma}$:
+\begin{align}
+	\symbfsf{\sigma} = \sigma_{mn} \symbf{e}_m \symbf{e}_n &= \hat{\sigma}_{ij}
+	\symbf{g}_i \symbf{g}_j  \\
+	&= \hat{\sigma}_{ij} F_{im} F_{jn} \symbf{e}_m \symbf{e}_n \\
+	\implies \sigma_{mn} &= \hat{\sigma}_{ij} F_{im} F_{jn}
+\end{align}
+In tensor notation, this is equivalent to
+\begin{equation}
+	\symbfsf{\sigma} = \symsf{F}^T \cdot \hat{\symbfsf{\sigma}} \cdot
+	\symsf{F} \iff \hat{\symbfsf{\sigma}} = \left( \symsf{F}^T\right)^{-1}
+	\cdot \symbfsf{\sigma} \cdot \symsf{F}^{-1}
+\end{equation}
+Note that $\symsf{F}$ is not unitary. We can now calculate the
+\emph{intrinsic} time derivative of $\hat{\symbfsf{\sigma}}$:
+\begin{align}
+	\frac{\diffD}{\diffD t} \hat{\symbfsf{\sigma}} &= \frac{\diffD}{\diffD t}
+	\left[ \symsf{F}^{-T} \cdot \symbfsf{\sigma} \cdot \symsf{F}^{-1}\right]
+	\\
+	&= \left( \frac{\diffD}{\diffD t} \symsf{F}^{-T}\right) \cdot
+	\symbfsf{\sigma} \cdot \symsf{F}^{-1} + \symsf{F}^{-T} \cdot \left(
+	\frac{\diffD}{\diffD t} \symbfsf{\sigma}\right) \cdot \symsf{F}^{-1} +
+	\symsf{F}^{-T} \cdot \symbfsf{\sigma}  \cdot \left( \frac{\diffD}{\diffD
+	t} \symsf{F}^{-1}\right)
+\end{align}
+To elucidate this expression we wish to calculate the material derivative of
+$\symsf{F}$, using the fact $x_j = x_j(a_i,t)$. We find
+\begin{align}
+	\frac{\diffD}{\diffD t} \symsf{F}_{ij} = \frac{\diffD}{\diffD t}
+	\frac{\partial x_j}{\partial a_i} = \frac{\partial}{\partial a_i}
+	\frac{\diffD x_j}{\diffD t} &= \frac{\partial u_j}{\partial a_i} \\
+						&=
+	\frac{\partial u_j}{\partial x_j} \frac{\partial x_k}{\partial a_i} \\
+	&= \symsf{F}_{ik} \left(\nabla \symbf{u}\right)_{kj}\\
+	\therefore\,\,\, \frac{\diffD}{\diffD t} \symsf{F} &= \symsf{F} \cdot \nabla
+	\symbf{u}
+\end{align}
+Now we know $\symsf{F} \cdot \symsf{F}^{-1} = \symsf{I}$, hence
+\begin{align}
+	\frac{\diffD \symsf{F}}{\diffD t} \cdot \symsf{F}^{-1} + \symsf{F} \cdot
+	\frac{\diffD \symsf{F}^{-1}}{\diffD t} &= 0 \\
+	\implies \frac{\diffD \symsf{F}^{-1}}{\diffD t} &= - \symsf{F}^{-1} \cdot
+	\frac{\diffD \symsf{F}}{\diffD t} \cdot \symsf{F}^{-1} = -(\nabla
+	\symbf{u})\cdot\symsf{F}^{-1}\\
+	\frac{\diffD \symsf{F}^{-T}}{\diffD t} &= - \symsf{F}^{-T} \cdot (\nabla
+	\symsf{u})^T
+\end{align}
+
+Collecting these results we have
+\begin{equation}
+	\frac{\diffD \hat{\symbfsf{\sigma}}}{\diffD t} = \symsf{F}^{-T} \cdot
+	\left[ \frac{\diffD \symbfsf{\sigma}}{\diffD t} - (\nabla \symbf{u})^T
+		\cdot \symbfsf{\sigma} - \symbfsf{\sigma} \cdot (\nabla
+	\symbf{u})\right] \cdot \symsf{F}^{-1}
+\end{equation}
+This is in the form of the frame transformation rule for tensors. Hence the
+intrinsic derivative of the stress tensor in the lab basis is
+\begin{equation}
+	\stackrel{\bigtriangledown}{\symbfsf{\sigma}}\, = \frac{\diffD
+		\symbfsf{\sigma}}{\diffD t} - (\nabla \symbf{u})^T \cdot
+		\symbfsf{\sigma} - \symbfsf{\sigma} \cdot (\nabla \symbf{u})
+\end{equation}
+This is the \emph{upper-convected derivative} (UCD) which is objective, i.e.
+independent of frame. It is the derivative measured intrinsically as it
+deforms with the flow. Note that
+\begin{equation}
+	\stackrel{\bigtriangledown}{\symsf{I}} = 0 - (\nabla \symbf{u})^T\cdot
+	\symsf{I} - \symsf{I}\cdot (\nabla \symbf{u}) = -\symbfsf{\srate}
+\end{equation}
+
+Other ways of defining objective derivatives include
+\begin{itemize}
+	\item \emph{Lower-convected derivative}
+		\begin{equation}
+			\stackrel{\bigtriangleup}{\symbfsf{\sigma}} = \frac{\diffD
+		\symbfsf{\sigma}}{\diffD t} + (\nabla \symbf{u})^T \cdot
+		\symbfsf{\sigma} + \symbfsf{\sigma} \cdot (\nabla \symbf{u})
+	\end{equation}
+	\item \emph{Co-rotational derivative}
+		\begin{equation}
+			\frac{\mathcal{D} \symbfsf{\sigma}}{\mathcal{D} t} = \frac{\diffD
+				\symbfsf{\sigma}}{\diffD t} + \frac{1}{2} \left(
+				\symbf{\omega}\cdot\symbfsf{\sigma} -
+			\symbfsf{\sigma}\cdot\symbf{\omega}\right)
+		\end{equation}
+		where $\symbf{\omega} = \nabla \symbf{u} - (\nabla \symbf{u})^T$.
+\end{itemize}
+
 
 \end{document}

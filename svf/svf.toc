@@ -43,7 +43,7 @@
 \contentsline {paragraph}{\nonumberline Thermal problem.}{24}{section*.4}
 \contentsline {paragraph}{\nonumberline Fluid problem.}{25}{section*.5}
 \contentsline {subsubsection}{\numberline {3.2.3}Surfactant effects}{25}{subsubsection.3.2.3}
-\contentsline {subsection}{\numberline {3.3}Deformation of droplets.}{27}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Deformation of droplets.}{28}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}Small deformations}{28}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Larger deformations}{29}{subsubsection.3.3.2}
 \contentsline {paragraph}{\nonumberline Large deformations at $\mitlambda \ll 1$.}{29}{section*.6}
