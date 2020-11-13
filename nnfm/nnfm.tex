@@ -1802,7 +1802,7 @@ future changes in shear rate do not influence the present stress.
 	\item A Newtonian fluid has $G_{\text{N}}(s) = 2 \eta \delta(s)$, using the
 		convention that
 		\begin{equation}
-			\int_{\infty}^t \delta(t-t')\,\diffd t' = \frac{1}{2}
+			\int_{-\infty}^t \delta(t-t')\,\diffd t' = \frac{1}{2}
 		\end{equation}
 	\item A Maxwell fluid's relaxation modulus can be calculated from its
 		constitutive relationship.
@@ -1810,7 +1810,7 @@ future changes in shear rate do not influence the present stress.
 			\sigma + \lambda \dot{\sigma} &= \eta \srate \\
 			\implies \lambda \frac{\diffd}{\diffd t}\left[\sigma
 			e^{t/\lambda}\right] &= \eta \srate e^{t/\lambda} \\
-			\sigma(t) &= \int_{\infty}^t \frac{\eta}{\lambda} \srate(t')
+			\sigma(t) &= \int_{-\infty}^t \frac{\eta}{\lambda} \srate(t')
 				e^{\frac{t'-t}{\lambda}} \, \diffd t'
 		\end{align}
 		This is the Maxwell fluid constitutive relationship in integral form.
@@ -1838,7 +1838,7 @@ Note that $G$ is still a scalar.
 \paragraph{Steady flow.} Consider a steady flow with $\symbfsf{\srate}(t') =
 \symbfsf{\srate}$ a constant tensor. Then
 \begin{equation}
-	\symbfsf{\tau}(t) = \symbfsf{\srate} \int_{\infty}^t G(t-t') \, \diffd t' =
+	\symbfsf{\tau}(t) = \symbfsf{\srate} \int_{-\infty}^t G(t-t') \, \diffd t' =
 	\left[ \int_0^\infty G(s) \, \diffd s \right] \symbfsf{\srate}
 \end{equation}
 which is the Newtonian constitutive relationship. Thus if the flow is steady,
@@ -2465,7 +2465,8 @@ Note that $\symsf{F}$ is not unitary. We can now calculate the
 	t} \symsf{F}^{-1}\right)
 \end{align}
 To elucidate this expression we wish to calculate the material derivative of
-$\symsf{F}$, using the fact $x_j = x_j(a_i,t)$. We find
+$\symsf{F}$, using the fact $x_j = x_j(a_i,t)$ so we can commute
+$\frac{\diffD}{\diffD t}$ with $\frac{\partial}{\partial a_i}$. We find
 \begin{align}
 	\frac{\diffD}{\diffD t} \symsf{F}_{ij} = \frac{\diffD}{\diffD t}
 	\frac{\partial x_j}{\partial a_i} = \frac{\partial}{\partial a_i}
