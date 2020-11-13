@@ -1902,4 +1902,98 @@ energy of the background state.
 Thus a growing disturbance on a basic state with a positive density gradient
 equtor to pole produces a poleward flux of light fluid, and an equatorward
 flux of heavy fluid. This is a \emph{baroclinic instability}. 
+
+\lecture{13/11/20}
+\section{Fronts}
+A \emph{front} is an elongated region with a large horizontal density
+gradient. These are associated with
+\begin{itemize}
+	\item large vertical motion
+	\item severe weather
+	\item exchange of water between ocean surface and interior
+\end{itemize}
+
+The process by which fronts develop is called \emph{frontogenesis}.
+
+\subsection{Frontogenesis function}
+Consider the QG buoyancy equation with $\abs{\symbf{u}_a} \ll
+\abs{\symbf{u}_g}$ and $b \equiv = -\frac{g\rho}{\rho_0}$.
+\begin{equation}
+	\frac{\partial b}{\partial t} + \symbf{u}_g \cdot \nabla_H b + w_a N^2 = 0
+	\label{eq:qgbuoyancy}
+\end{equation}
+Using index notation, $\nabla_H \eqref{eq:qgbuoyancy}$ gives
+\begin{equation}
+	\partial_t \partial_i b + (\partial_i u_{g,j})(\partial_j b) +
+	u_{g,j}\partial j \partial i b + N^2 \partial_i w_a = 0
+\end{equation}
+The buoyancy equation is supplemented by boundary conditions $w_a = 0$ at
+$z=0, H$. At these boundaries, we therefore have
+\begin{equation}
+	\frac{\diffD_g}{\diffD t} \nabla_H b = \symbf{Q}
+\end{equation}
+where $\frac{\diffD_g}{\diffD t} = \partial_t + \symbf{u}_g \cdot \nabla_H$ as
+usual and the \emph{Q-vector} is
+\begin{equation}
+	\symbf{Q} \equiv (-u_{g,x} b_x - g_{g,x} b_y, -u_{g,y} b_x - v_{g,y}b_y)
+\end{equation}
+The gradient of the equation applicable at the boundaries $z=0,H$ is then
+\begin{equation}
+	\frac{\diffD_g}{\diffD t} \abs{\nabla_H b}^2 = 2\symbf{Q}\cdot\nabla_H b
+\end{equation}
+where the right hand side is the \emph{frontogenesis function}. This equation
+says that the gradients in buoyancy are advected by $\symbf{Q}$.
+
+\subsection{Vertical velocity in 3D QG equations}
+Recall the 3D quasi-geostrophic equations can be written
+\begin{align}
+	\frac{\diffD_g}{\diffD t} \symbf{u}_g + f \hat{\symbf{z}}\times
+	\symbf{u}_g &= 0 \label{eq:3dqg.1} \\
+	\frac{\diffD_g}{\diffD t} b + w_a N^2 &= 0 \label{eq:3dqg.2} \\
+	\nabla_H \cdot \symbf{u}_g = 0 \label{eq:3dqg.3} \\
+	\nabla_H \cdot \symbf{u}_a + w_{a,z} &= 0 \label{eq:3dqg.4}
+\end{align}
+
+Recall also the thermal wind equations relating horizontal velocity gradients
+and buoyancy gradients
+\begin{equation}
+	fu_{g,z} = -b_y, \hspace{2em} fv_{g,z} = b_x
+\end{equation}
+
+Our aim is to eliminate the geostrophic velocities to give a diagnostic
+equation relating the Q-vector and the vertical ageostrophic velocity. Using
+thermal wind balance and the $x$ component of $\partial_z \eqref{eq:3dqg.1}$
+we have
+\begin{equation}
+	-\frac{\diffD_g}{\diffD t} b_y - b_y u_{g,x} + b_x u_{g,y} - f^2 v_{a,z} =
+	0 \label{eq:front1}
+\end{equation}
+We form a similar equation via $\partial_y \eqref{eq:3dqg.2}$:
+\begin{equation}
+	\frac{\diffD_g}{\diffD t} b_y + u_{g,y} b_x + v_{g,y} b_y + w_{a,y}N^2 = 0
+	\label{eq:front2}
+\end{equation}
+Now combining \eqref{eq:front1} and \eqref{eq:front2} and from continuity,
+$v_{g,y} = -u_{g,x}$, gives
+\begin{equation}
+	N^2 w_{a,y} - f^2 v_{a,z} = -2u_{g,y} b_x - 2U_{g,x} b_y \label{eq:front3}
+\end{equation}
+
+Applying the same process with the $y$ component of $\partial_z
+\eqref{eq:3dqg.1}$ gives
+\begin{equation}
+	N^2 w_{a,x} - f^2 u_{a,z} = -2v_{g,y} b_x - 2v_{g,x} b_y \label{eq:front4}
+\end{equation}
+
+Finally we eliminate $\symbf{u}_g$ in favour of $\symbf{Q}$ via $\partial_x
+\eqref{eq:front4} + \partial_y \eqref{eq:front3}$ and using \eqref{eq:3dqg.4}
+to give the \emph{QG Omega equation}.
+\begin{equation}
+	N^2 \nabla_H^2 w_a + f^2 w_{a,zz} = 2 \nabla_H \cdot \symbf{Q}
+\end{equation}
+This is a diagnostic elliptic equation, which can be solved subject to
+boundary conditions on $w$. Note that we have eliminated any time derivatives
+in this equation, making it diagnostic.
+
+
 \end{document}

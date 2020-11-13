@@ -2,52 +2,55 @@
 \contentsline {subsection}{\numberline {1.1}Local Cartesian coordinates}{3}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Scale analysis.}{4}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Taylor-Proudman Theorem}{5}{subsection.1.3}
-\contentsline {section}{\numberline {2}Departures from geostrophy}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}Inertial (free) oscillations}{6}{subsection.2.1}
+\contentsline {section}{\numberline {2}Departures from geostrophy}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Inertial (free) oscillations}{7}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Ekman layer}{7}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Ekman transport}{7}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.3}Ekman transport}{8}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Ekman pumping}{8}{subsection.2.4}
 \contentsline {section}{\numberline {3}Rotating shallow water equations}{8}{section.3}
 \contentsline {subsection}{\numberline {3.1}Potential vorticity (PV)}{10}{subsection.3.1}
-\contentsline {section}{\numberline {4}Small amplitude motions in rotating SW}{10}{section.4}
+\contentsline {section}{\numberline {4}Small amplitude motions in rotating SW}{11}{section.4}
 \contentsline {subsection}{\numberline {4.1}Steady flows}{11}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Waves in an unbounded domain}{11}{subsection.4.2}
 \contentsline {section}{\numberline {5}Geostrophic adjustment}{12}{section.5}
-\contentsline {subsection}{\numberline {5.1}Steady solutions}{12}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.1}Steady solutions}{13}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Transients}{13}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}Energetics}{13}{subsection.5.3}
-\contentsline {section}{\numberline {6}Quasi-geostrophic equations}{13}{section.6}
+\contentsline {section}{\numberline {6}Quasi-geostrophic equations}{14}{section.6}
 \contentsline {paragraph}{\nonumberline Assumption 1: $Ro\ll 1$}{14}{section*.6}
 \contentsline {paragraph}{\nonumberline Assumption 2: small changes in $f$}{14}{section*.7}
-\contentsline {paragraph}{\nonumberline Assumption 3: small changes in fluid height.}{14}{section*.8}
-\contentsline {paragraph}{\nonumberline Quasi-geostrophic equations.}{14}{section*.9}
+\contentsline {paragraph}{\nonumberline Assumption 3: small changes in fluid height.}{15}{section*.8}
+\contentsline {paragraph}{\nonumberline Quasi-geostrophic equations.}{15}{section*.9}
 \contentsline {subsection}{\numberline {6.1}Waves in QG}{15}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Physical interpretation of Rossby waves}{15}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}Physical interpretation of Rossby waves}{16}{subsection.6.2}
 \contentsline {section}{\numberline {7}Large scale ocean circulation}{16}{section.7}
 \contentsline {subsection}{\numberline {7.1}Sverdrup flow}{16}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Western boundary currents}{16}{subsection.7.2}
-\contentsline {paragraph}{\nonumberline Region I.}{17}{section*.10}
+\contentsline {paragraph}{\nonumberline Region I.}{18}{section*.10}
 \contentsline {paragraph}{\nonumberline Region II.}{18}{section*.11}
-\contentsline {paragraph}{\nonumberline Full solution.}{18}{section*.12}
+\contentsline {paragraph}{\nonumberline Full solution.}{19}{section*.12}
 \contentsline {paragraph}{\nonumberline Physical explanation.}{19}{section*.14}
-\contentsline {section}{\numberline {8}Stratification}{19}{section.8}
-\contentsline {subsection}{\numberline {8.1}Boussinesq approximation}{19}{subsection.8.1}
+\contentsline {section}{\numberline {8}Stratification}{20}{section.8}
+\contentsline {subsection}{\numberline {8.1}Boussinesq approximation}{20}{subsection.8.1}
 \contentsline {subsection}{\numberline {8.2}Atmosphere \& ocean stratification}{20}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}Internal gravity waves}{20}{subsection.8.3}
-\contentsline {section}{\numberline {9}3D quasi-geostrophic equations}{21}{section.9}
-\contentsline {subsection}{\numberline {9.1}Basic facts about rotation \& stratification}{21}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Thermal wind equation}{22}{subsection.9.2}
+\contentsline {subsection}{\numberline {8.3}Internal gravity waves}{21}{subsection.8.3}
+\contentsline {section}{\numberline {9}3D quasi-geostrophic equations}{22}{section.9}
+\contentsline {subsection}{\numberline {9.1}Basic facts about rotation \& stratification}{22}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Thermal wind equation}{23}{subsection.9.2}
 \contentsline {subsection}{\numberline {9.3}Potential vorticity}{23}{subsection.9.3}
-\contentsline {subsection}{\numberline {9.4}3D quasi-geostrophic equations}{23}{subsection.9.4}
-\contentsline {paragraph}{\nonumberline Primitive equations.}{23}{section*.15}
+\contentsline {subsection}{\numberline {9.4}3D quasi-geostrophic equations}{24}{subsection.9.4}
+\contentsline {paragraph}{\nonumberline Primitive equations.}{24}{section*.15}
 \contentsline {paragraph}{\nonumberline Approximation validity.}{24}{section*.16}
-\contentsline {paragraph}{\nonumberline Quasi-geostrophic potential vorticity.}{24}{section*.17}
-\contentsline {paragraph}{\nonumberline Boundary conditions.}{25}{section*.18}
-\contentsline {paragraph}{\nonumberline Physical interpretation of QGPV.}{25}{section*.19}
+\contentsline {paragraph}{\nonumberline Quasi-geostrophic potential vorticity.}{25}{section*.17}
+\contentsline {paragraph}{\nonumberline Boundary conditions.}{26}{section*.18}
+\contentsline {paragraph}{\nonumberline Physical interpretation of QGPV.}{26}{section*.19}
 \contentsline {subsubsection}{\numberline {9.4.1}Quasi-geostrophic `point vortex'}{26}{subsubsection.9.4.1}
-\contentsline {section}{\numberline {10}Waves \& instabilities in 3D QG}{26}{section.10}
-\contentsline {subsection}{\numberline {10.1}Framework}{26}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}Rossby waves -- vertical modes}{27}{subsection.10.2}
-\contentsline {subsection}{\numberline {10.3}Baroclinic instability}{29}{subsection.10.3}
-\contentsline {paragraph}{\nonumberline Comments.}{30}{section*.20}
-\contentsline {paragraph}{\nonumberline Density transport.}{30}{section*.21}
+\contentsline {section}{\numberline {10}Waves \& instabilities in 3D QG}{27}{section.10}
+\contentsline {subsection}{\numberline {10.1}Framework}{27}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Rossby waves -- vertical modes}{28}{subsection.10.2}
+\contentsline {subsection}{\numberline {10.3}Baroclinic instability}{30}{subsection.10.3}
+\contentsline {paragraph}{\nonumberline Comments.}{31}{section*.20}
+\contentsline {paragraph}{\nonumberline Density transport.}{31}{section*.21}
+\contentsline {section}{\numberline {11}Fronts}{31}{section.11}
+\contentsline {subsection}{\numberline {11.1}Frontogenesis function}{32}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}Vertical velocity in 3D QG equations}{32}{subsection.11.2}

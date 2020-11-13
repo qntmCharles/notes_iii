@@ -2425,7 +2425,213 @@ as
 	\frac{h^2}{L^2} && 1 && \frac{h^4}{L^4} +&&\frac{h^2}{L^2}
 \end{align}
 so at leading order we have $\frac{\partial p}{\partial z} = 0$, i.e. $p =
-p(x,y,t)$ only.
+p(x,y,t)$ only. The flow in the thin layer is quasi-parallel to the boundary.
+\lecture{13/11/20}
+Let $\symbf{u} \equiv (u,v)$ and $\nabla \equiv (\partial_x, \partial_y)$
+denote the parallel components of velocity and gradient. Our governing
+equation is now
+\begin{equation}
+	\mu \frac{\partial^2 \symbf{u}}{\partial z^2} = \nabla p
+\end{equation}
+Define the \emph{depth-integrated parallel volume flux}
+\begin{equation}
+	\symbf{q} = \int_0^h \symbf{u} \, \diffd z
+\end{equation}
+Depth-integrated conservation of mass can then be written as
+\begin{equation}
+	\frac{\partial h}{\partial t} + \nabla \cdot \symbf{q} = 0
+\end{equation}
 
+Note on a curve surface $\nabla$ should be replaced by $\nabla_s$. These three
+equations can be solved with various boundary conditions at $z=0,h$, or
+equivalently $z=h_1, h_2$.
+
+\subsubsection{Squeeze films}
+Here we have prescribed velocity boundary conditions
+\begin{align}
+	\symbf{u} = \begin{cases} \symbf{U}_1 & z=0 \\ \symbf{U}_2 & z=h
+	\end{cases}
+\end{align}
+Subject to these boundary conditions we find
+\begin{align}
+	\symbf{u} &= \frac{\nabla p}{2\mu} z(h-z) + \symbf{U}_1 +
+	(\symbf{U}_2-\symbf{U}_1) \frac{z}{h}\\
+	\symbf{q} &= -\frac{h^3}{12\mu}\nabla p +
+	\frac{h}{2}(\symbf{U}_1+\symbf{U}_2)
+\end{align}
+
+Applying mass conservation yields \emph{Reynold's (lubrication) equation}
+\begin{equation}
+	\frac{\partial h}{\partial t} = \frac{1}{12\mu} \nabla \cdot (h^3 \nabla
+	p) - \frac{1}{2} \nabla \cdot h(\symbf{U}_1+\symbf{U}_2)
+\end{equation}
+Usually given the velocities, we first calculate the pressure field $p$ and
+then the force as an integral of pressure over the surface.
+
+\begin{eg}
+	Rigid sphere settling towards a plane wall.
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thick,] (-3,0) -- (3, 0);
+			\draw[thick,fill=gray!20] (-2.42, 1.6) arc (-150:-30:2.8);
+			\draw[<->] (0,0) -- (0, 0.2) node [above] {$h_0(t)$};
+			\draw[<->] (1.5,0) -- (1.5, 0.63) node[midway,right] {$h(r,t)$};
+			\fill[gray!50] (-3,0) rectangle (3, -0.1);
+			\draw[<-] (-1.5, 0.63) -- (-0.853,1.6) node[midway,above] {$a$};
+		\end{tikzpicture}
+	\end{center}
+	The gap thickness is given by
+	\begin{equation}
+		h(r,t) = h_0(t) + \frac{r^2}{2a} + \mathcal{O}(\frac{r^4}{a^3})
+	\end{equation}
+	with $\partial_t h = \dot{h}_0 < 0$. By mass conservation (i.e. either
+	integrate the mass conservation equation or consider flux across $r =\,
+	$constant) we have
+	\begin{equation}
+		-\pi r^2 \dot{h}_0 \hat{\symbf{r}} = 2\pi r \symbf{q}(r)
+	\end{equation}
+	and for these rigid-rigid boundary conditions we solve to find
+	\begin{align}
+		\symbf{u} &= -\frac{1}{2\mu}\frac{\partial p}{\partial r} y(h-y)
+		\hat{\symbf{r}} \\
+		\symbf{q} &= -\frac{h^3}{12\mu} \frac{\partial p}{\partial r}
+		\hat{\symbf{r}}
+	\end{align}
+	We can use the expression for $\symbf{q}$ and mass conservation to find
+	$\frac{\partial p}{\partial r}$ and integrate to get
+	\begin{equation}
+		p(r,t) = \int^r \frac{6\mu \dot{h}_0 r}{h^3} \, \diffd r = -\frac{6
+		\mu \dot{h}_0}{h_0^3} \int_r^\infty \frac{r}{(1+r^2/2ah_0)^3} \,
+		\diffd r = p_\infty - \frac{3\mu \dot{h}_0 a}{h_0^2 (1+r^2/2ah_0)^2}
+	\end{equation}
+	Hence the force on the sedimenting sphere is
+	\begin{equation}
+		F = 2\pi \int_0^\infty (p-p_\infty) r \, \diffd r = -\frac{6\pi \mu
+		a^2 \dot{h}_0}{h_0}
+	\end{equation}
+\end{eg}
+\begin{eg}
+	Hele-Shaw flow. A simple case of the above is $\symbf{U}_i = 0$ with $h$
+	uniform and constant. Then
+	\begin{align}
+		\nabla^2 p &= 0 \\
+		\symbf{q} &= -\frac{h^3}{12\mu} \nabla p
+	\end{align}
+	Boundary conditions on $p$ or $\symbf{q}\cdot\symbf{n}$ are needed. This
+	set-up is often used to visualise flow past an object.
+\end{eg}
+
+\subsubsection{Free-surface flows}
+Consider the boundary conditions
+\begin{align}
+	\symbf{u} &= 0 \hspace{1em} \text{on} \,\,\, z=0 \\
+	\mu \frac{\partial \symbf{u}}{\partial z} &= 0 \hspace{1em} \text{on}
+	\,\,\, z=h
+\end{align}
+Subject to these conditions, the solution is
+\begin{align}
+	\symbf{u} &= - \frac{\nabla p}{2\mu} z(2h-z) \\
+	\symbf{q} &= -\frac{h^3}{3\mu} \nabla p	 \\
+	\frac{\partial h}{\partial t} &= \frac{1}{3\mu} \nabla \cdot (h^3 \nabla
+	p)
+\end{align}
+Usually, $p$ is specified, for example from gravity and surfacae tension $p =
+\rho g (h-z) - \gamma \nabla^2 h$, from which $\frac{\partial h}{\partial t}$
+is calculated.
+\subsubsection{Marangoni flows}
+Consider replacing the top rigid or free surface boundary condition with a
+surface tension condition 
+\begin{equation}
+	\mu \frac{\partial \symbf{u}}{\partial z} = \nabla \gamma
+\end{equation}
+\begin{eg}
+	Viscous drop approaching a plane wall.
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thick,] (-3,0) -- (3, 0);
+			\draw[thick,fill=gray!20] (-2.42, 1.6) arc (-150:-30:2.8);
+			\draw[<->] (0,0) -- (0, 0.2) node [above] {$h_0(t)$};
+			\draw[<->] (1.5,0) -- (1.5, 0.63) node[midway,right] {$h(r,t)$};
+			\fill[gray!50] (-3,0) rectangle (3, -0.1);
+			\draw[<-] (-1.5, 0.63) -- (-0.853,1.6) node[midway,above] {$a$};
+			\draw (-1.5, 0.3) node{$\mu, \rho$};
+			\draw (1, 1.3) node{$\lambda\mu, \rho+\Delta \rho$};
+		\end{tikzpicture}
+	\end{center}
+	Assume to start with that
+	\begin{enumerate}
+		\item surface tension is present and keeps the drop spherical;
+		\item $\lambda \gg 1$ so the drop is effectively rigid.
+	\end{enumerate}
+	Consider the following scalings. 
+	\begin{align}
+		L &\sim \sqrt{ah_0} &&\text{from geometry}\\
+		\mu &\sim \frac{L}{h_0} \dot{h}_0 &&\text{from mass conservation}\\
+		p &\sim \frac{\mu u L}{h_0^2} \sim \frac{\mu a}{h_0^2} \dot{h}_0
+		  &&\text{from pipe flow}\\
+		F &\sim p L^2 \sim \frac{\mu a^2}{h_0} \dot{h}_0 &&(\sim \Delta \rho g
+		a^3 \,\,\, \text{if balancing weight})
+	\end{align}
+	From these we can check our assumptions.
+	\begin{enumerate}
+		\item High pressure in the middle of the gap deforms the drop by
+			$\Delta h$ over lengthscale $L$. Then $p \sim \gamma \Delta
+			\kappa$ and $\Delta \kappa \sim \frac{\Delta h}{L^2}$. Hence
+			\begin{equation}
+				\frac{\Delta h}{h_0} \sim \frac{p}{\gamma/a} \sim \frac{\mu
+				\dot{h}_0}{\gamma} \frac{a^2}{h_0^2}
+			\end{equation}
+			Thus deformation is negligible if the capillary number $\text{Ca}
+			\equiv \frac{\mu \dot{h}_0}{\gamma} \ll \frac{h_0^2}{a^2}$, or the
+			\emph{Bond number} $\text{Bo} \equiv \frac{\Delta \rho g
+			a^2}{\gamma} \ll \frac{h_0}{a}$. Note the Bond number indicates
+			the importance of weight over capillary pressure. This requirement
+			is eventually invalid as $h_0$ decreases.
+		\item The shear stress $\sim \frac{\mu u}{h_0}$ in the gap drives flow
+			$u_D$ in the drop over a lengthscale $L$.
+			\begin{center}
+				\begin{tikzpicture}[scale=2]
+					\draw[thick] (-3,0) -- (3,0);
+					\fill[gray!50] (-3,0) rectangle (3, -0.1);
+					\draw[thick] (0,0.3) arc(-90:-75:10);
+					\draw[thick] (0,0.3) arc(-90:-105:10);
+					\draw[blue]  plot[smooth,domain=0:0.45,variable=\y]
+					({1.9-4*(\y-0.25)*(\y-0.25)},{\y});
+					\draw[dashed,blue] (1.65,0) -- (1.65, 0.7);
+					\draw[blue]  plot[smooth,domain=0:0.45,variable=\y]
+					({-1.9+4*(\y-0.25)*(\y-0.25)},{\y});
+					\draw[blue,dashed] (-1.65,0) -- (-1.65, 0.7);
+					\draw[blue] plot[smooth,domain=-1.658:-1.75]
+					({\x},{-1/(500*(\x+1.65)) + 0.433});
+					\draw[blue] plot[smooth,domain=1.658:1.75]
+					({\x},{1/(500*(\x-1.65)) + 0.433});
+					\draw[->,blue] (0.25,1) arc(-150:-80:0.8);
+					\draw[->,blue] (-0.25,1) arc(-30:-100:0.8);
+					\draw (0,0.8) node {$u_D$};
+				\end{tikzpicture}
+			\end{center}
+			Stress balance at interface
+			\begin{align}
+				\frac{\mu u}{h_0} &\sim \frac{\lambda \mu u_D}{L} \\
+				\implies \frac{u_D}{u} &\sim \sqrt{\frac{a}{h_0}}
+				\frac{1}{\lambda}
+			\end{align}
+			Rigid boundary condition $u(h) = 0$ is valid provided $\lambda \gg
+			\sqrt{\frac{a}{h_0}}$, which is eventually invalid.
+	\end{enumerate}
+
+	This problem can be extended in a number of ways.
+	\begin{enumerate}
+		\item If $\lambda \ll \sqrt{\frac{a}{h_0}}$, e.g. bubble, can neglect
+			shear stress exerted by the drop and apply $\mu \frac{\partial
+			u}{\partial z} = 0$ at $z=h$. Hence $\dot{h}_0/F$ increases by a
+			factor of $(\frac{1}{3})/(\frac{1}{12}) = 4$. 
+		\item If $\lambda \sim \sqrt{\frac{a}{h_0}}$ then we need to couple
+			$u(h)$ and $\mu \frac{\partial u}{\partial z}$ at $z=h$ by
+			integral representation for the flow in the drop.
+		\item If $\text{Bo} \gg \frac{h_0}{a}$, we get a dimple in the middle
+			of the gap where the pressure is greatest.
+	\end{enumerate}
+\end{eg}
 
 \end{document}

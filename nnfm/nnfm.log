@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  12 NOV 2020 18:44
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  13 NOV 2020 14:52
  restricted system commands enabled.
 **nnfm.tex
 (./nnfm.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.104 seconds
+luaotfload | main : initialization completed in 0.106 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3237,7 +3237,7 @@ Here is how much of LuaTeX's memory you used:
  29887 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 3442 glue, 1 kern, 88 sub_mlist, 1260 attribute, 64
  glue_spec, 1260 attribute_list, 1 write nodes
-   avail lists: 1:1,2:1223,3:871,4:144,5:318,6:2213,7:591,8:86,9:583,10:16,11:20
+   avail lists: 1:1,2:1223,3:871,4:144,5:318,6:2213,7:593,8:86,9:583,10:16,11:20
 9
  56714 multiletter control sequences out of 65536+600000
  85 fonts using 18148199 bytes
@@ -3256,7 +3256,7 @@ mf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/openty
 pe/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroma
 n10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on nnfm.pdf (37 pages, 264237 bytes).
+Output written on nnfm.pdf (37 pages, 264255 bytes).
 
 PDF statistics: 545 PDF objects out of 1000 (max. 8388607)
  449 compressed objects within 5 object streams
