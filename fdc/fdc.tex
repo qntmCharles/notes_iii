@@ -5,6 +5,12 @@
 \setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
 \setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
 
+\usetikzlibrary{shapes.misc}
+
+\tikzset{cross/.style={cross out, draw=black, minimum
+size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
+%default radius will be 1pt. 
+
 \begin{document}
 
 \institution{Cambridge Part III Maths}
@@ -1940,6 +1946,7 @@ usual and the \emph{Q-vector} is
 The gradient of the equation applicable at the boundaries $z=0,H$ is then
 \begin{equation}
 	\frac{\diffD_g}{\diffD t} \abs{\nabla_H b}^2 = 2\symbf{Q}\cdot\nabla_H b
+	\label{eq:frontogenesis}
 \end{equation}
 where the right hand side is the \emph{frontogenesis function}. This equation
 says that the gradients in buoyancy are advected by $\symbf{Q}$.
@@ -1994,6 +2001,206 @@ to give the \emph{QG Omega equation}.
 This is a diagnostic elliptic equation, which can be solved subject to
 boundary conditions on $w$. Note that we have eliminated any time derivatives
 in this equation, making it diagnostic.
+
+\lecture{16/11/20}
+\subsubsection{Ageostrophic secondary circulation (ASC)}
+Consider a front $\frac{\partial b}{\partial x} > 0$ in thermal wind balance
+\begin{equation}
+	\frac{\partial \symbf{u}_g}{\partial z} = \inv{f}\frac{\partial
+	b}{\partial x}\hat{\symbf{y}}
+\end{equation}
+subject to horizontal strain $\symbf{u}_g$ such that
+\begin{equation}
+	\frac{\partial u_g}{\partial x} = -\frac{\partial v_g}{\partial y} =
+	-\alpha
+\end{equation}
+with $\alpha > 0$ constant. The Q-vector is then $\symbf{Q} = (\alpha b_x, 0)$
+so that $\symbf{Q} \cdot \nabla b > 0$ for $\alpha > 0$. The influence of this
+front is as follows. Note that each of these influences happen simultaneously,
+but for clarity we consider the consequences one by one. Our initial set-up is
+shown below with red lines representing buoyancy surfaces.\\
+\begin{center}
+\hspace{.35in}
+\begin{tikzpicture}		
+	\draw[thick] (-2,0) -- (2,0);
+	\draw[thick] (-2,2) -- (2,2);
+	\draw[->] (-1.9, 0.1) -- (-1.5, 0.1) node[right] {$x$};
+	\draw[->] (-1.9, 0.1) -- (-1.9, 0.5) node[left] {$z$};
+	\draw[red] (0,0) -- (0,2);
+	\draw[red] (1,0) -- (1,2);
+	\draw[red] (-1,0) -- (-1,2);
+	\draw[red] (-2, 1.5) node {low $b$};
+	\draw[red] (2, 1.5) node {high $b$};
+	\draw[blue] (0,1.8) node[cross=3.4pt,blue] {};
+	\draw[blue] (0,1.8) circle (4pt);
+	\draw[blue] (0,1) node[cross=2.6pt,blue] {};
+	\draw[blue] (0,1) circle (3pt);
+	\draw[blue] (0,0.2) node[cross=1.8pt,blue] {};
+	\draw[blue] (0,0.2) circle (2pt);
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item A convergent strain $\alpha > 0$ increases $\frac{\partial
+		b}{\partial x}$, by \eqref{eq:frontogenesis}.
+		\begin{center}
+			\begin{tikzpicture}		
+				\draw[thick] (-2,0) -- (2,0);
+				\draw[thick] (-2,2) -- (2,2);
+				\draw[->] (-1.9, 0.1) -- (-1.5, 0.1) node[right] {$x$};
+				\draw[->] (-1.9, 0.1) -- (-1.9, 0.5) node[left] {$z$};
+				\draw[red] (0,0) -- (0,2);
+				\draw[red] (0.5,0) -- (0.5,2);
+				\draw[red] (-0.5,0) -- (-0.5,2);
+				\draw[red] (-2, 1.5) node {low $b$};
+				\draw[red] (2, 1.5) node {high $b$};
+				\draw[blue] (0,1.8) node[cross=3.4pt,blue] {};
+				\draw[blue] (0,1.8) circle (4pt);
+				\draw[blue] (0,1) node[cross=2.6pt,blue] {};
+				\draw[blue] (0,1) circle (3pt);
+				\draw[blue] (0,0.2) node[cross=1.8pt,blue] {};
+				\draw[blue] (0,0.2) circle (2pt);
+			\end{tikzpicture}
+		\end{center}
+	\item The increase in $\frac{\partial b}{\partial x}$ results in an
+		increase in the hydrostatic pressure gradient in the $x$-direction.
+		The unbalanced pressure gradient drives an \emph{ageostrophic
+		secondary circulation} $\symbf{u}_a$.
+		\begin{center}
+			\begin{tikzpicture}		
+				\draw[thick] (-2,0) -- (2,0);
+				\draw[thick] (-2,2) -- (2,2);
+				\draw[->] (-1.9, 0.1) -- (-1.5, 0.1) node[right] {$x$};
+				\draw[->] (-1.9, 0.1) -- (-1.9, 0.5) node[left] {$z$};
+				\draw[red] (0,0) -- (0,2);
+				\draw[red] (0.5,0) -- (0.5,2);
+				\draw[red] (-0.5,0) -- (-0.5,2);
+				\draw[red] (-2, 1.5) node {low $b$};
+				\draw[red] (2, 1.5) node {high $b$};
+				\draw[blue] (0,1.8) node[cross=3.4pt,blue] {};
+				\draw[blue] (0,1.8) circle (4pt);
+				\draw[blue] (0,1) node[cross=2.6pt,blue] {};
+				\draw[blue] (0,1) circle (3pt);
+				\draw[blue] (0,0.2) node[cross=1.8pt,blue] {};
+				\draw[blue] (0,0.2) circle (2pt);
+				\draw[->] (-1,0.2) arc (-100:-80:5.85);
+				\draw[<-] (-1,1.8) arc (100:80:5.85);
+				\draw (1, 1) node {$\symbf{u}_a$};
+			\end{tikzpicture}
+		\end{center}
+	\item The ageostrophic secondary circulation causes the front to `slump'.
+		\begin{center}
+			\begin{tikzpicture}		
+				\draw[thick] (-2,0) -- (2,0);
+				\draw[thick] (-2,2) -- (2,2);
+				\draw[->] (-1.9, 0.1) -- (-1.5, 0.1) node[right] {$x$};
+				\draw[->] (-1.9, 0.1) -- (-1.9, 0.5) node[left] {$z$};
+				\draw[red] (0.5,0) -- (-0.5,2);
+				\draw[red] (1,0) -- (0,2);
+				\draw[red] (0,0) -- (-1,2);
+				\draw[red] (-2, 1.5) node {low $b$};
+				\draw[red] (2, 1.5) node {high $b$};
+				\draw[blue] (0,1.8) node[cross=3.4pt,blue] {};
+				\draw[blue] (0,1.8) circle (4pt);
+				\draw[blue] (0,1) node[cross=2.6pt,blue] {};
+				\draw[blue] (0,1) circle (3pt);
+				\draw[blue] (0,0.2) node[cross=1.8pt,blue] {};
+				\draw[blue] (0,0.2) circle (2pt);
+				\draw[->] (0,1.8) arc (90:180:1);
+				\draw[->] (0,0.2) arc (-90:0:1);
+				\draw (1.5, 1) node {$\symbf{u}_a$};
+			\end{tikzpicture}
+		\end{center}
+\end{enumerate}
+
+The ageostrophic velocity $\symbf{u}_a$ can be found from the
+\emph{Sawyer-Eliassen equation}. Ageostrophic strain adds to the background
+strain.
+
+\subsection{PV conservation in the Boussinesq equations}
+Recall the Boussinesq primitive equations. The Navier-Stokes equations under
+Boussinesq approximations are
+\begin{equation}
+	\frac{\partial \symbf{u}}{\partial t} + \symbf{u}\cdot \nabla \symbf{u} +
+	f \hat{\symbf{k}} \times \symbf{u} = -\nabla p + \symbf{F}
+\end{equation}
+where $\symbf{F}$ is a generic frictional forcing, and $p$ is redefined to
+absorb $\inv{\rho_0}$. In addition, we have the buoyancy conservation equation
+\begin{equation}
+	\frac{\partial b}{\partial t} + \symbf{u} \cdot \nabla b = D
+\end{equation}
+where $D$ is the \emph{diabatic heating/cooling} term. FInally, we have
+incompressibility $\nabla \cdot \symbf{u} = 0$. We will assume $f$ is constant
+in line with the traditional approximation. Taking the curl of Boussinesq NS
+we have
+\begin{equation}
+	\frac{\diffD \symbf{\omega}}{\diffD t} = f\frac{\partial u}{\partial z} +
+	\symbf{\omega} \cdot \nabla \symbf{u} + \nabla \times \symbf{F}
+\end{equation}
+Let $\symbf{\omega}_a = \symbf{\omega} + f\hat{\symbf{k}}$, called
+\emph{absolute vorticity}. Then
+\begin{equation}
+	\frac{\diffD \symbf{\omega}_a}{\diffD t} = \symbf{\omega}_a \cdot \nabla
+	\symbf{u} + \nabla \times \symbf{F} \label{eq:abs}
+\end{equation}
+Note that
+\begin{equation}
+	(\symbf{\omega}_a\cdot\nabla)\frac{\diffD b}{\diffD t} = \symbf{\omega}_a
+	\cdot \frac{\diffD \nabla b}{\diffD t} + (\symbf{\omega}_a \cdot \nabla
+	\symbf{u})\cdot\nabla b
+\end{equation}
+Now adding $\nabla b \cdot \eqref{eq:abs}$ we have
+\begin{equation}
+	\frac{\diffD}{\diffD t} (\symbf{\omega}_a \cdot \nabla b) =
+	\symbf{\omega}_a \cdot \nabla D + \nabla b \cdot \nabla \times \symbf{F}
+\end{equation}
+In the absence of diabatic and frictional forcing, $\symbf{\omega}_a \cdot
+\nabla b$ is conserved. We call $\symbf{\omega}_a \cdot \nabla b$ the
+\emph{Ertel PV}.
+
+\section{Internal waves \& instabilities in fronts}
+Consider an unbounded fluid with uniform horizontal and vertical buoyancy
+gradients:
+\begin{equation}
+	B = M^2 x + N^2 z
+\end{equation}
+where $M$ and $N$ are constant. This is the basic state buoyancy field. We
+assume this buoyancy field is in thermal wind balance, so that the basic state
+velocity is
+\begin{equation}
+	\frac{\diffd \mathcal{V}}{\diffd z} = \frac{M^2}{f}
+\end{equation}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[red] (0, 1) -- (1, -1);
+		\draw[red] (1, 1) -- (2, -1);
+		\draw[red] (2, 1) -- (3, -1);
+		\path[left color=red, right color=white,rotate around={30:(0,1)}]
+		(0,1) rectangle +(1,.5pt);
+		\path[left color=red, right color=white,rotate around={30:(1,1)}]
+		(1,1) rectangle +(1,.5pt);
+		\path[left color=red, right color=white,rotate around={30:(2,1)}]
+		(2,1) rectangle +(1,.5pt);
+		\path[left color=red, right color=white,rotate around={30:(1,-1)}]
+		(1,-1) rectangle +(0.8,.5pt);
+		\path[left color=red, right color=white,rotate around={30:(2,-1)}]
+		(2,-1) rectangle +(0.8,.5pt);
+		\path[left color=red, right color=white,rotate around={30:(3,-1)}]
+		(3,-1) rectangle +(1,.5pt);
+		\draw[red] (5, -0.5) node {$B = $const.};
+		\draw[red] (-1, 0.8) node {low $B$};
+		\draw[red] (4, 0.8) node {high $B$};
+		\draw[->] (-3,0) -- (-2,0) node[right] {$x$};
+		\draw[->] (-3,0) -- (-3,1) node[left] {$z$};
+		\draw[->,rotate around={30:(-3,0)}] (-3,0) -- (-2,0) node[above] {$y$};
+	\end{tikzpicture}
+\end{center}
+
+Consider the evolution of small perturbations to this basic state, denoted
+$\symbf{u}, b, p$. We assume that these perturbations are independent of $y$,
+the along-front direction. We also assume that the perturbations are
+hydrostatic.
 
 
 \end{document}

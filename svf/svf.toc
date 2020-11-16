@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}Basic Fluid Mechanics}{2}{section.1}
 \contentsline {subsection}{\numberline {1.1}Mass Conservation}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}The Stress Tensor}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.2}The Stress Tensor}{3}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Momentum equation}{3}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Energy equation}{3}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Newtonian Fluids}{3}{subsection.1.5}
@@ -52,3 +52,8 @@
 \contentsline {subsubsection}{\numberline {3.5.1}Squeeze films}{33}{subsubsection.3.5.1}
 \contentsline {subsubsection}{\numberline {3.5.2}Free-surface flows}{35}{subsubsection.3.5.2}
 \contentsline {subsubsection}{\numberline {3.5.3}Marangoni flows}{35}{subsubsection.3.5.3}
+\contentsline {subsubsection}{\numberline {3.5.4}Dimple drainage between bubble and wall}{36}{subsubsection.3.5.4}
+\contentsline {paragraph}{\nonumberline Dimple:}{37}{section*.7}
+\contentsline {paragraph}{\nonumberline Small gap:}{37}{section*.8}
+\contentsline {subsubsection}{\numberline {3.5.5}Gravity current on an inclined plane}{38}{subsubsection.3.5.5}
+\contentsline {subsubsection}{\numberline {3.5.6}Similarity solutions}{38}{subsubsection.3.5.6}

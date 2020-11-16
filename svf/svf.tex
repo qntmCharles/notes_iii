@@ -2634,4 +2634,188 @@ surface tension condition
 	\end{enumerate}
 \end{eg}
 
+\lecture{16/11/20}
+\subsubsection{Dimple drainage between bubble and wall}
+Here we will sketch the solution for dimple drainage of a bubble close to a
+wall. A full treatment can be found in Jones \& Wilson, JFM 1978, and Yiantso
+\& Davis, JFM 1990. For simplicity we neglect the viscosity of the bubble,
+$\lambda = 0$. Further we assume $\frac{h_0}{a} \ll \text{Bo} = \frac{\Delta \rho g
+a^2}{\gamma} \ll 1$, so that the majority of the fluid in the dimple has
+drained. Finally, we assume and must check that $h_m \ll h_0 \ll R \ll a$ as
+$t \to \infty$, where $R$ is the horizontal extent of the dimple.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\draw (-4,3) -- (4, 3);
+		\fill[gray!50] (-4,3) rectangle (4,3.1);
+		\draw (-4,1.8) arc (120:100:8.5);
+		\draw (4,1.8) arc (60:80:8.5);
+		\draw plot[smooth] coordinates {(-1.23,2.81) (-1, 2.83)
+			(0,2.7) (1, 2.83) (1.23, 2.81)};
+		\draw[<->] (1, 3) -- (1, 2.83) node[midway,left] {$h_m(t)$};
+		\draw[<->] (2, 3) -- (2, 2.63) node[midway, right] {$h(r,t)$};
+		\draw (3.5, 2.5) node {$p \sim p_0$};
+		\draw (2.5, 1.8) node {$p \sim p_0 + \frac{2\gamma}{a}$};
+		\draw[<-] (-2, 2.63) -- (-1.4, 1) node[midway,right] {$a$};
+		\draw (-1, 2.4) node {$\kappa \sim \frac{4h_0}{R^2}$};
+		\draw[<->] (0,3) -- (0, 2.7) node[midway,left] {$h_0(t)$};
+		\draw (-3, 1.7) node {$\kappa \sim \frac{2}{a}$};
+		\draw (0, 2.55) node {$p \sim p_d$};
+	\end{tikzpicture}
+\end{center}
+
+The key idea is the small gap $h_m$ controls a slow leakage flux from the
+dimple, which is thus roughly stagnant with uniform pressure
+\begin{equation}
+	p_d = p_0 + \gamma \left( \frac{2}{a} - \nabla^2 h\right)
+\end{equation}
+
+We now sketch the solution. From vertical force balance we have
+\begin{equation}
+	(p_d - p_0) \pi R \approx \frac{4}{3} \pi a^3 \Delta \rho g
+\end{equation}
+Hence we find in $r < R$
+\begin{align}
+	R &\sim a \text{Bo}^{1/2} \\
+	\nabla^2 h &\ll \frac{2}{a}
+\end{align}
+
+\paragraph{Dimple:} in $r < R$, since $p_d$ is uniform, we have
+\begin{equation}
+	\nabla^2 h = \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial
+	h}{\partial r}\right) \approx \text{const.}
+\end{equation}
+Solving for $h$ we find
+\begin{equation}
+	h \approx h_0 \left( 1- \frac{r^2}{R^2}\right)
+\end{equation}
+and the trapped volume $V \sim h_0 R^2$.
+
+\paragraph{Small gap:} free surface lubrication theory gives leakage flux 
+\begin{equation}
+	q = \frac{h^3}{3\mu} (\gamma h_{xx})_x
+\end{equation}
+where $x = r-R$ is a local coordinate near $h_m$. Clearly $\dot{V} \approx
+-2\pi R q $ from which we can deduce an equation for $\dot{h_0}$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-2.5,3) -- (3.5, 3);
+		\fill[gray!50] (-2.5,3) rectangle (3.5,3.1);
+		\draw (0,2.8) -- (-2, 2);
+		\draw (0,2.8) arc (100:60:5); 
+		\draw (-2.2, 2.6) node {$h_x \to -\frac{2h_0}{R}$};
+		\draw (3.55, 2.6) node {$h_{xx} \to \frac{1}{a}$};
+		\draw[blue,->] (-0.5, 2.9) -- (2, 2.9) node[midway,above] {$q$};
+	\end{tikzpicture}
+\end{center}
+
+We now look for a similaritysolution, The scalings are
+\begin{equation}
+	\frac{h}{x} \sim \frac{h_0}{q}, \hspace{2em} \frac{h^4}{x^3} \sim q \sim
+	\frac{h_0}{t}, \hspace{2em} \frac{h}{x^2} \sim 1
+\end{equation}
+Hence we have $h, h_m \propto t^{-1/2}, \hspace{1em} h_0 \sim t^{-1/4},
+\hspace{1em} x \sim t^{-1/4}, \hspace{1em} q \sim t^{-5/4}$, with $\xi =
+\frac{x}{Bt^{-1/4}}$, $h = At^{-1/2}H(\xi)$ and suitable constants $A, B$,
+chosen so that the unknown flux $\sim 1$ rather than $H'' \to 1$ as $\xi \to
+\infty$. From this we deduce an equation for $H$
+\begin{equation}
+	H^3 H''' = 1
+\end{equation}
+with boundary conditions $H' \to -1$ as $\xi \to -\infty$, which is infact 2
+conditions that the coefficient of $\xi^2$ goes to 0 and the coefficient of
+$\xi$ goes to -1. Hence we find a unique solution to within translation, with
+$H_{\text{min}} = 1.2571$ and $H \sim \frac{1}{2}C \xi^2$ as $\xi \to \infty$
+with $C = 1.2098$. The unscaled matching condition $h \sim \frac{1}{2a} x^2$
+fixes the remaining constants.
+
+\subsubsection{Gravity current on an inclined plane}
+Consider a viscous fluid placed on a plane inclined at angle $\theta$ to the
+horizontal. We use $x$ as the coordinate parallel and down the plane, $y$
+parallel and across the plane, and $z$ perpendicular to the plane. We will
+neglect surface tension.
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[thick] (-2, 0) -- (2, 0);
+		\draw[thick] (-2, 1) -- (2, 0);
+		\draw (1.3,0) arc (180:166:0.7);
+		\draw (1.2, 0.1) node {$\theta$};
+		\draw (-1.9, 0.98) arc (92:60:3);
+		\draw (-0.9, 1.1) node {$p=0$};
+		\draw[->] (1.4, 0.3) -- (1.9, 0.175) node [right] {$x$};
+		\draw[->] (1.4, 0.3) -- (1.5, 0.7) node[above] {$z$};
+		\draw[->] (0.5, 1) -- (1, 1-0.125) node [above] {$g\sin \theta$};
+		\draw[->] (0.5, 1) -- (0.4, 0.6) node [midway, left] {$g\cos \theta$};
+	\end{tikzpicture}
+\end{center}
+
+In our original derivation of the lubrication equations, we neglected body
+forces. Hence we must modify the equations to include gravitational force. The
+modified $z$-balance is
+\begin{align}
+	\frac{\partial p}{\partial z} &= -\rho g \cos \theta \\
+	\implies p &= \rho g (h(x,y,t) - z)\cos \theta
+\end{align}
+
+The modified $x$-balance is similarly
+\begin{equation}
+	\mu \frac{\partial^2 u}{\partial z^2} = \frac{\partial p}{\partial x} -
+	\rho g \sin \theta
+\end{equation}
+
+We solve for $\symbf{u}$ to get $\symbf{q}$, then using mass conservation we
+find the evolution equation
+\begin{equation}
+	\frac{\partial h}{\partial t} + \frac{g \sin \theta}{3\nu} \frac{\partial
+	h^3}{\partial x} = \frac{g \cos \theta}{3\nu} \nabla \cdot (h^3 \nabla h)
+\end{equation}
+We can find various similarity solutions to this equation. See Lister, JFM
+1992.
+
+\subsubsection{Similarity solutions}
+Note we often find similarity solutions of the form $At^\alpha f(\xi \equiv
+\frac{x}{Bt^\beta})$. Then
+\begin{align}
+	\frac{\partial}{\partial x} \left[ At^\alpha f(\frac{x}{Bt^\beta})\right]
+	&= \frac{At^\alpha}{Bt^\beta} f'(\xi) \\
+	\int \, \diffd x &= Bt^\beta \int \, \diffd \xi \\
+	\frac{\partial}{\partial t}\left[ At^\alpha f(\frac{x}{Bt^\beta})\right]
+	&= \frac{A t^\alpha}{t} (\alpha f - \beta \xi f'(\xi))
+\end{align}
+Hence operations work in the same way, but with extra factors, in the same way
+the scalings are derived. For this reason, the factors often cancel in the
+governing equations.
+
+\begin{eg}
+	Thermal diffusion of a heat pulse in 3D.  The  governing equation is
+	\begin{equation}
+		\frac{\partial T}{\partial t} = \kappa \frac{1}{r^2}
+		\frac{\partial}{\partial r} r^2 \frac{\partial T}{\partial r}
+	\end{equation}
+	with volume constraint
+	\begin{equation}
+		4\pi \int Tr^2 \, \diffd r = Q
+	\end{equation}
+	Consider the scalings of these two equations.
+	\begin{equation}
+		\frac{T}{t} \sim \frac{\kappa T}{r^2}, \hspace{2em} Tr^3 \sim Q
+	\end{equation}
+	Hence $r \sim \sqrt{\kappa t}, \hspace{1em} T \sim \frac{Q}{(\kappa
+	t)^{3/2}}$. Motivated by these scalings, try similarity solution $T =
+	\frac{Q}{(\kappa t)^{3/2}} f(\xi \equiv \frac{r}{\sqrt{\kappa t}})$. Then
+	\begin{equation}
+		-\frac{3}{2}f -\frac{1}{2}\xi f' = \frac{1}{\xi^2}
+		\frac{\partial}{\partial \xi} \xi^2 \frac{\partial f}{\partial \xi}
+	\end{equation}
+	and volume constraint
+	\begin{equation}
+		4\pi \int_0^\infty f\xi^2 \, \diffd \xi = 1
+	\end{equation}
+	Hence we find $f = A e^{-\xi^2/4}$ with $A = \frac{1}{(2\pi)^{3/2}}$ by
+	the integral constraint.
+\end{eg}
+
+
 \end{document}
+
