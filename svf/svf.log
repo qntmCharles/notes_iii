@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  16 NOV 2020 16:05
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  17 NOV 2020 14:49
  restricted system commands enabled.
 **svf.tex
 (./svf.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.106 seconds
+luaotfload | main : initialization completed in 0.104 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3211,7 +3211,7 @@ rite nodes
    avail lists: 1:1,2:1885,3:900,4:148,5:355,6:2060,7:878,8:118,9:755,10:16,11:1
 58
  55684 multiletter control sequences out of 65536+600000
- 88 fonts using 18400175 bytes
+ 88 fonts using 18400247 bytes
  74i,19n,108p,8841b,943s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/font
 s/truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/fonts/opentype/p
@@ -3228,7 +3228,7 @@ lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/yfonts-t1/yswab.pfb>
 
-Output written on svf.pdf (39 pages, 289280 bytes).
+Output written on svf.pdf (39 pages, 289287 bytes).
 
 PDF statistics: 655 PDF objects out of 1000 (max. 8388607)
  548 compressed objects within 6 object streams
