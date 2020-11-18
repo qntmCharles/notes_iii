@@ -57,3 +57,7 @@
 \contentsline {paragraph}{\nonumberline Small gap:}{37}{section*.8}
 \contentsline {subsubsection}{\numberline {3.5.5}Gravity current on an inclined plane}{38}{subsubsection.3.5.5}
 \contentsline {subsubsection}{\numberline {3.5.6}Similarity solutions}{38}{subsubsection.3.5.6}
+\contentsline {subsubsection}{\numberline {3.5.7}Axisymmetric viscous gravity current}{39}{subsubsection.3.5.7}
+\contentsline {subsection}{\numberline {3.6}Long Thin Flows II: Extensional flows}{40}{subsection.3.6}
+\contentsline {subsubsection}{\numberline {3.6.1}Axisymmetric case}{40}{subsubsection.3.6.1}
+\contentsline {paragraph}{\nonumberline Variations.}{41}{section*.10}

@@ -2550,15 +2550,18 @@ properties:
 		polynomial dependence on deformation.
 \end{enumerate}
 
-Define the \emph{$n$\textsuperscript{th} shear rate tensor} $\symsf{\gamma}(n)$ by
+Define the \emph{$n$\textsuperscript{th} shear rate tensor}
+$\symsf{\gamma}_{(n)}$ by
 \begin{align}
-	\symbfsf{\gamma}(1) &= \symbfsf{\srate} && \text{shear rate tensor, linear in}
+	\symbfsf{\gamma}_{(1)} &= \symbfsf{\srate} && \text{shear rate tensor, linear in}
 	\,\,\, \nabla \symbf{u} \\
-	\symbfsf{\gamma}(2) &= \stackrel{\bigtriangledown}{\symbfsf{\gamma}}(1) &&
+	\symbfsf{\gamma}_{(2)} &=
+	\stackrel{\bigtriangledown}{\symbfsf{\gamma}}_{(1)} &&
 	\text{2\textsuperscript{nd} shear rate tensor, quadratic in}
 	\,\,\, \nabla \symbf{u} \\
 	&\vdots \\
-	\symbfsf{\gamma}(n) &= \stackrel{\bigtriangledown}{\symbfsf{\gamma}}(n-1) &&
+	\symbfsf{\gamma}_{(n)} &=
+	\stackrel{\bigtriangledown}{\symbfsf{\gamma}}_{(n-1)} &&
 	\text{n\textsuperscript{th} shear rate tensor, proportional to}
 	\,\,\, \abs{\nabla \symbf{u}}^n \\
 \end{align}
@@ -2569,23 +2572,25 @@ the same order in $\nabla \symbf{u}$, then truncate. This is the
 
 A first-order fluid, linear in $\nabla \symbf{u}$, has
 \begin{equation}
-	\symbfsf{\tau}^{(1)} = c \symbfsf{\gamma}(1) = c \symbfsf{\srate}
+	\symbfsf{\tau}^{(1)} = c \symbfsf{\gamma}_{(1)} = c \symbfsf{\srate}
 \end{equation}
 Hence a first-order fluid is Newtonian with $\eta = c$. A second-order fluid,
 quadratic in $\nabla \symbf{u}$, has
 \begin{equation}
-	\symbfsf{\tau}^{(2)} = b_1 \symbfsf{\gamma}(1) + b_2 \symbfsf{\gamma}(2) +
-	b_{11} \symbfsf{\gamma}(1) \cdot \symbfsf{\gamma}(1)
+	\symbfsf{\tau}^{(2)} = b_1 \symbfsf{\gamma}_{(1)} + b_2
+	\symbfsf{\gamma}_{(2)} +
+	b_{11} \symbfsf{\gamma}_{(1)} \cdot \symbfsf{\gamma}_{(1)}
 \end{equation}
 where the first term is linear and the second two terms are quadratic in
 $\nabla \symbf{u}$. For higher order fluids, the number of free parameters
 increases combinatorially. For example, a 3\textsuperscript{rd} order fluid
 has 6 free parameters
 \begin{equation}
-	\symbfsf{\tau}^{(3)} = \symbfsf{\tau}^{(2)} + b_3 \symbfsf{\gamma}(3) +
-	b_{12} \left[ \symbfsf{\gamma}(1)\cdot\symbfsf{\gamma}(2) +
-		\symbfsf{\gamma}(2) \cdot \symbfsf{\gamma}(1)\right] + b_{1:11}
-		(\symbfsf{\gamma}(1)\cdot \symbfsf{\gamma}(1))\cdot\symbfsf{\gamma}
+	\symbfsf{\tau}^{(3)} = \symbfsf{\tau}^{(2)} + b_3 \symbfsf{\gamma}_{(3)} +
+	b_{12} \left[ \symbfsf{\gamma}_{(1)}\cdot\symbfsf{\gamma}_{(2)} +
+	\symbfsf{\gamma}_{(2)} \cdot \symbfsf{\gamma}_{(1)}\right] + b_{1:11}
+	(\symbfsf{\gamma}_{(1)}\cdot
+	\symbfsf{\gamma}_{(1)})\cdot\symbfsf{\gamma}_{(1)}
 \end{equation}
 These ordered fluids are \emph{admissible} from the point of view of continuum
 mechanics. We need to supplement the model with microscopic models (e.g.
@@ -2602,18 +2607,19 @@ We have three free parameters $b_1, b_2, b_{11}$ for which we want to gain a
 physical interpretation. For a simple shear flow with $\symbf{u} = \srate y
 \hat{\symbf{x}}$ we have
 \begin{equation}
-	\symbfsf{\gamma}(1) = \symbfsf{\srate} = \begin{pmatrix} 0 & \srate & 0 \\
+	\symbfsf{\gamma}_{(1)} = \symbfsf{\srate} = \begin{pmatrix} 0 & \srate & 0 \\
 	\srate & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \hspace{2em} \nabla \symbf{u} =
 \begin{pmatrix} 0 & 0 & 0 \\ \srate & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
 \end{equation}
 
 Now using the upper-convected derivative the second shear rate tensor is
 \begin{align}
-	\symbfsf{\gamma}(2) = \stackrel{\bigtriangledown}{\symbfsf{\gamma}}(1) &=
-	\cancel{\frac{\diffD}{\diffD t} \symbfsf{\gamma}(1)} - (\nabla \symbf{u})^T
-	\cdot \symbfsf{\gamma}(1) - \symbfsf{\gamma}(1) \cdot (\nabla \symbf{u} )\\
-	&= - (\nabla \symbf{u})^T \cdot \symbfsf{\gamma}(1) -
-	\symbfsf{\gamma}(1)\cdot (\nabla \symbf{u}) \\
+	\symbfsf{\gamma}_{(2)} =
+	\stackrel{\bigtriangledown}{\symbfsf{\gamma}}_{(1)} &=
+	\cancel{\frac{\diffD}{\diffD t} \symbfsf{\gamma}_{(1)}} - (\nabla \symbf{u})^T
+	\cdot \symbfsf{\gamma}_{(1)} - \symbfsf{\gamma}_{(1)} \cdot (\nabla \symbf{u} )\\
+	&= - (\nabla \symbf{u})^T \cdot \symbfsf{\gamma}_{(1)} -
+	\symbfsf{\gamma}_{(1)}\cdot (\nabla \symbf{u}) \\
 	&= \begin{pmatrix} - 2\srate^2 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
 	\end{pmatrix}
 \end{align}
@@ -2631,8 +2637,8 @@ $b_{11} = b_2 = 0$, i.e. the non-Newtonian terms vanish. If $(b_{11}, b_2) \ne
 \srate$ hence we have constant viscosity $\eta = b_1$. Since we are dealing
 with steady shear, normal stress differences are defined:
 \begin{align}
-	N_1 & \tau_{xx} - \tau_{yy} = -2b_2 \srate^2 = \Psi_1 \srate^2 \\
-	N_1 & \tau_{yy} - \tau_{zz} = b_{11} \srate^2 = \Psi_2 \srate^2 \\
+	N_1 &= \tau_{xx} - \tau_{yy} = -2b_2 \srate^2 = \Psi_1 \srate^2 \\
+	N_2 &= \tau_{yy} - \tau_{zz} = b_{11} \srate^2 = \Psi_2 \srate^2 \\
 \end{align}
 where $\Psi_1, \Psi_2$ are the normal stress coefficients. Hence $\Psi_1 =
 -2b_2, \Psi_2 = b_{11}$ i.e. we have constant first and second normal stress
@@ -2663,7 +2669,7 @@ plates. The units of the three free parameters are
 \begin{align}
 	\left[ b_1\right] &= \left[ \eta \right] = \text{stress} \times \text{time}
 	\\
-	\left[b_2, b_{11} \right] &= \text{stress} \times \text{time}
+	\left[b_2, b_{11} \right] &= \text{stress} \times \text{time}^2
 \end{align}
 Hence $b_2/b_1 = \Psi_1 / \eta$ is a timescale, which is in fact a good
 estimate for relaxation time $\lambda$.
@@ -2673,13 +2679,13 @@ When do we expect the second-order fluid model to remain valid? For validity,
 we require the second order terms to be a small perturbation to the first
 order terms. Hence
 \begin{equation}
-	\abs{\frac{b_2 \symbfsf{\gamma}(2)}{b_1 \symbfsf{\gamma}(1)}} \ll 1
+	\abs{\frac{b_2 \symbfsf{\gamma}_{(2)}}{b_1 \symbfsf{\gamma}_{(1)}}} \ll 1
 \end{equation}
 The scalings for the appropriate terms are
 \begin{align}
 	\abs{\symbfsf{\srate}} &\sim \srate\\
-	\abs{b_2 \symbfsf{\gamma}(2)} &\sim \Psi_1 \srate^2 \\
-	\abs{b_1 \symbfsf{\gamma}(1)} &\sim \eta \srate
+	\abs{b_2 \symbfsf{\gamma}_{(2)}} &\sim \Psi_1 \srate^2 \\
+	\abs{b_1 \symbfsf{\gamma}_{(1)}} &\sim \eta \srate
 \end{align}
 Hence for validity we require
 \begin{equation}

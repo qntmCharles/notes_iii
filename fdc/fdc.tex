@@ -2200,7 +2200,141 @@ velocity is
 Consider the evolution of small perturbations to this basic state, denoted
 $\symbf{u}, b, p$. We assume that these perturbations are independent of $y$,
 the along-front direction. We also assume that the perturbations are
-hydrostatic.
+hydrostatic, that $f$ is constant, and we use the traditional approximation.
+\lecture{18/11/20}
+The linearised equations are
+\begin{subequations}
+	\begin{align}
+	u_t - fv &= -p_x \label{eq:12.1a} \\
+	v_t + w \frac{M^2}{f} + fu &= 0 \label{eq:12.1b} \\
+	p_z &= b \label{eq:12.1c}\\
+	b_t + wN^2 + uM^2 &= 0 \label{eq:12.1d}\\
+	u_x + w_z &= 0 \label{eq:12.1e} \\
+	\end{align}
+\end{subequations}
+
+We can eliminate variables in favour of $w$. Eliminate $v$ via
+$\partial_t \eqref{eq:12.1a}$ and \eqref{eq:12.1b}:
+\begin{equation}
+	u_{tt} + wM^2 + uf^2 = -p_{xt} \label{eq:12.2}
+\end{equation}
+Eliminate $u$ via $\partial_x \eqref{eq:12.2}$ and \eqref{eq:12.1e}:
+\begin{equation}
+	-(\partial_t^2 + f^2)w_z + w_x M^2 = -p_{xxt} \label{eq:12.3}
+\end{equation}
+Eliminate pressure via $\partial_z \eqref{eq:12.3}$ and \eqref{eq:12.1c}:
+\begin{equation}
+	-(\partial_t^2 + f^2) w_{zz} + w_{xz} M^2 = -p_{xxzt} = -b_{xxt}
+\end{equation}
+Now $\partial_x \eqref{eq:12.1d}$ and $\eqref{eq:12.1e}$ gives
+\begin{equation}
+	b_{xt} + w_x N^2 - w_z M^2 = 0
+\end{equation}
+Hence we have
+\begin{equation}
+	(\partial_t^2 + f^2) w_{zz} + N^2 w_{xx} - 2M^2 w_{xz} = 0
+\end{equation}
+We now seek plane wave solutions with $w = \hat{w} e^{i(kx + mz - \omega t)}$
+which gives dispersion relation
+\begin{equation}
+	\omega^2 = f^2 + \frac{k^2}{m^2} N^2 - 2\frac{k}{m} M^2 \label{eq:12dr}
+\end{equation}
+This is the dispersion relation for hydrostatic rotating stratified internal
+waves modified by $M^2 = \frac{\partial B}{\partial x}$. Note: instability is
+possible when $\omega^2 < 0$ if $M^2$ is large enough. Motivated by this, let
+$\sigma \equiv -i\omega$ be the growth rate of the internal waves, then
+\eqref{eq:12dr} gives
+\begin{equation}
+	\sigma^2 = -f^2 - N^2 \left( \frac{k}{m}-\frac{M^2}{N^2}\right)^2 +
+	\frac{M^4}{N^2}
+\end{equation}
+The most unstable modes have $\frac{k}{m} = \frac{M^2}{N^2}$, in which case
+the waves are aligned with surfaces of constant $B$.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[red,thick] (0,0) -- (-1, 2);
+		\draw[red,thick] (1, 0) -- (0, 2);
+		\draw[red,thick] (2, 0) -- (1, 2) node[right] {$B$ const};
+		\draw[->] (0.25, 0.5) -- (-0.25,1.5);
+		\draw[<-] (1.25, 0.5) -- (0.75,1.5);
+	\end{tikzpicture}
+\end{center}
+
+This is called \emph{symmetric instability} (SI). For $k/m = M^2/N^2$,
+instability occurs if $\sigma^2 > 0$ which requires
+\begin{equation}
+	\frac{M^4}{N^2} - f^2 > 0
+\end{equation}
+or $\text{Ri} = N^2/(\frac{\diffd \mathcal{V}}{\diffd z})^2 < 1$ where
+$\text{Ri}$ is the \emph{gradient Richardson number}.
+
+The Ertel PV of the basic state is
+\begin{equation}
+	 q \equiv (f\hat{\symbf{k}} + \symbf{\omega})\cdot\nabla b = fN^2 -
+	 \frac{M^4}{f}
+ \end{equation}
+ since $\symbf{\omega} = -M^2/f \hat{\symbf{x}}$. Symmetric instability
+ develops if $fq < 0$. This is more general and holds for an unbalanced basic
+ state too. This raises a paradox: symmetric instability requires $fq < 0$ to
+ develop, but $q$ is conserved so remains negative. However, we know
+ observationally that the instability does not grow indefinitely, so there
+ must be some mechanism by which SI equilibriates. 
+ 
+ \paragraph{How does $fq < 0$ develop?}
+ Recall the Omega equation
+ \begin{equation}
+	 \frac{\diffD q}{\diffD t} = \symbf{\omega}_a \cdot \nabla D + \nabla b
+	 \cdot \nabla \times \symbf{F} = \nabla \cdot (\symbf{\omega}_a D - \nabla
+	 b \times \symbf{F})
+ \end{equation}
+since $\nabla \cdot \symbf{\omega}_a = 0$ and div curl vanishes. Consider the
+region $0 \le z \le H$ and neglect horizontal fluxes.  Enforce boundary
+conditions $w = 0$ on $z=0, H$. Then integrating the Omega equation we have
+\begin{equation}
+	\frac{\partial}{\partial t} \int_0^H \overline{q} \, \diffd z = \left[
+		\overline{(\symbf{\omega}_a \cdot \hat{\symbf{k}})}D - \overline{\nabla b \times
+	\symbf{F}}\right]_0^H
+\end{equation}
+where $\bar{.}$ denotes the horizontal average. For $\symbf{\omega}_a \cdot
+\hat{\symbf{k}} > 0$, $\overline{q}$ decreases if
+\begin{itemize}
+	\item Convective forcing:
+		\begin{itemize}
+			\item $\left.D\right|_{z=H} < 0$ \,\,buoyancy loss due to cooling
+			\item $\left.D\right|_{z=0} > 0$ \,\,buoyancy gain due to heating
+		\end{itemize}
+	\item Frictional forcing:
+		\begin{itemize}
+			\item $\nabla b \times \left.\symbf{F}\, \right|_{z=H} > 0$\,\,
+					frictional stress aligned with thermal wind
+			\item $\nabla b \times \left.\symbf{F} \,\right|_{z=H} < 0$\,\,
+					frictional stress anti-aligned with thermal wind
+		\end{itemize}
+\end{itemize}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (-3, 0) -- (3,0);
+		\draw[thick] (-3, 2) -- (3,2);
+		\draw[red] (0.6, 0) -- (0.6, 2);
+		\draw[red] (-0.6, 0) -- (-0.6, 2);
+		\draw[red] (0, 0) -- (0, 2);
+		\draw[red] (-3, 1.5) node {low $b$};
+		\draw[red] (3, 1.5) node {high $b$};
+		\draw (3,2) node[right] {$z=H$};
+		\draw (3,0) node[right] {$z=0$};
+		\draw[blue] (0,1.8) node[cross=3.4pt,blue] {};
+		\draw[blue] (0,1.8) circle (4pt);
+		\draw[blue] (0,0.2) circle (4pt);
+		\draw[blue] (0,0.2) circle (0.5pt);
+		\draw[blue] (1.5, 0.2) node {thermal wind};
+		\draw[->] (-1, 1.5) -- (1, 1.5) node[below] {Ekman transport};
+		\draw[black] (0,2.2) node[cross=3.4pt,black] {};
+		\draw[black] (0,2.2) circle (4pt);
+		\draw (0,2.2) node[right] {$\symbf{\tau}_w$};
+	\end{tikzpicture}
+\end{center}
+		
 
 
 \end{document}

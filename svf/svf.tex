@@ -2454,7 +2454,7 @@ Here we have prescribed velocity boundary conditions
 \end{align}
 Subject to these boundary conditions we find
 \begin{align}
-	\symbf{u} &= \frac{\nabla p}{2\mu} z(h-z) + \symbf{U}_1 +
+	\symbf{u} &= -\frac{\nabla p}{2\mu} z(h-z) + \symbf{U}_1 +
 	(\symbf{U}_2-\symbf{U}_1) \frac{z}{h}\\
 	\symbf{q} &= -\frac{h^3}{12\mu}\nabla p +
 	\frac{h}{2}(\symbf{U}_1+\symbf{U}_2)
@@ -2815,6 +2815,252 @@ governing equations.
 	Hence we find $f = A e^{-\xi^2/4}$ with $A = \frac{1}{(2\pi)^{3/2}}$ by
 	the integral constraint.
 \end{eg}
+
+\lecture{18/11/20}
+\subsubsection{Axisymmetric viscous gravity current}
+Consider a fixed volume $V$ of viscous fluid spreading axisymmetrically on a
+horizontal plane under air (i.e. a free-surface condition). The equations of
+motion and global conservation of mass are
+\begin{align}
+	\frac{\partial h}{\partial t} &= \frac{g}{3\nu} \frac{1}{r}
+	\frac{\partial}{\partial r} \left[ rh^3 \frac{\partial h}{\partial
+	r}\right] \\
+	V &= 2\pi \int_0^{R(t)} h r \, \diffd r
+\end{align}
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[thick] (-3,0) -- (3,0);
+		\fill[gray!50] (-3,0) rectangle (3,-0.1);
+		\draw[dashed] (0,0) -- (0, 1) node[above] {$r=0$};
+		\draw (0,0) [partial ellipse = 180:0:2.7 and 0.7];
+		\draw (2, 0.65) node {$p=0$};
+		\draw (2.7, -0.2) node {$R(t)$};
+		\draw[<->] (-2, 0) -- (-2, 0.47) node[midway,right] {$h(r,t)$};
+	\end{tikzpicture}
+\end{center}
+
+Scaling gives $h/t \sim gh^4 / \nu R^2$ and $hR^2 \sim V$, from which we
+deduce
+\begin{align}
+	h &\sim \left( \frac{\nu V}{gt}\right)^{1/4} \\
+	r &\sim \left( \frac{gV^3 t}{\nu} \right)^{1/8}
+\end{align}
+
+Hence try similarity solution
+\begin{equation}
+	h(r,t) = \left( \frac{\nu V}{g t}\right)^{1/4} H(\eta), \hspace{2em} \eta
+	\equiv \frac{r}{\left(\frac{gV^3t}{\nu}\right)^{1/8}}
+\end{equation}
+
+Substituting into the equation of motion and mass conservation, as expected
+the constants cancel and we find
+\begin{align}
+	2\pi \int_0^\eta H\eta \, \diffd \eta &= 1 \\
+	\frac{1}{3\eta}\frac{\diffd}{\diffd \eta} \left[ \eta H^3
+	\frac{\diffd H}{\diffd \eta}\right] &= -\frac{1}{4} H - \frac{1}{8} \eta
+	H'
+\end{align}
+subject to $H(\eta_N) = 0$ where the `nose' of the current is at $\eta_N =
+R/(gV^3t/\nu)^{1/8}$.  The solution is
+\begin{equation}
+	H(\eta) = \left( \frac{9}{16}(\eta_N^2 - \eta^2)\right)^{1/3}
+\end{equation}
+where $\eta_N = (1024/243\pi^3)^{1/8}$.
+
+\subsection{Long Thin Flows II: Extensional flows}
+We now consider thin flows with effectively stress-free boundaries.
+\subsubsection{Axisymmetric case}
+\begin{wrapfigure}{R}{0.4\textwidth}
+	\begin{tikzpicture}[scale=1.5]
+		\draw[smooth,thick,rotate=3] plot[domain=0.2:0.8] ({\x}, {2-1/\x});
+		\draw[smooth,thick,rotate=-3] plot[domain=-0.2:-0.8] ({\x}, {2+1/\x});
+		\draw (0,0) ellipse (0.5 and 0.1);
+		\draw[<->] (2, 1) -- (2, -3) node[midway,right] {$L$};
+		\draw (-1.5, 0) node {$A(z) = \pi a^2(z)$};
+		\draw[->] (0, -2) -- (0, -2.5) node[below] {$z$};
+		\draw[->] (0, -2) -- (0.5, -2) node[right] {$r$};
+		\draw[->] (0, 1) -- (0, 0.5) node[below] {$w$};
+		\draw[->] (0, 1) -- (0.5, 1) node[right] {$u$};
+		\draw[blue,dashed] (-0.43, -0.5) -- (0.43, -0.5);
+		\draw[blue,dashed] (-0.4, -1) -- (0.4, -1);
+		\draw[blue,->] (-0.25, -0.5) -- (-0.25, -1);
+		\draw[blue,->] (0.25, -0.5) -- (0.25, -1);
+		\draw[blue,->] (0, -0.5) -- (0, -1);
+	\end{tikzpicture}
+\end{wrapfigure}
+
+Assume that $\partial_z, \partial_r \sim \frac{1}{L} \ll \frac{1}{a}$.
+Assuming no tangential stress, we have $\frac{\partial w}{\partial r} = 0$
+hence $w = w(z,t)$ is plug flow. Mass conservation on a slice gives
+\begin{align}
+	\frac{\partial A}{\partial t} + \frac{\partial}{\partial z} (Aw) &= 0\\
+	\implies \frac{\diffD A}{\diffD t} &= -A\frac{\partial w}{\partial z}
+\end{align}
+i.e. there is thinning of the flow by stretching in the $z$ direction. Local
+mass conservation $\nabla \cdot \symbf{u} = 0$ gives
+\begin{align}
+	\frac{1}{r} \frac{\partial}{\partial r} (ru) + \frac{\partial w}{\partial
+	z} &= 0 \\
+	\implies u &= -\frac{1}{2} r \frac{\partial w}{\partial z} \label{eq:ext2}
+\end{align}
+This makes physical sense: there are 3 directions of straining which must sum
+to $0$. Horizontally, there is strain in $2$ directions each equal to $u_r$,
+and the vertical strain is $w_z$. The radial stress balance is
+\begin{align}
+	-p + 2\mu \frac{\partial u}{\partial r} &= -p_{\text{ext}} \\
+	\implies -p &= -p_{\text{ext}} + \mu \frac{\partial w}{\partial z}
+\end{align}
+
+The axial stress is 
+\begin{align}
+	\sigma_{zz} &= -p + 2\mu \frac{\partial w}{\partial z} \\
+			&= -p_{\text{ext}} + 3\mu \frac{\partial w}{\partial z}
+\end{align}
+
+Axial force balance on a slice includes the differential stress across the
+slice, the external pressure acting normal to the sides, and the axial body
+force.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (-3, 0) -- (3,0) -- (2.5, 2) -- (-2.5, 2) -- (-3,0);
+		\draw[->] (0,0) -- (0,-1) node[below] {$A \sigma_{zz}\mid_{z+\delta z}$};
+		\draw[->] (0,2) -- (0,3) node[above] {$A\sigma_{zz}\mid_{z}$};
+		\draw[<-] (2.75, 1)--(4,1.3)  node[right]{$p_{\text{ext}}\cdot 2\pi a \cdot
+		\delta z$};
+		\draw[<-](-2.75, 1)--(-4,1.3) node[left] {$p_{\text{ext}}\cdot 2\pi a \cdot
+		\delta z$};
+		\draw[->] (-1.5, 1) -- (-1.5, -1.5) node[below] {$A\delta z f$};
+		\draw[fill=black] (-1.5,1) circle (0.1);
+		\draw (3,0) node[right] {$z+\delta z$};
+		\draw (2.5, 2) node[right] {$z$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{equation}
+	\frac{\partial}{\partial z}(A\sigma_{zz}) + p_{\text{ext}} \frac{\partial
+	A}{\partial z} + A f = 0
+\end{equation}
+Hence using above results
+\begin{equation}
+	\frac{3\mu}{A} \frac{\partial}{\partial z} (A\frac{\partial w}{\partial
+		z}) - \frac{\partial p_{\text{ext}}}{\partial z} + f =
+		0\label{eq:ext1}
+\end{equation}
+
+Equations \eqref{eq:ext1} and \eqref{eq:ext2} can be used to solve the problem. 
+
+\paragraph{Variations.}
+\begin{enumerate}
+	\item Add surface tension: add $\frac{\gamma}{a}$ to $p_{\text{int}}$ and
+		add $\gamma\left[ 2\pi a(z+\delta z) - 2\pi a(z)\right]$ to the axial
+		force balance. Equivalently (and more simply) add $\frac{\gamma}{a}$
+		to $p_{\text{ext}}$ in \eqref{eq:ext1}.
+	\item Unidirectional extension of a sheet simply has $u_x = -w_z$ and $A$
+		is replaced with $h$, and an extensional viscosity $4\mu$ instead of
+		$3\mu$. General extension of a sheet has coupling terms between $u$
+		and $w$. For example;
+	\item Radial extension of a sheet. \vspace{0.5in}
+		
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick] (0,0) ellipse (3 and 0.2);
+				\draw[thick] (0,-4.37) [partial ellipse=127:53:5 and 5.5];
+				\draw[<->] (1, -0.18) -- (1, 0.18) node[midway,right] {$h(r,t)$};
+				\draw[->,blue] (0.8, 0.22) -- (1.3, 0.8);
+				\draw[->,blue] (-0.8, 0.22) -- (-1.3, 0.8);
+				\draw[->,blue] (0,0.24) -- (0, 0.9);
+				\pgfresetboundingbox
+			\end{tikzpicture}
+		\end{center}
+		
+		The velocity has only radial and
+		vertical components, $\symbf{u} = (u, 0, w)$.  We have $u=u(r,t)$ and
+		from incompressibility 
+		\begin{equation}
+			\frac{\partial w}{\partial z} =
+			-\frac{1}{r}\frac{\partial}{\partial r} (ru)
+		\end{equation}
+		Following a similar derivation as before we also find
+		\begin{align}
+			-p + 2\mu \frac{\partial w}{\partial z} &= -p_{\text{ext}} \\
+			e_{rr} &= \frac{\partial u}{\partial r} \\
+			e_{\theta\theta} &= \frac{u}{r} \\
+			e_{\theta\theta} + e_{rr} + e_{zz} &= 0
+		\end{align}
+		From these results we can find $\sigma_{rr}$ and
+		Consider a force balance on a `pineapple slice' of small angle $\delta
+		\theta$ and radial length $\delta r$.
+		\begin{center}
+			\begin{tikzpicture}[scale=1.7]
+				\draw[thick] (3,0.9) arc (17.5:-17.5:3);
+				\draw[thick] (2,0.6) arc (17.5:-17.5:2);
+				\draw[dashed] (0,0) -- (2,0.6);
+				\draw[dashed] (0,0) -- (2,-0.6);
+				\draw[thick] (2,0.6) -- (3, 0.9);
+				\draw[thick] (2,-0.6) -- (3, -0.9);
+				\draw[->] (2.1, 0) -- (1.1, 0) node[midway,above] {$r \delta
+				\theta h \sigma_{rr}\!\mid_r$};
+				\draw[->] (3.15, 0) -- (4.1, 0) node[above] {$r \delta
+				\theta h \sigma_{rr}\!\mid_{r+\delta r}$};
+				\draw[->] (2.5, 0.75) -- (2.3, 1.3) node[right]
+				{$\sigma_{\theta\theta} \delta r h$};
+				\draw[->] (2.5, -0.75) -- (2.3, -1.3)node[left]
+				{$\sigma_{\theta\theta} \delta r h$};
+				\draw (0.5, 0.15) arc (17.5:-17.5:0.5);
+				\draw (0.5, 0) node[right] {$\delta\theta$};
+				\draw (2,-0.6) node[below] {$r$};
+				\draw (3,-0.9) node[below] {$r+\delta r$};
+				\draw[fill] (2.5, -0.2) circle (0.05);
+				\draw[->] (2.5, -0.2) -- (3.8, -0.35) node[right] {$r \delta
+					\theta \delta r \cdot p_{\text{ext}} \frac{\partial
+				h}{\partial r}$};
+			\end{tikzpicture}
+		\end{center}
+		\begin{equation}
+			\implies \frac{\partial}{\partial r} (r h \sigma_{rr}) -
+			h\sigma_{\theta\theta} + r p_{\text{ext}} \frac{\partial
+			h}{\partial r} = 0
+		\end{equation}
+		For further details, see SVF exam 2019 question 2.
+	\item Can include inertia $\rho \frac{\diffD w}{\diffD t}$ on RHS of
+		\eqref{eq:ext1} when $\frac{w L}{\nu} \sim 1$.
+	\item Adding a lateral force gives a rapid response by bending (low
+		resistance compared to stretching).
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
