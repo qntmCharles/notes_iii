@@ -12,6 +12,8 @@
 \setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
 
 \usetikzlibrary{intersections, pgfplots.fillbetween}
+\newcommand{\nsrate}[1]{\symbfsf{\gamma}_{(#1)}}
+\newcommand{\Nsrate}[1]{\symbfsf{\gamma}_{(#1),N}}
 
 \begin{document}
 
@@ -2589,8 +2591,7 @@ has 6 free parameters
 	\symbfsf{\tau}^{(3)} = \symbfsf{\tau}^{(2)} + b_3 \symbfsf{\gamma}_{(3)} +
 	b_{12} \left[ \symbfsf{\gamma}_{(1)}\cdot\symbfsf{\gamma}_{(2)} +
 	\symbfsf{\gamma}_{(2)} \cdot \symbfsf{\gamma}_{(1)}\right] + b_{1:11}
-	(\symbfsf{\gamma}_{(1)}\cdot
-	\symbfsf{\gamma}_{(1)})\cdot\symbfsf{\gamma}_{(1)}
+	(\symbfsf{\gamma}_{(1)}:\symbfsf{\gamma}_{(1)})\symbfsf{\gamma}_{(1)}
 \end{equation}
 These ordered fluids are \emph{admissible} from the point of view of continuum
 mechanics. We need to supplement the model with microscopic models (e.g.
@@ -2697,6 +2698,204 @@ timescales for relaxation and deformation. This is a ratio of \emph{intrinsic}
 timescales to \emph{flow} timescales, which thus measures the relative
 importance of elastic effects in the fluid.  Ordered fluids are expansions
 valid asymptotically in the limit $\text{Wi} \to 0$.
+
+\lecture{19/11/20}
+\subsection{Extension flow of second-order fluid.}
+We wish to determine the extensional viscosity of a second-order fluid.
+Consider a steady extension flow $\symbf{u} = \dot{\vare}(\frac{1}{2}x,
+\frac{1}{2}y, -z)$. Then
+\begin{align}
+	\nabla \symbf{u} &= \dot{\vare} \begin{pmatrix} \frac{1}{2} & 0 & 0 \\ 0 &
+	\frac{1}{2} & 0 \\ 0 & 0 & -1 \end{pmatrix} \\
+	\symbfsf{\srate} &= 2 \nabla \symbf{u} = \dot{\vare} \begin{pmatrix} 1 & 0 & 0
+	\\ 0 & 1 & 0 \\ 0 & 0 & -2 \end{pmatrix}
+\end{align}
+
+Recall for a second-order fluid, the deviatoric stress in terms of material
+properties is
+\begin{equation}
+	\symbfsf{\tau}^{(2)} = \eta \symbfsf{\srate} - \frac{1}{2} \Psi_1
+	\stackrel{\bigtriangledown}{\symbfsf{\gamma}} + \Psi_2
+	\symbfsf{\srate}\cdot\symbfsf{\srate}
+\end{equation}
+We have $\symbfsf{\srate}\cdot\symbfsf{\srate} = \dot{\vare}^2
+\text{diag}(1,1,4)$ and since the flow is steady and the shear rate tensor
+spatially uniform, 
+\begin{align}
+	\stackrel{\bigtriangledown}{\symbfsf{\gamma}} &=
+	\cancel{\frac{\diffD}{\diffD t} \symbfsf{\srate}} - (\nabla \symbf{u})^T
+	\cdot \symbfsf{\srate} - \symbfsf{\srate} \cdot (\nabla \symbf{u}) \\
+	&= -\frac{1}{2} \symbfsf{\srate} \cdot \symbfsf{\srate}-\frac{1}{2}
+	\symbfsf{\srate} \cdot \symbfsf{\srate} \\
+	&= -\dot{\vare}^2 \text{diag}(1,1,4)
+\end{align}
+	
+Hence in this case 
+\begin{align}
+	\symbfsf{\tau}^{(2)} &= \eta \symbfsf{\srate} + (\frac{1}{2} \Psi_1 +
+	\Psi_2) \symbfsf{\srate}\cdot\symbfsf{\srate} \\
+	\implies \symbfsf{\tau}_{xx} = \symbfsf{\tau}_{yy} &= \eta \dot{\vare} +
+	(\frac{1}{2}\Psi_1 + \Psi_2) \dot{\vare}^2 \\
+	\symbfsf{\tau}_{zz} &= -2 \eta \dot{\vare} + 4(\frac{1}{2}\Psi_1 + \Psi_2)
+	\dot{\vare}^2 
+\end{align}
+
+The extensional viscosity is therefore
+\begin{equation}
+	\eta_{\text{ext}} = \frac{\symbfsf{\tau}_{xx} -
+		\symbfsf{\tau}_{zz}}{\dot{\vare}} = \frac{3 \eta \dot{\vare} - 3
+		\dot{\vare}^2 (\frac{1}{2}\Psi_1 + \Psi_2)}{\dot{\vare}} = 3\eta - 3
+		\dot{\vare} (\frac{1}{2}\Psi_1 + \Psi_2)
+\end{equation}
+
+If Newtonian, $\Psi_1 = \Psi_2 = 0$ so $\eta_{\text{ext}} = 3\eta$ as
+expected. For a second order fluid, $\frac{1}{2}\Psi_1 + \Psi_2 > 0$ hence
+$\eta_{\text{ext}}$ decreases with extension rate. This result is valid
+provided $\abs{\dot{\vare} \Psi_1} \ll \eta \implies \dot{\vare} \lambda \ll
+1$ i.e. the small $\text{Wi}$ limit as before.
+
+\subsection{Giesekus equation}
+We wish to solve for the flow of a second order fluid in the general case. We
+will assume no inertia, i.e. the Stokes flow limit. The equations of motion
+are
+\begin{align}
+	\nabla \cdot \symbf{u} &= 0  \\
+	\nabla \cdot \symbfsf{\sigma} &= 0 \\
+	\implies \nabla p &= \nabla \cdot \symbfsf{\tau} = \nabla \cdot \left[
+		b_1\nsrate{1} + b_2 \nsrate{2} + b_{11}
+	\nsrate{1}\cdot\nsrate{1}\right]
+\end{align}
+
+This is difficult to solve due to non-linearity. We will use mathematical
+`tricks' to decude second-order fluid flow solutions from Newtonian solutions.
+The important idea is to write $\nabla \cdot \left[ \nsrate{2} +
+\nsrate{1}\cdot\nsrate{1}\right]$ as an exact gradient using the
+\emph{Giesekus equation}. Consider the following identities.
+\begin{enumerate}
+	\item From tensor calculus: 
+		\begin{equation}
+			\nsrate{2} + \nsrate{1}\cdot\nsrate{1} = \frac{\diffD}{\diffD t}
+			\symbfsf{\srate} + (\nabla \symbf{u})\cdot(\nabla \symbf{u})^T -
+			(\nabla \symbf{u})^T \cdot (\nabla \symbf{u})
+		\end{equation}
+	\item From tensor calculus and incompressibility:
+		\begin{equation}
+			\nabla \cdot \left[ \nsrate{2} + \nsrate{1}\cdot\nsrate{1}\right]
+			= \frac{\diffD}{\diffD t} (\nabla^2 \symbf{u}) +
+			\frac{1}{2}\nabla\left[ \nabla \symbf{u}:\nabla\symbf{u} +
+			\nabla\symbf{u}:(\nabla \symbf{u})^T\right] + \nabla
+			\symbf{u}\cdot\nabla^2 \symbf{u}
+		\end{equation}
+\end{enumerate}
+
+Denote the Newtonian solution by $\symbf{u}_N$, for which $b_1 \nabla^2
+\symbf{u}_N = \nabla p_N$ where $b_1$ is the viscosity and $p_N$ is the
+Newtonian pressure. We wish to show the RHS of the second identity is an exact
+gradient. Note
+\begin{align}
+	\nabla \symbf{u}_N : \nabla \symbf{u}_N + \nabla \symbf{u}_N : (\nabla
+	\symbf{u}_N)^T &= \nabla \symbf{u}_N:\symbfsf{\srate}_N \\
+				   &= \left(\frac{1}{2} \symbfsf{\srate}_N +
+				\symbfsf{\Omega}_N \right):\symbfsf{\srate}_N \\
+				&= \frac{1}{2} \symbfsf{\srate}_N:\symbfsf{\srate}_N
+\end{align}
+where $\symbfsf{\Omega}_N$ is antisymmetric, hense vanishes when contracted
+with the symmetric shear rate tensor.
+Note also $\nabla^2 \symbf{u}_N = \frac{1}{b_1} \nabla p_N$ so
+\begin{align}
+	\frac{\diffD}{\diffD t} (\nabla^2 \symbf{u}_N) + \nabla \symbf{u}_N \cdot
+	\nabla^2 \symbf{u}_N &= \frac{\partial}{\partial
+		t}\left(\frac{1}{b_1}\nabla p_N\right) +
+		(\symbf{u}_N\cdot\nabla)\frac{1}{b_1}\nabla p_N + \inv{b_1} \nabla
+		\symbf{u}_N \cdot \nabla p_N \\
+		&= \nabla \left( \inv{b_1} \frac{\partial p_N}{\partial t} \right) +
+		\inv{b_1} \left[ \symbf{u}_N \cdot \nabla(\nabla p_N) + \nabla
+		\symbf{u}_N \cdot \nabla p_N\right] \\
+		&= \nabla \left[ \inv{b_1} \frac{\partial p_N}{\partial t} + \inv{b_1}
+	\symbf{u}_N\cdot\nabla p_N\right] \\
+	&= \nabla \left[ \inv{b_1} \frac{\diffD p_N}{\diffD t}\right]
+\end{align}
+
+Hence the second identity becomes
+\begin{equation}
+	\nabla \cdot \left[ \Nsrate{2} + \Nsrate{1} \cdot \Nsrate{1}\right] =
+	\nabla \left[ \inv{b_1} \frac{\diffD p_N}{\diffD t} + \frac{1}{4}
+	\symbfsf{\srate}_N:\symbfsf{\srate}_N\right]
+\end{equation}
+
+This is the \emph{Giesekus equation}; a tensor identity valid for
+incompressible Stokes flows in the Newtonian limit.
+
+\subsection{Useful Theorems}
+
+\paragraph{Giesekus' 3D flow theorem:}
+If $(\symbf{u}_N, p_N)$ is a solution to the Newtonian incompressible Stokes
+equations with viscosity $b_1$, then $(\symbf{u}_N, p)$ is a solution to the
+incompressible Stokes equations for a second-order fluid with parameters $b_1,
+b_2 = b_{11}$ with $p$ given by
+\begin{equation}
+	p = p_N + \frac{b_2}{b_1} \frac{\diffD p_N}{\diffD t} + \frac{b_2}{4}
+	\symbfsf{\srate}_N \cdot \symbfsf{\srate}_N
+\end{equation}
+Note that $b_2 = b_{11}$ implies $-\Psi_2/\Psi_1 = \frac{1}{2}$ which is not
+usually true for real complex fluids. This is an assumption on the fluid and
+\emph{not} a restriction on the flow.
+
+\paragraph{Proof:} recall the Cauchy equation for a second-order fluid
+\begin{equation}
+	\nabla p = \nabla \cdot \left[ b_1 \nsrate{1} + b_2 \nsrate{2} + b_{11}
+	\nsrate{1}\cdot\nsrate{1}\right]
+\end{equation}
+Suppose $\symbf{u} = \symbf{u}_N$. Giesekus' equation gives
+\begin{align}
+	\nabla \cdot \left[b_2 \nsrate{2} + b_{11}
+		\nsrate{1}\cdot\nsrate{1}\right] &= b_2 \nabla \cdot \left[ \nsrate{2}
+	+ \nsrate{1} \cdot \nsrate{1}\right] \\
+	&= b_2 \nabla \cdot \left[ \Nsrate{2} + \Nsrate{1}\cdot\Nsrate{1}\right]
+	\\
+	&= b_2 \nabla \left[ \inv{b_1} \frac{\diffD p_N}{\diffD t} + \frac{1}{4}
+\symbfsf{\srate}_N \cdot \symbfsf{\srate}_N \right]
+\end{align}
+
+Now note $\nabla \cdot\left[ b_1 \Nsrate{2}\right] = b_1 \nabla^2 \symbf{u}_N
+= \nabla p_N$, hence the Cauchy equation becomes
+\begin{equation}
+	\nabla p = \nabla \left[ p_N + \frac{b_2}{b_1} \frac{\diffD p_N}{\diffD t}
+	+ \frac{b_2}{4} \symbfsf{\srate}_N \cdot \symbfsf{\srate}_N \right]
+\end{equation}
+Thus $(\symbf{u}_N, p)$ is a solution to the second order fluid flow equations
+with $p$ as stated. \qedsymbol
+
+\paragraph{Tanner \& Pipkin's planar flow theorem:} If $(\symbf{u}_N, p_N)$ is
+a solution to the Newtonian incompressible Stokes equations with viscosity
+$b_1$ and $\symbf{u}_N$ is a 2D flow, then $(\symbf{u}_N, p)$ is a solution to the Stokes
+equations for a second order fluid with $p$ given by
+\begin{equation}
+	p = p_N + \frac{b_2}{b_1} \frac{\diffD p_N}{\diffD t} +
+	\left(\frac{b_{11}}{2} - \frac{b_2}{4}\right) \symbfsf{\srate}_N \cdot
+	\symbfsf{\srate}_N
+\end{equation}
+
+This result follows from the fact for a 2D flow $\symbf{u}_N = u(x,y)\hat{\symbf{x}} +
+v(x,y) \hat{\symbf{y}}$ we can write $\nabla \cdot \left[ \symbfsf{\srate}_N
+\cdot \symbfsf{\srate}_N\right]$ as an exact gradient.
+
+\paragraph{Langlois, Rivlin \& Pipkin's rectilinear flow theorem:} If
+$(\symbf{u}_N, p_N)$ is a solution to the Newtonian incompressible Stokes
+equations with viscosity $b_1$, and the flow is unidirectional and $\nabla
+p_N$ constant in the direction of the flow, then $(\symbf{u}_N, p)$ is a
+solution to the second-order fluid Stokes equations with
+\begin{equation}
+	p = p_N + \frac{b_2}{b_1} \frac{\partial p_N}{\partial t} +
+	\frac{b_{11}}{b_1} \symbf{u} \cdot \nabla p_N + \frac{b_2}{4}
+	\symbfsf{\srate}_N \cdot \symbfsf{\srate}_N + \frac{b_{11}-b_2}{2} (\nabla
+	\symbf{u}_N) : (\nabla \symbf{u}_N)^T
+\end{equation}
+
+This result follows from the fact for a unidirectional flow $\symbf{u}_N$ and
+$\nabla p_N$ constant in the direction of the flow, we can write $\nabla \cdot
+\left[ \symbfsf{\srate}_N \cdot \symbfsf{\srate}_N\right]$ as an exact
+gradient.
 
 
 \end{document}

@@ -2014,7 +2014,9 @@ subject to horizontal strain $\symbf{u}_g$ such that
 	\frac{\partial u_g}{\partial x} = -\frac{\partial v_g}{\partial y} =
 	-\alpha
 \end{equation}
-with $\alpha > 0$ constant. The Q-vector is then $\symbf{Q} = (\alpha b_x, 0)$
+with $\alpha > 0$ constant. Note that to be fully clear, the velocity should
+be written $\symbf{u} = \symbf{u}_g + \symbf{u}_s$ where $\symbf{u}_g$ is the
+thermal wind and $\symbf{u}_s$ is the straining velocity. The Q-vector is then $\symbf{Q} = (\alpha b_x, 0)$
 so that $\symbf{Q} \cdot \nabla b > 0$ for $\alpha > 0$. The influence of this
 front is as follows. Note that each of these influences happen simultaneously,
 but for clarity we consider the consequences one by one. Our initial set-up is
@@ -2109,6 +2111,8 @@ shown below with red lines representing buoyancy surfaces.\\
 				\draw[->] (0,1.8) arc (90:180:1);
 				\draw[->] (0,0.2) arc (-90:0:1);
 				\draw (1.5, 1) node {$\symbf{u}_a$};
+				\draw[->] (3,1) -- (2,1) node[midway,below] {$\symbf{u}_g$};
+				\draw[->] (-3,1) -- (-2,1) node[midway,below] {$\symbf{u}_g$};
 			\end{tikzpicture}
 		\end{center}
 \end{enumerate}
@@ -2293,7 +2297,7 @@ conditions $w = 0$ on $z=0, H$. Then integrating the Omega equation we have
 \begin{equation}
 	\frac{\partial}{\partial t} \int_0^H \overline{q} \, \diffd z = \left[
 		\overline{(\symbf{\omega}_a \cdot \hat{\symbf{k}})}D - \overline{\nabla b \times
-	\symbf{F}}\right]_0^H
+	\symbf{F}}\cdot\hat{\symbf{z}}\right]_0^H
 \end{equation}
 where $\bar{.}$ denotes the horizontal average. For $\symbf{\omega}_a \cdot
 \hat{\symbf{k}} > 0$, $\overline{q}$ decreases if
@@ -2305,9 +2309,9 @@ where $\bar{.}$ denotes the horizontal average. For $\symbf{\omega}_a \cdot
 		\end{itemize}
 	\item Frictional forcing:
 		\begin{itemize}
-			\item $\nabla b \times \left.\symbf{F}\, \right|_{z=H} > 0$\,\,
+			\item $\nabla b \times \left.\symbf{F}\cdot\hat{\symbf{z}}\, \right|_{z=H} > 0$\,\,
 					frictional stress aligned with thermal wind
-			\item $\nabla b \times \left.\symbf{F} \,\right|_{z=H} < 0$\,\,
+			\item $\nabla b \times \left.\symbf{F}\cdot\hat{\symbf{z}} \,\right|_{z=H} < 0$\,\,
 					frictional stress anti-aligned with thermal wind
 		\end{itemize}
 \end{itemize}
