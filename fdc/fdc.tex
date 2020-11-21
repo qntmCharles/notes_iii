@@ -1363,7 +1363,7 @@ surfaces of constant phase.
 \end{enumerate}
 
 Further, we invoke the $\beta$-plane approximation $f = f_0 + \beta y$. The
-full $3D$ Boussinesq primite equations on a $\beta$-plane are
+full $3D$ Boussinesq primitive equations on a $\beta$-plane are
 \begin{align}
 	\frac{\diffD u}{\diffD t} - (f_0+\beta y)v &= -\frac{1}{\rho_0} p'_x \\
 	\frac{\diffD v}{\diffD t} + (f_0 + \beta y) u &= -\frac{1}{\rho_0} p'_y \\
@@ -1665,13 +1665,13 @@ equations retaining only linear terms in disturbance quantities are
 \begin{equation}
 	\left[ \frac{\partial}{\partial t} + U(y,z) \frac{\partial}{\partial
 	x}\right](\psi'_{xx} + \psi'_{yy} + (\frac{f_0^2}{N^2} \psi'_z)_z) +
-	(\beta - U_{yy} - (\frac{f_0^2}{N^2} U_z)_z)\psi'_x = 0
+	(\beta - U_{yy} - (\frac{f_0^2}{N^2} U_z)_z)\psi'_x = 0 \label{eq:QGPVlin}
 \end{equation}
 The boundary condition at any boundary for top and bottom is here  illustrated
 for $z=0$,
 \begin{equation}
 	\left[\frac{\partial}{\partial t} + U(y,0) \frac{\partial}{\partial
-		x}\right] \psi'_z + U_z(y,0) \psi'_x = -\frac{N^2}{f_0} \left[
+		x}\right] \psi'_z - U_z(y,0) \psi'_x = -\frac{N^2}{f_0} \left[
 			\frac{\partial}{\partial t} + U(y,0) \frac{\partial}{\partial x}
 		\right] h'
 \end{equation}
@@ -2339,6 +2339,241 @@ where $\bar{.}$ denotes the horizontal average. For $\symbf{\omega}_a \cdot
 	\end{tikzpicture}
 \end{center}
 		
+\lecture{20/11/20}
+\section{Wave mean-flow interaction}
+
+\subsection{Definitions}
+We consider averages taken over $x$, and use the notation $\overline{(.)}$ to
+denote the $x$-average, for example
+\begin{equation}
+	\overline{\chi} = \frac{1}{L} \int_0^L \chi \, \diffd x
+\end{equation}
+where the flow extends over $ 0 \le x \le L$. We typically assume periodicity
+in $x$, motivated by atmospheric or circumpolar ocean geometry, with $x$
+corresponding to longitude. Then we define $\chi' = \chi - \overline{\chi}$
+with $\chi'$ often being alled the \emph{wave} or \emph{eddy} component. 
+\begin{itemize}
+	\item If the mean state is the background state then this matches the use
+		of $(.)'$ in the derivation of the Boussinesq primitive equations.
+		However, here the mean state may evolve in time whilst in the
+		Boussinesq derivation the background state is typically
+		time-independent.
+
+	\item If periodicity in $x$ is assumed, then $\overline{\chi_x} = 0$.
+		Hence $\overline{\theta_x \psi} = \overline{(\theta \psi)_x} -
+		\overline{\theta \psi_x} = -\overline{\theta \psi_x}$. 
+
+	\item Note that $\overline{(.)}$ is an Eulerian average, i.e. it is taken
+		at fixed values of $y$ and $z$.
+\end{itemize}
+
+For convenience, henceforth we will drop the \,$\tilde{}$\, notation for $\rho$
+and $p$ and these quantities will be interpreted respectively as the variation
+of density and pressure away from the state with reference density
+$\rho_s(z)$.
+
+\subsection{Wave propagation and wave activity}
+\paragraph{Dispersion relations.}
+For plane waves, i.e. waves with sinusoidal structure in the spatial
+coordinates $x, y, z$, or some subset of those coordinates, the dispersion
+relation gives the frequency $\omega$ as a function of the spatial wavenumber
+$\symbf{k}$. The phase velocity $\symbf{c}_p$ with components $\omega/k_i$ and
+the group velocity $\symbf{c}_g$ with components $\partial \omega/\partial
+k_i$ follow from the dispersion relation. Use of these various quantities
+requires a \emph{scale separation} between the waves and the background
+state, with the length scale of variation of the background state being much
+larger than the wavelength.
+
+\paragraph{Wave activity conservation relation.}
+The wave activity conservation relation is an equation of the typical
+conservation form
+\begin{equation}
+	\frac{\partial \mathcal{A}}{\partial t} + \nabla \cdot \symbf{F} =
+	\mathcal{D}
+\end{equation}
+where $\mathcal{A}$ is the \emph{wave-activity density}, $\symbf{F}$ is a flux
+and $\mathcal{D}$ is a term representing dissipation of wave activity, which
+is associated with physical processes that are dissipative or otherwise
+non-conservative.
+
+We may derive this relation from the QG equations, starting from the QGPV
+equation \eqref{eq:QGPVlin} linearised about a basic state flow in the $x$
+direction. Denote the $x$ component of the velocity $\overline{u}$ and the
+corresponding gradient of QGPV in the $y$ direction $\overline{q}_y$. This
+implies that the instantaneous $x$-average can be considered a basic state,
+whereas in \eqref{eq:QGPVlin} we have assumed the basic state is a
+self-consistent steady solution of the QG equations. This inconsistency is
+reolved by assuming that any time evolution of $\overline{u}, \overline{q}$ is
+slow.
+
+We may re-write \eqref{eq:QGPVlin} as
+\begin{equation}
+	\frac{\partial q'}{\partial t} + \overline{u} \frac{\partial q'}{\partial
+	x} + v' \overline{q}_y = \mathcal{D}'
+\end{equation}
+where $\mathcal{D}'$ represents the effect of dissipation on $q'$. Multiplying
+by $q'/\overline{q}_y$, assuming that $\overline{q}_y$ varies slowly in
+time, and taking the $x$-average gives
+\begin{equation}
+	\frac{\partial}{\partial t}\left[ \frac{1}{2}
+		\frac{\overline{q'^2}}{\overline{q}_y}\right] +\overline{v'q'} =
+		\frac{\overline{q' \mathcal{D}'}}{\overline{q}_y}
+		\label{eq:13.1}
+\end{equation}
+
+We now use the \emph{generalised Taylor identity} which follows from
+multiplying $q'$ by $v'$:
+\begin{align}
+	v'q' &= \psi'_x \left(\psi'_{xx} + \psi'_{yy} + \left(\psi'_z
+	\frac{f_0^2}{N^2}\right)_z\right) \\
+	&= \left( \frac{1}{2} (\psi'_x)^2\right)_x + \left(\psi'_x\psi'_y\right)_y -
+	\left(\frac{1}{2}(\psi'_y)^2\right)_x + \left( \psi'_x \psi'_z
+		\frac{f_0^2}{N^2} \right)_z - \left(\frac{1}{2}(\psi'_z)^2
+	\frac{f_0^2}{N^2}\right)_x
+\end{align}
+
+Taking the $x$-average of the above and subtitution into \eqref{eq:13.1} gives
+\begin{equation}
+	\frac{\partial}{\partial t}\left[ \frac{1}{2}
+		\frac{\overline{q'^2}}{\overline{q}_y}\right] +
+		\frac{\partial}{\partial y} \left[ -\overline{u'v'}\right] +
+		\frac{\partial}{\partial z} \left[ -\frac{gf_0}{\rho_0N^2}
+		\overline{v'\rho'}\right]	
+		= \frac{\overline{q' \mathcal{D}'}}{\overline{q}_y}
+\end{equation}
+
+Note that the terms within the $y$ and $z$ derivatives have been re-expressed
+in terms of $u', v'$ and $\rho'$. This equation has the structure
+\begin{equation}
+	\frac{\partial \overline{\mathcal{A}}}{\partial t} + \frac{\partial
+		\overline{F^{(y)}}}{\partial y} + \frac{\partial
+	\overline{F^{(z)}}}{\partial z} = \overline{\mathcal{D}_{\mathcal{A}}}
+\end{equation}
+which expresses the fact that $\overline{\mathcal{A}}$ is the density of a
+quantity that can be transported by a flux with components $\overline{F^{(y)}}
+$ and $\overline{F^{(z)}}$ in the $y$ and $z$ directions and destroyed or
+created at a rate $\overline{\mathcal{D}_{\mathcal{A}}}$ per unit volume.
+Here, $\overline{\mathcal{A}}$ is the \emph{Eliassen-Palm wave activity} and
+$\overline{\symbf{F}}$ is the \emph{Eliassen-Palm flux}. This conservation relation
+need not require a scale-separation assumption, but it is helpful if the
+conservation relation is consistent with the cases where there is
+scale-separation, in the sense that is then satisfies the
+\emph{group-velocity} property $\langle \symbf{F}\rangle = \langle
+\mathcal{A}\rangle \symbf{c}_g$ where $\langle \cdot \rangle$ denotes a phase
+average. The Eliassen-Palm wave activity and flux satisfy this property.
+
+\paragraph{Eddy fluxes and wave propagation.} The flux $\symbf{F}$ associates
+correlations between different wave or eddy quantities with directions of wave
+propagation. The Eliassen-Palm flux $y$-component $\overline{F^{(y)}} =
+-\overline{u'v'}$ and the $z$-component $\overline{F^{(z)}} = -g f_0
+\overline{v'\rho'}/N^2 \rho_0$ imply that the eddy flux in the $y$ direction
+of the $x$-component of momentum $\overline{u'v'}$ satisfies
+\begin{equation}
+	\overline{u'v'} \begin{cases} < 0 & \text{for Northward group propagation}
+		\\ > 0 & \text{for Southward group propagation}\end{cases}
+\end{equation}
+
+and that the eddy flux in the $y$ direction of the density
+$\overline{v'\rho'}$ satisfies
+\begin{equation}
+	\overline{v'\rho'} \begin{cases}
+		< 0 & \text{for upward group propagation} \\
+		> 0 & \text{for downard group propagation}
+	\end{cases}
+\end{equation}
+
+Note that these results hold for Rossby waves under the small $\Ro$ assumption
+and also assuming that the $y$-gradient of PV in the basic state is positive,
+as is always the case in the real atmosphere or ocean if this gradient is
+dominated by $\beta$. For other waves (e.g. Poincar\'{e} waves), internal
+waves or equatorial waves) the results are different.
+
+\subsection{Mean-flow evolution equations}
+Using the division into `mean' and `eddy' parts, we may apply the averaging
+operator to the Boussinesq $\beta$-plane primitive equations to give
+\begin{align}
+	\overline{u}_t + (\overline{uv})_y + (\overline{uw})_z
+	-\overline{v}(f_0+\beta y) &= 0 \\
+	\overline{v}_t + (\overline{v^2})_y + (\overline{wv})_z + (f_0 + \beta y)
+	\overline{u} &= -\frac{\overline{p}_y}{\rho_0} \\
+	-\overline{p}z - \overline{\rho} g &= 0 \\
+	\overline{v}_y + \overline{w}_z &= 0 \label{eq:13.6}\\
+	\overline{\rho}_t + (\overline{\rho v})_y + (\overline{\rho w})_z &= 0
+\end{align}
+
+Note that to derive the above it is necessary to use the non-divergence of the
+velocity field. The simplest approach is to re-write $\frac{\diffD u}{\diffD
+	t}$ as $u_t + (u^2)_x + (uv)_y + (uw)_z$ and similarly for $\frac{\diffD
+v}{\diffD t}$ and $\frac{\diffD \rho}{\diffD t}$. 
+
+The definition of the averaging operator as well as \eqref{eq:13.6} gives
+\begin{equation}
+	(\overline{uv})_y + (\overline{uw})_z = (\overline{u}\overline{v})y +
+	(\overline{u}\overline{v})_z + (\overline{u'v'})_y + (\overline{u'w'})_z =
+	\overline{v}\overline{u}_y + \overline{w}\overline{u}_z +
+	(\overline{u'v'})_y + (\overline{u'w'})_z
+\end{equation}
+Note the primes denote disturbances from the $x$-average. Now applying the
+small $\Ro$ scaling, dividing horizontal velocities into geostrophic and
+ageostrophic components and noting that $\overline{v}_g$ is zero, we have
+\begin{align}
+	\overline{u}_t - f_0 \overline{v}_a &= -(\overline{u'v'})_y \\
+	f_0 \overline{u} &= -\frac{\overline{p}_y}{\rho_0} \label{eq:13.9}\\
+	-\overline{p}_z - \overline{\rho}g &= 0 \label{eq:13.10}\\
+	\overline{v}_{ay} + \overline{w}_{az} &= 0 \\
+	\overline{\rho}_t + \overline{w}_a \frac{\diffd \rho_s}{\diffd z} &=
+	-(\overline{\rho' v'})_y
+\end{align}
+This is a coupled set of equations for the five Eulerian-mean quantities
+$\overline{u}_t, \overline{\rho}_t, \overline{p}, \overline{v}_a,
+\overline{w}_a$, where the lack of subscript on $u, v$ implies the geostrophic
+components.
+
+There are two \emph{eddy forcing} terms $-(\overline{u'v'})_y$ and
+$-(\overline{\rho'v'})_y$, determined respectively by the eddy momentum flux
+and the eddy density (or heat) flux. 
+
+\subsection{Transformed Eulerian mean equations}
+We now make a transformation $\overline{w}_a \to \overline{w}_a^*$ defined by
+\begin{equation}
+	\overline{w}_a^* = \overline{w}-a + \frac{(\overline{\rho' v'})_y}{\diffd
+	\rho_s / \diffd z}
+\end{equation}
+and define $\overline{v}_a^*$ such that 
+\begin{equation}
+	\overline{w}_{az}^* + \overline{v}_{ay}^* = 0 \label{eq:13.14}
+\end{equation}
+Hence we have
+\begin{equation}
+	\overline{v}_a^* = \overline{a}_a - \frac{\partial}{\partial z} \left[
+	\frac{\overline{\rho' v'}}{\diffd \rho_s/\diffd z}\right]
+\end{equation}
+The $x$-momentum and density equations then become
+\begin{align}
+	\overline{u}_t - f_0 \overline{v}_a^* &= -(\overline{u'v'})_y + \left(
+	\frac{f_0 \overline{\rho'v'}}{\diffd \rho_s/\diffd z}\right)_z = \nabla
+	\cdot \overline{\symbf{F}} \\
+	\overline{\rho}_t + \overline{w}_a^* \frac{\diffd \rho_s}{\diffd z} &= 0
+\end{align}
+
+These two equations combined with \eqref{eq:13.9}, \eqref{eq:13.10},
+\eqref{eq:13.14} are the \emph{transformed Eulerian mean equations}. The
+transformation has combined the two separate eddy forcing terms into a single
+term $\nabla \cdot \overline{\symbf{F}}$ in the $x$-momentum equation and has
+removed the eddy forcing terms in the density equation. Note
+$\overline{\symbf{F}}$ is the Eliassen-Palm flux vector and here $\nabla \cdot
+\overline{\symbf{F}}$ is interpreted as the force acting on the mean flow due
+to the eddies. 
+
+The transformation does not change the response of $\overline{u}_t$ or
+$\overline{\rho}_t$, but the eddy density flux appears to play a different
+role. In the standard Eulerian-mean formalism the density flux
+$\overline{\rho'v'}$ appears as a forcing in the density equation, whilst here
+it is part of the force, and in fact $f_0 \overline{\rho'v'}/(\diffd
+\rho_s/\diffd z)$ appears to act as a vertical momentum flux. Hence in the
+transformed Eulerian-mean formalism, just as horizontally propagating Rossby
+waves transfer momentum in the horizontal, vertically propagating Rossby waves
+can be considered to transfer momentum in the vertical.
 
 
 \end{document}

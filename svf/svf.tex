@@ -4,6 +4,7 @@
 \setmathfont{Latin Modern Math}
 \setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
 \setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
+\usetikzlibrary{intersections, pgfplots.fillbetween}
 
 \begin{document}
 
@@ -3041,6 +3042,187 @@ Equations \eqref{eq:ext1} and \eqref{eq:ext2} can be used to solve the problem.
 		resistance compared to stretching).
 \end{enumerate}
 
+\lecture{20/11/20}
+\subsubsection{Viscous thread falling under gravity}
+Consider a thread of viscous fluid injected through a gap with volume flux
+$Q$. The cross-sectional area of the thread is $A(z)$ with velocity $\symbf{u}
+= w\hat{\symbf{z}}$ only. We will consider both the steady behaviour and the
+transient case when the thread has length $L(t)$ and a stress free bottom.
+The internal pressure is assumed hydrostatic.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\fill[gray!50] (-1.5,3) rectangle (-0.5,3.2);
+		\fill[gray!50] (0.5,3) rectangle (1.5, 3.2);
+		\draw[thick] (-1.5, 3) -- (-0.5,3) -- (-0.5,3.2);
+		\draw[thick] (0.5,3.2) -- (0.5, 3) -- (1.5, 3);
+		\draw[blue,->] (0, 2) -- (0,1);
+		\draw[blue] (0.5, 1.5) node {$w$};
+		\draw[smooth] plot[tension=1] coordinates {(0.5, 3) (0.3, 2) (0.25,
+		0.5)};
+		\draw[smooth] plot[tension=1] coordinates {(-0.5, 3) (-0.3, 2) (-0.25,
+		0.5)};
+		\draw[dashed,fill=gray!20] (0,2.5) ellipse (0.37 and 0.1);
+		\draw (0.7, 2.5) node {$A(z)$};
+		\draw (-1, 2) node {$p_0$};
+		\draw[->] (-0.3, 3.2) -- (-0.3, 3);
+		\draw[->] (0.3, 3.2) -- (0.3, 3);
+		\draw[->] (0, 3.2) -- (0, 3);
+		\draw (0, 3.4) node {$Q$};
+		\draw (0, 0) node {Steady};
+	\end{tikzpicture}
+	\qquad
+	\begin{tikzpicture}[scale=1.5]
+		\fill[gray!50] (-1.5,3) rectangle (-0.5,3.2);
+		\fill[gray!50] (0.5,3) rectangle (1.5, 3.2);
+		\draw[thick] (-1.5, 3) -- (-0.5,3) -- (-0.5,3.2);
+		\draw[thick] (0.5,3.2) -- (0.5, 3) -- (1.5, 3);
+		\draw[blue,->] (0, 2) -- (0,1);
+		\draw[blue] (0.5, 1.5) node {$w$};
+		\draw[smooth] plot[tension=1] coordinates {(0.5, 3) (0.3, 2) (0.4,
+		0.5)};
+		\draw[smooth] plot[tension=1] coordinates {(-0.5, 3) (-0.3, 2) (-0.4,
+		0.5)};
+		\draw (0.4, 0.5) -- (-0.4, 0.5);
+		\draw[dashed] (-0.34, 2.5) -- (0.34, 2.5);
+		\draw (0.7, 2.5) node {$A(z)$};
+		\draw (-1, 2) node {$p_s$};
+		\draw[->] (-0.3, 3.2) -- (-0.3, 3);
+		\draw[->] (0.3, 3.2) -- (0.3, 3);
+		\draw[->] (0, 3.2) -- (0, 3);
+		\draw (0, 3.4) node {$Q = A_0 w_0$};
+		\draw (0, 0) node {Transient};
+	\end{tikzpicture}
+\end{center}
+
+The governing equations in both cases are
+\begin{align}
+	3\mu \frac{\partial}{\partial z} \left[ A \frac{\partial w}{\partial z}
+	\right] &= -\rho g A \\
+	\frac{\partial A}{\partial t} + \frac{\partial}{\partial z} \left[ A w
+		\right] &= 0 \\
+		\text{or}\hspace{1em}
+	\frac{\diffD A}{\diffD t} &= -A \frac{\partial w}{\partial z}
+\end{align}
+
+\paragraph{Steady case.}
+From mass conservation, we have $Aw = Q$. Hence
+\begin{equation}
+	\frac{w}{Q} \frac{\diffd}{\diffd z} \left[ \frac{Q}{w} \frac{\diffd
+	w}{\diffd z} \right] = -\frac{\rho g}{3\mu}
+\end{equation}
+
+This can be solved exactly in the general case. The solution with $A
+\frac{\diffd w}{\diffd z} \to 0$ as $z \to \infty$ is 
+\begin{align}
+	w &= \frac{g}{6\nu} (z-z_0)^2 \\
+	A &= \frac{6Q \nu}{g} \frac{1}{(z-z_0)^2}
+\end{align}
+where the constant $z_0$ is an origin chosen so that $A = A_0$ at $z=0$. We
+now check the validity of our assumptions.
+
+\begin{itemize}
+	\item Slenderness is valid if $\frac{a}{L} \ll 1$. Hence $A^{1/2}/(z-z_0)
+		\ll 1$
+		\begin{equation}
+			\implies z - z_0 \gg \left(\frac{6Q\nu}{g}\right)^{1/4} \sim a_0
+		\end{equation}
+	\item Inertia is negligible if $\frac{wL}{\nu} \sim
+		\frac{g(z-z_0)^3}{6\nu^2} \ll 1$
+		\begin{equation}
+			\implies z - z_0 \ll \left( \frac{6\nu^2}{g}\right)^{1/3}
+		\end{equation}
+		For syrup with $\nu \sim 300 \,cm^2 s^{-1}$, this distance is
+		approximately $9\,cm$.
+\end{itemize}
+
+Note that for large $z$, the dominant balance is
+\begin{equation}
+	\rho w \frac{\partial w}{\partial z} \sim \rho g \implies w \sim
+	\sqrt{2gz}
+\end{equation}
+hence the parts of the thread far from $z=0$ are in free fall.
+
+\paragraph{Transient evolution.}
+Integrating the governing equation for $w$ we have
+\begin{equation}
+	3 \mu A \frac{\partial w}{\partial z} = \rho g \int_z^{L(t)} A \, \diffd z 
+\end{equation}
+This says that viscous stress balances the weight of the fluid. Re-arranging
+this equation allows use of the governing equation for $A$:
+\begin{equation}
+	A \frac{\partial w}{\partial z} = \frac{6}{3\nu} \int_z^{L(t)} A \, diffd
+	z = -\frac{\diffD A}{\diffD t}
+\end{equation}
+Hence a material slice thins due to the weight below it. To proceed we label
+material slices by their `release time' $t_0$. Hence we replace
+$\frac{\diffD}{\diffD t}$ with $\left.\frac{\diffd}{\diffd t}\right|_{t_0}$
+and note $\int_z^L A \, \diffd z = Q t_0$.
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\fill[gray!50] (-1.5,3) rectangle (-0.5,3.2);
+		\fill[gray!50] (0.5,3) rectangle (1.5, 3.2);
+		\draw[thick] (-1.5, 3) -- (-0.5,3) -- (-0.5,3.2);
+		\draw[thick] (0.5,3.2) -- (0.5, 3) -- (1.5, 3);
+		\draw[smooth,name path=C] plot[tension=1] coordinates {(0.5, 3) (0.3, 2) (0.4,
+		0.5)};
+		\draw[smooth,name path=D] plot[tension=1] coordinates {(-0.5, 3) (-0.3, 2) (-0.4,
+		0.5)};
+		\draw (0.4, 0.5) -- (-0.4, 0.5);
+		\draw[dashed,name path=B] (-0.34, 2.5) -- (0.34, 2.5);
+		\draw[dashed,name path=A] (-0.31, 2.3) -- (0.31, 2.3);
+		\draw (0.4, 2.4) node[right] {$A\,\diffd z = - Q\, \diffd t_0$};
+		\draw (0.4,0.5) node[right] {$t_0=0$};
+		\draw (0, 3) node {$t_0=t$};
+	\end{tikzpicture}
+\end{center}
+
+Hence 
+\begin{align}
+	\frac{\diffd A}{\diffd t} &= -\frac{gQt_0}{3\nu} \\
+	\implies A &= A_0 - \frac{gQt_0}{3\nu}(t-t_0)
+\end{align}
+
+Hence $A \to 0$ as $t \to t_0 + \frac{3\nu A_0}{gQ t_0}$ which is minimised at
+\begin{equation}
+	t^* = 2\left( \frac{3\nu A_0}{g Q}\right)^{1/2}
+\end{equation}
+and $t_0 = t^*/2$. Hence half the mass breaks off and the evolution continues
+with a new weight. We know $A(t;t_0)$, and want to find the shape of the flow,
+i.e. $A(z,t)$. Now
+\begin{align}
+	A \, \diffd z &= -Q \, \diffd t_0 \\
+	\implies z(t;t_0) &= \int_{t_0}^t \frac{Q \, \diffd t_0'}{A(t;t_0')}
+\end{align}
+
+Let $T = t/(\frac{gQ}{3\nu A_0})^{1/2}$ and $Z = z/(\frac{gQ^3}{3\nu
+A_0^3})^{1/2}$. Then
+\begin{align}
+	A &= 1 - T_0 (T-T_0) \\
+	Z &= \frac{2}{\sqrt{4-T^2}} \left[
+		\text{arctan}\left(\frac{T}{\sqrt{4-T^2}}\right) - \text{arctan}\left(
+	\frac{2T_0-T}{\sqrt{4-T^2}}\right)\right]
+\end{align}
+
+As $T \to 2$ we get break-up, with the slice $T_0 = 1$ breaking.
+
+\subsection{Long Thin Flows III: Two-fluid case}
+When are boundary conditions effectively rigid or stress free?
+\subsubsection{Gravity current along interface between two fluids.}
+For simplicity, we assume that the two semi-infinite fluids have the same
+viscosity $\mu$, and the fluid pool between the two interfaces has viscosity
+$\lambda \mu$.
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[thick] (-3, 0) -- (-1, 0);
+		\draw[thick] (1, 0) -- (3,0);
+		\draw[thick] (0,0) ellipse (1 and 0.15);
+		\draw (0,0) node {$\lambda \mu, \hspace{1em} \rho_0$};
+		\draw (-2, 0.3) node {$\mu_1 = \mu, \hspace{1em} \rho_1$};
+		\draw (-2, -0.3) node {$\mu_2 = \mu, \hspace{1em} \rho_2$};
+	\end{tikzpicture}
+\end{center}
 
 
 

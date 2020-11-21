@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  19 NOV 2020 14:45
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  21 NOV 2020 17:28
  restricted system commands enabled.
 **fdc.tex
 (./fdc.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.110 seconds
+luaotfload | main : initialization completed in 0.104 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3185,13 +3185,13 @@ LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 4.99992pt on input line 120.
  [3](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman6-regul
 ar.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/ot
-l/lmroman6-regular.luc) [4] <isobars.png, id=270, 623.32875pt x 452.69125pt>
+l/lmroman6-regular.luc) [4] <isobars.png, id=296, 623.32875pt x 452.69125pt>
 File: isobars.png Graphic file (type png)
  <use isobars.png>
 Package luatex.def Info: isobars.png used on input line 217.
 (luatex.def)             Requested size: 186.64719pt x 135.55284pt.
 
-[5<./isobars.png>] [6] <ekman_spiral.jpg, id=314, 290.99867pt x 156.05203pt>
+[5<./isobars.png>] [6] <ekman_spiral.jpg, id=340, 290.99867pt x 156.05203pt>
 File: ekman_spiral.jpg Graphic file (type jpg)
 
 <use ekman_spiral.jpg>
@@ -3219,7 +3219,7 @@ LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 17.27972pt on input line 933.
  [16] [17] [18]
-<wbc.png, id=476, 488.82625pt x 405.515pt>
+<wbc.png, id=502, 488.82625pt x 405.515pt>
 File: wbc.png Graphic file (type png)
  <use wbc.png>
 Package luatex.def Info: wbc.png used on input line 1163.
@@ -3240,28 +3240,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 2016--2024
 
  []
 
-[33] [34] [35] [36]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2344.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2344.
+[33] [34] [35] [36] [37] [38] [39] [40]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2579.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2579.
  (./fdc.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2344.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2344.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2579.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2579.
 Package rerunfilecheck Info: File `fdc.out' has not changed.
-(rerunfilecheck)             Checksum: 4F6DF4357DB1F69B37EBEB601FD37252;3162.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2344.
+(rerunfilecheck)             Checksum: DD46D22E72E7C69A237B759C730A8753;3542.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2579.
 )
 
 Here is how much of LuaTeX's memory you used:
- 53576 strings out of 494577
+ 53611 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 32794 words of node memory still in use:
-   11 hlist, 4 vlist, 2 rule, 1 disc, 1 local_par, 3850 glue, 2 kern, 3 penalty,
- 6 sub_mlist, 2 margin_kern, 20 glyph, 1281 attribute, 64 glue_spec, 1281 attrib
+ 35297 words of node memory still in use:
+   11 hlist, 4 vlist, 2 rule, 1 disc, 1 local_par, 4151 glue, 2 kern, 3 penalty,
+ 6 sub_mlist, 2 margin_kern, 20 glyph, 1380 attribute, 64 glue_spec, 1380 attrib
 ute_list, 1 write nodes
-   avail lists: 1:1,2:2867,3:941,4:183,5:411,6:2545,7:654,8:135,9:895,10:16,11:2
-14
- 55679 multiletter control sequences out of 65536+600000
- 178 fonts using 42867807 bytes
+   avail lists: 1:1,2:2669,3:941,4:183,5:426,6:2607,7:715,8:135,9:895,10:16,11:2
+42
+ 55696 multiletter control sequences out of 65536+600000
+ 178 fonts using 42868175 bytes
  74i,13n,108p,8841b,949s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman9-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype
@@ -3278,10 +3278,10 @@ s10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></
 usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmbx10.pfb>
-Output written on fdc.pdf (36 pages, 521064 bytes).
+Output written on fdc.pdf (40 pages, 541343 bytes).
 
-PDF statistics: 782 PDF objects out of 1000 (max. 8388607)
- 605 compressed objects within 7 object streams
- 172 named destinations out of 1000 (max. 131072)
- 376 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 845 PDF objects out of 1000 (max. 8388607)
+ 664 compressed objects within 7 object streams
+ 190 named destinations out of 1000 (max. 131072)
+ 416 words of extra memory for PDF output out of 10000 (max. 10000000)
 

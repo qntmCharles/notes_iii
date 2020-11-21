@@ -61,3 +61,8 @@
 \contentsline {subsection}{\numberline {3.6}Long Thin Flows II: Extensional flows}{40}{subsection.3.6}
 \contentsline {subsubsection}{\numberline {3.6.1}Axisymmetric case}{40}{subsubsection.3.6.1}
 \contentsline {paragraph}{\nonumberline Variations.}{41}{section*.10}
+\contentsline {subsubsection}{\numberline {3.6.2}Viscous thread falling under gravity}{42}{subsubsection.3.6.2}
+\contentsline {paragraph}{\nonumberline Steady case.}{43}{section*.11}
+\contentsline {paragraph}{\nonumberline Transient evolution.}{43}{section*.12}
+\contentsline {subsection}{\numberline {3.7}Long Thin Flows III: Two-fluid case}{44}{subsection.3.7}
+\contentsline {subsubsection}{\numberline {3.7.1}Gravity current along interface between two fluids.}{44}{subsubsection.3.7.1}
