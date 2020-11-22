@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  21 NOV 2020 16:02
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  22 NOV 2020 21:26
  restricted system commands enabled.
 **svf.tex
 (./svf.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.105 seconds
+luaotfload | main : initialization completed in 0.155 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3248,7 +3248,7 @@ lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/yfonts-t1/yswab.pfb>
 
-Output written on svf.pdf (44 pages, 314190 bytes).
+Output written on svf.pdf (44 pages, 314182 bytes).
 
 PDF statistics: 725 PDF objects out of 1000 (max. 8388607)
  612 compressed objects within 7 object streams
