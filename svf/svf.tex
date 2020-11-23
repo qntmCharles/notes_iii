@@ -1125,6 +1125,7 @@ to $\symbf{U}$ from the $\frac{a^2}{6}\nabla^2$ term.
 
 \lecture{26/10/20}
 \subsection{Integral representations of Stokes flow}
+\label{ss:integralrep}
 \subsubsection{Basic integral identity}
 Consider a Stokes flow $\symbf{u}$ and a Stokeslet flow $\symbf{u}^S$ due to a point force
 $\symbf{F}$ at $\y$. We have $\nabla \cdot \symbf{u} = \nabla \cdot \symbf{u}^S = 0$ and
@@ -1322,6 +1323,7 @@ Stokeslet density. Note:
 
 \section{Approximations and applications}
 \subsection{Slender-body theory}
+\label{ss:slenderbody}
 Consider the case of a solid, perhaps flexible, body e.g. flagellum, or fibre
 in a flow. Our aim is to calculate resistance to prescribed motion
 $\symbf{V}(s) = \dot{\symbf{X}}$ in background flow $\symbf{u}^\infty(\x)$. 
@@ -2375,6 +2377,7 @@ as derived by Lord Rayleigh (1892).
 \end{enumerate}
 
 \subsection{Long Thin Flows I: Lubrication Theory}
+\label{ss:lube}
 Here we consider thin flow with (at least one) effectively no-slip boundary.
 Denote the fluid depth as $h$ and the horizontal lengthscale $L$. We assume $h
 \ll L$.
@@ -2819,6 +2822,7 @@ governing equations.
 
 \lecture{18/11/20}
 \subsubsection{Axisymmetric viscous gravity current}
+\label{ss:viscousgravitycurrent}
 Consider a fixed volume $V$ of viscous fluid spreading axisymmetrically on a
 horizontal plane under air (i.e. a free-surface condition). The equations of
 motion and global conservation of mass are
@@ -2870,6 +2874,7 @@ R/(gV^3t/\nu)^{1/8}$.  The solution is
 where $\eta_N = (1024/243\pi^3)^{1/8}$.
 
 \subsection{Long Thin Flows II: Extensional flows}
+\label{ss:extensional}
 We now consider thin flows with effectively stress-free boundaries.
 \subsubsection{Axisymmetric case}
 \begin{wrapfigure}{R}{0.4\textwidth}
@@ -3214,17 +3219,211 @@ viscosity $\mu$, and the fluid pool between the two interfaces has viscosity
 $\lambda \mu$.
 
 \begin{center}
-	\begin{tikzpicture}[scale=2]
+	\begin{tikzpicture}[scale=2.5]
 		\draw[thick] (-3, 0) -- (-1, 0);
 		\draw[thick] (1, 0) -- (3,0);
-		\draw[thick] (0,0) ellipse (1 and 0.15);
-		\draw (0,0) node {$\lambda \mu, \hspace{1em} \rho_0$};
+		\draw[thick] (0,0) ellipse (1 and 0.25);
+		\draw (-0.5,0) node {$\lambda \mu, \hspace{1em} \rho_0$};
 		\draw (-2, 0.3) node {$\mu_1 = \mu, \hspace{1em} \rho_1$};
 		\draw (-2, -0.3) node {$\mu_2 = \mu, \hspace{1em} \rho_2$};
+		\draw[<->] (0.3, -0.23) -- (0.3, 0.23) node[midway,right] {$h$};
+		\draw[<->] (0.6, -0.19) -- (0.6,0) node[midway,right] {$h_2$};
+		\draw[<->] (0.6, 0) -- (0.6, 0.19) node[midway,right] {$h_1$};
+		\draw[dashed,thin,gray!80] (-1,0) -- (1,0);
+		\draw[->] (0,0) -- (0.2, 0) node[below] {$r$};
+		\draw[->] (0,0) -- (0, 0.2) node[left] {$z$};
+		\draw (0, -0.4) node {$H(t)$};
+		\draw (1.2, 0.1) node {$R(t)$};
 	\end{tikzpicture}
 \end{center}
 
+\lecture{23/11/20}
+At large times, we expect $R \gg H$. Hence the vertical balance is
+hydrostatic. We can deduce the form of pressure in two ways, either by
+traversing through the upper fluid or the lower fluid. We have
+\begin{align}
+	p &= p_0 - \rho_1 g h_1 + \rho_0 g (h_1-z) \hspace{1em} \text{upper path}\\
+	  &= p_0 + \rho_2 g h_2 - \rho_0 g(h_2 + z) \hspace{1em} \text{lower path} \\
+\end{align}
+Given these two forms must coincide, we deduce $(\rho_0 - \rho_1) h_1 =
+(\rho_2 - \rho_0) h_2$, i.e. the gravity current floats iceberg-like due to
+differences in density. We also find from the above
+\begin{align}
+	\frac{\partial p}{\partial r} &= \Delta \rho g \frac{\partial h}{\partial
+	r} \\
+	\text{where} \,\,\, \Delta \rho &= \frac{(\rho_2 -
+	\rho_0)(\rho_0-\rho_1)}{\rho_2 - \rho_1}
+\end{align}
+drives the radial spreading. The rate of spreading is determined by the
+viscous resistance. Consider the scalings for $\frac{R}{H} \gg 1$:
+\begin{align}
+	\text{Kinematics} \, \implies \,\,\, U &\sim \frac{R}{t} \\
+	\text{Volume conservation}\, \implies \,\,\, R^2 H &\sim a^3
+\end{align}
+where $a$ is the radius of the sphere when the current is initially
+undeformed, or equivalently $a = V^{1/3}$ where $V$ is the volume of the
+initial current. The radial dynamics give
+\begin{align}
+	\text{Total spreading force} \,\,\, \sim \frac{\partial p}{\partial r}
+	\times \text{volume} &\sim \Delta \rho g a^3 \frac{H}{R} \\
+	\text{Viscous resistance} &\sim \mu_s \frac{U}{L_s} A_s
+\end{align}
+where $\mu_s$ is the viscosity, $L_s$ is the lengthscale of the dominant
+source of viscous stress, and $A_s$ is the area on which it acts. Hence the
+radial balance is
+\begin{equation}
+	\Delta \rho g a^3 \frac{H}{R} \sim \mu_s \frac{R}{tL_s} A_s
+\end{equation}
+Define a dimensionless time $\tau \equiv \frac{\Delta \rho g a t}{\mu}$.
+Then
+\begin{align}
+	\frac{R^2 A_s}{a^2 HL_s} \frac{\mu_s}{\mu} &\sim \tau \\
+	R^2 H &\sim a^3
+\end{align}
+which is 2 equations for $R(\tau), H(\tau)$ once $A_s, L_s, \mu_s$ determined.
+There are four possibilities for $(\mu_s, L_s, A_s)$ depending on $\lambda$
+and $R/H$, in which the dominant behaviour is determined by the relative
+important of extreme viscosity contrasts and extreme aspect ratio.
 
+\begin{enumerate}
+	\item $\lambda \gg R/H$: internal strain dominates. The external fluid
+		appears inviscid. The very viscous internal fluid stretches in
+		extensional flow (cf. radial version of extensional flow in
+		section~\ref{ss:extensional}).  The internal flow behaves like plug
+		flow.
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+				\draw[thick] (0,0) ellipse (3 and 0.2);
+				\draw[<->] (0, -0.3) -- (3, -0.3) node[midway,below] {$R$};
+				\draw[dashed] (0.5, 0.19) -- (0.5, -0.19);
+				\draw[dashed] (0.7, 0.18) -- (0.7, -0.18);
+				\draw[blue,->] (0.5, 0.15) -- (0.7, 0.15);
+				\draw[blue,->] (0.5, -0.15) -- (0.7, -0.15);
+				\draw[blue,->] (0.5, 0) -- (0.7, 0);
+				\draw[dashed] (1.2, 0.17) -- (1.2, -0.17);
+				\draw[dashed] (1.7, 0.14) -- (1.7, -0.14);
+				\draw[blue,->] (1.2, 0.13) -- (1.7, 0.13);
+				\draw[blue,->] (1.2, -0.13) -- (1.7, -0.13);
+				\draw[blue,->] (1.2, 0) -- (1.7, 0);
+				\draw[dashed] (-0.5, 0.19) -- (-0.5, -0.19);
+				\draw[dashed] (-0.7, 0.18) -- (-0.7, -0.18);
+				\draw[blue,->] (-0.5, 0.15) -- (-0.7, 0.15);
+				\draw[blue,->] (-0.5, -0.15) -- (-0.7, -0.15);
+				\draw[blue,->] (-0.5, 0) -- (-0.7, 0);
+				\draw[dashed] (-1.2, 0.17) -- (-1.2, -0.17);
+				\draw[dashed] (-1.7, 0.14) -- (-1.7, -0.14);
+				\draw[blue,->] (-1.2, 0.13) -- (-1.7, 0.13);
+				\draw[blue,->] (-1.2, -0.13) -- (-1.7, -0.13);
+				\draw[blue,->] (-1.2, 0) -- (-1.7, 0);
+			\end{tikzpicture}
+		\end{center}
+		Hence we have $\mu_s = \lambda \mu$, $L_s \sim R$ and $A_s \sim HR$.
+		Then
+		\begin{equation}
+			\frac{R}{a} \sim \left( \frac{\tau}{\lambda}\right)^{1/2}
+		\end{equation}
+	\item $\frac{H}{R} \ll \lambda \ll \frac{R}{H}$: external shear dominates.
+		Internal fluid is still approximately plug flow, but now resisted by
+		shear stress in the external fluid.
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+				\draw[thick] (0,0) ellipse (3 and 0.2);
+				\draw[dashed] (0.3, 0.5) -- (0.3, -0.5);
+				\draw[smooth,blue] plot[domain=-0.1981:0.1981,variable=\y]
+				({0.412+0.1981*0.1981 - \y*\y},{\y});
+				\draw[smooth,blue] plot[domain=-0.5:-0.1981,variable=\y]
+				({0.32+0.3*exp(-30*\y*\y)},{\y});
+				\draw[smooth,blue] plot[domain=0.1981:0.5,variable=\y]
+				({0.32+0.3*exp(-30*\y*\y)},{\y});
+				\draw[blue,->] (0.3, 0.1) -- (0.441, 0.1);
+				\draw[blue,->] (0.3, -0.1) -- (0.441, -0.1);
+				\draw[dashed] (-0.3, 0.5) -- (-0.3, -0.5);
+				\draw[smooth,blue] plot[domain=-0.1981:0.1981,variable=\y]
+				({-0.412-0.1981*0.1981 + \y*\y},{\y});
+				\draw[smooth,blue] plot[domain=-0.5:-0.1981,variable=\y]
+				({-0.32-0.3*exp(-30*\y*\y)},{\y});
+				\draw[smooth,blue] plot[domain=0.1981:0.5,variable=\y]
+				({-0.32-0.3*exp(-30*\y*\y)},{\y});
+				\draw[blue,->] (-0.3, 0.1) -- (-0.441, 0.1);
+				\draw[blue,->] (-0.3, -0.1) -- (-0.441, -0.1);
+				\draw[<->] (0.25, 0.2) -- (0.25, 0.5) node[midway,left] {$\sim
+				R$};
+				\draw[<-] (0.42, 0.23) -- (0.6, 0.3) node[right] {match shear stress};
+			\end{tikzpicture}
+		\end{center}
+		The external fluid sees the current as a flat disc of radial
+		Stokeslets (cf. integral representations in
+		section~\ref{ss:integralrep}). We have $\mu_s \approx \mu, L_s \sim R,
+		A_s \sim R^2$ hence
+		\begin{equation}
+			\frac{R}{a} \sim \tau^{1/5}
+		\end{equation}
+	\item $\frac{H}{R \ln R/H} \ll \lambda \ll \frac{H}{R}$: internal sehar
+		dominates. Poiseuille component of internal flow now much larger than
+		the velocity at which external fluid is dragged along (cf. lubrication
+		theory in section~\ref{ss:lube}). Effectively no-slip boundaries.
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+				\draw[thick] (0,0) ellipse (3 and 0.2);
+				\draw[dashed] (0.3, 0.5) -- (0.3, -0.5);
+				\draw[smooth,blue] plot[domain=-0.1987:0.1987,variable=\y]
+				({0.341+10*0.1987*0.1987 - 10*\y*\y},{\y});
+				\draw[smooth,blue] plot[domain=-0.5:-0.1987,variable=\y]
+				({0.31+0.1*exp(-30*\y*\y)},{\y});
+				\draw[smooth,blue] plot[domain=0.1987:0.5,variable=\y]
+				({0.31+0.1*exp(-30*\y*\y)},{\y});
+				\draw[blue,->] (0.3, 0.1) -- (0.615, 0.1);
+				\draw[blue,->] (0.3, -0.1) -- (0.615, -0.1);
+				\draw[dashed] (-0.3, 0.5) -- (-0.3, -0.5);
+				\draw[smooth,blue] plot[domain=-0.1987:0.1987,variable=\y]
+				({-0.341-10*0.1987*0.1987 + 10*\y*\y},{\y});
+				\draw[smooth,blue] plot[domain=-0.5:-0.1987,variable=\y]
+				({-0.31-0.1*exp(-30*\y*\y)},{\y});
+				\draw[smooth,blue] plot[domain=0.1987:0.5,variable=\y]
+				({-0.31-0.1*exp(-30*\y*\y)},{\y});
+				\draw[blue,->] (-0.3, 0.1) -- (-0.615, 0.1);
+				\draw[blue,->] (-0.3, -0.1) -- (-0.615, -0.1);
+				\draw[<->] (0.25, -0.19) -- (0.25, 0.19) node[midway,left]
+				{$\sim H$};
+			\end{tikzpicture}
+		\end{center}
+		In this case we have $\mu_s \approx \lambda \mu$, $L_s \sim H$, $A_s
+		\sim R^2$. Hence
+		\begin{equation}
+			\frac{R}{a} \sim \left( \frac{\tau}{\lambda}\right)^{1/8}
+		\end{equation}
+		Note this is the same scaling as the rigid surface case in
+		section~\ref{ss:viscousgravitycurrent}, as the balances are the same
+		in both problems.
+	\item $\lambda \ll \frac{H}{R \ln R/H}$: `push' at nose dominates, i.e.
+		bubble regime. Very low viscosity internal fluid moves along the
+		current with negligible pressure drop, but must push the external
+		fluid out of the way at the nose. The current has a rounded nose and
+		away from the nose, $h$ is approximately constant.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick] (0, 0.5) -- (3, 0.5);
+				\draw[thick] (0, -0.5) -- (3, -0.5);
+				\draw[thick] (3, 0.5) arc (90:-90:0.5);
+				\draw (0,0) node {$\frac{\partial p}{\partial r} \sim 0$};
+				\draw[<->] (2.8, -0.6) -- (3.5, -0.6) node[midway,below] {$\sim
+				H$};
+				\draw[blue,->] (3.6, 0) -- (4, 0);
+				\draw[blue,->] (3.6, -0.2) -- (4,-0.3);
+				\draw[blue,->] (3.6, 0.2) -- (4,0.3);
+			\end{tikzpicture}
+		\end{center}
+		The external fluid sees an expanding ring force (cf. slender-body
+		theory in section~\ref{ss:slenderbody}). We have $\mu_s \approx \mu,
+		L_s \sim H \ln R/H, A_s \sim HR$. Hence
+		\begin{equation}
+			\frac{R}{a \ln R/H} \sim \tau^{1/5}
+		\end{equation}
+\end{enumerate}
+
+Note that in all four regimes, analytic similarity solutions exist. Also, for
+all $\lambda$, the eventual regime as $\tau \to \infty$ is case 2 (Lister \&
+Kerr, JFM, 1989).
 
 
 
@@ -3258,4 +3457,3 @@ $\lambda \mu$.
 
 
 \end{document}
-

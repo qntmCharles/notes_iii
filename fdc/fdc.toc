@@ -66,3 +66,9 @@
 \contentsline {paragraph}{\nonumberline Eddy fluxes and wave propagation.}{38}{section*.25}
 \contentsline {subsection}{\numberline {13.3}Mean-flow evolution equations}{39}{subsection.13.3}
 \contentsline {subsection}{\numberline {13.4}Transformed Eulerian mean equations}{39}{subsection.13.4}
+\contentsline {subsection}{\numberline {13.5}Non-acceleration conditions}{40}{subsection.13.5}
+\contentsline {subsection}{\numberline {13.6}Wave dissipation}{41}{subsection.13.6}
+\contentsline {paragraph}{\nonumberline Rossby wave critical layer.}{41}{section*.26}
+\contentsline {paragraph}{\nonumberline Rearrangement of absolute vorticity.}{42}{section*.27}
+\contentsline {subsection}{\numberline {13.7}Summary}{43}{subsection.13.7}
+\contentsline {paragraph}{\nonumberline Mean-flow interaction problem subtleties.}{43}{section*.28}
