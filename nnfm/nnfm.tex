@@ -14,6 +14,7 @@
 \usetikzlibrary{intersections, pgfplots.fillbetween}
 \newcommand{\nsrate}[1]{\symbfsf{\gamma}_{(#1)}}
 \newcommand{\Nsrate}[1]{\symbfsf{\gamma}_{(#1),N}}
+\newcommand{\ucd}[1]{\stackrel{\bigtriangledown}{#1}}
 
 \begin{document}
 
@@ -2896,6 +2897,194 @@ This result follows from the fact for a unidirectional flow $\symbf{u}_N$ and
 $\nabla p_N$ constant in the direction of the flow, we can write $\nabla \cdot
 \left[ \symbfsf{\srate}_N \cdot \symbfsf{\srate}_N\right]$ as an exact
 gradient.
+
+\lecture{24/11/20}
+\subsection{Perturbation approach}
+A second-order fluid is an \emph{expansion} of the Newtonian constitutive
+relationship in orders of $\text{Wi}$. This suggests a perturbation approach:
+solve for $(\symbf{u}, p)$ as an expansion in powers of $\text{Wi}$.  Recall
+for a second-order fluid, the deviatoric stress in terms of material
+properties is
+\begin{equation}
+	\symbfsf{\tau}^{(2)} = \eta \symbfsf{\srate} - \frac{1}{2} \Psi_1
+	\stackrel{\bigtriangledown}{\symbfsf{\gamma}} + \Psi_2
+	\symbfsf{\srate}\cdot\symbfsf{\srate}
+\end{equation}
+We can non-dimensionalise this equation by using characteristic scales
+$\symbf{u} \sim U$, $\symbfsf{\srate} \sim \srate$, and $\tau, p \sim \eta
+\srate$. We will denote dimensionless quantities with a $^*$, for example
+$\symbf{u}^* = \symbf{u}/U$. Then
+\begin{align}
+	\eta \srate \symbfsf{\tau}^* &= \eta \srate \symbfsf{\srate}^* -
+	\frac{1}{2}\Psi_1 \srate^2 \ucd{\symbfsf{\srate}^*} + \Psi_2 \srate^2
+	\symbfsf{\srate}^*\cdot\symbfsf{\srate}^*\\
+	\implies \symbfsf{\tau}^* &= \symbfsf{\srate}^* -
+	\frac{\Psi_1\srate}{2\eta} \ucd{\symbfsf{\srate}^*} +
+	\frac{\Psi_2\srate}{\eta} \symbfsf{\srate}^*\cdot\symbfsf{\srate}^*
+\end{align}
+In this case we define the Weissenberg as
+\begin{equation}
+	\text{Wi} \equiv \frac{\Psi_1 \srate}{2\eta} = -\frac{b_2}{b_1} \srate
+\end{equation}
+We also define the dimensionless number $\alpha = \frac{b_{11}}{b_2} =
+-\frac{2\Psi_2}{\Psi_1} > 0$ for convenience. Then the second-order fluid
+non-dimensionalised constitutive relationship is
+\begin{equation}
+	\symbfsf{\tau}^* = \symbfsf{\srate}^* - \text{Wi}\left(
+		\ucd{\symbfsf{\srate}^*} + \alpha
+	\symbfsf{\srate}^*\cdot\symbfsf{\srate}^*\right)
+\end{equation}
+The Cauchy equation for $(\symbf{u}^*,p^*)$ in the Stokes limit is then
+\begin{align}
+	\nabla \cdot \symbf{u}^* &= 0 \\
+	\nabla p^* = \nabla \cdot \symbfsf{\tau}^* &= \nabla \cdot
+	\left[\symbfsf{\srate}^* - \text{Wi}\left(\ucd{\symbfsf{\srate}^*} +
+	\alpha \symbfsf{\srate}^*\cdot\symbfsf{\srate}^*\right)\right]
+\end{align}
+Henceforth we will drop the $^*$ notation and assume quantities are
+dimensionless. We now look for a solution to the Cauchy equation as a
+perturbation expansion in $\text{Wi}$:
+\begin{align}
+	\symbf{u} &= \symbf{u}_0 + \text{Wi}\symbf{u}_1 + \dots \\
+	p &= p_0 + \text{Wi}p_1 + \dots
+\end{align}
+We solve the problem order by order in $\text{Wi}$.
+\paragraph{Zeroth order.} At zeroth order we get 
+the Newtonian incompressible Stokes equations
+\begin{equation}
+	\nabla \cdot \symbf{u}_0 = 0, \hspace{2em} \nabla p_0 = \nabla^2
+	\symbf{u}_0
+\end{equation}
+Assume that we can solve this problem, so that $(\symbf{u}_0,p_0)$ are known.
+\paragraph{First order.} We have $\nabla \cdot \symbf{u}_1 = 0$ which is true
+at all orders. We also find
+\begin{align}
+	\nabla p_1 &= \nabla \cdot \left[ \symbfsf{\srate}_1 -
+		\ucd{\symbfsf{\srate}}_0 - \alpha
+	\symbfsf{\srate}_0\cdot\symbfsf{\srate}_0 \right] \\
+	\implies \nabla^2 \symbf{u}_1 - \nabla p_1 &= \nabla \cdot \left[
+		\ucd{\symbfsf{\srate}}_0 + \alpha
+	\symbfsf{\srate}_0\cdot\symbfsf{\srate}_0\right]
+\end{align}
+Gieseku's equation gives (in dimensionless form as above)
+\begin{equation}
+	\nabla \cdot \ucd{\symbfsf{\srate}}_0 = -\nabla \cdot \left[
+		\symbfsf{\srate}_0 \cdot \symbfsf{\srate}_0\right] + \left[
+		\frac{\diffD p_0}{\diffD t} +
+	\frac{1}{4}\symbfsf{\srate}_0:\symbfsf{\srate}_0\right]
+\end{equation}
+Hence the Cauchy equation becomes
+\begin{equation}
+	\nabla^2 \symbf{u}_1 - \nabla \left[ p_1 + \frac{\diffD p_0}{\diffD t} +
+	\frac{1}{4}\symbfsf{\srate}_0\!:\!\symbfsf{\srate}_0\right] =
+	(\alpha-1)\nabla \cdot \left[
+	\symbfsf{\srate}_0\cdot\symbfsf{\srate}_0\right] = \symbf{f}_1
+\end{equation}
+where $\symbf{f}_1$ is the first order forcing, which involves only Newtonian
+quantities. Denoting the \emph{modified pressure} as $\tilde{p}_1$ we have
+\begin{equation}
+	\nabla^2 \symbf{u}_1 - \nabla \tilde{p}_1 = \symbf{f}_1
+\end{equation}
+which is the forced Stokes equation. Once solved, the solution at order
+$\text{Wi}$ is
+\begin{align}
+	\symbf{u} &= \symbf{u}_0 + \text{Wi}\symbf{u}_1 \\
+	p &= p_0 + \text{Wi}\left[ \tilde{p}_1 - \frac{\diffD p_0}{\diffD t} -
+	\frac{1}{4}\symbfsf{\srate}_0\!:\!\symbfsf{\srate}_0\right]
+\end{align}
+To summarise:
+\begin{enumerate}
+	\item Solve for Newtonian solution $(\symbf{u}_0, p_0)$
+	\item Compute $\symbf{f}_1$
+	\item Solve for $(\symbf{u}_1, \tilde{p}_1)$ to get $(\symbf{u}_1, p_1)$
+		and hence $(\symbf{u},p)$.
+\end{enumerate}
+The problem is supplemented by boundary conditions which could specify the
+velocity (easier) or the stress (more difficult: involves $\symbfsf{\tau}_1$).
+The algebra may sometimes be complex but this method as it is systematic and 
+can continue to higher order. However, there are diminishing returns on the
+usefulness at each order. 
+
+\section{Non-linear Differential Models}
+So far, we have seen a series of models with strengths and issues.
+\begin{itemize}
+	\item GNF: captures shear dependent viscosity, but no fluid memory.
+	\item LVF: captures fluid memory, but not objective.
+	\item RME: objective, but valid only for small deformation (small
+		$\text{Wi}$)
+\end{itemize}
+In this section, we try to build a model that
+\begin{enumerate}
+	\item has memory;
+	\item is objective;
+	\item is not restricted to small deformation.
+\end{enumerate}
+
+\subsection{Quasi-linear models}
+Our first idea is to consider a LVF model and replace $\frac{\partial
+\symsf{a}}{\partial t}$ by $\ucd{\symsf{a}}$. Hence we keep the same physics
+as derived at small deformation, but we are no longer restricted to small
+deformation as the derivatives are objective. This class of models is known as
+\emph{quasi-linear models}.
+
+\begin{eg}
+	\begin{itemize}
+		\item Maxwell LVF has constitutive relationship at small deformation
+			\begin{equation}
+				\symbfsf{\tau} + \lambda \frac{\partial}{\partial t}
+				\symbfsf{\tau} = \eta \symbfsf{\srate}
+			\end{equation}
+			Transforming $\partial_t \mapsto \ucd{\cdot}$ we get the
+			\emph{upper-convected Maxwell fluid} with 2 parameters:
+			\begin{equation}
+				\symbfsf{\tau} + \lambda \ucd{\symbfsf{\tau}}
+				 = \eta \symbfsf{\srate}
+			\end{equation}
+		\item Jeffreys LVF has constitutive relationship at small deformation
+			\begin{equation}
+				\left( 1 + \lambda_1\frac{\partial}{\partial
+				t}\right) \symbfsf{\tau}=
+				\eta \left( 1 + \lambda_2 \frac{\partial}{\partial t} \right)
+				\symbfsf{\srate}
+			\end{equation}
+			As a quasi-linear model, we have the \emph{Oldroyd-B fluid}, or
+			equivalently the \emph{upper-convected Jeffreys fluid} with 3
+			parameters:
+			\begin{equation}
+				\symbfsf{\tau} + \lambda_1\!\ucd{\symbfsf{\tau}} = \eta \left[
+				\symbfsf{\srate} + \lambda_2\!\ucd{\symbfsf{\srate}}\right]
+			\end{equation}
+			Oldroyd-B can also be derived from kinetic theory: a polymer
+			suspension modelled as a dilute (non-interacting) suspension of
+			elastic dumbells in the flow. Stress is calculated and averaging is
+			applied to yield the same model as above. This is a popular and
+			important quasi-linear model.
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[thick] (0,0) -- (5,0) -- (5, 3) -- (0,3) -- (0,0);
+					\draw (1,1) circle (0.15);
+					\draw[smooth,rotate around={35:(1,1)}]
+					plot[domain=1.15:2.08]
+					({\x},{1+0.07*sin(25*deg(\x))});
+					\draw (2,5/3) circle (0.15);
+					\begin{scope}[shift={(1, 0.5)},rotate=-40]
+						\draw (1,1) circle (0.15);
+						\draw[smooth,rotate around={35:(1,1)}]
+						plot[domain=1.15:2.08]
+						({\x},{1+0.07*sin(25*deg(\x))});
+						\draw (2,5/3) circle (0.15);
+					\end{scope}
+					\begin{scope}[shift={(4.6, 1)},rotate=100]
+						\draw (1,1) circle (0.15);
+						\draw[smooth,rotate around={35:(1,1)}]
+						plot[domain=1.15:2.08]
+						({\x},{1+0.07*sin(25*deg(\x))});
+						\draw (2,5/3) circle (0.15);
+					\end{scope}
+				\end{tikzpicture}
+			\end{center}
+	\end{itemize}
+\end{eg}
 
 
 \end{document}
