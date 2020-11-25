@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  24 NOV 2020 15:35
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  24 NOV 2020 23:13
  restricted system commands enabled.
 **nnfm.tex
 (./nnfm.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.108 seconds
+luaotfload | main : initialization completed in 0.106 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3226,27 +3226,36 @@ tl/lmroman8-italic.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts
 /otl/lmroman5-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cac
 he/generic/fonts/otl/lmroman5-regular.luc)
 [38] [39] [40] [41] [42] [43] [44] [45] [46]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3090.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3090.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3093.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3093.
  (./nnfm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3090.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3090.
-Package rerunfilecheck Info: File `nnfm.out' has not changed.
-(rerunfilecheck)             Checksum: D45A3CF9CCBA10DC658904C77EEA55E6;3479.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3090.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3093.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3093.
+
+
+Package rerunfilecheck Warning: File `nnfm.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `nnfm.out':
+(rerunfilecheck)             Before: 95CCC3B3C5F2C33497AE825F0BAEA338;3517
+(rerunfilecheck)             After:  D45A3CF9CCBA10DC658904C77EEA55E6;3479.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3093.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54637 strings out of 494577
+ 54640 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 40192 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 4617 glue, 1 kern, 228 sub_mlist, 1675 attribute, 6
+ 40199 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 4618 glue, 1 kern, 228 sub_mlist, 1675 attribute, 6
 4 glue_spec, 1675 attribute_list, 1 write nodes
-   avail lists: 1:1,2:933,3:424,4:145,5:313,6:2182,7:725,8:88,9:654,10:16,11:207
+   avail lists: 1:1,2:947,3:424,4:151,5:313,6:2188,7:746,8:88,9:654,10:16,11:207
 
- 56807 multiletter control sequences out of 65536+600000
- 100 fonts using 21905239 bytes
+ 56809 multiletter control sequences out of 65536+600000
+ 100 fonts using 21905151 bytes
  74i,19n,108p,8842b,1973s stack positions out of 5000i,500n,10000p,200000b,100000s
+
+warning  (pdf backend): unreferenced destination with name 'section.10'
 </usr/share/texmf/fonts/opentype/public/lm/lmroman8-italic.otf></usr/share/fonts
 /truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/fonts/opentype/pu
 blic/lm/lmromanslant8-regular.otf></usr/share/fonts/truetype/neohellenic/GFSNeoh
@@ -3262,10 +3271,10 @@ f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
 ns10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf><
 /usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on nnfm.pdf (46 pages, 305778 bytes).
+Output written on nnfm.pdf (46 pages, 306127 bytes).
 
-PDF statistics: 660 PDF objects out of 1000 (max. 8388607)
- 551 compressed objects within 6 object streams
- 164 named destinations out of 1000 (max. 131072)
- 432 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 667 PDF objects out of 1000 (max. 8388607)
+ 558 compressed objects within 6 object streams
+ 165 named destinations out of 1000 (max. 131072)
+ 440 words of extra memory for PDF output out of 10000 (max. 10000000)
 

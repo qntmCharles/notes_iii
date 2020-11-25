@@ -1,52 +1,60 @@
-\BOOKMARK [1][-]{section.1}{Fluid motion in a rotating reference frame}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Local Cartesian coordinates}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Scale analysis.}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{Taylor-Proudman Theorem}{section.1}% 4
-\BOOKMARK [1][-]{section.2}{Departures from geostrophy}{}% 5
-\BOOKMARK [2][-]{subsection.2.1}{Inertial \(free\) oscillations}{section.2}% 6
-\BOOKMARK [2][-]{subsection.2.2}{Ekman layer}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.3}{Ekman transport}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.4}{Ekman pumping}{section.2}% 9
-\BOOKMARK [1][-]{section.3}{Rotating shallow water equations}{}% 10
-\BOOKMARK [2][-]{subsection.3.1}{Potential vorticity \(PV\)}{section.3}% 11
-\BOOKMARK [1][-]{section.4}{Small amplitude motions in rotating SW}{}% 12
-\BOOKMARK [2][-]{subsection.4.1}{Steady flows}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.2}{Waves in an unbounded domain}{section.4}% 14
-\BOOKMARK [1][-]{section.5}{Geostrophic adjustment}{}% 15
-\BOOKMARK [2][-]{subsection.5.1}{Steady solutions}{section.5}% 16
-\BOOKMARK [2][-]{subsection.5.2}{Transients}{section.5}% 17
-\BOOKMARK [2][-]{subsection.5.3}{Energetics}{section.5}% 18
-\BOOKMARK [1][-]{section.6}{Quasi-geostrophic equations}{}% 19
-\BOOKMARK [2][-]{subsection.6.1}{Waves in QG}{section.6}% 20
-\BOOKMARK [2][-]{subsection.6.2}{Physical interpretation of Rossby waves}{section.6}% 21
-\BOOKMARK [1][-]{section.7}{Large scale ocean circulation}{}% 22
-\BOOKMARK [2][-]{subsection.7.1}{Sverdrup flow}{section.7}% 23
-\BOOKMARK [2][-]{subsection.7.2}{Western boundary currents}{section.7}% 24
-\BOOKMARK [1][-]{section.8}{Stratification}{}% 25
-\BOOKMARK [2][-]{subsection.8.1}{Boussinesq approximation}{section.8}% 26
-\BOOKMARK [2][-]{subsection.8.2}{Atmosphere \046 ocean stratification}{section.8}% 27
-\BOOKMARK [2][-]{subsection.8.3}{Internal gravity waves}{section.8}% 28
-\BOOKMARK [1][-]{section.9}{3D quasi-geostrophic equations}{}% 29
-\BOOKMARK [2][-]{subsection.9.1}{Basic facts about rotation \046 stratification}{section.9}% 30
-\BOOKMARK [2][-]{subsection.9.2}{Thermal wind equation}{section.9}% 31
-\BOOKMARK [2][-]{subsection.9.3}{Potential vorticity}{section.9}% 32
-\BOOKMARK [2][-]{subsection.9.4}{3D quasi-geostrophic equations}{section.9}% 33
-\BOOKMARK [3][-]{subsubsection.9.4.1}{Quasi-geostrophic `point vortex'}{subsection.9.4}% 34
-\BOOKMARK [1][-]{section.10}{Waves \046 instabilities in 3D QG}{}% 35
-\BOOKMARK [2][-]{subsection.10.1}{Framework}{section.10}% 36
-\BOOKMARK [2][-]{subsection.10.2}{Rossby waves \205 vertical modes}{section.10}% 37
-\BOOKMARK [2][-]{subsection.10.3}{Baroclinic instability}{section.10}% 38
-\BOOKMARK [1][-]{section.11}{Fronts}{}% 39
-\BOOKMARK [2][-]{subsection.11.1}{Frontogenesis function}{section.11}% 40
-\BOOKMARK [2][-]{subsection.11.2}{Vertical velocity in 3D QG equations}{section.11}% 41
-\BOOKMARK [3][-]{subsubsection.11.2.1}{Ageostrophic secondary circulation \(ASC\)}{subsection.11.2}% 42
-\BOOKMARK [2][-]{subsection.11.3}{PV conservation in the Boussinesq equations}{section.11}% 43
-\BOOKMARK [1][-]{section.12}{Internal waves \046 instabilities in fronts}{}% 44
-\BOOKMARK [1][-]{section.13}{Wave mean-flow interaction}{}% 45
-\BOOKMARK [2][-]{subsection.13.1}{Definitions}{section.13}% 46
-\BOOKMARK [2][-]{subsection.13.2}{Wave propagation and wave activity}{section.13}% 47
-\BOOKMARK [2][-]{subsection.13.3}{Mean-flow evolution equations}{section.13}% 48
-\BOOKMARK [2][-]{subsection.13.4}{Transformed Eulerian mean equations}{section.13}% 49
-\BOOKMARK [2][-]{subsection.13.5}{Non-acceleration conditions}{section.13}% 50
-\BOOKMARK [2][-]{subsection.13.6}{Wave dissipation}{section.13}% 51
-\BOOKMARK [2][-]{subsection.13.7}{Summary}{section.13}% 52
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Fluid motion in a rotating reference frame}{section.1}% 2
+\BOOKMARK [3][-]{subsubsection.1.1.1}{Local Cartesian coordinates}{subsection.1.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.2}{Scale analysis.}{subsection.1.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.1.3}{Taylor-Proudman Theorem}{subsection.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.2}{Departures from geostrophy}{section.1}% 6
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Inertial \(free\) oscillations}{subsection.1.2}% 7
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Ekman layer}{subsection.1.2}% 8
+\BOOKMARK [3][-]{subsubsection.1.2.3}{Ekman transport}{subsection.1.2}% 9
+\BOOKMARK [3][-]{subsubsection.1.2.4}{Ekman pumping}{subsection.1.2}% 10
+\BOOKMARK [1][-]{section.2}{Shallow Water Systems}{}% 11
+\BOOKMARK [2][-]{subsection.2.1}{Rotating shallow water equations}{section.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Potential vorticity \(PV\)}{subsection.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.2}{Small amplitude motions in rotating SW}{section.2}% 14
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Steady flows}{subsection.2.2}% 15
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Waves in an unbounded domain}{subsection.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.3}{Geostrophic adjustment}{section.2}% 17
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Steady solutions}{subsection.2.3}% 18
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Transients}{subsection.2.3}% 19
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Energetics}{subsection.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.4}{Quasi-geostrophic equations}{section.2}% 21
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Waves in QG}{subsection.2.4}% 22
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Physical interpretation of Rossby waves}{subsection.2.4}% 23
+\BOOKMARK [2][-]{subsection.2.5}{Large scale ocean circulation}{section.2}% 24
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Sverdrup flow}{subsection.2.5}% 25
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Western boundary currents}{subsection.2.5}% 26
+\BOOKMARK [1][-]{section.3}{Three-dimensional Waves \046 Instabilities}{}% 27
+\BOOKMARK [2][-]{subsection.3.1}{Stratification}{section.3}% 28
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Boussinesq approximation}{subsection.3.1}% 29
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Atmosphere \046 ocean stratification}{subsection.3.1}% 30
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Internal gravity waves}{subsection.3.1}% 31
+\BOOKMARK [2][-]{subsection.3.2}{3D quasi-geostrophic equations}{section.3}% 32
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Basic facts about rotation \046 stratification}{subsection.3.2}% 33
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Thermal wind equation}{subsection.3.2}% 34
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Potential vorticity}{subsection.3.2}% 35
+\BOOKMARK [3][-]{subsubsection.3.2.4}{3D quasi-geostrophic equations}{subsection.3.2}% 36
+\BOOKMARK [3][-]{subsubsection.3.2.5}{Quasi-geostrophic `point vortex'}{subsection.3.2}% 37
+\BOOKMARK [2][-]{subsection.3.3}{Waves \046 instabilities in 3D QG}{section.3}% 38
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Framework}{subsection.3.3}% 39
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Rossby waves \205 vertical modes}{subsection.3.3}% 40
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Baroclinic instability}{subsection.3.3}% 41
+\BOOKMARK [2][-]{subsection.3.4}{Fronts}{section.3}% 42
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Frontogenesis function}{subsection.3.4}% 43
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Vertical velocity in 3D QG equations}{subsection.3.4}% 44
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Ageostrophic secondary circulation \(ASC\)}{subsection.3.4}% 45
+\BOOKMARK [3][-]{subsubsection.3.4.4}{PV conservation in the Boussinesq equations}{subsection.3.4}% 46
+\BOOKMARK [2][-]{subsection.3.5}{Internal waves \046 instabilities in fronts}{section.3}% 47
+\BOOKMARK [1][-]{section.4}{Mean Flows}{}% 48
+\BOOKMARK [2][-]{subsection.4.1}{Wave mean-flow interaction}{section.4}% 49
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Definitions}{subsection.4.1}% 50
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Wave propagation and wave activity}{subsection.4.1}% 51
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Mean-flow evolution equations}{subsection.4.1}% 52
+\BOOKMARK [3][-]{subsubsection.4.1.4}{Transformed Eulerian mean equations}{subsection.4.1}% 53
+\BOOKMARK [3][-]{subsubsection.4.1.5}{Non-acceleration conditions}{subsection.4.1}% 54
+\BOOKMARK [3][-]{subsubsection.4.1.6}{Wave dissipation}{subsection.4.1}% 55
+\BOOKMARK [3][-]{subsubsection.4.1.7}{Summary}{subsection.4.1}% 56
+\BOOKMARK [2][-]{subsection.4.2}{Mean meridional circulations}{section.4}% 57
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Introduction}{subsection.4.2}% 58
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Boundary conditions}{subsection.4.2}% 59
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Model problem}{subsection.4.2}% 60

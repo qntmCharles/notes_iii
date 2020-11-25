@@ -2350,6 +2350,7 @@ flows with small velocity gradients or very short memory.
 
 \section{Objective Derivatives}
 \subsection{Oldroyd's axioms}
+\label{topdown}
 Newtonian fluid mechanics was developed in the 19\textsuperscript{th} century.
 The theory of complex fluids was developed in the 20\textsuperscript{th}
 century. In the 1950s, there was intense research to set up a rigorous
@@ -2966,10 +2967,10 @@ at all orders. We also find
 		\ucd{\symbfsf{\srate}}_0 + \alpha
 	\symbfsf{\srate}_0\cdot\symbfsf{\srate}_0\right]
 \end{align}
-Gieseku's equation gives (in dimensionless form as above)
+Giesekus' equation gives (in dimensionless form as above)
 \begin{equation}
 	\nabla \cdot \ucd{\symbfsf{\srate}}_0 = -\nabla \cdot \left[
-		\symbfsf{\srate}_0 \cdot \symbfsf{\srate}_0\right] + \left[
+		\symbfsf{\srate}_0 \cdot \symbfsf{\srate}_0\right] + \nabla\left[
 		\frac{\diffD p_0}{\diffD t} +
 	\frac{1}{4}\symbfsf{\srate}_0:\symbfsf{\srate}_0\right]
 \end{equation}
@@ -3054,11 +3055,13 @@ deformation as the derivatives are objective. This class of models is known as
 				\symbfsf{\tau} + \lambda_1\!\ucd{\symbfsf{\tau}} = \eta \left[
 				\symbfsf{\srate} + \lambda_2\!\ucd{\symbfsf{\srate}}\right]
 			\end{equation}
-			Oldroyd-B can also be derived from kinetic theory: a polymer
-			suspension modelled as a dilute (non-interacting) suspension of
-			elastic dumbells in the flow. Stress is calculated and averaging is
-			applied to yield the same model as above. This is a popular and
-			important quasi-linear model.
+			The Oldroyd-B fluid model can also be derived from kinetic theory:
+			a polymer suspension modelled as a dilute (non-interacting)
+			suspension of elastic dumbells in the flow. Stress is calculated
+			and averaging is applied to yield the same model as above. This is
+			a popular and important quasi-linear model given it can be derived
+			via either a \emph{bottom up} or \emph{top down} approach (see
+			section~\ref{topdown}).
 			\begin{center}
 				\begin{tikzpicture}
 					\draw[thick] (0,0) -- (5,0) -- (5, 3) -- (0,3) -- (0,0);

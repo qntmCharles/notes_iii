@@ -24,7 +24,8 @@ size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
 \tableofcontents
 
 \lecture{12/10/20}
-\section{Fluid motion in a rotating reference frame}
+\section{Introduction}
+\subsection{Fluid motion in a rotating reference frame}
 In a non-rotating frame, the \emph{Navier-Stokes} equations are
 \begin{equation}
 	\rho \frac{\diffD \symbf{u}}{\diffD t} = -\nabla p - \rho \nabla \phi + \rho
@@ -105,7 +106,7 @@ than the equatorial radius: see figure~\ref{fig:oblate}. In reality, the
 surface of the Earth is also very close to a geopotential surface. Hence
 \emph{geopotential coordinates} are very useful for planetary scale motion.
 
-\subsection{Local Cartesian coordinates}
+\subsubsection{Local Cartesian coordinates}
 For small motions, it is much more convenient to define \emph{local Cartesian
 coordinates} (figure~\ref{fig:lcc}).
 \begin{figure}
@@ -161,7 +162,7 @@ and $f^* u \ll g$. Hence
 This is the \emph{traditional approximation}. This is \emph{not} always a good
 approximation, particularly at intermediate scales.
 
-\subsection{Scale analysis.}
+\subsubsection{Scale analysis.}
 Define characteristic scales for length $L$, time $T$, and velocity $U$.
 Non-dimensional variables are denoted with a superscript star: $\symbf{u}^* =
 \symbf{u}/U$, etc.
@@ -224,7 +225,7 @@ In the Northern Hemisphere, air moves clockwise around high $p$ and
 anticlockwise around low $p$. A \emph{cyclonic} rotation is in the same sense
 as $\symbf{\Omega}$, \emph{anticyclonic} in the opposite sense as $\symbf{\Omega}$.
 
-\subsection{Taylor-Proudman Theorem}
+\subsubsection{Taylor-Proudman Theorem}
 Consider an incompressible, ideal fluid in geostrophic balance (small \Ro,
 \Ek)
 \begin{align}
@@ -258,7 +259,7 @@ Also, $u_x + v_y = 0$, i.e. horizontal velocity is non-divergent in
 geostrophic balance. Fluid moves in `columns' parallel to $\symbf{\Omega}$,
 called \emph{Taylor columns}.
 
-\section{Departures from geostrophy}
+\subsection{Departures from geostrophy}
 Consider an incompressible, rotating fluid with constant density $\rho_0$ with
 angular velocity $\symbf{\Omega} = (0, 0, f/2)$. Assume small ampltiude motions
 (i.e. $\abs{\symbf{u}}^2 \ll \abs{\symbf{u}}$), i.e. neglect $\symbf{u}\cdot \nabla
@@ -319,7 +320,7 @@ speed $\symbf{c}_p = w/\symbf{k}$ and group velocity
 Note that $\symbf{c}_p\cdot\symbf{c}_g = 0$. Also note $\abs{\omega} \le \abs{f}$.
 
 \lecture{16/10/2020}
-\subsection{Inertial (free) oscillations}
+\subsubsection{Inertial (free) oscillations}
 Assume $\nabla p = \symbf{0}$.  The $x$ and $y$ components of geostrophic balance
 \eqref{nsrot1}, \eqref{nsrot2} give
 \begin{equation}
@@ -340,7 +341,7 @@ ocean surface $z=0$ moving with the fluid velocity, we have
 Thus the motion of fluid particles describes describes \emph{inertial circles}
 with radius $\frac{2U}{f}$.
 
-\subsection{Ekman layer}
+\subsubsection{Ekman layer}
 Look for a \emph{steady} ocean response to a constant wind stress
 $\symbf{\tau}_w$. Use local Cartesian coordinates and make the following assumptions:
 \begin{enumerate}
@@ -395,7 +396,7 @@ figure~\ref{fig:ekman}.
 	\label{fig:ekman}
 \end{figure}
 
-\subsection{Ekman transport}
+\subsubsection{Ekman transport}
 Integrate the horizontal momentum equations \eqref{hmom1},\eqref{hmom2} to the
 base of the Ekman layer where $\nu \symbf{u}_z \approx 0$ at $z=-h$. Since $\nu
 \symbf{u}_z (z=0) = (\tau_w/\rho, 0)$, the \emph{Ekman transport} $\symbf{U}_T$ is
@@ -410,7 +411,7 @@ This is the net transport of fluid in the Ekman layer and is oriented
 $90^{\circ}$ to the right of the applied wind shear stress (in the Northern
 Hemisphere).
 
-\subsection{Ekman pumping}
+\subsubsection{Ekman pumping}
 Consider a wind stress $\tau_w(y)$ that varies over large scales. Then from
 incompressibility
 \begin{equation}
@@ -429,7 +430,8 @@ In general we have
 \end{equation}
 
 \lecture{19/10/20}
-\section{Rotating shallow water equations}
+\section{Shallow Water Systems}
+\subsection{Rotating shallow water equations}
 Consider a thin layer of fluid with constant density $\rho$. Define
 characteristic scales
 \begin{itemize}
@@ -540,7 +542,7 @@ which is a statement of the conservation of volume (equivalently mass, since
 $\rho$ is constant). Equations \eqref{eq:swx}, \eqref{eq:swy}, and
 \eqref{eq:swcon} are the \emph{rotating shallow water} (SW) equations.
 
-\subsection{Potential vorticity (PV)}
+\subsubsection{Potential vorticity (PV)}
 Denote the vertical vorticity by $\zeta = v_x - u_y$. Consider $\partial_x
 \eqref{eq:swy} - \partial_y \eqref{eq:swx}$, which gives
 \begin{equation}
@@ -594,7 +596,7 @@ angular momentum (changing depth).
 \end{center}
 
 \lecture{21/10/20}
-\section{Small amplitude motions in rotating SW}
+\subsection{Small amplitude motions in rotating SW}
 Consider a stationary fluid with depth $H_s(x,y) = H_0 - h_b$. The fluid
 surface is then perturbed by $\eta(x,y,t)$ where $\eta \ll H_s$. The total
 depth is $H(x,y,t) = H_s + \eta$. For $\abs{\symbf{u}}^2 \ll \abs{\symbf{u}}$,
@@ -621,7 +623,7 @@ we have
 	f\eta_x\right)\label{swlin5}
 \end{align}
 
-\subsection{Steady flows}
+\subsubsection{Steady flows}
 We now assume $\partial_t = 0$. From \eqref{swlin4}, \eqref{swlin5},
 \begin{equation}
 	u = -\frac{g}{f}\eta_y, \hspace{2em} v = \frac{g}{f}\eta_x
@@ -637,7 +639,7 @@ $\partial_t = 0$ and assuming $\zeta \ll f$
 \end{equation}
 Thus when $f$ varies, the flow follows contours of constant $f/H_s$.
 
-\subsection{Waves in an unbounded domain}
+\subsubsection{Waves in an unbounded domain}
 Assume $H_s$ is constant. From \eqref{swlin6}, we have
 \begin{equation}
 	\left( \partial_t^2 + f^2\right)\eta - gH_s \nabla^2 \eta = 0
@@ -686,7 +688,7 @@ short and long waves:
 \end{itemize}
 
 \lecture{23/10/20}
-\section{Geostrophic adjustment}
+\subsection{Geostrophic adjustment}
 Consider the response of rotating shallow water to an initial state \emph{not}
 in geostrophic balance. Here, we consider $\eta(x,y,) = \eta_0 \sgn(x)$,
 $\symbf{u}(x,y,0) = \symbf{0}$, so the initial PV is $0$. 
@@ -728,7 +730,7 @@ Now conservation of potential vorticity \eqref{eq:PVcons} gives
 where $c^2 \equiv g H_0$. This is a \emph{Klein-Gordon equation} where the
 $f^2\eta$ term adds elasticity to the waves.
 
-\subsection{Steady solutions}
+\subsubsection{Steady solutions}
 Consider steady solutions. Owing to the step forcing, our BCs are to match
 $\eta_x$ and $\eta$ at $x=0$. We find
 \begin{equation}
@@ -755,7 +757,7 @@ equations of geotrophic balance we have the velocity components
 	\end{tikzpicture}
 \end{center}
 
-\subsection{Transients}
+\subsubsection{Transients}
 
 The steady solution \eqref{eq:gasoln} solves the geostrophic adjustment
 equation, but it does not match the initial conditions. We add this particular
@@ -775,7 +777,7 @@ We seek solutions of plane wave form
 \end{equation}
 with $\omega^2 = f^2 + c^2 k^2$. These are Poincar\'{e} waves.
 
-\subsection{Energetics}
+\subsubsection{Energetics}
 The change in potential energy per unit length in the $y$ direction is
 \begin{align}
 	PE_{\text{initial}} - PE_{\text{final}} &= \int_{-\infty}^\infty
@@ -807,7 +809,7 @@ energy of the geostrophic flow. The remainder is radiated away by Poincar\'{e}
 waves.
 
 \lecture{26/10/20}
-\section{Quasi-geostrophic equations}
+\subsection{Quasi-geostrophic equations}
 Large scale motions in the ocean and atmosphere are associated with small
 Rossby number $\Ro \equiv \frac{U}{fL} \ll 1$. In this limit, the rotating
 shallow water equations are approximated by the SW quasi-geostrophic (SW QG)
@@ -878,7 +880,7 @@ This is the \emph{shallow water Quasi-geostrophic} (SWQG) equation, which is
 one equaiton for one unknown $\psi$, as opposed to SWPV with 2 unknowns
 $\zeta, \eta$.
 
-\subsection{Waves in QG}
+\subsubsection{Waves in QG}
 Assume a flat bottom $h_b = 0$. Linearise \eqref{eq:swqg} about a state of
 rest (i.e. neglect terms $\mathcal{O}(\psi^2)$). Then
 \begin{equation}
@@ -910,7 +912,7 @@ relative vorticity to surface height
 Hence relativity vorticity dominates at scales small compared to $R_D$ whilst
 surface height dominates at scales large compared to $R_D$.
 
-\subsection{Physical interpretation of Rossby waves}
+\subsubsection{Physical interpretation of Rossby waves}
 Consider $L \ll R_d$ ($L \gg R_D$)  and a small perturbation in the dominant
 term for the scale, $\zeta$ ($\eta$). For $L \ll R_D$, the planetary vorticity
 increases (thus $\zeta$ decreases) on the westward side, whilst the planetary
@@ -947,8 +949,8 @@ to the west also. These are Rossby waves.
 	\end{tikzpicture}
 \end{center}
 
-\section{Large scale ocean circulation}
-\subsection{Sverdrup flow}
+\subsection{Large scale ocean circulation}
+\subsubsection{Sverdrup flow}
 Seek steady solutions for rotating shallow water driven by a wind stress
 $\symbf{\tau}_w$. We have
 \begin{align}
@@ -976,7 +978,7 @@ This is called \emph{Sverdrup balance}. Physically, the North/South advection
 of planetary vorticity $\symbf{u}\cdot\nabla f$ balances the vorticity input by
 wind.
 
-\subsection{Western boundary currents}
+\subsubsection{Western boundary currents}
 Consider steady circulation in a rectangular basin, driven by a wind stress
 curl
 \begin{equation}
@@ -1193,8 +1195,9 @@ layer inputs positive vorticity to compensate.
 \end{center}
 
 \lecture{2/11/20}
-\section{Stratification}
-\subsection{Boussinesq approximation}
+\section{Three-dimensional Waves \& Instabilities}
+\subsection{Stratification}
+\subsubsection{Boussinesq approximation}
 We will consider stably stratified flow under the \emph{Boussinesq
 approximation}: we assume the density $\rho$ may be split into two parts
 $\rho_0$ and $\rho'$ with $\rho_0$ constant and $\rho'/\rho_0 \ll 1$. The
@@ -1237,7 +1240,7 @@ defined by
 	N^2 = -\frac{g}{\rho_0} \frac{\diffd \rho_s}{\diffd z}
 \end{equation}
 
-\subsection{Atmosphere \& ocean stratification}
+\subsubsection{Atmosphere \& ocean stratification}
 In the ocean, the buoyancy frequency $N$ is typically $10^{-2} s^{-1}$ in the
 upper ocean where stratification is strong, and $5 \times 10^{-4} s^{-1}$ in
 the deep ocean, where stratification is weak.
@@ -1257,7 +1260,7 @@ where $T$ is temperature. The corresponding buoyancy frequency is
 In this course we will use the Boussinesq approximation for the atmosphere and
 ocean, despite issues with compressibility.
 
-\subsection{Internal gravity waves}
+\subsubsection{Internal gravity waves}
 We linearise about a resting state with density structure represented by the
 buoyancy frequency $N$. For simplicity, background rotation is ignored for the
 time being. We define the \emph{buoyancy} $\sigma = -\rho' g/\rho_0$ for
@@ -1319,8 +1322,8 @@ which gives $\symbf{c}_g \cdot \symbf{k} = 0$, i.e. the group velocity lies in
 surfaces of constant phase.
 
 \lecture{4/11/20}
-\section{3D quasi-geostrophic equations}
-\subsection{Basic facts about rotation \& stratification}
+\subsection{3D quasi-geostrophic equations}
+\subsubsection{Basic facts about rotation \& stratification}
 \begin{enumerate}
 	\item Assuming the buoyancy frequency $N$ is constant and $\symbf{f} = f
 		\hat{\symbf{z}}$ is vertical, the dispersion relation for small
@@ -1380,7 +1383,7 @@ $\beta$-plane: at small Rossby number, the shallow water equations have
 equations, internal gravity waves for the primitive equations) and `slow'
 modes of waves which are close to geostrophic balance.
 
-\subsection{Thermal wind equation}
+\subsubsection{Thermal wind equation}
 When the Rossby number is small, we expect the flow to be close to geostrophic
 balance, so that
 \begin{align}
@@ -1397,7 +1400,7 @@ Here, the density perturbation $\rho'$ can be viewed analogously to
 temperature. These equations relate vertical changes in velocity with
 horizontal changes in density.
 
-\subsection{Potential vorticity}
+\subsubsection{Potential vorticity}
 In the shallow-water equations, the shallow-water potential vorticity was
 conserved. Under the Boussinesq primitive equations, instead the
 \emph{Rossby-Ertal potential vorticity} $P$ is conserved materially, where
@@ -1414,7 +1417,7 @@ Note that forcing and dissipation terms are not yet included. These will alter
 the material conservation of $P$, giving rise to features in the $P$ field
 which can affect or drive the evolution of the flow.
 
-\subsection{3D quasi-geostrophic equations}
+\subsubsection{3D quasi-geostrophic equations}
 \paragraph{Primitive equations.} Following the same procedure as with the
 shallow-water equations, we aim to find a prognostic equations for the slow
 (close to geostrophic balance) motion from the Boussinesq primitive equations
@@ -1646,8 +1649,8 @@ stretching term in $q$ is zero, but, consistent with the fact the circulation
 (both velocity and density perturbations) extend away from the point vortex,
 they are individually non-zero.
 
-\section{Waves \& instabilities in 3D QG}
-\subsection{Framework}
+\subsection{Waves \& instabilities in 3D QG}
+\subsubsection{Framework}
 Consider the quasi-geostrophic potential vorticity equation \eqref{eq:qgpv} as
 a starting point and consider small-amplitude disturbances to a background
 (geostrophic) flow which satisfies these equations. The background flow is
@@ -1689,7 +1692,7 @@ for $z=0$,
 		interior distribution of QGPV.
 \end{itemize}
 
-\subsection{Rossby waves -- vertical modes}
+\subsubsection{Rossby waves -- vertical modes}
 Consider the $3D$ quasi-geostrophic equations in an oceanic configuration with
 a free surface at $z=0$ in the resting undisturbed state, and a flat bottom at
 $z = -H$ with buoyancy frequency $N(z)$ which is not assumed constant. Assume
@@ -1795,7 +1798,7 @@ $P(z)$.
 \end{itemize}
 
 \lecture{11/11/20}
-\subsection{Baroclinic instability}
+\subsubsection{Baroclinic instability}
 Here we consider a flow for which disturbances that are small-amplitude
 initially may grow substantially in ampltiude.  In the atmosphere and ocean,
 an important instability mechanism is associated with sloping density
@@ -1910,7 +1913,7 @@ equtor to pole produces a poleward flux of light fluid, and an equatorward
 flux of heavy fluid. This is a \emph{baroclinic instability}. 
 
 \lecture{13/11/20}
-\section{Fronts}
+\subsection{Fronts}
 A \emph{front} is an elongated region with a large horizontal density
 gradient. These are associated with
 \begin{itemize}
@@ -1921,7 +1924,7 @@ gradient. These are associated with
 
 The process by which fronts develop is called \emph{frontogenesis}.
 
-\subsection{Frontogenesis function}
+\subsubsection{Frontogenesis function}
 Consider the QG buoyancy equation with $\abs{\symbf{u}_a} \ll
 \abs{\symbf{u}_g}$ and $b \equiv = -\frac{g\rho}{\rho_0}$.
 \begin{equation}
@@ -1951,7 +1954,7 @@ The gradient of the equation applicable at the boundaries $z=0,H$ is then
 where the right hand side is the \emph{frontogenesis function}. This equation
 says that the gradients in buoyancy are advected by $\symbf{Q}$.
 
-\subsection{Vertical velocity in 3D QG equations}
+\subsubsection{Vertical velocity in 3D QG equations}
 Recall the 3D quasi-geostrophic equations can be written
 \begin{align}
 	\frac{\diffD_g}{\diffD t} \symbf{u}_g + f \hat{\symbf{z}}\times
@@ -2121,7 +2124,7 @@ The ageostrophic velocity $\symbf{u}_a$ can be found from the
 \emph{Sawyer-Eliassen equation}. Ageostrophic strain adds to the background
 strain.
 
-\subsection{PV conservation in the Boussinesq equations}
+\subsubsection{PV conservation in the Boussinesq equations}
 Recall the Boussinesq primitive equations. The Navier-Stokes equations under
 Boussinesq approximations are
 \begin{equation}
@@ -2162,7 +2165,7 @@ In the absence of diabatic and frictional forcing, $\symbf{\omega}_a \cdot
 \nabla b$ is conserved. We call $\symbf{\omega}_a \cdot \nabla b$ the
 \emph{Ertel PV}.
 
-\section{Internal waves \& instabilities in fronts}
+\subsection{Internal waves \& instabilities in fronts}
 Consider an unbounded fluid with uniform horizontal and vertical buoyancy
 gradients:
 \begin{equation}
@@ -2339,10 +2342,10 @@ where $\bar{.}$ denotes the horizontal average. For $\symbf{\omega}_a \cdot
 	\end{tikzpicture}
 \end{center}
 		
+\section{Mean Flows}
 \lecture{20/11/20}
-\section{Wave mean-flow interaction}
-
-\subsection{Definitions}
+\subsection{Wave mean-flow interaction}
+\subsubsection{Definitions}
 We consider averages taken over $x$, and use the notation $\overline{(.)}$ to
 denote the $x$-average, for example
 \begin{equation}
@@ -2372,7 +2375,7 @@ and $p$ and these quantities will be interpreted respectively as the variation
 of density and pressure away from the state with reference density
 $\rho_s(z)$.
 
-\subsection{Wave propagation and wave activity}
+\subsubsection{Wave propagation and wave activity}
 \paragraph{Dispersion relations.}
 For plane waves, i.e. waves with sinusoidal structure in the spatial
 coordinates $x, y, z$, or some subset of those coordinates, the dispersion
@@ -2488,7 +2491,7 @@ as is always the case in the real atmosphere or ocean if this gradient is
 dominated by $\beta$. For other waves (e.g. Poincar\'{e} waves), internal
 waves or equatorial waves) the results are different.
 
-\subsection{Mean-flow evolution equations}
+\subsubsection{Mean-flow evolution equations}
 Using the division into `mean' and `eddy' parts, we may apply the averaging
 operator to the Boussinesq $\beta$-plane primitive equations to give
 \begin{align}
@@ -2517,12 +2520,13 @@ Note the primes denote disturbances from the $x$-average. Now applying the
 small $\Ro$ scaling, dividing horizontal velocities into geostrophic and
 ageostrophic components and noting that $\overline{v}_g$ is zero, we have
 \begin{align}
-	\overline{u}_t - f_0 \overline{v}_a &= -(\overline{u'v'})_y \\
+	\overline{u}_t - f_0 \overline{v}_a &= -(\overline{u'v'})_y
+	\label{eq:13.8}\\
 	f_0 \overline{u} &= -\frac{\overline{p}_y}{\rho_0} \label{eq:13.9}\\
 	-\overline{p}_z - \overline{\rho}g &= 0 \label{eq:13.10}\\
-	\overline{v}_{ay} + \overline{w}_{az} &= 0 \\
+	\overline{v}_{ay} + \overline{w}_{az} &= 0 \label{eq:13.11}\\
 	\overline{\rho}_t + \overline{w}_a \frac{\diffd \rho_s}{\diffd z} &=
-	-(\overline{\rho' v'})_y
+	-(\overline{\rho' v'})_y\label{eq:13.12}
 \end{align}
 This is a coupled set of equations for the five Eulerian-mean quantities
 $\overline{u}_t, \overline{\rho}_t, \overline{p}, \overline{v}_a,
@@ -2533,7 +2537,7 @@ There are two \emph{eddy forcing} terms $-(\overline{u'v'})_y$ and
 $-(\overline{\rho'v'})_y$, determined respectively by the eddy momentum flux
 and the eddy density (or heat) flux. 
 
-\subsection{Transformed Eulerian mean equations}
+\subsubsection{Transformed Eulerian mean equations}
 We now make a transformation $\overline{w}_a \to \overline{w}_a^*$ defined by
 \begin{equation}
 	\overline{w}_a^* = \overline{w}-a + \frac{(\overline{\rho' v'})_y}{\diffd
@@ -2552,8 +2556,9 @@ The $x$-momentum and density equations then become
 \begin{align}
 	\overline{u}_t - f_0 \overline{v}_a^* &= -(\overline{u'v'})_y + \left(
 	\frac{f_0 \overline{\rho'v'}}{\diffd \rho_s/\diffd z}\right)_z = \nabla
-	\cdot \overline{\symbf{F}} \\
-	\overline{\rho}_t + \overline{w}_a^* \frac{\diffd \rho_s}{\diffd z} &= 0
+	\cdot \overline{\symbf{F}} \label{eq:13.16}\\
+	\overline{\rho}_t + \overline{w}_a^* \frac{\diffd \rho_s}{\diffd z} &=
+	0\label{eq:13.17}
 \end{align}
 
 These two equations combined with \eqref{eq:13.9}, \eqref{eq:13.10},
@@ -2579,7 +2584,7 @@ Note that the Eulerian-mean circulation and the transformed Eulerian-mean
 circulation satisfy different boundary conditions.
 
 \lecture{23/11/20}
-\subsection{Non-acceleration conditions}
+\subsubsection{Non-acceleration conditions}
 The divergence of the mean Eliassen-Palm flux $\nabla \cdot
 \overline{\symbf{F}}$ appear as the complete eddy forcing on the mean flow. We
 also have the Eliassen-Palm wave activity conservation relation
@@ -2623,7 +2628,7 @@ operator. An advantaghe of using the transformed Eulerian-mean equations is
 the response in the mean circulation $(\overline{v}_a^*, \overline{w}_a^*)$ is
 explicitly visible.
 
-\subsection{Wave dissipation}
+\subsubsection{Wave dissipation}
 Consider two-dimensional flow on a $\beta$-plane, governed by the QGPV
 equation for a single-layer with the deformation radius $L_d \to \infty$, with
 waves propagating in the $y$-direction. The \emph{absolute vorticity}
@@ -2812,7 +2817,7 @@ Note the rearrangement of absolute vorticity does not \emph{locally} conserved
 momentum -- an external force is required -- but this force is suppled by the
 transport of momentum by the waves.
 
-\subsection{Summary}
+\subsubsection{Summary}
 Two important general principles on wave propagation and wave mean-flow
 interaction are:
 \begin{enumerate}
@@ -2841,6 +2846,7 @@ is weak imply a wave activity flux from the strong-flow region to the
 weak-flow region. Hence there is a momentum flux from the weak-flow region to
 the strong-flow region, i.e. momentum transport \emph{up} the gradient. 
 
+\paragraph{Mean-flow \& baroclinic instability.}
 The choice of $\mathcal{F}$ is particularly important in understanding the
 effect of baroclinic instability on the mean flow. From our previous
 discussion of the Eady problem, we know $\overline{\rho'v'} < 0$ for the
@@ -2853,7 +2859,310 @@ flux is up-gradient. This is because the growing instability corresponds to a
 \emph{source} of wave activity in the jet and hence wave propagation out of
 the jet.
 
+\subsection{Mean meridional circulations}
+\lecture{25/11/20}
+\subsubsection{Introduction}
+We will examine in more detail the mean response of a fluid to wave forcing,
+comparing the Eulerian-mean viewpoint expressed by the coupled set of
+equations \eqref{eq:13.8}, \eqref{eq:13.9}, \eqref{eq:13.10},
+\eqref{eq:13.11}, \eqref{eq:13.12}, and the transformed Eulerian-mean
+viewpoint expressed by the coupled set of equations \eqref{eq:13.9},
+\eqref{eq:13.10}, \eqref{eq:13.14}, \eqref{eq:13.16}, \eqref{eq:13.17}.
 
+Each of the velocity fields $(\overline{v}_a, \overline{w}_a)$ and
+$(\overline{v}_a^*, \overline{w}_a^*)$ represents a circulation in the
+\emph{meridional} $(y,z)$ plane. Since each field is non-divergent we may
+define streamfunctions $\overline{\chi}_a, \overline{\chi}_a^*$ such that
+\begin{align}
+	(\overline{v}_a, \overline{w}_a) &=
+	(\overline{\chi}_{az},-\overline{\chi}_{ay}) \\
+	(\overline{v}_a^*, \overline{w}_a^*) &=
+	(\overline{\chi}_{az}^*,-\overline{\chi}_{ay}^*)
+\end{align}
 
+It may be shown from the Eulerian-mean and transformed Eulerian-mean equations
+that
+\begin{align}
+	f_0^2 \overline{\chi}_{azz} + N^2 \overline{\chi}_{ayy} = f_0
+	(\overline{u'v'})_{yz} - \frac{g}{\rho_0} (\overline{\rho'v'})_{yy} &= -f_0
+	\overline{F^{(y)}}_yz + \frac{N^2}{f_0} \overline{F^{(z)}}_{yy}
+	\label{eq:mmc_eul}\\
+	f_0^2 \overline{\chi}_{azz}^* + N^2 \overline{\chi}_{ayy}^* = f_0
+	(\overline{u'v'})_{yz} - f_0^2 \left( \frac{\overline{\rho'v'}}{\diffd
+			\rho_s / \diffd z}\right)_{zz} &= -f_0 (\nabla \cdot
+			\bar{\symbf{F}})_z\label{eq:mmc_teul}
+\end{align}
+where $\symbf{\bar{F}} = (0, \overline{F^{(y)}}, \overline{F^{(z)}})$ is
+the $x$-averaged Eliassen-Palm flux. These equations express the forcing on
+the mean meridional circulation by the eddy fluxes of momentum and density
+(or, equivalently, by the EP flux divergence).
 
+\subsubsection{Boundary conditions}
+The equations \eqref{eq:mmc_eul} and \eqref{eq:mmc_teul} are supplemented by
+boundary conditiosn on $\overline{\chi}_a$ or $\overline{\chi}_a^*$. The side
+boundary condition is straightforward: e.g. $\overline{\chi}_{az} =
+\overline{\chi}^*_{az} = 0$ at $y$-boundaries. The bottom boundary condition
+requires care when deriving, particularly if the bottom is not flat. Consider
+the case of topographic forcing at the lower boundary $z=h$ so that the full
+non-linear boundary condition is
+\begin{equation}
+	w = \frac{\diffD h}{\diffD t}
+\end{equation}
+at $z=h(x,y,t)$ where $h$ is the \emph{topographic height}. If the topography
+is small amplitude, we may use a Taylor series expansion to re-express the
+full boundary condition in terms of quantities at $z=0$ rather than $z=h$:
+\begin{equation}
+	w+hw_z = h_t + uh_x + vh_y + u_z h h_x + v_z h h_y + \mathcal{O}(h^3)
+\end{equation}
+where all RHS quantities are now evaluated at $z=0$. Consider now the
+continuity equation $u_x + v_y + w_z = 0$ from which we can use to write the
+LHS as
+\begin{equation}
+	hw_z = -hu_x -hv_y = -(hu)_x - (hv)_y + h_x u + h_y v
+\end{equation}
+and substituting into the previous equation we have
+\begin{equation}
+	w = h_t + u_z h h_x + v_z h h_y + (hu)_x + (hv)_y + \mathcal{O}(h^3)
+\end{equation}
+We now assume that in the absence of topography the velocity is purely
+longitudinal (i.e. $x$-direction), so that $v = \mathcal{O}(h)$ and
+$\overline{h} = 0$ for all $t$. We may also replace $\overline{w}$ by
+$\overline{w}_a$ in line with quasi-geostrophic scaling. Hence, taking
+$x$-averages, at leading order we have
+\begin{equation}
+	\overline{w}_a(y,0,t) = (\overline{h'v'})_y
+\end{equation}
+Hence the Eulerian mean velocity does not necessarily vanish at $z=0$. The
+corresponding boundary condition on the transformed Eulerian mean circulation
+is
+\begin{equation}
+	\overline{w}_a^*(y,0,t) = (\overline{h'v'})_y +
+	\frac{(\overline{\rho'v'})_y}{\diffd \rho_s/\diffd z}
+\end{equation}
+
+Assuming the waves are steady and there is no density dissipation at the lower
+boundary, we may use $\frac{\diffD}{\diffD t} \rho(x,y,h,t) = 0$ to re-write
+the lower boundary condition on $\rho$ as
+\begin{equation}
+	\overline{u}h'_x \frac{\diffd \rho_s}{\diffd z} = -\overline{u}\rho'_x -
+	\psi'_x \overline{\rho}_y
+\end{equation}
+
+Now multiplying by $\psi'$ and averaging, it follows that $f_0
+\overline{h'\psi'_x} = -\overline{F^{(z)}}$ and hence the lower boundary
+condition on $\overline{w}_a$ and $\overline{w}_a^*$ may be written as
+\begin{equation}
+	\overline{w}_a = -\frac{1}{f_0} (\overline{F^{(z)}})_y \hspace{1em}
+	\text{and} \hspace{1em} \overline{w}_a^* = 0 \hspace{1em}
+	\text{on}\,\,\, z=0
+\end{equation}
+Note that it is the transformed Eulerian mean vertical velocity
+$\overline{w}_a^*$ which vanishes at the lower boundary, and not
+$\overline{w}_a$.
+
+\subsubsection{Model problem}
+Consider a flow at small $\Ro$ confined to a $\beta$-plane longitudinal
+channel with rigid walls at $y=0, L$. Waves are forced by topographic
+perturbations of the lower boundary of the form 
+\begin{equation}
+	h = \Re\left[ h_0 e^{ikx} \sin \frac{\pi y}{L}\right]
+\end{equation}
+The basic state flow is assumed to be in the $x$-direction, and the velocity a
+function of height so $\symbf{u}= u_0(z)\symbf{\hat{x}}$. The vertical
+variation of the waves depends on $u_0(z)$ and on the buoyancy frequency $N$.
+Assuming $N$ is a function of $z$ only, as in quasi-geostrophic theory, then
+we may write $\psi'$ as
+\begin{equation}
+	\psi' = \Re\left[ \hat{\psi}(z) e^{ikx} \sin \frac{\pi y}{L}\right]
+\end{equation}
+It follows that $\overline{\psi'_x\psi'_y} = 0$ so that the Eliassen-Palm flux
+is purely vertical with
+\begin{equation}
+	\overline{F^{(z)}} = \frac{f_0^2}{N^2} \overline{\psi'_x\psi'_z} =
+	\frac{f_0^2}{N^2} \Im \left[ k \hat{\psi}(z)^* \hat{\psi}'(z)\right]
+	\sin^2 \frac{\pi y}{L} = F_0 \Theta(z) \sin^2 \frac{\pi y}{L}
+\end{equation}
+where $F_0 = f_0^2/N^2$ and $\Theta(z) = \Im \left[ k
+\hat{\psi}^*\hat{\psi}'\right]$. To be consistent with the basic properties of
+Rossby waves, for upward propagation we require $F_0 \Theta(z) > 0$. We can
+determine $\Theta(z)$ by solving the equation for $\hat{\psi}(z)$ given the
+$z$-variation of the basic state and of any dissipative processes. To avoid
+this complication, we assume a simple step function form for $\Theta(z)$:
+\begin{equation}
+	\Theta(z) = \begin{cases} 1 & z < H_d \\ 0 & z > H_d \end{cases}
+\end{equation}
+This is a simple representation of a situation where waves are generated far
+below $z=H_d$, propagate upwards, and dissipate in a thin critical layer
+localised about $z=H_d$. The problem is then reduced to solving
+\eqref{eq:mmc_eul} or \eqref{eq:mmc_teul} with a given forcing term and with
+specified boundary conditions. The assumed form for $\overline{F^{(z)}}$ gives
+a forcing term in \eqref{eq:mmc_eul} which is non-zero as $z \to -\infty$, but
+a forcing term in \eqref{eq:mmc_teul} which tends to zero as $z \to \pm
+\infty$. Thus it is more straightforward to solve \eqref{eq:mmc_teul} and seek
+a solution $\overline{\chi}^*$ that tends to zero as $z \to \pm \infty$.
+Once $\overline{\chi}^*$ is known, $\overline{\chi}$ may be deduced using the
+inverse transformation.
+
+The rigid wall boundary conditions imply $\overline{\chi}_{az} =
+\overline{\chi}_{az}^*$ at $y=0,L$. It is therefore natural to expand the
+forcing and solution in a sine Fourier series:
+\begin{align}
+	\overline{F^{(z)}} &= F_0 \Theta(z) \sum_{n=1}^\infty c_n \sin \frac{n \pi
+	y}{L} \\
+	\overline{\chi}_a^* &= \sum_{n=1}^\infty \overline{\chi}_n^*(z) \sin
+	\frac{n \pi y}{L}
+\end{align}
+where the $c_n$ are the coefficients in the Fourier series for $\sin^2
+\frac{\pi y}{L}$. The governing ODE for
+$\overline{\chi}_n^*(z)$ follows from subtitution into \eqref{eq:mmc_teul}:
+\begin{equation}
+	f_0^2 \overline{\chi}_n^{*''}(z) - \frac{N^2 \pi^2 n^2}{L^2}
+	\overline{\chi}_n^*(z) = f_0 F_0 c_n \delta'(z-H_d)
+\end{equation}
+
+The solution satisfying the boundary conditions $\overline{\chi}_n^* \to 0$ as
+$z \to \pm \infty$ is
+\begin{equation}
+	\overline{\chi}_n^*(z) = \frac{F_0 c_n}{2f_0} \exp \left[ -\frac{N \pi
+	n}{L f_0} \abs{z-H_d}\right] \text{sgn}(z-H_D)
+\end{equation}
+All flow variables can be deduced from the above solution. Using $(\cdot)_n$
+to denote the $n$\textsuperscript{th} coefficient in the Fourier series, it
+follows that
+\begin{equation}
+	(\overline{v}_a^*)_n = -\frac{F_0 c_n}{2f_0} \frac{N \pi n}{L f_0}
+	\exp\left[ -\frac{N\pi n}{L f_0} \abs{z-H_d}\right] + \frac{F_0 c_n}{f_0}
+	\delta (z-H_d)
+\end{equation}
+and, noting that $\nabla \cdot \hat{\symbf{F}} = -F_0 c_n \delta(z-H_d)$;
+\begin{equation}
+	(\overline{u}_t)_n = -\frac{F_0c_n}{2} \frac{N \pi n}{L f_0} \exp \left[
+	-\frac{N \pi n}{L f_0} \abs{z-H_d}\right]
+\end{equation}
+Similar expressions may be derived for the Fourier coefficients of
+$\overline{w}_a^*$ and $\overline{\rho}_t$. In particular, note
+$\overline{\chi}_a = \overline{\chi}_a^* + \overline{F^{(z)}}/f_0$. We can
+derive a schematic view of the response of various quantities to the eddy
+forcing by considering only the $n=1$ Fourier coefficients. Gray shading
+indicates negative values within solid lines, and positive values within
+dashed lines.
+
+\noindent
+\makebox[1.3\textwidth][l]{
+\begin{tikzpicture}
+	\draw[thick] (-1,-2) -- (-1, 2) node[right,above] {$y=0$};
+	\draw[thick] (1, -2) -- (1, 2) node[left,above] {$y=L$};
+	\draw[fill=gray!20] (0,0) ellipse (1 and 0.12);
+	\draw[fill=gray!50] (0,0) ellipse (0.8 and 0.06);
+	\draw (0,-2.2) node {$\nabla \cdot \bar{\symbf{F}}$};
+	\draw (0,-2.6) node {Shallow negative};
+	\draw (0,-3) node {region};
+	\begin{scope}[shift={(3.5,0)}]
+	\draw[thick] (-1,-2) -- (-1, 2) node[right,above] {$y=0$};
+	\draw[thick] (1, -2) -- (1, 2) node[left,above] {$y=L$};
+	\draw[smooth,fill=gray!20,dashed] plot[domain=-1:1] ({\x},{cos(3.14*deg(\x)/2)});
+	\draw[smooth,fill=gray!20] plot[domain=-1:1] ({\x},{-cos(3.14*deg(\x)/2)});
+	\draw[smooth,fill=gray!50,dashed] plot[domain=-0.7:0.7] ({\x},
+				{0.7*cos(3.14*deg(\x)/1.4)});
+	\draw[smooth,fill=gray!50] plot[domain=-0.7:0.7] ({\x},
+				{-0.7*cos(3.14*deg(\x)/1.4)});
+	\draw[smooth,fill=gray!80,dashed] plot[domain=-0.4:0.4] ({\x},
+				{0.4*cos(3.14*deg(\x)/0.8)});
+	\draw[smooth,fill=gray!80] plot[domain=-0.4:0.4] ({\x},
+				{-0.4*cos(3.14*deg(\x)/0.8)});
+	\draw[thick] (-1,0) -- (1,0);
+	\draw[thick,->] (-0.1,0) -- (0.1, 0);
+	\draw[->] (0.01,1) -- (-0.01, 1);
+	\draw[->] (0.01,0.7) -- (-0.01, 0.7);
+	\draw[->] (0.01,0.4) -- (-0.01, 0.4);
+	\draw[->] (0.01,-1) -- (-0.01, -1);
+	\draw[->] (0.01,-0.7) -- (-0.01, -0.7);
+	\draw[->] (0.01,-0.4) -- (-0.01, -0.4);
+	\draw (0,-2.2) node {$\overline{\chi}_a^*$};
+	\draw (0,-2.6) node {Transformed Eulerian};
+	\draw (0,-3) node {mean circulation};
+	\end{scope}
+	\begin{scope}[shift={(7,0)}]
+	\draw[thick] (-1,-2) -- (-1, 2) node[right,above] {$y=0$};
+	\draw[thick] (1, -2) -- (1, 2) node[left,above] {$y=L$};
+	\draw[fill=gray!20] (0,0) ellipse (0.8 and 1.2);
+	\draw[fill=gray!50] (0,0) ellipse (0.6 and 1);
+	\draw[fill=gray!80] (0,0) ellipse (0.4 and 0.8);
+	\draw (0,-2.2) node {$\overline{u}_t$};
+	\draw (0,-2.6) node {Mean};
+	\draw (0,-3) node {acceleration};
+	\end{scope}
+	\begin{scope}[shift={(10.5,0)}]
+	\draw[thick] (-1,-2) -- (-1, 2) node[right,above] {$y=0$};
+	\draw[thick] (1, -2) -- (1, 2) node[left,above] {$y=L$};
+	\draw[fill=gray!50,dashed] (0.5, 0.7) ellipse (0.4 and 0.55);
+	\draw[fill=gray!50] (-0.5, 0.7) ellipse (0.4 and 0.55);
+	\draw[fill=gray!50,dashed] (-0.5, -0.7) ellipse (0.4 and 0.55);
+	\draw[fill=gray!50] (0.5, -0.7) ellipse (0.4 and 0.55);
+	\draw (0,-2.2) node {$\overline{\rho}_t$};
+	\draw (0,-2.6) node {Mean rate of change};
+	\draw (0,-3) node {of density};
+	\end{scope}
+	\begin{scope}[shift={(14,0)}]
+	\draw[smooth,fill=gray!20,dashed] plot[domain=-1:1] ({\x},{cos(3.14*deg(\x)/2)});
+	\draw[smooth,fill=gray!50,dashed] plot[domain=-0.7:0.7] ({\x},
+				{0.7*cos(3.14*deg(\x)/1.4)});
+	\draw[smooth,fill=gray!80,dashed] plot[domain=-0.4:0.4] ({\x},
+				{0.4*cos(3.14*deg(\x)/0.8)});
+	
+	\fill[gray!35] (-1,0) rectangle (1,-2);
+	\fill[gray!65] (-0.7,0) rectangle (0.7,-2);
+	\fill[gray!95] (-0.4,0) rectangle (0.4,-2);
+	\draw[dashed] (-0.4,0) -- (-0.4,-2);
+	\draw[dashed] (-0.7,0) -- (-0.7,-2);
+	\draw[dashed] (0.4,0) -- (0.4,-2);
+	\draw[dashed] (0.7,0) -- (0.7,-2);
+	\draw[->] (0.01,1) -- (-0.01, 1);
+	\draw[->] (0.01,0.7) -- (-0.01, 0.7);
+	\draw[->] (0.01,0.4) -- (-0.01, 0.4);
+	\draw[thick] (-1,-2) -- (-1, 2) node[right,above] {$y=0$};
+	\draw[thick] (1, -2) -- (1, 2) node[left,above] {$y=L$};
+	\draw (0,-2.2) node {$\overline{\chi}_a$};
+	\draw (0,-2.6) node {Eulerian mean};
+	\draw (0,-3) node {circulation};
+	\end{scope}
+\end{tikzpicture}
+}
+
+Note the contrast between the responses in the transformed Eulerian-mean
+circulation and the Eulerian-mean circulation and the implications for the
+balance in the $x$-momentum and density equations.
+
+\paragraph{Transformed Eulerian-mean view:} in the \emph{wave propagation}
+region $z < H_d$ the vertical velocity $\overline{w}_a^*$ is zero and there is
+vertical transport of momentum via $\overline{F^{(z)}}$. In the \emph{wave
+dissipation} region centred on $z=H_d$ there is localised wave force $\nabla
+\cdot \bar{\symbf{F}}$ which is redistributed in the vertical by the
+meridional circulation $(\overline{v}_a^*, \overline{w}_a^*)$. 
+
+\paragraph{Eulerian-mean view:} in the \emph{wave propagation} region $z <
+H_d$ the vertical velocity $\overline{w}_a$ is non-zero. The effect of
+$\overline{w}_a$ on the mean density field is cancelled by the effect of the
+eddy flux $\overline{\rho'v'}$. There is vertical transport of planetary
+angular momentum (because the fluid moving upwards on one side of the channel
+has a different value of angular momentum to that moving downwards on the
+other side of the channel). In the \emph{wave dissipation} region there is a
+latitudinal velocity $\overline{v}_a$ which provides a Coriolis force and
+hence leads to acceleration.
+
+The transformed Eulerian-mean view is arguably simpler because it removes the
+cancellation between the effect of vertical advection by the mean flow, and
+the effect of eddy density fluxes. Also, it combines eddy fluxes into a single
+forcing term as noted previously. Additionally it may be shown that the
+transformed Eulerian-mean flow is more relevant to the transport of tracers.
+Vertical motion in the Eulerian-mean circulation does not imply corresponding
+vertical motion of tracers, e.g. the upward motion at high latitudes in the
+`Ferrel cell' does not imply that tracers are transported upwards.
+
+The transformed Eulerian-mean formalism can be interpreted as an approximation
+to taking averages not at fixed $z$, but over very thin layers between
+neighbouring density surfaces. The fact that the thickness and the
+$z$-position of the layer are both variable affects the calculated average.
+Momentum can be exchanged between neighbouring layers by pressure forces
+acting on their boundaries.
 \end{document}
