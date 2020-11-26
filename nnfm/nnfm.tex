@@ -2838,7 +2838,7 @@ incompressible Stokes equations for a second-order fluid with parameters $b_1,
 b_2 = b_{11}$ with $p$ given by
 \begin{equation}
 	p = p_N + \frac{b_2}{b_1} \frac{\diffD p_N}{\diffD t} + \frac{b_2}{4}
-	\symbfsf{\srate}_N \cdot \symbfsf{\srate}_N
+	\symbfsf{\srate}_N : \symbfsf{\srate}_N
 \end{equation}
 Note that $b_2 = b_{11}$ implies $-\Psi_2/\Psi_1 = \frac{1}{2}$ which is not
 usually true for real complex fluids. This is an assumption on the fluid and
@@ -2857,14 +2857,14 @@ Suppose $\symbf{u} = \symbf{u}_N$. Giesekus' equation gives
 	&= b_2 \nabla \cdot \left[ \Nsrate{2} + \Nsrate{1}\cdot\Nsrate{1}\right]
 	\\
 	&= b_2 \nabla \left[ \inv{b_1} \frac{\diffD p_N}{\diffD t} + \frac{1}{4}
-\symbfsf{\srate}_N \cdot \symbfsf{\srate}_N \right]
+\symbfsf{\srate}_N :\symbfsf{\srate}_N \right]
 \end{align}
 
 Now note $\nabla \cdot\left[ b_1 \Nsrate{1}\right] = b_1 \nabla^2 \symbf{u}_N
 = \nabla p_N$, hence the Cauchy equation becomes
 \begin{equation}
 	\nabla p = \nabla \left[ p_N + \frac{b_2}{b_1} \frac{\diffD p_N}{\diffD t}
-	+ \frac{b_2}{4} \symbfsf{\srate}_N \cdot \symbfsf{\srate}_N \right]
+	+ \frac{b_2}{4} \symbfsf{\srate}_N : \symbfsf{\srate}_N \right]
 \end{equation}
 Thus $(\symbf{u}_N, p)$ is a solution to the second order fluid flow equations
 with $p$ as stated. \qedsymbol
@@ -2875,7 +2875,7 @@ $b_1$ and $\symbf{u}_N$ is a 2D flow, then $(\symbf{u}_N, p)$ is a solution to t
 equations for a second order fluid with $p$ given by
 \begin{equation}
 	p = p_N + \frac{b_2}{b_1} \frac{\diffD p_N}{\diffD t} +
-	\left(\frac{b_{11}}{2} - \frac{b_2}{4}\right) \symbfsf{\srate}_N \cdot
+	\left(\frac{b_{11}}{2} - \frac{b_2}{4}\right) \symbfsf{\srate}_N : 
 	\symbfsf{\srate}_N
 \end{equation}
 
@@ -2891,7 +2891,7 @@ solution to the second-order fluid Stokes equations with
 \begin{equation}
 	p = p_N + \frac{b_2}{b_1} \frac{\partial p_N}{\partial t} +
 	\frac{b_{11}}{b_1} \symbf{u} \cdot \nabla p_N + \frac{b_2}{4}
-	\symbfsf{\srate}_N \cdot \symbfsf{\srate}_N + \frac{b_{11}-b_2}{2} (\nabla
+	\symbfsf{\srate}_N : \symbfsf{\srate}_N + \frac{b_{11}-b_2}{2} (\nabla
 	\symbf{u}_N) : (\nabla \symbf{u}_N)^T
 \end{equation}
 
