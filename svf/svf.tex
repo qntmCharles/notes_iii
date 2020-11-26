@@ -3317,7 +3317,11 @@ important of extreme viscosity contrasts and extreme aspect ratio.
 				\draw[blue,->] (-1.2, 0) -- (-1.7, 0);
 			\end{tikzpicture}
 		\end{center}
-		Hence we have $\mu_s = \lambda \mu$, $L_s \sim R$ and $A_s \sim HR$.
+		The relevant viscosity is the internal viscosity, hence $\mu_s =
+		\lambda \mu$. The relevant lengthscale in terms of the velocity
+		gradient (which determines stresses) is the radius of the current,
+		hence $L_s \sim R$. Finally, the stresses act over a `band' of height
+		$H$ around the current at each radius, so $A_s \sim HR$.
 		Then
 		\begin{equation}
 			\frac{R}{a} \sim \left( \frac{\tau}{\lambda}\right)^{1/2}
@@ -3353,8 +3357,11 @@ important of extreme viscosity contrasts and extreme aspect ratio.
 		\end{center}
 		The external fluid sees the current as a flat disc of radial
 		Stokeslets (cf. integral representations in
-		section~\ref{ss:integralrep}). We have $\mu_s \approx \mu, L_s \sim R,
-		A_s \sim R^2$ hence
+		section~\ref{ss:integralrep}). Here, the relevant viscosity is the
+		external viscosity so $\mu_s \sim \mu$. The external flow (which
+		exerts the stress) extends over a lengthscale $R$ so $L_s \sim R$ (see
+		diagram) and the stress acts on the top surface of the current so $A_s
+		\sim R^2$. Now
 		\begin{equation}
 			\frac{R}{a} \sim \tau^{1/5}
 		\end{equation}
@@ -3387,8 +3394,10 @@ important of extreme viscosity contrasts and extreme aspect ratio.
 				{$\sim H$};
 			\end{tikzpicture}
 		\end{center}
-		In this case we have $\mu_s \approx \lambda \mu$, $L_s \sim H$, $A_s
-		\sim R^2$. Hence
+		In this case the internal viscosity is relevant to the stress, so
+		$\mu_s \approx \lambda \mu$, and the flow extends over a lengthscale
+		$L_s \sim H$ inside the drop. Finally, the shear stress is acting over
+		the surface of the drop so $A_s \sim R^2$ as in the previous case. Hence
 		\begin{equation}
 			\frac{R}{a} \sim \left( \frac{\tau}{\lambda}\right)^{1/8}
 		\end{equation}
@@ -3414,8 +3423,13 @@ important of extreme viscosity contrasts and extreme aspect ratio.
 			\end{tikzpicture}
 		\end{center}
 		The external fluid sees an expanding ring force (cf. slender-body
-		theory in section~\ref{ss:slenderbody}). We have $\mu_s \approx \mu,
-		L_s \sim H \ln R/H, A_s \sim HR$. Hence
+		theory in section~\ref{ss:slenderbody}). Hence the relevant viscosity
+		is internal, so $\mu_s \approx \mu$. The stress is concentrated on a
+		region of lengthscale $H$ at the nose of the current, and we must
+		include a modifying factor due to slender body theory so that $L_s
+		\sim H \ln R/H$. Since the stress acts at the nose, the relevant area
+		scale is $A_s \sim HR$, the thickness of the edge multiplied by the
+		perimeter. Hence
 		\begin{equation}
 			\frac{R}{a \ln R/H} \sim \tau^{1/5}
 		\end{equation}

@@ -1,21 +1,20 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2019.8.21)  4 NOV 2020 10:20
-entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**xvf.tex
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  24 NOV 2020 15:33
+ restricted system commands enabled.
+**nnfm.tex
 
 ! Emergency stop.
-<*> xvf.tex
-           
+<*> nnfm.tex
+         
 End of file on the terminal!
 
- 
-Here is how much of TeX's memory you used:
- 2 strings out of 493068
- 13 string characters out of 6137720
- 55846 words of memory out of 5000000
- 4024 multiletter control sequences out of 15000+600000
- 3640 words of font info for 14 fonts, out of 8000000 for 9000
- 1347 hyphenation exceptions out of 8191
- 0i,0n,0p,1b,6s stack positions out of 5000i,500n,10000p,200000b,80000s
-No pages of output.
+
+
+Here is how much of LuaTeX's memory you used:
+ 5 strings out of 494577
+ 100000,89155 words of node,token memory allocated 238 words of node memory still in use:
+   2 glue, 32 glue_spec nodes
+   avail lists: 2:12,3:1,4:1,5:1
+ 4186 multiletter control sequences out of 65536+600000
+ 14 fonts using 591559 bytes
+ 0i,0n,0p,0b,6s stack positions out of 5000i,500n,10000p,200000b,100000s
+!  ==> Fatal error occurred, no output PDF file produced!
