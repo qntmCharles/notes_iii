@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  24 NOV 2020 23:13
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  26 NOV 2020 17:45
  restricted system commands enabled.
 **nnfm.tex
 (./nnfm.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.106 seconds
+luaotfload | main : initialization completed in 0.107 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -2919,28 +2919,28 @@ tween.code.tex)))
 corations.softclip.code.tex)) (./nnfm.aux)
 \openout1 = nnfm.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for LY/yfrak/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for LYG/ygoth/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for LY/yfrak/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for LYG/ygoth/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -3008,7 +3008,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box76
-Package hyperref Info: Link coloring ON on input line 19.
+Package hyperref Info: Link coloring ON on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -3018,15 +3018,15 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count306
 )
-LaTeX Info: Redefining \ref on input line 19.
-LaTeX Info: Redefining \pageref on input line 19.
-LaTeX Info: Redefining \nameref on input line 19.
+LaTeX Info: Redefining \ref on input line 20.
+LaTeX Info: Redefining \pageref on input line 20.
+LaTeX Info: Redefining \nameref on input line 20.
 
 (./nnfm.out) (./nnfm.out)
 \@outlinefile=\write4
 
 \openout4 = nnfm.out
-LaTeX Info: Redefining \microtypecontext on input line 19.
+LaTeX Info: Redefining \microtypecontext on input line 20.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -3072,23 +3072,23 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `LatinModernMath' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 19.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 20.
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 10.95015pt on input line 19.
+(Font)              scaled to size 10.95015pt on input line 20.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 8.00012pt on input line 19.
+(Font)              scaled to size 8.00012pt on input line 20.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 6.00009pt on input line 19.
+(Font)              scaled to size 6.00009pt on input line 20.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 10.94983pt on input line 19.
+(Font)              scaled to size 10.94983pt on input line 20.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 7.99988pt on input line 19.
+(Font)              scaled to size 7.99988pt on input line 20.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 5.99991pt on input line 19.
-LaTeX Font Info:    Try loading font information for U+msa on input line 19.
+(Font)              scaled to size 5.99991pt on input line 20.
+LaTeX Font Info:    Try loading font information for U+msa on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -3096,7 +3096,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 19.
+LaTeX Font Info:    Try loading font information for U+msb on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -3104,17 +3104,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 19.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 20.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 19.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 20.
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 19.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
@@ -3123,7 +3123,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `GFSNeoHellenicMath' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 19.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 20.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -3133,7 +3133,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 \c__siunitx_mathtt_int=\count308
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 19.
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 20.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -3162,7 +3162,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-Package tocbasic Info: character protrusion at toc deactivated on input line 29.
+Package tocbasic Info: character protrusion at toc deactivated on input line 30.
 
  (./nnfm.toc
 [1
@@ -3186,25 +3186,25 @@ live2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)
 Package pgfplots Warning: 'fill between': Could not activate graphics layer 'pre
  main'. Filled path will be on top of the other ones. Please ensure that 'pre ma
 in' is somewhere in the layer list (or set '/tikz/fill between/on layer='). on i
-nput line 1004.
+nput line 1005.
 
 [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28]
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 12.00018pt on input line 1928.
+(Font)              scaled to size 12.00018pt on input line 1929.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 11.99982pt on input line 1928.
+(Font)              scaled to size 11.99982pt on input line 1929.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1928.
+(hyperref)                removing `\mathsurround' on input line 1929.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1928.
+(hyperref)                removing `\z@' on input line 1929.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 1928.
+(hyperref)                removing `superscript' on input line 1929.
 
 (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmromanslant8-regu
 lar.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/o
@@ -3213,7 +3213,7 @@ tl/lmromanslant8-regular.luc) [29] [30]
 Package pgfplots Warning: 'fill between': Could not activate graphics layer 'pre
  main'. Filled path will be on top of the other ones. Please ensure that 'pre ma
 in' is somewhere in the layer list (or set '/tikz/fill between/on layer='). on i
-nput line 2056.
+nput line 2057.
 
 [31] [32] [33
 Missing character: There is no ; (U+003B) in font nullfont!
@@ -3225,37 +3225,30 @@ lic.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/o
 tl/lmroman8-italic.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts
 /otl/lmroman5-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cac
 he/generic/fonts/otl/lmroman5-regular.luc)
-[38] [39] [40] [41] [42] [43] [44] [45] [46]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3093.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3093.
+[38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48
+Missing character: There is no ; (U+003B) in font nullfont!
+] [49]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3338.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3338.
  (./nnfm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3093.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3093.
-
-
-Package rerunfilecheck Warning: File `nnfm.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `nnfm.out':
-(rerunfilecheck)             Before: 95CCC3B3C5F2C33497AE825F0BAEA338;3517
-(rerunfilecheck)             After:  D45A3CF9CCBA10DC658904C77EEA55E6;3479.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3093.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3338.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3338.
+Package rerunfilecheck Info: File `nnfm.out' has not changed.
+(rerunfilecheck)             Checksum: BC3E2A94473C4055D3688B292E38E354;3743.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3338.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54640 strings out of 494577
+ 54685 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 40199 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 4618 glue, 1 kern, 228 sub_mlist, 1675 attribute, 6
-4 glue_spec, 1675 attribute_list, 1 write nodes
-   avail lists: 1:1,2:947,3:424,4:151,5:313,6:2188,7:746,8:88,9:654,10:16,11:207
-
- 56809 multiletter control sequences out of 65536+600000
- 100 fonts using 21905151 bytes
+ 43749 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5034 glue, 1 kern, 246 sub_mlist, 1821 attribute, 6
+4 glue_spec, 1821 attribute_list, 1 write nodes
+   avail lists: 1:1,2:1251,3:406,4:157,5:316,6:2321,7:999,8:88,9:714,10:16,11:21
+3
+ 56844 multiletter control sequences out of 65536+600000
+ 100 fonts using 21905327 bytes
  74i,19n,108p,8842b,1973s stack positions out of 5000i,500n,10000p,200000b,100000s
-
-warning  (pdf backend): unreferenced destination with name 'section.10'
 </usr/share/texmf/fonts/opentype/public/lm/lmroman8-italic.otf></usr/share/fonts
 /truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/fonts/opentype/pu
 blic/lm/lmromanslant8-regular.otf></usr/share/fonts/truetype/neohellenic/GFSNeoh
@@ -3270,11 +3263,12 @@ f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
 /public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsa
 ns10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf><
 /usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on nnfm.pdf (46 pages, 306127 bytes).
+/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on nnfm.pdf (49 pages, 330962 bytes).
 
-PDF statistics: 667 PDF objects out of 1000 (max. 8388607)
- 558 compressed objects within 6 object streams
- 165 named destinations out of 1000 (max. 131072)
- 440 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 698 PDF objects out of 1000 (max. 8388607)
+ 585 compressed objects within 6 object streams
+ 175 named destinations out of 1000 (max. 131072)
+ 456 words of extra memory for PDF output out of 10000 (max. 10000000)
 

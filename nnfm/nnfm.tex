@@ -15,6 +15,7 @@
 \newcommand{\nsrate}[1]{\symbfsf{\gamma}_{(#1)}}
 \newcommand{\Nsrate}[1]{\symbfsf{\gamma}_{(#1),N}}
 \newcommand{\ucd}[1]{\stackrel{\bigtriangledown}{#1}}
+\newcommand{\deps}{\dot{\varepsilon}}
 
 \begin{document}
 
@@ -3088,6 +3089,250 @@ deformation as the derivatives are objective. This class of models is known as
 			\end{center}
 	\end{itemize}
 \end{eg}
+
+\subsection{Shear flow of upper-convected Maxwell fluid}
+\lecture{26/11/20}
+Consider the upper-convected Maxwell fluid model under steady shear flow
+$\symbf{u} = \srate y \hat{\symbf{x}}$. As usual, we have
+\begin{equation}
+	\symbfsf{\gamma}_{(1)} = \symbfsf{\srate} = \begin{pmatrix} 0 & \srate & 0 \\
+	\srate & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \hspace{2em} \nabla \symbf{u} =
+\begin{pmatrix} 0 & 0 & 0 \\ \srate & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\end{equation}
+The constitutive relationship is $\symbfsf{\tau} + \lambda
+\stackrel{\bigtriangledown}{\symbfsf{\tau}} = \eta \symbfsf{\srate}$. We have
+\begin{align}
+	\stackrel{\bigtriangledown}{\symbfsf{\tau}} &= \cancel{\frac{\diffD
+	\symbfsf{\tau}}{\diffD t}} - (\nabla \symbf{u})^T \cdot \symbfsf{\tau} -
+	\symbfsf{\tau}\cdot(\nabla \symbf{u}) \\
+	\symbfsf{\symbfsf{\tau}}\cdot(\nabla \symbf{u}) &= \srate 
+	\begin{pmatrix} \symbfsf{\tau}_{xy} & 0 & 0 \\ \symbfsf{\tau}_{yy} & 0 & 0 \\
+	\symbfsf{\tau}_{yz} & 0 & 0 \end{pmatrix} \\
+	(\nabla \symbf{u})^T\cdot\symbfsf{\symbfsf{\tau}} &= \srate 
+	\begin{pmatrix} \symbfsf{\tau}_{xy} &  \symbfsf{\tau}_{yy} & 
+	\symbfsf{\tau}_{yz}\\0 & 0 & 0\\0&0&0 \end{pmatrix} \\
+\end{align}
+where we the material derivative of the deviatoric stress vanishes owing to
+the steady, spatially uniform flow.
+Hence the upper-convected deviatoric stress is
+\begin{equation}
+	\stackrel{\bigtriangledown}{\symbfsf{\tau}} = -\srate \begin{pmatrix} 2
+		\symbfsf{\tau}_{xy} & \symbfsf{\tau}_{yy} & \symbfsf{\tau}_{yz} \\
+		\symbfsf{\tau}_{yy} & 0 & 0 \\ \symbfsf{\tau}_{yz} & 0 & 0
+	\end{pmatrix}
+\end{equation}
+Substituting the above into the constitutive relationship we find:
+\begin{equation}
+	\symbfsf{\tau} + \lambda \stackrel{\bigtriangledown}{\symbfsf{\tau}} =
+	\begin{pmatrix} \symbfsf{\tau}_{xx} - 2\lambda \srate \symbfsf{\tau}_{xy}
+		& \symbfsf{\tau}_{xy} - \lambda \srate \symbfsf{\tau}_{yy} &
+		\symbfsf{\tau}_{xz} - \lambda \srate \symbfsf{\tau}_{yz} \\ * &
+		\symbfsf{\tau}_{yy} & \symbfsf{\tau}_{yz} \\
+		* & * &\symbfsf{\tau}_{zz}
+	\end{pmatrix} = \eta \begin{pmatrix} 0 & \srate & 0 \\ * & 0 & 0 \\ * & *
+										   & 0 \end{pmatrix}
+\end{equation}
+where $*$ denote quantities which need not be written since the tensors are
+symmetric. The $yy, yz, zz$ components give $\symbfsf{\tau}_{yy} = 0,
+\symbfsf{\tau}_{yz} = 0, \symbfsf{\tau}_{zz} = 0$ respectively. Then
+\begin{align}
+	&xz \,\,\text{component:} &&\symbfsf{\tau}_{xz} - \lambda \srate
+	\cancel{\symbfsf{\tau}_{yz}} = 0 &&\implies \tau_{xz} = 0\\
+	&xy \,\,\text{component:} &&\symbfsf{\tau}_{xy} - \lambda \srate
+	\cancel{\symbfsf{\tau}_{yy}} = \eta \srate &&\implies \tau_{xy} = \eta \srate\\
+	&xx \,\,\text{component:} &&\symbfsf{\tau}_{xx} - \lambda \srate
+	\symbfsf{\tau}_{xy} = 0 &&\implies \tau_{xx} =
+	2\eta\lambda\srate^2
+\end{align}
+Finally we have the following results:
+\begin{enumerate}
+	\item Normal stress $\tau_{xx} > 0$: tension along streamlines (cf. hoop
+		stresses);
+	\item Viscosity is constant and equal to $\eta$;
+	\item Normal stress differences are 
+		\begin{align}
+			N_1 &= 2\eta \lambda \srate^2 &\implies \Psi_1 &= 2 \eta \lambda > 0
+			\\
+			N_2 &= 0 &\implies \Psi_2 &= 0
+		\end{align}
+\end{enumerate}
+The procedure is very similar for the Oldroyd-B fluid model, and leads to the
+same results except $\Psi_1 = 2\eta (\lambda_1-\lambda_2)$. Note: compare this
+with the linear visco-elastic Maxwell fluid model, in which case $\Psi_1 = 0$
+for steady shear flow. Compared with experiments, we find $\eta$ is constant
+and $\Psi_2 = 0$ as in this theoretical example.
+
+\subsection{Extension flow of upper-convected Maxwell fluid}
+Now consider the upper-convected Maxwell fluid model under simple extension
+flow $\symbf{u} = \deps(\frac{x}{2}, \frac{y}{2}, -z)$. We have
+\begin{equation}
+	\nabla \symbf{u} = \deps \begin{pmatrix} \frac{1}{2} & 0 & 0 \\ 0 &
+	\frac{1}{2} & 0 & 0 \\ 0 & 0 & -1 \end{pmatrix} = (\nabla \symbf{u})^T
+\end{equation}
+Hence $\symbfsf{\srate} = \deps \text{diag}(1,1,-2)$. As in shear flow the
+upper-convected derivative is
+\begin{equation}
+	\stackrel{\bigtriangledown}{\symbfsf{\tau}} = \cancel{\frac{\diffD
+	\symbfsf{\tau}}{\diffD t}} - (\nabla \symbf{u})^T \cdot \symbfsf{\tau} -
+	\symbfsf{\tau}\cdot\nabla \symbf{u} 
+\end{equation}
+since the flow is spatially uniform and steady. Now
+\begin{align}
+	\symbfsf{\symbfsf{\tau}}\cdot(\nabla \symbf{u}) &= \frac{\deps}{2}
+	\begin{pmatrix} \symbfsf{\tau}_{xx} & \symbfsf{\tau}_{xy} &
+		-2\symbfsf{\tau}_{xz} \\ \symbfsf{\tau}_{xy} & \symbfsf{\tau}_{yy} &
+		-2 \symbfsf{\tau}_{yz}\\ \symbfsf{\tau}_{xz} & \symbfsf{\tau}_{yz} &
+		-2 \symbfsf{\tau}_{zz}\end{pmatrix} \\
+	(\nabla \symbf{u})^T\cdot\symbfsf{\symbfsf{\tau}} &=\frac{\deps}{2}
+	\begin{pmatrix} \symbfsf{\tau}_{xx} & \symbfsf{\tau}_{xy} &
+		\symbfsf{\tau}_{xz} \\ \symbfsf{\tau}_{xy} & \symbfsf{\tau}_{yy} &
+		\symbfsf{\tau}_{yz}\\ -2\symbfsf{\tau}_{xz} & -2\symbfsf{\tau}_{yz} &
+		-2 \symbfsf{\tau}_{zz}\end{pmatrix} \\
+		\implies \stackrel{\bigtriangledown}{\symbfsf{\tau}}  &= \deps
+		\begin{pmatrix} -\symbfsf{\tau}_{xx} & -\symbfsf{\tau}_{xy} &
+			\frac{1}{2}\symbfsf{\tau}_{xz}\\
+			-\symbfsf{\tau}_{xy} & -\symbfsf{\tau}_{yy} &
+			\frac{1}{2}\symbfsf{\tau}_{yz} \\
+			\frac{1}{2}\symbfsf{\tau}_{xz} & \frac{1}{2}\symbfsf{\tau}_{yz} &
+			2\symbfsf{\tau}_{zz}
+		\end{pmatrix}
+\end{align}
+The constitutive relationship becomes
+\begin{equation}
+	\begin{pmatrix} \symbfsf{\tau}_{xx}(1-\lambda\deps) &
+		\symbfsf{\tau}_{xy}(1-\lambda\deps) & \symbfsf{\tau}_{xz}
+		(1+\frac{\lambda\deps}{2}) \\
+		* & \symbfsf{\tau}_{yy}(1-\lambda\deps) &
+	\symbfsf{\tau}_{yz}(1+\frac{\lambda\deps}{2}) \\* & * &
+	\symbfsf{\tau}_{zz} (1+2\lambda\deps)	\end{pmatrix} = \eta \deps
+	\begin{pmatrix} 1 & 0 & 0 \\ * & 1 & 0 \\ * & * & -2 \end{pmatrix}
+\end{equation}
+Solving for the deviatoric stress components we have
+\begin{itemize}
+	\item Shear stresses $\symbfsf{\tau}_{xy} = \symbfsf{\tau}_{xz} = 
+		\symbfsf{\tau}_{yz} = 0 $
+	\item Normal stresses 
+		\begin{align}
+			\symbfsf{\tau}_{xx} = \symbfsf{\tau}_{yy} &= \frac{\eta
+			\deps}{1-\lambda\deps} \\
+			\symbfsf{\tau}_{zz} &= -\frac{2\eta\deps}{1+2\lambda\deps}
+		\end{align}
+\end{itemize}
+Hence the extensional viscosity is
+\begin{equation}
+	\eta_{\text{ext}} = \frac{\symbfsf{\tau}_{xx} -
+		\symbfsf{\tau}_{zz}}{\deps} =
+		\frac{3\eta}{(1-\deps\lambda)(1+2\deps\lambda)}
+\end{equation}
+
+Recall that from experiments, $\eta_{\text{ext}}$ can be orders of magnitude
+larger than $\eta$ when $\text{Tr} \gg 1$. Here, the Troutou ratio is
+\begin{equation}
+	\text{Tr} = \frac{\eta_{\text{ext}}}{\eta} = \frac{3}{(1-x)(1+2x)}
+\end{equation}
+where $x = \lambda \deps$ which is the Weissenberg number for extension flow.
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[thick,->] (-0.1, 0) -- (4, 0) node[right] {$x$};
+		\draw[thick,->] (0, -0.1) -- (0, 1.5) node[left] {$\text{Tr}$};;
+		\draw[smooth] plot[domain=0:2.7] ({\x},{0.5/((1-\x/3)*(1+2*\x/3))});
+		\draw (3/4, 0.1) -- (3/4, -0.1) node[below] {$\frac{1}{4}$};
+		\draw (3, 0.1) -- (3, -0.1) node[below] {$1$};
+		\draw[dashed] (3, 0) -- (3, 1.7);
+		\draw (0.1, 0.5) -- (-0.1, 0.5) node[left] {$3$};
+	\end{tikzpicture}
+\end{center}
+
+The Troutou ratio is $3$ when $x=0$, i.e. the Newtonian case, as expected. It
+is at minimum when $x = 1/4$ and we can get $\text{Tr} \gg 1$ but
+the ratio diverges when $\deps \lambda = 1$. The same calculation applies for
+the Oldroyd-B fluid model, with similar divergence.
+
+\subsection{Further quadratic models}
+We consider two further categories of quadratic models.
+\paragraph{Quasi-linear models using other objective derivatives.} So far, we
+have used the upper-convected derivative as an objective derivative (cf.
+Maxwell, Jeffreys fluid models). Instead, we could use the following.
+\begin{eg}
+	\hspace{3in}
+	\begin{itemize}
+		\item \textbf{Co-rotational derivative}.
+			Recall the co-rotational derivative of a tensor $\symsf{A}$ is
+			\begin{equation}
+				\frac{\mathcal{D}}{\mathcal{D} t} \symsf{A} =
+				\frac{\diffD}{\diffD t} \symsf{A} +
+				\frac{1}{2}(\symbfsf{\omega}\cdot\symsf{A} -
+				\symsf{A}\cdot\symbfsf{\omega})
+			\end{equation}
+			where $\symbfsf{\omega} = \nabla \symbf{u} - (\nabla
+			\symbf{u})^T$. The \emph{co-rotational Maxwell fluid} has constitutive
+			relationship
+			\begin{equation}
+				\symbfsf{\tau} + \lambda \frac{\mathcal{D}}{\mathcal{D}t}
+				\symbfsf{\tau} = \eta \symbfsf{\srate}
+			\end{equation}
+			Under steady shear, this fluid is shear-thinning and both $N_1$
+			and $N_2$ non-zero with $N_2/N_1 = -\frac{1}{2}$. We could also
+			consider the \emph{co-rotational Jeffrey fluids} by replacing
+			$\frac{\partial}{\partial t}$ with $\frac{\mathcal{D}}{\mathcal{D}
+			t}$ in the Jeffreys LVF model.
+		\item \textbf{Gordon-Schowalter convected derivative}. This convected
+			derivative is defined for a tensor $\symsf{A}$ by
+			\begin{equation}
+				\stackrel{\square}{\symsf{A}} =
+				\stackrel{\bigtriangledown}{\symsf{A}} + \frac{\alpha}{2}
+				(\symbfsf{\srate}\cdot\symsf{A} +
+				\symsf{A}\cdot\symbfsf{\srate})
+			\end{equation}
+			where $\alpha$ is a dimensionless number related to non-affine
+			deformation, i.e. the mismatch between micro and macro scale
+			deformation. This derivative includes both the co-rotational and
+			upper-convected derivative as special cases. The
+			\emph{Johnson-Segalman fluid} is the Jeffreys LVF with the
+			Gordon-Schowalter convected derivative, with constitutive
+			relationship
+			\begin{equation}
+				\symbfsf{\tau} + \lambda_1 \stackrel{\square}{\symbfsf{\tau}} =
+				\eta (\symbfsf{\srate} + \lambda_2
+				\stackrel{\square}{\symbfsf{\srate}})
+			\end{equation}
+			This model includes \emph{all} previous models as special cases,
+			e.g. upper-convected Maxwell, Oldroyd-B, co-rotational Maxwell \&
+			Jeffreys. In steady shear, viscosity and normal stress differences
+			are shear-thinning.
+	\end{itemize}
+\end{eg}
+
+\paragraph{Models including all quadratic terms.} Models so far have some (but
+not all) terms quadratic in $\symbfsf{\tau}$ and $\nabla \symbf{u}$. 
+
+\begin{eg}
+	\hspace{1in}\newline
+	The Oldroyd 8-constant model includes \emph{all} admissible terms. The
+	constitutive relationship is 
+	\begin{equation} 
+		\symbfsf{\tau} + \lambda_1\!\stackrel{\bigtriangledown}{\symbfsf{\tau}} +
+		\frac{\lambda_3}{2}(\symbfsf{\srate}\cdot\symbfsf{\tau} +
+		\symbfsf{\tau} \cdot \symbfsf{\srate}) +
+		\frac{\lambda_5}{2}(\text{tr}\,
+		\symbfsf{\tau})\symbfsf{\srate} + \frac{\lambda_6}{2}
+		(\symbfsf{\tau}:\symbfsf{\srate})\symsf{I} = \eta_0 \left[
+			\symbfsf{\srate} + \lambda_2
+			\stackrel{\bigtriangledown}{\symbfsf{\srate}} + \lambda_4
+	\symbfsf{\srate}\cdot\symbfsf{\srate} + \frac{\lambda_7}{2}
+	(\symbfsf{\srate}:\symbfsf{\srate})\symsf{I}\right] 
+	\end{equation}
+	Not all parameter combinations give results that are consistent with
+	experiments; there are multiple constraints on the parameters.  Within
+	those constraints, we can get shear-thinning or shear-thickening
+	viscosity; non-zero normal stress differences; bounded extensional
+	viscosity. This model includes all previous models as special cases, e.g.
+	upper-convected Maxwell, Oldroyd-B, co-roational Maxwell \& Jeffreys,
+	Johnson-Segalman, and the second-order fluid model.
+\end{eg}
+
+
 
 
 \end{document}

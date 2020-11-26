@@ -61,3 +61,8 @@
 \contentsline {paragraph}{\nonumberline First order.}{44}{section*.15}
 \contentsline {section}{\numberline {9}Non-linear Differential Models}{45}{section.9}
 \contentsline {subsection}{\numberline {9.1}Quasi-linear models}{45}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Shear flow of upper-convected Maxwell fluid}{46}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Extension flow of upper-convected Maxwell fluid}{47}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}Further quadratic models}{48}{subsection.9.4}
+\contentsline {paragraph}{\nonumberline Quasi-linear models using other objective derivatives.}{48}{section*.16}
+\contentsline {paragraph}{\nonumberline Models including all quadratic terms.}{49}{section*.17}
