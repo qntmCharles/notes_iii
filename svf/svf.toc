@@ -1,5 +1,5 @@
 \contentsline {section}{\numberline {1}Basic Fluid Mechanics}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Mass Conservation}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.1}Mass Conservation}{3}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}The Stress Tensor}{3}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Momentum equation}{3}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Energy equation}{3}{subsection.1.4}
@@ -66,3 +66,9 @@
 \contentsline {paragraph}{\nonumberline Transient evolution.}{43}{section*.12}
 \contentsline {subsection}{\numberline {3.7}Long Thin Flows III: Two-fluid case}{44}{subsection.3.7}
 \contentsline {subsubsection}{\numberline {3.7.1}Gravity current along interface between two fluids.}{44}{subsubsection.3.7.1}
+\contentsline {subsection}{\numberline {3.8}Pigs \& Slugs}{47}{subsection.3.8}
+\contentsline {subsubsection}{\numberline {3.8.1}Rigid particles in a tube}{47}{subsubsection.3.8.1}
+\contentsline {paragraph}{\nonumberline Key idea:}{48}{section*.13}
+\contentsline {paragraph}{\nonumberline Regions I \& V:}{48}{section*.14}
+\contentsline {paragraph}{\nonumberline Regions II \& IV:}{48}{section*.15}
+\contentsline {paragraph}{\nonumberline Region III:}{48}{section*.16}

@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  26 NOV 2020 18:17
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  27 NOV 2020 17:22
  restricted system commands enabled.
 **svf.tex
 (./svf.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.106 seconds
+luaotfload | main : initialization completed in 0.110 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3210,28 +3210,28 @@ Overfull \hbox (15.41869pt too wide) in paragraph at lines 2896--2897
 [][] 
  []
 
-[40] [41] [42] [43] [44] [45] [46] [47]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3473.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3473.
+[40] [41] [42] [43] [44] [45] [46] [47] [48] [49]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3692.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3692.
  (./svf.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3473.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3473.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3692.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3692.
 Package rerunfilecheck Info: File `svf.out' has not changed.
-(rerunfilecheck)             Checksum: 2EE06332E699F7977EE70AB4DF23943B;4723.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3473.
+(rerunfilecheck)             Checksum: F1EF31AC2030FEE9F0DD6488981E38C4;4873.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3692.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54498 strings out of 494577
+ 54655 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 46961 words of node memory still in use:
-   15 hlist, 6 vlist, 2 rule, 2 disc, 2 local_par, 5622 glue, 3 kern, 6 penalty,
- 4 margin_kern, 40 glyph, 1673 attribute, 64 glue_spec, 1673 attribute_list, 1 w
-rite nodes
-   avail lists: 1:1,2:2844,3:901,4:153,5:358,6:2160,7:1125,8:118,9:755,10:16,11:
-168
- 56654 multiletter control sequences out of 65536+600000
- 88 fonts using 18400319 bytes
+ 49458 words of node memory still in use:
+   15 hlist, 6 vlist, 2 rule, 2 disc, 2 local_par, 5931 glue, 3 kern, 6 penalty,
+ 2 sub_mlist, 4 margin_kern, 40 glyph, 1755 attribute, 64 glue_spec, 1755 attrib
+ute_list, 1 write nodes
+   avail lists: 1:1,2:2680,3:899,4:161,5:358,6:2160,7:816,8:118,9:755,10:16,11:1
+68
+ 56798 multiletter control sequences out of 65536+600000
+ 88 fonts using 18400391 bytes
  74i,19n,108p,8841b,943s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/font
 s/truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/fonts/opentype/p
@@ -3248,10 +3248,10 @@ lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/yfonts-t1/yswab.pfb>
 
-Output written on svf.pdf (47 pages, 330660 bytes).
+Output written on svf.pdf (49 pages, 344883 bytes).
 
-PDF statistics: 749 PDF objects out of 1000 (max. 8388607)
- 633 compressed objects within 7 object streams
- 186 named destinations out of 1000 (max. 131072)
- 496 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 785 PDF objects out of 1000 (max. 8388607)
+ 667 compressed objects within 7 object streams
+ 199 named destinations out of 1000 (max. 131072)
+ 512 words of extra memory for PDF output out of 10000 (max. 10000000)
 

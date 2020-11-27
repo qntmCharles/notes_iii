@@ -3104,24 +3104,26 @@ dashed lines.
 	\draw (0,-3) node {of density};
 	\end{scope}
 	\begin{scope}[shift={(14,0)}]
-	\draw[smooth,fill=gray!20,dashed] plot[domain=-1:1] ({\x},{cos(3.14*deg(\x)/2)});
-	\draw[smooth,fill=gray!50,dashed] plot[domain=-0.7:0.7] ({\x},
-				{0.7*cos(3.14*deg(\x)/1.4)});
-	\draw[smooth,fill=gray!80,dashed] plot[domain=-0.4:0.4] ({\x},
-				{0.4*cos(3.14*deg(\x)/0.8)});
-	
-	\fill[gray!35] (-1,0) rectangle (1,-2);
-	\fill[gray!65] (-0.7,0) rectangle (0.7,-2);
-	\fill[gray!95] (-0.4,0) rectangle (0.4,-2);
-	\draw[dashed] (-0.4,0) -- (-0.4,-2);
-	\draw[dashed] (-0.7,0) -- (-0.7,-2);
-	\draw[dashed] (0.4,0) -- (0.4,-2);
-	\draw[dashed] (0.7,0) -- (0.7,-2);
-	\draw[->] (0.01,1) -- (-0.01, 1);
-	\draw[->] (0.01,0.7) -- (-0.01, 0.7);
-	\draw[->] (0.01,0.4) -- (-0.01, 0.4);
+	\fill[gray!20] (-0.75,0.05) rectangle (0.75,-2);
+	\fill[gray!50] (-0.5,0.05) rectangle (0.5,-2);
+	\fill[gray!80] (-0.25,0.05) rectangle (0.25,-2);
+	\draw[dashed] (-0.25,0) -- (-0.25,-2);
+	\draw[dashed] (-0.5,0) -- (-0.5,-2);
+	\draw[dashed] (-0.75,0) -- (-0.75,-2);
+	\draw[dashed] (0.25,0) -- (0.25,-2);
+	\draw[dashed] (0.5,0) -- (0.5,-2);
+	\draw[dashed] (0.75,0) -- (0.75,-2);
 	\draw[thick] (-1,-2) -- (-1, 2) node[right,above] {$y=0$};
 	\draw[thick] (1, -2) -- (1, 2) node[left,above] {$y=L$};
+	\draw[smooth,dashed,fill=gray!20] plot[domain=-0.75:0.75]
+	({\x},{sqrt(cos(2*3.14*deg(\x)/3))});
+	\draw[smooth,dashed,fill=gray!50] plot[domain=-0.5:0.5]
+	({\x},{0.75*sqrt(cos(3.14*deg(\x)))});
+	\draw[smooth,dashed,fill=gray!80] plot[domain=-0.25:0.25]
+	({\x},{0.5*sqrt(cos(2*3.14*deg(\x)))});
+	\draw[->] (0.01, 1) -- (-0.01, 1);
+	\draw[->] (0.01, 0.75) -- (-0.01, 0.75);
+	\draw[->] (0.01, 0.5) -- (-0.01, 0.5);
 	\draw (0,-2.2) node {$\overline{\chi}_a$};
 	\draw (0,-2.6) node {Eulerian mean};
 	\draw (0,-3) node {circulation};
@@ -3165,4 +3167,204 @@ neighbouring density surfaces. The fact that the thickness and the
 $z$-position of the layer are both variable affects the calculated average.
 Momentum can be exchanged between neighbouring layers by pressure forces
 acting on their boundaries.
+
+\subsubsection{Dependence of response on vertical scale of $\nabla \cdot
+\bar{\symbf{F}}$}
+In the model problem above, $\nabla \cdot \bar{\symbf{F}}$ is non-zero only in
+a layer with very small vertical scale. Suppose instead that the `forcing
+layer' has vertical scale $D$. Then \eqref{eq:mmc_teul} gives
+\begin{equation}
+	\text{max} \left[ \frac{f_0^2 \overline{\chi}_a^*}{D^2}, \frac{N^2
+	\overline{\chi}_a^*}{L^2}\right] \sim \frac{f_0 F_0}{D}
+\end{equation}
+The \emph{shallow forcing regime} is when $ND/f_0 L \ll 1$. Then $f_0^2
+\overline{\chi}_a^* / D^2 \sim f_0 F_0/D$, hence $\overline{\chi}_a^* \sim F_0
+D/f_0$ and $\overline{v}^*_a \sim F_0/f_0$. The dominant balance in the
+momentum equations within the forcing layer is therefore that most of $\nabla
+\cdot \bar{\symbf{F}}$ is balanced by the Coriolis force. THe mean meridional
+circulation redistributes in the vertical the effect of $\nabla \cdot
+\bar{\symbf{F}}$ and the resulting acceleration occurs over a region that is
+much deeper than the forcing layer. 
+
+The \emph{deep forcing regime} is when $ND/f_0 L \gg 1$. Then $N^2
+\overline{\chi}_a^*/L^2 \sim f_0 F_0/D$, hence $\overline{\chi}_a^* \sim (f_0
+L/ND)^2 F_0 D/f_0$ and $\overline{v}_a^* \sim (f_0 L /ND)^2 F_0/f_0$. The
+Coriolis force therefore plays only a minor role in the momentum equation
+within the forcing layer and at each level $\nabla \cdot \bar{\symbf{F}}$ is
+balanced by the $x$-component of the mean acceleration.
+
+The different regimes could be illustrated by replacing $\Theta(z)$ with a
+simple function that varies from $1$ to $0$ over some finite vertical scale. 
+
+\paragraph{Physical interpretation of mean meridional circulation.} The mean
+meridional circulation may be regarded as arising in order to maintain, under
+the effect of eddy forcing, the constraints of geostrophic and hydrostatic
+balance. Thus if a force is applied to a rotating system, the response cannot
+appear purely as an acceleration; there must be an accompanying change in the
+density field. If a force is deep, in the sense given above, most of the
+response will appear as acceleration. If the force, then most of the response
+will appear as a meridional circulation and hence a density change. Similarly,
+if an applied heating field is shallow, most of the response appears as a
+change in temperature or density, but if it is deep, then most will appear as
+meridional circulation, and hence as a change in velocity. 
+
+\subsection{Equatorial waves}
+\lecture{27/11/20}
+Previously, we have considered wave motion when rotation and stratification
+co-exist under the shallow-water model. The analysis gave Poincar\'{e} waves
+and boundary Kelvin waves when $f = f_0$ is constant, and in the $\beta$-plane
+approximation with $f = f_0 + \beta y$, Rossby waves. Poincar\'{e} and Kelvin
+waves are `fast' waves whilst Rossby waves are `slow' waves since their
+phase speed scale as $f_0 L_D, \beta L_D^2$ respectively. At low latitudes
+when $\beta L_d \sim f_0$, this distinction is no longer clear. Dynamics at
+low latitudes require a different analysis.
+
+\subsubsection{Horizontal structure and propagation}
+The shallow-water equations are still a suitable model for analysis at low
+latitudes. The equatorial $\beta$-plane approximation is $f = \beta y$, i.e.
+$f_0 = 0$ in the Coriolis parameter. Then the shallow-water equations
+linearised about a state of rest are
+\begin{align}
+	u_t - \beta y v &= - g \eta_x \label{eq:sweq1} \\
+	v_t + \beta y u &= - g \eta_y \label{eq:sweq2} \\
+	\eta_t + H(u_x + v_y) &= 0\label{eq:sweq3}
+\end{align}
+where $u$ and $v$ the usual horizontal velocity components, $\eta$ is the free
+surface displacement, and $H$ is the layer depth in the resting state.
+
+There are two dimensional parameters present in these equations, $\beta$ and
+$c = \sqrt{gH}$. These can be used to form time and lengthscales
+$T_{\text{eq}} = (c\beta)^{_1/2}$ and $L_{\text{eq}} = (c/\beta)^{1/2}$.
+$L_{\text{eq}}$ is referred to as the \emph{equatorial deformation radius},
+the analogue of the extratropical deformation radius $L_D = c/f_0$. Taking
+$\partial_x \eqref{eq:sweq2} - \partial_y \eqref{eq:sweq1} - \beta y
+\eqref{eq:sweq3}$ gives
+\begin{equation}
+	\frac{\partial}{\partial t} (v_x - u_y - \frac{\beta y \eta}{H}) + \beta v
+	= \frac{\partial}{\partial t} ( \zeta - \frac{\beta y \eta}{H}) + \beta v
+	= 0 \label{eq:sweqpv}
+\end{equation}
+where $\zeta = v_x - u_y$ is the relative vorticity. This expresses
+conservation of PV in the linearised approximation.
+
+Now consider $\partial_t \eqref{eq:sweq2} - \beta y \eqref{eq:sweq1}$ which
+gives
+\begin{equation}
+	v_{tt} + \beta^2 y^2 v = -g \eta_{yt} + \beta y g \eta_x
+\end{equation}
+
+Substitute for $\eta_t$ from \eqref{eq:sweq3} to get
+\begin{equation}
+	v_{tt} + \beta^2 y^2 v = gH (u_{xy} + v_{yy}) + \beta y g \eta_x = c^2
+	(u_y - v_x + \frac{\beta y \eta}{H})_x + c^2 (v_{xx} + v_{yy})
+\end{equation}
+The first term includes the potential vorticity associated with the
+disturbance, hence differentiate with respect to time and use
+\eqref{eq:sweqpv} to get
+\begin{equation}
+	v_{ttt} + \beta^2 y^2 v_t - c^2 (v_{xx} + v_{yy})_t - \beta c^2 v_x = 0
+\end{equation}
+
+This equation is structurally similar to that obtained for the extratropics;
+with $\beta y$ replaced by $f_0$ and the additional $\beta$ term eliminated
+we obtain the equation for Poincar\'{e} waves in the extratropics. Seek plane
+wave solutions of the form
+\begin{equation}
+	v = \Re\left[ \hat{v}(y) e^{i(kx-\omega t)} \right]
+\end{equation}
+with $k$ and $\omega$ the constant $x$-wavenumber and frequency respectively.
+We require $\hat{v}(y)$ bounded as $\abs{y} \to \infty$. We find the ODE for
+$\hat{v}$ as
+\begin{equation}
+	\left[ \frac{\omega^2}{c^2} - \frac{\beta^2 y^2}{c^2} - k^2 - \frac{\beta
+	k}{\omega} \right] \hat{v} + \hat{v}_{yy} = 0
+\end{equation}
+This equation along with the boundary condition as $\abs{y} \to \infty$
+defines an eigenvalue problem, yielding the eigenvalue condition
+\begin{equation}
+	\omega^2 - c^2 k^2 - \frac{\beta k c^2}{\omega} = (2n+1) \beta c
+\end{equation}
+for $n = 0, 1, 2, \dots$ with corresponding eigenfunctions
+\begin{equation}
+	\hat{v}_n(y) = H_n( y\sqrt{\beta/c}) e^{-\frac{y^2 \beta}{2c}}
+\end{equation}
+where $H_n$ are the \emph{Hermite polynomials} with $H_0(s) = 1, H_1(s) = 2s,
+H_2(s) = 4s^2 - 2$, etc.
+
+Non-dimensionalise the eigenvalue condition using $\omega T_{\text{eq}} =
+\hat{\omega}$ and $k L_{\text{eq}} = \hat{k}$. Then
+\begin{equation}
+	\hat{\omega}^2 - \hat{k}^2 - \frac{\hat{k}}{\hat{\omega}} = 2n+1
+\end{equation}
+This is a quadratic for $\hat{k}$ given $\hat{\omega}$ with roots
+\begin{equation}
+	\hat{k} = -\frac{1}{2\hat{\omega}} \pm \sqrt{\hat{\omega}^2 +
+	\frac{1}{4}\hat{\omega}^2 - (2n+1)}
+\end{equation}
+
+Note that for any pair $(\hat{k}, \hat{\omega})$, there is a corresponding
+pair $(-\hat{k},-\hat{\omega})$ which represents the same wave mode. Hence it
+is necessary to consider only half of the $(\hat{k}, \hat{\omega})$ plane and
+by convention we choose $\hat{\omega} > 0, -\infty < \hat{k} < \infty$. 
+
+\begin{itemize}
+	\item The $n=0$ mode gives $\hat{k} = \hat{\omega} - 1/\hat{\omega}$ or
+		$\hat{k} = -\hat{\omega}$. The second root is unphysical, so the $n=0$
+		mode has dispersion relation
+		\begin{equation}
+			\hat{k} = \hat{\omega} - \frac{1}{\hat{\omega}}
+		\end{equation}
+		For $\hat{\omega} > 1$ we have $\hat{k} > 0$ and for $0 < \hat{\omega}
+		< 1$ we have $\hat{k} < 0$.
+	\item The $n = 1, 2, \dots$ modes have real roots only if $\hat{\omega}^4
+		- (2n+1)\hat{\omega}^2 + \frac{1}{4\hat{\omega}^2} > 0$, implying
+		either $\hat{\omega}^2 < n+\frac{1}{2}-\sqrt{n(n+1)}$ or
+		$\hat{\omega}^2 > \sqrt{n(n+1)} + n + \frac{1}{2}$. Hence there is a
+		frequency gap, the size of which increases with $n$.
+\end{itemize}
+
+This covers all solutions with $v \ne 0$. There are more solutions with $v =
+0$ missed by the above approach. Setting $v=0$ in
+\eqref{eq:sweq1}, \eqref{eq:sweq2}, \eqref{eq:sweq3} which yields $\eta_{tt} -
+c^2 \eta_{xx} = 0$. Requiring exponential decrease in $y$ only (otherwise
+unphysical) yields dispersion relation $\omega = ck$ for plane wave solutions
+with
+\begin{equation}
+	\hat{\eta}(y) \propto e^{-\frac{\beta y^2}{2c}}
+\end{equation}
+This is an \emph{equatorial Kelvin wave} analogous to the boundary Kelvin wave
+on an $f$-plane. There is no latitudinal velocity and the balance in the
+latitudinal momentum equations is geostrophic between the Coriolis force
+associated with $u$ and the pressure gradient associated with $\eta_y$. Note
+that the relation $\omega = kc$ is equivalent to $\hat{\omega} = \hat{k}$ and
+corresponds to the $n=-1$ mode of our previous dispersion relation.
+
+\paragraph{Summary}
+The equatorial wave modes can be split into the following types.
+\begin{itemize}
+	\item For $n = 1, 2, \dots$, for each $\omega > \sqrt{n(n+1)} + n +
+		\frac{1}{2}$ there are two values of $\hat{k}$. These are high
+		frequency \emph{Inertio-gravity / Poincar\'{e} waves}. Note in the
+		large $\hat{k}$ regime these may be reffered to as gravity waves,
+		whilst in the small $\hat{k}$ regime they may be reffered to as
+		inertial waves.
+	\item For $n = 1, 2, \dots$, there are also two values of $\hat{k}$ for
+		each $\omega < n + \frac{1}{2} - \sqrt{n(n+1)}$ which are low
+		frequency \emph{equatorial Rossby waves}.
+	\item For $n = 0$ the dispersion relation $\hat{\omega} - 1/\hat{\omega} =
+		\hat{k}$ is gravity-like $\hat{\omega} \sim \hat{k}$ as
+		$\hat{k} \to \infty$ and Rossby-like $\hat{\omega} \sim 1/\hat{k}$ as
+		$\hat{k} \to -\infty$. Hence the $n=0$ mode is referred to as a
+		(mixed) \emph{Rossby-gravity wave}.
+	\item The $n=-1$ mode with dispersion relation $\hat{\omega} = \hat{k}$ is
+		an \emph{equatorial Kelvin wave}.
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{equatorial.png}
+	\caption{Equatorial wave dispersion relations}
+\end{figure}
+
+
 \end{document}

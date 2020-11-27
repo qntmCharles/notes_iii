@@ -3156,7 +3156,7 @@ Integrating the governing equation for $w$ we have
 This says that viscous stress balances the weight of the fluid. Re-arranging
 this equation allows use of the governing equation for $A$:
 \begin{equation}
-	A \frac{\partial w}{\partial z} = \frac{6}{3\nu} \int_z^{L(t)} A \, \diffd
+	A \frac{\partial w}{\partial z} = \frac{g}{3\nu} \int_z^{L(t)} A \, \diffd
 	z = -\frac{\diffD A}{\diffD t}
 \end{equation}
 Hence a material slice thins due to the weight below it. To proceed we label
@@ -3439,9 +3439,228 @@ Note that in all four regimes, analytic similarity solutions exist. Also, for
 all $\lambda$, the eventual regime as $\tau \to \infty$ is case 2 (Lister \&
 Kerr, JFM, 1989).
 
+\subsection{Pigs \& Slugs}
+\lecture{27/11/20}
+\subsubsection{Rigid particles in a tube}
+Consider a rigid tube of radius $a$ containing fluid of viscosity $\mu$ and a
+tight-fitting, axisymmetric, force-free particle. Apply a pressure gradient
+$G^* = - \frac{\diffd p}{\diffd x}$. What is the steady speed $U^*$ of the
+particle?
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) [partial ellipse = 90:270:.4 and 1.35];
+		\draw[thick] (0, 1.35) -- (10, 1.35);
+		\draw[thick] (0,-1.35) -- (10,-1.35);
+		\draw[thick] (10, 0) ellipse (.4 and 1.35);
+
+		\draw[->] (10,0) -- (10.5, 0) node[right] {$x$};
+		\draw[->] (10,0) -- (10, 0.5) node[left] {$r$};
+		\draw[->] (9,0) -- (9.5, 0) node[right] {$u$};
+		\draw[->] (9,0) -- (9, 0.5) node[left] {$v$};
+
+		\draw[smooth] plot[tension=.5] coordinates {(4,0) (4.15, 1) (4.7,
+		1.25) (6.5,1.25) (7.05,1) (7.2, 0) (7.05,-1) (6.5,-1.25) (4.7, -1.25)
+		(4.15, -1) (4,0)};
+		\draw[red,dashed] (4.6, -2) -- (4.6, 1.6);
+		\draw[red,dashed] (6.5, -2) -- (6.5, 1.6);
+		\draw[red,dashed] (8, -2) -- (8, 1.6);
+		\draw[red,dashed] (3, -2) -- (3, 1.6);
+
+		\draw (0, -1.8) node {Region};
+		\draw (2, -1.8) node {V};
+		\draw (3.8, -1.8) node {IV};
+		\draw (5.6, -1.8) node {III};
+		\draw (7.3, -1.8) node {II};
+		\draw (9, -1.8) node {I};
+
+		\draw[blue,dashed] (1, -1.35) -- (1, 1.35);
+		\draw[blue] plot [domain=-1.35:1.35,variable=\y] ({1.35-0.5*\y*\y},{\y});
+		\draw[blue,->] (1,0) -- (1.35,0);
+		\draw[blue,->] (1, 0.5) -- (1.35-0.125, 0.5);
+		\draw[blue,->] (1,-0.5) -- (1.35-0.125,-0.5);
+
+		\draw (4.4,0) node {tail};
+		\draw (6.6,0) node {head};
+
+		\draw[thick,->] (2, -1.35) -- (1.9, -1.35);
+		\draw[thick,->] (2, 1.35) -- (1.9, 1.35);
+		\draw (1.6, -1.3) -- (1.6, -1.4) node[above] {$x_1$};
+		\draw (8.6, -1.3) -- (8.6, -1.4) node[above] {$x_2$};
+		\draw[->] (5.6, 1.1) -- (5.6, 1.28);
+		\draw[->] (5.6, 1.5) -- (5.6, 1.35);
+		\draw (5.6, 1.7) node {gap $\varepsilon h$};
+		\draw[<->] (4.6, -1) -- (6.5, -1) node[midway,above] {$L$};
 
 
+		\draw[thick,red] (5.2, -1.35) circle (0.15);
+		\draw[thick,red] (5.109,-1.469) -- (4.407, -2.311);
+		\draw[thick,red] (4, -3) circle (0.8);
+		\draw (3.307, -2.6) -- (4.693, -2.6);
+		\draw (3.307, -3.4) -- (4.693, -3.4);
+		\draw[blue,dashed] (3.954,-2.6) -- (3.954, -3.4);
+		\draw[blue,smooth] plot[domain=-2.6:-3.4,variable=\y]
+		({1.5*(\y+3.15)*(\y+3.15)+3.5},{\y});
+		\draw[blue,->] (3.954, -2.8) -- (3.684, -2.8);
+		\draw[blue,->] (3.954, -3) -- (3.534, -3);
+		\draw[blue,->] (3.954, -3.2) -- (3.504, -3.2);
+	\end{tikzpicture}
+\end{center}
 
+Far from the particle, in regions I and V, we have Poiseuille flow. In the
+frame of the \emph{tube}:
+\begin{align}
+	u &= \frac{G^*}{4\mu} (a^2 - r^2) \\
+	Q^* &= \frac{\pi G^* a^4}{8\mu} \\
+	\bar{u} &= \frac{G^* a^2}{8\mu} 
+\end{align}
+
+We expect $u < \bar{u}$ in the thin gap and so $U^* > \bar{u}$ but only by
+$\mathcal{O}(\varepsilon)$, since the average must be $\bar{u}$ across the
+whole tube. It is convenient to work in the frame of the particle for regions
+II -- IV. Fix $U^*$ and find $G^*$ rather than vice versa. Scale lengths by
+$a$, speeds by $U^*$, and pressures by $\mu U^*/u$. We must solve
+\begin{align}
+	\nabla^2 \symbf{u} &= \nabla p\label{eq:1}\\
+	\nabla \cdot \symbf{u} &= 0 \label{eq:2}\\
+	\symbf{u} &= - \hat{\symbf{x}} \hspace{.5em} \text{on} \,\,\,
+	r=1\label{eq:3} \\
+	\symbf{u} &= 0 \hspace{.5em} \text{on particle} \label{eq:4}\\
+	\int_{\text{particle}} \symbfsf{\sigma} \cdot \symbf{n} \, \diffd S &= 0
+	\label{eq:5}
+\end{align}
+We wish to find
+\begin{equation}
+	G = \frac{G^* a^2}{\mu U^*} = \lim_{x \to \pm \infty} -\frac{\diffd
+	p}{\diffd x}
+\end{equation}
+for the case $\varepsilon \ll 1$. For a long fluid control volume
+\begin{equation}
+	V = \{ x_1 \le x \le x_2; r\le 1; \text{outside particle}\}
+\end{equation}
+where $x_1$ is in region V and $x_2$ in region I (see diagram),  \eqref{eq:5}
+and $\int_{\partial V} \symbfsf{\sigma}\cdot\symbf{n}\,\diffd S = 0$ gives
+\begin{equation}
+	\pi \left[ p(x_1) - p(x_2)\right] + 2\pi \int_{x_1}^{x_2} (u_r +
+	v_x)\mid_{r=1} \, \diffd x = 0 \label{eq:fb}
+\end{equation}
+
+\paragraph{Key idea:} $G$ and hence the flux through the gap must be such as
+to satisfy this balance.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0, 1) -- (6, 1);
+		\draw (0, -1) -- (6, -1);
+		\draw (3, 0) ellipse (2 and 0.95);
+		\draw (3,0) node {$u=0$};
+		\draw (4, -1.2) node {$u=-1$};
+		\draw[->] (5, 1) -- (4.9, 1);
+		\draw[->] (1, 1) -- (0.9, 1);
+		\draw[->] (5,-1) -- (4.9,-1);
+		\draw[->] (1,-1) -- (0.9,-1);
+		\draw[<-] (0.5, 0) -- (-0.5, 0) node[left] {$+G = -\nabla p$};
+	\end{tikzpicture}
+\end{center}
+
+If $G = 0$ or $G \gg 1$, the particle is \emph{not} force-free.
+
+\paragraph{Regions I \& V:}
+From Poiseuille flow we non-dimensionalise to get
+\begin{align}
+	u &= -1 + \frac{G}{4}(1-r^2) \\
+	Q &= \int u \, \diffd A = \pi (\frac{G}{8} - 1)
+\end{align}
+Note $\frac{\diffd Q}{\diffd x} = 0$ from \eqref{eq:2}, \eqref{eq:3},
+\eqref{eq:4} and from $Q$ we may deduce $G$ and hence $G^*$ and $U^*$.
+
+\paragraph{Regions II \& IV:} The region is of size $\mathcal{O}(1)$ and the
+full Stokes equations apply. Pressure variations are $\mathcal{O}(1)$ --
+details unimportant.
+
+\paragraph{Region III:} Assume region is of size $L = \mathcal{O}(1)$ (not
+true for a sphere -- see ES4). Lubrication scalings give $u \sim 1, \,\,p \sim
+\frac{uL}{(\varepsilon h)^2} = \mathcal{O}(\varepsilon^{-2}), \,\,Q \sim u
+\varepsilon h = \mathcal{O}(\varepsilon)$. Set $y = \frac{1-r}{\varepsilon}$
+with $0 \le y \le h(x)$. We expand $u, p, Q$ as
+\begin{align}
+	u &= u_0 + \varepsilon u_1 + \dots \\
+	p &= \varepsilon^{-2} p_{-2} + \varepsilon^{-1} p_{-1} + \dots \\
+	Q &= \varepsilon Q_1 + \dots
+\end{align}
+
+Leading order solution follows from lubrication theory:
+\begin{equation}
+	\frac{\partial^2 u_0}{\partial y^2} = \frac{\partial p_{-2}}{\partial x}
+	\hspace{1em} \begin{cases} u(0) = -1 \\ u(h) = 0 \end{cases}
+\end{equation}
+Hence
+\begin{align}
+	u_0 &= \frac{y}{h} - 1 - \frac{1}{2} \frac{\diffd p_{-2}}{\diffd x} y(h-y)
+	\\
+	\frac{Q_1}{2\pi} &= \int_0^h u_0 \, \diffd y = - \frac{h}{2} -
+	\frac{h^3}{12} \frac{\diffd p_{-2}}{\diffd x} \\
+	\implies p_{-2}(x_1) - p_{-2}(x_2) &= 6\left( \frac{Q_1}{\pi} \int_L h^{-3}
+	\, \diffd x + \int_L h^{-2} \,\diffd x\right)
+\end{align}
+Force balance \eqref{eq:fb} at $\mathcal{O}(\varepsilon^{-2})$ gives
+\begin{equation}
+	\pi(p_{-2}(x_1) - p_{-2}(x_2)) = 0
+\end{equation}
+since $u_r = \mathcal{O}(\varepsilon^{-1})$. Then we solve to get
+\begin{align}
+	Q_1 &= -\frac{\pi \int h^{-2} \, \diffd x}{\int h^{-3} \, \diffd x} \\
+	G &= 8 \left( 1 + \frac{\varepsilon Q_1}{\pi} +
+	\mathcal{O}(\varepsilon^2)\right)  = \frac{G^* a^2}{\mu U^*}
+\end{align}
+
+Force balance \eqref{eq:fb} at $\mathcal{O}(\varepsilon^{-1})$ gives
+\begin{equation}
+	\pi (p_{-1}(x_1) - p_{-1}(x_2)) - 2\pi \int_L u_{0y}\mid_{y=0} \, \diffd x
+	= 0
+\end{equation}
+\begin{equation}
+	\implies \nabla p \sim \varepsilon^{-1} ( p_{-1}(\text{tail}) - p_{-1}
+	(\text{head})) = 2 \varepsilon^{-1} \int \left( \frac{4}{h} +
+	\frac{3Q_1}{\pi h^2} \right) \, \diffd x
+\end{equation}
+Hence we find the pressure slowly decreases through regions V and VI, varies
+through region III and decreases slowly again through regions II and I.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) [partial ellipse = 90:270:.4 and 1.35];
+		\draw[thick] (0, 1.35) -- (10, 1.35);
+		\draw[thick] (0,-1.35) -- (10,-1.35);
+		\draw[thick] (10, 0) ellipse (.4 and 1.35);
+
+		\draw[smooth] plot[tension=.5] coordinates {(4,0) (4.15, 1) (4.7,
+		1.25) (6.5,1.25) (7.05,1) (7.2, 0) (7.05,-1) (6.5,-1.25) (4.7, -1.25)
+		(4.15, -1) (4,0)};
+		\draw[red,dashed] (3, -2) -- (3, 1.6);
+		\draw[red,dashed] (4.6, -2) -- (4.6, 1.6);
+		\draw[red,dashed] (6.5, -2) -- (6.5, 1.6);
+		\draw[red,dashed] (8, -2) -- (8, 1.6);
+
+		\draw (0, -1.8) node {Region};
+		\draw (2, -1.8) node {V};
+		\draw (3.8, -1.8) node {IV};
+		\draw (5.6, -1.8) node {III};
+		\draw (7.3, -1.8) node {II};
+		\draw (9, -1.8) node {I};
+		
+		\draw[->] (0, -6) -- (0, -3) node[left] {$p$};
+		\draw (0, -3.2) -- (4.1, -3.3);
+		\draw (7, -5.5) -- (10, -5.6);
+		\draw[dashed,gray!80] (4.1, -3.3) -- (7, -3.3);
+		\draw[dashed,gray!80] (4.1, -5.5) -- (7, -5.5);
+		\draw[smooth] plot[tension=0.6] coordinates {(4.1,-3.3) (4.25, -3.7)
+		(4.9, -6.3) (5.3, -6.5)  (6, -2.5) (6.5, -3.5) (6.9, -5.2) (7, -5.5)};
+		\draw[->] (4, -3) -- (4, -3.3);
+		\draw (3.8, -2.7) node {$\mathcal{O}(\varepsilon^{-1})$};
+		\draw (8.2, -4.5) node {$\mathcal{O}(\varepsilon^{-2})$};
+		\draw[->] (4, -5.8) -- (4, -5.5);
+		\draw[<->] (7.2, -2.5) -- (7.2, -5.5);
+	\end{tikzpicture}
+\end{center}
 
 
 
