@@ -72,3 +72,8 @@
 \contentsline {paragraph}{\nonumberline Regions I \& V:}{48}{section*.14}
 \contentsline {paragraph}{\nonumberline Regions II \& IV:}{48}{section*.15}
 \contentsline {paragraph}{\nonumberline Region III:}{48}{section*.16}
+\contentsline {subsubsection}{\numberline {3.8.2}Long bubble in a tube}{50}{subsubsection.3.8.2}
+\contentsline {paragraph}{\nonumberline Key idea:}{50}{section*.17}
+\contentsline {paragraph}{\nonumberline Regions I \& VII:}{51}{section*.18}
+\contentsline {paragraph}{\nonumberline Regions II \& VI:}{51}{section*.19}
+\contentsline {paragraph}{\nonumberline Region IV:}{51}{section*.20}

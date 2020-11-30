@@ -1650,6 +1650,7 @@ stretching term in $q$ is zero, but, consistent with the fact the circulation
 they are individually non-zero.
 
 \subsection{Waves \& instabilities in 3D QG}
+\label{ss:3dqg}
 \subsubsection{Framework}
 Consider the quasi-geostrophic potential vorticity equation \eqref{eq:qgpv} as
 a starting point and consider small-amplitude disturbances to a background
@@ -3220,6 +3221,7 @@ when $\beta L_d \sim f_0$, this distinction is no longer clear. Dynamics at
 low latitudes require a different analysis.
 
 \subsubsection{Horizontal structure and propagation}
+\label{ss:lategnfunc}
 The shallow-water equations are still a suitable model for analysis at low
 latitudes. The equatorial $\beta$-plane approximation is $f = \beta y$, i.e.
 $f_0 = 0$ in the Coriolis parameter. Then the shallow-water equations
@@ -3356,7 +3358,7 @@ The equatorial wave modes can be split into the following types.
 		$\hat{k} \to \infty$ and Rossby-like $\hat{\omega} \sim 1/\hat{k}$ as
 		$\hat{k} \to -\infty$. Hence the $n=0$ mode is referred to as a
 		(mixed) \emph{Rossby-gravity wave}.
-	\item The $n=-1$ mode with dispersion relation $\hat{\omega} = \hat{k}$ is
+	\item The `$n=-1$' mode with dispersion relation $\hat{\omega} = \hat{k}$ is
 		an \emph{equatorial Kelvin wave}.
 \end{itemize}
 
@@ -3365,6 +3367,214 @@ The equatorial wave modes can be split into the following types.
 	\includegraphics[width=0.7\textwidth]{equatorial.png}
 	\caption{Equatorial wave dispersion relations}
 \end{figure}
+
+\subsubsection{Horizontal propagation in the atmosphere or ocean}
+\lecture{30/11/20}
+The above detailed analysis applies for a \emph{single-layer} fluid. As noted
+in section~\ref{ss:3dqg} for Rossby waves, the theory may be applied to a
+continuously stratified fluid by assuming a vertical structure of the
+disturbances such that
+\begin{align}
+	u(x,y,z,t) &= \tilde{u}(x,y,t)P(z)\\
+	v(x,y,z,t) &= \tilde{v}(x,y,t)P(z)\\
+	p(x,y,z,t) &= \frac{\rho_0}{g}\tilde{\eta}(x,y,t)P(z)\\
+\end{align}
+where $P$ satisfies the eigenvalue problem
+\begin{equation}
+	\frac{\diffd}{\diffd z}\left[ \frac{1}{N^2(z)} \frac{\diffd P}{\diffd
+	z}\right] = -\frac{1}{gh} P = -\frac{1}{c^2} P
+\end{equation}
+where $gh = c^2$ is an eigenvalue, possibly values of which are determined by
+the equation together with the vertical boundary conditions. The horizontal
+structure and propagation characteristics of the disturbances are the same as
+in the shallow-water model in each `layer' of \emph{equivalent} depth $h$.
+
+\paragraph{Baroclinic modes}
+In `ocean-like' or `troposphere-like' configurations there is a discrete set
+of eigenvalues, each with corresponding speed $c$ and a different vertical
+structure, referred to as baroclinic modes and originally discussed in
+section~\ref{ss:3dqg}. The same ideas would be relevant to the atmosphere if
+the tropopause is viewed as a rigid lid on the basis that the buoyancy
+frequency is much larger in the stratosphere compared with the troposhere.
+This is not valid if vertical propagation of waves from the troposphere to the
+stratosphere is of interest.
+
+\begin{itemize}
+	\item For the equatorial ocean the first baroclinic mode has $c \sim 2 m
+		s^{-1}$, equivalent to $h \sim 0.4 m$. The corresponding equatorial
+		deformation scale is
+		\begin{equation}
+			L_{\text{eq}} = \sqrt{\frac{c}{\beta}} = \sqrt{\frac{2}{2.3 \times
+				10^{-11}}} m \sim 3 \times 10^5 m \sim 3^{\circ} \,\,\,\text{of
+			latitude}
+		\end{equation}
+		The corresponding timescale is $T_{\text{eq}} \sim 1.5$ days. Note
+		that this timescale is not particularly useful, given the variety of
+		different wave frequencies and hence propagation speeds.
+	\item For the tropical troposphere, observations suggest $c \sim 25 m
+		s^{-1}$ implying the deformation scale is $L_{\text{eq}} \sim 10^6 m
+		\sim 10^{\circ}$ of latitude, with corresponding timescale
+		$T_{\text{eq}} \sim 0.4$ days. 
+\end{itemize}
+
+\paragraph{Influence of moisutre.} Estimates of $c$ based on \emph{dry}
+dynamics and the depth of the tropical troposphere would be about $50 m
+s^{-1}$, i.e. much larger than the value suggested by observations. This is
+likely due to the role of moisture in tropical dynamics, e.g. the fact that
+upward motion tends to lead to condensation and hence to internal heating,
+which can be argued to reduce the effective static stability from the `dry'
+value. There is ongoing research on the subject of \emph{convectively coupled
+equatorial waves}.
+
+\subsubsection{Matsuno-Gill forcing model}
+We will now consider the response of the equatorial atmosphere or ocean to a
+specified forcing. The problem was first motivated by the observed
+longitudinal structure of the tropical atmosphere and considers the response
+of the atmosphere to a specified heating, though the method can be applied
+more generally.
+
+Following the previous section, we start with the shallow-water equations on
+an equatorial $\beta$-plane, expecting that the layer thickness $H$ can be
+chosen appropriately for the tropical atmosphere. Heating is parameterised as
+a source term $\frac{1}{g}Q(x,y,t)$ on the RHS of the mass continuity
+equation. The pre-factor is included for algebraic convenience. We use the
+\emph{long-wave approximation} which assumes that the lengthscale of
+$x$-variation is much larger than $L_{\text{eq}}$ and hence the $v_t$ term may
+be neglected so that the $y$-momentum equation simply expresses geostrophic
+balance in the $y$-direction. We have
+\begin{align}
+	u_t - \beta y v &= - g \eta_x \label{eq:15.14}\\
+	\beta y u &= - g \eta_y \label{eq:15.15}\\
+	\eta_t + H(u_x + v_y) &= \frac{1}{g}Q(x,y,t)
+\end{align}
+
+The unforced form of these equations allow the waves described by the full
+equtorial dispersion relation, confined to small values of $\hat{k}$ and
+$\hat{\omega}$, i.e. Rossby waves and Kelvin waves, but \emph{not} mixed
+Rossby-gravity waves or inertio-gravity waves. To proceed, we introduce new
+variables $q$ and $r$ defined by
+\begin{align}
+	q &= \frac{g}{c}\eta + u \\
+	r &= \frac{g}{c}\eta - u
+\end{align}
+In terms of these variables, we have
+\begin{align}
+	q_t + c q_x + cv_y - \beta y v &= \frac{Q}{c} \\
+	r_t - cr_x + cv_y + \beta y v &= \frac{Q}{c} \\
+	cq_y + \beta y q &= \beta y r - c r_y
+\end{align}
+We now separate out the latitudinal component by writing $q, r, v$ and the
+forcing $Q$ as sums of the latitudinal eigenfunctions derived in
+section~\ref{ss:lategnfunc}, i.e.
+\begin{equation}
+	\left[v,q,r,Q\right](x,y,t) = \sum_{n=0}^\infty \left[ v_n, q_n, r_n,
+	Q_n\right](x,t) \tilde{D}_n(Y)
+\end{equation}
+where
+\begin{equation}
+	\tilde{D}_n(Y) = H_n(Y) e^{-\frac{1}{2}Y^2}, \hspace{2em} Y =
+	y\sqrt{\frac{\beta}{c}}
+\end{equation}
+are the latitudinal eigenfunctions with $\tilde{D}_n' + Y \tilde{D}_n = 2n
+\tilde{D}_{n-1}$ and $\tilde{D}_n - Y \tilde{D}_n = - \tilde{D}_{n+1}$.
+Substituting these series into the governing equations yields
+\begin{align}
+	\frac{\partial q_0}{\partial t} + c \frac{\partial q_0}{\partial x} &=
+	\frac{Q_0}{c} \label{eq:15.21} \\
+	q_1 &= 0
+\end{align}
+and for $n = 1, 2, \dots$ 
+\begin{align}
+	\frac{\partial q_{n+1}}{\partial t} + c \frac{\partial q_{n+1}}{\partial
+	x} - (c\beta)^{1/2} v_n &= \frac{Q_{n+1}}{c} \label{eq:15.23}\\
+	\frac{\partial r_{n-1}}{\partial t} - c \frac{\partial r_{n-1}}{\partial
+	x} + 2n(c\beta)^{1/2} v_n &= \frac{Q_{n-1}}{c} \\
+	2(n+1)q_{n+1} &= r_{n-1}\label{eq:15.25}
+\end{align}
+We may eliminate $v_n$ and $r_{n-1}$ from the last three equations to give
+\begin{equation}
+	(2n+1) \frac{\partial q_{n+1}}{\partial t} - c \frac{\partial
+		q_{n+1}}{\partial x} = \frac{1}{c}\left(nQ_{n+1} +
+	\frac{1}{2}Q_{n-1}\right) \label{eq:15.26}
+\end{equation}
+
+From \eqref{eq:15.21} we see that $q_0$ is associated with the Kelvin wave, as
+this equation allows a wave travelling in the positive $x$-direction with
+speed $c$. The variables $q_{n+1}, v_n, r_{n-1}$ for $n = 1, 2, \dots$ are
+associated with the $n$\textsuperscript{th} Rossby wave since
+\eqref{eq:15.26} allows a wave travelling in the negative $x$-direction with
+speed $c/(2n+1)$. The response to a forcing $Q(x,y)$ that is non-zero in a
+localised region and `switched on' at $t=0$ will therefore consist (if $Q_0
+\ne 0$) of a Kelvin wave propagating eastward away from the forcing region and
+a set of Rossby waves propagating westward away from the forcing region. 
+
+\paragraph{Steady state behaviour.} As currently defined, the solution will
+not tend to a steady state. A simple way to allow a steady state solution is
+to add an identical linear damping to each of \eqref{eq:15.14} and
+\eqref{eq:15.15}, i.e. replace $\partial_t$ with $\partial_t + \alpha$. The
+$q_n$ then satisfy
+\begin{align}
+	\alpha q_0 + c \frac{\diffd q_0}{\diffd x} &= \frac{Q_0}{c}
+	\label{eq:15.27}\\
+	(2n+1)\alpha q_{n+1} - c\frac{\diffd q_{n+1}}{\diffd x} &=
+	\frac{1}{c}\left(nQ_{n+1}+\frac{1}{2}Q_{n-1}\right)\label{eq:15.28}
+\end{align}
+All other information about the solution can be obtained from the $q_n$, the
+$r_n$ from \eqref{eq:15.25}, and the $v_n$ from the steady form of
+\eqref{eq:15.23}.
+
+The addition of damping means that the wave response to a localised forcing
+$Q(x,y)$ decays with distance away from the forcing. The solution to
+\eqref{eq:15.27} represents a Kelvin wave which appears only to the east of
+the forcing region and decays in amplitude with distance away from it, with
+decay scale $c/\alpha$. Note that this part of the response is excited only by
+$Q_0$, i.e. by the part of $Q(x,y)$ that projects onto $\tilde{D}_0$. The
+solution to \eqref{eq:15.28} represents a set of Rossby waves which appear
+only to the west of the forcing region and decay with distance away from it.
+The larger thev alue of $n$, the smaller the propagation speed and the more
+rapid the decay. The $n=1$ wave gives a propagation speed of $c/3$, hence the
+fastest Rossby wave decays to the west on a scale $c/3\alpha$, i.e. one third
+the decay scale of the Kelvin wave to the west. Note that the
+$n$\textsuperscript{th} Rossby wave is excited by $Q_{n-1}$ and $Q_{n+1}$. A
+forcing for which $Q_0$ is the only component therefore excites both a Kelvin
+wave and the $n=1$ Rossby wave. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.9\textwidth]{mglatlong.png}
+	\caption{Matsuno-Gill model latitude-longitude structure.}
+\end{figure}
+
+\paragraph{Interpretation.} The Matsuno-Gill model is considered a classical
+model of the first baroclinic mode of the tropical troposphere, i.e. a
+circulation driven by a heating maximising in the mid-troposphere in which
+there is ascent or descent in the mid-troposphere, and the upper-level
+horizontal flow is in the opposite direction to the low-level horizontal flow.
+If the horizontal velocity in the shallow-water system is interpreted as
+representing the low-level horizontal flow, then the mid-tropospheric vertical
+velocity corresponds to the convergence of the low-level horizontal flow, i.e.
+in the steady-state system described above, to $-u_x -v_y = \alpha \eta + Q$. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\textwidth]{mgvert.png}
+	\caption{Matsuno-Gill model circulation in vertical plane.}
+\end{figure}
+
+The solution for a localised positive forcing with $Q_0$ component only shows
+eastward low-level flow to the west of the forcing region (Rossby-wave) and a
+westward low-level flow to the east (Kelvin-wave). The Rossby-wave low level
+flow has cyclonic flow on either side of the equator (anti-clockwise to the
+north, clockwise to the south). Correspondingly, at upper levels there are
+anticyclones on either side of the equator.
+
+For the tropical troposphere the heating is primarily latent heating
+associated with precipitation. There is relatively large precipitation over
+the Indonesian and West Pacific regions and the above model therefore provides
+a simple representation of the latitude-longitude structure of the flow in
+this region.
+
+
 
 
 \end{document}

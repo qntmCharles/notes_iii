@@ -3662,10 +3662,145 @@ through region III and decreases slowly again through regions II and I.
 	\end{tikzpicture}
 \end{center}
 
+\subsubsection{Long bubble in a tube}
+\lecture{30/11/20}
+Here, we replace the rigid particle by a long bubble with capillary number
+$\text{Ca} = \frac{mu U^*}{\gamma} \ll 1$. See Bretherton, JFM 1960. In this
+problem, to find out the speed $U^*$ of the bubble we also need the steady
+shape of the bubble, e.g. to determine the gap $\varepsilon h$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) [partial ellipse = 90:270:.4 and 1.35];
+		\draw[thick] (0, 1.35) -- (10, 1.35);
+		\draw[thick] (0,-1.35) -- (10,-1.35);
+		\draw[thick] (10, 0) ellipse (.4 and 1.35);
+
+		\draw[->] (10,0) -- (10.5, 0) node[right] {$x$};
+		\draw[->] (10,0) -- (10, 0.5) node[left] {$r$};
+		\draw[->] (9,0) -- (9.5, 0) node[right] {$u$};
+		\draw[->] (9,0) -- (9, 0.5) node[left] {$v$};
+
+		\draw (4.5, 0) [partial ellipse=90:270:1 and 1.28];
+		\draw (6.6, 0) [partial ellipse=-90:90:1 and 1.28];
+		\draw (4.5, 1.28) -- (6.6, 1.28);
+		\draw (4.5, -1.28) -- (6.6, -1.28);
+		\draw[red,dashed] (3, -2) -- (3, 1.6);
+		\draw[red,dashed] (4.2, -2) -- (4.2, 1.6);
+		\draw[red,dashed] (4.6, -2) -- (4.6, 1.6);
+		\draw[red,dashed] (6.5, -2) -- (6.5, 1.6);
+		\draw[red,dashed] (6.9, -2) -- (6.9, 1.6);
+		\draw[red,dashed] (8, -2) -- (8, 1.6);
+
+		\draw (0, -1.8) node {Region};
+		\draw (2, -1.8) node {VII};
+		\draw (3.8, -1.8) node {VI};
+		\draw (4.4, -1.8) node {V};
+		\draw (5.6, -1.8) node {IV};
+		\draw (6.7, -1.8) node {III};
+		\draw (7.55, -1.8) node {II};
+		\draw (9, -1.8) node {I};
+
+		\draw[->] (4, 0.5) -- (4.2, 0.5);
+		\draw[->] (4.8, 0.5) -- (4.6, 0.5);
+		\draw[->] (6.3, 0.5) -- (6.5, 0.5);
+		\draw[->] (7.1, 0.5) -- (6.9, 0.5);
+		\draw (4.4, 0.2) node {$\Delta x$};
+		\draw (6.7, 0.2) node {$\Delta x$};
+
+		\draw[->] (5, 1.28) -- (5, 0.98) node[below] {$\symbf{n}$};
+		\draw (5.55, -0.5) node {$p_{\text{bub}} \approx$ const.};
+
+		\draw[blue,dashed] (1, -1.35) -- (1, 1.35);
+		\draw[blue] plot [domain=-1.35:1.35,variable=\y] ({1.35-0.5*\y*\y},{\y});
+		\draw[blue,->] (1,0) -- (1.35,0);
+		\draw[blue,->] (1, 0.5) -- (1.35-0.125, 0.5);
+		\draw[blue,->] (1,-0.5) -- (1.35-0.125,-0.5);
+
+		\draw[thick,->] (2, -1.35) -- (1.9, -1.35);
+		\draw[thick,->] (2, 1.35) -- (1.9, 1.35);
+		\draw[->] (5.6, 1.1) -- (5.6, 1.28);
+		\draw[->] (5.6, 1.5) -- (5.6, 1.35);
+		\draw (5.6, 1.7) node {gap $\varepsilon h$};
 
 
+		\draw[thick,red] (5.2, -1.35) circle (0.15);
+		\draw[thick,red] (5.109,-1.469) -- (4.407, -2.311);
+		\draw[thick,red] (4, -3) circle (0.8);
+		\draw (3.307, -2.6) -- (4.693, -2.6);
+		\draw (3.307, -3.4) -- (4.693, -3.4);
+		\draw[blue,dashed] (4.2,-2.6) -- (4.2, -3.4);
+		\draw[blue] (3.8,-2.6) -- (3.8, -3.4);
+		\draw[<-,blue] (3.8, -2.8) -- (4.2, -2.8);
+		\draw[<-,blue] (3.8, -3.0) -- (4.2, -3.0);
+		\draw[<-,blue] (3.8, -3.2) -- (4.2, -3.2);
+	\end{tikzpicture}
+\end{center}
 
+We take the same length, speed, and pressure scales as before. There is
+Poiseuille flow as before in regions I and VII. We have governing equations
+and boundary conditions
+\begin{align}
+	\nabla^2 \symbf{u} &= \nabla p \\
+	\nabla \cdot \symbf{u} &= 0 \\
+	\symbf{u} &= - \hat{\symbf{x}} \hspace{.5em} \text{on} \,\,\,
+	r=1 \\
+	\symbf{u}\cdot\symbf{n} &= 0 \hspace{.5em} \text{on particle} \\
+	-\symbfsf{\sigma} \cdot \symbf{n} &= \frac{\kappa}{\text{Ca}} \symbf{n}
+	\hspace{.5em} \text{on particle} 
+\end{align}
 
+Integrating the final (dynamic) boundary condition, we see there is no net
+force on the bubble. If the interface is at $r = R(x)$ then
+\begin{align}
+	\symbf{n} &= (-1, R_x)(1+R^2_x)^{-1/2} \hspace{.5em} \text{into bubble} \\
+	\kappa &= -\frac{1}{R(1+R^2_x)^{1/2}} + \frac{R_{xx}}{(1+R^2_x)^{3/2}}
+\end{align}
+
+If $R=1-\varepsilon h$, then
+\begin{equation}
+	\kappa = -(1+\varepsilon h + \varepsilon h_{xx}) +
+	\mathcal{O}(\varepsilon^2)
+\end{equation}
+
+\paragraph{Key idea:} strong surface tension ($\text{Ca} \ll 1$) pulls the
+bubble into a cylinder in region IV where $\kappa = - 1$ with spherical caps
+in II and IV where $\kappa = -2$. Hence $\nabla p = \mathcal{O}(1/\text{Ca})$
+across narrow regions III and V.
+
+From lubrication scalings, we have
+\begin{align}
+	\frac{\Delta p}{\Delta x} &\sim \frac{u}{(\varepsilon h)^2} \\
+	\varepsilon h_{xx} &\sim 1
+\end{align}
+Hence $\varepsilon \sim \text{Ca}^{2/3}, \hspace{.5em} \Delta x \sim
+\text{Ca}^{1/3}, \hspace{.5em} p \sim \text{Ca}^{-1}$. We therefore define
+$\varepsilon \equiv \text{Ca}^{2/3}$ and 
+\begin{equation}
+	P \equiv \frac{p - p_{\text{bub}}}{\text{Ca}^{-1}}
+\end{equation}
+
+\paragraph{Regions I \& VII:}
+Uniform Poiseuille flow as before so
+\begin{equation}
+	Q = \pi (\frac{G}{8} - 1)
+\end{equation}
+
+\paragraph{Regions II \& VI:}
+Full Stokes equations apply, with $\mathcal{O}(1)$ deviatoric stresses, as
+before. Hence $\nabla P = \mathcal{O}(\text{Ca})$, i.e. $P$ is uniform at
+leading order. Also $P = \kappa$ on bubble, so we have spherical caps since
+$\kappa$ is uniform. Thus $\kappa_0 = -2, P_0 = -2$.
+
+\paragraph{Region IV:}
+Since $\kappa_0 = -1, P_0 = -1$ i.e. uniform. Lubrication theory gives leading
+order equation
+\begin{equation}
+	\frac{\partial^2 u_0}{\partial y^2} = 0
+\end{equation}
+where $y = (1-r)/\varepsilon$ as before. The boundary condition $u_0 = -1$ on
+$y=0$ gives $u_0 = -1$, i.e. plug flow as shown in the diagram. Hence $Q \sim
+\text{Ca}^{2/3} Q_1$, and $\frac{Q_1}{2\pi} = -h_0$, constant.
 
 
 

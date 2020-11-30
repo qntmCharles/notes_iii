@@ -88,3 +88,9 @@
 \contentsline {subsection}{\numberline {4.3}Equatorial waves}{47}{subsection.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1}Horizontal structure and propagation}{48}{subsubsection.4.3.1}
 \contentsline {paragraph}{\nonumberline Summary}{49}{section*.33}
+\contentsline {subsubsection}{\numberline {4.3.2}Horizontal propagation in the atmosphere or ocean}{50}{subsubsection.4.3.2}
+\contentsline {paragraph}{\nonumberline Baroclinic modes}{51}{section*.35}
+\contentsline {paragraph}{\nonumberline Influence of moisutre.}{51}{section*.36}
+\contentsline {subsubsection}{\numberline {4.3.3}Matsuno-Gill forcing model}{51}{subsubsection.4.3.3}
+\contentsline {paragraph}{\nonumberline Steady state behaviour.}{53}{section*.37}
+\contentsline {paragraph}{\nonumberline Interpretation.}{53}{section*.39}
