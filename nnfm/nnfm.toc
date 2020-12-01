@@ -66,3 +66,10 @@
 \contentsline {subsection}{\numberline {9.4}Further quadratic models}{48}{subsection.9.4}
 \contentsline {paragraph}{\nonumberline Quasi-linear models using other objective derivatives.}{48}{section*.16}
 \contentsline {paragraph}{\nonumberline Models including all quadratic terms.}{49}{section*.17}
+\contentsline {subsection}{\numberline {9.5}Further non-linear models}{50}{subsection.9.5}
+\contentsline {paragraph}{\nonumberline Inclusion of invariants.}{50}{section*.18}
+\contentsline {paragraph}{\nonumberline Inclusion of terms non-linear in stress.}{50}{section*.19}
+\contentsline {paragraph}{\nonumberline The FENE-P model.}{50}{section*.20}
+\contentsline {section}{\numberline {10}Instabilities}{51}{section.10}
+\contentsline {subsection}{\numberline {10.1}Purely elastic instabilities}{51}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Shear-banding}{52}{subsection.10.2}

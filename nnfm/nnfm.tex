@@ -16,6 +16,8 @@
 \newcommand{\Nsrate}[1]{\symbfsf{\gamma}_{(#1),N}}
 \newcommand{\ucd}[1]{\stackrel{\bigtriangledown}{#1}}
 \newcommand{\deps}{\dot{\varepsilon}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
 \begin{document}
 
@@ -3091,6 +3093,7 @@ deformation as the derivatives are objective. This class of models is known as
 \end{eg}
 
 \subsection{Shear flow of upper-convected Maxwell fluid}
+\label{ss:ucmshear}
 \lecture{26/11/20}
 Consider the upper-convected Maxwell fluid model under steady shear flow
 $\symbf{u} = \srate y \hat{\symbf{x}}$. As usual, we have
@@ -3141,7 +3144,7 @@ symmetric. The $yy, yz, zz$ components give $\symbfsf{\tau}_{yy} = 0,
 	&xy \,\,\text{component:} &&\symbfsf{\tau}_{xy} - \lambda \srate
 	\cancel{\symbfsf{\tau}_{yy}} = \eta \srate &&\implies \tau_{xy} = \eta \srate\\
 	&xx \,\,\text{component:} &&\symbfsf{\tau}_{xx} - \lambda \srate
-	\symbfsf{\tau}_{xy} = 0 &&\implies \tau_{xx} =
+	2\symbfsf{\tau}_{xy} = 0 &&\implies \tau_{xx} =
 	2\eta\lambda\srate^2
 \end{align}
 Finally we have the following results:
@@ -3332,7 +3335,356 @@ not all) terms quadratic in $\symbfsf{\tau}$ and $\nabla \symbf{u}$.
 	Johnson-Segalman, and the second-order fluid model.
 \end{eg}
 
+\subsection{Further non-linear models}
+\lecture{1/12/20}
+\paragraph{Inclusion of invariants.} We can replace the constant viscosity
+$\eta$ in quasi-linear models by an empirical function $\eta(\srate)$ where
+$\srate$ is the magnitude of the shear rate. 
+\begin{eg}
+	\hspace{1em}\\
+	The upper-convected Maxwell fluid with empirical function $\eta(\srate)$
+	is known as the \emph{White-Metzner model}
+	\begin{equation}
+		\symbfsf{\tau} + \frac{\eta(\srate)}{G}
+		\stackrel{\bigtriangledown}{\symbfsf{\tau}} = \eta(\srate)
+		\symbfsf{\srate}
+	\end{equation}
+	The empirical function could be a power-law, Carreau-Yasuda, etc. Under
+	steady shear, we have viscosity $\eta(\srate)$ and normal stress
+	coefficients $\Psi_1 = 2\eta(\srate) \lambda(\srate), \Psi_2 = 0$ in exact
+	analogy with the upper-convected Maxwell fluid. The advantage of this
+	model is we can reproduce any empirical shear-dependent viscosity with
+	elastic stresses. However, we still get divergence of extensional
+	viscosity.
+\end{eg}
+\paragraph{Inclusion of terms non-linear in stress.}
+Here we describe two models which include terms which are non-linear in
+stress. 
+\begin{eg}
+	\hspace{1em}
+	\begin{itemize}
+		\item \textbf{Giesekus model.} 
+			\begin{equation}
+				\symbfsf{\tau} + \lambda
+				\stackrel{\bigtriangledown}{\symbfsf{\tau}} + \alpha
+				\frac{\lambda}{\eta} \symbfsf{\tau}\cdot\symbfsf{\tau} = \eta
+				\symbfsf{\srate}
+			\end{equation}
+			where $0 \le \alpha < \frac{1}{2}$ is a dimensionless number
+			called the \emph{mobility factor}. This number arises from
+			anisotropy; by Brownian motion or drag. Under steady shear, we
+			have shear-dependent $\eta(\srate), \Psi_1(\srate),
+			\Psi_2(\srate)$ and find $\abs{\Psi_2/\Psi_1} =
+			\mathcal{O}(\alpha)$. The extensional viscosity is now bounded.
+			This model is hard to study analytically, but has excellent
+			agreement with experiment.
+		\item \textbf{Phan-Thien \& Tanner (PTT) model.} 
+			\begin{equation}
+				f(\symbfsf{\tau})\symbfsf{\tau} + \lambda
+				\stackrel{\bigtriangledown}{\symbfsf{\tau}} = \eta
+				\symbfsf{\srate}
+			\end{equation}
+			This model is derived from kinetic theory for polymers forming
+			cross-linked networks, which has important biological
+			applications. $f$ is a dimensionless function, usually linear or
+			exponential in $\symbfsf{\tau}$.
+	\end{itemize}
+\end{eg}
 
+\paragraph{The FENE-P model.}
+FENE stands for \emph{Finitely Extensible Non-linear Elastic}. This model is
+also derived from kinetic theory, for finitely-extensible model polymers, with
+additional assumptions required for closure of the model. We have constitutive
+relationship
+\begin{equation}
+	\symbfsf{\tau} = \eta \symbfsf{\srate} + \symbfsf{\tau}^P
+\end{equation}
+where $\eta \symbfsf{\srate}$ is the Newtonian or \emph{solvent} component,
+and $\symbfsf{\tau}^P$ is the \emph{polymeric} component. The polymeric
+component may be further written as
+\begin{equation}
+	\symbfsf{\tau}^P = G\left[ f(\symbfsf{\kappa})\symbfsf{\kappa} -
+	\symsf{I}\right]
+\end{equation}
+where $\symbfsf{\kappa}$ is a dimensionless covariance tensor, related to the
+conformation of polymer molecules. This tensor is determined by the
+differential relationship
+\begin{equation}
+	f(\symbfsf{\kappa})\symbfsf{\kappa} +
+	\stackrel{\bigtriangledown}{\symbfsf{\kappa}} = \symsf{I}
+\end{equation}
+where $f$ is dimensionless and can be written
+\begin{equation}
+	f(\symbfsf{\kappa}) = \frac{1}{1- \text{tr}(\symbfsf{\kappa})/L^2}
+\end{equation}
+for $L$ dimensionless. The function $f$ measures polymer stretching. If $L \to
+\infty$, then $f \to 1$ and the model is precisely the Oldroyd-B fluid model.
+
+\section{Instabilities}
+The classical branch of fluid mechanics called \emph{hydrodynamic stability}
+studies instabilities, mainly for Newtonian fluids. Famous Newtonian
+instabilities include
+\begin{itemize}
+	\item Rayleigh-Taylor: fluid of density $\rho_2$ above a fluid of density
+		$\rho_1 < \rho_2$.
+	\item Rayleigh-Plateau: break-up of cylindrical viscous threads by surface
+		tension.
+	\item Saffman-Taylor: viscous fingering at a moving interface between
+		fluids of differing viscosity.
+	\item Kelvin-Helmholtz: vortex sheet roll-up at a shear discontinuity.
+\end{itemize}
+
+Each of these classical Newtonian instabilities have a clear physical origin,
+for example the Rayleigh-Taylor instability is related to the release of
+gravitational potential energy. For non-Newtonian fluids, we find new
+instabilities not present in Newtonian fluids.
+
+\subsection{Purely elastic instabilities}
+We will illustrate the physical principle of instability of a viscoelastic
+fluid with curved streamlines. Consider pressure-driven 2D flow with circular
+streamlines. In the Newtonian case, this is known as Dean's flow. 
+
+\begin{wrapfigure}{l}{0.25\textwidth}
+	\begin{tikzpicture}
+		\clip (3,1.5) rectangle (5.2, -1.5);
+		\draw[thick] (0,0) [partial ellipse = -30:30:4 and 4];
+		\draw[thick] (0,0) [partial ellipse = -30:30:5 and 5];
+		\draw[->] (0,0) [partial ellipse = -30:-10:4.5 and 4.5];
+		\draw[blue,dashed] (4,0) -- (5, 0);
+		\draw[blue] plot[domain=4:5] ({\x},{0.5*(1-4*(\x-4.5)*(\x-4.5))});
+		\draw[blue,->] (4.25, 0) -- (4.25,0.375);
+		\draw[blue,->] (4.75, 0) -- (4.75,0.375);
+		\draw[blue,->] (4.5, 0) -- (4.5, 0.5);
+	\end{tikzpicture}
+\end{wrapfigure}
+
+We have circular streamlines for a flow $\symbf{u} =
+u_{\theta}(r)\hat{\symbf{\theta}}$ in cylindrical co-ordinates. The Cauchy
+equation $r$ component for this flow is
+\begin{equation}
+	\frac{\partial p}{\partial r} = \frac{1}{r}\frac{\partial}{\partial
+		r}(r\symbfsf{\tau}_{rr}) + \frac{1}{r} \frac{\partial}{\partial
+	\theta} (\symbfsf{\tau}_{r\theta}) - \frac{\tau_{\theta\theta}}{r}
+\end{equation}
+The second term can be eliminated due to axisymmetry, i.e. $\partial_\theta
+\equiv 0$. The first term is approximately zero: see shear flow of an
+upper-convected Maxwell fluid in section~\ref{ss:ucmshear} in which the
+analogous component $\symbfsf{\tau}_{yy}$ vanishes. Hence we have
+\begin{equation}
+	\frac{\partial p}{\partial r} = -\frac{\tau_{\theta\theta}}{r}
+\end{equation}
+The fluid is elastic, hence we have tension along streamlines with
+$\tau_{\theta\theta} > 0$. There is a balance between \emph{inward} tension
+force (hoop stress) $\symbfsf{\tau}/r$ and \emph{outward} pressure force
+$f^P$.
+
+Consider two parcels of fluid \circled{1} and \circled{2} with $r_1 < r_2$.
+Exchange the parcels, and consider the new balance of force. Assume that
+elastic tension $\tau \equiv \tau_{\theta\theta}$ is transported with the
+fluid parcels (e.g. tension is due to stretched polymer molecules). We also
+assume that the fluid pressure is undisturbed by the instantaneous exchange.
+See diagram below: blue quantities are unchanged, red quantities have changed.
+\begin{center}
+	\begin{tikzpicture}[scale=2.5]
+		\clip (3, 1) rectangle (10,-1);
+		\draw[thick] (0,0) [partial ellipse = -10:10:4 and 4];
+		\draw[thick] (0,0) [partial ellipse = -10:10:6 and 6];
+		\draw (4.5,-0.9) node {$r=r_1$};
+		\draw (5.5,-1.1) node {$r=r_2$};
+		\draw (4.5, 0) circle (0.1);
+		\draw (4.5, 0) node {1};
+		\draw (5.5, 0) circle (0.1);
+		\draw (5.5, 0) node {2};
+		\draw[dashed] (0,0) [partial ellipse = -10:-1.5:4.5 and 4.5];
+		\draw[dashed] (0,0) [partial ellipse = -10:-1.5:5.5 and 5.5];
+		\draw[blue,->] (5.6, 0) -- (5.8, 0) node[above] {$f_2^P$};
+		\draw[blue,->] (4.6, 0) -- (4.8, 0) node[above] {$f_1^P$};
+		\draw[blue,->] (5.4, 0) -- (5.2, 0) node[below]
+		{$\symbfsf{\tau}_2/r_2$};
+		\draw[blue,->] (4.4, 0) -- (4.2, 0) node[below]
+		{$\symbfsf{\tau}_1/r_1$};
+		\draw[thick,->] (6.4, 0) -- (7, 0);
+		\draw (6.7, -0.2) node {instantaneous};
+		\draw (6.7, -0.4) node {exchange};
+		\begin{scope}[shift={(3.5,0)}]
+			\draw[thick] (0,0) [partial ellipse = -10:10:4 and 4];
+			\draw[thick] (0,0) [partial ellipse = -10:10:6 and 6];
+			\draw (4.5,-0.9) node {$r=r_1$};
+			\draw (5.5,-1.1) node {$r=r_2$};
+			\draw[red] (4.5, 0) circle (0.1);
+			\draw[red] (4.5, 0) node {2};
+			\draw[red] (5.5, 0) circle (0.1);
+			\draw[red] (5.5, 0) node {1};
+			\draw[dashed] (0,0) [partial ellipse = -10:-1.5:4.5 and 4.5];
+			\draw[dashed] (0,0) [partial ellipse = -10:-1.5:5.5 and 5.5];
+			\draw[blue,->] (5.6, 0) -- (5.8, 0) node[above] {$f_2^P$};
+			\draw[blue,->] (4.6, 0) -- (4.8, 0) node[above] {$f_1^P$};
+			\draw[red,->] (5.4, 0) -- (5.2, 0) node[below]
+			{$\symbfsf{\tau}_1/r_2$};
+			\draw[red,->] (4.4, 0) -- (4.2, 0) node[below]
+			{$\symbfsf{\tau}_2/r_1$};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+The net radial face acting on each parcel of fluid is now
+\begin{align}
+	\Delta f_2 &= \text{net force acting on \circled{2} along}\,\, r \\
+			&= f_1^P - \frac{\symbfsf{\tau}_2}{r_1} \\
+			&= \frac{\symbfsf{\tau}_1 - \symbfsf{\tau}_2}{r_1}\\
+	\Delta f_1 &= \text{net force acting on \circled{1} along}\,\, r \\
+			&= f_2^P - \frac{\symbfsf{\tau}_1}{r_2} \\
+			&= \frac{\symbfsf{\tau}_2 - \symbfsf{\tau}_1}{r_2}
+\end{align}
+Hence stability depends on the sign of $\symbfsf{\tau}_1 - \symbfsf{\tau}_2$.
+If $\symbfsf{\tau}_1 - \symbfsf{\tau}_2 > 0$ then $\Delta f_2 > 0$ and $\Delta
+f_1 < 0$. Hence both forces tend to bring the fluid parcels back to their
+original location, i.e. we have stability. If $\symbfsf{\tau}_1 -
+\symbfsf{\tau}_2 < 0$ then $\Delta f_2 < 0$ and $\Delta f_1 > 0$ and the
+perturbation is amplified, i.e. unstable. Hence the criterion for elastic
+instability is $\symbfsf{\tau}_{\theta\theta}$ increases radially outward,
+i.e.
+\begin{equation}
+	\frac{\diffd \symbfsf{\tau}_{\theta\theta}}{\diffd r} > 0
+\end{equation}
+Apply this to Dean's flow: in region I (see diagram) we expect
+$\symbfsf{\tau}_{\theta\theta}$ to decrease with $r$. In region II we expect
+$\symbfsf{\tau}_{\theta\theta}$ to increase with $r$, so expect instability.
+
+\begin{wrapfigure}{l}{0.25\textwidth}
+	\begin{tikzpicture}[scale=1.5]
+		\clip (3, 1.5) rectangle (6.5, -1.5);
+		\draw[thick] (0,0) [partial ellipse = -30:30:4 and 4];
+		\draw[thick] (0,0) [partial ellipse = -30:30:5 and 5];
+		\draw[dashed] (0,0) [partial ellipse = -30:30:4.5 and 4.5];
+		\draw[blue,dashed] (4,0) -- (5, 0);
+		\draw[blue] plot[domain=4:5] ({\x},{0.5*(1-4*(\x-4.5)*(\x-4.5))});
+		\draw[blue,->] (4.25, 0) -- (4.25,0.375);
+		\draw[blue,->] (4.75, 0) -- (4.75,0.375);
+		\draw[blue,->] (4.5, 0) -- (4.5, 0.5);
+		\draw (4.25, -0.2) node {I};
+		\draw (4.75, -0.2) node {II};
+		\draw[blue] (3.5, 0) node {high $\srate$};
+		\draw[blue] (5.5, 0) node {high $\srate$};
+		\draw[blue] (4.5, 0.6) node {low $\srate$};
+	\end{tikzpicture}
+\end{wrapfigure}
+
+Note: this is a very simple approach which misses some complexity of the
+problem. In particular, full analysis shows the criterion is a \emph{necessary}
+but not \emph{sufficient} condition for instability, as there are multiple
+modes of instability.
+
+\subsection{Shear-banding}
+Consider simple steady shear flow. In some complex fluids we see
+shear-bonding, for example in micelles, where for the same shear stress there
+are two regions with distinct shear rates. The instability arises from the
+non-monotonic relationship between shear stress and shear rate. Here, we
+consider a simple mathematical illustration.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5,0);
+		\draw[thick,->] (0, 2) -- (5,2);
+		\draw[blue,dashed] (1,0) -- (1, 2);
+		\draw[dashed] (0,1) -- (5, 1);
+		\draw[blue] (1,0) -- (2, 1);
+		\draw[blue] (2, 1) -- (4, 2);
+		\draw[blue,->] (1, 0.5) -- (1.5, 0.5);
+		\draw[blue,->] (1, 1.5) -- (3, 1.5);
+		\draw[blue] (4,  1.5) node {high $\srate$};
+		\draw[blue] (4,  0.5) node {low $\srate$};
+	\end{tikzpicture}
+\end{center}
+
+Consider 2D steady shear flow with a perturbation:
+\begin{align}
+	\symbf{u} &= \srate_0 y \hat{\symbf{x}} + \delta u(y,t) \hat{\symbf{x}} \\
+	\srate &= \srate_0 + \delta \srate \\
+\end{align}
+The $x$-component of the Cauchy equation (with inertia) for this
+unidirectional flow is
+\begin{equation}
+	\rho \frac{\partial u}{\partial t} = \frac{\partial
+	\symbfsf{\tau}_{xy}}{\partial y}
+\end{equation}
+
+For a GNF with $\eta(\srate) = \eta(\srate_0 + \delta \srate)$ we have
+\begin{align}
+	\symbfsf{\tau}_{xy} = \eta(\srate) \srate &= \eta(\srate_0 +
+	\delta\srate)(\srate_0 + \delta\srate) \\
+	&= \left[ \eta(\srate_0) + \delta \srate \left.\frac{\partial \eta}{\partial
+	\srate}\right|_{\srate_0} + \dots \right](\srate_0+\delta\srate) \\
+	&= \eta(\srate_0)\srate_0 + \left[ \eta(\srate_0) +
+	\srate_0\left.\frac{\partial \eta}{\partial
+	\srate}\right|_{\srate_0}\right] \delta \srate + \mathcal{O}(\delta
+	\srate^2)
+\end{align}
+
+Now $\delta \srate = \delta \frac{\partial u}{\partial y} =
+\frac{\partial}{\partial y} \delta u$, so Cauchy becomes
+\begin{align}
+	\rho \frac{\partial}{\partial t}\delta u &= \frac{\partial}{\partial y}
+	\left[ (\eta(\srate_0) + \srate_0 \left. \frac{\partial \eta}{\partial
+		\srate}\right|_{\srate_0})\delta\srate\right] \\
+		&= \left(\eta(\srate_0) + \srate_0 \left. \frac{\partial \eta}{\partial
+\srate}\right|_{\srate_0}\right)\frac{\partial^2}{\partial y^2} \delta u
+\end{align}
+This is a diffusion-like equation $\partial_t \delta u = D \partial^2_y \delta
+u$ where
+\begin{equation}
+	D = \frac{1}{\rho} \left[ \eta(\srate_0) + \srate_0 \left. \frac{\partial
+		\eta}{\partial \srate}\right|_{\srate_0}\right]
+\end{equation}
+The diffusion equation is stable when $D > 0$, unstable when $D < 0$: if
+$\delta u \sim \exp\left[ iky + \sigma t\right]$, then $\sigma = - D k^2$.
+Instability depends on sign of
+\begin{align}
+	\eta(\srate_0) + \srate_0 \left.\frac{\partial \eta}{\partial
+		\srate}\right|_{\srate_0} &= \frac{\partial}{\partial \srate}
+			\left.\left[ \eta(\srate)\srate\right]\right|_{\srate_0} \\
+				&=\left. \frac{\partial \symbfsf{\tau}_{xy}}{\partial
+			\srate}\right|_{\srate_0}
+\end{align}
+hence there is instability where $\frac{\partial \symbfsf{\tau}_{xy}}{\partial
+\srate} < 0$. For instance, consider a power-law fluid with $\symbfsf{\tau}_{xy} = \kappa
+\srate^n$, which is thus unstable if $n < 0$. In general, consider a curve
+with a non-monotonic dependence of $\symbfsf{\tau}_{xy}$ on $\srate$. 
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.4]
+		\draw[->] (-0.1, 0) -- (7,0) node[right] {$\srate$};
+		\draw[->] (0, -0.1) -- (0, 3) node[left] {$\symbfsf{\tau}_{xy}$};
+		\draw[smooth,blue] plot[domain=0:6]
+		({\x},{2+0.3*((\x/2-1.46)^5-(\x/2.5)^2)});
+		\draw[blue,dashed] (1.579,0) -- (1.579,1.84);
+		\draw[blue,dashed] (4.679,0) -- (4.679,1.107);
+		\draw[blue,dashed] (-0.1,1.84) -- (1.579, 1.84);
+		\draw[blue,dashed] (-0.1,1.107) -- (4.679, 1.107);
+		\draw (0.1,1.5) -- (-0.1, 1.5) node[left] {$\symbfsf{\tau}$};
+		\draw[dashed] (0.1, 1.5) -- (7,1.5);
+		\draw[red,fill=red] (0.728,1.5) circle (0.05);
+		\draw[red,fill=red] (3.228,1.5) circle (0.05);
+		\draw[red,fill=red] (5.416,1.5) circle (0.05);
+		\draw (3.228,-0.3) node[blue] {$\frac{\partial
+		\symbfsf{\tau}_{xy}}{\partial \srate} < 0$};
+		\draw (3.228,1.5) node[red,above] {unstable};
+		\draw (5.416,1.5) node[red,above] {stable};
+		\draw (0.728,1.5) node[red,above] {stable};
+		\draw[red,thick,->] (3,1.5) -- (2, 1.5);
+		\draw[red,thick,->] (3.456,1.5) -- (4.456, 1.5);
+		\draw[red,dotted] (0.728,1.5) -- (0.728,-0.1) node[below] {low
+		$\srate$};
+		\draw[red,dotted] (5.416,1.5) -- (5.416,-0.1) node[below] {high
+		$\srate$};
+	\end{tikzpicture}
+\end{center}
+
+For a given $\tau$ within the non-monotonic region, there are three possible
+values of $\srate$, two of which are stable and one of which is unstable.
+Hence the fluid separates into two regions, each taking one of the stable
+values of shear rate, i.e. two domains with different $\srate$ and the same
+$\symbfsf{\tau}$.
 
 
 \end{document}
