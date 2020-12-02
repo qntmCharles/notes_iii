@@ -1,8 +1,8 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Fluid motion in a rotating reference frame}{2}{subsection.1.1}
-\contentsline {subsubsection}{\numberline {1.1.1}Local Cartesian coordinates}{3}{subsubsection.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.2}Scale analysis.}{4}{subsubsection.1.1.2}
-\contentsline {subsubsection}{\numberline {1.1.3}Taylor-Proudman Theorem}{5}{subsubsection.1.1.3}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Fluid motion in a rotating reference frame}{3}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Local Cartesian coordinates}{4}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}Scale analysis.}{5}{subsubsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.3}Taylor-Proudman Theorem}{6}{subsubsection.1.1.3}
 \contentsline {subsection}{\numberline {1.2}Departures from geostrophy}{6}{subsection.1.2}
 \contentsline {subsubsection}{\numberline {1.2.1}Inertial (free) oscillations}{7}{subsubsection.1.2.1}
 \contentsline {subsubsection}{\numberline {1.2.2}Ekman layer}{7}{subsubsection.1.2.2}
@@ -94,3 +94,4 @@
 \contentsline {subsubsection}{\numberline {4.3.3}Matsuno-Gill forcing model}{51}{subsubsection.4.3.3}
 \contentsline {paragraph}{\nonumberline Steady state behaviour.}{53}{section*.37}
 \contentsline {paragraph}{\nonumberline Interpretation.}{53}{section*.39}
+\contentsline {subsubsection}{\numberline {4.3.4}Vertical propagation}{54}{subsubsection.4.3.4}

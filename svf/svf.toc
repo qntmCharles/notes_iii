@@ -77,3 +77,6 @@
 \contentsline {paragraph}{\nonumberline Regions I \& VII:}{51}{section*.18}
 \contentsline {paragraph}{\nonumberline Regions II \& VI:}{51}{section*.19}
 \contentsline {paragraph}{\nonumberline Region IV:}{51}{section*.20}
+\contentsline {paragraph}{\nonumberline Region III:}{51}{section*.21}
+\contentsline {paragraph}{\nonumberline Region V:}{52}{section*.22}
+\contentsline {paragraph}{\nonumberline Pressure variation.}{52}{section*.23}

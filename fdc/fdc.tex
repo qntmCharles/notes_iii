@@ -3383,6 +3383,7 @@ where $P$ satisfies the eigenvalue problem
 \begin{equation}
 	\frac{\diffd}{\diffd z}\left[ \frac{1}{N^2(z)} \frac{\diffd P}{\diffd
 	z}\right] = -\frac{1}{gh} P = -\frac{1}{c^2} P
+	\label{eq:15.13}
 \end{equation}
 where $gh = c^2$ is an eigenvalue, possibly values of which are determined by
 the equation together with the vertical boundary conditions. The horizontal
@@ -3509,6 +3510,7 @@ localised region and `switched on' at $t=0$ will therefore consist (if $Q_0
 a set of Rossby waves propagating westward away from the forcing region. 
 
 \paragraph{Steady state behaviour.} As currently defined, the solution will
+\lecture{2/12/20}
 not tend to a steady state. A simple way to allow a steady state solution is
 to add an identical linear damping to each of \eqref{eq:15.14} and
 \eqref{eq:15.15}, i.e. replace $\partial_t$ with $\partial_t + \alpha$. The
@@ -3574,6 +3576,169 @@ the Indonesian and West Pacific regions and the above model therefore provides
 a simple representation of the latitude-longitude structure of the flow in
 this region.
 
+Whilst this model is important and often-cited, some aspects are difficult to
+justify physically, for example the assumption of constant damping rate
+$\alpha$, acting on horizontal velocities and on $\eta$, which may be regarded
+was representing temperature. Damping of temperature is a simple
+representation of radiative effects, damping of horizontal velocities is a
+simple representation of frictional effects, which are plausible near the
+surface but less plausible at upper levels.
+
+\subsubsection{Vertical propagation}
+
+To consider vertical propagation, assume that the vertical structure is
+oscillatory and for convenience, assume the buoyancy frequency $N$ is
+independent of $z$. The vertical structure is then defined by a constant
+vertical wavenumber $m$. The vertical structure equation \eqref{eq:15.13}
+suggests the horizontal structure implied by the single-layer models will
+apply provided that $gh = c^2 = N^2/m^2$. Hence the dispersion relation
+becomes
+\begin{equation}
+	\omega^2 - \frac{N^2 k^2}{m^2} - \frac{\beta k N^2}{\omega m^2} = (2n+1)
+	\frac{\beta N}{\abs{m}} \hspace{1em} \text{for} \,\,\, n = -1, 0, 1, 2,
+	\dots
+	\label{eq:vertdisp}
+\end{equation}
+where the previous analysis of Kelvin waves allows the $n=-1$ case, and as
+noted previously only one of the roots is admissible in each of the $n = -1$
+and $n=0$ cases. We require $\abs{m}$ on the RHS since we assumed $c$ is
+positive. We can non-dimensionalise the $x$ and $z$ wavenumbers by $\hat{k} =
+k\omega/\beta$ and $\hat{m} = m\omega^2/\beta N$, to get
+\begin{align}
+	\abs{\hat{m}}^2 - (2n+1)\abs{\hat{m}} - \hat{k}^2 - \hat{k} &= 0  &&n = 1,
+	2, \dots \\
+	\abs{\hat{m}} - \hat{k} - 1 &= 0 && n = 0 \\
+	\abs{\hat{m}} - \hat{k} &= 0 && n = -1 
+\end{align}
+These equations define curves in the $(\hat{k},\hat{m})$ plane on which
+$\omega$ may be determined in terms of $k$ and $m$. The curves are symmetric
+about $\hat{m} = 0$, i.e. if $(\hat{k},\hat{m})$ is a solution, so is
+$(\hat{k},-\hat{m})$. The $n = 1, 2, \dots$ case has solutions
+\begin{equation}
+	\hat{m} = M_{\pm}(\hat{k}) = (n+\frac{1}{2}) \pm \left[
+	(\hat{k}+\frac{1}{2})^2 + n(n+1)\right]^{1/2}
+\end{equation}
+where the $M_-$ solution is considered only for $n \ge 1$. The requirement
+$\abs{\hat{m}} > 0 $ implies the negative root is relevant only when $-1 <
+\hat{k} < 0$ for $n \ge 1$. 
+
+The group velocity can be deduced from the relation between $\hat{m}$ and
+$\hat{k}$. For simplicity, assume $m > 0$, for which
+\begin{equation}
+	\frac{m\omega^2}{\beta N} = M_{\pm} (\frac{k\omega}{\beta})
+\end{equation}
+
+Detailed analysis shows that for $\hat{m} > 0$, the horizontal group velocity
+component $\partial \omega/\partial k$ has the same sign as $M_{\pm}(k)$ and
+the vertical component $\partial \omega/\partial m$ has the opposite sign to
+$\hat{m}$. It is straightforward to show that for $\hat{m} < 0$ the sign of
+$\partial \omega/\partial k$ remains the same and the sign of $\partial
+\omega/\partial m$ reverses. The shape of the curves $M(\hat{k})$ imply the
+direction of the group velocity, indicated in the figure below. Note that the
+vertical wavenumber $m$ has the opposite sign to the vertical component of the
+group velocity, i.e. upward for $m < 0$ and downward for $m > 0$.
+\begin{figure}
+	\centering
+	\includegraphics[width=.7\textwidth]{eqvert.png}
+	\caption{Dispersion diagram in $(\hat{k},\hat{m})$ space for vertically
+		propagating equatorial waves.}
+\end{figure}
+
+\begin{eg}
+	\hspace{.5em}
+	\begin{itemize}
+		\item \textbf{Seasonal variation in the equatorial ocean.} There is
+			seasonal variation of winds at the surface of the ocean, providing
+			forcing at the annual frequency. Consider the $n=2$ Rossby wave
+			response. It is convenient to return to the dimensional form of
+			the dispesrion relation \eqref{eq:vertdisp}. Consider the sizes of
+			the $c^2k^2$ and $\beta kc^2/\omega$ terms on the LHS. The ratio
+			of the first to the second is $k\omega/\beta$. For the annual
+			frequency, $\omega/\beta \sim (6400/700) km \sim 10 km$ and is the
+			spatial scale is much larger than this, we can neglect the first
+			term. The $\omega^2$ term can be neglected on the basis that the
+			frequency is small. Note neglecting this term also requires the
+			assumption $m \ll Nk/\omega$, i.e. the vertical scale is not
+			\emph{too small}. The dispersion relation for $n=2$ then reduces to
+			\begin{equation}
+				\omega = -\frac{kN}{3\abs{m}} > 0
+			\end{equation}
+			implying that $\partial \omega/\partial k = -\frac{1}{3}N/m= \omega/k$ and
+			$\partial\omega/\partial m = \frac{1}{3}Nk\text{sgn}(m)/\abs{m}^2
+			= -\omega/m = \omega^2 \text{sgn}(m)/Nk$.
+
+			Consistent with the general considerations above, the vertical
+			group velocity has the opposite sign to $m$, therefore for the oceanic
+			response to surface forcing, take $m > 0$ and for consistecy with
+			the dispersion relation take $k < 0$. Then $\partial
+			\omega/\partial k$ is negative and group propagation is \emph{to
+			the west}. Since each of the physical fields is proportional to
+			$\text{exp}(i(kx+mz-\omega t))$, the phase speed is negative in
+			the $x$ direction and positive in the $z$ direction. In $(x,z)$
+			space, phase lines therefore propagate westward and upward. Note
+			for a given frequency, the vertical component of the group
+			velocity increases as $N$ reduces, i.e. it will increase with
+			depth. These features are all visible in the observed structure of
+			the seasonal cycle in the qeuatorial Pacific.
+		\item \textbf{Atmospheric Kelvin waves.}
+			The dimensional form of the dispersion relation for Kelvin waves
+			is 
+			\begin{equation}
+				\omega = \frac{Nk}{\abs{m}}
+			\end{equation}
+			with $k > 0$. The vertical group velocity is $-\omega/m$, so $m <
+			0$ for upward propagation. Noting the same form of the physical
+			fields as above, we see the waves with upward group velocity have
+			downward phase propagation. This is clearly visible in time-height
+			records of, for example, temperature perturbations in the lower
+			stratosphere assocaited with Kelvin waves that are forced by
+			convection in the troposphere.
+
+		\item \textbf{Quasi-Biennial Oscillation.} 
+			Just as horizontally propagating Rossby waves can transport
+			momentum in the horizontal, vertically propagating equatorial
+			Kelvin waves can transport momentum in the vertical through the
+			momentum flux $\overline{u'w'}$. Note this term is neglected in
+			the QG approximation in the extratropics, but it is leading order
+			for equatorial waves. Recall that there is a solution of the 3D
+			equations with 
+			\begin{align}
+				u(x,y,z,t) &= \tilde{u}(x,y,t)P(z)\\
+				p(x,y,z,t) &= \rho_0 g \tilde{\eta}(x,y,t)P(z)
+			\end{align}
+			where $P(z)$ is a solution of the vertical structure equation
+			\eqref{eq:15.13} and $\tilde{u}, \tilde{\eta}$ are solutions of
+			the single-layer shallow water equations. Hence $\rho(x,y,z,t) =
+			-\rho_0 P'(z)\tilde{\eta}$ from hydrostatic balance and
+			$w(x,y,z,t) = -(g/N^2)P'(z)\tilde{\eta}_t$ from the density
+			equation. Choose $P(z) = e^{imz}$ representing a wave with
+			vertical wavenumber $m$, i.e. $c=N/\abs{m}$. Combining this with
+			the (x,y,t) structure of the single-layer Kelvin wave solution, we
+			have
+			\begin{align}
+				u(x,y,z,t) &= \Re\left[\hat{u}e^{i(kx+mz-kct)}
+				\tilde{D}_0(Y)\right] \\
+				w(x,y,z,t) &= \frac{g}{N^2}
+				\Re\left[m\omega\hat{\eta}e^{i(kx+mz-kct)}\tilde{D}_0(Y)\right]
+				= \Re\left[ -\frac{k}{m}\hat{u}e^{i(kx-kct)}D_0(Y)\right]
+			\end{align}
+			Hence the momentum flux is
+			\begin{equation}
+				\overline{u'w'} = -\frac{k}{2m}\abs{\hat{u}}^2 e^{-\frac{\beta
+				y^2}{c}}
+			\end{equation}
+			Equatorial Kelvin waves therefore transport eastward momentum in
+			the direction of their group propagation. This is in contrast to
+			Rossby waves, which transport westward momentum in the direction
+			of their group propagation. Correspondingly, where Kelvin waves
+			dissipate there is an eastward force exerted on the mean flow.
+			This is part of the mechanism behind the Quasi-Biennial
+			oscillation. Different waves drive the flow to the east or west.
+			Whether or not these different waves can propagate in the vertical
+			depends on the winds of the mean flow, hence there is a two-way
+			feedback leading to an oscillation.
+	\end{itemize}
+\end{eg}
 
 
 

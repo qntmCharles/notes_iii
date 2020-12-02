@@ -3623,7 +3623,7 @@ Force balance \eqref{eq:fb} at $\mathcal{O}(\varepsilon^{-1})$ gives
 	(\text{head})) = 2 \varepsilon^{-1} \int \left( \frac{4}{h} +
 	\frac{3Q_1}{\pi h^2} \right) \, \diffd x
 \end{equation}
-Hence we find the pressure slowly decreases through regions V and VI, varies
+Hence we find the pressure slowly decreases through regions V and IV, varies
 through region III and decreases slowly again through regions II and I.
 \begin{center}
 	\begin{tikzpicture}
@@ -3802,9 +3802,119 @@ where $y = (1-r)/\varepsilon$ as before. The boundary condition $u_0 = -1$ on
 $y=0$ gives $u_0 = -1$, i.e. plug flow as shown in the diagram. Hence $Q \sim
 \text{Ca}^{2/3} Q_1$, and $\frac{Q_1}{2\pi} = -h_0$, constant.
 
+\lecture{2/12/20}
+\paragraph{Region III:} Define local co-ordinates
+\begin{equation}
+	y = \frac{1-r}{\text{Ca}^{2/3}}, \hspace{2em} X =
+	\frac{x-x_0}{\text{Ca}^{1/3}}
+\end{equation}
 
+Since we know the curvature in this region and in the neighbouring region II,
+to match we require $\varepsilon h_{xx} \to 1$ as $X \to \infty$. Similarly,
+matching with region IV we have $h \to h_0$ as $X \to -\infty$.
 
+\begin{center}
+	\begin{tikzpicture}
+		\fill[gray!50] (0,0) rectangle (5, -0.5);
+		\draw[thick] (0,0) -- (5,0);
+		\draw[smooth] plot[domain=0:4.5] ({\x},{0.5+exp(\x-4)});
+		\draw[->,blue] (2,0) -- (3,0) node[right,above] {$X$};
+		\draw[->,blue] (2,0) -- (2,1) node[right] {$y$};
+		\draw (2,0.1) -- (2,-0.1) node[below] {$x_0$};
+	\end{tikzpicture}
+\end{center}
+At leading order, lubrication theory gives
+\begin{align}
+	P_0 &= -(1+h_{XX}) \\
+	u_0 &= -1 - \frac{1}{2} P_{0X} y(2h-y) \\
+	\implies q = \frac{Q_1}{2\pi} &= -h-\frac{h^3}{3}P_{0X} = \text{const.}
+\end{align}
+Hence we have the governing equation
+\begin{equation}
+	\frac{1}{3} h^3 h_{XXX} = h-h_0
+\end{equation}
+with boundary conditions
+\begin{align}
+	h \to h_0 \hspace{.5em}&\text{as}\hspace{.5em} X \to -\infty \\
+	h_{XX} \to 1\hspace{.5em} &\text{as}\hspace{.5em} X \to \infty \\
+\end{align}
 
+To solve this ODE it is beneficial to remove the presence of $h_0$ by
+rescaling $h(X) = h_0 H(\xi)$ with $X = \frac{h_0}{3^{1/3}}\xi$. Then
+\begin{align}
+	H^3 H''' &= H-1 \\
+	H \to 1 \hspace{.5em}&\text{as}\hspace{.5em} \xi \to -\infty \\
+	H'' \to \frac{h_0}{3^{2/3}} \hspace{.5em}&\text{as}\hspace{.5em} \xi \to \infty
+\end{align}
+
+We can utilise the boundary conditions by first linearising about $H=1$:
+\begin{equation}
+	\delta H''' = \delta H \implies \delta H \propto e^{m\xi}
+\end{equation}
+where $m = 1, -\frac{1}{2} \pm \frac{\sqrt{3}}{2}i$. Thus $H \to 1$ as $\xi
+\to -\infty$ suppresses both complex solutions for $m$. Hence the solution
+with $H \sim 1 + e^{\xi-\xi_0}$ as $\xi \to -\infty$ is unique, to within
+choice of origin $\xi_0$, and has $H \sim \frac{1}{2}C\xi^2$ as $\xi \to
+\infty$ with $C = 0.643$. Then we find $h_0 = 3^{2/3}C = 1.337$ and the gap
+$\varepsilon h \sim 1.337 \text{Ca}^{2/3}$ in region III.
+
+\paragraph{Region V:}
+We once again find $H^3 H''' = H-1$ but now the boundary conditions require
+solution
+\begin{equation}
+	H \sim 1 + e^{(\xi_1-\xi)/2} \cos \left[ \frac{\sqrt{3}}{2}(\xi-\xi_1 +
+	\phi)\right]
+\end{equation}
+as $\xi \to \infty$, and $h_0$ is already known. The phase $\phi$ is
+determined by the condition $H'' \sim C = 0.643$ as $\xi \to -\infty$ for
+matching region VI.
+
+\paragraph{Pressure variation.} As in the rigid particle problem, we can find
+the pressure drop across the bubble using a total force argument. We find the
+pressure drop across the bubble is $\mathcal{O}(\text{Ca}^{-1/3})$ and is
+independent of the length of the bubble. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) [partial ellipse = 90:270:.4 and 1.35];
+		\draw[thick] (0, 1.35) -- (10, 1.35);
+		\draw[thick] (0,-1.35) -- (10,-1.35);
+		\draw[thick] (10, 0) ellipse (.4 and 1.35);
+
+		\draw (4.5, 0) [partial ellipse=90:270:1 and 1.28];
+		\draw (6.6, 0) [partial ellipse=-90:90:1 and 1.28];
+		\draw (4.5, 1.28) -- (6.6, 1.28);
+		\draw (4.5, -1.28) -- (6.6, -1.28);
+		\draw[red,dashed] (3, -2) -- (3, 1.6);
+		\draw[red,dashed] (4.2, -2) -- (4.2, 1.6);
+		\draw[red,dashed] (4.6, -2) -- (4.6, 1.6);
+		\draw[red,dashed] (6.5, -2) -- (6.5, 1.6);
+		\draw[red,dashed] (6.9, -2) -- (6.9, 1.6);
+		\draw[red,dashed] (8, -2) -- (8, 1.6);
+
+		\draw (0, -1.8) node {Region};
+		\draw (2, -1.8) node {VII};
+		\draw (3.8, -1.8) node {VI};
+		\draw (4.4, -1.8) node {V};
+		\draw (5.6, -1.8) node {IV};
+		\draw (6.7, -1.8) node {III};
+		\draw (7.55, -1.8) node {II};
+		\draw (9, -1.8) node {I};
+
+		\draw[->] (0, -6) -- (0, -3) node[left] {$p$};
+		\draw (0,-4.5) -- (3.7, -4.8);
+		\draw[dashed,gray!80] (3.7, -4.8) -- (7.5, -4.8);
+		\draw[dashed,gray!80] (3.7, -5.2) -- (7.5, -5.2);
+		\draw[smooth] plot[tension=.5] coordinates {(3.7,-4.8) (3.8, -4.7)
+		(3.9,-4) (4.3, -2.5) (7,-2.5) (7.4,-4.9) (7.5,-5.2)};
+		\draw (7.5, -5.2) -- (10,-5.5);
+		\draw[->] (6, -5.5) -- (6, -5.2);
+		\draw[->] (6, -4.5) -- (6, -4.8);
+		\draw (6, -5.8) node {$\mathcal{O}(\text{Ca}^{-1/3})$};
+		\draw[<->] (7.7, -5.2) -- (7.7, -2.5) node[midway,right]
+		{$\mathcal{O}(\text{Ca}^{-1})$};
+	\end{tikzpicture}
+\end{center}
 
 
 

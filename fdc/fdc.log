@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  30 NOV 2020 20:33
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  2 DEC 2020 15:35
  restricted system commands enabled.
 **fdc.tex
 (./fdc.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.108 seconds
+luaotfload | main : initialization completed in 0.106 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3183,16 +3183,16 @@ LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 6.9999pt on input line 121.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 4.99992pt on input line 121.
- [3](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman6-regul
-ar.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/ot
-l/lmroman6-regular.luc) [4] <isobars.png, id=375, 623.32875pt x 452.69125pt>
+ [3] [4](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman6-r
+egular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/font
+s/otl/lmroman6-regular.luc) <isobars.png, id=381, 623.32875pt x 452.69125pt>
 File: isobars.png Graphic file (type png)
  <use isobars.png>
 Package luatex.def Info: isobars.png used on input line 218.
 (luatex.def)             Requested size: 186.64719pt x 135.55284pt.
 
 [5<./isobars.png>] [6] [7]
-<ekman_spiral.jpg, id=434, 290.99867pt x 156.05203pt>
+<ekman_spiral.jpg, id=439, 290.99867pt x 156.05203pt>
 File: ekman_spiral.jpg Graphic file (type jpg)
  <use ekman_spiral.jpg>
 Package luatex.def Info: ekman_spiral.jpg used on input line 394.
@@ -3218,7 +3218,7 @@ LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 20.73969pt on input line 935.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 17.27972pt on input line 935.
- [16] [17] [18] <wbc.png, id=580, 488.82625pt x 405.515pt>
+ [16] [17] [18] <wbc.png, id=585, 488.82625pt x 405.515pt>
 File: wbc.png Graphic file (type png)
  <use wbc.png>
 Package luatex.def Info: wbc.png used on input line 1165.
@@ -3262,46 +3262,52 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 3173.
 
-[47] [48] [49] <equatorial.png, id=926, 879.285pt x 795.97375pt>
+[47] [48] [49] <equatorial.png, id=931, 879.285pt x 795.97375pt>
 File: equatorial.png Graphic file (type png)
 
 <use equatorial.png>
 Package luatex.def Info: equatorial.png used on input line 3367.
 (luatex.def)             Requested size: 326.63614pt x 295.68379pt.
  [50<./equatorial.png>] [51] [52]
-<mglatlong.png, id=965, 951.555pt x 572.1375pt>
+<mglatlong.png, id=971, 951.555pt x 572.1375pt>
 File: mglatlong.png Graphic file (type png)
  <use mglatlong.png>
-Package luatex.def Info: mglatlong.png used on input line 3544.
+Package luatex.def Info: mglatlong.png used on input line 3546.
 (luatex.def)             Requested size: 419.95973pt x 252.50952pt.
- [53<./mglatlong.png>] <mgvert.png, id=977, 819.06pt x 633.36626pt>
+ [53<./mglatlong.png>] <mgvert.png, id=983, 819.06pt x 633.36626pt>
 File: mgvert.png Graphic file (type png)
  <use mgvert.png>
-Package luatex.def Info: mgvert.png used on input line 3560.
+Package luatex.def Info: mgvert.png used on input line 3562.
 (luatex.def)             Requested size: 279.97789pt x 216.5014pt.
 
-[54<./mgvert.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3580.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3580.
+[54<./mgvert.png>] <eqvert.png, id=993, 1029.8475pt x 798.985pt>
+File: eqvert.png Graphic file (type png)
+
+<use eqvert.png>
+Package luatex.def Info: eqvert.png used on input line 3642.
+(luatex.def)             Requested size: 326.63614pt x 253.4128pt.
+ [55<./eqvert.png>] [56] [57]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3745.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3745.
  (./fdc.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3580.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3580.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3745.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3745.
 Package rerunfilecheck Info: File `fdc.out' has not changed.
-(rerunfilecheck)             Checksum: 8FEBBA69A590E3C53B5B157BCE575B5F;5277.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3580.
+(rerunfilecheck)             Checksum: 449AC0D1FA15534014778481C0D86736;5357.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3745.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54249 strings out of 494577
+ 54269 strings out of 494577
  100000,1977958 words of node,token memory allocated
- 45262 words of node memory still in use:
-   11 hlist, 4 vlist, 2 rule, 1 disc, 1 local_par, 5344 glue, 2 kern, 3 penalty,
- 8 sub_mlist, 2 margin_kern, 20 glyph, 1782 attribute, 64 glue_spec, 1782 attrib
-ute_list, 1 write nodes
-   avail lists: 1:1,2:2510,3:991,4:181,5:426,6:3552,7:712,8:132,9:860,10:19,11:3
-05
- 56256 multiletter control sequences out of 65536+600000
- 178 fonts using 42867807 bytes
+ 47831 words of node memory still in use:
+   14 hlist, 6 vlist, 2 rule, 2 disc, 2 local_par, 5620 glue, 3 kern, 5 penalty,
+ 18 sub_mlist, 2 margin_kern, 37 glyph, 1890 attribute, 64 glue_spec, 1890 attri
+bute_list, 1 write nodes
+   avail lists: 1:3,2:2300,3:983,4:183,5:426,6:3540,7:931,8:132,9:837,10:27,11:3
+04
+ 56265 multiletter control sequences out of 65536+600000
+ 178 fonts using 42867623 bytes
  74i,13n,108p,8841b,949s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman9-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype
@@ -3318,10 +3324,10 @@ s10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></
 usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmbx10.pfb>
-Output written on fdc.pdf (54 pages, 1063338 bytes).
+Output written on fdc.pdf (57 pages, 1259509 bytes).
 
-PDF statistics: 1096 PDF objects out of 1200 (max. 8388607)
- 878 compressed objects within 9 object streams
- 256 named destinations out of 1000 (max. 131072)
- 544 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 1125 PDF objects out of 1200 (max. 8388607)
+ 901 compressed objects within 10 object streams
+ 263 named destinations out of 1000 (max. 131072)
+ 552 words of extra memory for PDF output out of 10000 (max. 10000000)
 
