@@ -11,6 +11,8 @@
 size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
 %default radius will be 1pt. 
 
+\newcommand{\myol}[2][3]{{}\mkern#1mu\overline{\mkern-#1mu#2}}
+
 \begin{document}
 
 \institution{Cambridge Part III Maths}
@@ -1534,8 +1536,8 @@ quasi-geostrophic potential vorticity
 and $N^2 = -\frac{g}{\rho_0} \frac{\diffd \rho_s}{\diffd z}$. In terms of the
 QGPV, the (geostrophic) material derivative is
 \begin{equation}
-	\frac{\diffD_g}{\diffD t} = \frac{\partial}{\partial y} - \psi_y
-	\frac{\partial}{\partial y} + \psi_x \frac{\partial}{\partial y}
+	\frac{\diffD_g}{\diffD t} = \frac{\partial}{\partial t} - \psi_y
+	\frac{\partial}{\partial x} + \psi_x \frac{\partial}{\partial y}
 \end{equation}
 Under the quasi-geostrophic approximation, $q$ is conserved following the
 horizontal geostrophic flow. The QGPV equation is an approximation to the
@@ -1896,10 +1898,10 @@ $\mu H \to \infty$. Hence there is an instability if $\mu H < \hat{\mu}_c =
 
 \paragraph{Density transport.}
 Consider the density transport by the growing wave. The density flux in the
-$y$-direction is $\bar{\rho' v'}$ where the bar represents an $x$-average. In
+$y$-direction is $\overline{\rho' v'}$ where the overline represents an $x$-average. In
 terms of the QG streamfunction, we have
 \begin{align}
-	\bar{\rho' v'} &= - \frac{\rho_0 f_0}{g}\bar{\psi'_x \psi'_z}\\
+	\overline{\rho' v'} &= - \frac{\rho_0 f_0}{g}\overline{\psi'_x \psi'_z}\\
 	&= \dots\\
 	&= \frac{2k\mu^2}{f_0} \frac{\diffd \rho_s}{\diffd z} \frac{\abs{A}^2
 \Lambda \Im\left[c\right]}{\abs{c^*\mu -\Lambda}^2} < 0
@@ -2407,8 +2409,8 @@ corresponding gradient of QGPV in the $y$ direction $\overline{q}_y$. This
 implies that the instantaneous $x$-average can be considered a basic state,
 whereas in \eqref{eq:QGPVlin} we have assumed the basic state is a
 self-consistent steady solution of the QG equations. This inconsistency is
-reolved by assuming that any time evolution of $\overline{u}, \overline{q}$ is
-slow.
+resolved by assuming that any time evolution of $\overline{u}, \overline{q}$ is
+slow (cf. WKB approximation).
 
 We may re-write \eqref{eq:QGPVlin} as
 \begin{equation}
@@ -2426,7 +2428,7 @@ time, and taking the $x$-average gives
 \end{equation}
 
 We now use the \emph{generalised Taylor identity} which follows from
-multiplying $q'$ by $v'$:
+substituting in the QGPV streamfunction for $v', q'$:
 \begin{align}
 	v'q' &= \psi'_x \left(\psi'_{xx} + \psi'_{yy} + \left(\psi'_z
 	\frac{f_0^2}{N^2}\right)_z\right) \\
@@ -2436,7 +2438,8 @@ multiplying $q'$ by $v'$:
 	\frac{f_0^2}{N^2}\right)_x
 \end{align}
 
-Taking the $x$-average of the above and subtitution into \eqref{eq:13.1} gives
+Taking the $x$-average of the above (noting $x$-averages of $x$-derivatives
+vanish) and subtituting into \eqref{eq:13.1} gives
 \begin{equation}
 	\frac{\partial}{\partial t}\left[ \frac{1}{2}
 		\frac{\overline{q'^2}}{\overline{q}_y}\right] +
@@ -2449,16 +2452,26 @@ Taking the $x$-average of the above and subtitution into \eqref{eq:13.1} gives
 Note that the terms within the $y$ and $z$ derivatives have been re-expressed
 in terms of $u', v'$ and $\rho'$. This equation has the structure
 \begin{equation}
-	\frac{\partial \overline{\mathcal{A}}}{\partial t} + \frac{\partial
+	\frac{\partial \myol{\mathcal{A}}}{\partial t} + \frac{\partial
 		\overline{F^{(y)}}}{\partial y} + \frac{\partial
 	\overline{F^{(z)}}}{\partial z} = \overline{\mathcal{D}_{\mathcal{A}}}
 \end{equation}
-which expresses the fact that $\overline{\mathcal{A}}$ is the density of a
+which expresses the fact that $\myol{\mathcal{A}}$ is the density of a
 quantity that can be transported by a flux with components $\overline{F^{(y)}}
 $ and $\overline{F^{(z)}}$ in the $y$ and $z$ directions and destroyed or
 created at a rate $\overline{\mathcal{D}_{\mathcal{A}}}$ per unit volume.
-Here, $\overline{\mathcal{A}}$ is the \emph{Eliassen-Palm wave activity} and
-$\overline{\symbf{F}}$ is the \emph{Eliassen-Palm flux}. This conservation relation
+Here, $\myol{\mathcal{A}}$ is the \emph{Eliassen-Palm wave activity} 
+\begin{equation}
+	\overline{\mathcal{A}} = \frac{1}{2}\frac{\overline{q'^2}}{\overline{q}_y}
+\end{equation}
+and $\symbf{\myol{F}}$ is the \emph{Eliassen-Palm flux} with components
+\begin{equation}
+	(\overline{\symbf{F}^{(y)}},\overline{\symbf{F}^{(z)}}) =
+	(-\overline{u'v'},-f_0\frac{\overline{v'\rho'}}{\frac{\diffd
+	\rho_s}/\diffd z})
+\end{equation}
+
+This conservation relation
 need not require a scale-separation assumption, but it is helpful if the
 conservation relation is consistent with the cases where there is
 scale-separation, in the sense that is then satisfies the
@@ -2489,7 +2502,7 @@ $\overline{v'\rho'}$ satisfies
 Note that these results hold for Rossby waves under the small $\Ro$ assumption
 and also assuming that the $y$-gradient of PV in the basic state is positive,
 as is always the case in the real atmosphere or ocean if this gradient is
-dominated by $\beta$. For other waves (e.g. Poincar\'{e} waves), internal
+dominated by $\beta$. For other waves (e.g. Poincar\'{e} waves, internal
 waves or equatorial waves) the results are different.
 
 \subsubsection{Mean-flow evolution equations}
@@ -2541,7 +2554,7 @@ and the eddy density (or heat) flux.
 \subsubsection{Transformed Eulerian mean equations}
 We now make a transformation $\overline{w}_a \to \overline{w}_a^*$ defined by
 \begin{equation}
-	\overline{w}_a^* = \overline{w}-a + \frac{(\overline{\rho' v'})_y}{\diffd
+	\overline{w}_a^* = \overline{w}_a + \frac{(\overline{\rho' v'})_y}{\diffd
 	\rho_s / \diffd z}
 \end{equation}
 and define $\overline{v}_a^*$ such that 
@@ -2550,14 +2563,14 @@ and define $\overline{v}_a^*$ such that
 \end{equation}
 Hence we have
 \begin{equation}
-	\overline{v}_a^* = \overline{a}_a - \frac{\partial}{\partial z} \left[
+	\overline{v}_a^* = \overline{v}_a - \frac{\partial}{\partial z} \left[
 	\frac{\overline{\rho' v'}}{\diffd \rho_s/\diffd z}\right]
 \end{equation}
 The $x$-momentum and density equations then become
 \begin{align}
 	\overline{u}_t - f_0 \overline{v}_a^* &= -(\overline{u'v'})_y + \left(
 	\frac{f_0 \overline{\rho'v'}}{\diffd \rho_s/\diffd z}\right)_z = \nabla
-	\cdot \overline{\symbf{F}} \label{eq:13.16}\\
+	\cdot \myol[4]{\symbf{F}} \label{eq:13.16}\\
 	\overline{\rho}_t + \overline{w}_a^* \frac{\diffd \rho_s}{\diffd z} &=
 	0\label{eq:13.17}
 \end{align}
@@ -2565,21 +2578,22 @@ The $x$-momentum and density equations then become
 These two equations combined with \eqref{eq:13.9}, \eqref{eq:13.10},
 \eqref{eq:13.14} are the \emph{transformed Eulerian mean equations}. The
 transformation has combined the two separate eddy forcing terms into a single
-term $\nabla \cdot \overline{\symbf{F}}$ in the $x$-momentum equation and has
+term $\nabla \cdot \myol[4]{\symbf{F}}$ in the $x$-momentum equation and has
 removed the eddy forcing terms in the density equation. Note
-$\overline{\symbf{F}}$ is the Eliassen-Palm flux vector and here $\nabla \cdot
-\overline{\symbf{F}}$ is interpreted as the force acting on the mean flow due
+$\myol[4]{\symbf{F}}$ is the Eliassen-Palm flux vector and here $\nabla \cdot
+\myol[4]{\symbf{F}}$ is interpreted as the force acting on the mean flow due
 to the eddies. 
 
 The transformation does not change the response of $\overline{u}_t$ or
 $\overline{\rho}_t$, but the eddy density flux appears to play a different
 role. In the standard Eulerian-mean formalism the density flux
-$\overline{\rho'v'}$ appears as a forcing in the density equation, whilst here
-it is part of the force, and in fact $f_0 \overline{\rho'v'}/(\diffd
-\rho_s/\diffd z)$ appears to act as a vertical momentum flux. Hence in the
-transformed Eulerian-mean formalism, just as horizontally propagating Rossby
-waves transfer momentum in the horizontal, vertically propagating Rossby waves
-can be considered to transfer momentum in the vertical.
+$\overline{\rho'v'}$ appears as a forcing in the density equation, whilst in
+the transformed formalism it is part of the force, and in fact $f_0
+\overline{\rho'v'}/(\diffd \rho_s/\diffd z)$ appears to act as a vertical
+momentum flux. Hence in the transformed Eulerian-mean formalism, just as
+horizontally propagating Rossby waves transfer momentum in the horizontal,
+vertically propagating Rossby waves can be considered to transfer momentum in
+the vertical.
 
 Note that the Eulerian-mean circulation and the transformed Eulerian-mean
 circulation satisfy different boundary conditions.
@@ -2587,7 +2601,7 @@ circulation satisfy different boundary conditions.
 \lecture{23/11/20}
 \subsubsection{Non-acceleration conditions}
 The divergence of the mean Eliassen-Palm flux $\nabla \cdot
-\overline{\symbf{F}}$ appear as the complete eddy forcing on the mean flow. We
+\myol[4]{\symbf{F}}$ appears as the complete eddy forcing on the mean flow. We
 also have the Eliassen-Palm wave activity conservation relation
 \begin{equation}
 	\frac{\partial \mathcal{A}}{\partial t} + \nabla \cdot \symbf{F} =
@@ -2595,10 +2609,10 @@ also have the Eliassen-Palm wave activity conservation relation
 \end{equation}
 from which we deduce
 \begin{equation}
-	\nabla \cdot \overline{\symbf{F}} = \overline{\mathcal{D}} -
-	\frac{\partial \mathcal{A}}{\partial t}
+	\nabla \cdot \myol[4]{\symbf{F}} = \overline{\mathcal{D}} -
+	\frac{\partial \myol{\mathcal{A}}}{\partial t}
 \end{equation}
-It follows that if $\mathcal{A}_t = 0$, i.e. the waves are steady, and
+It follows that if $\myol{\mathcal{A}}_t = 0$, i.e. the waves are steady, and
 $\mathcal{D} = 0$, i.e. there are no dissipative or other non-conservative
 effects, then $\nabla \cdot \overline{\symbf{F}} = 0$ and hence
 $\overline{u}_t = 0$, i.e. there is no acceleration of the mean flow. This is
@@ -2615,7 +2629,7 @@ otherwise been weak.
 
 Under geostrophic scaling, we can show that
 \begin{equation}
-	\nabla \cdot \overline{\symbf{F}} = \overline{v'q'}
+	\nabla \cdot \myol[4]{\symbf{F}} = \overline{v'q'}
 \end{equation}
 where the right-hand quantity is the northward latitudinal flux of QGPV.
 Similarly, we could quantity the effect of eddies on the mean flow via the
@@ -2637,42 +2651,42 @@ $\zeta_a$ is the sum of the relative vorticity $\zeta$ and the $\beta y$ term
 which is materially conserved in the absence of dissipation.
 
 \begin{itemize}
-	\item In the case of no dissipation, i.e. $\mathcal{D} = 0$, then as a 
+	\item In the case of no dissipation, i.e. $\myol{\mathcal{D}} = 0$, then as a 
 		wavepacket propagates through a region, $\frac{\partial
-		\mathcal{A}}{\partial t} > 0$ when it arrives, so $\nabla \cdot
-		\bar{\symbf{F}} > 0$. As the wavepacket leaves the region,
-		$\frac{\partial \mathcal{A}}{\partial t} < 0$ hence $\nabla \cdot
-		\bar{\symbf{F}} < 0$. The force on the mean flow is first
+		\myol{\mathcal{A}}}{\partial t} > 0$ when it arrives, so $\nabla \cdot
+		\myol[4]{\symbf{F}} > 0$. As the wavepacket leaves the region,
+		$\frac{\partial \myol{\mathcal{A}}}{\partial t} < 0$ hence $\nabla \cdot
+		\myol[4]{\symbf{F}} < 0$. The force on the mean flow is first
 		negative, then positive, so the time-integrated force is zero. Hence
 		the waves have no net effect on the mean flow.
 		\begin{center}
 			\begin{tikzpicture}[scale=1.5]
 				\draw[->] (-0.1, 0) -- (5, 0) node[right] {$t$};
-				\draw[->] (0, -0.1) -- (0, 2) node[left] {$\mathcal{A}$};
+				\draw[->] (0, -0.1) -- (0, 2) node[left] {$\myol{\mathcal{A}}$};
 				\draw[smooth,blue] plot[domain=0:5] ({\x},{1.6*exp(-2*(\x-2)*(\x-2))});
-				\draw (1, -0.5) node {$\frac{\partial \mathcal{A}}{\partial t} > 0$};
-				\draw (3, -0.5) node {$\frac{\partial \mathcal{A}}{\partial t} <0$};
-				\draw (0.8, 1) node {$\nabla \cdot \bar{\symbf{F}} < 0$};
-				\draw (3.2, 1) node {$\nabla \cdot \bar{\symbf{F}} > 0$};
+				\draw (1, -0.5) node {$\frac{\partial \myol{\mathcal{A}}}{\partial t} > 0$};
+				\draw (3, -0.5) node {$\frac{\partial \myol{\mathcal{A}}}{\partial t} <0$};
+				\draw (0.8, 1) node {$\nabla \cdot \myol[4]{\symbf{F}} < 0$};
+				\draw (3.2, 1) node {$\nabla \cdot \myol[4]{\symbf{F}} > 0$};
 			\end{tikzpicture}
 		\end{center}
 	\item When dissipation is present, the wave arrives with $\frac{\partial
-		\mathcal{A}}{\partial t} > 0$ and hence $\nabla \cdot
-		\bar{\symbf{F}} < 0$ as before. As the wave dissipates,
-		$\frac{\partial \mathcal{A}}{\partial t} = \mathcal{D} < 0$ and
-		hence $\nabla \cdot \hat{\symbf{F}} = 0$. Therefore a net negative
+		\myol{\mathcal{A}}}{\partial t} > 0$ and hence $\nabla \cdot
+		\myol[4]{\symbf{F}} < 0$ as before. As the wave dissipates,
+		$\frac{\partial \myol{\mathcal{A}}}{\partial t} = \myol{\mathcal{D}} < 0$ and
+		hence $\nabla \cdot \myol[4]{\symbf{F}} = 0$. Therefore a net negative
 		force is applied to the mean flow.
 		\begin{center}
 			\begin{tikzpicture}[scale=1.5]
 				\draw[->] (-0.1, 0) -- (5, 0) node[right] {$t$};
-				\draw[->] (0, -0.1) -- (0, 2) node[left] {$\mathcal{A}$};
+				\draw[->] (0, -0.1) -- (0, 2) node[left] {$\myol{\mathcal{A}}$};
 				\draw[smooth,blue] plot[domain=0:2.3] ({\x},{1.6*exp(-2*(\x-2)*(\x-2))});
 				\draw[smooth,blue] plot[domain=2.3:5] ({\x},{1.34*exp(-(\x-2.3))});
-				\draw (1, -0.5) node {$\frac{\partial \mathcal{A}}{\partial t} > 0$};
-				\draw (3, -0.5) node {$\frac{\partial \mathcal{A}}{\partial t}
-				= \mathcal{D} <0$};
-				\draw (0.8, 1) node {$\nabla \cdot \bar{\symbf{F}} < 0$};
-				\draw (3.2, 1) node {$\nabla \cdot \bar{\symbf{F}} = 0$};
+				\draw (1, -0.5) node {$\frac{\partial \myol{\mathcal{A}}}{\partial t} > 0$};
+				\draw (3, -0.5) node {$\frac{\partial \myol{\mathcal{A}}}{\partial t}
+				= \myol{\mathcal{D}} <0$};
+				\draw (0.8, 1) node {$\nabla \cdot \myol[4]{\symbf{F}} < 0$};
+				\draw (3.2, 1) node {$\nabla \cdot \myol[4]{\symbf{F}} = 0$};
 			\end{tikzpicture}
 		\end{center}
 \end{itemize}
@@ -2891,9 +2905,9 @@ that
 	f_0^2 \overline{\chi}_{azz}^* + N^2 \overline{\chi}_{ayy}^* = f_0
 	(\overline{u'v'})_{yz} - f_0^2 \left( \frac{\overline{\rho'v'}}{\diffd
 			\rho_s / \diffd z}\right)_{zz} &= -f_0 (\nabla \cdot
-			\bar{\symbf{F}})_z\label{eq:mmc_teul}
+			\myol[4]{\symbf{F}})_z\label{eq:mmc_teul}
 \end{align}
-where $\symbf{\bar{F}} = (0, \overline{F^{(y)}}, \overline{F^{(z)}})$ is
+where $\symbf{\myol[4]{F}} = (0, \overline{F^{(y)}}, \overline{F^{(z)}})$ is
 the $x$-averaged Eliassen-Palm flux. These equations express the forcing on
 the mean meridional circulation by the eddy fluxes of momentum and density
 (or, equivalently, by the EP flux divergence).
@@ -3035,7 +3049,7 @@ follows that
 	\exp\left[ -\frac{N\pi n}{L f_0} \abs{z-H_d}\right] + \frac{F_0 c_n}{f_0}
 	\delta (z-H_d)
 \end{equation}
-and, noting that $\nabla \cdot \hat{\symbf{F}} = -F_0 c_n \delta(z-H_d)$;
+and, noting tmyol[4] $\nabla \cdot \myol[4]{\symbf{F}} = -F_0 c_n \delta(z-H_d)$;
 \begin{equation}
 	(\overline{u}_t)_n = -\frac{F_0c_n}{2} \frac{N \pi n}{L f_0} \exp \left[
 	-\frac{N \pi n}{L f_0} \abs{z-H_d}\right]
@@ -3140,7 +3154,7 @@ balance in the $x$-momentum and density equations.
 region $z < H_d$ the vertical velocity $\overline{w}_a^*$ is zero and there is
 vertical transport of momentum via $\overline{F^{(z)}}$. In the \emph{wave
 dissipation} region centred on $z=H_d$ there is localised wave force $\nabla
-\cdot \bar{\symbf{F}}$ which is redistributed in the vertical by the
+\cdot \myol[4]{\symbf{F}}$ which is redistributed in the vertical by the
 meridional circulation $(\overline{v}_a^*, \overline{w}_a^*)$. 
 
 \paragraph{Eulerian-mean view:} in the \emph{wave propagation} region $z <
@@ -3170,8 +3184,8 @@ Momentum can be exchanged between neighbouring layers by pressure forces
 acting on their boundaries.
 
 \subsubsection{Dependence of response on vertical scale of $\nabla \cdot
-\bar{\symbf{F}}$}
-In the model problem above, $\nabla \cdot \bar{\symbf{F}}$ is non-zero only in
+\myol[4]{\symbf{F}}$}
+In the model problem above, $\nabla \cdot \myol[4]{\symbf{F}}$ is non-zero only in
 a layer with very small vertical scale. Suppose instead that the `forcing
 layer' has vertical scale $D$. Then \eqref{eq:mmc_teul} gives
 \begin{equation}
@@ -3182,16 +3196,16 @@ The \emph{shallow forcing regime} is when $ND/f_0 L \ll 1$. Then $f_0^2
 \overline{\chi}_a^* / D^2 \sim f_0 F_0/D$, hence $\overline{\chi}_a^* \sim F_0
 D/f_0$ and $\overline{v}^*_a \sim F_0/f_0$. The dominant balance in the
 momentum equations within the forcing layer is therefore that most of $\nabla
-\cdot \bar{\symbf{F}}$ is balanced by the Coriolis force. THe mean meridional
+\cdot \myol[4]{\symbf{F}}$ is balanced by the Coriolis force. The mean meridional
 circulation redistributes in the vertical the effect of $\nabla \cdot
-\bar{\symbf{F}}$ and the resulting acceleration occurs over a region that is
+\myol[4]{\symbf{F}}$ and the resulting acceleration occurs over a region that is
 much deeper than the forcing layer. 
 
 The \emph{deep forcing regime} is when $ND/f_0 L \gg 1$. Then $N^2
 \overline{\chi}_a^*/L^2 \sim f_0 F_0/D$, hence $\overline{\chi}_a^* \sim (f_0
 L/ND)^2 F_0 D/f_0$ and $\overline{v}_a^* \sim (f_0 L /ND)^2 F_0/f_0$. The
 Coriolis force therefore plays only a minor role in the momentum equation
-within the forcing layer and at each level $\nabla \cdot \bar{\symbf{F}}$ is
+within the forcing layer and at each level $\nabla \cdot \myol[4]{\symbf{F}}$ is
 balanced by the $x$-component of the mean acceleration.
 
 The different regimes could be illustrated by replacing $\Theta(z)$ with a
@@ -3202,12 +3216,13 @@ meridional circulation may be regarded as arising in order to maintain, under
 the effect of eddy forcing, the constraints of geostrophic and hydrostatic
 balance. Thus if a force is applied to a rotating system, the response cannot
 appear purely as an acceleration; there must be an accompanying change in the
-density field. If a force is deep, in the sense given above, most of the
-response will appear as acceleration. If the force, then most of the response
-will appear as a meridional circulation and hence a density change. Similarly,
-if an applied heating field is shallow, most of the response appears as a
-change in temperature or density, but if it is deep, then most will appear as
-meridional circulation, and hence as a change in velocity. 
+density field. If a force is \emph{deep}, in the sense given above, most of
+the response will appear as acceleration. If the force is \emph{shallow}, then
+most of the response will appear as a meridional circulation and hence a
+density change. Similarly, if an applied heating field is shallow, most of the
+response appears as a change in temperature or density, but if it is deep,
+then most will appear as meridional circulation, and hence as a change in
+velocity. 
 
 \subsection{Equatorial waves}
 \lecture{27/11/20}
@@ -3236,7 +3251,7 @@ surface displacement, and $H$ is the layer depth in the resting state.
 
 There are two dimensional parameters present in these equations, $\beta$ and
 $c = \sqrt{gH}$. These can be used to form time and lengthscales
-$T_{\text{eq}} = (c\beta)^{_1/2}$ and $L_{\text{eq}} = (c/\beta)^{1/2}$.
+$T_{\text{eq}} = (c\beta)^{-1/2}$ and $L_{\text{eq}} = (c/\beta)^{1/2}$.
 $L_{\text{eq}}$ is referred to as the \emph{equatorial deformation radius},
 the analogue of the extratropical deformation radius $L_D = c/f_0$. Taking
 $\partial_x \eqref{eq:sweq2} - \partial_y \eqref{eq:sweq1} - \beta y
@@ -3288,7 +3303,7 @@ defines an eigenvalue problem, yielding the eigenvalue condition
 \end{equation}
 for $n = 0, 1, 2, \dots$ with corresponding eigenfunctions
 \begin{equation}
-	\hat{v}_n(y) = H_n( y\sqrt{\beta/c}) e^{-\frac{y^2 \beta}{2c}}
+	\hat{v}_n(y) = H_n( y\sqrt{\beta/c}) e^{-\frac{\beta y^2}{2c}}
 \end{equation}
 where $H_n$ are the \emph{Hermite polynomials} with $H_0(s) = 1, H_1(s) = 2s,
 H_2(s) = 4s^2 - 2$, etc.
@@ -3385,12 +3400,12 @@ where $P$ satisfies the eigenvalue problem
 	z}\right] = -\frac{1}{gh} P = -\frac{1}{c^2} P
 	\label{eq:15.13}
 \end{equation}
-where $gh = c^2$ is an eigenvalue, possibly values of which are determined by
+where $gh = c^2$ is an eigenvalue, possible values of which are determined by
 the equation together with the vertical boundary conditions. The horizontal
 structure and propagation characteristics of the disturbances are the same as
-in the shallow-water model in each `layer' of \emph{equivalent} depth $h$.
+in the shallow-water model in each `layer' of \emph{equivalent depth} $h$.
 
-\paragraph{Baroclinic modes}
+\paragraph{Baroclinic modes.}
 In `ocean-like' or `troposphere-like' configurations there is a discrete set
 of eigenvalues, each with corresponding speed $c$ and a different vertical
 structure, referred to as baroclinic modes and originally discussed in
@@ -3622,6 +3637,13 @@ where the $M_-$ solution is considered only for $n \ge 1$. The requirement
 $\abs{\hat{m}} > 0 $ implies the negative root is relevant only when $-1 <
 \hat{k} < 0$ for $n \ge 1$. 
 
+\begin{figure}
+	\centering
+	\includegraphics[width=.7\textwidth]{eqvert.png}
+	\caption{Dispersion diagram in $(\hat{k},\hat{m})$ space for vertically
+		propagating equatorial waves.}
+\end{figure}
+
 The group velocity can be deduced from the relation between $\hat{m}$ and
 $\hat{k}$. For simplicity, assume $m > 0$, for which
 \begin{equation}
@@ -3637,12 +3659,6 @@ $\partial \omega/\partial k$ remains the same and the sign of $\partial
 direction of the group velocity, indicated in the figure below. Note that the
 vertical wavenumber $m$ has the opposite sign to the vertical component of the
 group velocity, i.e. upward for $m < 0$ and downward for $m > 0$.
-\begin{figure}
-	\centering
-	\includegraphics[width=.7\textwidth]{eqvert.png}
-	\caption{Dispersion diagram in $(\hat{k},\hat{m})$ space for vertically
-		propagating equatorial waves.}
-\end{figure}
 
 \begin{eg}
 	\hspace{.5em}
@@ -3659,7 +3675,7 @@ group velocity, i.e. upward for $m < 0$ and downward for $m > 0$.
 			term. The $\omega^2$ term can be neglected on the basis that the
 			frequency is small. Note neglecting this term also requires the
 			assumption $m \ll Nk/\omega$, i.e. the vertical scale is not
-			\emph{too small}. The dispersion relation for $n=2$ then reduces to
+			\emph{too} small. The dispersion relation for $n=2$ then reduces to
 			\begin{equation}
 				\omega = -\frac{kN}{3\abs{m}} > 0
 			\end{equation}

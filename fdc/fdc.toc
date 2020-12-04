@@ -72,26 +72,26 @@
 \contentsline {subsubsection}{\numberline {4.1.4}Transformed Eulerian mean equations}{39}{subsubsection.4.1.4}
 \contentsline {subsubsection}{\numberline {4.1.5}Non-acceleration conditions}{40}{subsubsection.4.1.5}
 \contentsline {subsubsection}{\numberline {4.1.6}Wave dissipation}{41}{subsubsection.4.1.6}
-\contentsline {paragraph}{\nonumberline Rossby wave critical layer.}{41}{section*.26}
+\contentsline {paragraph}{\nonumberline Rossby wave critical layer.}{42}{section*.26}
 \contentsline {paragraph}{\nonumberline Rearrangement of absolute vorticity.}{42}{section*.27}
 \contentsline {subsubsection}{\numberline {4.1.7}Summary}{43}{subsubsection.4.1.7}
 \contentsline {paragraph}{\nonumberline Mean-flow interaction problem subtleties.}{43}{section*.28}
 \contentsline {paragraph}{\nonumberline Mean-flow \& baroclinic instability.}{43}{section*.29}
-\contentsline {subsection}{\numberline {4.2}Mean meridional circulations}{43}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Introduction}{43}{subsubsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2}Mean meridional circulations}{44}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Introduction}{44}{subsubsection.4.2.1}
 \contentsline {subsubsection}{\numberline {4.2.2}Boundary conditions}{44}{subsubsection.4.2.2}
 \contentsline {subsubsection}{\numberline {4.2.3}Model problem}{45}{subsubsection.4.2.3}
-\contentsline {paragraph}{\nonumberline Transformed Eulerian-mean view:}{46}{section*.30}
-\contentsline {paragraph}{\nonumberline Eulerian-mean view:}{46}{section*.31}
-\contentsline {subsubsection}{\numberline {4.2.4}Dependence of response on vertical scale of $\nabla \cdot \bar {\symbf {F}}$}{47}{subsubsection.4.2.4}
-\contentsline {paragraph}{\nonumberline Physical interpretation of mean meridional circulation.}{47}{section*.32}
-\contentsline {subsection}{\numberline {4.3}Equatorial waves}{47}{subsection.4.3}
+\contentsline {paragraph}{\nonumberline Transformed Eulerian-mean view:}{47}{section*.30}
+\contentsline {paragraph}{\nonumberline Eulerian-mean view:}{47}{section*.31}
+\contentsline {subsubsection}{\numberline {4.2.4}Dependence of response on vertical scale of $\nabla \cdot \myol [4]{\symbf {F}}$}{47}{subsubsection.4.2.4}
+\contentsline {paragraph}{\nonumberline Physical interpretation of mean meridional circulation.}{48}{section*.32}
+\contentsline {subsection}{\numberline {4.3}Equatorial waves}{48}{subsection.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1}Horizontal structure and propagation}{48}{subsubsection.4.3.1}
-\contentsline {paragraph}{\nonumberline Summary}{49}{section*.33}
+\contentsline {paragraph}{\nonumberline Summary}{50}{section*.33}
 \contentsline {subsubsection}{\numberline {4.3.2}Horizontal propagation in the atmosphere or ocean}{50}{subsubsection.4.3.2}
-\contentsline {paragraph}{\nonumberline Baroclinic modes}{51}{section*.35}
+\contentsline {paragraph}{\nonumberline Baroclinic modes.}{51}{section*.35}
 \contentsline {paragraph}{\nonumberline Influence of moisutre.}{51}{section*.36}
 \contentsline {subsubsection}{\numberline {4.3.3}Matsuno-Gill forcing model}{51}{subsubsection.4.3.3}
 \contentsline {paragraph}{\nonumberline Steady state behaviour.}{53}{section*.37}
 \contentsline {paragraph}{\nonumberline Interpretation.}{53}{section*.39}
-\contentsline {subsubsection}{\numberline {4.3.4}Vertical propagation}{54}{subsubsection.4.3.4}
+\contentsline {subsubsection}{\numberline {4.3.4}Vertical propagation}{55}{subsubsection.4.3.4}
