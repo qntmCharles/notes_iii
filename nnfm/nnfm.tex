@@ -23,7 +23,7 @@
 
 \institution{Cambridge Part III Maths}
 \title{Non-Newtonian Fluid Mechanics}
-\lecturer{Eric Lauga}
+\lecturer{Dr. Eric Lauga}
 \notetaker{Charles Powell}
 \date{Michaelmas 2020}
 
@@ -3750,17 +3750,16 @@ u_\phi)_{r\theta\phi}$, arbitrary scalar by $a$.
 		\frac{u_\phi}{r}\cot \theta & 
 		\frac{1}{r\sin\theta} \frac{\partial u_\phi}{\partial \phi} +
 		\frac{u_\phi}{r} + \frac{u_\theta}{r}\cot\theta
-	\end{pmatrix}_{r\theta\phi}
+	\end{pmatrix}_{r\theta\phi} \
 \end{align}
 \endgroup
 
-\newpage
 \section{Cauchy Equation in Polar Co-ordinates}
 \subsection{Cylindrical co-ordinates $(r,\theta,z)$}
 Velocity $\symbf{u} = (u_r, u_\theta, u_z)_{r\theta z}$, stress tensor $\sigma
 = -p \symsf{I} + \tau$, body force $\symbf{f}$.
 \begingroup
-\addtolength{\jot}{.7em}
+%\addtolength{\jot}{.7em}
 \begin{align}
 	\rho\left(\frac{\partial u_r}{\partial t} + u_r \frac{\partial
 	u_r}{\partial r} + \frac{u_\theta}{r} \frac{\partial u_r}{\partial \theta} 
@@ -3768,7 +3767,10 @@ Velocity $\symbf{u} = (u_r, u_\theta, u_z)_{r\theta z}$, stress tensor $\sigma
 	-\frac{\partial p}{\partial r} - \left[ \frac{1}{r}
 	\frac{\partial(r\tau_{rr})}{\partial r} + \frac{1}{r}\frac{\partial
 	\tau_{r\theta}}{\partial \theta} - \frac{\tau_{\theta\theta}}{r} +
-\frac{\partial \tau_{rz}}{\partial z}\right] + f_r \\[-1.4em]
+	\frac{\partial \tau_{rz}}{\partial z}\right] + f_r 
+	%\\[-1.4em]
+	\\
+	\
 	\rho\left(\frac{\partial u_\theta}{\partial t} + u_r \frac{\partial
 	u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial
 	\theta} + \frac{u_\theta u_r}{r} + u_z \frac{\partial

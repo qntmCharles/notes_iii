@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 DEC 2020 00:07
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 DEC 2020 00:26
  restricted system commands enabled.
 **nnfm.tex
 (./nnfm.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.109 seconds
+luaotfload | main : initialization completed in 0.103 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3156,21 +3156,20 @@ Package microtype Info: Loading generic settings for font family
 s10-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmrom
 an12-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generi
 c/fonts/otl/lmroman12-regular.luc)(compiling luc: /var/lib/texmf/luatex-cache/ge
-neric/fonts/otl/lmmono10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var
-/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)
+neric/fonts/otl/lmroman8-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var
+/luatex-cache/generic/fonts/otl/lmroman8-regular.luc)(compiling luc: /var/lib/te
+xmf/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)(load luc: /home/cwp/.te
+xlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)
 Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package tocbasic Info: character protrusion at toc deactivated on input line 32.
 
- (./nnfm.toc
-[1
+ (./nnfm.toc [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}](compiling luc: /var/lib/tex
-mf/luatex-cache/generic/fonts/otl/lmroman8-regular.luc)(load luc: /home/cwp/.tex
-live2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-regular.luc))
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write5
 
 \openout5 = nnfm.toc
@@ -3180,8 +3179,8 @@ an8-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmrom
 anslant10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/g
 eneric/fonts/otl/lmromanslant10-regular.luc) [2] [3](compiling luc: /var/lib/tex
 mf/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)(load luc: /home/cwp/.tex
-live2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)
-[4] [5] [6] [7] [8] [9] [10]
+live2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc) [4]
+[5] [6] [7] [8] [9] [10]
 Overfull \vbox (17.82602pt too high) detected at line 702
  []
 
@@ -3258,34 +3257,33 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 3720.
 
-[55]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 3759.
+(hyperref)                removing `math shift' on input line 3758.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 3759.
+(hyperref)                removing `math shift' on input line 3758.
 
-[56]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3789.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3789.
+[55] [56]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3791.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3791.
  (./nnfm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3789.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3789.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3791.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3791.
 Package rerunfilecheck Info: File `nnfm.out' has not changed.
 (rerunfilecheck)             Checksum: 4167139E808F2FCE6284837BF04523AB;4459.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3789.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3791.
 )
 
 Here is how much of LuaTeX's memory you used:
  54805 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 49230 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5710 glue, 1 kern, 253 sub_mlist, 2003 attribute, 6
-4 glue_spec, 2003 attribute_list, 1 write nodes
-   avail lists: 1:6,2:2299,3:756,4:179,5:323,6:2421,7:547,8:120,9:836,10:16,11:2
-17
+ 49255 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5713 glue, 1 kern, 253 sub_mlist, 2004 attribute, 6
+4 glue_spec, 2004 attribute_list, 1 write nodes
+   avail lists: 1:6,2:2297,3:756,4:179,5:485,6:2421,7:908,8:179,9:1216,10:17,11:
+217
  56943 multiletter control sequences out of 65536+600000
  100 fonts using 21905151 bytes
  74i,19n,108p,8842b,1973s stack positions out of 5000i,500n,10000p,200000b,100000s
@@ -3297,15 +3295,15 @@ ellenicMath.otf></usr/share/texmf/fonts/opentype/public/lm-math/latinmodern-math
 share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/share/texmf/fonts/
 opentype/public/lm/lmroman10-italic.otf></usr/share/texmf/fonts/opentype/public/
 lm/lmroman8-bold.otf></usr/share/texmf/fonts/opentype/public/lm-math/latinmodern
--math.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman8-regular.otf></usr/
-share/texmf/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/share/texm
-f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
+-math.otf></usr/share/texmf/fonts/opentype/public/lm/lmromanslant10-regular.otf>
+</usr/share/texmf/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texm
+f/fonts/opentype/public/lm/lmroman8-regular.otf></usr/share/texmf/fonts/opentype
 /public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsa
 ns10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf><
 /usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on nnfm.pdf (56 pages, 363915 bytes).
+Output written on nnfm.pdf (56 pages, 364497 bytes).
 
 PDF statistics: 781 PDF objects out of 1000 (max. 8388607)
  660 compressed objects within 7 object streams

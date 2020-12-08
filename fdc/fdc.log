@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  4 DEC 2020 15:22
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 DEC 2020 00:26
  restricted system commands enabled.
 **fdc.tex
 (./fdc.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.106 seconds
+luaotfload | main : initialization completed in 0.123 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3148,29 +3148,28 @@ Package microtype Info: Loading generic settings for font family
 s10-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmrom
 an12-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generi
 c/fonts/otl/lmroman12-regular.luc)(compiling luc: /var/lib/texmf/luatex-cache/ge
-neric/fonts/otl/lmmono10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var
-/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)
+neric/fonts/otl/lmroman8-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var
+/luatex-cache/generic/fonts/otl/lmroman8-regular.luc)(compiling luc: /var/lib/te
+xmf/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)(load luc: /home/cwp/.te
+xlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)
 Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package tocbasic Info: character protrusion at toc deactivated on input line 26.
 
- (./fdc.toc
-[1
+ (./fdc.toc [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write5
 
 \openout5 = fdc.toc
-(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-regular.l
-uc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lm
-roman8-regular.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl
-/lmroman8-bold.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/gene
-ric/fonts/otl/lmroman8-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/gene
-ric/fonts/otl/lmromanslant10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf
--var/luatex-cache/generic/fonts/otl/lmromanslant10-regular.luc) [2] (./pic.tex)
+(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-bold.luc)
+(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmrom
+an8-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmrom
+anslant10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/g
+eneric/fonts/otl/lmromanslant10-regular.luc) [2] (./pic.tex)
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
 (Font)              scaled to size 10.00015pt on input line 123.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
@@ -3316,7 +3315,7 @@ bute_list, 1 write nodes
    avail lists: 1:3,2:2388,3:990,4:183,5:632,6:5589,7:1610,8:121,9:837,10:27,11:
 469
  56268 multiletter control sequences out of 65536+600000
- 178 fonts using 42867623 bytes
+ 178 fonts using 42867991 bytes
  74i,13n,108p,8841b,949s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman9-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype
@@ -3324,16 +3323,16 @@ f/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype
 lmroman10-bold.otf>{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/te
 xmf/fonts/opentype/public/lm-math/latinmodern-math.otf></usr/share/texmf/fonts/o
 pentype/public/lm/lmroman10-italic.otf></usr/share/texmf/fonts/opentype/public/l
-m/lmroman8-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman8-bold.
-otf></usr/share/texmf/fonts/opentype/public/lm-math/latinmodern-math.otf></usr/s
-hare/texmf/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/share/texmf
-/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype/
+m/lmroman8-bold.otf></usr/share/texmf/fonts/opentype/public/lm-math/latinmodern-
+math.otf></usr/share/texmf/fonts/opentype/public/lm/lmromanslant10-regular.otf><
+/usr/share/texmf/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf
+/fonts/opentype/public/lm/lmroman8-regular.otf></usr/share/texmf/fonts/opentype/
 public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsan
 s10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></
 usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmbx10.pfb>
-Output written on fdc.pdf (57 pages, 1260264 bytes).
+Output written on fdc.pdf (57 pages, 1260991 bytes).
 
 PDF statistics: 1122 PDF objects out of 1200 (max. 8388607)
  899 compressed objects within 9 object streams

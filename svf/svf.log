@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  2 DEC 2020 14:58
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 DEC 2020 00:25
  restricted system commands enabled.
 **svf.tex
 (./svf.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.107 seconds
+luaotfload | main : initialization completed in 0.106 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3156,38 +3156,36 @@ Package microtype Info: Loading generic settings for font family
 s10-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmrom
 an12-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generi
 c/fonts/otl/lmroman12-regular.luc)(compiling luc: /var/lib/texmf/luatex-cache/ge
-neric/fonts/otl/lmmono10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var
-/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)
+neric/fonts/otl/lmroman8-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var
+/luatex-cache/generic/fonts/otl/lmroman8-regular.luc)(compiling luc: /var/lib/te
+xmf/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)(load luc: /home/cwp/.te
+xlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)
 Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package tocbasic Info: character protrusion at toc deactivated on input line 19.
 
- (./svf.toc
-[1
+ (./svf.toc [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write5
 
 \openout5 = svf.toc
-(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-regular.l
-uc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lm
-roman8-regular.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl
-/lmroman8-bold.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/gene
-ric/fonts/otl/lmroman8-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/gene
-ric/fonts/otl/lmromanslant10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf
--var/luatex-cache/generic/fonts/otl/lmromanslant10-regular.luc) [2] [3](compilin
-g luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)(load 
-luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-re
-gular.luc)
-[4] [5] [6] [7] [8](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl
-/lmroman8-italic.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/ge
-neric/fonts/otl/lmroman8-italic.luc)(compiling luc: /var/lib/texmf/luatex-cache/
-generic/fonts/otl/lmroman7-italic.luc)(load luc: /home/cwp/.texlive2016/texmf-va
-r/luatex-cache/generic/fonts/otl/lmroman7-italic.luc) [9] [10] [11]
-[12] [13] [14] [15] [16]
+(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-bold.luc)
+(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmrom
+an8-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmrom
+anslant10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/g
+eneric/fonts/otl/lmromanslant10-regular.luc) [2] [3](compiling luc: /var/lib/tex
+mf/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)(load luc: /home/cwp/.tex
+live2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc) [4]
+[5] [6] [7] [8](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmr
+oman8-italic.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generi
+c/fonts/otl/lmroman8-italic.luc)(compiling luc: /var/lib/texmf/luatex-cache/gene
+ric/fonts/otl/lmroman7-italic.luc)(load luc: /home/cwp/.texlive2016/texmf-var/lu
+atex-cache/generic/fonts/otl/lmroman7-italic.luc) [9] [10] [11] [12]
+[13] [14] [15] [16]
 Overfull \hbox (12.26637pt too wide) detected at line 1145
 [][] \l_fontspec_font 𝒖 ⋅ 𝑭𝛿(𝒙 − 𝒚) d𝑉 + [][] 𝒖 ⋅ []
  ⋅ 𝒏 d𝑆 = [][] [] ⋅ 𝒇 d𝑉 + [][] [] ⋅ \l_fontspec_font 𝜎 \l
@@ -3228,10 +3226,10 @@ Here is how much of LuaTeX's memory you used:
    15 hlist, 6 vlist, 2 rule, 2 disc, 2 local_par, 6257 glue, 3 kern, 6 penalty,
  2 sub_mlist, 4 margin_kern, 40 glyph, 1870 attribute, 64 glue_spec, 1870 attrib
 ute_list, 1 write nodes
-   avail lists: 1:1,2:2450,3:899,4:165,5:358,6:2160,7:607,8:118,9:755,10:16,11:1
+   avail lists: 1:1,2:2450,3:899,4:169,5:358,6:2160,7:607,8:118,9:755,10:17,11:1
 68
  56828 multiletter control sequences out of 65536+600000
- 88 fonts using 18400103 bytes
+ 88 fonts using 18400319 bytes
  74i,19n,108p,8841b,943s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/font
 s/truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/fonts/opentype/p
@@ -3239,16 +3237,16 @@ ublic/lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opentype/public/lm-ma
 th/latinmodern-math.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-ita
 lic.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/shar
 e/texmf/fonts/opentype/public/lm-math/latinmodern-math.otf></usr/share/texmf/fon
-ts/opentype/public/lm/lmroman8-regular.otf></usr/share/texmf/fonts/opentype/publ
-ic/lm/lmroman8-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmromanslant1
-0-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmmono10-regular.otf></
+ts/opentype/public/lm/lmroman8-bold.otf></usr/share/texmf/fonts/opentype/public/
+lm/lmromanslant10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmmono1
+0-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman8-regular.otf></
 usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf
 /fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/opentype/pub
 lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/yfonts-t1/yswab.pfb>
 
-Output written on svf.pdf (52 pages, 359618 bytes).
+Output written on svf.pdf (52 pages, 360243 bytes).
 
 PDF statistics: 810 PDF objects out of 1000 (max. 8388607)
  689 compressed objects within 7 object streams
