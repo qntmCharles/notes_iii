@@ -78,3 +78,4 @@
 \contentsline {subsection}{\numberline {A.2}Spherical co-ordinates $(r,\mittheta ,\mitvarphi )$}{55}{subsection.A.2}
 \contentsline {section}{\numberline {B}Cauchy Equation in Polar Co-ordinates}{56}{appendix.B}
 \contentsline {subsection}{\numberline {B.1}Cylindrical co-ordinates $(r,\mittheta ,z)$}{56}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Spherical co-ordinates $(r,\mittheta ,\mitvarphi )$}{56}{subsection.B.2}

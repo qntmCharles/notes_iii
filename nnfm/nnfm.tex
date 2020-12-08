@@ -3759,7 +3759,7 @@ u_\phi)_{r\theta\phi}$, arbitrary scalar by $a$.
 Velocity $\symbf{u} = (u_r, u_\theta, u_z)_{r\theta z}$, stress tensor $\sigma
 = -p \symsf{I} + \tau$, body force $\symbf{f}$.
 \begingroup
-%\addtolength{\jot}{.7em}
+\addtolength{\jot}{.7em}
 \begin{align}
 	\rho\left(\frac{\partial u_r}{\partial t} + u_r \frac{\partial
 	u_r}{\partial r} + \frac{u_\theta}{r} \frac{\partial u_r}{\partial \theta} 
@@ -3768,9 +3768,7 @@ Velocity $\symbf{u} = (u_r, u_\theta, u_z)_{r\theta z}$, stress tensor $\sigma
 	\frac{\partial(r\tau_{rr})}{\partial r} + \frac{1}{r}\frac{\partial
 	\tau_{r\theta}}{\partial \theta} - \frac{\tau_{\theta\theta}}{r} +
 	\frac{\partial \tau_{rz}}{\partial z}\right] + f_r 
-	%\\[-1.4em]
-	\\
-	\
+	\\[-1.4em]
 	\rho\left(\frac{\partial u_\theta}{\partial t} + u_r \frac{\partial
 	u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial
 	\theta} + \frac{u_\theta u_r}{r} + u_z \frac{\partial
@@ -3786,6 +3784,50 @@ Velocity $\symbf{u} = (u_r, u_\theta, u_z)_{r\theta z}$, stress tensor $\sigma
 	\tau_{\theta z}}{\partial \theta} + \frac{\partial \tau_{zz}}{\partial
 	z}\right] + f_z
 \end{align}
+\endgroup
+
+\subsection{Spherical co-ordinates $(r,\theta,\phi)$}
+Velocity $\symbf{u} = (u_r, u_\theta, u_\phi)_{r\theta\phi}$, stress tensor
+$\sigma = -p\symsf{I} + \tau$, body force $\symbf{f}$.
+\begingroup
+\begin{multline}
+	\rho\left( \frac{\partial u_r}{\partial t} + u_r \frac{\partial 
+	u_r}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_r}{\partial
+	\theta} + \frac{u_\phi}{r\sin\theta}\frac{\partial u_r}{\partial
+	\phi} - \frac{u_\theta^2 + u_\phi^2}{r}\right)\\
+	= -\frac{\partial p}{\partial r} - \left[ \frac{1}{r^2} \frac{\partial
+	(r^2 \tau_{rr})}{\partial r} + \frac{1}{r\sin\theta} \frac{\partial
+	(\tau_{r\theta}\sin\theta)}{\partial \theta} + \frac{1}{r\sin\theta}
+	\frac{\partial \tau_{r\phi}}{\partial \phi} - \frac{\tau_{\theta\theta} +
+	\tau_{\phi\phi}}{r}\right] + f_r\\
+\end{multline}
+\vspace{-.5in}
+\begin{multline}
+	\rho\left( \frac{\partial u_\theta}{\partial t} + u_r \frac{\partial 
+	u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial
+	\theta} + \frac{u_\phi}{r\sin\theta}\frac{\partial u_\theta}{\partial
+	\phi} + \frac{u_r u_\theta}{r} - \frac{u_\phi^2 \cot \theta}{r}\right) \\
+	= -\frac{1}{r}\frac{\partial p}{\partial \theta} - \left[ \frac{1}{r^2}
+		\frac{\partial (r^2 \tau_{r\theta})}{\partial r} + \frac{1}{r\sin\theta}
+		\frac{\partial (\tau_{\theta\theta}\sin\theta)}{\partial \theta} +
+		\frac{1}{r\sin\theta} \frac{\partial \tau_{\theta\phi}}{\partial \phi} 
+		+ \frac{\tau_{r\theta}}{r} -
+	\frac{(\cot\theta)\tau_{\phi\phi}}{r}\right] + f_{\theta}
+\end{multline}
+\vspace{-.1in}
+\begin{multline}
+	\rho\left( \frac{\partial u_\phi}{\partial t} + u_r \frac{\partial 
+	u_\phi}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\phi}{\partial
+	\theta} + \frac{u_\phi}{r\sin\theta}\frac{\partial u_\phi}{\partial
+	\phi} + \frac{u_r u_\phi}{r} - \frac{u_\phi u_\theta \cot \theta}{r}\right) \\
+	= -\frac{1}{r\sin\theta}\frac{\partial p}{\partial \phi} - \left[\frac{1}{r^2}
+		\frac{\partial (r^2 \tau_{r\phi})}{\partial r} +
+		\frac{1}{r}\frac{\partial \tau_{\theta\phi}}{\partial \theta} +
+		\frac{1}{r\sin\theta} \frac{\partial \tau_{\phi\phi}}{\partial \phi} 
+		+ \frac{\tau_{r\phi}}{r} -
+		\frac{(2\cot\theta )\tau_{\phi\phi}}{r}\right] + f_{\phi}
+		\phantom{ttt}
+\end{multline}
 \endgroup
 
 \end{document}

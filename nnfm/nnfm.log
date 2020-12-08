@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 DEC 2020 00:26
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 DEC 2020 12:17
  restricted system commands enabled.
 **nnfm.tex
 (./nnfm.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.103 seconds
+luaotfload | main : initialization completed in 0.106 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3265,26 +3265,35 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 3758.
 
-[55] [56]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3791.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3791.
+[55]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3789.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3789.
+
+[56]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3833.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3833.
  (./nnfm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3791.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3791.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3833.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3833.
 Package rerunfilecheck Info: File `nnfm.out' has not changed.
-(rerunfilecheck)             Checksum: 4167139E808F2FCE6284837BF04523AB;4459.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3791.
+(rerunfilecheck)             Checksum: 71B142610CA30A4DEE0DE7AD63F84574;4561.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3833.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54805 strings out of 494577
+ 54807 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 49255 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5713 glue, 1 kern, 253 sub_mlist, 2004 attribute, 6
-4 glue_spec, 2004 attribute_list, 1 write nodes
-   avail lists: 1:6,2:2297,3:756,4:179,5:485,6:2421,7:908,8:179,9:1216,10:17,11:
+ 50909 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5939 glue, 1 kern, 253 sub_mlist, 2022 attribute, 6
+4 glue_spec, 2022 attribute_list, 1 write nodes
+   avail lists: 1:6,2:2263,3:756,4:183,5:485,6:2421,7:685,8:183,9:1216,10:17,11:
 217
- 56943 multiletter control sequences out of 65536+600000
+ 56944 multiletter control sequences out of 65536+600000
  100 fonts using 21905151 bytes
  74i,19n,108p,8842b,1973s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman8-italic.otf></usr/share/fonts
@@ -3303,10 +3312,10 @@ ns10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf><
 /usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on nnfm.pdf (56 pages, 364497 bytes).
+Output written on nnfm.pdf (56 pages, 367118 bytes).
 
-PDF statistics: 781 PDF objects out of 1000 (max. 8388607)
- 660 compressed objects within 7 object streams
- 196 named destinations out of 1000 (max. 131072)
- 528 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 786 PDF objects out of 1000 (max. 8388607)
+ 665 compressed objects within 7 object streams
+ 197 named destinations out of 1000 (max. 131072)
+ 536 words of extra memory for PDF output out of 10000 (max. 10000000)
 
