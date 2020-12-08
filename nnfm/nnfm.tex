@@ -3686,5 +3686,104 @@ Hence the fluid separates into two regions, each taking one of the stable
 values of shear rate, i.e. two domains with different $\srate$ and the same
 $\symbfsf{\tau}$.
 
+\newpage
+\appendix
+\section{Differential Operations in Polar Co-ordinates}
+\subsection{Cylindrical co-ordinates $(r,\theta,z)$}
+Denote arbitary vector components by $\symbf{u} = (u_r, u_\theta,
+u_z)_{r\theta z}$, arbitrary scalar by $a$.
+\begingroup
+\addtolength{\jot}{.7em}
+\renewcommand*{\arraystretch}{2}
+\setlength\arraycolsep{.7em}
+\begin{align}
+	\nabla &= \hat{\symbf{r}} \frac{\partial}{\partial r} +
+	\hat{\symbf{\theta}} \frac{1}{r}\frac{\partial}{\partial \theta} +
+	\hat{\symbf{z}}\frac{\partial}{\partial z} \\
+	\nabla^2 a &= \frac{1}{r}\frac{\partial}{\partial r} \left( r\frac{\partial
+		a}{\partial r}\right) + \frac{1}{r^2} \frac{\partial^2
+		a}{\partial \theta^2} + \frac{\partial^2
+	a}{\partial z^2} \\
+	\nabla \cdot \symbf{u} &= \frac{1}{r} \frac{\partial}{\partial r}(r
+	u_r) + \frac{1}{r} \frac{\partial u_\theta}{\partial \theta} +
+	\frac{\partial u_z}{\partial z} \\
+	\nabla \symbf{u} &= \begin{pmatrix} \frac{\partial u_r}{\partial r} &
+	\frac{\partial u_\theta}{\partial r} & \frac{\partial u_z}{\partial r}
+	\\ \frac{1}{r}\frac{\partial u_r}{\partial \theta} -
+	\frac{u_\theta}{r} & \frac{1}{r}\frac{\partial u_\theta}{\partial
+	\theta} +\frac{u_r}{r} & \frac{1}{r}\frac{\partial u_z}{\partial \theta} \\
+	\frac{\partial u_r}{\partial z} & \frac{\partial u_\theta}{\partial z}
+	& \frac{\partial u_z}{\partial z} \end{pmatrix}_{r\theta z}
+\end{align}
+\endgroup
+
+\subsection{Spherical co-ordinates $(r,\theta,\phi)$}
+Denote arbitary vector components by $\symbf{u} = (u_r, u_\theta,
+u_\phi)_{r\theta\phi}$, arbitrary scalar by $a$.
+\begingroup
+\addtolength{\jot}{.7em}
+\renewcommand*{\arraystretch}{2}
+\setlength\arraycolsep{.7em}
+\begin{align}
+	\nabla &= \hat{\symbf{r}} \frac{\partial}{\partial r} +
+	\hat{\symbf{\theta}} \frac{1}{r}\frac{\partial}{\partial \theta} +
+	\hat{\symbf{\phi}} \frac{1}{r\sin \theta} \frac{\partial}{\partial \phi}
+	\\
+	\nabla^2 a &= \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2
+	\frac{\partial a}{\partial r} \right) + \frac{1}{r^2 \sin \theta}
+	\frac{\partial}{\partial \theta} \left( \sin \theta \frac{\partial
+	a}{\partial \theta} \right) + \frac{1}{r^2 \sin^2 \theta}
+	\frac{\partial^2 a}{\partial \phi^2} \\
+	\nabla \cdot \symbf{u} &= \frac{1}{r^2} \frac{\partial}{\partial r}(r^2
+	u_r) + \frac{1}{r\sin\theta} \frac{\partial}{\partial \theta} (u_\theta
+	\sin \theta) + \frac{1}{r\sin\theta}\frac{\partial u_\phi}{\partial \phi} \\
+	\nabla \symbf{u} &= \begin{pmatrix}
+		\frac{\partial u_r}{\partial r} & 
+		\frac{\partial u_\theta}{\partial r} &
+		\frac{\partial u_\phi}{\partial r} \\
+		\frac{1}{r}\frac{\partial u_r}{\partial \theta} - \frac{u_\theta}{r} &
+		\frac{1}{r}\frac{\partial u_\theta}{\partial \theta} + \frac{u_r}{r} &
+		\frac{1}{r}\frac{\partial u_\phi}{\partial \theta} \\
+		\frac{1}{r\sin\theta} \frac{\partial u_r}{\partial \phi} -
+		\frac{u_\phi}{r} & 
+		\frac{1}{r\sin\theta} \frac{\partial u_\theta}{\partial \phi} -
+		\frac{u_\phi}{r}\cot \theta & 
+		\frac{1}{r\sin\theta} \frac{\partial u_\phi}{\partial \phi} +
+		\frac{u_\phi}{r} + \frac{u_\theta}{r}\cot\theta
+	\end{pmatrix}_{r\theta\phi}
+\end{align}
+\endgroup
+
+\newpage
+\section{Cauchy Equation in Polar Co-ordinates}
+\subsection{Cylindrical co-ordinates $(r,\theta,z)$}
+Velocity $\symbf{u} = (u_r, u_\theta, u_z)_{r\theta z}$, stress tensor $\sigma
+= -p \symsf{I} + \tau$, body force $\symbf{f}$.
+\begingroup
+\addtolength{\jot}{.7em}
+\begin{align}
+	\rho\left(\frac{\partial u_r}{\partial t} + u_r \frac{\partial
+	u_r}{\partial r} + \frac{u_\theta}{r} \frac{\partial u_r}{\partial \theta} 
+	- \frac{u_\theta^2}{r} + u_z\frac{\partial u_r}{\partial z}\right) &= 
+	-\frac{\partial p}{\partial r} - \left[ \frac{1}{r}
+	\frac{\partial(r\tau_{rr})}{\partial r} + \frac{1}{r}\frac{\partial
+	\tau_{r\theta}}{\partial \theta} - \frac{\tau_{\theta\theta}}{r} +
+\frac{\partial \tau_{rz}}{\partial z}\right] + f_r \\[-1.4em]
+	\rho\left(\frac{\partial u_\theta}{\partial t} + u_r \frac{\partial
+	u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial
+	\theta} + \frac{u_\theta u_r}{r} + u_z \frac{\partial
+	u_\theta}{\partial z}\right) &= -\frac{1}{r} \frac{\partial p}{\partial
+	\theta} - \left[\frac{1}{r^2}\frac{\partial (r^2 \tau_{r\theta})}{\partial
+	r} + \frac{1}{r}\frac{\partial \tau_{\theta\theta}}{\partial \theta} +
+	\frac{\partial \tau_{\theta z}}{\partial z} \right] + f_{\theta}\\
+	\rho\left( \frac{\partial u_z}{\partial t} + u_r \frac{\partial
+	u_z}{\partial r} + \frac{u_\theta}{r} \frac{\partial u_z}{\partial
+	\theta} + u_z \frac{\partial u_z}{\partial z} \right) &=
+	-\frac{\partial p}{\partial z} - \left[ \frac{1}{r}\frac{\partial
+	(r\tau_{rz})}{\partial r} + \frac{1}{r}\frac{\partial
+	\tau_{\theta z}}{\partial \theta} + \frac{\partial \tau_{zz}}{\partial
+	z}\right] + f_z
+\end{align}
+\endgroup
 
 \end{document}

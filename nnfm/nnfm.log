@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  1 DEC 2020 18:45
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 DEC 2020 00:07
  restricted system commands enabled.
 **nnfm.tex
 (./nnfm.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.106 seconds
+luaotfload | main : initialization completed in 0.109 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3181,7 +3181,11 @@ anslant10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/g
 eneric/fonts/otl/lmromanslant10-regular.luc) [2] [3](compiling luc: /var/lib/tex
 mf/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)(load luc: /home/cwp/.tex
 live2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)
-[4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
+[4] [5] [6] [7] [8] [9] [10]
+Overfull \vbox (17.82602pt too high) detected at line 702
+ []
+
+[11] [12] [13] [14] [15]
 
 Package pgfplots Warning: 'fill between': Could not activate graphics layer 'pre
  main'. Filled path will be on top of the other ones. Please ensure that 'pre ma
@@ -3238,26 +3242,52 @@ Overfull \hbox (32.72063pt too wide) in paragraph at lines 3570--3571
  []
 
 [52] [53] [54]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3690.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3690.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3692.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3692.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3720.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3720.
+
+[55]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3759.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3759.
+
+[56]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3789.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3789.
  (./nnfm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3690.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3690.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3789.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3789.
 Package rerunfilecheck Info: File `nnfm.out' has not changed.
-(rerunfilecheck)             Checksum: 2AF77813356BB851508AB890E3E3627B;4013.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3690.
+(rerunfilecheck)             Checksum: 4167139E808F2FCE6284837BF04523AB;4459.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3789.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54792 strings out of 494577
+ 54805 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 46704 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5384 glue, 1 kern, 253 sub_mlist, 1942 attribute, 6
-4 glue_spec, 1942 attribute_list, 1 write nodes
-   avail lists: 1:5,2:2413,3:756,4:166,5:319,6:2419,7:831,8:90,9:715,10:16,11:21
-7
- 56937 multiletter control sequences out of 65536+600000
- 100 fonts using 21905415 bytes
+ 49230 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5710 glue, 1 kern, 253 sub_mlist, 2003 attribute, 6
+4 glue_spec, 2003 attribute_list, 1 write nodes
+   avail lists: 1:6,2:2299,3:756,4:179,5:323,6:2421,7:547,8:120,9:836,10:16,11:2
+17
+ 56943 multiletter control sequences out of 65536+600000
+ 100 fonts using 21905151 bytes
  74i,19n,108p,8842b,1973s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman8-italic.otf></usr/share/fonts
 /truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/fonts/opentype/pu
@@ -3265,9 +3295,9 @@ blic/lm/lmromanslant8-regular.otf></usr/share/fonts/truetype/neohellenic/GFSNeoh
 ellenicMath.otf></usr/share/texmf/fonts/opentype/public/lm-math/latinmodern-math
 .otf></usr/share/texmf/fonts/opentype/public/lm-math/latinmodern-math.otf></usr/
 share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/share/texmf/fonts/
-opentype/public/lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opentype/pu
-blic/lm/lmroman10-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman8
--bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman8-regular.otf></usr/
+opentype/public/lm/lmroman10-italic.otf></usr/share/texmf/fonts/opentype/public/
+lm/lmroman8-bold.otf></usr/share/texmf/fonts/opentype/public/lm-math/latinmodern
+-math.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman8-regular.otf></usr/
 share/texmf/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
 /public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsa
@@ -3275,10 +3305,10 @@ ns10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf><
 /usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on nnfm.pdf (54 pages, 355052 bytes).
+Output written on nnfm.pdf (56 pages, 363915 bytes).
 
-PDF statistics: 747 PDF objects out of 1000 (max. 8388607)
- 628 compressed objects within 7 object streams
- 189 named destinations out of 1000 (max. 131072)
- 488 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 781 PDF objects out of 1000 (max. 8388607)
+ 660 compressed objects within 7 object streams
+ 196 named destinations out of 1000 (max. 131072)
+ 528 words of extra memory for PDF output out of 10000 (max. 10000000)
 
