@@ -48,16 +48,17 @@ The \emph{stress} $\symbf{\tau}$ is the force per unit area acting across a
 surface. Force balance on an `infinitesimal' fluid tetahedron shows that the
 stress $\symbf{\tau}$ is linearly related to the surface normal $\symbf{n}$:
 \begin{equation}
-	\symbf{\tau} = \sigma \cdot \symbf{n}
+	\symbf{\tau} = \symbfsf{\sigma} \cdot \symbf{n}
 \end{equation}
-where $\sigma$ is the \emph{stress tensor} and $\symbf{\tau}$ is stress exerted
+where $\symbfsf{\sigma}$ is the \emph{stress tensor} and $\symbf{\tau}$ is stress exerted
 by the outside fluid on the inside of a surface with outward normal $\symbf{n}$.
-Angular momentum balance shows that $\sigma$ is symmetric in most fluids.
+Angular momentum balance shows that $\symbfsf{\sigma}$ is symmetric in most fluids.
 
 \subsection{Momentum equation}
 The \emph{Cauchy momentum equation} states in general
 \begin{equation}
-	\frac{\diffD{\symbf{u}}}{\diffD{t}} = \symbf{F} + \nabla \cdot \sigma
+	\frac{\diffD{\symbf{u}}}{\diffD{t}} = \symbf{F} + \nabla \cdot
+	\symbfsf{\sigma}
 \end{equation}
 
 \subsection{Energy equation}
@@ -65,8 +66,8 @@ In the case of an incompressible fluid, the rate of local inertial
 \emph{viscous dissipation} is derived by contracting the Cauchy momentum
 equation with the fluid velocity and integrating over a volume. We have
 \begin{equation}
-	\mathcal{D} = \int_V e_{ij} \sigma_{ij} \,\diffd{V} = \int_V e:\sigma \,
-	\diffd{V}
+	\mathcal{D} = \int_V e_{ij} \symbfsf{\sigma}_{ij} \,\diffd{V} = \int_V
+	e:\symbfsf{\sigma} \, \diffd{V}
 \end{equation}
 where $e_{ij} = \frac{1}{2}\left(\nabla \symbf{u} + \left(\nabla
 \symbf{u}\right)^T\right)$ is the \emph{rate of strain} tensor. Note $e_{ii} = 0$
@@ -74,20 +75,20 @@ by incompressibility and $e_{ij} = e_{ji}$.
 
 The rate of working by external surface forces on the fluid is
 \begin{equation}
-	\int_{\partial V} u_i \sigma_{ij} n_j \diffd{S}
+	\int_{\partial V} u_i \symbfsf{\sigma}_{ij} n_j \diffd{S}
 \end{equation}
 
 \subsection{Newtonian Fluids}
 \begin{defn}
 Fluid deformation produces internal viscous stresses. If the relationship
 between fluid deformation $\frac{\partial u_i}{\partial x_j}$ and stress
-$\sigma_{ij}$ is local, linear, instantaneous and isotropic, then the fluid is
+$\symbfsf{\sigma}_{ij}$ is local, linear, instantaneous and isotropic, then the fluid is
 \emph{Newtonian}.
 \end{defn}
 
 If the fluid is also incompressible, then the stress tensor takes the form
 \begin{equation}
-	\sigma_{ij} = -p \delta_{ij} + 2\mu e_{ij}
+	\symbfsf{\sigma}_{ij} = -p \delta_{ij} + 2\mu e_{ij}
 \end{equation}
 where $\mu$ is the \emph{dynamic viscosity} and $2 \mu e_{ij}$ is the
 \emph{deviatoric stress}. Note that there is no dependence on the vorticity
@@ -127,13 +128,13 @@ Kinematic boundary conditions on a rigid boundary are
 
 Dynamic boundary conditions in the absence of surface tension are 
 \begin{equation}
-	\left[\sigma \cdot \symbf{n}\right]^+_- = \symbf{0}
+	\left[\symbfsf{\sigma} \cdot \symbf{n}\right]^+_- = \symbf{0}
 \end{equation}
 Note that modified pressure should not be used here.
 
 With surface tension included, the condition becomes
 \begin{equation}
-	\left[ \sigma \cdot \symbf{n} \right]^+_- = \gamma \kappa \symbf{n} - \nabla_s
+	\left[ \symbfsf{\sigma} \cdot \symbf{n} \right]^+_- = \gamma \kappa \symbf{n} - \nabla_s
 	\gamma
 \end{equation}
 where $\kappa = \nabla_s \cdot \symbf{n}$ is the \emph{curvature} and $\gamma$ is
@@ -201,7 +202,7 @@ There are some caveats which come with the use of intrinsic length scales.
 \section{The Stokes Equations}
 \begin{equation}
 	\begin{aligned}
-		\nabla \cdot \sigma &= \mu \nabla^2 \symbf{u} - \nabla p = - \symbf{F} \\
+		\nabla \cdot \symbfsf{\sigma} &= \mu \nabla^2 \symbf{u} - \nabla p = - \symbf{F} \\
 		\nabla \cdot \symbf{u} &= 0
 	\end{aligned}
 \end{equation}
@@ -314,7 +315,7 @@ out certain behaviours of the flow.
 \subsubsection{Forces balance}
 Since there is no inertia, the forces must balance. From the equations,
 \begin{equation}
-	\nabla \cdot \sigma = - \symbf{F} \implies \int_{\partial V} \sigma \cdot
+	\nabla \cdot \symbfsf{\sigma} = - \symbf{F} \implies \int_{\partial V} \symbfsf{\sigma} \cdot
 	\symbf{n} \,\diffd S + \int_V \symbf{F} \,\diffd V = \symbf{0}
 \end{equation}
 
@@ -336,12 +337,12 @@ Intuitively, the flow has no kinetic energy (no inertia)  so any work done on
 the fluid must be viscously dissipated instantaneously. We have
 \begin{equation}
 	\begin{aligned}
-		\mathcal{D} &= 2\mu \int_V e_{ij} e_{ij} \, \diffd V \\
-				&= \int (\sigma_{ij} + p \delta_{ij}) e_{ij} \, \diffd V \\
-	&= \int \sigma_{ij} \frac{\partial u_i}{\partial x_j} + p e_{ii} \, \diffd V \\
-	&= \int \frac{\partial}{\partial x_j} \sigma_{ij} u_i - u_i \frac{\partial
-	\sigma_{ij}}{\partial x_j} \, \diffd V \\
-	&= \int_{\partial V} \symbf{u} \cdot \symbfsf{\sigma} \cdot \symbf{n} \, \diffd S + \int
+		\mathcal{D} &= 2\mu \int_V \symsf{e}_{ij} \symsf{e}_{ij} \, \diffd V \\
+				&= \int (\symbfsf{\sigma}_{ij} + p \delta_{ij}) \symsf{e}_{ij} \, \diffd V \\
+	&= \int \symbfsf{\sigma}_{ij} \frac{\partial u_i}{\partial x_j} + p \symsf{e}_{ii} \, \diffd V \\
+	&= \int \frac{\partial}{\partial x_j} \symbfsf{\sigma}_{ij} u_i - u_i \frac{\partial
+	\symbfsf{\sigma}_{ij}}{\partial x_j} \, \diffd V \\
+	&= \int_{\partial V} \symbf{u} \cdot \symbfsf{\symbfsf{\sigma}} \cdot \symbf{n} \, \diffd S + \int
 	\symbf{u} \cdot \symbf{F} \, \diffd V
 	\end{aligned}
 \end{equation}
@@ -355,8 +356,8 @@ second term is the work done by body forces.
 	If $\symbf{u}^I$ is an incompressible flow and $\symbf{u}^S$ is a Stokes flow
 	with body force $\symbf{F}^S$ then 
 	\begin{equation}
-		2\mu \int e^{I} : e^{S} \, \diffd V = \int_{\partial V} \symbf{u}^I \cdot
-		\sigma^S \cdot \symbf{n} \, \diffd S + \int_V \symbf{u}^I \cdot \symbf{F}^S \,
+		2\mu \int \symsf{e}^{I} : \symsf{e}^{S} \, \diffd V = \int_{\partial V} \symbf{u}^I \cdot
+		\symbfsf{\sigma}^S \cdot \symbf{n} \, \diffd S + \int_V \symbf{u}^I \cdot \symbf{F}^S \,
 		\diffd V
 	\end{equation}
 \end{lemma}
@@ -365,13 +366,13 @@ Proof. Same as `work balances dissipation'.
 \begin{theorem}
 	Uniqueness theorem. Suppose $\symbf{u}_1, \symbf{u}_2$ are Stokes flows with the
 	same boundary conditions and body forces, i.e. $\symbf{F}_1 = \symbf{F}_2$ in
-	$V$ and either $\symbf{u}_1 = \symbf{u}_2$ or $\sigma_1 \cdot \symbf{n} = \sigma_2
+	$V$ and either $\symbf{u}_1 = \symbf{u}_2$ or $\symbfsf{\sigma}_1 \cdot \symbf{n} = \symbfsf{\sigma}_2
 	\cdot \symbf{n}$ on $\partial V$. Then $\symbf{u}_1 = \symbf{u}_2$.
 \end{theorem}
 
 Proof. Let $\symbf{u}^* = \symbf{u}_1 - \symbf{u}_2$. From lemma~\ref{l1}, 
 \begin{equation}
-	2\mu \int_V e^* : e^* \, \diffd V = 0
+	2\mu \int_V \symsf{e}^* : \symsf{e}^* \, \diffd V = 0
 \end{equation}
 
 Thus $e^* = 0$ in $V$. Hence we can deduce $\symbf{u}^*$ consists entirely of
@@ -406,9 +407,9 @@ Proof. Apply the lemma twice.
 Proof. We have
 \begin{equation}
 	\begin{aligned}
-		0 &\le 2\mu \int (e - e^S):(e-e^S) \, \diffd V \\
-		  &\le 2\mu \int e:e - e^S:e^S \, \diffd V + 4\mu \int e^S : (e^S
-		-e)\,\diffd V
+		0 &\l\symsf{e} 2\mu \int (\symsf{e} - \symsf{e}^S):(\symsf{e}-\symsf{e}^S) \, \diffd V \\
+		  &\l\symsf{e} 2\mu \int \symsf{e}:\symsf{e} - \symsf{e}^S:\symsf{e}^S \, \diffd V + 4\mu \int \symsf{e}^S : (\symsf{e}^S
+		-\symsf{e})\,\diffd V
 	\end{aligned}
 \end{equation}
 
