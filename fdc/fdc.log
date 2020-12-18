@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 DEC 2020 00:26
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  18 DEC 2020 13:52
  restricted system commands enabled.
 **fdc.tex
 (./fdc.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.123 seconds
+luaotfload | main : initialization completed in 0.155 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3308,14 +3308,14 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3761.
 Here is how much of LuaTeX's memory you used:
  54272 strings out of 494577
  125007,1977958 words of node,token memory allocated
- 47854 words of node memory still in use:
-   14 hlist, 6 vlist, 2 rule, 2 disc, 2 local_par, 5624 glue, 3 kern, 5 penalty,
- 15 sub_mlist, 2 margin_kern, 37 glyph, 1891 attribute, 64 glue_spec, 1891 attri
+ 47905 words of node memory still in use:
+   14 hlist, 6 vlist, 2 rule, 2 disc, 2 local_par, 5629 glue, 3 kern, 5 penalty,
+ 15 sub_mlist, 2 margin_kern, 37 glyph, 1895 attribute, 64 glue_spec, 1895 attri
 bute_list, 1 write nodes
    avail lists: 1:3,2:2388,3:990,4:183,5:632,6:5589,7:1610,8:121,9:837,10:27,11:
 469
  56268 multiletter control sequences out of 65536+600000
- 178 fonts using 42867991 bytes
+ 178 fonts using 42867807 bytes
  74i,13n,108p,8841b,949s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman9-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype
@@ -3332,7 +3332,7 @@ s10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></
 usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmbx10.pfb>
-Output written on fdc.pdf (57 pages, 1260991 bytes).
+Output written on fdc.pdf (57 pages, 1261041 bytes).
 
 PDF statistics: 1122 PDF objects out of 1200 (max. 8388607)
  899 compressed objects within 9 object streams
