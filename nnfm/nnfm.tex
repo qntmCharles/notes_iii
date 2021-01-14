@@ -3764,7 +3764,7 @@ Velocity $\symbf{u} = (u_r, u_\theta, u_z)_{r\theta z}$, stress tensor $\sigma
 	\rho\left(\frac{\partial u_r}{\partial t} + u_r \frac{\partial
 	u_r}{\partial r} + \frac{u_\theta}{r} \frac{\partial u_r}{\partial \theta} 
 	- \frac{u_\theta^2}{r} + u_z\frac{\partial u_r}{\partial z}\right) &= 
-	-\frac{\partial p}{\partial r} - \left[ \frac{1}{r}
+	-\frac{\partial p}{\partial r} + \left[ \frac{1}{r}
 	\frac{\partial(r\tau_{rr})}{\partial r} + \frac{1}{r}\frac{\partial
 	\tau_{r\theta}}{\partial \theta} - \frac{\tau_{\theta\theta}}{r} +
 	\frac{\partial \tau_{rz}}{\partial z}\right] + f_r 
@@ -3773,13 +3773,13 @@ Velocity $\symbf{u} = (u_r, u_\theta, u_z)_{r\theta z}$, stress tensor $\sigma
 	u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial
 	\theta} + \frac{u_\theta u_r}{r} + u_z \frac{\partial
 	u_\theta}{\partial z}\right) &= -\frac{1}{r} \frac{\partial p}{\partial
-	\theta} - \left[\frac{1}{r^2}\frac{\partial (r^2 \tau_{r\theta})}{\partial
+	\theta} + \left[\frac{1}{r^2}\frac{\partial (r^2 \tau_{r\theta})}{\partial
 	r} + \frac{1}{r}\frac{\partial \tau_{\theta\theta}}{\partial \theta} +
 	\frac{\partial \tau_{\theta z}}{\partial z} \right] + f_{\theta}\\
 	\rho\left( \frac{\partial u_z}{\partial t} + u_r \frac{\partial
 	u_z}{\partial r} + \frac{u_\theta}{r} \frac{\partial u_z}{\partial
 	\theta} + u_z \frac{\partial u_z}{\partial z} \right) &=
-	-\frac{\partial p}{\partial z} - \left[ \frac{1}{r}\frac{\partial
+	-\frac{\partial p}{\partial z} + \left[ \frac{1}{r}\frac{\partial
 	(r\tau_{rz})}{\partial r} + \frac{1}{r}\frac{\partial
 	\tau_{\theta z}}{\partial \theta} + \frac{\partial \tau_{zz}}{\partial
 	z}\right] + f_z
@@ -3795,7 +3795,7 @@ $\sigma = -p\symsf{I} + \tau$, body force $\symbf{f}$.
 	u_r}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_r}{\partial
 	\theta} + \frac{u_\phi}{r\sin\theta}\frac{\partial u_r}{\partial
 	\phi} - \frac{u_\theta^2 + u_\phi^2}{r}\right)\\
-	= -\frac{\partial p}{\partial r} - \left[ \frac{1}{r^2} \frac{\partial
+	= -\frac{\partial p}{\partial r} + \left[ \frac{1}{r^2} \frac{\partial
 	(r^2 \tau_{rr})}{\partial r} + \frac{1}{r\sin\theta} \frac{\partial
 	(\tau_{r\theta}\sin\theta)}{\partial \theta} + \frac{1}{r\sin\theta}
 	\frac{\partial \tau_{r\phi}}{\partial \phi} - \frac{\tau_{\theta\theta} +
@@ -3807,7 +3807,7 @@ $\sigma = -p\symsf{I} + \tau$, body force $\symbf{f}$.
 	u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial
 	\theta} + \frac{u_\phi}{r\sin\theta}\frac{\partial u_\theta}{\partial
 	\phi} + \frac{u_r u_\theta}{r} - \frac{u_\phi^2 \cot \theta}{r}\right) \\
-	= -\frac{1}{r}\frac{\partial p}{\partial \theta} - \left[ \frac{1}{r^2}
+	= -\frac{1}{r}\frac{\partial p}{\partial \theta} + \left[ \frac{1}{r^2}
 		\frac{\partial (r^2 \tau_{r\theta})}{\partial r} + \frac{1}{r\sin\theta}
 		\frac{\partial (\tau_{\theta\theta}\sin\theta)}{\partial \theta} +
 		\frac{1}{r\sin\theta} \frac{\partial \tau_{\theta\phi}}{\partial \phi} 
@@ -3820,7 +3820,7 @@ $\sigma = -p\symsf{I} + \tau$, body force $\symbf{f}$.
 	u_\phi}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\phi}{\partial
 	\theta} + \frac{u_\phi}{r\sin\theta}\frac{\partial u_\phi}{\partial
 	\phi} + \frac{u_r u_\phi}{r} - \frac{u_\phi u_\theta \cot \theta}{r}\right) \\
-	= -\frac{1}{r\sin\theta}\frac{\partial p}{\partial \phi} - \left[\frac{1}{r^2}
+	= -\frac{1}{r\sin\theta}\frac{\partial p}{\partial \phi} + \left[\frac{1}{r^2}
 		\frac{\partial (r^2 \tau_{r\phi})}{\partial r} +
 		\frac{1}{r}\frac{\partial \tau_{\theta\phi}}{\partial \theta} +
 		\frac{1}{r\sin\theta} \frac{\partial \tau_{\phi\phi}}{\partial \phi} 
