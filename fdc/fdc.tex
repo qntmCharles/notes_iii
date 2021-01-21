@@ -136,14 +136,14 @@ In this coordinate system $\symbf{\Omega} = (0, \Omega \cos \theta, \Omega \sin
 	\begin{aligned}
 		2 \symbf{\Omega} \times \symbf{u} &= (2\Omega w \cos \theta - 2 \Omega v \sin
 		\theta, 2 \Omega u \sin \theta, -2\Omega u \cos \theta) \\
-		&= (-fv + f^* w, fu - f^* u)
+		&= (-fv + f^* w, fu, -f^* u)
 	\end{aligned}
 \end{equation}
 where $f \equiv 2 \Omega \sin \theta$ is the \emph{Coriolis parameter} and
 $f^* \equiv 2 \Omega \cos \theta$.
 
 \begin{eg}
-	In Cambridge, $\theta = 52.1^{\circ} N$ so
+	In Cambridge, $\theta = 52.1^{\circ}$N so
 	\begin{equation}
 		\begin{aligned}
 			f &= 2 \Omega \sin \theta \\
@@ -173,7 +173,8 @@ Using these scalings with $\symbf{F} = \nu \nabla^2 \symbf{u}$ we have
 \begin{equation}
 	\frac{U}{T} \frac{\partial \symbf{u}^*}{\partial t^*} + \frac{U^2}{L}
 	\symbf{u}^* \cdot \nabla^* \symbf{u}^* + fU \hat{\symbf{z}} \times \symbf{u}^* =
-	-\frac{1}{\rho} \nabla \left(p + \rho \Phi\right) + \frac{\nu U}{L^2} \nabla_*^2
+	-\frac{1}{\rho} \nabla^* \left(p + \rho \Phi\right) + \frac{\nu U}{L^2}
+	\nabla^{*2}
 		\symbf{u}^*
 \end{equation}
 
@@ -182,7 +183,8 @@ other terms scaled relatively.
 \begin{equation}
 	\frac{1}{fT} \frac{\partial \symbf{u}^*}{\partial t^*} + \text{Ro}	\symbf{u}^*
 	\cdot \nabla^* \symbf{u}^* + \hat{\symbf{z}} \times \symbf{u}^* =
-	-\frac{1}{\rho f U} \nabla \left(p + \rho \Phi\right) + \text{E} \nabla_*^2
+	-\frac{1}{\rho f U} \nabla^* \left(p + \rho \Phi\right) + \text{E}
+	\nabla^{*2}
 		\symbf{u}^*
 \end{equation}
 where $\text{Ro} \equiv \frac{U}{fL}$ is the \emph{Rossby number} and
@@ -340,7 +342,7 @@ ocean surface $z=0$ moving with the fluid velocity, we have
 	\end{aligned}
 \end{equation}
 
-Thus the motion of fluid particles describes describes \emph{inertial circles}
+Thus the motion of fluid particles describes \emph{inertial circles}
 with radius $\frac{2U}{f}$.
 
 \subsubsection{Ekman layer}
@@ -671,10 +673,10 @@ Without loss of generality, let $l = 0$, by reorienting $x$ and $y$. If $\eta
 fluid velocity is
 \begin{align}
 	u &= \frac{\omega_0 \eta_0}{k H_s} \cos(kx-\omega t) \\
-	v &= \frac{f \eta_0}{k H_s}
+	v &= \frac{f \eta_0}{k H_s} \sin(kx-\omega t)
 \end{align}
 Thus the motion is an ellipse, also known as a \emph{tidal ellipse}, which
-reduces to intertial circles if $\omega_0 = f$:
+reduces to inertial circles if $\omega_0 = f$:
 \begin{equation}
 	u^2 + \frac{\omega_0^2}{f^2} v^2 = \frac{\omega_0^2 \eta_0^2}{k^2 H_s^2}
 \end{equation}
@@ -692,7 +694,7 @@ short and long waves:
 \lecture{23/10/20}
 \subsection{Geostrophic adjustment}
 Consider the response of rotating shallow water to an initial state \emph{not}
-in geostrophic balance. Here, we consider $\eta(x,y,) = \eta_0 \sgn(x)$,
+in geostrophic balance. Here, we consider $\eta(x,y,t) = \eta_0 \sgn(x)$,
 $\symbf{u}(x,y,0) = \symbf{0}$, so the initial PV is $0$. 
 
 
@@ -878,8 +880,8 @@ v = \psi_x$ so
 \begin{equation}
 	\frac{\partial P_g}{\partial t} + J(\psi,P_g) \approx 0\label{eq:swqg}
 \end{equation}
-This is the \emph{shallow water Quasi-geostrophic} (SWQG) equation, which is
-one equaiton for one unknown $\psi$, as opposed to SWPV with 2 unknowns
+This is the \emph{shallow water quasi-geostrophic} (SWQG) equation, which is
+one equation for one unknown $\psi$, as opposed to SWPV with 2 unknowns
 $\zeta, \eta$.
 
 \subsubsection{Waves in QG}
@@ -1373,7 +1375,7 @@ full $3D$ Boussinesq primitive equations on a $\beta$-plane are
 	\frac{\diffD u}{\diffD t} - (f_0+\beta y)v &= -\frac{1}{\rho_0} p'_x \\
 	\frac{\diffD v}{\diffD t} + (f_0 + \beta y) u &= -\frac{1}{\rho_0} p'_y \\
 	p'_z &= -\rho' g \\
-	\frac{\diffD \rho'}{\diffD t} &= \\
+	\frac{\diffD \rho'}{\diffD t} &= 0\\
 	\nabla \cdot \symbf{u} &= 0
 \end{align}
 
@@ -1405,7 +1407,7 @@ horizontal changes in density.
 \subsubsection{Potential vorticity}
 In the shallow-water equations, the shallow-water potential vorticity was
 conserved. Under the Boussinesq primitive equations, instead the
-\emph{Rossby-Ertal potential vorticity} $P$ is conserved materially, where
+\emph{Rossby-Ertel potential vorticity} $P$ is conserved materially, where
 \begin{equation}
 	P = \frac{1}{\rho_0} (\symbf{f} +\symbf{\zeta})\cdot \nabla \rho'
 \end{equation}
@@ -1541,7 +1543,7 @@ QGPV, the (geostrophic) material derivative is
 \end{equation}
 Under the quasi-geostrophic approximation, $q$ is conserved following the
 horizontal geostrophic flow. The QGPV equation is an approximation to the
-statemenet of material conservation of Rossby-Ertel potential vorticity
+statement of material conservation of Rossby-Ertel potential vorticity
 following the flow along $\rho'$ surfaces in a Boussinesq flow, or $\theta$
 surfaces in a compressible flow.
 
@@ -1575,8 +1577,8 @@ derivatives.
 		boundary condition may then be linearised, so that it can be applied
 		at $z = z_b$.  Writing $\tilde{\rho}$ in terms of $\psi$, we have
 		\begin{equation} 
-			\frac{\diffD_g}{\diffD t} \psi_z = -\frac{N^2}{f_0}
-			\frac{\diffD_g}{\diffD t} h 
+			\frac{\diffD_g \psi_z}{\diffD t} = -\frac{N^2}{f_0}
+			\frac{\diffD_g h}{\diffD t}
 		\end{equation} 
 		at $z = z_b$. This is a prognostic equation for $\psi_z$ at the bottom
 		surface which relates (physically) to material rate of change of
@@ -1663,7 +1665,7 @@ assumed to be only in the $x$-direction and to depend only on $y$, i.e.
 \end{equation}
 There is a corresponding background quasi-geostrophic stream function
 $\Psi(y,z)$ such that $U = -\Psi_y$ and a background quasi-geostrophic
-potential vorticity $Q(y,z) = \Psi_{yy} + (f_0\Psi_z/N^2)_z + \beta y$.
+potential vorticity $Q(y,z) = \Psi_{yy} + (f_0^2\Psi_z/N^2)_z + \beta y$.
 
 As opposed to deriving the Boussinesq approximation, we will now use the prime
 $()'$ notation to denote disturbance quantities. The quasi-geostrophic
@@ -1703,7 +1705,7 @@ that in the undisturbed state the height of the free surface is
 \begin{equation}
 	z = \eta'(x,y,t)
 \end{equation}
-and assume disturbances are suitably small that we may estimate $p(x,y,0,t) =
+and assume disturbances are suitably small that we may estimate $\tilde{p}(x,y,0,t) =
 p_{\text{atm}} + \rho_0 g \eta'$. Then at $z=0$ we have $\rho_0 g w =
 \frac{\diffD_g \tilde{p}(z=0)}{\diffD t}$. Using the expression for pressure
 and vertical velocity under the quasi-geostrophic approximation, the boundary
@@ -1728,12 +1730,14 @@ satisfies
 \begin{equation}
 	\frac{\diffd}{\diffd z} \left[ \frac{1}{N^2} \frac{\diffd P}{\diffd
 	z}\right] = -\frac{1}{gh} P
+	\label{eq:vertstruc}
 \end{equation}
-for consistency, where $h$ is a suitably constant and at $z=0$ $P$ satisfies
-$P_z + (N^2/g)P = 0$ and at $z=-H$ $P$ satisfies $P_z = 0$. This is an
-eigenvalue for $h$, called the \emph{vertical structure equation}, and we
-expect a countable sequence of possible values $h_1 > h_2 > \dots > 0$, with
-the maximum value $h_1$ corresponding to the simplest possible structure for
+for consistency, where $h$ is a suitable constant (eigenvalue) and the
+boundary conditions are $P_z + (N^2/g)P = 0$ at $z=0$ and at $P_z = 0$ at
+$z=-H$. Together this forms an eigenvalue problem for $h$, and
+\eqref{eq:vertstruc} is the \emph{vertical structure equation}. We expect
+a countable sequence of possible values $h_1 > h_2 > \dots > 0$, with the
+maximum value $h_1$ corresponding to the simplest possible structure for
 $P(z)$.
 
 \begin{itemize}
@@ -1787,7 +1791,7 @@ $P(z)$.
 		\begin{equation}
 			L_{iR} = \frac{(gh_i){1/2}}{f_0}
 		\end{equation}
-		THe first baroclinic mode has $L_{1R} \approx 30 km$, and the second
+		The first baroclinic mode has $L_{1R} \approx 30 km$, and the second
 		$L_{2R} \approx 10 km$ at mid-latitutes.
 	\item For scales much greater than $L_{R}$ the single-layer dispersion
 		relation implies that the phase and group velocities are westward and
@@ -1801,9 +1805,9 @@ $P(z)$.
 \end{itemize}
 
 \lecture{11/11/20}
-\subsubsection{Baroclinic instability}
-Here we consider a flow for which disturbances that are small-amplitude
-initially may grow substantially in ampltiude.  In the atmosphere and ocean,
+\subsubsection{Baroclinic instability (Eady model)}
+Here we consider a flow for which disturbances that are initially small amplitude
+but may grow substantially in ampltiude.  In the atmosphere and ocean,
 an important instability mechanism is associated with sloping density
 surfaces, i.e. horizontal density gradients, present due to vertical shear.
 Here we consider a problem due to Eady. Consider a basic state on an
@@ -1813,7 +1817,7 @@ rigid lid approximation with horizontal rigid boundaries at $z=0$ and $z= H$.
 
 The $y$-gradient of the QGPV is
 \begin{equation}
-	\beta - U_yy - (\frac{f_0^2}{N^2} U_z)_z = -(\frac{f_0^2}{N^2} \Lambda)_z
+	\beta - U_{yy} - (\frac{f_0^2}{N^2} U_z)_z = -(\frac{f_0^2}{N^2} \Lambda)_z
 	= 0
 \end{equation}
 Hence the linearised QGPV equation reduces to
@@ -1875,7 +1879,7 @@ $\mu H \to \infty$. Hence there is an instability if $\mu H < \hat{\mu}_c =
 		\Lambda}{N}$, i.e. proportional to the vertical shear $\Lambda$. In
 		this case, the $x$-wavenumber $k$ is $1.61 f_0/NH$ and $l = 0$.
 	\item In the limit $\mu H \to \infty$, $c/\Lambda H \to 1/\mu H$ or
-		$c/\Lambda H \to 1 - 1/\Mu H$. In the first case, $B \gg A$ and the
+		$c/\Lambda H \to 1 - 1/\mu H$. In the first case, $B \gg A$ and the
 		wave is \emph{bottom trapped}. In the second case $A \sim B$ and since
 		$\mu H \gg 1$, the wave is \emph{top trapped}. The top wave propagates
 		in the negative $x$-direction (against the flow) and the bottom wave
@@ -1912,7 +1916,7 @@ to weaken the $y$-gradient of density and hence release some of the potential
 energy of the background state.
 
 Thus a growing disturbance on a basic state with a positive density gradient
-equtor to pole produces a poleward flux of light fluid, and an equatorward
+equator to pole produces a poleward flux of light fluid, and an equatorward
 flux of heavy fluid. This is a \emph{baroclinic instability}. 
 
 \lecture{13/11/20}
@@ -1929,7 +1933,7 @@ The process by which fronts develop is called \emph{frontogenesis}.
 
 \subsubsection{Frontogenesis function}
 Consider the QG buoyancy equation with $\abs{\symbf{u}_a} \ll
-\abs{\symbf{u}_g}$ and $b \equiv = -\frac{g\rho}{\rho_0}$.
+\abs{\symbf{u}_g}$ and denote buoyancy by $b \equiv -\frac{g\rho}{\rho_0}$.
 \begin{equation}
 	\frac{\partial b}{\partial t} + \symbf{u}_g \cdot \nabla_H b + w_a N^2 = 0
 	\label{eq:qgbuoyancy}
@@ -1937,7 +1941,7 @@ Consider the QG buoyancy equation with $\abs{\symbf{u}_a} \ll
 Using index notation, $\nabla_H \eqref{eq:qgbuoyancy}$ gives
 \begin{equation}
 	\partial_t \partial_i b + (\partial_i u_{g,j})(\partial_j b) +
-	u_{g,j}\partial j \partial i b + N^2 \partial_i w_a = 0
+	u_{g,j}\partial_j \partial_i b + N^2 \partial_i w_a = 0
 \end{equation}
 The buoyancy equation is supplemented by boundary conditions $w_a = 0$ at
 $z=0, H$. At these boundaries, we therefore have
@@ -1947,15 +1951,15 @@ $z=0, H$. At these boundaries, we therefore have
 where $\frac{\diffD_g}{\diffD t} = \partial_t + \symbf{u}_g \cdot \nabla_H$ as
 usual and the \emph{Q-vector} is
 \begin{equation}
-	\symbf{Q} \equiv (-u_{g,x} b_x - g_{g,x} b_y, -u_{g,y} b_x - v_{g,y}b_y)
+	\symbf{Q} \equiv (-u_{g,x} b_x - v_{g,x} b_y, -u_{g,y} b_x - v_{g,y}b_y)
 \end{equation}
-The gradient of the equation applicable at the boundaries $z=0,H$ is then
+The dot product of $\nabla_H b$ with the boundary condition at $z=0,H$ implies
 \begin{equation}
 	\frac{\diffD_g}{\diffD t} \abs{\nabla_H b}^2 = 2\symbf{Q}\cdot\nabla_H b
 	\label{eq:frontogenesis}
 \end{equation}
-where the right hand side is the \emph{frontogenesis function}. This equation
-says that the gradients in buoyancy are advected by $\symbf{Q}$.
+where the right hand side is referred to as the \emph{frontogenesis function}.
+This equation says that the gradients in buoyancy are advected by $\symbf{Q}$.
 
 \subsubsection{Vertical velocity in 3D QG equations}
 Recall the 3D quasi-geostrophic equations can be written
@@ -2117,8 +2121,8 @@ shown below with red lines representing buoyancy surfaces.\\
 				\draw[->] (0,1.8) arc (90:180:1);
 				\draw[->] (0,0.2) arc (-90:0:1);
 				\draw (1.5, 1) node {$\symbf{u}_a$};
-				\draw[->] (3,1) -- (2,1) node[midway,below] {$\symbf{u}_g$};
-				\draw[->] (-3,1) -- (-2,1) node[midway,below] {$\symbf{u}_g$};
+				\draw[->] (3,1) -- (2,1) node[midway,below] {strain};
+				\draw[->] (-3,1) -- (-2,1) node[midway,below] {strain};
 			\end{tikzpicture}
 		\end{center}
 \end{enumerate}
@@ -2139,7 +2143,7 @@ absorb $\inv{\rho_0}$. In addition, we have the buoyancy conservation equation
 \begin{equation}
 	\frac{\partial b}{\partial t} + \symbf{u} \cdot \nabla b = D
 \end{equation}
-where $D$ is the \emph{diabatic heating/cooling} term. FInally, we have
+where $D$ is the \emph{diabatic heating/cooling} term. Finally, we have
 incompressibility $\nabla \cdot \symbf{u} = 0$. We will assume $f$ is constant
 in line with the traditional approximation. Taking the curl of Boussinesq NS
 we have
@@ -2147,8 +2151,7 @@ we have
 	\frac{\diffD \symbf{\omega}}{\diffD t} = f\frac{\partial u}{\partial z} +
 	\symbf{\omega} \cdot \nabla \symbf{u} + \nabla \times \symbf{F}
 \end{equation}
-Let $\symbf{\omega}_a = \symbf{\omega} + f\hat{\symbf{k}}$, called
-\emph{absolute vorticity}. Then
+Define the \emph{absolute vorticity} $\symbf{\omega}_a = \symbf{\omega} + f\hat{\symbf{k}}$. Then
 \begin{equation}
 	\frac{\diffD \symbf{\omega}_a}{\diffD t} = \symbf{\omega}_a \cdot \nabla
 	\symbf{u} + \nabla \times \symbf{F} \label{eq:abs}
@@ -2168,7 +2171,7 @@ In the absence of diabatic and frictional forcing, $\symbf{\omega}_a \cdot
 \nabla b$ is conserved. We call $\symbf{\omega}_a \cdot \nabla b$ the
 \emph{Ertel PV}.
 
-\subsection{Internal waves \& instabilities in fronts}
+\subsection{Frontal instabilities}
 Consider an unbounded fluid with uniform horizontal and vertical buoyancy
 gradients:
 \begin{equation}
@@ -2212,7 +2215,7 @@ $\symbf{u}, b, p$. We assume that these perturbations are independent of $y$,
 the along-front direction. We also assume that the perturbations are
 hydrostatic, that $f$ is constant, and we use the traditional approximation.
 \lecture{18/11/20}
-The linearised equations are
+The linearised 3D QG equations are
 \begin{subequations}
 	\begin{align}
 	u_t - fv &= -p_x \label{eq:12.1a} \\
@@ -2357,7 +2360,7 @@ denote the $x$-average, for example
 where the flow extends over $ 0 \le x \le L$. We typically assume periodicity
 in $x$, motivated by atmospheric or circumpolar ocean geometry, with $x$
 corresponding to longitude. Then we define $\chi' = \chi - \overline{\chi}$
-with $\chi'$ often being alled the \emph{wave} or \emph{eddy} component. 
+with $\chi'$ often being called the \emph{wave} or \emph{eddy} component. 
 \begin{itemize}
 	\item If the mean state is the background state then this matches the use
 		of $(.)'$ in the derivation of the Boussinesq primitive equations.
@@ -2467,8 +2470,8 @@ Here, $\myol{\mathcal{A}}$ is the \emph{Eliassen-Palm wave activity}
 and $\symbf{\myol{F}}$ is the \emph{Eliassen-Palm flux} with components
 \begin{equation}
 	(\overline{\symbf{F}^{(y)}},\overline{\symbf{F}^{(z)}}) =
-	(-\overline{u'v'},-f_0\frac{\overline{v'\rho'}}{\frac{\diffd
-	\rho_s}/\diffd z})
+	(-\overline{u'v'},-f_0\frac{\overline{v'\rho'}}{\diffd
+	\rho_s/\diffd z})
 \end{equation}
 
 This conservation relation
@@ -2639,7 +2642,7 @@ QGPV equation, now taking the form
 \end{equation}
 The mean acceleration $\overline{u}_t$ and the rate of change of mean density
 $\overline{\rho}_t$ could then be deduced by using the appropriate inversion
-operator. An advantaghe of using the transformed Eulerian-mean equations is
+operator. An advantage of using the transformed Eulerian-mean equations is
 the response in the mean circulation $(\overline{v}_a^*, \overline{w}_a^*)$ is
 explicitly visible.
 
@@ -2654,9 +2657,9 @@ which is materially conserved in the absence of dissipation.
 	\item In the case of no dissipation, i.e. $\myol{\mathcal{D}} = 0$, then as a 
 		wavepacket propagates through a region, $\frac{\partial
 		\myol{\mathcal{A}}}{\partial t} > 0$ when it arrives, so $\nabla \cdot
-		\myol[4]{\symbf{F}} > 0$. As the wavepacket leaves the region,
+		\myol[4]{\symbf{F}} < 0$. As the wavepacket leaves the region,
 		$\frac{\partial \myol{\mathcal{A}}}{\partial t} < 0$ hence $\nabla \cdot
-		\myol[4]{\symbf{F}} < 0$. The force on the mean flow is first
+		\myol[4]{\symbf{F}} > 0$. The force on the mean flow is first
 		negative, then positive, so the time-integrated force is zero. Hence
 		the waves have no net effect on the mean flow.
 		\begin{center}
@@ -2828,7 +2831,7 @@ thus
 \begin{equation}
 	\int_{-\delta}^\delta \Delta u \, \diffd y = -\frac{2}{3}\beta \delta^3
 \end{equation}
-Note the rearrangement of absolute vorticity does not \emph{locally} conserved
+Note the rearrangement of absolute vorticity does not \emph{locally} conserve
 momentum -- an external force is required -- but this force is suppled by the
 transport of momentum by the waves.
 
@@ -2900,7 +2903,7 @@ that
 \begin{align}
 	f_0^2 \overline{\chi}_{azz} + N^2 \overline{\chi}_{ayy} = f_0
 	(\overline{u'v'})_{yz} - \frac{g}{\rho_0} (\overline{\rho'v'})_{yy} &= -f_0
-	\overline{F^{(y)}}_yz + \frac{N^2}{f_0} \overline{F^{(z)}}_{yy}
+	\overline{F^{(y)}}_{yz} + \frac{N^2}{f_0} \overline{F^{(z)}}_{yy}
 	\label{eq:mmc_eul}\\
 	f_0^2 \overline{\chi}_{azz}^* + N^2 \overline{\chi}_{ayy}^* = f_0
 	(\overline{u'v'})_{yz} - f_0^2 \left( \frac{\overline{\rho'v'}}{\diffd
@@ -3049,7 +3052,7 @@ follows that
 	\exp\left[ -\frac{N\pi n}{L f_0} \abs{z-H_d}\right] + \frac{F_0 c_n}{f_0}
 	\delta (z-H_d)
 \end{equation}
-and, noting tmyol[4] $\nabla \cdot \myol[4]{\symbf{F}} = -F_0 c_n \delta(z-H_d)$;
+and, noting $\nabla \cdot \myol[4]{\symbf{F}} = -F_0 c_n \delta(z-H_d)$;
 \begin{equation}
 	(\overline{u}_t)_n = -\frac{F_0c_n}{2} \frac{N \pi n}{L f_0} \exp \left[
 	-\frac{N \pi n}{L f_0} \abs{z-H_d}\right]
@@ -3079,7 +3082,7 @@ dashed lines.
 	\draw[smooth,fill=gray!20] plot[domain=-1:1] ({\x},{-cos(3.14*deg(\x)/2)});
 	\draw[smooth,fill=gray!50,dashed] plot[domain=-0.7:0.7] ({\x},
 				{0.7*cos(3.14*deg(\x)/1.4)});
-	\draw[smooth,fill=gray!50] plot[domain=-0.7:0.7] ({\x},
+	\draw[smooth,fill=gray!51] plot[domain=-0.7:0.7] ({\x},
 				{-0.7*cos(3.14*deg(\x)/1.4)});
 	\draw[smooth,fill=gray!80,dashed] plot[domain=-0.4:0.4] ({\x},
 				{0.4*cos(3.14*deg(\x)/0.8)});
@@ -3316,7 +3319,7 @@ Non-dimensionalise the eigenvalue condition using $\omega T_{\text{eq}} =
 This is a quadratic for $\hat{k}$ given $\hat{\omega}$ with roots
 \begin{equation}
 	\hat{k} = -\frac{1}{2\hat{\omega}} \pm \sqrt{\hat{\omega}^2 +
-	\frac{1}{4}\hat{\omega}^2 - (2n+1)}
+	\frac{1}{4}\hat{\omega} - (2n+1)}
 \end{equation}
 
 Note that for any pair $(\hat{k}, \hat{\omega})$, there is a corresponding

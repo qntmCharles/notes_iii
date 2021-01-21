@@ -51,7 +51,7 @@
 \contentsline {subsection}{\numberline {3.3}Waves \& instabilities in 3D QG}{27}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}Framework}{27}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Rossby waves -- vertical modes}{28}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}Baroclinic instability}{30}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.3}Baroclinic instability (Eady model)}{30}{subsubsection.3.3.3}
 \contentsline {paragraph}{\nonumberline Comments.}{31}{section*.20}
 \contentsline {paragraph}{\nonumberline Density transport.}{31}{section*.21}
 \contentsline {subsection}{\numberline {3.4}Fronts}{31}{subsection.3.4}
@@ -59,7 +59,7 @@
 \contentsline {subsubsection}{\numberline {3.4.2}Vertical velocity in 3D QG equations}{32}{subsubsection.3.4.2}
 \contentsline {subsubsection}{\numberline {3.4.3}Ageostrophic secondary circulation (ASC)}{33}{subsubsection.3.4.3}
 \contentsline {subsubsection}{\numberline {3.4.4}PV conservation in the Boussinesq equations}{34}{subsubsection.3.4.4}
-\contentsline {subsection}{\numberline {3.5}Internal waves \& instabilities in fronts}{34}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.5}Frontal instabilities}{34}{subsection.3.5}
 \contentsline {paragraph}{\nonumberline How does $fq < 0$ develop?}{36}{section*.22}
 \contentsline {section}{\numberline {4}Mean Flows}{37}{section.4}
 \contentsline {subsection}{\numberline {4.1}Wave mean-flow interaction}{37}{subsection.4.1}

@@ -411,7 +411,7 @@ and constant.
 In the non-Newtonian case we have
 \begin{equation}
 	\sigma = \begin{pmatrix}
-		\sigma_{xx} & \eta)(\srate) \srate & 0 \\
+		\sigma_{xx} & \eta(\srate) \srate & 0 \\
 		\eta(\srate) \srate & \sigma_{yy} & 0 \\
 	0 & 0 & \sigma_{zz} \end{pmatrix}
 \end{equation}
@@ -522,7 +522,7 @@ A shear flow is a \emph{weak flow}: there is algebraic growth of distances
 between particles. In a \emph{strong flow}, distances grow exponentially.
 
 Consider a fluid with extension in the $x$ and $y$ directions and compression
-in the $z$ direction: $\symbf{u} +
+in the $z$ direction: $\symbf{u} =
 \dot{\varepsilon}\left(\frac{1}{2}x,\frac{1}{2}y, -z\right)$. We call
 $\dot{\varepsilon}$ the \emph{extension rate}. Note that this flow is
 incompressible. The shear rate tensor is
@@ -1730,7 +1730,7 @@ Jeffreys fluid has a dashpot and Kelvin-Voigt fluid in series.
 		\draw (-0.5, -2) -- (1, -2);
 		\draw (-1, 0.8) node {2: spring, $G_2$};
 		\draw (-1, -2.8) node {2: dashpot, $\eta_2$};
-		\draw (-5, -1) -- (-3, -1);
+		\draw (-4, -1) -- (-3, -1);
 		\draw (-3,0) -- (-3, -2);
 		\draw (1,0) -- (1, -2);
 		\draw (1, -1) -- (3, -1);
@@ -2115,7 +2115,7 @@ energy due to friction and is a result of viscous behaviour.
 	\item The term in $G'$ has $\sigma \propto \gamma = \gamma_0 \sin \omega
 		t$ and hence $G'$ is interpreted as an elastic constant, analogous to
 		$k$ for a spring. 
-	\item The term in $G''$ has $\sigma \propto \srate = \gamma_) \omega \cos
+	\item The term in $G''$ has $\sigma \propto \srate = \gamma_0 \omega \cos
 		\omega t$. Note that
 		\begin{equation}
 			\gamma_0 G''(\omega) \cos \omega t = \srate_0

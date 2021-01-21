@@ -492,7 +492,8 @@ From these equations we have
 	\begin{aligned}
 		\nabla \cdot \eqref{stokes1} \& \eqref{stokes2} &\implies \nabla^2 p = 0 \implies
 		p \hspace{.6em} \text{is harmonic} \\
-		\nabla \times \eqref{stokes1} &\implies \nabla^2 \symbf{\omega} = 0
+		\nabla \times \eqref{stokes1} &\implies \nabla^2 \symbf{\omega} =
+		\symbf{0}
 		\implies \text{vorticity}\hspace{.6em}\symbf{\omega} = \nabla \times
 		\symbf{u} \hspace{.6em} \text{is harmonic} \\
 		\nabla^2  \eqref{stokes1} &\implies \nabla^4 \symbf{u} = \symbf{0} \implies
@@ -955,7 +956,7 @@ $\symbf{\Phi} = \frac{\symbf{F}}{2\pi} \ln r$ which gives
 \end{align}
 
 The 2D Stokeslet solution corresponds to a line force $\symbf{F}$ \emph{per unit
-length}. Note that $\symbf{u} \not\to 0$ as $r \to \infty$ for a line force,
+length}. Note that $\symbf{u} \not\rightarrow 0$ as $r \to \infty$ for a line force,
 though $\symbf{u} \to 0$ for line dipoles, line quadrupoles, etc.
 
 \subsection{Motion of rigid particles}
@@ -1164,7 +1165,7 @@ this to hold. Hence
 	\symbf{u}(\x)\cdot\symsf{K}(\y-\x)\cdot\symbf{n}\,\diffd S =
 	\begin{cases}
 		\symbf{u}(\y) & \y \in V \\ 0 & \y\not\in V \\ \frac{1}{2} \symbf{u}(\y) & \y
-	\not\in \partial V \end{cases}
+	\in \partial V \end{cases}
 \end{equation}
 
 \begin{enumerate}
@@ -2257,7 +2258,7 @@ Hence
 	\frac{1}{a}-\frac{\eta}{a^2} - \eta_{zz} + \mathcal{O}(\eta^2)
 \end{equation}
 \lecture{11/11/20}
-The $\eta/a^2$ term accounts of azimuthal curvature and the $\eta_{zz}$ term
+The $\eta/a^2$ term accounts for azimuthal curvature and the $\eta_{zz}$ term
 accounts for axial curvature. Consider disturbances of the form $\eta =
 \hat{\eta} e^{st} \cos kz$. Then
 \begin{equation}
@@ -2360,7 +2361,7 @@ as derived by Lord Rayleigh (1892).
 				(1.5, 1) (2, 1.15) (2.5, 0.9) (3, 0.3)  (3.7, -1.2)};
 			\end{tikzpicture}
 		\end{center}
-	\item Consider the scaling requierd to be able to neglect inertia. Suppose
+	\item Consider the scaling required to be able to neglect inertia. Suppose
 		$ak = \mathcal{O}(1)$, then we have from the boundary conditions
 		\begin{equation}
 			\frac{\mu u}{a^2} \sim \frac{p}{a} \sim \frac{\gamma}{a^2},
@@ -2447,7 +2448,7 @@ Depth-integrated conservation of mass can then be written as
 	\frac{\partial h}{\partial t} + \nabla \cdot \symbf{q} = 0
 \end{equation}
 
-Note on a curve surface $\nabla$ should be replaced by $\nabla_s$. These three
+Note on a curved surface $\nabla$ should be replaced by $\nabla_s$. These three
 equations can be solved with various boundary conditions at $z=0,h$, or
 equivalently $z=h_1, h_2$.
 
