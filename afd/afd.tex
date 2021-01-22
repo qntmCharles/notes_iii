@@ -1,0 +1,135 @@
+\documentclass{jknotes}
+\usepackage{../joshkirklin}
+\usepackage{siunitx}
+\usepackage{starfont}
+
+\DeclareSIUnit\erg{erg}
+
+\setmathfont{Latin Modern Math}
+\setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
+\setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
+
+\usetikzlibrary{shapes.misc}
+
+\tikzset{cross/.style={cross out, draw=black, minimum
+size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
+%default radius will be 1pt. 
+
+\newcommand{\myol}[2][3]{{}\mkern#1mu\overline{\mkern-#1mu#2}}
+
+\begin{document}
+
+\institution{Cambridge Part III Maths}
+\title{Astrophysical Fluid Dynamics}
+\lecturer{Dr. Gordon Ogilvie}
+\notetaker{Charles Powell}
+\date{Lent 2020}
+
+\maketitle
+\suggestionsspiel
+\tableofcontents
+
+\lecture{22/01/21}
+\section{Introduction}
+\subsection{Areas of application}
+Astrophysical fluid dynamics (AFD) is relevant to the description of the interiors
+of stars and planets, exterior phenomena such as discs, winds and jets, the
+interstellar medium, the intergalactic medium, and cosmology itself. A fluid
+description is not applicable in regions that are solidified, such as the
+rocky or icy cores of giant planets and the crusts of neutron stars, and also
+in very genuous regions where the medium is not sufficiently collisional.
+
+\subsection{Theoretical varieties}
+Various flavours of AFD are in use. The basic models we will consider are:
+\paragraph{Hydrodynamics (HD) / Newtonian gas dynamics:}
+This model is non-relativistic, compressible, ideal (inviscid and adiabatic),
+self-gravitating, and usually assumes a perfect gas.
+\paragraph{Magnetohydrodynamics (MHD):}
+This model is the same as above, with the addition of a magnetic field. We
+will often use ideal MHD, which assumes a perfectly conducting fluid.
+
+\subsection{Characteristic features}
+The elements of theory often important in AFD are compressibility,
+gravitation, and thermal physics. Sometimes, magnetic fields, radiation
+forces, and relativity are important. Rarely important aspects are viscosity,
+surface tension, and solid boundaries.
+
+\subsection{Useful data}
+Some useful data for the course, in CGS (centimetres, grams, seconds) units:
+\begin{table}[h]
+\begin{tabular}{ll}
+	Newton's constant & $G = 6.674 \times 10^{-8} \,\si{\cm^3.\g^{-1}.\s^{-2}}$ \\
+	Boltzmann's constant & $k = 1.381 \times 10^{-16} \, \si{\erg.\K^{-1}}$ \\
+	Stefan's constant & $\sigma = 5.670 \times 10^{-5}
+	\,\si{\erg.\cm^{-2}.s^{-1}.K^{-4}}$\\
+	Speed of light & $c = 2.998 \times 10^{1-} \,\si{\cm.s^{-1}}$\\
+	Hydrogen mass & $m_H = 1.674 \times 10^{-24} \, \si{\g}$\\
+	Solar mass & $M_\Sun = 1.988 \times 10^{33} \,\si{\g}$\\
+	Solar radius & $R_\Sun = 6.957 \times 10^{10} \, \si{\cm}$\\
+	Solar luminosity & $L_\Sun = 3.828 \times 10^{33} \, \si{\erg \s^{-1}}$\\
+	Parsec & $pc = 3.086 \times 10^{18} \, \si{\cm}$\\
+	Astronomial unit (AU) & $au = 1.496 \times 10^{13} \, \si{\cm}$\\
+	Joule erg conversion & $1 \si{\J} = 10^7 \si{\erg}$
+\end{tabular}
+\end{table}
+
+\section{Ideal gas dynamics}
+\subsection{Fluid variables}
+A fluid is characterised by a velocity field $\symbf{u}(\symbf{x},t)$ and two
+independent thermodynamic properties. Most useful are the dynamical variables:
+the pressure $p(\symbf{x},t)$ and the mass density $\rho(\symbf{x},t)$. Other
+properties, e.g. temperature $T$, can be regarded as functions of $p$ and
+$\rho$. The \emph{specific volume} (volume per unit mass) is $v = 1/\rho$. 
+
+We neglect the possible complications of variable chemical composition
+associated with chemical and nuclear reactions, ionisation and recombination.
+
+\subsection{Eulerian and Lagrangian viewpoints}
+In the \emph{Eulerian} viewpoint we consider how fluid properties vary in time
+at a point which is fixed in space, i.e. attached to the (usually inertial)
+coordinate system. The Eulerian time derivative is simply $\partial_t$.
+
+In the \emph{Lagrangian} viewpoint we consider how fluid properties vary in
+time at a point which moves with the fluid at velocity
+$\symbf{u}(\symbf{x},t)$. The Lagrangian time derivative (or material
+derivative) is
+\begin{equation}
+	\frac{\diffD}{\diffD t} = \frac{\partial}{\partial t} +
+	\symbf{u}\cdot\nabla
+\end{equation}
+
+\subsection{Material points and structures}
+A material point is an idealised fluid element, a point that moves with the
+bulk velocity $\symbf{u}(\symbf{x},t)$ of the fluid. Note that the true
+particles of which the fluid is composed also have random thermal motion.
+
+Material curves, surfaces and volumes are geometrical structures composed of
+fluid elements; they move with the fluid flow and are deformed by it. An
+infinitesimal material line element $\delta\symbf{x}$ evolves according to
+\begin{equation}
+	\frac{\diffD \delta \symbf{x}}{\diffD t} = \delta \symbf{u} =
+	\delta\symbf{x}\cdot\nabla\symbf{u}
+\end{equation}
+It changes its length and/or orientation in the presence of a velocity
+gradient.
+
+Infinitesimal material surface or volume elements can be defined from two or
+three material line elements according to the vector product and the triple
+scalar product.
+\begin{align}
+	\delta \symbf{S} &= \delta \symbf{x}^{(1)} \times \delta \symbf{x}^{(2)} \\
+	\delta V &= \delta \symbf{x}^{(1)} \cdot \delta \symbf{x}^{(2)} \times
+	\delta \symbf{x}^{(3)}
+\end{align}
+They evolve according to
+\begin{align}
+	\frac{\diffD \delta \symbf{S}}{\diffD t} &= (\nabla \cdot \symbf{u})\delta
+	\symbf{S} - \nabla \symbf{u} \cdot\delta \symbf{S}\\
+	\frac{\diffD \delta V}{\diffD t} &= (\nabla \cdot \symbf{u})\delta V
+\end{align}
+The second result is easier to understand: the volume element increases when
+the flow is divergent.
+
+
+
+\end{document}
