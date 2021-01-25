@@ -1,3 +1,9 @@
 \contentsline {section}{\numberline {1}Internal waves}{1}{section.1}
 \contentsline {subsection}{\numberline {1.1}Intuitive version}{1}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Rigorous derivation}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Wave velocities}{5}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}Phase velocity}{5}{subsubsection.1.3.1}
+\contentsline {subsubsection}{\numberline {1.3.2}Group velocity}{5}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.3}Superposition}{6}{subsubsection.1.3.3}
+\contentsline {subsubsection}{\numberline {1.3.4}Internal gravity wave velocities}{6}{subsubsection.1.3.4}
+\contentsline {subsection}{\numberline {1.4}Equipartition of energy}{7}{subsection.1.4}
