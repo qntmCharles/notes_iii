@@ -63,16 +63,18 @@ phase at a boundary, the thermodynamic and mechanical evolution of
 multicomponent or multiphase systems, the coupling of fluid flow and elastic
 flexure or deformation, and the flow of fluids through porous materials. 
 
-\section{Half-space cooling of the oceanic plates (mid-ocean ridges)}
-The bottom surface of Earth's oceans, particularly clear in the Atlantic
-ocean, has a large scale structure in which the middle of the ocean (the
-\emph{mid-ocean ridge}) is shallower than regions closer to the continents.
-The mid-ocean ridge forms as a result of separating tectonic plates. We know
-that the plates move apart here due to magnetic anomalies forming `stripes' of
-alternating polarity. The quasi-periodic flipping of the Earth's magnetic
-polarity allows dating of the stripes. The plates are driven apart by
-convection of the Earth's mantle.
+\section{Plate cooling}
+Here we consider a half-space cooling model of the oceanic lithosphere
+(oceanic plates). The bottom surface of Earth's oceans, particularly clear in
+the Atlantic ocean, has a large scale structure in which the middle of the
+ocean (the \emph{mid-ocean ridge}) is shallower than regions closer to the
+continents.  The mid-ocean ridge forms as a result of separating tectonic
+plates. We know that the plates move apart here due to magnetic anomalies
+forming `stripes' of alternating polarity. The quasi-periodic flipping of the
+Earth's magnetic polarity allows dating of the stripes. The plates are driven
+apart by convection of the Earth's mantle.
 
+\subsection{Thermal  problem}
 We wish to form a model describing the depth of the ocean floor near mid-ocean
 ridges. First we estimate the temperature field. Consider an idealised model
 with a flat surface (for now), observed plate spreading rate $U$, surface
@@ -155,12 +157,248 @@ the definitions of $T_0$ and $T_1$. The thermal structure away from the ridge
 is then
 \begin{equation}
 	T = T_0 + (T_1-T_0) \erf\left( \frac{z}{2\sqrt{\frac{\kappa x}{U}}}\right)
+	\label{eq:T}
 \end{equation}
 where the error function $\erf$ and its complement erfc are defined by
 \begin{align}
 	\erf(x) &= \frac{2}{\sqrt{\pi}} \int_0^x e^{-y^2} \, \diffd y \\
 	\text{erfc}(x) &= 1 - \erf(x)
 \end{align}
+
+\subsection{Ocean depth away from mid-ocean ridge}
+We now consider the depth of the ocean following from the temperature field
+derived above. We choose axes with $z$ increasing downwards, placing the sea
+surface at $z=0$ and the `bottom' of the mantle at $z=H$. The coordinate $x$
+increases away from the mid-ocean ridge, with ocean depth $w(x)$ at a given
+$x$.
+
+\begin{figure}
+	\begin{center}
+	\begin{tikzpicture}
+		\draw[->] (-1.5, 0.5) -- (-1.5, 0) node[left] {$z$};
+		\draw[->] (-1.5, 0.5) -- (-1, 0.5) node[above] {$x$};
+		\draw[dashed] (-1.5, 0.5) -- (-1.5, -2);
+
+		\draw[blue,->] (-0.8, 0.1) -- (-0.3, 0.1) node[right] {$U$};
+		\draw[blue] (-1.5, 0.5) -- (3, 0.5) node[above] {sea surface};
+
+		\draw[smooth,red] plot coordinates {(-1.4, -0.1) (0, -0.3) (3,
+		-0.4)};
+		\draw[smooth,red] plot coordinates {(-1.4, -0.2) (0, -0.7) (1.5,
+			-1.1) (3, -1.3)};
+		\draw[smooth,red] plot coordinates {(-1.4, -0.3) (0, -1.3) (1.5,
+		-2)};
+		\draw[red] (3.5, -1) node {$T(x,t)$ isotherms};
+		\draw[red] (3.25, -0.35) node {$T_0$};
+		\draw[red] (-0.5, -2) node {$T_1$};
+
+		\draw[smooth,blue] plot coordinates {(-1.5,0) (0, -0.1) (3, -0.2)};
+		\draw[blue] (3, -0.2) node[above] {sea bottom};
+
+		\draw[<->] (0.5, 0.5) -- (0.5, -0.12) node[midway,right] {$w(x)$};
+		\draw (-1.4, -2) -- (-1.6, -2) node[left] {$z=H$};
+	\end{tikzpicture}
+	\caption{Schematic diagram of ocean depth and crust temperature surfaces.}
+\end{center}
+\end{figure}
+
+First, consider \emph{isostacy}: Archimedean buoyancy applied
+to Earth's crust. This indicates the depth at which an object/fluid parcel of some 
+density lies in a fluid of different density. 
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[blue] (-2, 0) -- (-1, 0); 
+		\draw (-1, 0.3) -- (1, 0.3) -- (1, -0.3) -- (-1,
+		-0.3) -- (-1, 0.3);
+		\draw[blue] (1, 0) -- (2, 0);
+		\draw[<->] (0.5, 0.3) -- (0.5, -0.3) node[midway,right] {$h$};
+		\draw (-0.5, 0) node {$\rho_c$};
+		\draw (-1.5, -0.3) node {$\rho_m$};
+		\draw[<->] (1.2, 0) -- (1.2, -0.3) node[midway, right] {$b$};
+	\end{tikzpicture}
+\end{center}
+Denoting the density of the crust and mantle as $\rho_c, \rho_m$ respectively,
+the crust of thicknes $h$ sits at a depth $b$ in the mantle. Hydrostatic
+balance gives $\rho_c g h = \rho_m g b$. Equivalently, we can consider a force
+balance between the weight of the curst and the buoyancy force:
+\begin{equation}
+	\rho_c (h-b) g = (\rho_m - \rho_c) gb
+\end{equation}
+
+Within the oceanic lithosphere we have a denssity field
+\begin{equation}
+	\rho = \rho_m \left( 1- \alpha (T - T_1)\right)
+\end{equation}
+where $T=T(x,z)$ is the thermal model derived above, given by \eqref{eq:T}.
+Isostatic balance gives the following, which balances water weight, mantle
+weight, with water and mantle buoyancy. The ocean density is denoted by
+$\rho_w$.
+
+\begin{align}
+	\rho_w w_0 + \rho_m (H - w_0) &= \rho_w w(x) + \int_w^H \rho(T) \, \diffd
+	z \\
+	  &= \rho_w w + \rho_m (H-w) - \rho_m \alpha \int_w^H (T-T_1) \, \diffd z \\
+	\implies (\rho_m - \rho_w)(w-w_0) &= - \rho_m \alpha \int_w^H (T-T_1) \,
+	\diffd z \\
+	&\approx  - \rho_m \alpha (T_1 - T_0) \int_0^\infty \text{erfc}(\eta)
+	\cdot 2 \sqrt{\frac{\kappa x}{U}} \, \diffd \eta
+\end{align}
+where the last approximate equality follows from taking $w \to 0$ and $H \to
+\infty$, approximating the fact the mantle is much deeper than the ocean. The
+ocean depth is therefore
+\begin{equation}
+	w-w_0 = \frac{\rho_m}{\rho_m - \rho_w} \alpha (T_1-T_0)
+	\frac{2}{\sqrt{\pi}} \left(\frac{\kappa x}{U}\right)^{1/2}
+\end{equation}
+This model fits the data well near to the mid-ocean ridge, with crust age up
+to 75 million years. However, away from the ridge, the model breaks down as
+$w$ tends to a constant as $x \to \infty$. The breakdown of the model is due
+to convection: the infinite depth curst approximation breaks down and
+convection dynamics become important.
+
+\section{Natural convection}
+Natural convection arises in flows driven by density differences in a
+gravitational field, e.g. due to temperature or composition.
+
+\subsection{Static stability}
+Consider the case of no fluid motion $\symbf{u} = 0$ and initial
+stratification $\rho = \rho_0 (1+\beta z)$.  If $\beta < 0$, the dynamics are
+statically stable. If $\beta > 0$, the dynamics are statically unstable but
+dynamically could be stable. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[blue] (0,0) -- (2, -3);
+		\draw (2, 0) node[right] {light};
+		\draw (2, -3) node[right] {heavy};
+
+		\draw[->] (-1, -1) -- (-1, 0) node [midway,left] {$z$};
+		\draw (1, -3.5) node {$\beta < 0$};
+		\draw (1, 0.5) node {density profile};
+		\draw[red] (1, -4) node {statically stable};
+	\end{tikzpicture}
+	\begin{tikzpicture}
+		\draw[blue] (2,0) -- (0, -3);
+		\draw (2, -3) node[right] {light};
+		\draw (2, 0) node[right] {heavy};
+
+		\draw[->] (-1, -1) -- (-1, 0) node [midway,left] {$z$};
+		\draw (1, -3.5) node {$\beta > 0$};
+		\draw (1, 0.5) node {density profile};
+		\draw[red] (1, -4) node {statically unstable};
+	\end{tikzpicture}
+\end{center}
+
+\paragraph{Scaling analysis.} Consider a fluid parcel of characteristic size
+$l$ in unstable density profile $\rho = \rho_0 (1+\beta z), \beta > 0$.
+Suppose the parcel moves up a distance $h$ in time $\tau$.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[blue] (2,0) -- (0, -3);
+		\draw (0.7, -3+0.7*3/2) circle (0.2);
+		\draw[<->] (1, -2.15) -- (1, -1.75) node[midway,right] {$l$};
+		\draw[dashed] (0.7, -1) circle (0.2);
+		\draw[<->] (0.3, -3+0.7*3/2) -- (0.3, -1) node[midway,left] {$h$};
+		\draw[blue] (2,0) node[right] {$\rho = \rho_0 (1+\beta z)$};
+	\end{tikzpicture}
+\end{center}
+
+The rise of the fluid parcel relasess potential energy $E$ which scales as
+\begin{equation}
+	E \sim (\Delta \rho l^3) g h \sim (\rho_0 \beta h l^3) g h \sim \rho_0
+	\beta g h^2 l^3
+\end{equation}
+The timescale for the rise is limited by diffusion buoyancy $\tau \sim
+l^2/\kappa$ where $\kappa$ is thermal diffusivity. Viscous dissipation over
+timescale $\tau$ scales as the shear stress times the distance travelled:
+\begin{equation}
+	\mathcal{D} \sim \frac{\mu U}{l}l^2 h \sim \mu \frac{h/\tau}{l} l^2 h \sim
+	\frac{\mu \kappa h^2}{l}
+\end{equation}
+
+Instability arises if $E \gtrapprox \mathcal{D}$, which we can write as
+\begin{equation}
+	\rho_0 \beta g h^2 l^3 \gtrapprox \frac{\mu \kappa h^2}{l}
+\end{equation}
+Define the \emph{Rayleigh number}
+\begin{equation}
+	\text{Ra} = \frac{\rho_0 \beta g l^4}{\kappa \mu}
+\end{equation}
+Then there is instability if $\text{Ra} \gtrapprox \mathcal{O}(1)$.
+
+\subsection{Onset of convection}
+Consider a fluid of depth $h$ between $z=0$ and $z=h$ with density profile
+$\rho(z)$ and temperature difference $\Delta T$ across the depth.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.2]
+		\draw  (0, 2) -- (5, 2);
+		\draw (0, 0) -- (5, 0);
+		\draw[thick,->] (0, 0) -- (0.5, 0) node[below] {$x$};
+		\draw[thick,->] (0, 0) -- (0, 0.5) node[left] {$z$};
+		\draw (5, 0.2) node {$z=0$};
+		\draw (5, 2.2) node {$z=h$};
+		\draw[red] (0.5, 2) -- (1, 0) node[midway,right] {$T(z)$};
+		\draw[red] (0.5, 2) node[above] {$T_0$};
+		\draw[red] (1.25, 0) node[below] {$T_0 + \Delta T$};
+		\draw[blue] (3.5,0) -- (4, 2) node[midway,right] {$\rho(z)$};
+	\end{tikzpicture}
+\end{center}
+
+The governing equations are conservation of mass \eqref{eq:masscons},
+conservation of momentum \eqref{eq:momcons}, and conservation of energy
+\eqref{eq:energycons}.
+\begin{align}
+	\nabla \cdot \symbf{u} &= 0 \label{eq:masscons} \\
+	\rho \left( \frac{\partial \symbf{u}}{\partial t} +
+	\symbf{u}\cdot\nabla\symbf{u}\right) &= - \nabla p + \mu \nabla^2
+	\symbf{u} - \rho g \hat{\symbf{z}} \label{eq:momcons} \\
+	\rho c_p \left( \frac{\partial T}{\partial t} + \symbf{u} \cdot \nabla T
+	\right) &= \nabla \cdot (k \nabla T) \label{eq:energycons}
+\end{align}
+
+For steady solutions with $\symbf{u} = 0$ and $\partial_t = 0$ we find
+\begin{align}
+	T &= T_0 + \Delta T \left(1-\frac{z}{h}\right) \\
+	\frac{\partial p}{\partial x} = \frac{\partial p}{\partial y} &= 0 \\
+	\frac{\partial p}{\partial z} &= - \rho_0 g \left( 1- \alpha
+	(T-T_0)\right) 
+\end{align}
+We assess the stability by examining small perturbations to a steady base
+state:
+\begin{align}
+	\symbf{u} &= 0 + \symbf{u}'(\symbf{x},t) \\
+	T &= T_0 + \Delta T \left(1-\frac{z}{h}\right) + T'(\symbf{x},t) \\
+	p &= p_0(z) + p'(\symbf{x},t) 
+\end{align}
+The linearied perturbation equations are thus
+\begin{align}
+	\nabla \cdot \symbf{u}' &= 0  \\
+	\rho_0  \frac{\partial \symbf{u}'}{\partial t} &= - \nabla p' + \mu
+	\nabla^2 \symbf{u}' + \rho_0 g \alpha T' \hat{\symbf{z}} \\
+	\frac{\partial T'}{\partial t} - \frac{\Delta T}{h} w' &= \kappa \nabla^2
+	T'
+\end{align}
+
+We wish to non-dimensionalise these equations. There are two intrinsic
+scales, temperature $\sim \Delta T$ and lengths $\sim h$. We form velocity and
+time characteristic scales via \emph{diffusive scaling}. From the thermal
+equation:
+\begin{equation}
+	\frac{\Delta T}{t} \sim \frac{\Delta T U}{h} \sim \frac{\kappa \Delta
+	T}{h^2}
+\end{equation}
+From the second relation we have $U \sim \kappa/h$, then from the first we
+have $t \sim h^2/\kappa$.  The non-dimensionalised equations (dropping $'$
+henceforth) are
+\begin{align}
+	\nabla \cdot \symbf{u} &= 0 \\
+	\frac{1}{\text{Pr}} \frac{\partial \symbf{u}}{\partial t} &= - \nabla p +
+	\nabla^2 \symbf{u} + \text{Ra}T \hat{\symbf{z}} \\
+	\frac{\partial T}{\partial  t} - w &= \nabla^2 T 
+\end{align}
+where the \emph{Prandtl number} $\text{Pr} = \frac{\mu/\rho_0}{\kappa}$ which
+quantifies the importance of viscous diffusion versus thermal diffusion.
 
 
 \end{document}

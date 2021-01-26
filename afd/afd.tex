@@ -130,6 +130,116 @@ They evolve according to
 The second result is easier to understand: the volume element increases when
 the flow is divergent.
 
+\subsection{Equation of mass conservation}
+The equation of mass conservation
+\begin{equation}
+	\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \symbf{u}) = 0
+\end{equation}
+has typical form of conservation law: rate of change of a density and
+divergence of a flux. Here, $\rho$ is mass density and $\rho \symbf{u}$ is mass
+flux density.  An alternative form of the same equation is
+\begin{equation}
+	\frac{\diffD \rho}{\diffD t} = - \rho \nabla \cdot \symbf{u}
+\end{equation}
+If $\delta m = \rho \delta V$ is a material mass element, it can be seen that
+mass is conserved in the form
+\begin{equation}
+	\frac{\diffD \delta m }{\diffD t} = 0
+\end{equation}
+
+\subsection{Equation of motion}
+The equation of motion
+\begin{equation}
+	\rho \frac{\diffD \symbf{u}}{\diffD t} = - \rho \nabla \Phi - \nabla p
+\end{equation}
+derives from Newton's second law per unit volume with gravitational and
+pressure forces. The gravitational potential is $\Phi(\x,t)$ and $\symbf{g} =
+-\nabla\Phi$ is the gravitational field.
+
+The force due to pressure acting on a volume $V$ with bounding surface $S$ is
+\begin{equation}
+	-\int_S p\, \diffd \symbf{S} = \int_V (-\nabla p) \, \diffd V
+\end{equation}
+Viscous forces are neglected in ideal gas dynamics.
+
+\subsection{Poisson's equation}
+The gravitational potential is related to the mass density by Poisson's
+equation
+\begin{equation}
+\nabla^2 \Phi = 4\pi G \rho
+\end{equation}
+where $G$ is Newton's constant. The solution
+\begin{equation}
+	\Phi = \Phi_{\text{int}} + \Phi_{\text{ext}} = - G \int_V
+	\frac{\rho(\x',t)}{\abs{\x'-\x}} \, \diffd^3 \x' - G \int_{\hat{V}} 
+	\frac{\rho(\x',t)}{\abs{\x'-\x}} \, \diffd^3 \x' 
+\end{equation}
+generally involves contributions form both the fluid region $V$ under
+consideration and the exterior region $\hat{V}$. A \emph{non-self-gravitating}
+fluid is one of negligible mass for which $\Phi_{\text{int}}$ can be
+neglected. More generally, the \emph{Cowling approximation} consists of
+treating $\Phi$ as being specified in advance, so that Poisson's equation is
+not coupled to the other equations.
+
+\subsection{Thermal energy equation and equation of state}
+In the absence of non-adiabatic heating (e.g. by viscous dissipation or
+nuclear reactions) and cooling (e.g. by radiation or conduction),
+\begin{equation}
+	\frac{\diffD s}{\diffD t} = 0
+\end{equation}
+where $s$ is the \emph{specific entropy} (entropy per unit mass). Fluid
+element undergo reversible thermodynamic changes and preserve their entropy
+(adiabatic flow). This condition is violated in shocks (see section 6).
+
+The thermal variables $(T,s)$ can be related to the dynamical variables
+$(P,\rho)$ via an \emph{equation of state} and standard thermodynamic
+identities. The most important case is that of an \emph{ideal gas} with
+\emph{blackbody radiation}
+\begin{equation}
+	p = p_g + p_r = \frac{k \rho T}{\mu m_H} + \frac{4\sigma T^4}{3c}
+\end{equation}
+where $k$ is Boltzmann's constant, $m_H$ is mass of a hydrogen atom, $\sigma$
+is Stefan's constant, $c$ is the speed of light, and $\mu$ is the mean
+molecular weight, defined as the average mass of the particles in units of
+$m_H$, equal to
+\begin{itemize}
+	\item $2.0$ for molecular hydrogen
+	\item $1.0$ for atomic hydrogen
+	\item $0.5$ for fully ionised hydrogen
+	\item about $0.6$ for ionised matter of typical cosmic abundances.
+\end{itemize}
+The component $p_g$ is the \emph{gas pressure} and $p_r$ is the
+\emph{radiation pressure}. Radiation pressure is usually negligible except in
+the centres of high mass stars and in the immediate environments of neutron
+stars and black holes. The pressure of an ideal gas is often written in the
+form $\mathcal{R}\rho T/\mu$ where $\mathcal{R} = k/m_H$ is a version of the
+universal gas constant.
+
+We define the \emph{first adiabatic exponent}
+\begin{equation}
+	\Gamma_1 = \left( \frac{\partial \log p}{\partial \log \rho}\right)_S
+\end{equation}
+which is related to the ratio of specific heat capacities
+\begin{equation}
+	\gamma = \frac{c_p}{c_v} = \frac{T \left(\frac{\partial s}{\partial
+	T}\right)_p}{T \left( \frac{\partial s}{\partial T}\right)_V}
+\end{equation}
+by $\Gamma_1 = \chi_\rho \gamma$ where
+\begin{equation}
+	\chi_\rho = \left( \frac{\partial \log p}{\partial \log \rho}\right)_T
+\end{equation}
+can be found from the equation of state. We can then rewrite the thermal
+energy equation as
+\begin{equation}
+	\frac{\diffD p}{\diffD t} = \frac{\Gamma_1 p}{\rho} \frac{\diffD
+	\rho}{\diffD t} = - \Gamma_1 p \nabla \cdot \symbf{u}
+\end{equation}
+
+For an ideal gas with negligible radiation pressure, $\chi_\rho =1$ and so
+$\Gamma_1 = \gamma$. Adopting this very common assumption, we write
+\begin{equation}
+	\frac{\diffD p}{\diffD t} = -\gamma p \nabla \cdot \symbf{u}
+\end{equation}
 
 
 \end{document}
