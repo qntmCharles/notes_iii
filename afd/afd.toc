@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {subsection}{\numberline {1.1}Areas of application}{1}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Theoretical varieties}{1}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.2}Theoretical varieties}{2}{subsection.1.2}
 \contentsline {paragraph}{\nonumberline Hydrodynamics (HD) / Newtonian gas dynamics:}{2}{section*.2}
 \contentsline {paragraph}{\nonumberline Magnetohydrodynamics (MHD):}{2}{section*.3}
 \contentsline {subsection}{\numberline {1.3}Characteristic features}{2}{subsection.1.3}
@@ -13,3 +13,7 @@
 \contentsline {subsection}{\numberline {2.5}Equation of motion}{3}{subsection.2.5}
 \contentsline {subsection}{\numberline {2.6}Poisson's equation}{4}{subsection.2.6}
 \contentsline {subsection}{\numberline {2.7}Thermal energy equation and equation of state}{4}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}Simplified models}{5}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Microphysical basis}{6}{subsection.2.9}
+\contentsline {subsubsection}{\numberline {2.9.1}Boltzmann equation}{6}{subsubsection.2.9.1}
+\contentsline {subsubsection}{\numberline {2.9.2}Derivation of fluid equations}{7}{subsubsection.2.9.2}

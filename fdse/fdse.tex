@@ -41,10 +41,10 @@ on a wide range of length and time scales.
 	\item At the surface, convection drives the motion of brittle plates which
 		are responsible for the Earth's topography as can be felt and imaged
 		through the seismic record (figure~\ref{fig:seismology})
-	\item In the Earth's surface, fluids flow through poroous rocks, for
+	\item In the Earth's surface, fluids flow through porous rocks, for
 		example groundwater aquifers which feed streams and rivers which erode
 		the solid surface.
-	\item On the Earth's surface, similarity physical processes of viscous and
+	\item On the Earth's surface, similar physical processes of viscous and
 		elastic deformation coupled to phase changes govern the evolution of
 		the Earth's cryosphere, from the solidification of sea ice to the flow
 		of glacial ice over land and ice shelves over the ocean.
@@ -308,9 +308,10 @@ The rise of the fluid parcel relasess potential energy $E$ which scales as
 	E \sim (\Delta \rho l^3) g h \sim (\rho_0 \beta h l^3) g h \sim \rho_0
 	\beta g h^2 l^3
 \end{equation}
-The timescale for the rise is limited by diffusion buoyancy $\tau \sim
-l^2/\kappa$ where $\kappa$ is thermal diffusivity. Viscous dissipation over
-timescale $\tau$ scales as the shear stress times the distance travelled:
+The timescale for the rising motion is limited by diffusion of buoyancy (i.e.
+diffusion of temperature in this case) so $\tau \sim l^2/\kappa$ where
+$\kappa$ is thermal diffusivity. Viscous dissipation over timescale $\tau$
+scales as the shear stress times the distance travelled:
 \begin{equation}
 	\mathcal{D} \sim \frac{\mu U}{l}l^2 h \sim \mu \frac{h/\tau}{l} l^2 h \sim
 	\frac{\mu \kappa h^2}{l}
@@ -324,7 +325,9 @@ Define the \emph{Rayleigh number}
 \begin{equation}
 	\text{Ra} = \frac{\rho_0 \beta g l^4}{\kappa \mu}
 \end{equation}
-Then there is instability if $\text{Ra} \gtrapprox \mathcal{O}(1)$.
+which quantifies the ratio of timescales of thermal transport via diffusion
+versus via convection. If $\text{Ra}$ is large, the flow is more turbulent.
+There is instability if $\text{Ra} \gtrapprox \mathcal{O}(1)$.
 
 \subsection{Onset of convection}
 Consider a fluid of depth $h$ between $z=0$ and $z=h$ with density profile

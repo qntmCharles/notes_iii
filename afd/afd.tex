@@ -241,5 +241,147 @@ $\Gamma_1 = \gamma$. Adopting this very common assumption, we write
 	\frac{\diffD p}{\diffD t} = -\gamma p \nabla \cdot \symbf{u}
 \end{equation}
 
+\subsection{Simplified models}
+A \emph{perfect gas} may be defined as an ideal gas with constant $c_v, c_p,
+\gamma$ and $\mu$. Equipartition of energy for a classical gas with $n$
+degrees of freeodm per particle gives
+\begin{equation}
+	\gamma = 1 + \frac{2}{n}
+\end{equation}
+
+For a classical monatomic gas with $n=3$ translational degrees of freedom,
+$\gamma = 5/3$. This is relevant for fully ionised matter. For a classical
+diatomic gas with two addditional rotational degrees of freeodm, $n=5$ and
+$\gamma = 7/5$. This is relevant for molecular hydrogen. In reality,
+$\Gamma_1$ is variable when the gas undergoes ionisation or when the gas and
+radiation pressures are comparable. 
+
+The specific \emph{internal energy} (or \emph{thermal energy}) of a perfect
+gas is
+\begin{equation}
+	e = \frac{p}{(\gamma-1)\rho} = \frac{n}{\mu m_H} \frac{1}{2}kT
+\end{equation}
+Note that each particle has an internal energy of $\frac{1}{2}kT$ per degree
+of freedom, and the number of particles per unit mass is $1/{\mu m_H}$.
+
+A \emph{barotropic} fluid is an idealised situation in which the relation $p(\rho)$
+is known in advance. We can then dispense with the thermal energy equation.
+For example, if the gas is strictly isothermal and perfect, $p = c_s^2 \rho$
+with the constant $c_s$ being the isothermal sound speed. Alternatively, if
+the gas is strictly homentropic (constant $s$) and perfect, then $p = K
+\rho^\gamma$ with $K$ constant. 
+
+An \emph{incompressible} fluid is an idealised situation in which
+$\frac{\diffD \rho}{\diffD t} = 0$, implying $\nabla \cdot \symbf{u} = 0$.
+This can be achieved formally by taking the limit $\gamma \to \infty$. The
+approximation of incompressibility eliminates acoustic phenomena from the
+dynamics. The ideal gas law itself is not valid at very high densities or
+where quantum degeneracy is important.
+
+\subsection{Microphysical basis}
+It is useful to understand the way in which the fluid-dynamical equations are
+derived microphysical considerations. The simplest model involves identical
+neutral particles of mass $m$ of negligible size with no internal degrees of
+freedom.
+
+\subsubsection{Boltzmann equation}
+Between collisions, particles follow Hamiltonian trajectories in their six
+dimensional $(\x, \symbf{v})$ phase space:
+\begin{equation}
+	\dot{x}_i = v_i, \hspace{2em} \dot{v}_i = a_i - \frac{\partial
+	\Phi}{\partial x_i}
+\end{equation}
+
+The distribution funnction $f(\x, \symbf{v},t)$ specifies the number density
+of particles in phase space. The velocity moments of $f$ define the number
+$n(\x,t)$ in real space, the bulk velocity $\symbf{u}(\x,t)$ and the velocity
+dispersion $c(\x,t)$ according to
+\begin{align}
+	\int f \, \diffd^3 \symbf{v} &= n\\
+	\int \symbf{v} f \, \diffd^3 \symbf{v} &= n \symbf{u} \\
+	\int \abs{\symbf{v}-\symbf{u}}^2 f \, \diffd^3 \symbf{v} &= 3nc^2
+\end{align}
+Equivalently,
+\begin{equation}
+	\int v^2 f \, \diffd^3 \symbf{v} = n (\symbf{u}^2 + 3c^2)
+\end{equation}
+The relation between velocity dispersion and temperature is $kT = mc^2$. In
+the absence of collisions, $f$ is conserved following the Hamiltonian flow in
+phase space. This is because particles are conserved and the flow in phase
+space is incompressible. More generally, $f$ evolves according to
+\emph{Boltzmann's equation}
+\begin{equation}
+	\frac{\partial f}{\partial t} + v_j \frac{\partial f}{\partial x_j} + a_j
+	\frac{\partial f}{\partial v_j} = \left( \frac{\partial f}{\partial
+	t}\right)_c
+\end{equation}
+
+The collision term on the RHS is a complicated integral operator but has 3
+simple properties corresponding to the conservation of mass, momentum and
+energy in collisions.
+\begin{align}
+	\int m \left( \frac{\partial f}{\partial t}\right)_c \, \diffd^3 \symbf{v}
+	&= 0 \\
+	\int m \symbf{v}\left( \frac{\partial f}{\partial t}\right)_c \, \diffd^3 \symbf{v}
+	&= 0 \\
+	\int \frac{1}{2}m\symbf{v}^2 \left( \frac{\partial f}{\partial t}\right)_c \, \diffd^3 \symbf{v}
+	&= 0
+\end{align}
+The collision term is local in $\x$ (not even involving derivatives) although
+it does involve integrals over $\symbf{v}$. The equation $\left(\frac{\partial
+f}{\partial t}\right)_c = 0$ has the general solution
+\begin{equation}
+	f = f_M = (2\pi c^2)^{-3/2} n \exp\left( -
+	\frac{\abs{\symbf{v}-\symbf{u}}^2}{2c^2}\right)
+\end{equation}
+with parameters $n, \symbf{u}$ and $c$ that may depend on $\x$. This is the
+\emph{Maxwellian distribution}. 
+
+\subsubsection{Derivation of fluid equations}
+A crude but illuminating model of the collision operator is the \emph{BGK
+approximation}
+\begin{equation}
+	\left( \frac{\partial f}{\partial t}\right)_c \approx - \frac{1}{\tau}
+	(f-f_M)
+\end{equation}
+where $f_M$ is a Maxwellian distribution with the same $n, \symbf{u}$ and $c$
+as $f$, and $\tau$ is the \emph{relaxation time}. This timescale $\tau$ can be
+identified approximately with the mean flight time of particles between
+collisions. The collisions attempt to restore a Maxwellian distribution on a
+characteristic timescale $\tau$. They do this by randomising the particle
+velocities in a way consistent with the conservation of momentum and energy.
+If the characteristic timescale of the fluid flow is much greater than $\tau$,
+then the collision term dominates the Boltzmann equation and $f$ is very close
+to $f_m$. This is the \emph{hydrodynamic limit}. 
+
+The velocity moments of $f_M$ can be determined from standard Gaussian
+integrals, in particular
+\begin{align}
+	\int f_M \, \diffd^3 \symbf{v} &= n \\
+	\int v_i f_M \, \diffd^3 \symbf{v} &= n u_i \\
+	\int v_i v_j f_M \, \diffd^3 \symbf{v} &= n(u_i u_j + c^2 \delta_{ij}) \\
+	\int \symbf{v}^2 v_i f_M \, \diffd^3 \symbf{v} &= n(\symbf{u}^2 + 5 c^2)
+	u_i
+\end{align}
+We obtain equations for mass, momentum and energy by taking moments of the
+Boltzmann equation weighted by $(m, mv_i, \frac{1}{2}m\symbf{v}^2)$. In each
+case the collision term integrates to $0$ because of its conservative
+properties, and the $\partial/\partial v_j$ term can be integrated by parts.
+We replace $f$ with $f_M$ when evaluating the LHS and note that $mn = \rho$:
+\begin{align}
+	\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_i} (\rho u_i) &= 0 \\
+	\frac{\partial}{\partial t}(\rho u_i) + \frac{\partial}{\partial x_j}
+	\left[ \rho (u_i u_j + c^2 \delta_{ij})\right] - \rho a_i &= 0 \\
+	\frac{\partial}{\partial t} \left[\frac{1}{2}\rho \symbf{u}^2 + \frac{3}{2}\rho
+	c^2\right] + 
+	\frac{\partial}{\partial x_i} \left[ (\frac{1}{2}\rho \symbf{u}^2 +
+	\frac{5}{2}\rho c^2) u_i\right] - \rho u_i a_i &= 0
+\end{align}
+
+These are equivalent to the equations of ideal gas dynamics in conservative
+form (see section 4) for a monatomic ideal gas ($\gamma = 5/3$). The specific
+internal energy is $\rho = \frac{3}{2}c^2 = \frac{3}{2}\frac{kT}{m}$.
+
+
 
 \end{document}

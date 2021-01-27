@@ -477,10 +477,184 @@ buoyant force on the parcel is
 \end{equation}
 Hence the potential energy gained is
 \begin{equation}
-	E = \int_{z_0}^{z_0 + \zeta} g \frac{\diffd \hat{\rho}}{\diffd z} (z-z_0)
+	\text{PE} = \int_{z_0}^{z_0 + \zeta} g \frac{\diffd \hat{\rho}}{\diffd z} (z-z_0)
 	\, \diffd z = \frac{1}{2} \rho_0 N^2 \zeta^2
 \end{equation}
-Using the hydrostatic relation shows that this value matches the potential
-energy term in the energy equiation.
+Now from hydrostatic balance
+\begin{equation}
+	\rho' = -\frac{\diffd \hat{\rho}}{\diffd z} \zeta = \frac{\rho_0}{g}N^2
+	\zeta
+\end{equation}
+Hence the potential energy can be written in the following equivalent ways
+\begin{equation}
+	\text{PE} = \frac{1}{2}\rho_0 N^2 \zeta^2 = \frac{1}{2}\frac{g^2}{\rho_0 N^2}
+	\rho'^2 = \frac{1}{2}\rho_0 \frac{b^2}{N^2}
+\end{equation}
+So we have the energy equation
+\begin{equation}
+	\frac{\partial}{\partial t} \left[ \text{KE} + \text{PE}\right] + \nabla
+	\cdot (p'\symbf{u}) = 0
+\end{equation}
+Integrating over a volume $V$ we have
+\begin{equation}
+	\int_V
+	\frac{\partial}{\partial t} \left[ \text{KE} + \text{PE}\right] \diffd V
+	+\int_S p'\symbf{u}\cdot\symbf{n}\,\diffd S = 0
+\end{equation}
+Define the flux of energy, or work against pressure, as $\symbf{F}_E =
+p'\symbf{u}$. Recall that for a wave $\eta = \tilde{\eta}e^{i\phi}$, ,the
+dynamical variables $u, w, b, p'$ can be expressed for $\tilde{\eta} \in
+\mathbb{R}$ as
+\begin{align}
+	u &= \tilde{\eta} \omega \sin\theta \sin\phi \\
+	w &= -\tilde{\eta} \omega \cos\theta \sin\phi \\
+	b &= \tilde{\eta} \frac{\omega^2}{\cos^2 \theta} \\
+	p' &= \tilde{\eta} \rho_0
+	\frac{\omega^2}{\abs{\symbf{k}}}\tan\theta\sin\phi
+\end{align}
+Therefore we can write the KE and PE as
+\begin{align}
+	\text{KE} &= \frac{1}{2}\rho_0 (u^2 + w^2) = \frac{1}{2} \rho_0 \omega^2
+	\tilde{\eta}^2 \sin^2 \phi \\
+	\text{PE} &= \frac{1}{2}\rho_0 \omega^2 \tilde{\eta}^2 \cos^2\phi \\
+	\implies \overline{\text{KE}} &= \overline{\text{PE}} = \frac{1}{4}\rho_0
+	\omega^2 \tilde{\eta}^2
+\end{align}
+where $\overline{\cdot}$ denotes an average of a wavelength or period.
+Equipartition of energy is the statement $\overline{E} = \overline{\text{KE}}
++ \overline{\text{PE}} = 2\overline{\text{KE}} = 2\overline{\text{PE}}$. We
+may write the energy flux as
+\begin{equation}
+	\symbf{F}_E = p'\overline{u} = \rho_0 \omega^2 \tilde{\eta}^2 \sin^2 \phi
+	\frac{N}{\abs{\symbf{k}}} \sin\theta \begin{pmatrix} \sin\theta \\ -\cos
+	\theta \end{pmatrix}
+\end{equation}
+The average energy flux is then
+\begin{equation}
+	\overline{\symbf{F}_E}= \frac{1}{2}\rho_0 \omega^2 \tilde{\eta}^2
+	\symbf{c}_g = \overline{E}\symbf{c}_g
+\end{equation}
+which is the average energy multipled by the group velocity, which justifies
+the term `energy flux', and shows energy is transported with the group velocity.
+
+
+\subsection{Amplitude decay along a beam}
+Consider a point source which generates a beam of internal waves, in a 2D
+incompressible fluid. We assume the buoyancy frequency $N$ is constant, and
+set it equal to 1 for convenience. Also assume $\kappa = 0$, i.e. no
+diffusion. The governing equations are
+\begin{align}
+	\nabla \cdot \symbf{u} &= 0 \\
+	\frac{\partial u}{\partial t} + \frac{1}{\rho_0} \frac{\partial
+\rho}{\partial x} &= \nu \nabla^2 u \\
+\frac{\partial w}{\partial t} + \frac{1}{\rho_0} \frac{\partial p}{\partial z}
+- b &= \nu \nabla^2 w \\
+\frac{\partial b}{\partial t} + N^2 w &= 0 
+\end{align}
+where $b = - g \frac{\rho-\rho_0}{\rho_0}$. In 2D, we may introduce a
+streamfunction $\symbf{\psi} = (0,\psi,0)$ so that
+\begin{equation}
+	\symbf{u} = \nabla \times \symbf{\psi} e^{-i\omega t} = (-\frac{\partial
+	\psi}{\partial z}, 0, \frac{\partial \psi}{\partial x}) e^{-i\omega t}
+\end{equation}
+It is convenient to transform to a co-ordinate system $(\xi, \zeta)$ where
+$\xi$ is in the direction of $\symbf{k}$ and $\zeta$ is in the direction of
+$\symbf{c}_g$, i.e.
+\begin{align}
+	\xi &= x \cos \theta - z \sin \theta \\
+	\zeta &= x \sin \theta + z \cos \theta 
+\end{align}
+In this co-ordinate system, the three governing equations can be reduced to two:
+\begin{align}
+	\frac{\partial b}{\partial t} + \frac{\partial \psi}{\partial \xi} \cos
+	\theta + \frac{\partial \psi}{\partial \zeta} \sin \theta &= 0 \\
+	-i\omega \left( \frac{\partial^2 \psi}{\partial \xi^2} + \frac{\partial^2
+	\psi}{\partial \zeta^2}\right) - \frac{\partial b}{\partial \zeta} \sin
+	\theta - \frac{\partial b}{\partial \xi} \cos \theta - \nu \nabla^4 \psi
+															  &= 0 
+\end{align}
+Assuming the viscosity is small, we expand $b$ and $\psi$ in the small
+parameter $\varepsilon = \nu/2$:
+\begin{align}
+	b &= (b_0 + \varepsilon b_1 + \dots) e^{-i\omega t} \\
+	\psi &= (\psi_0 + \varepsilon \psi_1 + \dots )e^{-i\omega t}
+\end{align}
+Further we define a scaled coordinate $\chi = \varepsilon \zeta / \sin
+\theta$. At order $\varepsilon^0$ we have:
+\begin{align}
+	\frac{\partial \psi_0}{\partial \xi} &= ib_0 \\
+	\frac{\partial^2 \psi_0}{\partial \xi^2} &= i \frac{\partial b_0}{\partial
+	\xi} 
+\end{align}
+At order $\varepsilon^1$:
+\begin{align}
+	\omega \frac{\partial \psi_1}{\partial \xi} - i \omega b_1 &= -
+\frac{\partial \psi_0}{\partial \chi} \\
+i\omega \frac{\partial^2 \psi_1}{\partial \xi^2} + \omega \frac{\partial
+b_1}{\partial \xi} &= i \frac{\partial^2 \psi_0}{\partial \xi \partial \chi} -
+2 \frac{\partial^4 \psi_0}{\partial \xi^4}
+\end{align}
+From these we form a governing equation for $\psi_0$:
+\begin{equation}
+	\frac{\partial^4 \psi_0}{\partial \xi^4} = i \frac{\partial^2
+	\psi_0}{\partial \xi \partial \chi} \implies \frac{\partial^3
+\psi_0}{\partial \xi^3} = i \frac{\partial \psi_0}{\partial \chi} + f(\chi)
+\end{equation}
+For a point source, as $\abs{\xi} \to \infty$, we except $\psi$ will tend to a
+constant. Hence $f(\chi) \equiv 0$. The governing equation is separable:
+suppose $\psi_0 = F(\xi) G(\chi)$. Then
+\begin{align}
+	\frac{F'''}{F} &= i \frac{G'}{G} = -ik^3 \\
+	\implies G(\chi) &= e^{-k^3 \chi}, \hspace{1em} F(\xi) = e^{ik\xi}
+\end{align}
+The streamfunction is therefore $\psi = Ae^{-k^3 \chi} e^i\phi$. If $N$ is
+constant but \emph{not} equal to 1, we have
+\begin{align}
+	\chi &= \frac{\nu}{2N\sin\theta}\zeta \\
+	\implies \psi &= A \exp \left( \frac{-k^3 \nu \zeta}{2N\sin\theta}\right)
+	e^{i\phi}
+\end{align}
+If $A$ depends on $k$ then
+\begin{equation}
+	\psi = \int_{-\infty}^\infty A(k) e^{-i\omega t} \exp \left( ik\xi -
+	\frac{\nu k^3}{2N\sin\theta} \zeta \right) \, \diffd k
+\end{equation}
+In the case of an oscillating cylinder, the beams are well described by point
+sources at the tangent points on the cylinder, and from above the amplitude is
+initially bimodal but smooths out (decays) to become unimodal:
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) circle (0.5);
+		\draw[dashed] (0, 0.5) -- (6, 0.5);
+		\draw[dashed] (0, -0.5) -- (6, -0.5);
+		\draw[fill=blue] (0,0.5) circle (0.1);
+		\draw[fill=blue] (0,-0.5) circle (0.1);
+		\draw[smooth] plot[domain=-1:1] ({1+exp(-50*(\x-0.5)^2) +
+		exp(-50*(\x+0.5)^2)},{\x});
+		\draw[smooth] plot[domain=-1:1] ({2.5+exp(-8*(\x-0.5)^2) +
+		exp(-8*(\x+0.5)^2)},{\x});
+		\draw[smooth] plot[domain=-1:1] ({4+exp(-2*(\x-0.5)^2) +
+		exp(-2*(\x+0.5)^2)},{\x});
+	\end{tikzpicture}
+\end{center}
+We can form a Reynolds number to characterise these waves. Recall
+$\abs{\symbf{c}_g} = N\sin\theta / \abs{\symbf{k}}$. Hence
+\begin{equation}
+	-\frac{\nu k^3}{2N\sin\theta} \zeta = - \frac{\nu k}{2}
+	\frac{k}{N\sin\theta} k \zeta = - \pi \frac{\nu}{\lambda
+	\abs{\symbf{c}_g}} k \zeta = - \pi \text{Re}^{-1} k \zeta
+\end{equation}
+where $\lambda = 2\pi/k$ is the wavelength. Thus we have
+\begin{equation}
+	\text{Re} = \frac{\lambda \abs{\symbf{c}_g}}{\nu}
+\end{equation}
+in analogy with the usual definition of Reynolds number, $UL/\nu$.
+
+
+
+
+
+
+
 
 \end{document}
