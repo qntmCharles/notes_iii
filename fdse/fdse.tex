@@ -383,6 +383,7 @@ The linearied perturbation equations are thus
 	T'
 \end{align}
 
+\paragraph{Non-dimensionalising.}
 We wish to non-dimensionalise these equations. There are two intrinsic
 scales, temperature $\sim \Delta T$ and lengths $\sim h$. We form velocity and
 time characteristic scales via \emph{diffusive scaling}. From the thermal
@@ -395,13 +396,203 @@ From the second relation we have $U \sim \kappa/h$, then from the first we
 have $t \sim h^2/\kappa$.  The non-dimensionalised equations (dropping $'$
 henceforth) are
 \begin{align}
-	\nabla \cdot \symbf{u} &= 0 \\
+	\nabla \cdot \symbf{u} &= 0 \label{eq:L2:1}\\
 	\frac{1}{\text{Pr}} \frac{\partial \symbf{u}}{\partial t} &= - \nabla p +
-	\nabla^2 \symbf{u} + \text{Ra}T \hat{\symbf{z}} \\
-	\frac{\partial T}{\partial  t} - w &= \nabla^2 T 
+	\nabla^2 \symbf{u} + \text{Ra}T \hat{\symbf{z}} \label{eq:L2:2}\\
+	\frac{\partial T}{\partial  t} - w &= \nabla^2 T  \label{eq:L2:3}
 \end{align}
 where the \emph{Prandtl number} $\text{Pr} = \frac{\mu/\rho_0}{\kappa}$ which
 quantifies the importance of viscous diffusion versus thermal diffusion.
+
+\paragraph{Boundary conditions.} We require boundary conditions on the
+temperature $T$ and velocity $\symbf{u}$. There are several possible
+conditions, which may be mixed:
+\begin{itemize}
+	\item Rigid boundary $\left[ \symbf{u}\cdot\hat{\symbf{n}}
+		\right]_{\text{boundary}} = 0$ where $\hat{\symbf{n}}$ is outwards
+		normal of boundary surface
+	\item	No-slip $\left[ \symbf{u}\times\hat{\symbf{n}}
+		\right]_{\text{boundary}} = 0$
+	\item Stress-free (free slip) $\mu\frac{\partial u}{\partial n} = \mu
+		\frac{\partial v}{\partial n} = 0$ i.e. $n=z$ in our picture
+	\item Fixed temperature $T_{\text{boundary}} = \text{const.}$
+	\item Fixed heat flux $\left[ \hat{\symbf{n}}\cdot\nabla
+				T\right]_{\text{boundary}} = \text{const.}$
+\end{itemize}
+
+We eliminate pressure from the non-dimensionalised equations by taking
+$\hat{\symbf{z}}\cdot\nabla \times (\nabla \times \eqref{eq:L2:2}$. Recall the
+vector identity
+\begin{equation}
+	\nabla \times (\nabla \times \symbf{A}) = \nabla (\nabla \cdot \symbf{A})
+	- \nabla^2 \symbf{A}
+\end{equation}
+The governing equations are reduced to
+\begin{align}
+	\left( \text{Pr}^{-1} \partial_t - \nabla^2 \right) \nabla^2 w &=
+	\text{Ra} \nabla^2_H T \label{eq:L2:4}\\
+	\left( \partial_t - \nabla^2 \right) T &= w \label{eq:L2:5}
+\end{align}
+where $\nabla_H = (\partial_x, \partial_y, 0)$ is the horizontal gradient.
+
+\paragraph{Normal modes.} We examine growth/decay of perturbations of the form
+\begin{equation}
+	(w,T) = (\hat{w}(z),\hat{T}(z))e^{i(kx+ly)+\sigma t}
+\end{equation}
+For convenience, and given the $x, y$ symmetry, define $a^2 = k^2 + l^2$ as an
+effective horizontal wavenumber. We have from the governing equations
+\eqref{eq:L2:4}, \eqref{eq:L2:5}:
+\begin{align}
+	\left[\sigma \text{Pr}^{-1} - (D^2 - a^2)\right](D^2-a^2) &= -\text{Ra}
+	a^2 \hat{T} \label{eq:L2:6}\\
+	\left[ \sigma - (D^2 - a^2) \right] \hat{T} &= \hat{w} \label{eq:L2:7}
+\end{align}
+where $D = \diffd/\diffd z$. The boundary in our case will be
+rigid, stress free, and fixed temperature. Note that this is not necessarily
+representative of the actual boundary conditions, but is useeful analytically.
+ Thus at $z= 0, 1$ we have $w = 0$ (rigid), $D^2 w = 0$ (stress free) and $T=
+ 0 $ (fixed temperature). Given these conditions, the heat equation implies
+ $D^2 T = 0$ on $z=0,1$ and the momentum equation implies $D^4 w = 0$ on
+ $z=0,1$. 
+
+ \paragraph{Marginal stability.} The marginal stability boundary is $\sigma =
+ 0$ between growth ($\sigma > 0$) and decay ($\sigma < 0$). Combining
+ \eqref{eq:L2:6} and \eqref{eq:L2:7} with $\sigma = 0$ we hae
+ \begin{equation}
+	 (D^2 - a^2)^3 (\hat{T},\hat{w}) = -a^2 \text{Ra}(\hat{T},\hat{w})
+ \end{equation}
+ The solutions have structure 
+ \begin{equation}
+	 (\hat{T}, \hat{w}) =  (\hat{T}_0, \hat{w}_0) \sin n \pi z
+ \end{equation}
+ Hence we have the eigenvalue condition $(n^2 \pi^2 + a^2)^3 = a^2 \text{Ra}$.
+ Let $a^2 = \pi^2 b^2$. Then
+ \begin{equation}
+	 \text{Ra} = \frac{(n^2 + b^2)^3 \pi^4}{b^2}
+ \end{equation}
+
+ The minimum Rayleigh number is at $n=1$ where $\text{Ra} = (1+b^2)^3
+ \pi^4/b^2$:
+ \begin{center}
+	 \begin{tikzpicture}[scale=1.6]
+		 \draw[thick,->] (-0.1, 0) -- (5, 0) node[right] {$b^2$};
+		 \draw[thick,->] (0, -0.1) -- (0, 3) node[left] {Ra};
+		 \draw[smooth,blue] plot[domain=0.035:3.89,samples=100]  ({\x},{(1+\x)^3/(10*\x)});
+		 \draw (0.5,0.1) -- (0.5, -0.1) node[below] {$1/2$};
+		 \draw (0.1, 0.675) -- (-0.1, 0.675) node[left]
+		 {$\text{Ra}_{\text{crit}}$};
+		\draw (0.5, 2) node {$\sim \frac{\pi^4}{b^2}$};
+		\draw (3, 1.5) node {$\sim \pi^4 b^4$};
+		\draw[blue] (3.8, 2.5) node {$\sigma = 0$};
+		\draw[red] (1.5, 0.5) node {stable $\sigma < 0$};
+		\draw[red] (1.5, 2.5) node {unstable $\sigma > 0$};
+	 \end{tikzpicture}
+ \end{center}
+
+ Setting $\partial \text{Ra}/\partial b^2 = 0$ to find the critical Rayleigh
+ number $\text{Ra}_{\text{crit}}$, we find
+ \begin{equation}
+	 \text{Ra}_{\text{crit}} = \frac{27 \pi^4}{4} \approx 657.5 \hspace{2em}
+	 \text{at}\,\,\, a = \frac{\pi}{\sqrt{2}}
+ \end{equation}
+Hence the dimensional wavelength at critical Rayleigh number is $2\pi h/a =
+2\sqrt{2} h \approx 2.8 h$. The convection process appears like so:
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0, 2.5) node {side view};
+		\draw[thick] (0,0) -- (5, 0) node[right] {$z=0$};
+		\draw[thick] (0,2) -- (5, 2) node[right] {$z=h$};
+		\draw[red,->] (2.3, 1) arc(0:360:0.9);
+		\draw[red,<-] (2.7, 1) arc(-180:180:0.9);
+		\draw[red,->] (2.0, 1) arc(0:360:0.6);
+		\draw[red,<-] (3.0, 1) arc(-180:180:0.6);
+	\begin{scope}[shift={(0,-3)}]
+		\draw (0, 2.5) node {top view};
+		\draw[thick] (0,0) -- (5, 0);
+		\draw[thick] (0,2) -- (5, 2);
+		\draw[dashed] (1, 2) -- (1, 0) node[below] {down};
+		\draw[dashed] (4, 2) -- (4, 0) node[below] {up};
+		\draw[dashed] (2.5, 2) -- (2.5, 0) node[below] {down};
+		\draw[red,->] (2.6, 0.6) -- (3.9, 0.6);
+		\draw[red,->] (2.6, 1.4) -- (3.9, 1.4);
+		\draw[red,->] (2.4, 0.6) -- (1.1, 0.6);
+		\draw[red,->] (2.4, 1.4) -- (1.1, 1.4);
+		\draw[red,->] (-0.4, 0.6) -- (0.9, 0.6);
+		\draw[red,->] (-0.4, 1.4) -- (0.9, 1.4);
+		\draw[red,->] (5.4, 0.6) -- (4.1, 0.6);
+		\draw[red,->] (5.4, 1.4) -- (4.1, 1.4);
+	\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\begin{eg}
+	\textbf{Mantle convection.} In the mantle, internal heating is due to
+	radiogenic decay. We model this by adding a source term to the conservation of
+	energy equation:
+	\begin{equation}
+		\rho_0 c_p \left( \frac{\partial T}{\partial t} + \symbf{u}\cdot\nabla
+		T\right) = \nabla \cdot (k\nabla T) + \rho_0 Q
+	\end{equation}
+	where $Q = 10^{11} \text{W} \text{kg}^{-1}$. The thermal boundary conditions
+	are $T(0) = T_s$, i.e. fixed surface temperature, and $\partial T / \partial
+	z = 0$ at $z=h$, i.e. zero basal heat flux.
+
+	A scaling analysis gives 
+	\begin{equation}
+		x \sim h, \frac{k \Delta T}{h^2} \sim \rho_0 Q
+		\implies \Delta T \sim \frac{\rho_0 Q h^2}{k}
+	\end{equation}
+	The Rayleigh number in this case is
+	\begin{equation}
+		\text{Ra}_Q = \frac{\rho_0 g \alpha (\rho_0 Q h^2 / k) h^3}{\kappa \mu} =
+		\frac{\rho_0^2 g \alpha Q h^5}{k \kappa \mu}
+	\end{equation}
+	Typical values are $\text{Ra}_Q = 3 \times 10^9$ and $\text{Pr} = 10^{22}$.
+	Note that $\text{Ra}_Q$ is much larger than $\text{Ra}_{\text{crit}}$.
+\end{eg}
+
+\subsection{High Rayleigh number convection}
+At high Rayleigh number, the key idea is: small plumes are generated at
+boundaries, which only `see' the statistically well-mixed interior
+temperature. Hence heat flux is independent of depth of domain.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0);
+		\draw[thick] (0, 2) -- (5, 2);
+		\draw[dashed] (0, 0.2) -- (5, 0.2);
+		\draw[dashed] (0, 1.8) -- (5, 1.8);
+		\draw (0.5, 2) node[above] {$T_0$};
+		\draw[red] (0.5, 2) -- (1, 1.8);
+		\draw[red] (1, 1.8) -- (1.2, 0.2) node[midway,right]
+		{$\overline{T}(z)$};
+		\draw[red] (1.2, 0.2) -- (1.7, 0) node[below] {$T_0 + \Delta T$};
+		\draw[->] (0.2, 1) arc (0:350:0.2);
+		\draw[->] (0.6, 1) arc (180:-170:0.2);
+		\draw[->] (3.2, 1) arc (0:350:0.2);
+		\draw[->] (3.6, 1) arc (180:-170:0.2);
+		\draw (7, 1.2) node {viscous \& thermal};
+		\draw (7, 0.8) node {boundary layers};
+		\draw[->] (5.4, 1.2) -- (5.2, 1.8);
+		\draw[->] (5.4, 0.8) -- (5.2, 0.2);
+		\draw (-1.5, 1.2) node {well mixed};
+		\draw (-1.5, 0.8) node {interior};
+	\end{tikzpicture}
+\end{center}
+
+The heat flux is characterised by the \emph{Nusselt number} defined by
+\begin{equation}
+	\text{Nu} = \frac{F_h}{k \Delta T/h} = f(\text{Ra},\text{Pr})
+\end{equation}
+where $F_h$ is the heat flux, and $\text{Nu}$ is a function of $\text{Ra},
+\text{Pr}$ only. If $F_h$ is not a function of $h$, then we must
+have
+\begin{align}
+	F_h = \frac{k \Delta T}{h} f(\text{Ra},\text{Pr}) &\sim \frac{k \Delta
+	T}{h} \text{Ra}^{1/3} \\
+	\implies F_h &= \lambda(\text{Pr})k \left( \frac{\rho_0 g
+	\alpha}{K\mu}\right)^{1/3} \Delta T^{4/3}
+\end{align}
+for some function $\lambda$.
 
 
 \end{document}

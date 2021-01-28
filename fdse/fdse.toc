@@ -6,3 +6,8 @@
 \contentsline {subsection}{\numberline {3.1}Static stability}{5}{subsection.3.1}
 \contentsline {paragraph}{\nonumberline Scaling analysis.}{5}{section*.5}
 \contentsline {subsection}{\numberline {3.2}Onset of convection}{6}{subsection.3.2}
+\contentsline {paragraph}{\nonumberline Non-dimensionalising.}{7}{section*.6}
+\contentsline {paragraph}{\nonumberline Boundary conditions.}{7}{section*.7}
+\contentsline {paragraph}{\nonumberline Normal modes.}{8}{section*.8}
+\contentsline {paragraph}{\nonumberline Marginal stability.}{8}{section*.9}
+\contentsline {subsection}{\numberline {3.3}High Rayleigh number convection}{9}{subsection.3.3}
