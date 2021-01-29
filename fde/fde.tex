@@ -650,8 +650,173 @@ where $\lambda = 2\pi/k$ is the wavelength. Thus we have
 \end{equation}
 in analogy with the usual definition of Reynolds number, $UL/\nu$.
 
+\subsection{Mass diffusivity}
+In some situations, the fluid mass may diffuse, in which case mass
+conservation is modified to
+\begin{equation}
+	\frac{\diffD \rho}{\diffD t} = \kappa \nabla^2 \rho
+\end{equation}
+If $\rho = \rho(S, T, \phi)$ then
+\begin{equation}
+	\frac{\diffD S}{\diffD t} = \kappa_S \nabla^2 S, \hspace{2em} \frac{\diffD
+	T}{\diffD t} = \kappa_T \nabla^2 T
+\end{equation}
+The ratio of viscosity to thermal diffusivity is characterised by the
+\emph{Prandtl number} $\text{Pr} = \nu/\kappa_T$. For heat diffusion in air,
+$\text{Pr} \sim 0.7$ and in water, $\text{Pr} \sim 7$. A more general
+\emph{Schmidt number} $\text{Sc} = \nu/\kappa_S$ characterises viscosity
+versus diffusion of some concentration, e.g. salt. Salt in water has
+$\text{Sc} \sim 700$. 
 
+\subsection{Reflections of waves}
+\subsubsection{Properties of beams}
+For simplicity, assume $N^2$ constant. The usual laws of optics imply the
+incident angle is equal to the reflection angle. Thus $\omega/N = \cos\theta$
+is conserved, assuming no Doppler shift, i.e. the boundary is stationary. 
 
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\draw[fill=gray!50, draw=none] (0,0) rectangle (5, -0.5);
+		\draw[thick] (0,0) -- (5, 0);
+		\draw[blue] (0, 1.5) -- (1.5, 0);
+		\draw[blue,dashed] (1.5, 0) -- (3, 1.5);
+		\draw[blue] (1, 1.5) -- (2.5, 0);
+		\draw[blue,dashed] (2.5, 0) -- (4, 1.5);
+		\draw[blue] (2, 1.5) -- (3.5, 0);
+		\draw[blue,dashed] (3.5, 0) -- (5, 1.5);
+		\draw (0, 1.5) node[above] {$\phi = 0$};
+		\draw (1, 1.5) node[above] {$\phi = \pi$};
+		\draw (2, 1.5) node[above] {$\phi = 2\pi$};
+		\draw (-1, 1.5) node[above] {$t=0$:};
+		\draw[thick,->] (1.2, 1.2) -- ++(0.3,-0.3) node[left] {$\symbf{c}_g$};
+		\draw[thick,->] (1.4, 0.7) -- ++(0.3,0.3) node[right] {$\symbf{c}_p,
+		\symbf{k}$};
+		\draw[blue,thick,->] (3.5, 1.2) -- ++(0.3,0.3) node[left]
+		{$\symbf{c}_g$};
+		\draw[blue,thick,->] (3.2, 1) -- ++(0.3, -0.3) node[right]
+		{$\symbf{c}_p, \symbf{k}$};
+	\end{tikzpicture}
+\end{center}
+
+In the case of a horizontal reflection boundary, the vertical component of
+$\symbf{u}$ is reversed, whilst the horizontal component is preserved. Energy
+conservation implies the magnitude of the flux of energy $\overline{\symbf{F}} =
+\overline{E}\symbf{c}_g$ is conserved, i.e. $\abs{\overline{\symbf{F}}_i} =
+\abs{\overline{\symbf{F}}_r}$. We also have wavelength conserved, $\lambda_i =
+\lambda_r$, wavevector magnitude conserved, $\abs{\symbf{k}_i} =
+\abs{\symbf{k}_r}$, and group velocity magnitude conserved,
+$\abs{\symbf{c}_{gi}} = \abs{\symbf{c}_{gr}}$. Consequently, the wave energy
+$\overline{E}_i = \overline{E}_r$ is conserved.
+
+In the case of a vertical reflection boundary, the energy flux remains
+conserved, but instead the vertical component of $\symbf{u}$ is reversed and
+the vertical component is preserved.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw(0,0) -- (4.33,2.5);
+		\draw[draw=none,fill=gray!50,rotate=30] (0,0) rectangle (5, -0.5);
+		\draw[blue] (0, 1.5) -- (0.951, 0.549);
+		\draw[blue,dashed] (0.951, 0.549) -- ++ (2.5, 2.5);
+		\draw[blue] (0.5, 2.5) -- (1.902, 1.098);
+		\draw[blue,dashed] (1.902, 1.098) -- ++ (1.75, 1.75);
+		\draw[blue] (1, 3.5) -- (2.853, 1.647);
+		\draw[blue,dashed] (2.853, 1.647) -- ++ (1, 1);
+
+		\draw (1.6, 2.9) -- (1.6, 3.3);
+		\draw (1.6, 3.2) arc (90:135:0.3);
+		\draw (1.5, 3.2) node[above] {$\theta$};
+
+		\draw (2.8, 2.4) -- (2.8, 2.8);
+		\draw (2.8, 2.7) arc (90:45:0.3);
+		\draw (2.9, 2.7) node[above] {$\theta$};
+
+		\draw[thick,->] (0.8, 2.5) -- ++ (0.3,-0.3) node[left] {$\symbf{c}_p,
+		\symbf{k}$};
+		\draw[thick,->] (1, 2) -- ++ (0.3, 0.3) node[right] {$\symbf{c}_g$};
+
+		\draw[blue,thick,->] (3.5, 2.5) -- ++ (0.3,0.3) node[right]
+		{$\symbf{c}_g$};
+		\draw[blue,thick,->] (3.5, 2.5) -- ++ (0.3, -0.3) node[below]
+		{$\symbf{c}_p, \symbf{k}$};
+
+		\draw (0.43, 0.25) -- (0.43, 0);
+		\draw (0.43, 0.1) arc (-90:-135:0.2);
+		\draw (0.43, 0) node[right] {$\alpha$};
+	\end{tikzpicture}
+\end{center}
+
+Finally, with a boundary at some angle $\alpha$ to the vertical, since
+$\theta$ is determined by the dispersion relation it is still conserved after
+reflection. Waves also preserve frequency, since it is set by the source, so
+$\theta_i = \theta_r$ and $\omega_i = \omega_r$. The wave displacement
+satisfies
+\begin{equation}
+	\abs{\tilde{\eta}_r} = \gamma \abs{\tilde{\eta}_i}
+\end{equation}
+where the magnitude is scaled by
+\begin{equation}
+	\gamma = \abs{\frac{\sin(\theta+\alpha)}{\sin(\theta-\alpha)}} > 1
+\end{equation}
+
+\subsubsection{Energy density upon reflection}
+For reflection from a boundary at general angle $\alpha$, we have scalings
+\begin{align}
+	\abs{\symbf{k}_r} &= \gamma \abs{\symbf{k}_i} \iff \lambda_r =
+		\frac{1}{\gamma} \lambda_i \\
+	\abs{\tilde{w}_r} &= \gamma \abs{\tilde{w}_i} \\
+	\abs{\tilde{\eta}_r} &= \gamma \abs{\tilde{\eta}_i} \\
+	\abs{\symbf{c}_{gr}} &= \frac{1}{\gamma} \abs{\symbf{c}_{gi}}\\
+	\abs{\tilde{\symbf{F}}_r} &= \abs{\tilde{\symbf{F}}_i}
+\end{align}
+where $\tilde{\symbf{F}}$ is the energy flux per unit wavelength. The energy
+density per unit wavelength is
+\begin{equation}
+	\tilde{E} = \int_0^\lambda \text{PE} + \text{KE} \, \diffd \xi
+\end{equation}
+with $\tilde{\symbf{F}} = \tilde{E} \symbf{c}_g$ and hence $\tilde{E}_r =
+\gamma \tilde{E}_i$, since
+\begin{equation}
+	\tilde{E} \sim \lambda (\text{PE} + \text{KE}) \sim \lambda
+	(\abs{\tilde{\eta}}^2 + \abs{\tilde{w}}^2)
+\end{equation}
+and $\lambda$ scales by $1/\gamma$, whilst the terms in the bracket scale as
+$\gamma^2$. 
+
+The energy density per unit \emph{length} is instead
+\begin{equation}
+	\hat{E} = \frac{1}{\lambda} \int_0^\lambda \text{PE} + \text{KE} \, \diffd
+	\xi = \frac{1}{\lambda} \tilde{E}
+\end{equation}
+Hence $\tilde{\symbf{F}} = \lambda \hat{E} \symbf{c}_g$. The flux of energy
+per unit wavelength is conserved, so
+\begin{equation}
+	\lambda_r \hat{E}_r \abs{\symbf{c}_{gr}} = \frac{1}{\gamma} \lambda_i
+	\hat{E}_r \frac{1}{\gamma} \abs{\symbf{g}_{gi}} = \lambda_i \hat{E}_i
+	\abs{\symbf{c}_{gi}}
+\end{equation}
+Hence $\hat{E}_r = \gamma^2 \hat{E}_i$. Denote the lengthscale for wave crests
+as $L_i$ for the incident wave and $L_r$ for the reflected wave. The total
+energy is then
+\begin{align}
+	\text{TE}_r &= \int_{-\infty}^\infty \text{PE}_r + \text{KE}_r \, \diffd
+	\xi \\
+				&= \int_{-L_r/2}^{L_r/2} \text{PE}_r + \text{KE}_r \, \diffd
+				\xi \\
+				&= \gamma^2 \int_{-L_i/2\gamma}^{L_i/2\gamma}
+				\text{PE}_i+\text{KE}_i \, \diffd \xi \\
+				&= \gamma T E_i
+\end{align}
+Spectral energy denity $S(k)$ obeys
+\begin{equation}
+	S_r(k) = \gamma S_i(k/\gamma)
+\end{equation}
+
+\subsubsection{Critical reflections}
+Subcritical reflections are where the vertical component of the group velocity
+reverses, whilst supercritical reflections are those where the horizontal
+component of the group velocity reverses. At critical slope $\theta = \alpha$,
+$\gamma \to \infty$.
 
 
 

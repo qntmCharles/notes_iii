@@ -3046,4 +3046,184 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-(/usr/share/texlive/texmf-dist/tex/latex/
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
+ic-dictionary/translator-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
+File: siunitx-abbreviations.cfg 2017/01/01 v2.7a siunitx: Abbreviated units
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+*************************************************
+* unicode-math warning: "mathtools-overbracket"
+* 
+* Using \overbracket and \underbracket from `mathtools' package.
+* 
+* Use \Uoverbracket and \Uunderbracket for original `unicode-math' definition.
+*************************************************
+Package pgfplots notification 'compat/show suggested version=true': you might be
+nefit from \pgfplotsset{compat=1.14} (current compat level: 1.3).
+
+\c__siunitx_mathsf_int=\count307
+Package microtype Info: Loading generic settings for font family
+(microtype)             `LatinModernMath' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 15.
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
+(Font)              scaled to size 10.95015pt on input line 15.
+LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
+(Font)              scaled to size 8.00012pt on input line 15.
+LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
+(Font)              scaled to size 6.00009pt on input line 15.
+LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
+(Font)              scaled to size 10.94983pt on input line 15.
+LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
+(Font)              scaled to size 7.99988pt on input line 15.
+LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
+(Font)              scaled to size 5.99991pt on input line 15.
+LaTeX Font Info:    Try loading font information for U+msa on input line 15.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 15.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 15.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 15.
+
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for U+wasy on input line 15.
+
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `GFSNeoHellenicMath' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 15.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `lmss' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+\c__siunitx_mathtt_int=\count308
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 15.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `lmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman12-bold.luc
+)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmro
+man12-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lms
+ans10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/gener
+ic/fonts/otl/lmsans10-regular.luc)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `lmss' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmsans10-bold.luc)
+(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmsan
+s10-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmrom
+an12-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generi
+c/fonts/otl/lmroman12-regular.luc)(compiling luc: /var/lib/texmf/luatex-cache/ge
+neric/fonts/otl/lmroman8-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var
+/luatex-cache/generic/fonts/otl/lmroman8-regular.luc)(compiling luc: /var/lib/te
+xmf/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)(load luc: /home/cwp/.te
+xlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `lmtt' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package tocbasic Info: character protrusion at toc deactivated on input line 25.
+
+ (./fdse.toc)
+\tf@toc=\write5
+
+\openout5 = fdse.toc
+(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-bold.luc)
+(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmrom
+an8-bold.luc) [1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] <earthquakes.png, id=64, 1
+697.34125pt x 900.36375pt>
+File: earthquakes.png Graphic file (type png)
+
+<use earthquakes.png>
+Package luatex.def Info: earthquakes.png used on input line 54.
+(luatex.def)             Requested size: 466.62509pt x 247.52524pt.
+(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmromanslant10-reg
+ular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/
+otl/lmromanslant10-regular.luc) [2<./earthquakes.png>](compiling luc: /var/lib/t
+exmf/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)(load luc: /home/cwp/.t
+exlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc) [3] [
+4] [5] [6] [7] [8] [9] [10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 598.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 598.
+ (./fdse.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 598.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 598.
+Package rerunfilecheck Info: File `fdse.out' has not changed.
+(rerunfilecheck)             Checksum: FFF99287A7E983A2DE590A0B08281FFA;511.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 598.
+)
+
+Here is how much of LuaTeX's memory you used:
+ 53015 strings out of 494577
+ 100000,1648299 words of node,token memory allocated
+ 8056 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 889 glue, 1 kern, 336 attribute, 64 glue_spec, 336 
+attribute_list, 1 write nodes
+   avail lists: 1:1,2:1549,3:480,4:93,5:222,6:1869,7:674,8:63,9:491,10:17,11:157
+
+ 55337 multiletter control sequences out of 65536+600000
+ 70 fonts using 14391015 bytes
+ 74i,13n,108p,8842b,882s stack positions out of 5000i,500n,10000p,200000b,100000s
+</usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/share/texmf/
+fonts/opentype/public/lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opent
+ype/public/lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opentype/public/
+lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
+0-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromanslant10-regular.o
+tf></usr/share/texmf/fonts/opentype/public/lm/lmroman8-bold.otf></usr/share/texm
+f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
+/public/lm/lmroman8-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmrom
+an12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></
+usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf
+/fonts/opentype/public/lm/lmroman12-bold.otf>
+Output written on fdse.pdf (10 pages, 2175596 bytes).
+
+PDF statistics: 228 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 131072)
+ 80 words of extra memory for PDF output out of 10000 (max. 10000000)
+

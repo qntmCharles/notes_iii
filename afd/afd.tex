@@ -382,6 +382,168 @@ These are equivalent to the equations of ideal gas dynamics in conservative
 form (see section 4) for a monatomic ideal gas ($\gamma = 5/3$). The specific
 internal energy is $\rho = \frac{3}{2}c^2 = \frac{3}{2}\frac{kT}{m}$.
 
+\subsection{Validity of fluid approach}
+Deviations from Maxwellian distribution are small when collisions are frequent
+compared to the characteristic timescale of the flow. In higher-order
+approximations these deviations can be estimated, leading to the equations of
+dissipative gas dynamics including transport effects (viscosity and heat
+conduction). 
 
+The fluid approach breaks down if the mean flight time $\tau$ is
+not much less than the characteristic timescale of the flow, or if the mean
+free path $\lambda \approx c \tau$ between collisions is not much less than
+the characteristic lengthscale of the flow.
+
+The Coulomb cross-section for `collisions' (i.e. large-angle scatterings)
+between charged particles (electrons or ions) is
+\begin{equation}
+	\sigma \approx 1 \times 10^{-4} (T/K)^{-2} \text{cm}^2
+\end{equation}
+The mean free path is $\lambda = 1/n\sigma$.
+
+\section{Ideal magnetohydrodynamics}
+
+\subsection{Elementary derivation of MHD equations}
+\emph{Magnetohydrodynamics} (MHD) is the dynamics of an electrically
+conducting fluid (a full or partially ionised gas or a liquid metal)
+containing a magnetic field. It is a fushion of fluid dynamics and
+electromagnetism.
+
+\subsubsection{Galilean electromagnetism}
+The equations of Newtonian gas dynamics are invariant under the Galilean
+transformation to a frame of reference moving with uniform velocity
+$\symbf{v}$,
+\begin{equation}
+	\symbf{x}'=\symbf{x}-\symbf{v}t, \hspace{1em} t' = t
+\end{equation}
+
+Under this change of frame, the fluid velocity transforms according to
+\begin{equation}
+	\symbf{u}'=\symbf{u}-\symbf{v}
+\end{equation}
+while scalar variables such as $p, \rho$, and $\Phi$ are invariant. The
+Lagrangian time derivative $\diffD/\diffD t$ is also invariant, because the
+partial derivatives transform according to
+\begin{equation}
+	\nabla' = \nabla, \hspace{1em} \frac{\partial}{\partial t'} =
+	\frac{\partial}{\partial t} + \symbf{v}\cdot\nabla
+\end{equation}
+
+To derive a consistent Newtonian theory of MHD, valid for situations in which
+the fluid motions are slow compared to the speed of light, we use Maxwell's
+equations without the displacement current:
+\begin{align}
+	\frac{\partial \symbf{B}}{\partial t} &= - \nabla \times \symbf{E} \\
+	\nabla \cdot \symbf{B} &= 0 \\
+	\nabla \times \symbf{B} &= \mu_0 \symbf{J}
+\end{align}
+We will not require the fourth Maxwell equation, involving $\nabla \cdot
+\symbf{E}$, because the charge density will be found to be unimportant. The
+equation of energy conservation is
+\begin{equation}
+	\frac{\partial}{\partial t} \left( \frac{B^2}{2\mu_0}\right) + \nabla
+	\cdot \left( \frac{\symbf{E}\times\symbf{B}}{\mu_0}\right) = -
+	\symbf{E}\cdot\symbf{J}
+\end{equation}
+in which the energy density $B^2/2\mu_0$ is purely magnetic, while the energy
+flux density has the usual form of the \emph{Poynting vector}
+$\symbf{E}\times\symbf{B}/\mu_0$. These `pre-Maxwell' equations are invariant
+under the Galilean transformation, provided that the fields transform
+according to
+\begin{equation}
+	\symbf{E}'=\symbf{E}+\symbf{v}\times\symbf{B}, \hspace{1em}
+	\symbf{B}'=\symbf{B}, \hspace{1em} \symbf{J}'=\symbf{J}
+\end{equation}
+
+\subsubsection{Induction equation}
+In the \emph{ideal MHD approximation} we regard the fluid as a perfect
+electrical conductor. The electric field in the rest frame of the fluid
+therefore vanishes, implying that
+\begin{equation}
+	\symbf{E} = - \symbf{u}\times\symbf{B}
+\end{equation}
+in a frame in which the fluid velocity is $\symbf{u}(\x,t)$. This condition
+can be regarded as the limit of a constitutive relationship such as Ohm's law,
+in which the effects of resistivity (i.e. finite conductivity) are neglected.
+From Maxwell's equations, we then obtain the \emph{ideal induction equation}
+\begin{equation}
+	\frac{\partial \symbf{B}}{\partial t} = \nabla \times (\symbf{u} \times
+	\symbf{B})
+\end{equation}
+This is an evolutionary equation for $\symbf{B}$ alone, having elimnated
+$\symbf{E}$ and $\symbf{J}$. The divergence of the induction equation,
+\begin{equation}
+	\frac{\partial}{\partial t} \left( \nabla \cdot \symbf{B}\right) = 0
+\end{equation}
+ensures that $\symbf{B}$ remains solenoidal. 
+
+\subsubsection{Lorentz force}
+A fluid carrying a current density $\symbf{J}$ in a magnetic field $\symbf{B}$
+experiences a Lorentz force
+\begin{equation}
+	\symbf{F}_m = \symbf{J} \times \symbf{B} = \frac{1}{\mu_0} (\nabla \times
+	\symbf{B}) \times \symbf{B}
+\end{equation}
+per unit volume. This can be understood as the sum of the Lorentz forces on
+individual particles of charge $q$ and velocity $\symbf{v}$,
+\begin{equation}
+	\sum q \symbf{v} \times \symbf{B} = \left(\sum q
+	\symbf{v}\right)\times\symbf{B}
+\end{equation}
+
+The electrostatic force can be shown to be negligible in the Newtonian limit.
+In Cartesian co-ordinates we have
+\begin{align}
+	(\mu_0 \symbf{F}_m)_i &= \varepsilon_{ijk}\varepsilon_{jlm}\frac{\partial
+	B_m}{\partial x_l} B_k \\
+					  &= \left( \frac{\partial B_i}{\partial x_k} -
+					  \frac{\partial B_k}{\partial x_i} \right) B_k \\
+					  &= B_k \frac{\partial B_i}{\partial x_k} -
+					  \frac{\partial}{\partial x_i} \left(
+					  \frac{B^2}{2}\right)
+\end{align}
+Thus the Lorentz force can be written as
+\begin{equation}
+	\symbf{F}_m = \frac{1}{\mu_0} \symbf{B}\cdot\nabla\symbf{B} - \nabla
+	\left( \frac{B^2}{2\mu_0}\right)
+\end{equation}
+The first term can be interpreted as a \emph{curvature force} due to a
+\emph{magnetic tension} $T_m = B^2/\mu_0$ per unit area in the field lines.
+The second term is the gradient of an isotropic \emph{magnetic pressure} $p_m
+= B^2/2\mu_0$ which is also the magnetic energy density. The magnetic tension
+gives rise to \emph{Alfv\'{e}n waves} (see later), which travel parallel to
+the magnetic field with characteristic speed
+\begin{equation}
+	v_a = \left(\frac{T_m}{\rho}\right)^{1/2} = \frac{B}{\sqrt{\mu_0 \rho}}
+\end{equation}
+the \emph{Alfv\'{e}n speed}, or (vector) \emph{Alfv\'{e}n velocity}
+\begin{equation}
+	\symbf{v}_a = \frac{\symbf{B}}{\sqrt{\mu_0 \rho}}
+\end{equation}
+The magnetic pressure also affects the propagation of sound waves, which
+become \emph{magnetoacoustic waves} (see later). The combination
+\begin{equation}
+	\Pi = p + \frac{B^2}{2\mu_0}
+\end{equation}
+is often referred to as the \emph{total pressure}, while the ratio
+\begin{equation}
+	\beta = \frac{p}{B^2/2\mu_0}
+\end{equation}
+is known as the \emph{plasma beta}. 
+
+\subsubsection{Summary of the MHD equations}
+The full set of ideal MHD equations is
+\begin{align}
+	\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \symbf{u}) &= 0 \\
+	\rho \frac{\diffD \symbf{u}}{\diffD t} &= - \rho \nabla \Phi - \nabla p +
+	\frac{1}{\mu_0}(\nabla \times \symbf{B})\times\symbf{B} \\
+	\frac{\diffD s}{\diffD t} &= 0 \\
+	\frac{\partial \symbf{B}}{\partial t} &= \nabla \times (\symbf{u} \times
+	\symbf{B}) \\
+	\nabla \cdot \symbf{B} &= 0
+\end{align}
+together with the equation of state, Poisson's equation, etc., as required.
+Most of these equations can be written in at least one other way that may be
+useful in different circumstances.
 
 \end{document}
