@@ -9,6 +9,10 @@
 \setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
 \setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
 
+\newcommand{\B}{\symbf{B}}
+\renewcommand{\u}{\symbf{u}}
+\newcommand{\flux}{\symbf{\Phi}}
+
 \usetikzlibrary{shapes.misc}
 
 \tikzset{cross/.style={cross out, draw=black, minimum
@@ -545,5 +549,217 @@ The full set of ideal MHD equations is
 together with the equation of state, Poisson's equation, etc., as required.
 Most of these equations can be written in at least one other way that may be
 useful in different circumstances.
+
+\subsection{Physical interpretation of MHD}
+There are two aspects to MHD:
+\begin{itemize}
+	\item Advection of $\symbf{B}$ by $\symbf{u}$ (induction equation)
+	\item Dynamical back-reaction of $\symbf{B}$ on $\symbf{u}$.
+\end{itemize}
+
+\subsubsection{Kinematics of the magnetic field}
+The ideal induction equation
+\begin{equation}
+	\frac{\partial \symbf{B}}{\partial t} = \nabla \times (\u \times
+	\B)
+\end{equation}
+has a beautiful geometric interpretation: magnetic field lines are `frozen in'
+to the fluid and can be identified with material curves. One way to show this
+result is to use the identity
+\begin{equation}
+	\nabla \times (\u \times \B) = (\B \cdot \nabla)\u - \B(\nabla\cdot\u) -
+	(\u\cdot\nabla)\B + \u(\nabla \cdot \B)
+\end{equation}
+to write the induction equation in the form
+\begin{equation}
+	\frac{\diffD \B}{\diffD t} = (\B \cdot \nabla) \u - \B (\nabla \cdot \u)
+\end{equation}
+and use the equation of mass conservation
+\begin{equation}
+	\frac{\diffD \rho}{\diffD t} = - \rho \nabla \cdot \u
+\end{equation}
+to obtain
+\begin{equation}
+	\frac{\diffD}{\diffD t} \left( \frac{\B}{\rho}\right) =
+	\left(\frac{\B}{\rho}\right)\cdot\nabla\u
+\end{equation}
+This is exactly the same equation satisfied by a material line element
+(section 2.3). Therefore a magnetic field line (an integral curve of
+$\B/\rho$) is advected and distorted by the fluid in the same way as a
+material curve. A complementary property is that the magnetic flux $\delta
+\flux = \B \cdot \delta\symbf{S}$ through a material surface is conserved:
+\begin{align}
+	\frac{\diffD \flux}{\diffD t} &= \frac{\diffD \B}{\diffD t} \cdot \delta
+	\symbf{S} + \B \cdot \frac{\diffD \delta \symbf{S}}{\diffD t} \\ 
+								  &= \left( B_j \frac{\partial u_i}{\partial
+								  x_j} - B_i \frac{\partial u_j}{\partial x_j}
+								  \right) \delta S_i + B_i \left(
+								  \frac{\partial u_j}{\partial x_j} \delta S_i
+								  - \frac{\partial u_j}{\partial x_i} \delta
+								  S_j\right) \\
+								  &= 0
+\end{align}
+By extension, we have conservation of the magnetic flux $\flux = \int \B \cdot
+\diffd \symbf{S}$ passing through any material surface.
+
+\subsubsection{ (Partial) analogy with vorticity}
+In homentropic (uniform entropy) or barotropic ideal fluid dynamics in the
+absence of a magnetic field, the vorticity $\symbf{\omega} = \nabla \times \u$
+satisfies
+\begin{equation}
+	\frac{\partial \symbf{\omega}}{\partial t} = \nabla \times (\u \times
+	\symbf{\omega})
+\end{equation}
+Vortex lines are then `frozen in' to the fluid. Conserved quantity
+\begin{equation}
+	\int_S \symbf{\omega} \cdot \diffd \symbf{S} = \oint_C \u \cdot \diffd
+	\x
+\end{equation}
+is analogous to
+\begin{equation}
+	\int_S \B \cdot \diffd \symbf{S} = \oint_C \symbf{A}\cdot\diffd \x
+\end{equation}
+However, $\symbf{\omega}$ and $\u$ are directly related by $\symbf{\omega} =
+\nabla \times \u$ whereas in MHD $\B$ and $\u$ are indirectly related through
+the equation of motion and the Lorentz force, so the analogy between vorticity
+dynamics and MHD is limited in scope.
+
+\subsubsection{Lorentz force}
+The Lorentz force per unit volume, 
+\begin{equation}
+	\symbf{F}_m = \frac{1}{\mu_0} \B \cdot \nabla \B - \nabla (B^2/2\mu_0)
+\end{equation}
+can also be written as the divergence of the \emph{Maxwell stress tensor}
+\begin{equation}
+	\symbf{F}_m = \nabla \cdot \symsf{M}, \hspace{2em}\symsf{M} =
+	\frac{1}{\mu_0} \left( \B \B - \frac{B^2}{2}\symsf{I}\right)
+\end{equation}
+where $\symsf{I}$ is the identity tensor. In Cartesian components,
+\begin{equation}
+	(\symbf{F}_m)_i = \frac{\partial \symsf{M}_{ji}}{\partial x_j},
+	\hspace{2em} \symsf{M}_{ij} = \frac{1}{\mu_0} \left( B_i B_j -
+	\frac{B^2}{2}\delta_{ij} \right)
+\end{equation}
+If $\B$ is locally aligned with the $x$-axis, then
+\begin{equation}
+	\symsf{M} = \begin{pmatrix} T_m & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+		\end{pmatrix} - \begin{pmatrix} p_m & 0 &0  \\ 0 & p_m & 0 \\ 0 & 0 &
+	p_m \end{pmatrix}
+\end{equation}
+showing the magnetic tension and pressure. Combining the ideas of magnetic
+tension and a frozen-in field leads to the picture of field lines as elastic
+strings embedded in the fluid. There is a close analogy between MHD and the
+dynamics of polymer solutions. The magnetic field imparts elasticity to the
+fluid.
+
+\subsubsection{Differential rotation and torsional Alfv\'{e}n waves}
+First consider the kinematic behaviour of a magnetic field in the presence of
+a prescribed velocity field involving differential rotation. In cylindrical
+polar coordinates $(r,\phi,z)$ let 
+\begin{equation}
+	\u = r \Omega(r,z) \hat{\symbf{\phi}}
+\end{equation}
+Consider an axisymmetric magnetic field, which we separate into
+\emph{poloidal} (meridional: $r$ and $z$) and \emph{toroidal} (azimuthal:
+$\phi$) parts:
+\begin{equation}
+	\B = \B_p(r,z,t) + B_\phi(r,z,t) \hat{\symbf{\phi}}
+\end{equation}
+The ideal induction equation reduces to
+\begin{equation}
+	\frac{\partial \B_p}{\partial t} = 0, \hspace{2em} \frac{\partial
+	B_\phi}{\partial t} = r \B_p \cdot \nabla \Omega
+\end{equation}
+Differential rotation winds the poloidal field to generate a torsional field.
+To obtain a steady state without winding, we require the angular velocity to
+be constant along each magnetic field line:
+\begin{equation}
+	\B_p \cdot \nabla \Omega = 0
+\end{equation}
+a result known as \emph{Ferraro's law of isorotation}. 
+
+There is an energetic cost to winding the field, as work is done against
+magnetic tension. In a dynamical situation a strong magnetic field tends to
+enforce isorotation along its length. Generalise the analysis to allow for
+axisymmetric torsional oscillations:
+\begin{equation}
+	\u = r \Omega(r,z,t) \hat{\symbf{\phi}}
+\end{equation}
+The azimuthal component of the equation of motion is then
+\begin{equation}
+	\rho r \frac{\partial \Omega}{\partial t} = \frac{1}{\mu_09 r} \B_p \cdot
+	\nabla( r \B_\phi)
+\end{equation}
+Combine with the induction equation above to give
+\begin{equation}
+	\frac{\partial^2 \Omega}{\partial t^2} = \frac{1}{\mu_0 \rho r^2} \B_p
+	\cdot \nabla (r^2 \B_p \cdot \nabla \Omega)
+\end{equation}
+This equation describes \emph{torsional Alfv\'{e}n waves}. For example, if
+$\B_p = B_z \hat{\symbf{z}}$ is vertical and uniform, then
+\begin{equation}
+	\frac{\partial^2 \Omega}{\partial t^2} = v_a^2 \frac{\partial^2
+	\Omega}{\partial z^2}
+\end{equation}
+This is not strictly an exact non-linear analysis because we have neglected
+the force balance (and indeed motion) in the meridional plane.
+
+\subsubsection{Force-free fields}
+In regions of low density, e.g. the solar corona, $\B$ may be dynamically
+dominant over inertia, gravity and gas pressure. We then have (approximately)
+a force-free magnetic field such that
+\begin{equation}
+	(\nabla \times \B) \times \B = 0
+\end{equation}
+Since $\nabla \times \B$ must be parallel to $\B$ in this case, we may write
+\begin{equation}
+	\nabla \times \B = \lambda \B
+	\label{eq:1}
+\end{equation}
+for some scalar field $\lambda(\x)$. Taking the divergence of \eqref{eq:1}
+gives
+\begin{equation}
+	0 = \B \cdot \nabla \lambda
+\end{equation}
+so $\lambda$ is constant along each magnetic field line. In the special case
+where $\lambda$ is constant, known as a \emph{linear force-free magnetic
+field}, the curl of \eqref{eq:1} results in the \emph{Helmholtz equation}
+\begin{equation}
+	-\nabla^2 \B = \lambda^2 \B
+\end{equation}
+which admits a wide variety of solutions. A subset of force-free magnetic
+fields consists of \emph{potential} or \emph{current-free} magnetic fields for
+which
+\begin{equation}
+	\nabla \times \B = 0
+\end{equation}
+In a true vacuum, $\B$ must be potential. However, only an extremely low
+density of electrons is needed to make the force-free description more
+relevant. 
+
+An example of a force-free field in cylindrical polar coordinates $(r,\phi,z)$
+is
+\begin{align}
+	\B &= B_\phi(r)\hat{\symbf{\phi}} + B_z(r)\hat{\symbf{z}} \\
+	\nabla \times \B &= -\frac{\diffd B_z}{\diffd r} \hat{\symbf{\phi}} +
+	\frac{1}{r}\frac{\diffd}{\diffd r}\left(rB_\phi\right)\hat{\symbf{z}}
+\end{align}
+Now $\nabla \times \B = \lambda \B$ implies
+\begin{equation}
+	-\frac{1}{r}\frac{\diffd}{\diffd r} \left( r \frac{\diffd B_z}{\diffd
+	r}\right) = \lambda^2 B_z
+\end{equation}
+which is the $z$ component of the Helmholtz equation. The solution regular at
+$r=0$ is
+\begin{equation}
+	B_z = B_0 J_0(\lambda r), \hspace{2em} B_\phi = B_0 J_1(\lambda r)
+\end{equation}
+where $J_n$ is the Bessel function of order $n$. Note that $J_0(x)$ satisfies
+\begin{equation}
+	(xJ_0')' + xJ_0 = 0, \hspace{2em} J_1(x) = -J_0'(x)
+\end{equation}
+The helical nature of this field is typical of force-free fields with $\lambda
+\ne 0$.
+
 
 \end{document}

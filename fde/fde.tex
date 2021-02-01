@@ -815,8 +815,73 @@ Spectral energy denity $S(k)$ obeys
 \subsubsection{Critical reflections}
 Subcritical reflections are where the vertical component of the group velocity
 reverses, whilst supercritical reflections are those where the horizontal
-component of the group velocity reverses. At critical slope $\theta = \alpha$,
-$\gamma \to \infty$.
+component of the group velocity reverses. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (1, 2.5) node {Subcritical};
+		\draw[thick] (0,0) -- (3, 1.5);
+		\draw[blue] (-1, 2) -- (1, 0.5);
+		\draw[blue,dashed] (1, 0.5) -- (3, 2);
+		\begin{scope}[shift={(5, 0)}]
+			\draw (1, 2.5) node {Supercritical};
+			\draw[thick] (0,0) -- (3, 1.5);
+			\draw[blue] (-1, 2) -- (2.4, 1.2);
+			\draw[blue,dashed] (2.4, 1.2) -- (-1, 0.4);
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+At critical slope $\theta = \alpha$,
+$\gamma \to \infty$.  If $\lambda \to \infty$ then $\abs{\symbf{k}_r} \to
+\infty$, $\abs{\tilde{\eta}_r} \to \infty$ and $\abs{\symbf{c}_{gr}} \to
+0$. As usual, $\omega_r = \omega_i$. Linear incident waves become non-linear
+after reflection close to criticality. The $e^{-\frac{\nu k^3 \zeta}{2N \sin
+\theta}}$ decay of an internal wave beam, combined with amplification of the
+wavenumber upon reflection and the no-slip boundary creates very rapid
+dissipation of energy, and hence very strong non-linearities.
+
+\subsubsection{Ray tracing}
+In 2D, internal waves satisfy the wave equation
+\begin{equation}
+	\left(\nabla^2 \partial_t^2 + N^2 \nabla_H^2\right) \psi = 0
+\end{equation}
+where $\psi = \tilde{\psi}(x,z)e^{-i\omega t}$ is the streamfunction. We have
+\begin{equation}
+	(N^2 - \omega^2) \frac{\partial^2 \tilde{\psi}}{\partial x^2} - \omega^2
+	\frac{\partial^2 \tilde{\psi}}{\partial z^2} = 0
+\end{equation}
+Define $\Lambda^2 = \omega^2 / (N^2-\omega)^2$. Then we have the
+\emph{Poincar\'{e} wave equation}
+\begin{equation}
+	\left( \frac{\partial^2}{\partial x^2} - \Lambda^2
+	\frac{\partial^2}{\partial z^2}\right) \tilde{\psi} = 0
+\end{equation}
+
+If the domain is bounded, $\tilde{\psi} = 0$ on the boundary but this is an
+ill-posed problem. Instead, we use ray tracing which effectively follows the
+energy around the domain. Consider a top-boundary with a sloping boundary
+below it:
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0, 3) -- (5, 3);
+		\draw (3, 1.5) -- (5, 3);
+		\draw[blue] (2.5, 1.5) -- (3, 3) -- (3.5, 1.875) -- (4, 3);
+		\draw[blue,dashed] (4,3) -- (4.5, 2.625);
+	\end{tikzpicture}
+\end{center}
+The energy is trapped into the corner by repeated focusing reflections. For
+large $\text{Re} = \abs{\symbf{c}_g}{\abs{\symbf{k}}\nu}$ then non-linearities
+will dominate and possible breaking giving mixing. 
+
+\subsubsection{Reflections from rough topography}
+An incident monochromatic internal wave reflecting from a rough topography
+will in general become a beam with a spectrum of wavenumbers, i.e.
+$\symbf{k}_r$ is a spectrum. Consider for aexample a sine wave topography of
+\emph{small amplitude}. We may then linearise the topography.
+
+
+
 
 
 
