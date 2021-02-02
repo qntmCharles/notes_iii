@@ -10,6 +10,7 @@
 \setmathfont{Latin Modern Math}
 \setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
 \setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
+\newcommand{\Ra}{\text{Ra}}
 
 \usetikzlibrary{intersections, pgfplots.fillbetween}
 \begin{document}
@@ -593,6 +594,189 @@ have
 	\alpha}{K\mu}\right)^{1/3} \Delta T^{4/3}
 \end{align}
 for some function $\lambda$.
+
+\paragraph{Boundary layer analysis.}
+The picture was formalised by Lou Howard (1965). We assume the thermal
+boundary layer grows diffusively (i.e. slowly) according to
+\begin{equation}
+	\frac{\partial T}{\partial t} = \kappa \frac{\partial^2 T}{\partial z^2} 
+\end{equation}
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- (5, 0);
+		\draw[dashed] (0,1) -- (5,1);
+		\draw[<->] (-0.1, 1) -- (-0.1, 0) node[midway,left] {$\delta(t)$};
+		\draw[smooth, red] plot coordinates {(2, 3) (2.1, 1) (3, 0)};
+		\draw[red] (3, 3) node {$T_0 + \Delta T /2$};
+		\draw (3, 2.5) node {interior};
+		\draw (4, 0.5) node {thermal BL};
+		\draw[red] (3,0) node[below] {$T_0 + \Delta T$};
+	\end{tikzpicture}
+\end{center}
+
+Diffusive scaling gives $z \sim \sqrt{\kappa t}$, i.e. a self-similar solution
+with similarity variable $\eta = z/2\sqrt{\kappa t}$. The thermal problem can
+be solved to get
+\begin{equation}
+	T = T_0 + \frac{\Delta T}{2}\left[ 1 + \text{erfc}(\frac{z}{2\sqrt{\kappa
+	t}})\right]
+\end{equation}
+
+The boundary layer is unstable when the local Rayleigh number exceeds the
+critical value.
+\begin{align}
+	\Ra_{BL} = \frac{\rho_0 g \alpha (\Delta T/2) \delta(t)^3}{\kappa \mu}
+	&\gtrapprox \Ra_{\text{crit}} \\
+	\implies \frac{\delta}{h} &\gtrapprox \left( \frac{2
+	\Ra_c}{\Ra}\right)^{1/3}
+\end{align}
+
+Assume that advection of plumes from the boundary layer is fast compared with
+diffusive growth of the boundary layer. The heat flux is
+\begin{equation}
+	F_h = \frac{k \Delta T}{2t_c} \int_0^{t_c} \frac{\diffd t}{\sqrt{\pi\kappa
+	t}} = \frac{k\Delta T}{\delta_c}
+\end{equation}
+Hence the Nusselt number can be written
+\begin{equation}
+	\text{Nu} = \frac{F_h}{k\Delta T/h} = \frac{h}{\delta_c} = \left(
+	\frac{\Ra}{2\Ra_c}\right)^{1/3}
+\end{equation}
+For $\Ra_{\text{crit}} \approx 1100$, the Nusselt number is thus $\text{Nu}
+\approx 0.077 \Ra^{1/3}$ which matches well with experiment.
+
+\section{Solidification/melting}.
+Applications of solidification/melting theory include
+\begin{itemize}
+	\item Formation of Earth's crust (early 1800s)
+	\item Sea ice, due to Stefan (late 1800s)
+	\item Earth's core (mid 1950s)
+	\item Igneous rocks (mid 1980s)
+\end{itemize}
+
+\subsection{The Stefan condition}
+Consider a solid--liquid interface $x = a(t)$ with boundary velocity $v_n$. We
+will work in the frame of reference moving with the boundary.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (0, 5);
+		\draw (2, 1) -- (2, 4) -- (-2, 4) -- (-2, 1) -- (2,1);
+		\draw (0,0) node[below] {$x=0$};
+		\draw[thick,->] (0, 4.5) -- (1, 4.5) node[right] {$\hat{\symbf{n}}$};
+		\draw[->] (2.5, 0.5) -- (1.5, 0.5) node[midway,below] {$v_n$};
+		\draw[<-] (-2.5, 0.5) -- (-1.5, 0.5) node[midway,below] {$v_n$};
+		\draw[<-] (2.5, 2.5) -- (0.5, 2.5) node[midway,below]
+		{$\symbf{q}_l$};
+		\draw[->] (-2.5, 2.5) -- (-0.5, 2.5) node[midway,below]
+		{$\symbf{q}_s$};
+	\end{tikzpicture}
+\end{center}
+
+We assume there is a heat flux $\symbf{q}_s$ into the control volume, and a
+heat flux $\symbf{q}_l$ leaving the control volume. Assume equal densities for
+the liquid and solid, i.e. $\rho_l = \rho_s = \rho$. Conservation of energy in
+the control volume gives:
+\begin{equation}
+	\rho H_l v_n - \hat{\symbf{n}}\cdot\symbf{q}_l - \rho H_s v_n +
+	\hat{\symbf{n}} \cdot \symbf{q}_s = 0
+\end{equation}
+where $\symbf{q} = - k \nabla T$ and $H$ is the \emph{specific enthalpy},
+which is the heat energy at constant pressure per unit mass. Rearranging, we
+have
+\begin{equation}
+	\rho (H_l - H_s)v_n = \hat{\symbf{n}}\cdot (\symbf{q}_l - \symbf{q}_s)
+\end{equation}
+Define $L = H_l - H_s = T_m (s_s - s_l)$ where $T_m$ is the melting
+temperature and $s$ is the entropy of solid/liquid. $L$ is the latent heat of
+fusion/solidification. At the boundary $x=a(t)$ we have
+\begin{equation}
+	\rho L v_n = k \hat{\symbf{n}} \cdot (\left.\nabla T \,\right|_s -
+	\left.\nabla T \,\right|_l)
+\end{equation}
+where all quantities are evaluated at the boundary. This is the \emph{Stefan
+condition}.
+
+Note that if $\rho_s \ne \rho_l$ there is a velocity $u_n$ induced at the
+interface:
+\begin{equation}
+	u_n = \frac{\rho_l - \rho_s}{\rho_l} v_n
+\end{equation}
+in which case the Stefan condition is modified to
+\begin{equation}
+	\rho_s L v_n = k_s \hat{\symbf{n}} \cdot \left.\nabla T \,\right|_s - k_l
+	\hat{\symbf{n}} \cdot \left.\nabla T \,\right|_l
+\end{equation}
+
+\subsection{1D solification from a cooled boundary}
+For convenience we again assume equal densities and thermal properties. 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (0, 3);
+		\draw[draw=none,fill=gray!50] (0,0) rectangle (-0.5, 3);
+		\draw[smooth,red] plot coordinates {(0, 1) (0.8, 1.9) (2, 2)};
+		\draw[red] (0, 1) node[left] {$T_B$};
+		\draw[red] (2, 2) node[right] {$T_m$};
+		\draw (0.8, 0) -- (0.8, 3);
+		\draw (0.4, 3) node[above] {solid};
+		\draw (2, 3) node[above] {liquid};
+		\draw (0.8, 0) node[below] {$x=a(t)$};
+	\end{tikzpicture}
+\end{center}
+
+In the solid, the temperature $T$ obeys
+\begin{equation}
+	\frac{\partial T}{\partial t} = \kappa \frac{\partial^2 T}{\partial x^2}
+\end{equation}
+with boundary conditions $T = T_B$ at $x=0$ and $T = T_m$ at $x= a(t)$. We
+also have the Stefan condition
+\begin{equation}
+	\rho L \dot{a} = k \left.\frac{\partial T}{\partial x} \right|_{a^-}
+\end{equation}
+at $x = a(t)$. 
+
+Scaling from the thermal equation gives $x \sim \sqrt{\kappa t}$ as usual.
+From Stefan's condition we have
+\begin{equation}
+	\rho L \frac{x}{t} \sim k \frac{\Delta T}{x} = \rho c_p \kappa
+	\frac{\Delta T}{x}
+\end{equation}
+which yields $x \sim \sqrt{\kappa t \frac{c_p \Delta T}{L}}$. The factor in
+the square root is dimensionless, hence we have $x \sim \sqrt{\kappa t}$ in
+agreement with the thermal equation. We use similarity variable $\eta = x /
+2\sqrt{\kappa t}$ and define $\theta(\eta)$ via
+\begin{equation}
+	T - T_B = (T_m - T_B) \theta(\eta)
+\end{equation}
+
+Now $a(t) = 2 \lambda \sqrt{\kappa t}$, thus the diffusion equation becomes
+\begin{equation}
+	-2\eta \theta' = \theta''
+\end{equation}
+with $0 \le \theta \le \lambda$. The boundary conditions are now $\theta(0) =
+0, \theta(1) = \lambda$ and 
+\begin{equation}
+	2 \mathcal{S} \lambda = \theta'(\lambda)
+\end{equation}
+where $\mathcal{S} = L/c_p \Delta T$ is the Stefan number. The solution is
+\begin{equation}
+	\theta = \frac{\erf \eta}{\erf \lambda}
+\end{equation}
+where $\lambda$ satisfies
+\begin{equation}
+	\sqrt{\pi} \lambda e^{\lambda^2} \erf \lambda = \frac{1}{\mathcal{S}}
+\end{equation}
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[blue, smooth] plot coordinates {(0,0) (0.2, 0.0464) (0.4,
+		0.2011) (0.6, 0.5193) (0.8, 1.1259)};
+		\draw[thick,->] (-0.1,0) -- (1, 0) node[right] {$\lambda$};
+		\draw[thick,->] (0,-0.1) -- (0, 1.2) node[above] {$1/\mathcal{S}$};
+		\draw (0.8, 0.3) node {$\sim \lambda^2$};
+	\end{tikzpicture}
+\end{center}
+Large $\mathcal{S}$ implies small $\lambda$, i.e. small growth, and vice
+versa. Note for water, $L/c_p \approx 80^{\circ}$C.
+
 
 
 \end{document}
