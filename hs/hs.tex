@@ -7,6 +7,7 @@
 
 \usetikzlibrary{shapes.misc}
 \renewcommand{\u}{\symbf{u}}
+\newcommand{\Ra}{\text{Ra}}
 
 \tikzset{cross/.style={cross out, draw=black, minimum
 size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
@@ -392,6 +393,7 @@ be used to eliminate $\theta$ by applying the operator $(\partial_t -
 	\left(\frac{\partial}{\partial t} - \sigma \nabla^2
 	\right)\left(\frac{\partial}{\partial t} - \nabla^2\right)\nabla^2 w =
 	\sigma \text{Ra} \nabla_H^2 w
+	\label{eq:therm:5}
 \end{equation}
 This is a 6\textsuperscript{th} order PDE for $w$, hence we need three
 boundary conditions at each wall $z=0,1$. We use stress-free (i.e. free slip)
@@ -413,6 +415,253 @@ $z=0,1$. From \eqref{eq:therm:4}, $\nabla_H^2 \theta = 0$ implies
 	\left(\frac{\partial}{\partial t} - \sigma \nabla^2\right) \nabla^2 w = 0
 \end{equation}
 We now have 6 boundary conditions to supplement the PDE.
+
+\paragraph{Normal mode solution.}
+Seek a solution $w(x,y,z,t) = W(z) e^{ik_1x+ik_2y+\lambda t}$ where $k_1, k_2$
+are wavenumbers and $\lambda \in \mathbb{C}$ is the growth rate. Write $D =
+\diffd/\diffd z$ and $k = \sqrt{k_1^2+k_2^2}$ since the problem is
+rotationally symmetric in the $(x,y)$ plane. Substituting into
+\eqref{eq:therm:5} we have
+\begin{equation}
+	(\lambda - \left[ D^2 - k^2 \right])(\lambda - \sigma \left[ D^2 -
+	k^2\right])(D^2-k^2)W = - \sigma \text{Ra}k^2 W
+\end{equation}
+with boundary conditions at $z=0,1$:
+\begin{align}
+	W(0) = W(1) &= 0 \\
+	D^2 W(0) = D^2 W(1) &= 0 \\
+	\left[ \lambda - \sigma (D^2 - k^2)\right]\left[D^2 - k^2\right] W = 0
+	\implies D^4 W(0) = D^4 W(1) &= 0 
+\end{align}
+
+The objective is to find 
+\begin{equation}
+	\max_k \Re\{ \lambda(k;\Ra,\sigma)\}
+\end{equation}
+The onset of linear instability (for a given $\sigma$) at $\Ra =
+\Ra_{\text{crit}}$ is defined by
+\begin{equation}
+	\max_k \Re\{\lambda(k; \Ra_{\text{crit}},\sigma)\} = 0
+\end{equation}
+In general, $\lambda \in \mathbb{C}$, but for this problem it can be proven
+that at marginality $\Im(\lambda) = 0$ as well as $\Re(\lambda) = 0$; a
+condition called the \emph{principle of exchange of stabilities}. Hence
+setting $\lambda = 0$ in the above, we get
+\begin{equation}
+	(D^2 - k^2)^3 W = - \Ra \,k^2 W
+	\label{eq:therm:6}
+\end{equation}
+Note that $\sigma$ drops out of the problem! It's easy to see $W(z) = \sin
+(n\pi z)$ solves \eqref{eq:therm:6} and satisfies the free-slip BCs. Hence
+\begin{equation}
+	(n^2 \pi^2 + k^2)^3 = \Ra \,k^2
+\end{equation}
+Criticality is then given by
+\begin{equation}
+	\Ra_{\text{crit}} = \min_{n,k} \frac{(n^2 \pi^2 + k^2)^3}{k^2}
+\end{equation}
+We find the minimum in the usual way:
+\begin{align}
+	\frac{\partial \Ra}{\partial k} &= \frac{3(2k)(n^2\pi^2 + k^2)^2 k^2 -
+	2k(n^2\pi^2 + k^2)^3}{k^4} \\
+									&= \frac{2k(n^2\pi^2
+									+k^2)^2(3k^2-(n^2\pi^2+k^2))}{k^4} = 0\\
+		\implies 2k^2 &= n^2 \pi^2 \\
+		\implies k &= \frac{n\pi}{\sqrt{2}}
+\end{align}
+Given $k = n\pi/\sqrt{2}$ the Rayleigh number is
+\begin{equation}
+	Ra(k = \frac{n\pi}{\sqrt{2}}) = \frac{(n^2\pi^2 +
+	\frac{1}{2}n^2\pi^2)^3}{n^2 \pi^2/2} = \frac{27}{4}n^4 \pi^4
+\end{equation}
+Clearly the critical Rayleigh number is given by $n=1$, hence
+\begin{align}
+	\Ra_{\text{crit}} &= \frac{27}{4}\pi^4 \sim 658 \\
+	k_{\text{crit}} &= \frac{\pi}{\sqrt{2}} \sim 2.22
+\end{align}
+
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[title={Thermal convection Rayleigh
+			number},ylabel={Ra},xlabel={$k$},yticklabels={,,},xticklabels={,,},
+			samples=100,domain=0:10, restrict y to domain=0:8]
+		%\draw[thick,->] (-0.1,0) -- (10, 0) node[right] {$k$};
+		%\draw[thick,->] (0, -0.1) -- (0, 8) node[above] {Ra};
+			\addplot[blue] plot[domain=0.353:8.611,samples=100] ({\x},{(pi^2 +
+			\x^2)^3/(1000*\x^2)});
+			\addplot[blue] plot[domain=0.353:8.611,samples=100] ({\x},{(4*pi^2 +
+			\x^2)^3/(2000*\x^2)});
+		\end{axis}
+		\draw (0.1, 0.458) -- (-0.1, 0.458) node[left]
+		{$\Ra_{\text{crit}} \approx 658$};
+		\draw (1.8, 0.1) -- (1.8, -0.1) node[below] {$k_{\text{crit}} =
+		2.22$};
+		\draw[blue] (5.7, 2.5) node {$n=1$};
+		\draw[blue] (4.5, 3.5) node {$n=2$};
+		\draw[red] (4.5, 0.5) node {Stable $\Re(\lambda) < 0$};
+		\draw[red] (2.5, 2) node {Unstable $\Re(\lambda) > 0$};
+	\end{tikzpicture}
+\end{center}
+
+Results for other boundary conditions are:
+\begin{itemize}
+	\item Free--rigid boundary: $\Ra_{\text{crit}} \sim 1101, k_c = 2.68$
+	\item Rigid--rigid boundary: $\Ra_{\text{crit}} \sim 1708, k_c = 3.117$
+\end{itemize}
+
+Notice that at criticality only the size of $k$ is specified, \emph{not} its
+direction. Hence there are an infinite number of possibilities $\symbf{k} =
+(k\cos\phi,k\sin\phi)$. Various different patterns seen which tesselate are as
+follows.
+
+\begin{enumerate}
+	\item \textbf{2D rolls.} Orientate $x$-axis along $k$ such that $k_2 = 0$.
+		We have velocity components ($w$ specified in problem, $u$ follows
+		from incompressibility)
+		\begin{align}
+			w &= W(z) \sin kx \\
+			v &= 0\\ 
+			u &= \frac{\pi \cos \pi z \cos k x}{k}
+		\end{align}
+
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (0, 2.5) node {side view};
+				\draw[thick] (0,0) -- (7.2, 0) node[right] {$z=0$};
+				\draw[thick] (0,2) -- (7.2, 2) node[right] {$z=1$};
+				\draw[red,<-] (2.3, 1) arc(0:360:0.9);
+				\draw[red,<-] (2.0, 1) arc(0:360:0.6);
+				\draw[red,->] (2.7, 1) arc(-180:0:0.9);
+				\draw[red,->] (3.0, 1) arc(-180:0:0.6);
+				\draw[red,->] (4.5, 1) arc(0:180:0.9);
+				\draw[red,->] (4.2, 1) arc(0:180:0.6);
+				\draw[red,<-] (4.9, 1) arc(-180:180:0.9);
+				\draw[red,<-] (5.2, 1) arc(-180:180:0.6);
+			\begin{scope}[shift={(0,-3)}]
+				\draw (0, 2.5) node {top view};
+				\draw[thick] (0,0) -- (7.2, 0);
+				\draw[thick] (0,2) -- (7.2, 2);
+				\draw[dashed] (2.5, 2) -- (2.5, 0) node[below] {downwelling};
+				\draw[dashed] (4.7, 2) -- (4.7, 0) node[below] {upwelling};
+				\draw[dashed] (6.9, 2) -- (6.9, 0);
+				\draw[dashed] (0.3, 2) -- (0.3, 0);
+				\draw (2.5, 2) node[above] {$3\pi/2k$};
+				\draw (4.7, 2) node[above] {$5\pi/2k$};
+				
+				\draw[red,->] (0.5, 1.4) -- (2.3, 1.4);
+				\draw[red,->] (0.5, 1) -- (2.3, 1);
+				\draw[red,->] (0.5, 0.6) -- (2.3, 0.6);
+
+				\draw[red,->] (4.5, 1.4) -- (2.7, 1.4);
+				\draw[red,->] (4.5, 1) -- (2.7, 1);
+				\draw[red,->] (4.5, 0.6) -- (2.7, 0.6);
+
+				\draw[red,->] (4.9, 1.4) -- (6.7, 1.4);
+				\draw[red,->] (4.9, 1) -- (6.7, 1);
+				\draw[red,->] (4.9, 0.6) -- (6.7, 0.6);
+			\end{scope}
+			\end{tikzpicture}
+		\end{center}
+	\item \textbf{Rectangles.} Velocity components are
+		\begin{align}
+			w &= W(z) \cos k_1 x \cos k_2 y \\
+			v &= -\frac{k_2}{k^2} W' \cos k_1 x \sin k_2 y \\
+			u &= -\frac{k_1}{k^2} W' \sin k_1 x \cos k_2 y
+		\end{align}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (0,0) -- (8,0) -- (8, 4) -- (0, 4) -- (0,0);
+				\draw[dashed,thick,->] (4, 0) -- (4,4) node[above] {$y$};
+				\draw[dashed,thick,->] (0, 2) -- (8,2) node[right] {$x$};
+
+				\draw[blue,dashed] (4,2) -- (8, 4);
+				\draw[blue,dashed] (4, 4) -- (8, 2);
+
+				\draw[red,dashed] (0, 2) circle (0.3);
+				\draw[red,dashed] (4, 0) circle (0.3);
+				\draw[red,dashed] (4, 4) circle (0.3);
+				\draw[red,dashed] (8, 2) circle (0.3);
+				\draw[red] (0, 0) circle (0.3);
+				\draw[red] (0, 4) circle (0.3);
+				\draw[red] (8, 4) circle (0.3);
+				\draw[red] (8, 0) circle (0.3);
+				\draw[red] (4, 2) circle (0.3);
+
+				\draw (0,-0.1) node[below] {$x=-\pi/k_1$};
+				\draw (8,-0.1) node[below] {$x=\pi/k_1$};
+				\draw (-0.2, 0) node[left] {$y=-\pi/k_2$};
+				\draw (-0.2, 4) node[left] {$y=\pi/k_2$};
+
+				\draw (6, 0) node[below] {$v=0$};
+				\draw (6, 4) node[above] {$v=0$};
+				\draw (0, 3) node[left] {$u=0$};
+				\draw (8, 3) node[right] {$u=0$};
+
+				\draw[red,thick,->] (6.2, 0) -- (5.8, 0);
+				\draw[red,thick,->] (6.2, 4) -- (5.8, 4);
+				\draw[red,thick,<-] (6.2, 2) -- (5.8, 2);
+				\draw[red,thick,->] (1.8, 0) -- (2.2, 0);
+				\draw[red,thick,->] (1.8, 4) -- (2.2, 4);
+				\draw[red,thick,<-] (1.8, 2) -- (2.2, 2);
+				\draw[red,thick,->] (0, 0.8) -- (0, 1.2);
+				\draw[red,thick,->] (4, 0.8) -- (4, 1.2);
+				\draw[red,thick,->] (8, 0.8) -- (8, 1.2);
+				\draw[red,thick,<-] (0, 2.8) -- (0, 3.2);
+				\draw[red,thick,<-] (4, 2.8) -- (4, 3.2);
+				\draw[red,thick,<-] (8, 2.8) -- (8, 3.2);
+
+				\draw[smooth,blue] plot[tension=0.8] coordinates {(4,2) (5.2, 3) (4, 4)};
+				\draw[smooth,blue] plot[tension=0.8] coordinates {(8,2) (6.8, 3) (8, 4)};
+				\draw[smooth,blue] plot[tension=0.8] coordinates {(4,4) (6, 3.4) (8, 4)};
+				\draw[smooth,blue] plot[tension=0.8] coordinates {(4,2) (6, 2.6) (8, 2)};
+				\draw[blue,thick,->] (4,2) -- (5, 2.5);
+				\draw[blue,thick,->] (8,4) -- (7, 3.5);
+				\draw[blue,thick,<-] (5,3.5) -- (6, 3);
+				\draw[blue,thick,<-] (7,2.5) -- (6, 3);
+
+				\draw[red] (2, -1.5) circle (0.3);
+				\draw (2.5, -1.5) node[right] {upwelling};
+				\draw[red,dashed] (6, -1.5) circle (0.3);
+				\draw (6.5, -1.5) node[right] {downwelling};
+			\end{tikzpicture}
+		\end{center}
+	\item \textbf{Hexagons.} Vertical velocity component
+		\begin{equation}
+			w = W(z) \left[ \cos \frac{k}{2}(\sqrt{3}x+y) + \cos \frac{k}{2}
+			(\sqrt{3}x-y) + \cos ky \right]
+		\end{equation}
+		This is flow in a hexagon of side length $L = 4\pi/3k$.
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+				\draw[thick,->] (-2, 0) -- (2,0) node[right] {$x$};
+				\draw[thick,->] (0, -1.5) -- (0,1.5) node[right] {$y$};
+				\draw[red] (0,0) circle (0.1);
+				\draw (0.866, 0.5) -- (0, 1) -- (-0.866, 0.5) -- (-0.866,
+				-0.5) -- (0, -1) -- (0.866, -0.5) -- (0.866, 0.5);
+				\draw[red] (-0.433, -0.75) -- (0.433, 0.75);
+				\draw[red] (0.433, -0.75) -- (-0.433, 0.75);
+				\draw[red] (-0.866,0) -- (0.866, 0);
+
+				\draw[red,dashed] (-0.866, 0) -- (-0.433, 0.75) -- (0.433,
+				0.75) -- (0.866, 0) -- (0.433,-0.75) -- (-0.433, -0.75) --
+				(-0.866,0);
+
+				\draw (0.866, 0.5) node[right]
+				{$(\frac{\sqrt{3}}{2}L,\frac{1}{2}L)$};
+				\draw (0.866, -0.5) node[right]
+				{$(\frac{\sqrt{3}}{2}L,-\frac{1}{2}L)$};
+
+				\draw[red] (2, 1) circle (0.1);
+				\draw (2.1, 1) node[right] {upwelling};
+				\draw[red] (1.9, 0.7) -- (2.1, 0.7);
+				\draw (2.1, 0.7) node[right] {$w \uparrow$};
+				\draw[red,dashed] (1.9, 0.4) -- (2.1, 0.4);
+				\draw (2.1, 0.4) node[right] {$w \downarrow$};
+			\end{tikzpicture}
+		\end{center}
+\end{enumerate}
+
+
 
 
 \end{document}

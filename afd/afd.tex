@@ -761,5 +761,240 @@ where $J_n$ is the Bessel function of order $n$. Note that $J_0(x)$ satisfies
 The helical nature of this field is typical of force-free fields with $\lambda
 \ne 0$.
 
+\subsubsection{Magnetostatic equilibrium and magnetic buoyancy}
+A \emph{magnetostatic equilibrium} is a static solution ($\u = 0$) of the
+equation of motion, i.e. one satisfying
+\begin{equation}
+	0 = - \rho \nabla \Phi - \nabla p + \frac{1}{\mu_0} (\nabla \times \B)
+	\times \B
+\end{equation}
+together with $\nabla \cdot \B = 0$. While solutions do exist, inhomogeneities
+in $\B$ often result in a lack of equilibrium. A magnetic flux tube is an
+idealised situation in which the magnetic field is localised to the interior
+of a tube and vanishes outside.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-0.15,0.49) -- (4, 1.5);
+		\draw (4,1.5) arc (100:-80:0.5) -- (0, -0.5) arc (-80:-440:0.5);
+		\draw[red, ->] (-0.1, 0) -- (4, 1);
+		\draw[red, ->] (-0.1, 0.25) -- (4, 1.25);
+		\draw[red, ->] (-0.1, -0.25) -- (4, 0.75);
+		\draw[thick,->] (5, 1) -- (5, 0) node[midway,right] {$g$};
+		\draw[red] (1.6, 1.1) node {$\B$};
+	\end{tikzpicture}
+\end{center}
+
+To balance the total pressure at the interface, the gas pressure must be lower
+inside. Unless the temperatures are different, the density is lower inside. In
+a gravitational field the tube experiences an upward buoyancy force and tends
+to rise.
+
+\section{Conservation laws and hyperbolic structure.}
+\subsection{Introduction}
+An equation in conservative form is written
+\begin{equation}
+	\frac{\partial q}{\partial t} + \nabla \cdot \symbf{F} = 0
+\end{equation}
+where $q(\x,t)$ is the density of some property and $\symbf{F}(\x,t)$ is the
+flux density of the same quantity. The total amount in a time-independent
+volume $V$ is
+\begin{equation}
+	Q = \int_V q \, \diffd V
+\end{equation}
+and evolves due to the flux through the bounding surface
+\begin{equation}
+	\frac{\diffd Q}{\diffd t} = - \int_V \nabla \cdot \symbf{F} \, \diffd V =
+	- \int_S \symbf{F} \cdot \diffd \symbf{S}
+\end{equation}
+The prototypical choice for this equation is mass with $q = \rho, \symbf{F} =
+\rho \u$. 
+
+A \emph{material invariant} is a scalar field $f(\x,t)$ for which
+$\frac{\diffD f}{\diffD t} = 0$. Then $f$ is constant for each fluid element,
+and is therefore conserved following the fluid motion. An example is specific
+entropy $s$ in ideal fluid dynamics. Combined with mass conservation we obtain
+an equation in conservative form:
+\begin{equation}
+	\frac{\partial}{\partial t}(\rho f) + \nabla \cdot (\rho f \u) = 0
+\end{equation}
+
+\subsection{Total energy equation}
+Starting from the ideal MHD equations, we construct the total energy equation
+piece by piece. First, consider \emph{kinetic energy}:
+\begin{equation}
+	\rho \frac{\diffD}{\diffD t}\left( \frac{1}{2}u^2\right) = \rho \u \cdot
+	\frac{\diffD \u}{\diffD t} = - \rho \u \cdot \nabla \Phi - \u \cdot \nabla
+	p + \frac{1}{\mu_0} \u \cdot (\nabla \times \B) \times \B
+\end{equation}
+
+\emph{Gravitational energy} (assuming a non-self-gravitating fluid and $\Phi$
+independent of $t$):
+\begin{equation}
+	\rho \frac{\diffD \Phi}{\diffD t} = \rho \u \cdot \nabla \Phi
+\end{equation}
+\emph{Internal (thermal) energy} (using the fundamental thermodynamic identity
+$\diffd e = T \diffd s - p \diffd v$):
+\begin{equation}
+	\rho \frac{\diffD e}{\diffD t} = \cancel{\rho T \frac{\diffD s}{\diffD t}}
+	+ p \frac{\diffD \log \rho}{\diffD t} = - \rho \nabla \cdot \u
+\end{equation}
+
+Summing these three equations gives
+\begin{equation}
+	\rho \frac{\diffD}{\diffD t} \left( \frac{1}{2}\u^2 + \Phi + e\right) = -
+	\nabla \cdot (p \u) + \frac{1}{\mu_0} \u \cdot (\nabla \times \B) \times
+	\B
+\end{equation}
+
+Rewrite the Lorentz force term:
+\begin{equation}
+	\frac{1}{\mu_0} \u \cdot (\nabla \times \B) \times \B = \frac{1}{\mu_0}
+	(\nabla \times \B) \cdot (-\u \times \B) = \frac{1}{\mu_0} (\nabla \times
+	\B) \cdot \symbf{E}
+\end{equation}
+
+Using mass conservation:
+\begin{equation}
+	\frac{\partial}{\partial t} \left[ \rho (\frac{1}{2}\u^2 + \Phi +
+	\rho)\right] + \nabla \cdot \left[ \rho \u (\frac{1}{2}\u^2 + \Phi + \rho)
+	+ p \u\right] = \frac{1}{\mu_0} (\nabla \times \B) \cdot \symbf{E}
+\end{equation}
+Finally, consider the magnetic energy:
+\begin{equation}
+	\frac{\partial}{\partial t} \left( \frac{\B^2}{2\mu_0}\right) =
+	\frac{1}{\mu_0} \B \cdot \frac{\partial \B}{\partial t} = -
+	\frac{1}{\mu_0} \B \cdot (\nabla \times \symbf{E})
+\end{equation}
+The total energy equation is then
+\begin{equation}
+	\frac{\partial}{\partial t} \left[ \rho (\frac{1}{2}\u^2 + \Phi +
+	\rho) + \frac{\B^2}{2\mu_0} \right] + \nabla \cdot \left[ \rho \u
+	(\frac{1}{2}\u^2 + \Phi + h) + \frac{\symbf{E}\times\B}{\mu_0}\right] = 0
+\end{equation}
+where $h = e + p/\rho$ is the \emph{specific enthalpy} and we have used the
+identity
+\begin{equation}
+	\nabla \cdot (\symbf{E} \times \B) = \B \cdot \nabla \times \symbf{E} -
+	\symbf{E} \cdot \nabla \times \B
+\end{equation}
+to include the \emph{Poynting vector} (EM energy flux density)
+$\symbf{E}\times \B / \mu_0$. The total energy is therefore conserved.
+
+For a self-gravitating system satisfying Poisson's equation, the gravitational
+energy can instead be regarded as $-g^2/8\pi G$:
+\begin{equation}
+	\frac{\partial}{\partial t}\left( -\frac{g^2}{8\pi G}\right) =
+	-\frac{1}{4\pi G} \nabla \Phi \cdot \frac{\partial \nabla \Phi}{\partial
+	t}
+\end{equation}
+using the fact $g = - \nabla \Phi$. We can `integrate by parts' by writing
+\begin{equation}
+	\frac{\partial}{\partial t} \left( - \frac{g^2}{8\pi G}\right) + \nabla
+	\cdot \left( \frac{\Phi}{4\pi G} \frac{\partial \nabla \Phi}{\partial t}
+	\right) = \frac{\Phi}{4\pi G} \frac{\partial \nabla^2 \Phi}{\partial t} =
+	\Phi \frac{\partial \rho}{\partial t} = - \Phi \nabla \cdot (\rho \u)
+\end{equation}
+Hence in conservative form we have
+\begin{equation}
+	\frac{\partial}{\partial t} \left( - \frac{g^2}{8\pi G}\right) +
+	\nabla\cdot \left[ \rho \u(\frac{1}{2}\u^2 + \Phi + h) + \frac{\Phi}{4\pi
+		G} \frac{\partial \nabla \Phi}{\partial t} + \frac{\symbf{E} \times
+	\B}{\mu_0} \right] = 0
+\end{equation}
+The total energy equation is then
+\begin{equation}
+	\frac{\partial}{\partial t} \left[ \rho (\frac{1}{2}\u^2 + \rho) -
+	\frac{g^2}{8\pi G} + \frac{\B^2}{2\mu_0} \right] + \nabla \cdot \left[ \rho \u
+	(\frac{1}{2}\u^2 + \Phi + h) + \frac{\Phi}{4\pi G} \frac{\partial \nabla
+	\Phi}{\partial t} + \frac{\symbf{E}\times\B}{\mu_0}\right] = 0
+\end{equation}
+
+It is important to note that some of the gravitational and magnetic energy of
+an astrophysical body is stored in the exterior region, even if mass density
+vanishes there.
+
+\subsection{Helicity conservation}
+In ideal fluid dynamics there are geometrical or topological invariants:
+\begin{itemize}
+	\item (potential) vorticity/circulation
+	\item kinetic helicity $\u \cdot \symbf{\omega}$
+\end{itemize}
+
+The Lorentz force breaks these conservation laws, but new topological
+invariants associated with $\B$ appear. The \emph{magnetic helicity} in a
+volume $V$ with bounding surface $S$ is defined as
+\begin{equation}
+	H_m = \int_V \symbf{A} \cdot \B \, \diffd V
+\end{equation}
+where $\symbf{A}$ is the magnetic vector potential, such that $\B = \nabla
+\times \symbf{A}$. Now
+\begin{equation}
+	\frac{\partial \symbf{A}}{\partial t} = - \symbf{E} - \nabla \Phi_e = \u
+	\times \B - \nabla \Phi_e
+\end{equation}
+where $\Phi_e$ is the \emph{electrostatic potential} (`uncurl' of the
+induction equation). Thus
+\begin{equation}
+	\frac{\partial}{\partial t}(\symbf{A} \cdot \B) = - \B \cdot \nabla \Phi_e
+	+ \symbf{A} \cdot \nabla \times (\u \times \B)
+\end{equation}
+So $H_m$ is conserved in ideal MHD:
+\begin{equation}
+	\frac{\partial}{\partial t}(\symbf{A} \cdot \B) + \nabla \cdot \left[
+	\Phi_e \B + \symbf{A} \times (\u \times \B) \right] = 0
+\end{equation}
+Under a \emph{gauge transformation}
+\begin{align}
+	\symbf{A} &\to \symbf{A} + \nabla \chi \\
+	\Phi_e &\to \Phi_e - \frac{\partial \chi}{\partial t}
+\end{align}
+$\symbf{E}$ and $\B$ are invariant, but $H_m$ changes by
+\begin{equation}
+	\int_V \B \cdot \nabla \chi \, \diffd V = \int_V \nabla \cdot (\chi \B)
+	\, \diffd V = \int_S \chi \B \cdot \symbf{n} \, \diffd S
+\end{equation}
+So $H_m$ is not uniquely defined unless $\B\cdot\symbf{n} = 0$ on the surface
+$S$. $H_m$ is a \emph{pseudoscalar}, i.e. it changes sign under a reflection.
+Non-zero helicity $H_m \ne 0$ occurs only when $\B$ lacks reflection symmetry.
+$H_m$ can be interpreted topologically in terms of the twistedness and
+knottedness of $\B$ (see ES2, Q4). Since $\B$ is `frozen in' to the fluid and
+is deformed continuously by it, the topological properties of $\B$ are
+conserved.
+
+The equivalent conserved quantity in homentropic or barotropic ideal gas
+dynamics (without $\B)$ is the \emph{kinetic helicity}
+\begin{equation}
+	H_k = \int_V \u \cdot (\nabla \times \u) \, \diffd V
+\end{equation}
+The \emph{cross-helicity} in a volume $V$ is
+\begin{equation}
+	H_c = \int_V \u \cdot \B \, \diffd V
+\end{equation}
+It is helpful to write the equation of motion in ideal MHD in the form
+\begin{equation}
+	\frac{\partial u}{\partial t} + (\nabla \times \u) \times \u + \nabla
+	(\frac{1}{2}\u^2 + \Phi + h) = T \nabla s + \frac{1}{\mu_0 \rho} (\nabla
+	\times \B) \times \B
+	\label{eq:motion_2}
+\end{equation}
+using $\diffd h = T \diffd s + v \diffd p$. Thus
+\begin{equation}
+	\frac{\partial}{\partial t} (\u \cdot \B) + \nabla \cdot \left[ \u \times
+	(\u \times \B) + (\frac{1}{2}\u^2 + \Phi + h)\B \right] = T \B \cdot
+	\nabla s
+\end{equation}
+So $H_c$ is conserved in homentropic/barotropic flow, i.e. when $T \B \cdot
+\nabla s = 0 $.
+
+Bernoulli's theorem follows from the inner product of the equation of motion
+\eqref{eq:motion_2} with $\u$. In steady flow,
+\begin{equation}
+	\u \cdot \nabla (\frac{1}{2}\u^2 + \Phi + h) = 0
+\end{equation}
+i.e. the \emph{Bernoulli function} $\frac{1}{2}\u^2 + \Phi + h$ is constant
+along streamlines, but only if $\u \cdot \symbf{F}_m = 0$, i.e. if $\B$ does
+no work on the flow, for example if $\u$ is parallel to $\B$.
+
+
 
 \end{document}
