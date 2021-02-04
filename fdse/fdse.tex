@@ -777,6 +777,265 @@ where $\lambda$ satisfies
 Large $\mathcal{S}$ implies small $\lambda$, i.e. small growth, and vice
 versa. Note for water, $L/c_p \approx 80^{\circ}$C.
 
+\subsubsection{Quasi-steady approximation}
+When $\mathcal{S} \gg 1$ the Stefan condition implies growth is slow. Rescale
+time $t \to \mathcal{S} t$ so the time derivative becomes
+$\mathcal{O}(\mathcal{S}^{-1})$. Then
+\begin{equation}
+	\frac{\partial^2 T}{\partial x^2} \approx 0 \implies \frac{\partial
+	T}{\partial x} = \frac{T_m - T_B}{a}
+\end{equation}
+i.e. there is a linear conduction profile in the solid. The Stefan condition
+is now
+\begin{equation}
+	\rho L \dot{a} = k \left.\frac{\partial T}{\partial x} \right|_a \approx
+	\frac{k(T_m - T_B)}{a}
+\end{equation}
+where $a = \sqrt{2\kappa t / \mathcal{S}}$. This definition of $a$ follows
+from: $\mathcal{S} \gg 1 \implies \lambda \ll 1$. Then
+\begin{equation}
+	\sqrt{\pi} \lambda e^{\lambda^2} \erf \lambda = \frac{1}{\mathcal{S}}
+	\approx \sqrt{\pi} \lambda \cdot 1 \cdot \frac{2}{\sqrt{\pi}} \lambda
+\end{equation}
+Hence $\lambda \sim (1/2\mathcal{S})^{1/2}$, from which $a(t) = 2\lambda
+\sqrt{\kappa t}$ gives $a$ as above.
+
+Note: as $t \to 0$, $\dot{a} \sim t^{-1/2} \to \infty$. This is physically
+implausible; in fact growth is regularised by crystal kinetics which is not
+included in this model.
+
+\subsection{Phase change and fluid flow}
+Consider 2D stagnation point flow driving a steady melting of a solid, with
+fluid velocity
+\begin{equation}
+	\symbf{u} = (Ex, -Ez)
+\end{equation}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[draw=none,fill=gray!20] (0,0) rectangle (5, -1);
+		\draw (0,0) -- (5,0) node[right] {$z=0$};
+		\draw (5.5, 2.5) node {liquid};
+		\draw (5.5, -1) node {solid};
+		\draw[dashed] (2.5, 0) -- (2.5, 3);
+		\draw[thick,->] (2.5,0) -- (3, 0) node[below] {$x$};
+		\draw[thick,->] (2.5, 0) -- (2.5, 0.5) node[right] {$z$};
+		\draw[thick,->] (1, 0.5) -- (1, -0.5) node[left] {$v$};
+		\draw[red] (-0.5, 0) node {$T=T_m$};
+		\draw[red] (-0.5, 2) node {$T_{\infty} > T_m$};
+		\draw[blue,<-,smooth] plot[domain=0:2.167] ({\x},{-1/(\x-2.5)});
+		\draw[blue,->,smooth] plot[domain=2.833:5] ({\x},{1/(\x-2.5)});
+		\draw[blue,<-,smooth] plot[domain=0:1.5] ({\x},{-3/(\x-2.5)});
+		\draw[blue,->,smooth] plot[domain=3.5:5] ({\x},{3/(\x-2.5)});
+	\end{tikzpicture}
+\end{center}
+
+Steady-state in a translating frame of reference (i.e. moving with boundary at
+speed $v$) implies $T = T(z)$ is a function of $z$ only. In steady-state are
+left with a balance of advection and diffusion:
+\begin{equation}
+	(v-Ez)\frac{\partial T}{\partial z} = \kappa \frac{\partial^2 T}{\partial
+	z^2}
+\end{equation}
+where $v$ is the melt rate. Neglecting advection by the frame (justify later)
+we have solution
+\begin{equation}
+	T = T_m + (T_{\infty} - T_m) \erf \left( \sqrt{\frac{E}{2\kappa}} z \right)
+\end{equation}
+The Stefan condition gives
+\begin{equation}
+	-\rho L v = - k\left.\frac{\partial T}{\partial z} \right|_{z=0} = -k
+	\frac{2}{\sqrt{\pi}} (T_\infty - T_m) \sqrt{\frac{E}{2\kappa}}
+\end{equation}
+Hence the melt rate can be written as
+\begin{equation}
+	v = \frac{1}{\mathcal{S}} \sqrt{\frac{2E \kappa}{\pi}}
+\end{equation}
+
+Note the following:
+\begin{itemize}
+	\item The melt rate $v$ increases as flow rate $E$ increases ($v \sim
+		\sqrt{E}$)
+	\item The thermal boundary layer has scale $\delta_T \sim \sqrt{\kappa/E}$.
+		Thus $\delta_T$ decreases as $E$ increases, i.e. the flow compresses
+		the thermal boundary layer
+	\item The ratio of frame advection to flow compression is
+		\begin{equation}
+			\frac{\text{advection}}{\text{compression}} \sim \frac{v}{Ez} \sim
+			\frac{v}{E\delta T} \sim \frac{v}{\sqrt{E\kappa}} \sim
+			\frac{1}{\mathcal{S}}
+		\end{equation}
+		So neglect of frame advection is valid if $\mathcal{S} \gg 1$.
+\end{itemize}
+
+\subsection{Solidification with vigorous convection}
+Consider solidification of a liquid with vigorous convection, so that there is
+a well-mixed interior temperature $\overline{T}(t)$ in the liquid.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[draw=none,fill=gray!20] (0,0) rectangle (5, 1);
+		\draw (0,0) -- (5, 0) node[right] {$z=a(t)$};
+		\draw[dashed, blue] (0,-0.5) -- (5, -0.5);
+		\draw[->] (1, 0.5) -- (1, 0);
+		\draw[->] (1, -1) -- (1, -0.5);
+		\draw (0, -0.25) node {thermal BL};
+		\draw[fill=red,draw=none] (3, 0) circle (0.05);
+		\draw[red] (3.15,0) node[above] {$T_m$};
+		\draw[red] (3,0) -- (2.5, 1);
+		\draw[red] (3.3, -0.55) -- (3.3, -2) node[right] {$\overline{T}(t)$};
+		\draw[red,->] (1, -1.5) arc(0:300:0.2);
+		\draw[red,->] (1.5, -1.7) arc (160:-140:0.2);
+		\draw[red,->] (3.75, -0.7) arc (140:-160:0.2);
+		\draw[red,->] (4.5, -1) arc (30:320:0.2);
+	\end{tikzpicture}
+\end{center}
+
+Recall from earlier sections that high Rayleigh number convection has heat
+flux
+\begin{equation}
+	F_T = \lambda k \left( \frac{\rho_0 g \alpha}{\kappa \mu}\right)^{1/3}
+	\left( \overline{T} - T_m\right)^{4/3}
+\end{equation}
+Consider a control volume around the solid--liquid interface \emph{and} the
+thermal boundary layer, and impose energy conservation. Note that the control
+volume is in a frame of reference moving at the melt rate $v$ with the
+interface.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[draw=none,fill=gray!20] (0,0) rectangle (5, 1);
+		\draw (0,0) -- (5, 0) node[right] {$z=a(t)$};
+		\draw[dashed, blue] (0,-0.5) -- (5, -0.5);
+		\draw[->] (0.3, 0.5) -- (0.3, 0);
+		\draw[->] (0.3, -1) -- (0.3, -0.5);
+		\draw (0, -0.25) node {$\delta_T$};
+		\draw[fill=red,draw=none] (3, 0) circle (0.05);
+		\draw[red] (3.15,0) node[above] {$T_m$};
+		\draw[red] (3,0) -- (2.5, 1);
+		\draw[red] (3.3, -0.55) -- (3.3, -2) node[right] {$\overline{T}(t)$};
+		\draw[dashed] (1.5, 0.7) -- (4.5, 0.7) -- (4.5, -1) -- (1.5, -1) -- (1.5,
+		0.7);
+		\draw[->] (2, -1.75) -- (2, -0.75) node[midway,right] {$F_T$};
+		\draw[->] (3.7, -1.75) -- (3.7, -0.75) node[midway,right] {$v$};
+		\draw[->] (3.7, 0.4) -- (3.7, 1.4) node[midway,right] {$v$};
+	\end{tikzpicture}
+\end{center}
+
+Conservation of energy with melt rate $v$ gives
+\begin{equation}
+	\rho (H_l - H_s)v + \rho c_p (\overline{T}-T_m)v + F_T - k \left.\frac{\partial
+	T}{\partial z}\right|_{a^-} = 0
+\end{equation}
+Rearranging, we have
+\begin{equation}
+	\rho \left[ L + c_p(\overline{T}-T_m)\right] v = k \left.\frac{\partial
+	T}{\partial z}\right|_{a^-} - F_T
+\end{equation}
+The first term is the release of latent heat, the second is cooling across the
+boundary layer, the third is conduction in the solid and the final term is the
+convective heat flux. This is the modified Stefan condition (needed for ES1
+Q4).
+
+\subsection{Earth's core}
+Consider solidification of the Earth's inner core, driven by heat flux $F_m$
+from the mantle. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[fill=black] (0,0) circle (0.05);
+		\draw[fill=red!20] (0,0) circle (2.2);
+		\draw[fill=gray!50] (0,0) circle (1);
+		\draw (0,0) -- (1.32,1.76) node[midway,right] {$R_o$};
+		\draw (0,0) -- (0.88,0.475) node[midway,below] {$R_i$};
+		\draw[red,thick,->] (1.5, 2) --++ (0.75,1) node[midway,right] {$F_m$};
+		\draw (0, 1.5) node {\tiny outer core, liquid};
+		\draw (0, -1.2) node {\tiny inner core, solid};
+		\draw[->] (0, -1.1) -- (0, -0.5);
+		\draw (2.2, 1.8) node {\tiny mantle};
+	\end{tikzpicture}
+\end{center}
+
+We require a relation between the melt temperature $T_m = T_m(p)$ and the
+pressure $p$, which is provided by the \emph{Clausius-Clapeyron equation}:
+\begin{equation}
+	\rho_s \frac{L}{T_m} \frac{\partial T_m}{\partial p} =
+	\frac{\rho_s}{\rho_l} - 1
+\end{equation}
+The RHS quantity is position for iron in the inner core. To leading order, the
+pressure is hydrostatic
+\begin{align}
+	\frac{\partial p}{\partial r} = - \rho g(r) &= - \rho \frac{G}{r^2} \left(
+	\frac{4\pi}{3} r^3 \rho\right) = - \frac{4\pi}{3}G \rho^2 r \\
+\implies p &= p_0 - \frac{2\pi}{3} G \rho^2 r^2
+\end{align}
+Substituting this form of the pressure into the Clausius-Clapeyron equation
+gives
+\begin{equation}
+	T_m \approx T_0 - \frac{2\pi}{3} \frac{G T_0 (\rho_s - \rho_l)}{L} r^2
+\end{equation}
+
+The radius at which the core temperature $T$ is larger than $T_m$ is where the
+solid--liquid interface exists, i.e. at $r=R_i$.
+\begin{center}
+	\begin{tikzpicture}[scale=3];
+		\draw[thick,->] (-0.1, 0) -- (2.5, 0) node[right] {$r$};
+		\draw[thick,->] (0, -0.1) -- (0, 1);
+		\draw[red] plot[domain=0:2] ({\x},{1+1/(\x-3)});
+		\draw[blue] plot[domain=0:1.667] ({\x},{1.2+1/(\x-2.5)});
+		\draw[blue] (0,0.8) node[left] {$T_m$};
+		\draw[red] (0,0.667) node[left] {$T$};
+		\draw[dashed] (1.149,0.4597) -- (1.149, 0) node[below] {$R_i$};
+	\end{tikzpicture}
+\end{center}
+
+Consider the two choices of limiting cases:
+\begin{enumerate}
+	\item No heat flux from inner core
+	\item Perfectly conducting inner core $T_{IC} = T_m$. Outer core is
+		convecting vigorously so assume well mixed, $T$ is adiabatic, i.e.
+		`potential temperature' is isothermal.
+\end{enumerate}
+
+The balance of heat fluxes is
+\begin{equation}
+	4\pi R_0^2 F_m = \frac{4\pi}{3}\left[ R_0^3 - R_i^3\right] \rho c_p
+	\frac{\partial T_m}{\partial t} + \rho L 4\pi R_i^2 \frac{\diffd
+	R_i}{\diffd t}
+\end{equation}
+In case $(ii)$ the $R_i^3$ term in the first RHS term is neglected. In this
+case,
+\begin{equation}
+	4\pi R_0^2 F_m = \frac{4\pi}{3} R_0^3 \rho c_p \cdot \frac{4\pi}{3}
+	\frac{G T_m \delta \rho}{L} R_i \dot{R}_i + \rho L4\pi R_i^2 \dot{R}_i
+\end{equation}
+Hence the time averaged mantle heat flux is
+\begin{equation}
+	\frac{1}{m} \int_0^t F_m(t') \,\diffd t' = \zeta^2 + \mathcal{S} \zeta^3
+\end{equation}
+where $\zeta = R_i/R_o$, the Stefan number is $\mathcal{S} = \rho L R_o/m$ and
+\begin{equation}
+	m = \frac{2}{9} R_0^3 \rho c_p \frac{G T_m \delta \rho}{L}
+\end{equation}
+Real-world measurements give $\zeta = 1/3, \mathcal{S} = 0.4$, so growth is
+controlled by the mantle heat flux balancing cooling (rather than latent
+heat). Note that knowing $\zeta = 1/3$ does not allow a good estimate of the
+age of the inner core, given the upper and lower bounds:
+\begin{center}
+	\begin{tikzpicture}[scale=2.5]
+		\draw[thick,->] (-0.1, 0) -- (2.5, 0) node[right] {$t$ (Gyr)};
+		\draw[thick,->] (0, -0.1) -- (0, 1.5) node[left] {$\zeta$};
+		\draw[blue] plot[domain=0:2.5,samples=50] ({\x},{1-1/(\x+1)^2});
+		\draw[blue] plot[domain=0:2.5,samples=50] ({\x},{1.3-2/(\x+1.24)^2});
+		\draw (2.5, 1.15) node[right] {upper bound};
+		\draw (2.5, 0.9) node[right] {lower bound};
+		\draw[red,dashed] (0, 0.7) -- (0.826, 0.7);
+		\draw[red,dashed] (0.826, 0.7) -- (0.826, 0);
+		\draw[red,dashed] (0.586, 0.7) -- (0.586, 0);
+	\end{tikzpicture}
+\end{center}
+
+
+
+
+
 
 
 \end{document}

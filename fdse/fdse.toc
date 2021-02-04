@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {section}{\numberline {2}Plate cooling}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}Thermal problem}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.1}Thermal problem}{3}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Ocean depth away from mid-ocean ridge}{4}{subsection.2.2}
 \contentsline {section}{\numberline {3}Natural convection}{5}{section.3}
 \contentsline {subsection}{\numberline {3.1}Static stability}{5}{subsection.3.1}
@@ -15,3 +15,7 @@
 \contentsline {section}{\numberline {4}Solidification/melting}{11}{section.4}
 \contentsline {subsection}{\numberline {4.1}The Stefan condition}{11}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}1D solification from a cooled boundary}{12}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Quasi-steady approximation}{13}{subsubsection.4.2.1}
+\contentsline {subsection}{\numberline {4.3}Phase change and fluid flow}{13}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Solidification with vigorous convection}{14}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Earth's core}{15}{subsection.4.5}

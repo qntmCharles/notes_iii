@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  2 FEB 2021 15:44
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  4 FEB 2021 12:41
  restricted system commands enabled.
 **fdse.tex
 (./fdse.tex
@@ -3175,7 +3175,7 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 26.
 an8-bold.luc) [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] <earthquakes.png, id=78, 1
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] <earthquakes.png, id=98, 1
 697.34125pt x 900.36375pt>
 File: earthquakes.png Graphic file (type png)
 
@@ -3187,44 +3187,47 @@ ular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/
 otl/lmromanslant10-regular.luc) [2<./earthquakes.png>]
 [3](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman6-regula
 r.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl
-/lmroman6-regular.luc) [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 782.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 782.
-
-(./fdse.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 782.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 782.
+/lmroman6-regular.luc) [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
+[15] [16
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1041.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1041.
+ (./fdse.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1041.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1041.
 Package rerunfilecheck Info: File `fdse.out' has not changed.
-(rerunfilecheck)             Checksum: 3CC4CB4FADD47BE75A48B81B5AA0E98A;726.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 782.
+(rerunfilecheck)             Checksum: 2628842356F735E57ECD5CB1917EE172;1040.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1041.
 )
 
 Here is how much of LuaTeX's memory you used:
- 53027 strings out of 494577
+ 53329 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 9801 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 1092 glue, 1 kern, 417 attribute, 64 glue_spec, 417
+ 11859 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 1338 glue, 1 kern, 501 attribute, 64 glue_spec, 501
  attribute_list, 1 write nodes
-   avail lists: 1:1,2:1387,3:480,4:100,5:235,6:1960,7:546,8:64,9:491,10:17,11:16
-0
- 55342 multiletter control sequences out of 65536+600000
- 70 fonts using 14391127 bytes
- 74i,13n,108p,8842b,880s stack positions out of 5000i,500n,10000p,200000b,100000s
-</usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/share/texmf/
-fonts/opentype/public/lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opent
-ype/public/lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opentype/public/
-lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
-0-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmromanslant10-regular.o
-tf></usr/share/texmf/fonts/opentype/public/lm/lmroman8-bold.otf></usr/share/texm
-f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
-/public/lm/lmroman8-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmrom
-an12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></
-usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf
-/fonts/opentype/public/lm/lmroman12-bold.otf>
-Output written on fdse.pdf (13 pages, 2191165 bytes).
+   avail lists: 1:1,2:1459,3:480,4:111,5:237,6:2083,7:582,8:64,9:491,10:17,11:16
+9
+ 55635 multiletter control sequences out of 65536+600000
+ 70 fonts using 14390959 bytes
+ 74i,13n,108p,8842b,874s stack positions out of 5000i,500n,10000p,200000b,100000s
+</usr/share/texmf/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texm
+f/fonts/opentype/public/lm/lmroman10-bold.otf></usr/share/texmf/fonts/opentype/p
+ublic/lm-math/latinmodern-math.otf></usr/share/texmf/fonts/opentype/public/lm-ma
+th/latinmodern-math.otf></usr/share/texmf/fonts/opentype/public/lm-math/latinmod
+ern-math.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-italic.otf></u
+sr/share/texmf/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/share/t
+exmf/fonts/opentype/public/lm/lmroman8-bold.otf></usr/share/texmf/fonts/opentype
+/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmrom
+an8-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf
+></usr/share/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/
+fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/
+public/lm/lmroman12-bold.otf>
+Output written on fdse.pdf (16 pages, 2217072 bytes).
 
-PDF statistics: 259 PDF objects out of 1000 (max. 8388607)
- 198 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 131072)
- 104 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 301 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 131072)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 
