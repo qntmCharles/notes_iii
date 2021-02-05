@@ -995,6 +995,138 @@ i.e. the \emph{Bernoulli function} $\frac{1}{2}\u^2 + \Phi + h$ is constant
 along streamlines, but only if $\u \cdot \symbf{F}_m = 0$, i.e. if $\B$ does
 no work on the flow, for example if $\u$ is parallel to $\B$.
 
+\subsection{Symmetries}
+The equations of ideal gas dynamics and MHD have numerous symmetries. For an
+isolated, self-gravitating system:
+\begin{itemize}
+	\item Translations of time and space, and rotations of space: related (via
+		Noether's theorem) to the conservation of energy, momentum and angular
+		momentum
+	\item Reversal of time: related to the absence of dissipation
+	\item Reflections of space (but note that $\B$ is a pseudovector and
+		behaves oppositely to $\u$ under a reflection)
+	\item Galilean transformations
+	\item Reversal of the sign of $\B$
+	\item Similarity transformations: if space and time are rescaled by
+		independent factors $\lambda$ and $\mu$, i.e.
+		\begin{equation}
+			\x \to \lambda \x, \hspace{2em} t \to \mu t
+		\end{equation}
+		then (for a perfect gas) we have $\u \to \lambda \mu^{-1}\u, \rho \to
+		\mu^{-2}\rho, p \to \lambda^2 \mu^{-4} p, \Phi \to \lambda^2 \mu^{-2}
+		\Phi, \B \to \lambda \mu^{-2}\B$. 
+\end{itemize}
 
+For a non-isolated system with an external potential $\Phi_{\text{ext}}$,
+these symmetries (other than $\B \to -\B$) apply only if $\Phi_{\text{ext}}$
+has them. But for a non-self-gravitating perfect gas, the mass can be rescaled
+by any factor $\lambda$:
+\begin{equation}
+	\rho \to \lambda \rho, \hspace{1em} p \to \lambda p, \hspace{1em} \B \to
+	\lambda^{1/2}\B
+\end{equation}
+
+\subsection{Hyperbolic structure}
+The hyperbolic structure is one way of understanding wave modes and
+information propagation in a fluid. It is fundamental to the construction of
+some numerical methods. We neglect gravity here, because it involves
+instantaneous action at a distance, i.e. not a finite wave speed. We write the
+equations of ideal gas dynamics as
+\begin{align}
+	\frac{\partial \rho}{\partial t} + \u \cdot \nabla \rho + \rho \nabla
+	\cdot \u &= 0 \\
+	\frac{\partial p}{\partial t} + \u \cdot \nabla p + \gamma p \nabla
+	\cdot \u &= 0 \\
+	\frac{\partial \u}{\partial t} + \u \cdot \nabla \u + \frac{1}{\rho}
+	\nabla p &= 0
+\end{align}
+and combine in the form
+\begin{equation}
+	\frac{\partial \symbf{U}}{\partial t} + \symsf{A}_i \frac{\partial
+	\symbf{U}}{\partial x_i} = 0 
+\end{equation}
+where $\symbf{U}$ is a 5D `state vector'
+\begin{equation}
+	\symbf{U} = \begin{pmatrix} \rho \\ p \\ u_x \\ u_y \\ u_z \end{pmatrix}
+\end{equation}
+and $\symsf{A}_x, \symsf{A}_y, \symsf{A}_z$ are $5\times 5$ matrices. This works because every term in
+the equation involves a first derivative with respect to either time or space.
+\begin{align}
+	\symsf{A}_x &= \begin{pmatrix} u_x & & \rho & & \\ & u_x & \gamma p & & \\ &
+		1/\rho & u_x & & \\ & & &u_x& \\ &&&& u_x
+	\end{pmatrix} \hspace{2em}
+		\symsf{A}_y = \begin{pmatrix} u_y & & &\rho  & \\ & u_y & &\gamma p & \\ &
+	 & u_y & & \\ &1/\rho & &u_y& \\ &&&& u_y
+	\end{pmatrix} \\
+			\symsf{A}_z &= \begin{pmatrix} u_z & & &&\rho \\ & u_z & & &\gamma p \\ &
+	 & u_z & & \\ & & &u_z& \\ &1/\rho&&& u_z
+	\end{pmatrix}
+\end{align}
+
+The system of equations is hyperbolic if the eigenvalues of $\symsf{A}_i n_i$ are real
+for any unit vector $\symbf{n}$ and if the eigenvectors span the 5D space. The
+eigenvalues can be identified as wave speeds, and the eigenvectors as wave
+modes, with $\symbf{n}$ being the unit wavevector, locally normal to the
+wavefronts. 
+
+Taking $\symbf{n} = \hat{\symbf{x}}$ WLOG, we find
+\begin{equation}
+	\text{det}\left( \symsf{A}_x - v \symsf{I}\right) = - (v-u_x)^3 \left[
+	(v-u_x)^2 - v_s^2 \right]
+\end{equation}
+where $v_s = \sqrt{\gamma p / \rho}$ is the \emph{adiabatic sound speed}. The
+wave speeds $v$ are real and the system is indeed hyperbolic. Two modes are
+\emph{sound waves} (acoustic waves) which have speed $u_x \pm v_s$ and
+propagate at the sound speed relative to the fluid. Their eigenvectors
+\begin{equation}
+	\begin{pmatrix} \rho \\ \gamma p \\ \pm v_s \\0 \\ 0 \end{pmatrix}
+\end{equation}
+involve perturbations of density, pressure and longitudinal velocity. The
+other 3 modes have $v = u_x$ and do not propagate relative to the fluid. Their
+eigenvectors are
+\begin{equation}
+	\begin{pmatrix} 1  \\ 0 \\ 0 \\ 0 \\ 0 \end{pmatrix}, \hspace{1em}
+	\begin{pmatrix} 0  \\ 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}, \hspace{1em}
+	\begin{pmatrix} 0  \\ 0 \\ 0 \\ 0 \\ 1 \end{pmatrix}
+\end{equation}
+The \emph{entropy wave} perturbs the density but not the pressure. Since $s =
+s(\rho, p)$, the entropy is perturbed. The \emph{vortical waves} perturb the
+tranverse velocity and therefore the vorticity. These waves propagate at the
+fluid velocity because entropy and vorticity are conserved. 
+
+To extend the analysis to ideal MHD, consider the induction equation in the
+form
+\begin{equation}
+	\frac{\partial \B}{\partial t} + \u \cdot \nabla \B - \B \cdot \nabla \u +
+	\B (\nabla \cdot \u) = 0
+\end{equation}
+and include the Lorentz force in the equation of motion:
+\begin{equation}
+	\frac{\partial \u}{\partial t} + \u \cdot \nabla \u +
+	\frac{1}{\rho}\left(p + \frac{B^2}{2\mu_0}\right) - \frac{1}{\mu_0 \rho}
+		\B \cdot \nabla \B = 0
+\end{equation}
+Every term still involves a first derivative, so the MHD equations can be
+written as
+\begin{equation}
+	\frac{\partial \symbf{U}}{\partial t} + \symsf{A}_i \frac{\partial
+	\symbf{U}}{\partial x_i} = 0 
+\end{equation}
+where $\symbf{U}$ is now an 8D state vector and the $\symsf{A}_i$ are three
+$8\times8$ matrices. The characteristic polynomial of $A_x$ is
+\begin{equation}
+	\text{det}\left( \symsf{A}_x - v \symsf{I}\right) = (v-u_x)^2 \left(
+	(v-u_x)^2 - v_{ax}^2\right)\left( (v-u_x)^4 -
+	(v_s^2+v_a^2)(v-u_x)^2 + v_s^2 v_{ax}^2\right)
+\end{equation}
+The wave speeds $v$ are real and the system is hyperbolic. The MHD wavemodes
+will be examined in section 5. In this representation, there are two modes
+with $v = u_x$ that do not propagate relative to the fluid. One is the entropy
+wave, which is physical and involves only a density perturbation. The other is
+the `$\nabla \cdot \B$' mode which is unphysical and involves a perturbation
+of $\nabla \cdot \B$ (i.e. of $B_x$, in the case $\symbf{n} =
+\hat{\symbf{x}}$). This must be eliminated by imposing the constraint $\nabla
+\cdot \B = 0$. The vortical waves are replaced by Alfv\'{e}n waves with speeds
+$u_x \pm v_{ax}$.
 
 \end{document}
