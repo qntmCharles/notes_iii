@@ -5,3 +5,8 @@
 \contentsline {paragraph}{\nonumberline Boundary conditions.}{5}{section*.3}
 \contentsline {paragraph}{\nonumberline Basic state.}{5}{section*.4}
 \contentsline {paragraph}{\nonumberline Normal mode solution.}{6}{section*.5}
+\contentsline {section}{\numberline {4}Centrifugal instabilities}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}Rayleigh's criterion}{9}{subsection.4.1}
+\contentsline {paragraph}{\nonumberline What distributions of $I(r)$ could be stable?}{10}{section*.6}
+\contentsline {subsection}{\numberline {4.2}Derivation via linear stability analysis}{11}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Taylor vortices}{12}{subsection.4.3}

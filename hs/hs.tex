@@ -5,7 +5,7 @@
 \setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
 \setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
 
-\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes.misc, pgfplots.fillbetween}
 \renewcommand{\u}{\symbf{u}}
 \newcommand{\Ra}{\text{Ra}}
 
@@ -660,6 +660,285 @@ follows.
 			\end{tikzpicture}
 		\end{center}
 \end{enumerate}
+
+\section{Centrifugal instabilities}
+Flows with curved streamlines can be unstable due to centrifugal effects.
+\subsection{Rayleigh's criterion}
+We will concentrate on axisymmetric flows. Consider an azimuthal flow 
+\begin{equation}
+	\u = u_\theta(r)\hat{\symbf{\theta}} = r \Omega(r)\hat{\symbf{\theta}}
+\end{equation}
+The inviscid, axisymmetric equations for a general flow $\u = u_r
+\hat{\symbf{r}} + u_\theta \hat{\symbf{\theta}} + u_z \hat{\symbf{z}}$ are
+
+\begin{align}
+	\frac{\partial u_r}{\partial t} + \u \cdot \nabla u_r -
+	\frac{u_\theta^2}{r} &= - \frac{1}{\rho}\frac{\partial p}{\partial r} \\
+	\frac{\partial u_\theta}{\partial t} + \u \cdot \nabla u_\theta +
+	\frac{u_r u_\theta}{r} &= - \cancel{\frac{1}{\rho}\frac{1}{r}\frac{\partial
+p}{\partial \theta}} \\
+	\frac{\partial u_z}{\partial t} + \u \cdot \nabla u_z
+	 &= - \frac{1}{\rho}\frac{\partial p}{\partial z} \\
+	 \frac{1}{r}\frac{\partial}{\partial r}(ru_r) +
+	 \cancel{\frac{1}{r}\frac{\partial u_\theta}{\partial \theta}} +
+			\frac{\partial u_z}{\partial z} &= 0 
+\end{align}
+where $\u \cdot \nabla = u_r \frac{\partial}{\partial r} + \cancel{
+\frac{u_\theta}{r}\frac{\partial}{\partial \theta}} + u_z
+\frac{\partial}{\partial z}$. Cancelled terms are absent in the axisymmetric
+setting. The \emph{centrifugal} term is $-u_\theta^2/r$ in the $r$-momentum
+equation. The $\theta$-momentum equation can be rearranged, and multiplied by
+$r$ to give a material conservation equation:
+\begin{align}
+	\frac{\partial}{\partial r} (ru_\theta) + r u_r \frac{\partial
+	u_\theta}{\partial r} + u-z \frac{\partial}{\partial z} (ru_\theta) +
+	r\left(\frac{u_r u_\theta}{r}\right) &= 0 \\
+	\implies \frac{\partial}{\partial t} (ru_\theta) + u_r
+	\frac{\partial}{\partial r}(ru_\theta) + u_z \frac{\partial}{\partial
+z}(ru_\theta) &= 0  \\
+\implies \frac{\diffD}{\diffD t} (ru_\theta) &= 0
+\end{align}
+
+This expresses conservation of angular momentum: the angular momentum per unit
+mass is $I = ru_\theta$, hence $\frac{\diffD I}{\diffD t} = 0$. This result
+also follows from Kelvin's circulation theorem, using the circulation $\Gamma
+= 2\pi r u_\theta$ for an inviscid fluid. The statement says that if $\u =
+u_\theta(r)\hat{\symbf{\theta}}$ (i.e. axisymmetric azimuthal flow) then $I =
+I(r)$ is a basic state.
+
+
+\paragraph{What distributions of $I(r)$ could be stable?}
+Rayleigh's argument considers 2 rings of fluid at radius $r_1$ and $r_2 (>
+r_1)$ respectively. 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,blue,->] (0,0) [partial ellipse=0:360:2 and .7];
+		\draw[thick,blue,->] (0,0) [partial ellipse=0:360:2.5 and .9];
+		\draw (0,0)  -- (2, 0) node[midway,below] {$r_1$};
+		\draw (0,0)  -- (1.5, 0.72) node[midway,above] {$r_2$};
+		\draw[thick,->] (0,0) -- (0, 1.5);
+	\end{tikzpicture}
+\end{center}
+
+The kinetic energy is
+\begin{equation}
+	E = \frac{1}{2}\rho\left(\frac{I_1^2}{r_1^2} + \frac{I_2^2}{r_2^2}\right)
+\end{equation}
+Now suppose the rings swap places due to a perturbation, but they keep their
+angular momentum (since it is materially conserved). The new KE is
+\begin{equation}
+	E_{\text{new}} = \frac{1}{2} \left( 
+	\frac{I_2^2}{r_1^2} + \frac{I_1^2}{r_2^2}\right)
+\end{equation}
+Hence the swap has resulted in an energy change
+\begin{equation}
+	\Delta E = (I_2^2-I_1^2)\left(\frac{1}{r_1^2} - \frac{1}{r_2^2}\right)
+\end{equation}
+We can expect instability if $\Delta E < 0$. Since $r_2 > r_1$, the second
+factor is positive hence
+\begin{equation}
+	\Delta E < 0 \iff I_2^2 < I_1^2
+\end{equation}
+Hence Rayleigh's criterion for stability is $I_2^2 \ge I_1^2$ or equivalently
+\begin{equation}
+	\frac{\diffd I^2}{\diffd r} \ge 0
+\end{equation}
+i.e. angular momentum does not increase outwards. Note that with $I =
+ru_\theta = r^2 \Omega$ we have the condition
+\begin{equation}
+	\frac{\diffd}{\diffd r}\left( r^4 \Omega^2 \right) \ge 0
+\end{equation}
+for stability. This is often written using the \emph{Rayleigh determinant}
+\begin{equation}
+	\Phi \equiv \frac{1}{r}
+	\frac{\diffd}{\diffd r}\left( r^4 \Omega^2 \right)
+\end{equation}
+Hence stability is predicted if $\Phi \ge 0$.
+
+\subsection{Derivation via linear stability analysis}
+Consider Taylor-Couette geometry: cylindrical walls at $r_1$ and $r_2$.
+Consider an inviscid base state $\u = r \Omega(r) \hat{\symbf{\theta}}$, with
+axisymmetric perturbations $\u'$. We have incompressibility
+\begin{equation}
+	\nabla \cdot \u' = 0 \implies \frac{1}{r}\frac{\partial}{\partial
+	r}(ru_r') + \frac{\partial u_z'}{\partial z} = 0
+\end{equation}
+The Euler equations for this perturbation are
+\begin{align}
+	\frac{\partial u_r'}{\partial t} - \frac{2r \Omega u_\theta'}{r} &=
+	-\frac{1}{\rho} \frac{\partial p'}{\partial r} \\
+	\frac{\partial u_\theta'}{\partial t} + u_r'\frac{\diffd}{\diffd
+r}(r\Omega) + \frac{u_r' r \Omega}{r} &= 0 \\
+\frac{\partial u_z'}{\partial z} &= -\frac{1}{\rho}\frac{\partial p'}{\partial
+z}
+\end{align}
+Now specify normal mode decomposition
+\begin{equation}
+	\begin{pmatrix} u_r' \\ u_\theta' \\ u_z' \\ p' \end{pmatrix} = 
+	\begin{pmatrix} \hat{u}_r(r) \\ \hat{u}_\theta(r) \\ \hat{u}_z(r) \\
+	\hat{p}(r) \end{pmatrix} e^{ikz + \sigma t}
+\end{equation}
+Only axisymmetric perturbations are considered. The Euler equations become
+\begin{align}
+	\frac{1}{r}\frac{\diffd}{\diffd r}(r\hat{u}_r) + ik \hat{u}_z &= 0 \\
+	\sigma \hat{u}_r - 2\Omega \hat{u}_\theta &= - \frac{1}{\rho} \frac{\diffd
+	\hat{p}}{\diffd r} \\
+		\sigma \hat{u}_\theta + \hat{u}_r(\Omega + (r\Omega)_r) &= 0 \\
+		\sigma \hat{u}_z &= -\frac{1}{\rho} ik \hat{p}
+\end{align}
+We can reduce this system down to a single equation for $\hat{u}_r$:
+\begin{equation}
+	\frac{\diffd}{\diffd r}\left(\frac{\diffd}{\diffd r} +
+	\frac{1}{r}\right)\hat{u}_r - k^2 \hat{u}_r -2\frac{k^2}{\sigma^2}
+	\Omega(2\Omega + r\Omega')\hat{u}_r = 0
+\end{equation}
+This is a second order ODE for $\hat{u}_r$ with BCs $\hat{u}_r = 0$ at $r=
+r_1, r_2$. For this flow, Rayleigh's determinant is
+\begin{equation}
+	\Phi \equiv \frac{1}{r}
+	\frac{\diffd}{\diffd r}\left( r^4 \Omega^2 \right) = 4\Omega^2 + 2r\Omega'
+	\Omega
+\end{equation}
+Hence the ODE for $\hat{u}_r$ may be written as
+\begin{equation}
+	\frac{\diffd}{\diffd r}\left(\frac{1}{r}\frac{\diffd}{\diffd
+	r}(r\hat{u}_r)\right) - k^2 \hat{u}_r = \frac{k^2}{\sigma^2} \Phi(r)
+	\hat{u}_r
+	\label{eq:l5}
+\end{equation}
+Multiply \eqref{eq:l5} by $r\hat{u}_r^*$ (complex conjugate) and integrate
+from $r_1$ to $r_2$:
+\begin{equation}
+	\int_{r_1}^{r_2} r \hat{u}_r^* \frac{\diffd}{\diffd r} \left(
+	\frac{1}{r}\frac{\diffd}{\diffd r}(r\hat{u}_r)\right) \diffd r - k^2
+	\int_{r_1}^{r_2} r \abs{\hat{u}_r}^2 \, \diffd r = \frac{k^2}{\sigma^2}
+	\int_{r_1}^{r_2} r \Phi \abs{\hat{u}_r}^2 \, \diffd r
+\end{equation}
+The first term may be integrated by parts to give:
+\begin{equation}
+	\cancel{\left[ r\hat{u}_r^* \frac{1}{r} \frac{\diffd}{\diffd
+	r}(r\hat{u}_r)\right]_{r_1}^{r_2}}
+	-\int_{r_1}^{r_2} \frac{\diffd}{\diffd r}(r \hat{u}_r^*)\frac{1}{r} \frac{\diffd}{\diffd r} (r\hat{u}_r) \diffd r - k^2
+	\int_{r_1}^{r_2} r \abs{\hat{u}_r}^2 \, \diffd r = \frac{k^2}{\sigma^2}
+	\int_{r_1}^{r_2} r \Phi \abs{\hat{u}_r}^2 \, \diffd r
+\end{equation}
+The first term vanishes since $\hat{u}_r =0$ at $r=r_1,r_2$. Hence
+\begin{equation}
+	-\int_{r_1}^{r_2} \frac{\diffd}{\diffd r}(r \hat{u}_r^*)\frac{1}{r} \frac{\diffd}{\diffd r} (r\hat{u}_r) \diffd r - k^2
+	\int_{r_1}^{r_2} r \abs{\hat{u}_r}^2 \, \diffd r = \frac{k^2}{\sigma^2}
+	\int_{r_1}^{r_2} r \Phi \abs{\hat{u}_r}^2 \, \diffd r
+\end{equation}
+Labelling the first integral as $H_1 > 0$ and the second as $H_2 > 0$, we have
+\begin{equation}
+	\frac{k^2}{\sigma^2}
+	\int_{r_1}^{r_2} r \Phi \abs{\hat{u}_r}^2 \, \diffd r = -H_1 - k^2 H_2 < 0
+\end{equation}
+If $\Phi \ge 0$ then $\sigma^2 < 0$, i.e. $\sigma$ is imaginary and we have
+stability. If instead $\Phi < 0$ somewhere in the domain, then potentially
+\begin{equation}
+	\int_{r_1}^{r_2} r \Phi \abs{\hat{u}_r}^2 \, \diffd r < 0
+\end{equation}
+in which case $\sigma^2 > 0$ and we have instability. Hence $\Phi < 0$
+somewhere in the domain is \emph{necessary} (but not sufficient) condition for
+instability. So this formal analysis confirms Rayleigh's heuristic criterion.
+Note, really we need to consider non-axisymmetric perturbations too.
+
+\subsection{Taylor vortices}
+Apply Rayleigh's criterion to Taylor-Couette flow.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,name path =A] (0,0) ellipse (1 and 0.2);
+		\draw[thick,name path =B] (0,0) ellipse (1.5 and 0.4);
+		\draw (0,-3) ellipse (1 and 0.2);
+		\draw[thick] (0,-3) [partial ellipse = -180:0:1.5 and 0.4];
+		\draw (0,-3) [partial ellipse = 0:180:1.5 and 0.4];
+		\draw[->] (0,0) [partial ellipse = -10:60:1.6 and 0.5]
+		node[midway,above] {$\Omega_2$};
+		\draw[->] (0,0) [partial ellipse = -10:50:0.9 and 0.15]
+		node[midway,left] {$\Omega_1$};
+		\draw[thick] (1.5,0) -- (1.5, -3);
+		\draw[thick] (-1.5, 0) -- (-1.5, -3);
+		\draw (1, 0) -- (1, -3);
+		\draw (-1, 0) -- (-1, -3);
+		\draw[dashed] (0,1) -- (0, -3);
+		\draw[<->] (0,-1.2) -- (1, -1.2) node[midway,above] {$R_1$};
+		\draw[<->] (0,-2) -- (1.5, -2) node[midway,above] {$R_2$};
+		\tikzfillbetween[of=A and B]{blue, opacity=0.2}
+	\end{tikzpicture}
+\end{center}
+
+When viscosity is present, the only solution with $\partial_\theta =
+\partial_z = 0$ is
+\begin{equation}
+	u_\theta(r) = A r + \frac{B}{r}
+\end{equation}
+where
+\begin{equation}
+	A = \frac{\Omega_2 R_2^2 - \Omega_1 R_1^2}{R_2^2 - R_1^2}, \hspace{2em} B
+	= \frac{\Omega_1 - \Omega_2}{R_1^{-2} - R_2^{-2}}
+\end{equation}
+Note this solves $(\nabla^2 - 1/r^2)u_\theta = 0$ where $\nabla^2 =
+\frac{1}{r}\partial_r(r \partial_r)$. In this case $\Omega = u_\theta/r = A +
+B/r^2$ hence Rayleigh's determinant is
+\begin{equation}
+	\Phi = \frac{1}{r^3} \frac{\diffd}{\diffd r}\left(r^4 \Omega^2\right) =
+	\frac{1}{r^3} \frac{\diffd}{\diffd r} \left[ r^4 \left(A^2 + \frac{2AB}{r^2} +
+	\frac{B^2}{r^4}\right)\right] = 4A^2\left(1+\frac{B}{Ar^2}\right)
+\end{equation}
+For convenience we define $\mu = \Omega_2/\Omega_1$ and $\eta = R_1 / R_2 <
+1$. Then
+\begin{equation}
+	\Phi = 4A^2 \left[ 1 - \frac{(1-\mu)R_1^2}{(\eta^2 - \mu)r^2}\right]
+\end{equation}
+For stability, i.e. $\Phi \ge 0$ everywhere, we require for all $r \in \left[
+R_1, R_2\right]$
+\begin{equation}
+	1 \ge \frac{(1-\mu)R_1^2}{(\eta^2 - \mu)r^2} \ge \frac{1-\mu}{\eta^2 -
+	\mu}
+\end{equation}
+where the last inequality follows since $R_1^2 / r^2 \ge 1$ for all $r \in
+\left[R_1, R_2\right]$. 
+There are now two cases: 
+\begin{itemize}
+	\item If $\eta^2 > \mu$ then
+	\begin{equation}
+		\eta^2 - \mu \ge 1-\mu \implies \eta^2 \ge 1 
+	\end{equation}
+	This is a contradiction since $\eta < 1$. 
+	\item Otherwise $\eta^2 < \mu$, so
+	\begin{equation}
+		\eta^2 - \mu \le 1 - \mu \implies \eta^2 \le 1
+	\end{equation}
+\end{itemize}
+Thus Rayleigh's criterion is $\eta^2 < \mu$ for stability.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\draw[thick,->] (-3,  0) --  (3, 0) node[right]
+		{$\frac{\Omega_2}{\nu}$};
+		\draw[thick,->] (0,  -0.5) --  (0, 2) node[left]
+		{$\frac{\Omega_1}{\nu}$};
+		\draw[dashed,blue] (0,0) -- (3, 1);
+		\draw[red] plot[smooth] coordinates {(-3, 1.05) (0, 0.4) (3, 1.05)};
+		\draw[red] (1, 0.48) node[rotate=12]{\tiny viscous};
+		\draw[blue] (1.25, 0.35) node[rotate=20] {\tiny inviscid};
+		\draw[blue] (2.5, 0.75) node[rotate=20] {\tiny Rayleigh's line};
+		\draw (-2, 0.5) node {Stable: $\eta^2 < \mu$};
+		\draw (-2, 1.5) node {Unstable: $\eta^2 > \mu$};
+		\draw[red] (1.5, 1.2) node {Taylor vortices};
+	\end{tikzpicture}
+\end{center}
+
+For a fixed geometry (i.e. fixed $\eta$) we can plot a stability diagram, with
+Rayleigh's line $\eta^2 = \mu = \Omega_2 / \Omega_1$ marking the stability
+heuristic. In Taylor-Couette geometry, the instability manifests itself as
+\emph{Taylor vortices}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{taylor_vortices.jpg}
+	\caption{Taylor vortices, from Dutta and Ray, 2004.}
+\end{figure}
 
 
 

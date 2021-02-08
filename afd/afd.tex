@@ -789,7 +789,7 @@ inside. Unless the temperatures are different, the density is lower inside. In
 a gravitational field the tube experiences an upward buoyancy force and tends
 to rise.
 
-\section{Conservation laws and hyperbolic structure.}
+\section{Conservation laws \& hyperbolic structure}
 \subsection{Introduction}
 An equation in conservative form is written
 \begin{equation}
@@ -1128,5 +1128,137 @@ of $\nabla \cdot \B$ (i.e. of $B_x$, in the case $\symbf{n} =
 \hat{\symbf{x}}$). This must be eliminated by imposing the constraint $\nabla
 \cdot \B = 0$. The vortical waves are replaced by Alfv\'{e}n waves with speeds
 $u_x \pm v_{ax}$.
+
+\subsection{Stress tensor \& virial theorem}
+In the absence of external forces, the equation of motion of a fluid can
+usually be written as
+\begin{equation}
+	\rho \frac{\diffD \u}{\diffD t} = \nabla \cdot \symsf{T}
+\end{equation}
+where $\symsf{T}$  is the \emph{stress tensor}, a symmetric second rank tensor
+field. Using mass conservation, we can relate this to the equation of momentum
+conservation:
+\begin{equation}
+	\frac{\partial}{\partial t}(\rho \u) + \nabla \cdot (\rho \u \u -
+	\symsf{T}) = 0
+\end{equation}
+So $-\symsf{T}$ is the momentum flux density, excluding the advective flux.
+For a self-gravitating system in ideal MHD, the stress tensor is
+\begin{equation}
+	\symsf{T} = -p \symsf{I} - \frac{1}{4\pi G}
+	(\symbf{g}\symbf{g}-\frac{1}{2}g^2 \symsf{I}) +
+	\frac{1}{\mu_0}(\B\B-\frac{1}{2}B^2\symsf{I})
+\end{equation}
+The gravitational stress tensor works for a self-gravitating system in which
+$\symbf{g} = - \nabla \Phi$ and $\rho$ are related through Poisson's equation
+\begin{equation}
+	-\nabla \cdot \symbf{g} = \nabla^2 \Phi = 4\pi G \rho
+\end{equation}
+For a general vector field $\symbf{v}$, it can be shown that
+\begin{align}
+	\nabla \cdot (\symbf{v}\symbf{v}-\frac{1}{2}v^2 \symsf{I}) 
+	&= (\nabla \cdot \symbf{v})\symbf{v} + (\symbf{v}\cdot\nabla)\symbf{v} -
+	\nabla(\frac{1}{2}v^2) \\
+	&= (\nabla \cdot \symbf{v})\symbf{v} + (\nabla \times
+	\symbf{v})\times\symbf{v}
+\end{align}
+In the magnetic case ($\symbf{v} = \B$) this simplifies to $(\nabla \times
+\B)\times \B)$. In the gravitational case ($\symbf{v} = \symbf{g}$) it
+simplifies to $(\nabla \cdot \symbf{g})\symbf{g} = - 4\pi G \rho \symbf{g}$,
+which becomes the force per unit volume $\rho \symbf{g}$ when divided by
+$-4\pi G$.
+
+The \emph{virial equations} are the spatial moments of the equation of motion.
+They provide integral measures of the balance of forces acting on the fluid.
+THe first moments are generally most useful. Recall
+\begin{equation}
+	\rho \frac{\diffD u_i}{\diffD t} = \frac{\partial \symsf{T}_{ji}}{\partial
+	x_j}
+\end{equation}
+Consider
+\begin{align}
+	\rho \frac{\diffD^2}{\diffD t^2} (x_i x_j) &= \rho \frac{\diffD}{\diffD
+	t}(u_i x_j + x_i u_j) \\
+	&= 2 \rho u_i u_j + x_j \frac{\partial \symsf{T}_{ki}}{\partial x_k} + x_i
+	\frac{\partial \symsf{T}_{kj}}{\partial x_k}
+\end{align}
+Consider a material volume $V$ bounded by a material surface $S$. Note that
+\begin{equation}
+	\frac{\diffd }{\diffd t} \int_V f \, \diffd m = \int_V \frac{\diffD
+	f}{\diffD t} \, \diffd m
+\end{equation}
+where $f$ is any function and $\diffd m = \rho \diffd V$ is the
+material-invariant mass element. Integrate over $V$ to get
+\begin{align}
+	 \frac{\diffd^2}{\diffd t^2} \int_V x_i x_j\,\diffd m
+	 &= \int_V \left(2 \rho u_i u_j + x_j \frac{\partial
+	 \symsf{T}_{ki}}{\partial x_k} + x_i \frac{\partial
+ 	\symsf{T}_{kj}}{\partial x_k}\right) \, \diffd V \\
+	 &= \int_V \left( 2 \rho u_i u_j - \symsf{T}_{ji} - \symsf{T}_{ij}\right)
+	 \, \diffd V + \int_S \left( x_j \symsf{T}_{ki} + x_i
+ 	\symsf{T}_{kj}\right)n_k \, \diffd S 
+\end{align}
+where we have integrated by parts using the divergence theorem:
+\begin{align}
+	\int_V f \frac{\partial g_k}{\partial x_k} \, \diffd V 
+	&= \int_V \left[
+	\frac{\partial}{\partial x_k} (fg_k) - g_k \frac{\partial f}{\partial x_k}
+	\right] \, \diffd V \\
+	&= \int_S f g_k n_k \, \diffd S - \int_V g_k \frac{\partial f}{\partial
+	x_k} \, \diffd V
+\end{align}
+For an isolated system with no external sources of gravity or magnetic field,
+$\symbf{g}$ decays as $\abs{\x}^{-2}$ at large distance, and $\B$ decays
+faster. Therefore $\symsf{T}_{ij}$ decays as $\abs{\x}^{-4}$ and the surface
+integral can be eliminated if we let $V$ occupy the whole space. Divide by $2$
+to obtain the \emph{tensor virial theorem}:
+\begin{equation}
+	\frac{1}{2}\frac{\diffd^2 I_{ij}}{\diffd t^2}  = 2\symsf{K}_{ij} -
+	\mathcal{T}_{ij}
+\end{equation}
+where 
+\begin{equation}
+	I_{ij} = \int x_i x_j \, \diffd m
+\end{equation}
+is related to the inertia tensor of the system, 
+\begin{equation}
+	\symsf{K}_{ij} = \int \frac{1}{2}u_i u_j \, \diffd m
+\end{equation}
+is a kinetic energy tensor and 
+\begin{equation}
+	\mathcal{T}_{ij} = \int \symsf{T}_{ij} \, \diffd V
+\end{equation}
+is the integrated stress tensor. Note if the above conditions are not
+satisfied, there will be an additional contribution from the surface
+integral. The \emph{scalar virial theorem} is the trace of this equation:
+\begin{equation}
+	\frac{1}{2}\frac{\diffd^2 I}{\diffd t^2} = 2K - \mathcal{T}
+\end{equation}
+Note that $K$ is the total KE, and
+\begin{align}
+	-\mathcal{T} &= \int \left( 3p - \frac{g^2}{8\pi G} + \frac{B^2}{2\mu_0}
+	\right) \, \diffd V \\
+				 &= 3 (\gamma -1 ) U + W + M
+\end{align}
+for a perfect gas with no external gravity, where $U, W$ and $M$ are the total
+internal, gravitational and magnetic energies. Thus
+\begin{equation}
+	\frac{1}{2}\frac{\diffd^2 I}{\diffd t^2} = 2K + 3(\gamma - 1) U + W + M
+\end{equation}
+On the right-hand side, only $W$ is negative. For the system to be bound (i.e.
+to noy fly apart) the kinetic, internal and magnetic energies are limited by
+\begin{equation}
+	2K + 3(\gamma -1 )U + M \le \abs{W}
+\end{equation}
+In fact, equality must hold, at least on average, unless the system is
+collapsing or contracting.
+
+The tensor virial theorem provides more specific information relating to the
+energies associated with individual directions. This is particularly relevant
+in cases where anisotropy is introduced by rotation or a magnetic field.
+
+
+
+
 
 \end{document}

@@ -31,9 +31,10 @@
 \contentsline {subsubsection}{\numberline {3.2.4}Differential rotation and torsional Alfv\'{e}n waves}{12}{subsubsection.3.2.4}
 \contentsline {subsubsection}{\numberline {3.2.5}Force-free fields}{13}{subsubsection.3.2.5}
 \contentsline {subsubsection}{\numberline {3.2.6}Magnetostatic equilibrium and magnetic buoyancy}{14}{subsubsection.3.2.6}
-\contentsline {section}{\numberline {4}Conservation laws and hyperbolic structure.}{14}{section.4}
+\contentsline {section}{\numberline {4}Conservation laws \& hyperbolic structure}{14}{section.4}
 \contentsline {subsection}{\numberline {4.1}Introduction}{14}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Total energy equation}{15}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Helicity conservation}{16}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Symmetries}{17}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Hyperbolic structure}{18}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Stress tensor \& virial theorem}{20}{subsection.4.6}
