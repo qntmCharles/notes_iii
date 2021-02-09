@@ -11,6 +11,7 @@
 \setmathfont{GFS NeoHellenic Math}[range=bfsfup/{greek,Greek}->it]
 \setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
 \newcommand{\Ra}{\text{Ra}}
+\renewcommand{\u}{\symbf{u}}
 
 \usetikzlibrary{intersections, pgfplots.fillbetween}
 \begin{document}
@@ -1032,8 +1033,148 @@ age of the inner core, given the upper and lower bounds:
 	\end{tikzpicture}
 \end{center}
 
+\section{Flows in porous media}
+To avoid the complexity of modelling very fine details, we model the flow
+averaged over many \emph{pore scales} and assume viscous dissipation balances
+the driving forces.
 
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[fill=gray!20] plot[smooth cycle] coordinates  {(0,0) (0.5,
+		-0.2) (2, 0.4) (1, 0.8)};
+		\draw[fill=gray!20] plot[smooth cycle] coordinates  {(2,0.2) (2.7,
+		0.5) (3.2, -0.2) (2.6, 0)};
+		\draw[fill=gray!20] plot[smooth cycle]coordinates {(1, -1) (1.5, -1.3)
+		(1.2, -2.1) (0.5, -2)};
+		\draw[fill=gray!20] plot[smooth cycle]coordinates {(1, -0.2) (1.6, -0.3)
+		(1.2, -0.9) (0.5, -0.6)};
+		\draw[fill=gray!20] plot[smooth cycle]coordinates {(0, -0.3) (0.4,
+		-0.5) (0.2, -0.9) (-0.5, -0.6)};
+		\draw[fill=gray!20] plot[smooth cycle]coordinates {(0.5, -0.9)
+			(0.75, -1.1) (0, -1.6) (-0.4, -1.3)};
+		\draw[fill=gray!20] plot[smooth cycle]coordinates {(2, 0) (2.7,
+		-0.4) (2.4, -0.8) (1.7, -0.3)};
+		\draw[fill=gray!20] plot[smooth cycle] coordinates {(1.4, -0.9) (1.7,
+		-0.5) (2.3, -1.1) (1.8, -1.4)};
+		\draw[fill=gray!20] plot[smooth cycle] coordinates {(1.6, -1.5) (2.3,
+		-1.8) (1.9, -2.1)};
+		\draw[fill=gray!20] plot[smooth cycle] coordinates {(2, -1.45) (3,
+		-1.2) (2.8, -2) (2.3, -1.6)};
+		\draw[fill=gray!20] plot[smooth cycle] coordinates {(2.4, -1) (2.7,
+		-0.8) (3, -0.35) (2.9, -1.1)};
+		\draw[blue,->] plot[smooth] coordinates {(-0.5, 0) (0.3, -0.3) (1.4,
+		-0.05) (2, 0.1) (3, -0.3) (3.5, -0.4)};
+		\draw[blue,->] plot[smooth] coordinates {(-0.6, -1.1) (0, -1) (0.5,
+		-0.85) (0.9, -0.95) (1.3, -1) (1.65, -1.4) (1.85, -1.5) (2.4, -1.2) (3,
+	-1.15) (3.3, -1.05)};
+		\draw[red,dashed] (0.5,0.2) rectangle (2.5, -1.8);
+	\end{tikzpicture}
+\end{center}
 
+Define the \emph{porosity}
+\begin{equation}
+	\phi = \frac{\text{fluid volume}}{\text{total volume}}
+\end{equation}
+so that tightly packed media has low porosity and highly saturated media has
+high porosity. For context, random close-packed spheres have $\phi \approx
+0.37$ whilst hexagonally close-packed monodisperse spheres have $\phi = 1-
+\pi/3\sqrt{2} \approx 0.26$. 
+
+\subsection{Darcy's law}
+Darcy's law represents the assumption that viscous dissipation at the pore
+scale balances the driving forces, pressure and buoyancy. We have
+\begin{equation}
+	\mu \frac{\u}{\symsf{K}(\phi)} = - (\nabla p + \rho g \hat{\symbf{z}})
+\end{equation}
+where $\u = \phi \tilde{\u}$ is the fluid flux per unit area and $\tilde{\u}$
+is the \emph{interstitial fluid velocity}, i.e. the actual fluid velocity. The
+tensor $\symsf{K}(\phi)$ is the \emph{permeability}, which characterises
+the resistance to flow. In general, this is a tensor and depends on local
+properties. $\symsf{K}$ reflects the geometry/tortuosity and porosity of the
+medium. 
+\begin{eg}
+	The Kozeny-Carman equation for monodisperse random close packed spheres
+	gives
+	\begin{equation}
+		\symsf{K} = \frac{d^2}{180} \frac{\phi^3}{(1-\phi)^2}
+	\end{equation}
+	where $d$ is the grain size.
+\end{eg}
+
+\subsection{Porous gravity currents}
+Consider flows in a confined aquifer: we assume two fluids with density $\rho
++ \Delta \rho$ and $\rho$ separated by an interface $z=h(x,t)$ with the nose of
+the gravity current at $x = x_N(t)$ in an aquifer of height $H$. There is a
+volume flux $Q$ injected into the aquifer and background pressure $p_0(x,z,t)$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[fill=gray!30, draw=none] (0,0) rectangle (5, -1);
+		\draw[thick] (0,0) -- (5, 0);
+		\draw[fill=gray!30, draw=none] (0,2) rectangle (5, 3);
+		\draw[thick] (0, 2) -- (5, 2);
+		\draw (0.5, 1.5) circle (0.2);
+		\draw (0.5, 1.5) node {$1$};
+		\draw (4.5, 1.5) circle (0.2);
+		\draw (4.5, 1.5) node {$2$};
+		\draw[<->] (5.5, 0) -- (5.5, 2) node[midway,right] {$H$};
+		\draw[blue,smooth] plot coordinates {(1.5, 2) (1.6, 1.6) (2.5, 1)
+		(3.4, 0.4) (3.5, 0)}; 
+		\draw[<->,blue] (2.5,0) -- (2.5, 1) node[midway,left] {$h(x,t)$};
+		\draw[blue] (4, 1) node {$\rho$};
+		\draw[blue] (1, 1) node {$\rho + \Delta \rho$};
+		\draw[blue] (3.5, 0) -- (3.5, -0.1) node[below] {$x_N(t)$};
+		\draw[thick,->] (-1, 1) -- (0, 1) node[midway,above] {$Q$};
+		\draw[->] (-0.8, 0) -- (-0.3, 0) node[below] {$x$};
+		\draw[->] (-0.8,0) -- (-0.8, 0.5) node[left] {$z$};
+	\end{tikzpicture}
+\end{center}
+
+The large aspect ratio implies the flow is mainly horizontal, hence pressure
+is hydrostatic to leading order. The flow is driven by a combination of
+buoyancy ($\sim \Delta \rho g$) and injection ($\sim Q$), and is primarily
+horizontal. The pressure in the injected (lower) fluid is
+\begin{equation}
+	p_1 = p_0 - (\rho + \Delta \rho)gz
+\end{equation}
+whilst the pressure in the ambient (upper) fluid) is
+\begin{equation}
+	p_2 = p_0 - (\rho + \Delta \rho) gh - \rho g (z-h)
+\end{equation}
+The fluid flow is given by Darcy's law. For the injected fluid,
+\begin{equation}
+	u_1 = -\frac{k}{\mu} \frac{\partial p_1}{\partial x} = -\frac{k}{\mu}
+	\frac{\partial p_0}{\partial x}
+\end{equation}
+Similarly, for the ambient fluid
+\begin{equation}
+	u_2 = -\frac{k}{\mu} \frac{\partial p_2}{\partial x} = -\frac{k}{\mu}
+	\left( \frac{\partial p_0}{\partial x} - \Delta \rho g \frac{\partial
+	h}{\partial x} \right)
+\end{equation}
+
+Now global conservation of the fluid flux gives
+\begin{equation}
+	Q = u_1 h + u_2 (H-h) = -\frac{k}{\mu} \left[ \frac{\partial p_0}{\partial
+	x} h + \frac{\partial p_0}{\partial x}(H-h) - \Delta \rho g \frac{\partial
+h}{\partial x} (H-h)\right]
+\end{equation}
+Rearranging for the background pressure gradient gives the injected fluid
+velocity as
+\begin{equation}
+	u_1 = -\frac{k}{\mu} \frac{\partial p_0}{\partial x} = \frac{Q}{H} -
+	\frac{k\Delta \rho g}{\mu} \frac{H-h}{H} \frac{\partial h}{\partial x}
+\end{equation}
+Local mass conservation in the lower (injected) layer gives
+\begin{align}
+	\phi \frac{\partial h}{\partial t} + \frac{\partial}{\partial x}(u_1 h) &=
+	0 \\
+	\implies \phi \frac{\partial h}{\partial t} + \frac{\partial}{\partial
+x}(\frac{Qh}{H}) &= \frac{k\Delta \rho g}{\mu} \frac{\partial}{\partial x}
+\left[ \frac{H-h}{H} h \frac{\partial h}{\partial x}\right]
+\end{align}
+The first term is the change in fluid mass, the second the injection pressure
+driven flux, and the RHS term is the buoyancy driven flux.
 
 
 

@@ -940,7 +940,195 @@ heuristic. In Taylor-Couette geometry, the instability manifests itself as
 	\caption{Taylor vortices, from Dutta and Ray, 2004.}
 \end{figure}
 
+\section{Parallel shear flows}
+For some flows, inviscid analysis gives a good approximation to the stability
+properties of a viscous fluid (e.g. Kelvin-Helmholtz, Taylor-Couette flow) but
+for others, it does not (e.g. plane Couette flow, channel flow, pipe  flow).
+Here, viscosity can be \emph{de}stabilising.
 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0);
+		\draw[thick] (0, 2) -- (5, 2);
+		\draw[blue,dashed]  (2.5,0) -- (2.5, 2);
+		\draw[blue] (1.5,0) -- (3.5, 2);
+		\draw (2.5, -1) node {Plane Couette flow};
+	\end{tikzpicture}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0);
+		\draw[thick] (0, 2) -- (5, 2);
+		\draw[blue,dashed]  (2,0) -- (2, 2);
+		\draw[blue] plot[domain=1:-1] ({3-\x*\x},{1+\x});
+		\draw (2.5, -1) node {Channel flow};
+	\end{tikzpicture}
+	\begin{tikzpicture}
+		\draw[thick] (1,0) -- (4, 0);
+		\draw[thick] (1, 2) -- (4, 2);
+		\draw[thick] (1, 1) [partial ellipse = -90:-270:0.5 and 1];
+		\draw[thick] (4, 1) ellipse (0.5 and 1);
+		\draw[blue,dashed]  (2,0) -- (2, 2);
+		\draw[blue] plot[domain=1:-1] ({3-\x*\x},{1+\x});
+		\draw (2.5, -1) node {Pipe flow};
+	\end{tikzpicture}
+\end{center}
 
+\subsection{Inviscid analysis}
+Consider a parallel shear flow $U(z)\hat{\symbf{x}}$. The non-dimensionalised
+Euler equations are
+\begin{align}
+	\frac{\partial \u}{\partial t} + \u \cdot  \nabla \u &= - \nabla p \\
+	\nabla \cdot \u &= 0
+\end{align}
+with boundary conditions $\u \cdot \hat{\symbf{z}} = 0$ at $z=z_1,z_2$. The
+basic flow is $U(z)\hat{\symbf{x}}$ with $p$ constant -- any form is valid.
+Add small perturbations
+\begin{equation}
+	\u = U(z)\hat{\symbf{x}} + \u', \hspace{1em}p = P + p'
+\end{equation}
+The Euler equations become
+\begin{align}
+	\frac{\partial \u'}{\partial t} + U\frac{\partial \u'}{\partial x} + w'
+	\frac{\diffd U}{\diffd z} \hat{\symbf{x}} &= - \nabla p' \\
+	\nabla \cdot \u' &= 0 
+\end{align}
+with boundary conditions $w' = 0$ at $z=z_1, z_2$. All equations have
+coefficients independent of $x, y, t$ so we can separate the variables by
+taking normal modes of the form
+\begin{align}
+	\u'(\x,t) &= \hat{\u}(z) e^{i(\alpha x  + \beta y - \alpha c t)} \\
+	p'(\x,t)  &= \hat{p}(z) e^{i(\alpha x+ \beta y - \alpha c t)}
+\end{align}
+Note we have replaced the usual $\sigma$ with $-i\alpha c$. It is understood
+that the physical fluid perturbation velocity $\u'$ is represented by the real
+part, e.g.
+\begin{equation}
+	w' = \left[ \Re(\hat{w})\cos(\alpha x + \beta y - \alpha c_r t)
+	-\Im(\hat{w})\sin(\alpha x+\beta y - \alpha c_r t)\right] e^{\alpha c_i t}
+\end{equation}
+This mode is a wave travelling with phase speed  $\alpha c_r /\sqrt{\alpha^2 +
+\beta^2}$ in the $(\alpha, \beta, 0)$ direction. While it decays like
+$e^{\alpha c_i t}$, or growth if $c_i > 0$.  The equations are now
+\begin{align}
+i\alpha (U-c)\hat{u} + \frac{\diffd U}{\diffd z} \hat{w} + i \alpha\hat{p} &=
+0 \label{eq:l6:1}\\
+i\alpha (U-c)\hat{v} +  i \beta\hat{p} &=
+0 \label{eq:l6:2} \\
+i\alpha (U-c)\hat{w} +  \frac{\diffd \hat{p}}{\diffd z} &=
+0 \label{eq:l6:3}\\
+i\alpha \hat{u} + i\beta \hat{v} + \frac{\diffd \hat{w}}{\diffd z} &=
+0\label{eq:l6:4}
+\end{align}
+with boundary conditions  $\hat{w}= 0$ at $z=z_1, z_2$. This is an eigenvalue
+problem in $c \in \mathbb{C}$. Instability  corresponds to $c_i > 0$ and $c_i
+\le 0$ for stability.
 
+\subsubsection{Squire's transformation (Squire, 1933)}
+Before  attempting to solve \eqref{eq:l6:1}--\eqref{eq:l6:4}, we consider the
+Squire transformation. Define the transformed variables
+\begin{equation}
+	\tilde{\alpha} = \sqrt{\alpha^2 + \beta^2},\hspace{1em} \tilde{u} =
+	\frac{\alpha \hat{u} + \beta \hat{v}}{\tilde{\alpha}}, \hspace{1em}
+	\tilde{p} = \frac{\tilde{\alpha}\hat{p}}{\alpha}
+\end{equation}
+Construct $(\alpha\eqref{eq:l6:1} + \beta\eqref{eq:l6:2})/\alpha$:
+\begin{equation}
+	i\tilde{\alpha}(U-c)\tilde{u} + \frac{\diffd  U}{\diffd z} \hat{w} +
+	i\tilde{\alpha}\tilde{p} =  0\label{eq:l6:5}
+\end{equation}
+Similarly $\tilde{\alpha}\eqref{eq:l6:3}/\alpha$:
+\begin{equation}
+	i\tilde{\alpha}(U-c)\hat{w} + \frac{\diffd \tilde{p}}{\diffd z} =
+	0\label{eq:l6:6}
+\end{equation}
+Incompressibility is now expressed as
+\begin{equation}
+	i\tilde{\alpha}\tilde{u}  + \frac{\diffd \hat{w}}{\diffd z} = 0
+\end{equation}
+
+The transformedd system has the same form as \eqref{eq:l6:1}--\eqref{eq:l6:4}
+with $\beta = \hat{v} = 0$ and $\alpha \to \tilde{\alpha},
+\hat{u}\to\tilde{u}, \hat{p}\to\tilde{p}$ but $c$ unchanged. Thus the
+eigenvalue $c$ depends on $\sqrt{\alpha^2+\beta^2}$ but the growth rate is
+$\alpha c_i$. So the largest growth rate $\alpha c_i$ is given by $\beta = 0$
+for all wavenumber pairs $(\alpha,\beta)$ with $\sqrt{\alpha^2 + \beta^2}$
+constant. Hence it is sufficient to consider $\beta = 0$ disturbances only. To
+any unstable 3D mode $\alpha \ne 0, \beta \ne 0$ there corresponds a more
+unstable 2D mode with $\beta = 0$.
+
+\subsubsection{Rayleigh's equation}
+Work in 2D (Squires). Use streamfunction $\psi'$ such that
+\begin{equation}
+	u' = \psi_z', \,\,v' = 0, \,\,w' = -\psi_x'
+\end{equation}
+Further, let $\psi'(x,z,t) = \phi(z)e^{i\alpha(x-ct)}$ so that it is  now
+clear that $c_r$ is the phase speed in the $x$ direction. Now $\hat{u} =
+\frac{\diffd \phi}{\diffd z}$ and $\hat{w} = -i\alpha \phi$ (notice the phase
+difference). Then \eqref{eq:l6:5} becomes
+\begin{align}
+	i\alpha(U-c)\frac{\diffd \phi}{\diffd z} + \frac{\diffd U}{\diffd
+	z}(-i\alpha \phi) + i\alpha \hat{p} &= 0\\
+	\implies \hat{p}&= \frac{\diffd U}{\diffd z}\phi - (U-c)\frac{\diffd
+	\phi}{\diffd z}
+\end{align}
+Substituting into \eqref{eq:l6:6} gives
+\begin{align}
+	i\alpha (U-c)(-i\alpha \phi) + \frac{\diffd}{\diffd z}\left[ \frac{\diffd
+	U}{\diffd z}\phi - (U-c)\frac{\diffd \phi}{\diffd z}\right] &= 0 \\
+	\implies (U-c)(\phi'' - \alpha^2 \phi) - U'' \phi &=0
+\end{align}
+with boundary conditions $\phi = 0$ at $z=z_1, z_2$. This is Rayleigh's
+equation (1880).
+\paragraph{Comments.}
+\begin{itemize}
+	\item Rayleigh's equation involves $\alpha^2$ only so need only consider
+		$\alpha > 0$.
+	\item If $(\phi,c)$ solves the problem then so does $(\phi^*, c^*)$. So if
+		there exists a growing mode, there  also exists a corresponding
+		decaying mode. Hence stability means $c \in \mathbb{R}$ for all
+		$\alpha$.
+	\item A singularity  exists at $U(z_c) = c$ -- this is called a critical
+		layer and only occurs when $c \in \mathbb{R}$. Critical layers are
+		important in solving IVPs and relating Rayleigh's equation to its
+		viscous analogue, the Orr-Sommerfield equation (see later).
+	\item There are two types of eigensolution:
+		\begin{itemize}
+			\item Continuous  spectrum $c \in \left[ \min U, \max
+				U\right]$ and $\phi$ has a discontinuous derivative at $z_c$.
+				This type of solution is never unstable.
+			\item Discrete spectrum of complex conjugate pairs. This solution
+				can be unstable.
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Properties of Rayleigh's equation.}
+\paragraph{Inflection point criterion.}
+Suppose $c_i > 0$, i.e. consider an unstable mode. Integrate $\phi^* \times$ Rayleigh's
+equation from $z_1$ to $z_2$:
+\begin{equation}
+	\int_{z_1}^{z_2} \left[\phi^* \phi'' - \alpha^2 \abs{\phi}^2 - \frac{U''}{U-c}
+	\abs{\phi}^2 \right]\diffd z = 0
+\end{equation}
+Integrate the first term by parts and note $\phi = \phi^* = 0$ at $z_1$ and
+$z_2$. Hence
+\begin{equation}
+	\int_{z_1}^{z_2} \left[\abs{\phi'}^2  + \alpha^2 \abs{\phi}^2 +
+	\frac{U''}{U-c}\abs{\phi}^2 \right] \diffd z =0
+\end{equation}
+Take imaginary part:
+\begin{align}
+	\Im \left[ \int_{z_1}^{z_2} \frac{U''(U-c^*)}{\abs{U-c}^2} \abs{\phi}^2
+	 \diffd z \right]&= 0 \\
+\implies
+	-c_i\int_{z_1}^{z_2} \frac{U''}{\abs{U-c}^2} \abs{\phi}^2
+	\diffd z &= 0
+\end{align}
+But $c_i > 0$ so we must have
+\begin{equation}
+\int_{z_1}^{z_2} \frac{U''}{\abs{U-c}^2} \abs{\phi}^2
+	\diffd z  = 0
+\end{equation}
+Now $\abs{U-c}^2 > 0$ and $\abs{\phi}^2 > 0 $ so $U''$ must change sign
+somewhere in $\left[z_1,z_2\right]$. Thus $U''=0$at least once is a necessary
+condition for inviscid instability, called the \emph{inflection point
+criterion}.
 \end{document}

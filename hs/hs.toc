@@ -3,10 +3,17 @@
 \contentsline {section}{\numberline {3}Thermal instabilities: convection}{4}{section.3}
 \contentsline {paragraph}{\nonumberline Governing equations.}{4}{section*.2}
 \contentsline {paragraph}{\nonumberline Boundary conditions.}{5}{section*.3}
-\contentsline {paragraph}{\nonumberline Basic state.}{5}{section*.4}
-\contentsline {paragraph}{\nonumberline Normal mode solution.}{6}{section*.5}
+\contentsline {paragraph}{\nonumberline Basic state.}{6}{section*.4}
+\contentsline {paragraph}{\nonumberline Normal mode solution.}{7}{section*.5}
 \contentsline {section}{\numberline {4}Centrifugal instabilities}{9}{section.4}
 \contentsline {subsection}{\numberline {4.1}Rayleigh's criterion}{9}{subsection.4.1}
 \contentsline {paragraph}{\nonumberline What distributions of $I(r)$ could be stable?}{10}{section*.6}
 \contentsline {subsection}{\numberline {4.2}Derivation via linear stability analysis}{11}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Taylor vortices}{12}{subsection.4.3}
+\contentsline {section}{\numberline {5}Parallel shear flows}{14}{section.5}
+\contentsline {subsection}{\numberline {5.1}Inviscid analysis}{14}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Squire's transformation (Squire, 1933)}{15}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Rayleigh's equation}{15}{subsubsection.5.1.2}
+\contentsline {paragraph}{\nonumberline Comments.}{16}{section*.8}
+\contentsline {subsubsection}{\numberline {5.1.3}Properties of Rayleigh's equation.}{16}{subsubsection.5.1.3}
+\contentsline {paragraph}{\nonumberline Inflection point criterion.}{16}{section*.9}
