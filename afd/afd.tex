@@ -12,6 +12,8 @@
 \newcommand{\B}{\symbf{B}}
 \renewcommand{\u}{\symbf{u}}
 \newcommand{\flux}{\symbf{\Phi}}
+\newcommand{\disp}{\symbf{\xi}}
+\renewcommand{\v}{\symbf{v}}
 
 \usetikzlibrary{shapes.misc}
 
@@ -1257,8 +1259,192 @@ The tensor virial theorem provides more specific information relating to the
 energies associated with individual directions. This is particularly relevant
 in cases where anisotropy is introduced by rotation or a magnetic field.
 
+\section{Linear waves in homogeneous media}
+In ideal MHD the density, pressure and magnetic field evolve according to
+\begin{align}
+	\frac{\partial \rho}{\partial t} &= - \u \cdot \nabla \rho -\rho \nabla
+	\cdot \u \\
+	\frac{\partial  p}{\partial t} &= -\u \cdot \nabla p - \gamma  p \nabla
+	\cdot \u \\
+	\frac{\partial \B}{\partial t} &= \nabla \times (\u \times \B)
+\end{align}
+Consider a magnetostatic equilibrium in which 
+\begin{equation}
+	\rho = \rho_0(\x), \hspace{1em} p = p_0(\x), \hspace{1em} \B = \B_0(\x),
+	\hspace{1em} \u  = 0
+\end{equation}
+Now consider small perturbations from equilibrium, such that
+\begin{equation}
+	\rho(\x, t ) = \rho_0(\x) + \delta \rho(\x, t)
+\end{equation}
+with $\abs{\delta \rho} \ll\rho_0$, etc. The linearised equations are
+\begin{align}
+	\frac{\partial \delta\rho}{\partial t} &= - \delta\u \cdot \nabla \rho_0
+	-\rho_0 \nabla \cdot \delta\u \\
+	\frac{\partial  \delta p}{\partial t} &= -\delta\u \cdot \nabla p_0 -
+	\gamma  p_0 \nabla \cdot \delta\u \\
+	\frac{\partial \delta\B}{\partial t} &= \nabla \times (\delta\u \times
+	\B_0)
+\end{align}
+Introduce the \emph{displacement} $\disp(\x,t)$ such that $\delta \u =
+\frac{\partial \disp}{\partial t}$. Integrate to obtain
+\begin{align}
+	\delta \rho &= -\disp \cdot \nabla \rho - \rho \nabla \cdot \disp \\
+	\delta p &= -\disp \cdot \nabla p - \gamma p \nabla \cdot \disp \\
+	\delta \B &= \nabla \times (\disp \times \B) \\
+			  &= \B \cdot \nabla \disp - \B (\nabla \cdot \disp) - \disp \cdot
+			  \nabla \B
+\end{align}
+We can now drop the subscript $0$ without danger of confusion. Note arbitrary
+additive functions of $\x$ can be discarded if all variables have the same
+harmonic time dependence. The linearised equation of motion is
+\begin{equation}
+	\rho \frac{\partial^2 \disp}{\partial t^2} = -\rho \nabla \delta \flux -
+	\delta \rho \nabla \flux - \nabla \delta \Pi + \frac{1}{\mu_0}(\delta \B
+	\cdot \nabla \B + \B \cdot \nabla \delta \B)
+\end{equation}
+where the total pressure perturbation is
+\begin{align}
+	\delta \Pi &= \delta p + \frac{1}{\mu_0}\B \cdot \delta \B \\
+			   &= -\disp \cdot \nabla \Pi - \left(\gamma p +
+			   \frac{B^2}{\mu_0}\right)\nabla \cdot \disp + \frac{1}{\mu_0} \B \cdot
+			   (\B \cdot \nabla \disp)
+\end{align}
 
+The gravitational potential perturbation satisfies
+\begin{equation}
+	\nabla^2 \delta \flux = 4\pi G \delta \rho
+\end{equation}
+Consider a basic state of uniform $\rho, p$ and $\B$, in the absence of
+gravity. This system is homogeneous but anisotropic, because $\B$
+distinguishes a particular direction. The problem simplifies to
+\begin{equation}
+	\rho \frac{\partial^2 \disp}{\partial t^2} = -\nabla \delta \Pi +
+	\frac{1}{\mu_0} \B \cdot \nabla (\B \cdot \nabla \disp - \B (\nabla \cdot
+	\disp))
+\end{equation}
+with 
+\begin{equation}
+	\delta \Pi = -\left(\gamma p + \frac{B^2}{\mu_0}\right)\nabla \cdot \disp +
+	\frac{1}{\mu_0}\B \cdot (\B \cdot \nabla \disp)
+\end{equation}
 
+Since the basic state is independent of $\x$ and $t$, there are plane wave
+solutions of the form
+\begin{equation}
+	\disp(\x,t) = \Re \left[ \tilde{\disp}\exp(i(\symbf{k}\cdot\x - \omega t))
+	\right]
+\end{equation}
+where $\omega$ and $\symbf{k}$ are the frequency and wavevector, and
+$\tilde{\disp}$ is a constant vector representing the amplitude of the wave.
+For such solutions (omitting the tilde)
+\begin{equation}
+	\rho \omega^2 \disp = \left[ \left(\gamma p +
+	\frac{B^2}{\mu_0}\right)\symbf{k}\cdot\disp -
+	\frac{1}{\mu_0}(\symbf{k}\cdot\B)\B\cdot\disp\right]\symbf{k} +
+	\frac{1}{\mu_0}(\symbf{k}\cdot\B)\left[(\symbf{k}\cdot\B)\disp -
+	\B(\symbf{k}\cdot\disp)\right]
+	\label{eq:5:1}
+\end{equation}
+For transverse displacements $\symbf{k} \cdot \disp = \B \cdot \disp = 0$
+hence this simplifies to
+\begin{equation}
+	\rho \omega^2 \disp = \frac{1}{\mu_0}(\symbf{k}\cdot\B)^2\disp
+\end{equation}
+These solutiosn are Alfv\'{e}n waves with dispersion relation
+\begin{equation}
+	\omega^2 = (\symbf{k}\cdot\symbf{v}_a)^2
+\end{equation}
 
+Given the dispersion relation $\omega(\symbf{k})$ of any wave, the \emph{phase
+and group velocities} are
+\begin{equation}
+	\v_p = \frac{\omega}{k}\hat{\symbf{k}}, \hspace{2em} \v_g = \frac{\partial
+	\omega}{\partial \symbf{k}} = \nabla_{\symbf{k}} \omega
+\end{equation}
+where $\hat{\symbf{k}} = \symbf{k}/k$. The phase velocity $\v_p$ is the
+velocity at which the phase of the wave travels, whilst the group velocity
+$\v_g$ is the velocity at which the energy of the wave (or the centre of a
+wavepacket) is transported. For Alfv\'{e}n waves, $\omega = \pm
+\symbf{k}\cdot\v_a$:
+\begin{equation}
+	\v_p = \pm v_a \cos \theta \hat{\symbf{k}}, \hspace{2em} \v_g = \pm \v_a
+\end{equation}
+where $\theta$ is the angle between $\symbf{k}$ and $\B$. To find the other
+solutions, consider $\symbf{k}\cdot\eqref{eq:5:1}$ and $\B \cdot
+\eqref{eq:5:1}$:
+\begin{align}
+	\rho \omega^2 \symbf{k}\cdot\disp &= \left[ \left( \gamma p +
+	\frac{B^2}{\mu_0}\right) \symbf{k}\cdot\disp -
+	\frac{1}{\mu_0}(\symbf{k}\cdot\B)\B\cdot\disp\right] k^2 \\
+	\rho \omega^2 \B \cdot \disp &= \gamma p
+	(\symbf{k}\cdot\disp)\symbf{k}\cdot\B
+\end{align}
+Write these together as
+\begin{equation}
+	\begin{pmatrix} 
+		\rho \omega^2 - \left( \gamma p + \frac{B^2}{\mu_0}\right)k^2 &
+		\frac{1}{\mu_0}(\symbf{k}\cdot\B)k^2 \\
+	-\gamma p (\symbf{k}\cdot\B) & \rho \omega^2 \end{pmatrix} 
+	\begin{pmatrix} \symbf{k}\cdot\disp \\ \B \cdot \disp \end{pmatrix} = 0
+\end{equation}
+
+The `trivial solution' $\symbf{k}\cdot\disp = \B \cdot \disp = 0$ corresponds
+to the Alfv\'{e}n wave. The other solutions satisfy
+\begin{equation}
+	\rho \omega^2 \left[
+	\rho \omega^2 - \left( \gamma p + \frac{B^2}{\mu_0}\right)k^2 \right] +
+	\gamma p k^2 \frac{1}{\mu_0}(\symbf{k}\cdot\B)^2 = 0
+\end{equation}
+which simplifies to (divide by $\rho^2 k^4$):
+\begin{equation}
+	v_p^4 - (v_s^2 + v_a^2)v_p^2 + v_s^2 v_a^2 \cos^2 \theta = 0
+\end{equation}
+The two solutions
+\begin{equation}
+	v_p^2 = \frac{1}{2}(v_s^2 + v_a^2) \pm \left[ \frac{1}{4}(v_s^2+v_a^2)^2 -
+	v_s^2 v_a^2 \cos^2 \theta \right]^{1/2}
+\end{equation}
+are called \emph{fast and slow magnetoacoustic waves} respectively.  In the
+special case $\theta = 0$ (i.e. $\symbf{k}\parallel \B$) we have
+\begin{equation}
+	v_p^2 = v_s^2 \hspace{1em}\text{or}\hspace{1em} v_p^2 = v_a^2
+\end{equation}
+together with $v_p^2 = v_a^2$ for the Alfv\'{e}n wave. Note the fast wave
+could be either $v_p^2 = v_s^2$ or $v_p^2 = v_a^2$, whichever is greater.  In
+the special case $\theta = \pi/2$ (i.e. $\symbf{k}\bot\B$), we have
+\begin{equation}
+	v_p^2 = v_s^2 +v_a^2 \hspace{1em}\text{or}\hspace{1em} v_p^2 = 0
+\end{equation}
+together with $v_p^2 = 0$ for the Alfv\'{e}n wave.  
+
+Magnetic tension gives rise to Alfv\'{e}n waves, similar to waves on an
+elastic string. Magnetic pressure responds to compression, so modifies the
+propagation of acoustic waves. \emph{Friedrichs diagrams} are parametric plots
+of $\v_p(\theta)$ and $\v_g(\theta)$ for all $\theta$: see
+figure~\ref{fig:fd1} and~\ref{fig:fd2}. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{friedrichs_2.png}
+	\caption{Friedrichs diagram for the case $v_a < v_s$ ($v_a = 0.7 v_s$)}
+	\label{fig:fd1}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{friedrichs_1.png}
+	\caption{Friedrichs diagram for the case $v_a > v_s$ ($v_s = 0.7 v_a$)}
+	\label{fig:fd2}
+\end{figure}
+
+\paragraph{Interpretation.}
+\begin{itemize}
+	\item The fast wave is a quasi-isotropic acoustic-type wave in which both
+		gas and magnetic pressure contribute.
+	\item The slow wave is an acoustic-type wave that is strongly guided by
+		$\B$.
+	\item The Alfv\'{e}n wave is similar to a wave on an elastic string,
+		propagating via magnetic tension and perfectly guided by $\B$.
+\end{itemize}
 
 \end{document}
