@@ -960,8 +960,10 @@ pressure $p$, which is provided by the \emph{Clausius-Clapeyron equation}:
 	\rho_s \frac{L}{T_m} \frac{\partial T_m}{\partial p} =
 	\frac{\rho_s}{\rho_l} - 1
 \end{equation}
-The RHS quantity is position for iron in the inner core. To leading order, the
-pressure is hydrostatic
+The RHS quantity is positive for iron in the inner core.  Given a temperature
+profile $T_m$ and a fixed boundary temperature, this equation gives the radius
+at which that boundary temperature is met, given a pressure profile $p(r)$.
+To leading order, the pressure is hydrostatic
 \begin{align}
 	\frac{\partial p}{\partial r} = - \rho g(r) &= - \rho \frac{G}{r^2} \left(
 	\frac{4\pi}{3} r^3 \rho\right) = - \frac{4\pi}{3}G \rho^2 r \\
@@ -973,8 +975,8 @@ gives
 	T_m \approx T_0 - \frac{2\pi}{3} \frac{G T_0 (\rho_s - \rho_l)}{L} r^2
 \end{equation}
 
-The radius at which the core temperature $T$ is larger than $T_m$ is where the
-solid--liquid interface exists, i.e. at $r=R_i$.
+The radius at which the (adiabatic) core temperature $T$ is equal to $T_m$ is
+where the solid--liquid interface exists, i.e. at $r=R_i$.
 \begin{center}
 	\begin{tikzpicture}[scale=3];
 		\draw[thick,->] (-0.1, 0) -- (2.5, 0) node[right] {$r$};
@@ -986,6 +988,9 @@ solid--liquid interface exists, i.e. at $r=R_i$.
 		\draw[dashed] (1.149,0.4597) -- (1.149, 0) node[below] {$R_i$};
 	\end{tikzpicture}
 \end{center}
+Note we separately assume a well mixed adiabatic temperature profile in the
+outer core
+$\overline{T} = T_m$.
 
 Consider the two choices of limiting cases:
 \begin{enumerate}
@@ -1001,7 +1006,7 @@ The balance of heat fluxes is
 	\frac{\partial T_m}{\partial t} + \rho L 4\pi R_i^2 \frac{\diffd
 	R_i}{\diffd t}
 \end{equation}
-In case $(ii)$ the $R_i^3$ term in the first RHS term is neglected. In this
+In case 2 the $R_i^3$ term in the first RHS term is neglected. In this
 case,
 \begin{equation}
 	4\pi R_0^2 F_m = \frac{4\pi}{3} R_0^3 \rho c_p \cdot \frac{4\pi}{3}
@@ -1084,13 +1089,14 @@ high porosity. For context, random close-packed spheres have $\phi \approx
 Darcy's law represents the assumption that viscous dissipation at the pore
 scale balances the driving forces, pressure and buoyancy. We have
 \begin{equation}
-	\mu \frac{\u}{\symsf{K}(\phi)} = - (\nabla p + \rho g \hat{\symbf{z}})
+	\mu \u = - \symsf{K}(\phi)(\nabla p + \rho g \hat{\symbf{z}})
 \end{equation}
 where $\u = \phi \tilde{\u}$ is the fluid flux per unit area and $\tilde{\u}$
 is the \emph{interstitial fluid velocity}, i.e. the actual fluid velocity. The
 tensor $\symsf{K}(\phi)$ is the \emph{permeability}, which characterises
 the resistance to flow. In general, this is a tensor and depends on local
-properties. $\symsf{K}$ reflects the geometry/tortuosity and porosity of the
+properties; for example long grain-like particles favour motion along their
+long axis. $\symsf{K}$ reflects the geometry/tortuosity and porosity of the
 medium. 
 \begin{eg}
 	The Kozeny-Carman equation for monodisperse random close packed spheres
@@ -1168,14 +1174,159 @@ velocity as
 Local mass conservation in the lower (injected) layer gives
 \begin{align}
 	\phi \frac{\partial h}{\partial t} + \frac{\partial}{\partial x}(u_1 h) &=
-	0 \\
+	0 \label{eq:l6:masscons}\\
 	\implies \phi \frac{\partial h}{\partial t} + \frac{\partial}{\partial
 x}(\frac{Qh}{H}) &= \frac{k\Delta \rho g}{\mu} \frac{\partial}{\partial x}
 \left[ \frac{H-h}{H} h \frac{\partial h}{\partial x}\right]
 \end{align}
 The first term is the change in fluid mass, the second the injection pressure
-driven flux, and the RHS term is the buoyancy driven flux.
+driven flux, and the RHS term is the buoyancy driven flux which is associated
+with slumping due to the hydrostatic pressure. Note that typically the mass
+flux $u_1 h$ in a viscous gravity current scales as $\sim h^3$, here the
+scaling is $\sim h$ as the viscous drag is provided only at the bottom
+boundary.
 
+Consider a moving reference frame with coordinate
+\begin{equation}
+	y = x - \frac{Qt}{\phi H}
+\end{equation}
+Thus we treat $h$ as a function of $y$ and $t$: $h(x,t) = h(y(x,t),t)$. Then
+\begin{equation}
+\phi \frac{\partial h}{\partial t} = u_b \frac{\partial}{\partial y} \left[
+\frac{H-h}{H} h \frac{\partial h}{\partial y}\right]
+\end{equation}
+where $u_b = k \Delta \rho g / \mu$ is the \emph{buoyancy velocity}. Assuming
+$h \sim H$, scaling analysis gives
+\begin{equation}
+	\phi \frac{H}{t} \sim u_b \frac{H^2}{y^2} \implies y \sim \left( \frac{u_b
+	H t}{\phi}\right)^{1/2}
+\end{equation}
+Hence introduce similarity variable $\zeta$ defined by
+\begin{equation}
+	\zeta = \frac{y}{\left(u_b H t/\phi\right)^{1/2}}
+\end{equation}
+and similarity solution $h = Hf(\zeta)$ where $f$ satisfies
+\begin{equation}
+	-\frac{\zeta}{2}f' = \left[ (1-f)ff'\right]'
+	\label{eq:l6:1}
+\end{equation}
+with $-\lambda < \zeta < \lambda$ for some eigenvalue $\lambda$ to be
+determined. The solution is
+\begin{equation}
+	f = \frac{1}{2}\left(1-\frac{\zeta}{\lambda}\right)
+\end{equation}
+which upon substitution into \eqref{eq:l6:1} gives $\lambda = 1$. The
+interface slumps with width $\sim t^{1/2}$ in the travelling frame of
+reference.
+\begin{center}
+	\begin{tikzpicture}[scale=2];
+		\draw[thick] (0,0) -- (5,0);
+		\draw[thick] (0, 2) -- (5, 2);
+		\draw[blue] (0.5, 2) -- (0.5, 0) node[below,black] {$t_0$};
+		\draw[dashed] (1.5, 2) -- (1.5, 0) node[below] {$t_1$};
+		\draw[blue] (1.4, 2) -- (1.6, 0);
+		\draw[dashed] (2.5, 2) -- (2.5, 0) node[below] {$t_2$};
+		\draw[blue] (2.3, 2) -- (2.7, 0);
+		\draw[dashed] (3.5, 2) -- (3.5, 0) node[below] {$t_3$};
+		\draw[blue] (3.2, 2) -- (3.8, 0);
+		\draw[dashed] (4.5, 2) -- (4.5, 0) node[below] {$t_4$};
+		\draw[blue] (4.1, 2) -- (4.9, 0);
+		\draw[<->] (4.1, 2.2) -- (4.5, 2.2) node[midway, above] {$\sim
+		(t_4-t_0)^{1/2}$};
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Constant volume gravity current (porous \& unconfined)}
+Consider the limit of the above problem $h \ll H$. This applies at early times
+during injection or late times during constant volume expansion. 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[fill=gray!30, draw=none] (0,0) rectangle (5, -1);
+		\draw[thick] (0,0) -- (5, 0);
+		\draw[fill=gray!30, draw=none] (0,2) rectangle (5, 3);
+		\draw (0, 1.5) circle (0.2);
+		\draw (0, 1.5) node {$1$};
+		\draw[->] plot[smooth] coordinates {(-0.2, 1.5) (-0.3, 1.0) (0, 0.4)};
+		\draw (4.5, 1.5) circle (0.2);
+		\draw (4.5, 1.5) node {$2$};
+		\draw[thick] (0, 2) -- (5, 2);
+		\draw[<->] (5.5, 0) -- (5.5, 2) node[midway,right] {$H$};
+		\draw[<->,blue] (2,0) -- (2, 0.4) node[midway,left] {$h$};
+		\draw[blue,smooth] plot coordinates {(0, 0.8) (1.8, 0.5) (2.5, 0)};
+		\draw[blue] (4, 1) node {$\rho$};
+		\draw[blue] (0.5, 0.3) node {$\rho + \Delta \rho$};
+		\draw[->] (-0.8, 0) -- (-0.3, 0) node[below] {$x$};
+		\draw[->] (-0.8,0) -- (-0.8, 0.5) node[left] {$z$};
+	\end{tikzpicture}
+\end{center}
+
+Recall the injection flux $Q$ can be written as
+\begin{equation}
+	Q = -\frac{k}{\mu}\left[ H \frac{\partial p_0}{\partial  x} - \Delta \rho g
+	(H-h)\frac{\partial h}{\partial x} \right]
+\end{equation}
+In the unconfined limit we have $h \ll H$ and $Q/H \approx 0$. Thus
+\begin{equation}
+	\frac{\partial p_0}{\partial x} = \Delta \rho g \frac{\partial h}{\partial
+	x}
+\end{equation}
+Hence the apparent injected fluid velocity in region 1 is
+\begin{equation}
+	u_1 \approx -\frac{k}{\mu} \frac{\partial p_0}{\partial x} = -\frac{k
+	\Delta \rho g}{\mu} \frac{\partial h}{\partial x}
+\end{equation}
+The governing equation for $h$ following from \eqref{eq:l6:masscons} is
+\begin{equation}
+	\phi \frac{\partial h}{\partial t} = \frac{k \Delta \rho
+	g}{\mu}\frac{\partial}{\partial x} \left( h \frac{\partial h}{\partial
+	x}\right)
+\end{equation}
+and the flux in the gravity current is
+\begin{equation}
+	q = \int_0^h u_1 \, \diffd z = -\frac{k\Delta \rho g}{\mu} h
+	\frac{\partial h}{\partial x}
+\end{equation}
+Boundary conditions at the nose are $h(x_N) = 0$ and 
+\begin{equation}
+	q(x_N) = 0 = - u_b h \left.\frac{\partial h}{\partial x}\right|_{x_N}
+\end{equation}
+Despite the 2nd order governing equation, the undetermined nose position $x_N$
+means a third condition is required. Global mass conservation is expressed as
+\begin{equation}
+	V = \phi \int_0^{x_N} h \, \diffd x
+\end{equation}
+where $V$ is the prescribed volume per unit width. This is equivalent to a
+condition on the flux at $x=0$. The scalings are
+\begin{align}
+	\phi \frac{h}{t} &\sim u_b \frac{h^2}{x^2}, \hspace{2em} V \sim \phi h
+	x \\
+	\implies x &\sim  \left(\frac{u_b V}{\phi^2}\right)^{1/3} t^{1/3}
+\end{align}
+Hence we define a similarity variable:
+\begin{equation}
+	\eta = \frac{x t^{-1/3}}{(u_b V/\phi^2)^{1/3}}, \hspace{2em} h = \left(
+	\frac{V^2}{u_b \phi}\right)^{1/3} t^{-1/3} f(\eta)
+\end{equation}
+where $0 \le \eta \le \eta_N$. The governing equation for $f(\eta)$ is then
+\begin{align}
+	-\frac{1}{3}f - \frac{\eta}{3}f' &= (ff')' \\
+	\implies \eta f &= -3ff' + c
+\end{align}
+Now $h(x_N) = 0$ implies $c=0$. Hence $f' = -\eta/3$. The condition $q(x_N) =
+0$ gives
+\begin{equation}
+	f = \frac{1}{6}\left(\eta^2_N - \eta^2\right)
+\end{equation}
+Global conservation of mass requires
+\begin{equation}
+	1 = \int_0^{\eta_N} f  \, \diffd \eta = \frac{1}{6}\left( \eta_N^3 -
+	\frac{1}{3}\eta_N^3\right) = \frac{1}{9}\eta_N^3
+\end{equation}
+Thus the nose is located at $\eta_N = 9^{1/3} \approx 2.08$, or in terms of
+the original coordinates
+\begin{equation}
+	x_N= 2.08 \left( \frac{u_b V t}{\phi^2}\right)^{1/3}
+\end{equation}
 
 
 
