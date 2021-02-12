@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  18 JAN 2021 17:29
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  12 FEB 2021 20:27
  restricted system commands enabled.
 **fdc.tex
 (./fdc.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.104 seconds
+luaotfload | main : initialization completed in 0.107 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3161,15 +3161,16 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 26.
  (./fdc.toc [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}](compiling luc: /var/lib/tex
+mf/luatex-cache/generic/fonts/otl/lmromanslant10-regular.luc)(load luc: /home/cw
+p/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmromanslant10-regular.l
+uc) [2])
 \tf@toc=\write5
 
 \openout5 = fdc.toc
 (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-bold.luc)
 (load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmrom
-an8-bold.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmrom
-anslant10-regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/g
-eneric/fonts/otl/lmromanslant10-regular.luc) [2] (./pic.tex)
+an8-bold.luc) (./pic.tex) [3]
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
 (Font)              scaled to size 10.00015pt on input line 123.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
@@ -3182,22 +3183,26 @@ LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 6.9999pt on input line 123.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 4.99992pt on input line 123.
- [3] [4](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman6-r
-egular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/font
-s/otl/lmroman6-regular.luc) <isobars.png, id=381, 623.32875pt x 452.69125pt>
+
+Overfull \vbox (4.9375pt too high) detected at line 155
+ []
+
+[4](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman6-regula
+r.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl
+/lmroman6-regular.luc) <isobars.png, id=456, 623.32875pt x 452.69125pt>
 File: isobars.png Graphic file (type png)
- <use isobars.png>
+
+<use isobars.png>
 Package luatex.def Info: isobars.png used on input line 222.
 (luatex.def)             Requested size: 186.64719pt x 135.55284pt.
-
-[5<./isobars.png>] [6] [7]
-<ekman_spiral.jpg, id=439, 290.99867pt x 156.05203pt>
+ [5] [6<./isobars.png>] [7]
+<ekman_spiral.jpg, id=507, 290.99867pt x 156.05203pt>
 File: ekman_spiral.jpg Graphic file (type jpg)
  <use ekman_spiral.jpg>
 Package luatex.def Info: ekman_spiral.jpg used on input line 398.
 (luatex.def)             Requested size: 233.31255pt x 125.12276pt.
 
-[8<./ekman_spiral.jpg>] [9] [10] [11] [12] [13] [14] [15]
+[8] [9<./ekman_spiral.jpg>] [10] [11] [12] [13] [14] [15]
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
 (Font)              scaled to size 12.00018pt on input line 930.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
@@ -3217,7 +3222,7 @@ LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 20.73969pt on input line 939.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (Font)              scaled to size 17.27972pt on input line 939.
- [16] [17] [18] <wbc.png, id=585, 488.82625pt x 405.515pt>
+ [16] [17] [18] <wbc.png, id=662, 488.82625pt x 405.515pt>
 File: wbc.png Graphic file (type png)
  <use wbc.png>
 Package luatex.def Info: wbc.png used on input line 1169.
@@ -3265,26 +3270,26 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 3190.
 
-[47] [48] [49] <equatorial.png, id=931, 879.285pt x 795.97375pt>
+[47] [48] [49] <equatorial.png, id=1008, 879.285pt x 795.97375pt>
 File: equatorial.png Graphic file (type png)
 
 <use equatorial.png>
 Package luatex.def Info: equatorial.png used on input line 3385.
 (luatex.def)             Requested size: 326.63614pt x 295.68379pt.
  [50<./equatorial.png>] [51] [52]
-<mglatlong.png, id=972, 951.555pt x 572.1375pt>
+<mglatlong.png, id=1048, 951.555pt x 572.1375pt>
 File: mglatlong.png Graphic file (type png)
  <use mglatlong.png>
 Package luatex.def Info: mglatlong.png used on input line 3564.
 (luatex.def)             Requested size: 419.95973pt x 252.50952pt.
 
-<mgvert.png, id=973, 819.06pt x 633.36626pt>
+<mgvert.png, id=1049, 819.06pt x 633.36626pt>
 File: mgvert.png Graphic file (type png)
  <use mgvert.png>
 Package luatex.def Info: mgvert.png used on input line 3580.
 (luatex.def)             Requested size: 279.97789pt x 216.5014pt.
- [53] [54<./mglatlong.png><./mgvert.png>] <eqvert.png, id=992, 1029.8475pt x 79
-8.985pt>
+ [53] [54<./mglatlong.png><./mgvert.png>] <eqvert.png, id=1068, 1029.8475pt x 7
+98.985pt>
 File: eqvert.png Graphic file (type png)
 
 <use eqvert.png>
@@ -3294,28 +3299,28 @@ Package luatex.def Info: eqvert.png used on input line 3645.
 Overfull \vbox (1.6384pt too high) detected at line 3760
  []
 
-[56<./eqvert.png>] [57]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3764.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3764.
+[56<./eqvert.png>] [57] [58] [59] [60] [61]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3989.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3989.
  (./fdc.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3764.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3764.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3989.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3989.
 Package rerunfilecheck Info: File `fdc.out' has not changed.
-(rerunfilecheck)             Checksum: EA66A8FD4A8E9A9A9A4A58BC23EC7E85;5350.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3764.
+(rerunfilecheck)             Checksum: E6DC90F48D41A7508B0C523F6C839DBB;6467.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3989.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54275 strings out of 494577
- 125007,1977958 words of node,token memory allocated
- 47954 words of node memory still in use:
-   14 hlist, 6 vlist, 2 rule, 2 disc, 2 local_par, 5636 glue, 3 kern, 5 penalty,
- 15 sub_mlist, 2 margin_kern, 37 glyph, 1895 attribute, 64 glue_spec, 1895 attri
+ 54310 strings out of 494577
+ 125006,1977958 words of node,token memory allocated
+ 52747 words of node memory still in use:
+   14 hlist, 6 vlist, 2 rule, 2 disc, 2 local_par, 6219 glue, 3 kern, 5 penalty,
+ 15 sub_mlist, 2 margin_kern, 37 glyph, 2073 attribute, 64 glue_spec, 2073 attri
 bute_list, 1 write nodes
-   avail lists: 1:3,2:2388,3:990,4:187,5:632,6:5589,7:1610,8:121,9:837,10:27,11:
+   avail lists: 1:7,2:2035,3:977,4:207,5:632,6:5590,7:1027,8:118,9:673,10:27,11:
 469
- 56270 multiletter control sequences out of 65536+600000
- 178 fonts using 42868175 bytes
+ 56286 multiletter control sequences out of 65536+600000
+ 178 fonts using 42867623 bytes
  74i,13n,108p,8841b,949s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman9-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype
@@ -3332,10 +3337,10 @@ s10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></
 usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmbx10.pfb>
-Output written on fdc.pdf (57 pages, 1261024 bytes).
+Output written on fdc.pdf (61 pages, 1277763 bytes).
 
-PDF statistics: 1126 PDF objects out of 1200 (max. 8388607)
- 902 compressed objects within 10 object streams
- 264 named destinations out of 1000 (max. 131072)
- 552 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 1219 PDF objects out of 1440 (max. 8388607)
+ 991 compressed objects within 10 object streams
+ 283 named destinations out of 1000 (max. 131072)
+ 672 words of extra memory for PDF output out of 10000 (max. 10000000)
 

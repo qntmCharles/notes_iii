@@ -3759,6 +3759,231 @@ group velocity, i.e. upward for $m < 0$ and downward for $m > 0$.
 	\end{itemize}
 \end{eg}
 
+\newpage
+\appendix
+\section{Useful Equation Sets}
+\subsection{Rotating Navier-Stokes}
+In a reference frame rotating with constant angular velocity $\symbf{\Omega}$,
+Navier-Stokes equations become
+\begin{equation}
+	\rho \left( \frac{\diffD \symbf{u}}{\diffD t} + 2 \symbf{\Omega} \times
+	\symbf{u}\right) = - \nabla p - \rho \nabla \left( \phi + \phi_c\right) +
+	\rho \symbf{F} 
+\end{equation}
+where $\phi_c= -\frac{1}{2}\abs{\symbf{\Omega}\times\x}^2$.
+
+\subsection{Rotating shallow water}
+Given water depth $H = H_0 - h_b  + \eta$ where $\eta$ is the surface
+perturbation and $h_b$ is the bottom topography:
+\begin{align}
+	\frac{\diffD \symbf{u}}{\diffD t} + f\hat{\symbf{z}}\times\symbf{u} &=
+	-g\nabla \eta \\
+	H_t + \nabla \cdot (\symbf{u} H) &= 0
+\end{align}
+
+In terms of relative vorticity $\zeta = v_x - u_y$, supplement with volume
+conservation
+\begin{equation}
+	u_x + v_y = -\frac{1}{H}\frac{\diffD H}{\diffD t}
+\end{equation}
+to get conservation of SWPV $q = (\zeta + f)/H$:
+\begin{equation}
+	\frac{\diffD}{\diffD t}\left(\frac{\zeta +f}{H}\right) = 0
+\end{equation}
+
+\subsection{Quasi-geostrophic equations}
+Rotating SW under limit $\Ro \ll 1$ referred to as quasi-geostrophic. Assume
+also $\beta$-plane approximation and small changes in fluid height. Use QG
+streamfunction $\psi \equiv g\eta/f$.  In terms of the QGPV
+\begin{equation}
+	P_g = 1+ \frac{\beta y}{f_0} + \frac{\nabla^2 \psi}{f_0} + \frac{h_b}{H_0}
+	- \frac{f_0 \psi}{g h_0}
+\end{equation}
+the SWQG equation is
+\begin{equation}
+	\frac{\partial P_g}{\partial t} + J(\psi, P_g) = 0
+\end{equation}
+
+\subsection{Boussinesq equations}
+Acknowledge density changes only when multiplied by $g$. Split density and
+pressure into mean (hydrostatic) and perturbation components.
+\begin{align}
+	\frac{\diffD \symbf{u}}{\diffD t} + f\hat{\symbf{k}} \times \symbf{u} &=
+	-\frac{1}{\rho_0}\nabla p' + \frac{\rho'}{\rho_0}g\hat{\symbf{z}} \\
+	\nabla \cdot \symbf{u} &= 0\\
+	\frac{\diffD \rho'}{\diffD t} &= 0
+\end{align}
+Strength of stratification characterised by buoyancy frequency
+\begin{equation}
+	N^2 = -\frac{g}{\rho_0}\frac{\diffd \rho_s}{\diffd z}
+\end{equation}
+where $\rho' = \rho_s + \tilde{\rho}$ and $\rho_s$ is the reference density.
+
+\subsection{3D Boussinesq primitive equations}
+Assume $N$ constant, traditional approximation, $N \gg f$, vertical depth $D
+\ll a$, radius of the Earth and finally hydrostatic approximation. Full 3D
+Boussinesq primitive equations on a $\beta$-plane are
+\begin{align}
+	\frac{\diffD u}{\diffD t} - (f_0 + \beta y)v &= -
+	\frac{1}{\rho}\frac{\partial p'}{\partial x} \\
+	\frac{\diffD v}{\diffD t} + (f_0 + \beta y)u &= -
+	\frac{1}{\rho}\frac{\partial p'}{\partial y} \\
+	\frac{\partial p'}{\partial z} &= -\rho' g \\
+	\frac{\diffD \rho'}{\diffD t} &= 0 \\
+	\nabla \cdot \symbf{u} &= 0
+\end{align}
+
+\subsection{3D quasi-geostrophic equations}
+Assume flow close to geostrophic balance, i.e. $\Ro \ll 1$. Also write $\rho'
+= \rho_s(z) + \tilde{\rho}(\x,t)$ and $p' = p_s(z) + \tilde{p}(\x,t)$ where
+$\rho_s, p_s$ in hydrostatic balance. Split velocity into component
+$\symbf{u}_g$ in geostrophic balance with $\tilde{p}$ and ageostrophic
+component $\symbf{u}_a$. Use $\beta$-plane approximation. Primitive equations
+become
+\begin{align}
+	\left[ \frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
+	\nabla\right] (u_g + u_a) - (f_0+\beta y) (v_g + v_a) &=
+	-\frac{1}{\rho_0} \frac{\partial \tilde{p}}{\partial x}\\
+	\left[ \frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
+	\nabla\right] (v_g + v_a) + (f_0+\beta y) (u_g + u_a)&=
+	-\frac{1}{\rho_0} \frac{\partial \tilde{p}}{\partial y}\\
+	-\frac{\partial \tilde{p}}{\partial z} - \tilde{\rho} g &= 0 \\
+	\left[\frac{\partial}{\partial t} + (\symbf{u}_g+\symbf{u}_a)\cdot
+	\nabla\right] \tilde{\rho} + w_a \frac{\diffd \rho_s}{\diffd z} &= 0 \\
+	\frac{\partial u_a}{\partial x} + \frac{\partial v_a}{\partial y} +
+	\frac{\partial w_a}{\partial z} &= 0
+\end{align}
+
+Reduce to a single prognostic equation by eliminating $\symbf{u}_a$ and
+introducing streamfunction $\psi = \tilde{p}/\rho_0 f_0$ for the geostrophic
+velocity. In terms of the QGPV
+\begin{equation}
+	q = \psi_{xx} + \psi_{yy} + \left(\frac{f_0^2 \psi_z}{N^2}\right)_z +
+	\beta y
+\end{equation}
+then the prognostic equation is
+\begin{equation}
+	\left[\partial_y - \psi_y \partial_x + \psi_x \partial_y\right] q =
+	\frac{\diffD_g q}{\diffD t} = 0
+\end{equation}
+Approximates Rossby-Ertel PV conservation.
+
+\subsection{Frontogenesis}
+QG buoyancy equation with $b \equiv -g\rho/\rho_0$ can be written in terms of
+the $Q$-vector
+\begin{equation}
+	\symbf{Q} \equiv (-u_{gx}b_x - v_{gx}b_y, -u_{gy}b_x - v_{gy}b_y)
+\end{equation}
+as
+\begin{equation}
+	\frac{\diffD_g}{\diffD t} \abs{\nabla_H b}^2 = 2\symbf{Q}\cdot\nabla_H b
+\end{equation}
+where the RHS is referred to as the frontogenesis function.
+
+3D QG equations can be combined into the QG Omega equation relating vertical
+ageostrophic velocity and $\symbf{Q}$ via:
+\begin{equation}
+	N^2 \nabla_H^2 w_a + f^2 w_{a,zz} = 2\nabla_H \cdot \symbf{Q}
+\end{equation}
+
+\subsection{Mean flow wave activity conservation relation}
+QGPV equation under a WKB approximation gives the conservation relation
+\begin{equation}
+	\frac{\partial}{\partial t}\left[ \frac{1}{2}
+		\frac{\overline{q'^2}}{\overline{q}_y}\right] +
+		\frac{\partial}{\partial y} \left[ -\overline{u'v'}\right] +
+		\frac{\partial}{\partial z} \left[ -\frac{gf_0}{\rho_0N^2}
+		\overline{v'\rho'}\right]	
+		= \frac{\overline{q' \mathcal{D}'}}{\overline{q}_y}
+\end{equation}
+or equivalently
+\begin{equation}
+	\frac{\partial \myol{\mathcal{A}}}{\partial t} + \frac{\partial
+		\overline{F^{(y)}}}{\partial y} + \frac{\partial
+	\overline{F^{(z)}}}{\partial z} = \overline{\mathcal{D}_{\mathcal{A}}}
+\end{equation}
+where $\myol{\mathcal{A}}$ is the Eliassen-Palm (EP) wave activity
+and $\symbf{\myol{F}}$ is the \emph{Eliassen-Palm flux} with components
+\begin{equation}
+	(\overline{\symbf{F}^{(y)}},\overline{\symbf{F}^{(z)}}) =
+	(-\overline{u'v'},-f_0\frac{\overline{v'\rho'}}{\diffd
+	\rho_s/\diffd z})
+\end{equation}
+
+\subsection{Eulerian mean equations}
+Applying averaging operator to Boussinesq primitive equations gives a coupled
+set of equations for the five Eulerian-mean quantities $\overline{u}_t,
+\overline{\rho}_t, \overline{p}, \overline{v}_a, \overline{w}_a$, where the
+lack of subscript on $u, v$ implies the geostrophic components.
+\begin{align}
+	\overline{u}_t - f_0 \overline{v}_a &= -(\overline{u'v'})_y \\
+	f_0 \overline{u} &= -\frac{\overline{p}_y}{\rho_0} \\
+	-\overline{p}_z - \overline{\rho}g &= 0 \\
+	\overline{v}_{ay} + \overline{w}_{az} &= 0 \\
+	\overline{\rho}_t + \overline{w}_a \frac{\diffd \rho_s}{\diffd z} &=
+	-(\overline{\rho' v'})_y
+\end{align}
+
+\subsection{Transformed Eulerian mean equations}
+Under the transformations
+\begin{align}
+	\overline{w}_a^* &= \overline{w}_a + \frac{(\overline{\rho' v'})_y}{\diffd
+	\rho_s / \diffd z}\\
+		\overline{v}_a^* &= \overline{v}_a - \frac{\partial}{\partial z} \left[
+	\frac{\overline{\rho' v'}}{\diffd \rho_s/\diffd z}\right]
+	\end{align}
+the transformed Eulerian mean equations are the same but with $x$-momentum and
+density equations becoming
+\begin{align}
+	\overline{u}_t - f_0 \overline{v}_a^* &= -(\overline{u'v'})_y + \left(
+	\frac{f_0 \overline{\rho'v'}}{\diffd \rho_s/\diffd z}\right)_z = \nabla
+	\cdot \myol[4]{\symbf{F}}\\
+	\overline{\rho}_t + \overline{w}_a^* \frac{\diffd \rho_s}{\diffd z} &=
+	0
+\end{align}
+
+\section{Common Approximations}
+\subsection{Traditional approximation}
+Coriolis acceleration
+\begin{equation}
+	2\symbf{\Omega} \times \symbf{u} = (-fv + f*w, fu, -f*u)
+\end{equation}
+where $f \equiv 2\Omega \sin\theta$ and $f^* \equiv 2\Omega \cos \theta$.
+\textbf{Assume} $f*w \ll fv$ and $f*u \ll g$. Hence
+\begin{equation}
+	2\symbf{\Omega} \times \symbf{u} \approx (-fv, fu, 0) = f
+	\hat{\symbf{z}}\times\symbf{u}
+\end{equation}
+
+\subsection{Geostrophic balance}
+Scaling of rotating NS with $\Ro \equiv U/fL$ and $\text{E} \equiv \nu/fL^2$,
+assuming timescale $T  = L/U$:
+\begin{equation}
+	\Ro \frac{\partial \symbf{u}^*}{\partial t^*} + \text{Ro}	\symbf{u}^*
+	\cdot \nabla^* \symbf{u}^* + \hat{\symbf{z}} \times \symbf{u}^* =
+	-\frac{1}{\rho f U} \nabla^* \left(p + \rho \Phi\right) + \text{E}
+	\nabla^{*2}
+		\symbf{u}^*
+\end{equation}
+\textbf{Assuming} $\Ro \ll 1$ and $\text{E} \ll 1$, then on constant $\Phi$
+surfaces we have geostrophic balance:
+\begin{equation}
+	f \hat{\symbf{z}}\times \symbf{u} \approx -\frac{1}{\rho}\nabla p
+\end{equation}
+or in components
+\begin{align}
+	-fv &= -\frac{1}{\rho}\frac{\partial p}{\partial x} \\
+	fu &= -\frac{1}{\rho}\frac{\partial p}{\partial y}
+\end{align}
+If we cannot assume $T = L/U$, then retain $\symbf{u}_t$ terms.
+	
+\subsection{Beta-plane approximation}
+Given length scale $L$, \textbf{assume} $\beta L/f_0 \ll 1$ so that $f$ can be
+approximated by
+\begin{equation}
+	f = f_0 + \beta y
+\end{equation}
+where $f_0 = 2\Omega \sin \theta_0$.
 
 
 \end{document}

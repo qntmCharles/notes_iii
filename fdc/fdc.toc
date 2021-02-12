@@ -5,28 +5,28 @@
 \contentsline {subsubsection}{\numberline {1.1.3}Taylor-Proudman Theorem}{6}{subsubsection.1.1.3}
 \contentsline {subsection}{\numberline {1.2}Departures from geostrophy}{6}{subsection.1.2}
 \contentsline {subsubsection}{\numberline {1.2.1}Inertial (free) oscillations}{7}{subsubsection.1.2.1}
-\contentsline {subsubsection}{\numberline {1.2.2}Ekman layer}{7}{subsubsection.1.2.2}
+\contentsline {subsubsection}{\numberline {1.2.2}Ekman layer}{8}{subsubsection.1.2.2}
 \contentsline {subsubsection}{\numberline {1.2.3}Ekman transport}{8}{subsubsection.1.2.3}
-\contentsline {subsubsection}{\numberline {1.2.4}Ekman pumping}{8}{subsubsection.1.2.4}
+\contentsline {subsubsection}{\numberline {1.2.4}Ekman pumping}{9}{subsubsection.1.2.4}
 \contentsline {section}{\numberline {2}Shallow Water Systems}{9}{section.2}
 \contentsline {subsection}{\numberline {2.1}Rotating shallow water equations}{9}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}Potential vorticity (PV)}{10}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Potential vorticity (PV)}{11}{subsubsection.2.1.1}
 \contentsline {subsection}{\numberline {2.2}Small amplitude motions in rotating SW}{11}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Steady flows}{11}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.1}Steady flows}{12}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}Waves in an unbounded domain}{12}{subsubsection.2.2.2}
-\contentsline {subsection}{\numberline {2.3}Geostrophic adjustment}{12}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.3}Geostrophic adjustment}{13}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}Steady solutions}{13}{subsubsection.2.3.1}
-\contentsline {subsubsection}{\numberline {2.3.2}Transients}{13}{subsubsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.2}Transients}{14}{subsubsection.2.3.2}
 \contentsline {subsubsection}{\numberline {2.3.3}Energetics}{14}{subsubsection.2.3.3}
 \contentsline {subsection}{\numberline {2.4}Quasi-geostrophic equations}{14}{subsection.2.4}
-\contentsline {paragraph}{\nonumberline Assumption 1: $Ro\ll 1$}{14}{section*.6}
+\contentsline {paragraph}{\nonumberline Assumption 1: $Ro\ll 1$}{15}{section*.6}
 \contentsline {paragraph}{\nonumberline Assumption 2: small changes in $f$}{15}{section*.7}
 \contentsline {paragraph}{\nonumberline Assumption 3: small changes in fluid height.}{15}{section*.8}
 \contentsline {paragraph}{\nonumberline Quasi-geostrophic equations.}{15}{section*.9}
-\contentsline {subsubsection}{\numberline {2.4.1}Waves in QG}{15}{subsubsection.2.4.1}
+\contentsline {subsubsection}{\numberline {2.4.1}Waves in QG}{16}{subsubsection.2.4.1}
 \contentsline {subsubsection}{\numberline {2.4.2}Physical interpretation of Rossby waves}{16}{subsubsection.2.4.2}
-\contentsline {subsection}{\numberline {2.5}Large scale ocean circulation}{16}{subsection.2.5}
-\contentsline {subsubsection}{\numberline {2.5.1}Sverdrup flow}{16}{subsubsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5}Large scale ocean circulation}{17}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}Sverdrup flow}{17}{subsubsection.2.5.1}
 \contentsline {subsubsection}{\numberline {2.5.2}Western boundary currents}{17}{subsubsection.2.5.2}
 \contentsline {paragraph}{\nonumberline Region I.}{18}{section*.10}
 \contentsline {paragraph}{\nonumberline Region II.}{19}{section*.11}
@@ -95,3 +95,18 @@
 \contentsline {paragraph}{\nonumberline Steady state behaviour.}{53}{section*.37}
 \contentsline {paragraph}{\nonumberline Interpretation.}{53}{section*.39}
 \contentsline {subsubsection}{\numberline {4.3.4}Vertical propagation}{55}{subsubsection.4.3.4}
+\contentsline {section}{\numberline {A}Useful Equation Sets}{58}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Rotating Navier-Stokes}{58}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Rotating shallow water}{58}{subsection.A.2}
+\contentsline {subsection}{\numberline {A.3}Quasi-geostrophic equations}{58}{subsection.A.3}
+\contentsline {subsection}{\numberline {A.4}Boussinesq equations}{58}{subsection.A.4}
+\contentsline {subsection}{\numberline {A.5}3D Boussinesq primitive equations}{59}{subsection.A.5}
+\contentsline {subsection}{\numberline {A.6}3D quasi-geostrophic equations}{59}{subsection.A.6}
+\contentsline {subsection}{\numberline {A.7}Frontogenesis}{59}{subsection.A.7}
+\contentsline {subsection}{\numberline {A.8}Mean flow wave activity conservation relation}{60}{subsection.A.8}
+\contentsline {subsection}{\numberline {A.9}Eulerian mean equations}{60}{subsection.A.9}
+\contentsline {subsection}{\numberline {A.10}Transformed Eulerian mean equations}{60}{subsection.A.10}
+\contentsline {section}{\numberline {B}Common Approximations}{61}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Traditional approximation}{61}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Geostrophic balance}{61}{subsection.B.2}
+\contentsline {subsection}{\numberline {B.3}Beta-plane approximation}{61}{subsection.B.3}
