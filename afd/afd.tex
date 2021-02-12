@@ -1447,4 +1447,217 @@ figure~\ref{fig:fd1} and~\ref{fig:fd2}.
 		propagating via magnetic tension and perfectly guided by $\B$.
 \end{itemize}
 
+\section{Non-linear waves, shocks and discontinuities}
+\subsection{1D gas dynamics}
+The equations of mass conservation and motion in 1D are
+\begin{align}
+	\frac{\partial \rho}{\partial t} + u \frac{\partial \rho}{\partial x} &= -
+\rho \frac{\partial u}{\partial x}\\
+	\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} &= -
+	\frac{1}{\rho}\frac{\partial p}{\partial x}
+\end{align}
+We assume the gas is homentropic ($s$ constant) and perfect. This eliminates
+the entropy wave and leaves only the two sound waves. Then $p \propto
+\rho^\gamma$ and $v_s^2 = \gamma p/\rho \propto \rho^{\gamma -1}$. We use
+$v_s$ as a variable in place of $\rho$ or $p$:
+\begin{equation}
+	\diffd p = v_s^2\, \diffd \rho, \hspace{2em} \diffd \rho = \frac{\rho}{v_s}
+	\frac{2 \,\diffd v_s}{\gamma -1}
+\end{equation}
+Then
+\begin{align}
+	\frac{\partial \rho}{\partial t} + u \frac{\partial \rho}{\partial x} +
+	v_s \frac{\partial}{\partial x} \left( \frac{2v_s}{\gamma -1}\right)
+	&= 0 \\
+	\frac{\partial u}{\partial t} + u \frac{\partial}{\partial x}\left(\frac{2
+v_s}{\gamma-1}\right) + v_s \frac{\partial u}{\partial x}&= 0
+\end{align}
+Add and subtract the two equations:
+\begin{align}
+	\left[ \frac{\partial}{\partial t} + (u+v_s)\frac{\partial}{\partial x}
+	\right] \left( u + \frac{ 2 v_s}{\gamma -1}\right) &= 0 \\
+	\left[ \frac{\partial}{\partial t} + (u-v_s)\frac{\partial}{\partial x}
+	\right] \left( u - \frac{ 2 v_s}{\gamma -1}\right) &= 0 
+\end{align}
+Define the two \emph{Riemann invariants}
+\begin{equation}
+	R_\pm = u \pm \frac{2 v_s}{\gamma -1}
+\end{equation}
+Then we deduce that $R_\pm = \text{const.}$ along a \emph{characteristic
+(curve)} $C_\pm$ of gradient
+\begin{equation}
+	\frac{\diffd x}{\diffd t} = u \pm v_s
+\end{equation}
+in the $(x,t)$ plane. The $\pm$ characteristics form an interlocking web
+covering the space-time diagram. Both $R_+$ and $R_-$ are needed to
+reconstruct the solution ($u$ and $v_s$). Half the information is propagated
+along $C_+$ and half along $C_-$. In general $C_\pm$ are not known in advance
+but must be determined along with the solution. $C_\pm$ propagate at speed
+$v_s$ to the right and left, \emph{with respsect to the moving fluid}. This
+may be viewed as a non-linear geneeralisation of the solution of the
+classical wave equation $f(x-v_st) + g(x+v_s t)$.
+
+\subsubsection{Method of characteristics}
+Sketch of a numerical method of solution:
+\begin{enumerate}
+	\item Start with initial data ($u$ and $v_s$) for all relevant $x$ at
+		$t=t_i$.
+	\item Determine characteristic slopes at $t_i$.
+	\item Propagate $R_\pm$ to $t=t_{i+1} = t_i + \delta t$, neglecting
+		variation of characteristic slopes.
+	\item Combine $R_\pm$ to find $u$ and $v_s$ at each $x$ at $t=t_{i+1}$.
+	\item Re-evaluate slopes and repeat.
+\end{enumerate}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5, 0) node[right] {$x$};
+		\draw[thick,->] (0, -0.1) -- (0, 5) node[left] {$t$};
+		\draw[blue!20] plot[domain=1:5] ({\x},{5/\x});
+		\draw[blue!20] plot[domain=0:4] ({\x},{-5/(\x-5)});
+		\draw[blue!20] plot[domain=0.8:5] ({\x},{4/\x});
+		\draw[blue!20] plot[domain=0:4.2] ({\x},{-4/(\x-5)});
+		\draw[blue!20] plot[domain=0.6:5] ({\x},{3/\x});
+		\draw[blue!20] plot[domain=0:4.4] ({\x},{-3/(\x-5)});
+		\draw[blue!20] plot[domain=1.4:5] ({\x},{7/\x});
+		\draw[blue!20] plot[domain=0:3.6] ({\x},{-7/(\x-5)});
+		\draw[blue!20] plot[domain=1.6:5] ({\x},{8/\x});
+		\draw[blue!20] plot[domain=0:3.4] ({\x},{-8/(\x-5)});
+		\draw[blue!20] plot[domain=1.8:5] ({\x},{9/\x});
+		\draw[blue!20] plot[domain=0:3.2] ({\x},{-9/(\x-5)});
+		\draw[blue,thick] plot[domain=0:3.75] ({\x},{-6.25/(\x-5)});
+		\draw[blue,thick] plot[domain=1.25:5] ({\x},{6.25/\x});
+		\draw[blue,fill=blue] (2.5, 2.5) circle (0.05);
+		\draw (2.5,2.5) node[right] {$P$};
+		\draw (2.5, 4.5) node {\small domain of};
+		\draw (2.5, 4.2) node {\small influence};
+		\draw (2.5, 0.5) node {\small domain of dependence};
+	\end{tikzpicture}
+\end{center}
+
+The \emph{domain of dependence} of a point $P$ in the spacetime diagram is the
+region bounded by the $C_\pm$ through $P$ and located in the past of $P$. The
+\emph{domain of influence} of $P$ is the region bounded by the $C_\pm$ through
+$P$ and located in the future. The solution at $P$ cannot depend on anything
+that occurs outside the domain of dependence. Similarly, the solution at $P$
+cannot influence anything outside the domain of influence.
+
+\subsubsection{A simple wave}
+Suppose $R_-$ is uniform: the sme constant value on every $C_-$ characteristic
+emanating from an undisturbed region to the right. Its value everywhere is
+that of the undisturbed region:
+\begin{equation}
+	u - \frac{2 v_s}{\gamma -1} = u_0 - \frac{2v_{s0}}{\gamma -1}
+\end{equation}
+Then, along the $C_+$, both $R_\pm$ and so $u$ and $v_s$, are constant. The
+$C_+$ therefore have constant slope $v = u+v_s$, so they are straight lines.
+The statement that the wavespeed $v$ is constant along the family of straight
+lines $\frac{\diffd x}{\diffd t} = v$ is expressed by the equation
+\begin{equation}
+	\frac{\partial v}{\partial t} + v \frac{\partial v}{\partial x} = 0
+\end{equation}
+known as the \emph{inviscid Burgers equation} or \emph{non-linear advection
+equation}. 
+
+This equation has only one set of characteristics, with slope
+$\diffd x/\diffd t = v$, which is easily solved by the method of
+characteristics. The initial data define $v_0(x) = v(x,0)$ and the
+characteristics are straight lines. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5, 0) node[right] {$x$};
+		\draw[thick,->] (0, -0.1) -- (0, 3) node[left] {$t$};
+		\draw plot[domain=1.1:3] ({-0.5+\x/2.2},{\x});
+		\draw plot[domain=2.4:3] ({-1+\x/2.4},{\x});
+		\draw plot[domain=0:3] ({\x/2},{\x});
+		\draw plot[domain=0:3] ({0.5+\x/1.8},{\x});
+		\draw plot[domain=0:3] ({1+\x/1.6},{\x});
+		\draw plot[domain=0:3] ({1.5+\x/1.4},{\x});
+		\draw plot[domain=0:3] ({2+\x/1.6},{\x});
+		\draw plot[domain=0:3] ({2.5+\x/1.8},{\x});
+		\draw plot[domain=0:3] ({3+\x/2.8},{\x});
+		\draw plot[domain=0:3] ({3.5+\x/6.3},{\x});
+		\draw plot[domain=0:3] ({4+\x/7},{\x});
+		\draw plot[domain=0:3] ({4.5+\x/10},{\x});
+		\draw[<->] (0.5, 3.2) -- (2.5, 3.2) node[midway,above] {diverge};
+		\draw[<->] (3.5, 3.2) -- (4.5, 3.2) node[midway,above] {converge};
+	\end{tikzpicture}
+\end{center}
+
+In regions where $\diffd v_0/\diffd x > 0$
+the characteristics diverge in the future. In regions where $\diffd v_0/\diffd
+x < 0$ the characteristics converge and will form a \emph{shock} at some
+point. Contradictory information arrives at the same event, leading to a
+breakdown of the solution.
+
+\subsubsection{Wave steepening}
+Another viewpoint is \emph{wave steepening}. Each point of the graph $v(x)$
+moves at its wave speed $v$. The crest moves fastest and eventually overtakes
+the trough to the right of it. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.3\textwidth]{steepening.png}
+\end{figure}
+The profile would become multiple-valued, but the wave breaks, forming a
+discontinuity. The formal solution of the inviscid Burgers equation is
+\begin{equation}
+	v(x,t) = v_0(x_0)
+\end{equation}
+with $x = x_0 + v_0(x_0) t$. By the chain rule,
+\begin{equation}
+	\frac{\partial v}{\partial x} + \frac{v_0'}{1+v_0' t}
+\end{equation}
+which diverges first at the breaking time
+\begin{equation}
+	t^* = \frac{1}{\max(-v_0')}
+\end{equation}
+
+\subsection{Simple non-linear waves}
+Recall the hyperbolic structure of the equations:
+\begin{equation}
+	\frac{\partial \symbf{U}}{\partial t} + \symsf{A}_i \frac{\partial
+	\symbf{U}}{\partial x_i} = 0, \hspace{2em} \symbf{U} = \left[ \rho, p, \u,
+	\B\right]^T
+\end{equation}
+These are hyperbolic because the eigenvalues of $\symsf{A}_i n_i$ are real for
+any unit vector $n_i$. The eigenvalues are wave speeds, eigenvectors are
+wave modes.
+
+In a simple wave propagating in the $x$-direction, all physical quantities are
+functions of a single variable, the phase $\psi(x,t)$. Then $\symbf{U} =
+\symbf{U}(\psi)$ and so
+\begin{equation}
+	\frac{\diffd \symbf{U}}{\diffd \psi}\frac{\partial \psi}{\partial t} +
+	\symsf{A}_x \frac{\diffd \symbf{U}}{\diffd \psi} \frac{\partial
+	\psi}{\partial x} = 0
+\end{equation}
+This equation is satisfied if $\diffd \symbf{U}/\diffd \psi$ is an eigenvector
+of the hyperbolic system and if
+\begin{equation}
+	\frac{\partial \psi}{\partial t} + v \frac{\partial \psi}{\partial x} = 0
+\end{equation}
+where $v$ is the corresponding wave speed (eigenvalue). But since $v =
+v(\psi)$ we again find
+\begin{equation}
+	\frac{\partial v}{\partial t}+ v \frac{\partial v}{\partial x} = 0
+\end{equation}
+which is the inviscid Burgers equation.  Steepening is therefore generic for
+simple waves, but waves do not always steepen in practice. For example, linear
+dispersion arising from Coriolis or buoyancy forces can counteract nonlinear
+wave steepening. Waves propagating on a non-uniform background are not simple
+waves. Waves may be damped by diffusive processes (viscosity, thermal
+conduction or resistivity) before they can steepen. 
+
+Even some simple waves do not steepen. This happens if the wave
+speed $v$ does not depend on the variables that actually vary in the wave
+mode, for which there are two simple examples: the entropy wave ($v = u_x$) in
+which $\rho$ varies but not $p$ or $u_x$. Also, the Alfv\'{e}n wave ($v=u_x
+\pm v_{ax}$) in which $u_y, u_z, B_y, B_z$ vary but not $\rho, p, u_x, B_x$.
+In these cases the relevant solution of the inviscid Burgers equation is just
+$v = \text{const.}$ The slow and fast magnetoacoustic waves, though, are
+`generally nonlinear' and undergo steepening.
+
+
+
 \end{document}
