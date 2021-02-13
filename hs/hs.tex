@@ -67,15 +67,16 @@ Let $\u = \symbf{U}(\x) + \hat{\u}(\x,t), p = P + \hat{p}$. Then
 	\nabla \hat{p} = \frac{1}{\text{Re}} \nabla^2 \hat{\u}
 \end{equation}
 The term $\hat{u}\cdot\nabla \symbf{U}$ is stabilising whilst the term
-$\nabla^2 \hat{u} / \text{Re}$ is stabilising. Therefore, we expect stability
-as $\text{Re} \to 0$ as this term dominates, and instability as $\text{Re} \to
-\infty$. Thus there exists some value $\text{Re}_{\text{crit}}$ at which
-instability arises. We will ask what this value is, and what is the form of initial
+$\nabla^2 \hat{u} / \text{Re}$ is destabilising. Therefore, we expect stability
+as $\text{Re} \to 0$ the stabilising term dominates, and instability as
+$\text{Re} \to \infty$ when the destablising term dominates. Thus there exists
+some value $\text{Re}_{\text{crit}}$ at which instability arises. We will ask
+what this value is, and what is the form of the initial
 instability/mode/pattern?
 
 \section{Kelvin-Helmholtz instability}
-See Drazen (2002), section 3.3, pages 47--50. Here we take a different approach
-and derive Rayleigh's equation (example 8.3, page 151 of Drazen). 
+See Drazin (2002), section 3.3, pages 47--50. Here we take a different approach
+and derive Rayleigh's equation (example 8.3, page 151 of Drazin). 
 
 \begin{center}
 	\begin{tikzpicture}
@@ -83,7 +84,7 @@ and derive Rayleigh's equation (example 8.3, page 151 of Drazen).
 		\draw[dashed,->] (0, -1.5) -- (0, 1.5) node[above] {$z$};
 		\draw[blue,dashed] (1.5, 0) -- (1.5, 1.4);
 		\draw (1.5, 0) node[below] {$U$};
-		\draw (-1.5, 0) node[above] {$U$};
+		\draw (-1.5, 0) node[above] {$-U$};
 		\draw[blue,dashed] (-1.5, 0) -- (-1.5, -1.4);
 
 		\draw[blue,->] (0, 0.4) -- (1.5, 0.4);
@@ -106,10 +107,10 @@ The linearised, \emph{inviscid} equation for perturbation $\hat{\u}$ is
 	\nabla \cdot \hat{\u} &= 0 
 \end{align}
 The boundary conditions are $\hat{\u} \to 0$ as $z \to \pm \infty$, i.e. no
-energy radiated in from infinity. We will work in 2D $(\hat{u},\hat{w}) =
-(\psi_z, -\psi_x)$ and let $\psi(x,z,t) = \phi(z) e^{i\alpha(x-ct)}$ where $c$
-is a complex eigenvalue, currently unknown. Formally, this is equivalent to
-taking a Fourier transform. We have
+energy is radiated in from infinity. We will work in 2D with velocity
+components $(\hat{u},\hat{w}) = (\psi_z, -\psi_x)$ and let $\psi(x,z,t) =
+\phi(z) e^{i\alpha(x-ct)}$ where $c$ is a complex eigenvalue, currently
+unknown. Formally, this is equivalent to taking a Fourier transform. We have
 \begin{equation}
 	i\alpha (U-c) \begin{pmatrix} \phi' \\ -i\alpha \phi \end{pmatrix} +
 	\begin{pmatrix} -i\alpha U' \phi \\ 0 \end{pmatrix} + \begin{pmatrix} i
@@ -121,7 +122,7 @@ get
 	(U-c)(\phi''-\alpha^2 \phi) - U'' \phi = 0
 \end{equation}
 with boundary conditions $\phi \to 0$ as $z \to \pm \infty$. This is
-\emph{Rayleigh's equation}. Note that $c$ is the crucal eigenvalue. We wish to
+\emph{Rayleigh's equation}. Note that $c$ is the crucial eigenvalue. We wish to
 know when $c_i = \Im(c) > 0$ as a function of $U(z)$, as $c_i$ is the growth
 rate:
 \begin{equation}
@@ -190,13 +191,14 @@ to waves of all wavelengths. The instability may be remedied
 	\item by adding a density stratification, which stabilises long
 		wavelengths (small $\alpha$)
 	\item by adding surface tension, which stabilises short wavelengths (large
-		$\alpha$), e.g. Drazen page 50 equation 3.21.
+		$\alpha$), e.g. Drazin page 50 equation 3.21.
 \end{itemize}
 
-\section{Thermal instabilities: convection}
+\section{Thermal instabilities: Rayleigh-Bernard convection}
 Consider two parallel plates separated by distance $L$ with fluid subject to
 gravity and temperatue difference $\Delta T$ between the plates. The lower
-plate is heated. 
+plate is heated to $T_0 + \Delta T$ whilst the upper plate is fixed at
+temperature $T_0$. 
 \begin{center}
 	\begin{tikzpicture}
 		\draw[draw=none,fill=gray!50] (0,0) rectangle (5,-0.5);
@@ -217,16 +219,17 @@ plate is heated.
 
 The basic state consists of no motion, with heat transfer by conduction only.
 \paragraph{Governing equations.}
-The governing equations are 
+The governing equations are those of momentum, mass, and (thermal) energy
+conservation.
 \begin{align}
 	\rho \frac{\diffD \u}{\diffD t} + \nabla p &= \mu \nabla^2 \u + \rho g
 	\hat{\symbf{z}} \\
 	\frac{\partial T}{\partial t} + \u \cdot \nabla T &= \kappa \nabla^2 T \\
 	\frac{\diffD \rho}{\diffD t} + \rho \nabla \cdot \u &= 0
 \end{align}
-We need a relationship between $\rho$ and $T$. Most cases of interest have
-$\Delta T$ and $\Delta \rho$ small, i.e. $\Delta \rho \ll \rho_0, \Delta T \ll
-T_0$. Two consequences of this assumption are:
+To close the set of equations we need a relationship between $\rho$ and $T$.
+Most cases of interest have $\Delta T$ and $\Delta \rho$ small, i.e. $\Delta
+\rho \ll \rho_0, \Delta T \ll T_0$. Two consequences of this assumption are:
 \begin{enumerate}
 	\item We can Taylor expand $\rho = \rho(T)$:
 		\begin{equation}
@@ -284,7 +287,8 @@ Dropping the $^*$ notation, we have
 \end{align}
 
 \paragraph{Boundary conditions.}
-There are three combinations of boundary condition available in this problem.
+There are three combinations of boundary condition available in this problem,
+with the choice fixed wall (no slip) or stress free (free slip).
 \begin{center}
 	\begin{tikzpicture}
 		\draw (-0.5, 0.2) node {$\theta = 1$};
@@ -341,7 +345,7 @@ In the basic state we have conductive profile $\u_0 = 0, \theta_0 = 1-z$ and
 from integration $p_0 = \sigma \text{Ra}( z - \frac{1}{2}z^2)$. We generate
 linearised equations for perturbations $\theta = \theta_0 + \theta', \u = \u_0
 + \u', p = p_0 + p'$. As usual with linear stability analysis, we assume
-$(\theta, \u', p')$ are small.
+$(\theta', \u', p')$ are small.
 
 \begin{align}
 	\frac{\partial \u'}{\partial t} + \cancel{\u' \cdot \nabla \u'} + \nabla
@@ -471,7 +475,7 @@ We find the minimum in the usual way:
 \end{align}
 Given $k = n\pi/\sqrt{2}$ the Rayleigh number is
 \begin{equation}
-	Ra(k = \frac{n\pi}{\sqrt{2}}) = \frac{(n^2\pi^2 +
+	\Ra(k = \frac{n\pi}{\sqrt{2}}) = \frac{(n^2\pi^2 +
 	\frac{1}{2}n^2\pi^2)^3}{n^2 \pi^2/2} = \frac{27}{4}n^4 \pi^4
 \end{equation}
 Clearly the critical Rayleigh number is given by $n=1$, hence
@@ -511,7 +515,7 @@ Results for other boundary conditions are:
 
 Notice that at criticality only the size of $k$ is specified, \emph{not} its
 direction. Hence there are an infinite number of possibilities $\symbf{k} =
-(k\cos\phi,k\sin\phi)$. Various different patterns seen which tesselate are as
+(k\cos\phi,k\sin\phi)$. Various different patterns which tesselate are as
 follows.
 
 \begin{enumerate}
@@ -691,7 +695,7 @@ equation. The $\theta$-momentum equation can be rearranged, and multiplied by
 $r$ to give a material conservation equation:
 \begin{align}
 	\frac{\partial}{\partial r} (ru_\theta) + r u_r \frac{\partial
-	u_\theta}{\partial r} + u-z \frac{\partial}{\partial z} (ru_\theta) +
+	u_\theta}{\partial r} + u_z \frac{\partial}{\partial z} (ru_\theta) +
 	r\left(\frac{u_r u_\theta}{r}\right) &= 0 \\
 	\implies \frac{\partial}{\partial t} (ru_\theta) + u_r
 	\frac{\partial}{\partial r}(ru_\theta) + u_z \frac{\partial}{\partial
@@ -756,9 +760,9 @@ for stability. This is often written using the \emph{Rayleigh determinant}
 Hence stability is predicted if $\Phi \ge 0$.
 
 \subsection{Derivation via linear stability analysis}
-Consider Taylor-Couette geometry: cylindrical walls at $r_1$ and $r_2$.
-Consider an inviscid base state $\u = r \Omega(r) \hat{\symbf{\theta}}$, with
-axisymmetric perturbations $\u'$. We have incompressibility
+Consider Taylor-Couette geometry: cylindrical walls at $r_1$ and $r_2$ with an
+inviscid base state $\u = r \Omega(r) \hat{\symbf{\theta}}$, with axisymmetric
+perturbations $\u'$. We have incompressibility
 \begin{equation}
 	\nabla \cdot \u' = 0 \implies \frac{1}{r}\frac{\partial}{\partial
 	r}(ru_r') + \frac{\partial u_z'}{\partial z} = 0
@@ -822,13 +826,8 @@ The first term may be integrated by parts to give:
 	\int_{r_1}^{r_2} r \abs{\hat{u}_r}^2 \, \diffd r = \frac{k^2}{\sigma^2}
 	\int_{r_1}^{r_2} r \Phi \abs{\hat{u}_r}^2 \, \diffd r
 \end{equation}
-The first term vanishes since $\hat{u}_r =0$ at $r=r_1,r_2$. Hence
-\begin{equation}
-	-\int_{r_1}^{r_2} \frac{\diffd}{\diffd r}(r \hat{u}_r^*)\frac{1}{r} \frac{\diffd}{\diffd r} (r\hat{u}_r) \diffd r - k^2
-	\int_{r_1}^{r_2} r \abs{\hat{u}_r}^2 \, \diffd r = \frac{k^2}{\sigma^2}
-	\int_{r_1}^{r_2} r \Phi \abs{\hat{u}_r}^2 \, \diffd r
-\end{equation}
-Labelling the first integral as $H_1 > 0$ and the second as $H_2 > 0$, we have
+The first term vanishes since $\hat{u}_r =0$ at $r=r_1,r_2$. Labelling the
+first integral as $H_1 > 0$ and the second as $H_2 > 0$, we have
 \begin{equation}
 	\frac{k^2}{\sigma^2}
 	\int_{r_1}^{r_2} r \Phi \abs{\hat{u}_r}^2 \, \diffd r = -H_1 - k^2 H_2 < 0
@@ -867,12 +866,12 @@ Apply Rayleigh's criterion to Taylor-Couette flow.
 	\end{tikzpicture}
 \end{center}
 
-When viscosity is present, the only solution with $\partial_\theta =
+When viscosity is present, the general solution with $\partial_\theta =
 \partial_z = 0$ is
 \begin{equation}
 	u_\theta(r) = A r + \frac{B}{r}
 \end{equation}
-where
+No-slip boundary conditions at $r=R_1,R_2$ give
 \begin{equation}
 	A = \frac{\Omega_2 R_2^2 - \Omega_1 R_1^2}{R_2^2 - R_1^2}, \hspace{2em} B
 	= \frac{\Omega_1 - \Omega_2}{R_1^{-2} - R_2^{-2}}
@@ -931,8 +930,9 @@ Thus Rayleigh's criterion is $\eta^2 < \mu$ for stability.
 
 For a fixed geometry (i.e. fixed $\eta$) we can plot a stability diagram, with
 Rayleigh's line $\eta^2 = \mu = \Omega_2 / \Omega_1$ marking the stability
-heuristic. In Taylor-Couette geometry, the instability manifests itself as
-\emph{Taylor vortices}.
+heuristic. In Taylor-Couette geometry, the instability often manifests itself
+as \emph{Taylor vortices}, though there are many different modes of
+instability depending on $\Omega_1, \Omega_2, \nu$.
 
 \begin{figure}
 	\centering
@@ -944,7 +944,7 @@ heuristic. In Taylor-Couette geometry, the instability manifests itself as
 For some flows, inviscid analysis gives a good approximation to the stability
 properties of a viscous fluid (e.g. Kelvin-Helmholtz, Taylor-Couette flow) but
 for others, it does not (e.g. plane Couette flow, channel flow, pipe  flow).
-Here, viscosity can be \emph{de}stabilising.
+In these flows, viscosity can be \emph{de}stabilising.
 
 \begin{center}
 	\begin{tikzpicture}
@@ -980,8 +980,8 @@ Euler equations are
 	\nabla \cdot \u &= 0
 \end{align}
 with boundary conditions $\u \cdot \hat{\symbf{z}} = 0$ at $z=z_1,z_2$. The
-basic flow is $U(z)\hat{\symbf{x}}$ with $p$ constant -- any form is valid.
-Add small perturbations
+basic flow is $\symbf{U} = U(z)\hat{\symbf{x}}$ with $P$ constant -- any
+constant form of the pressure is valid.  Add small perturbations
 \begin{equation}
 	\u = U(z)\hat{\symbf{x}} + \u', \hspace{1em}p = P + p'
 \end{equation}
@@ -1006,8 +1006,8 @@ part, e.g.
 	-\Im(\hat{w})\sin(\alpha x+\beta y - \alpha c_r t)\right] e^{\alpha c_i t}
 \end{equation}
 This mode is a wave travelling with phase speed  $\alpha c_r /\sqrt{\alpha^2 +
-\beta^2}$ in the $(\alpha, \beta, 0)$ direction. While it decays like
-$e^{\alpha c_i t}$, or growth if $c_i > 0$.  The equations are now
+\beta^2}$ in the $(\alpha, \beta, 0)$ direction and it decays like $e^{\alpha
+c_i t}$ for $c_i < 0$, or grows if $c_i > 0$.  The equations are now
 \begin{align}
 i\alpha (U-c)\hat{u} + \frac{\diffd U}{\diffd z} \hat{w} + i \alpha\hat{p} &=
 0 \label{eq:l6:1}\\
@@ -1023,8 +1023,8 @@ problem in $c \in \mathbb{C}$. Instability  corresponds to $c_i > 0$ and $c_i
 \le 0$ for stability.
 
 \subsubsection{Squire's transformation (Squire, 1933)}
-Before  attempting to solve \eqref{eq:l6:1}--\eqref{eq:l6:4}, we consider the
-Squire transformation. Define the transformed variables
+Before  attempting to solve \eqref{eq:l6:1}--\eqref{eq:l6:4}, we consider
+Squire's transformation. Define the transformed variables
 \begin{equation}
 	\tilde{\alpha} = \sqrt{\alpha^2 + \beta^2},\hspace{1em} \tilde{u} =
 	\frac{\alpha \hat{u} + \beta \hat{v}}{\tilde{\alpha}}, \hspace{1em}
@@ -1045,7 +1045,7 @@ Incompressibility is now expressed as
 	i\tilde{\alpha}\tilde{u}  + \frac{\diffd \hat{w}}{\diffd z} = 0
 \end{equation}
 
-The transformedd system has the same form as \eqref{eq:l6:1}--\eqref{eq:l6:4}
+The transformed system has the same form as \eqref{eq:l6:1}--\eqref{eq:l6:4}
 with $\beta = \hat{v} = 0$ and $\alpha \to \tilde{\alpha},
 \hat{u}\to\tilde{u}, \hat{p}\to\tilde{p}$ but $c$ unchanged. Thus the
 eigenvalue $c$ depends on $\sqrt{\alpha^2+\beta^2}$ but the growth rate is
@@ -1076,8 +1076,8 @@ Substituting into \eqref{eq:l6:6} gives
 	U}{\diffd z}\phi - (U-c)\frac{\diffd \phi}{\diffd z}\right] &= 0 \\
 	\implies (U-c)(\phi'' - \alpha^2 \phi) - U'' \phi &=0
 \end{align}
-with boundary conditions $\phi = 0$ at $z=z_1, z_2$. This is Rayleigh's
-equation (1880).
+with boundary conditions $\phi = 0$ at $z=z_1, z_2$. This is \emph{Rayleigh's
+equation (1880)}.
 \paragraph{Comments.}
 \begin{itemize}
 	\item Rayleigh's equation involves $\alpha^2$ only so need only consider
@@ -1102,8 +1102,8 @@ equation (1880).
 
 \subsubsection{Properties of Rayleigh's equation.}
 \paragraph{Inflection point criterion.}
-Suppose $c_i > 0$, i.e. consider an unstable mode. Integrate $\phi^* \times$ Rayleigh's
-equation from $z_1$ to $z_2$:
+Suppose $c_i > 0$, i.e. consider an unstable mode. Multiply Rayleigh's
+equation by $\phi^*$ and integrate from $z_1$ to $z_2$:
 \begin{equation}
 	\int_{z_1}^{z_2} \left[\phi^* \phi'' - \alpha^2 \abs{\phi}^2 - \frac{U''}{U-c}
 	\abs{\phi}^2 \right]\diffd z = 0
@@ -1128,7 +1128,7 @@ But $c_i > 0$ so we must have
 	\diffd z  = 0
 \end{equation}
 Now $\abs{U-c}^2 > 0$ and $\abs{\phi}^2 > 0 $ so $U''$ must change sign
-somewhere in $\left[z_1,z_2\right]$. Thus $U''=0$at least once is a necessary
+somewhere in $\left[z_1,z_2\right]$. Thus $U''=0$ at least once is a necessary
 condition for inviscid instability, called the \emph{inflection point
 criterion}.
 \end{document}

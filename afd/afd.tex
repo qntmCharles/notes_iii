@@ -808,8 +808,8 @@ and evolves due to the flux through the bounding surface
 	\frac{\diffd Q}{\diffd t} = - \int_V \nabla \cdot \symbf{F} \, \diffd V =
 	- \int_S \symbf{F} \cdot \diffd \symbf{S}
 \end{equation}
-The prototypical choice for this equation is mass with $q = \rho, \symbf{F} =
-\rho \u$. 
+The prototypical choice for this equation is mass conservation with $q = \rho,
+\symbf{F} = \rho \u$. 
 
 A \emph{material invariant} is a scalar field $f(\x,t)$ for which
 $\frac{\diffD f}{\diffD t} = 0$. Then $f$ is constant for each fluid element,
@@ -838,7 +838,7 @@ independent of $t$):
 $\diffd e = T \diffd s - p \diffd v$):
 \begin{equation}
 	\rho \frac{\diffD e}{\diffD t} = \cancel{\rho T \frac{\diffD s}{\diffD t}}
-	+ p \frac{\diffD \log \rho}{\diffD t} = - \rho \nabla \cdot \u
+	+ p \frac{\diffD \log \rho}{\diffD t} = - p \nabla \cdot \u
 \end{equation}
 
 Summing these three equations gives
@@ -956,12 +956,12 @@ $\symbf{E}$ and $\B$ are invariant, but $H_m$ changes by
 	\, \diffd V = \int_S \chi \B \cdot \symbf{n} \, \diffd S
 \end{equation}
 So $H_m$ is not uniquely defined unless $\B\cdot\symbf{n} = 0$ on the surface
-$S$. $H_m$ is a \emph{pseudoscalar}, i.e. it changes sign under a reflection.
-Non-zero helicity $H_m \ne 0$ occurs only when $\B$ lacks reflection symmetry.
-$H_m$ can be interpreted topologically in terms of the twistedness and
-knottedness of $\B$ (see ES2, Q4). Since $\B$ is `frozen in' to the fluid and
-is deformed continuously by it, the topological properties of $\B$ are
-conserved.
+$S$. The magnetic helicity $H_m$ is a \emph{pseudoscalar}, i.e. it changes
+sign under a reflection.  Non-zero helicity $H_m \ne 0$ occurs only when $\B$
+lacks reflection symmetry.  $H_m$ can be interpreted topologically in terms of
+the twistedness and knottedness of $\B$ (see ES2, Q4). Since $\B$ is `frozen
+in' to the fluid and is deformed continuously by it, the topological
+properties of $\B$ are conserved.
 
 The equivalent conserved quantity in homentropic or barotropic ideal gas
 dynamics (without $\B)$ is the \emph{kinetic helicity}
@@ -1115,7 +1115,7 @@ written as
 	\symbf{U}}{\partial x_i} = 0 
 \end{equation}
 where $\symbf{U}$ is now an 8D state vector and the $\symsf{A}_i$ are three
-$8\times8$ matrices. The characteristic polynomial of $A_x$ is
+$8\times8$ matrices. The characteristic polynomial of $\symsf{A}_x$ is
 \begin{equation}
 	\text{det}\left( \symsf{A}_x - v \symsf{I}\right) = (v-u_x)^2 \left(
 	(v-u_x)^2 - v_{ax}^2\right)\left( (v-u_x)^4 -
@@ -1131,7 +1131,7 @@ of $\nabla \cdot \B$ (i.e. of $B_x$, in the case $\symbf{n} =
 \cdot \B = 0$. The vortical waves are replaced by Alfv\'{e}n waves with speeds
 $u_x \pm v_{ax}$.
 
-\subsection{Stress tensor \& virial theorem}
+\subsection{Stress tensor}
 In the absence of external forces, the equation of motion of a fluid can
 usually be written as
 \begin{equation}
@@ -1170,6 +1170,7 @@ simplifies to $(\nabla \cdot \symbf{g})\symbf{g} = - 4\pi G \rho \symbf{g}$,
 which becomes the force per unit volume $\rho \symbf{g}$ when divided by
 $-4\pi G$.
 
+\subsection{Virial theorem}
 The \emph{virial equations} are the spatial moments of the equation of motion.
 They provide integral measures of the balance of forces acting on the fluid.
 THe first moments are generally most useful. Recall
@@ -1200,7 +1201,7 @@ material-invariant mass element. Integrate over $V$ to get
 	 \, \diffd V + \int_S \left( x_j \symsf{T}_{ki} + x_i
  	\symsf{T}_{kj}\right)n_k \, \diffd S 
 \end{align}
-where we have integrated by parts using the divergence theorem:
+where we have integrated by parts and used the divergence theorem:
 \begin{align}
 	\int_V f \frac{\partial g_k}{\partial x_k} \, \diffd V 
 	&= \int_V \left[
@@ -1248,7 +1249,7 @@ internal, gravitational and magnetic energies. Thus
 	\frac{1}{2}\frac{\diffd^2 I}{\diffd t^2} = 2K + 3(\gamma - 1) U + W + M
 \end{equation}
 On the right-hand side, only $W$ is negative. For the system to be bound (i.e.
-to noy fly apart) the kinetic, internal and magnetic energies are limited by
+to not fly apart) the kinetic, internal and magnetic energies are limited by
 \begin{equation}
 	2K + 3(\gamma -1 )U + M \le \abs{W}
 \end{equation}
@@ -1347,11 +1348,11 @@ For such solutions (omitting the tilde)
 	\label{eq:5:1}
 \end{equation}
 For transverse displacements $\symbf{k} \cdot \disp = \B \cdot \disp = 0$
-hence this simplifies to
+this simplifies to
 \begin{equation}
 	\rho \omega^2 \disp = \frac{1}{\mu_0}(\symbf{k}\cdot\B)^2\disp
 \end{equation}
-These solutiosn are Alfv\'{e}n waves with dispersion relation
+These solutions are Alfv\'{e}n waves with dispersion relation
 \begin{equation}
 	\omega^2 = (\symbf{k}\cdot\symbf{v}_a)^2
 \end{equation}
@@ -1366,7 +1367,7 @@ where $\hat{\symbf{k}} = \symbf{k}/k$. The phase velocity $\v_p$ is the
 velocity at which the phase of the wave travels, whilst the group velocity
 $\v_g$ is the velocity at which the energy of the wave (or the centre of a
 wavepacket) is transported. For Alfv\'{e}n waves, $\omega = \pm
-\symbf{k}\cdot\v_a$:
+\symbf{k}\cdot\v_a$, hence:
 \begin{equation}
 	\v_p = \pm v_a \cos \theta \hat{\symbf{k}}, \hspace{2em} \v_g = \pm \v_a
 \end{equation}
@@ -1494,7 +1495,7 @@ reconstruct the solution ($u$ and $v_s$). Half the information is propagated
 along $C_+$ and half along $C_-$. In general $C_\pm$ are not known in advance
 but must be determined along with the solution. $C_\pm$ propagate at speed
 $v_s$ to the right and left, \emph{with respsect to the moving fluid}. This
-may be viewed as a non-linear geneeralisation of the solution of the
+may be viewed as a non-linear generalisation of the solution of the
 classical wave equation $f(x-v_st) + g(x+v_s t)$.
 
 \subsubsection{Method of characteristics}
@@ -1592,9 +1593,9 @@ point. Contradictory information arrives at the same event, leading to a
 breakdown of the solution.
 
 \subsubsection{Wave steepening}
-Another viewpoint is \emph{wave steepening}. Each point of the graph $v(x)$
-moves at its wave speed $v$. The crest moves fastest and eventually overtakes
-the trough to the right of it. 
+Another viewpoint of shock formation is \emph{wave steepening}. Each point of
+the graph $v(x)$ moves at its wave speed $v$. The crest moves fastest and
+eventually overtakes the trough to the right of it. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.3\textwidth]{steepening.png}
@@ -1606,7 +1607,7 @@ discontinuity. The formal solution of the inviscid Burgers equation is
 \end{equation}
 with $x = x_0 + v_0(x_0) t$. By the chain rule,
 \begin{equation}
-	\frac{\partial v}{\partial x} + \frac{v_0'}{1+v_0' t}
+	\frac{\partial v}{\partial x} = \frac{v_0'}{1+v_0' t}
 \end{equation}
 which diverges first at the breaking time
 \begin{equation}

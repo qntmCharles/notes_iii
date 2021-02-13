@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {section}{\numberline {2}Kelvin-Helmholtz instability}{2}{section.2}
-\contentsline {section}{\numberline {3}Thermal instabilities: convection}{4}{section.3}
+\contentsline {section}{\numberline {3}Thermal instabilities: Rayleigh-Bernard convection}{4}{section.3}
 \contentsline {paragraph}{\nonumberline Governing equations.}{4}{section*.2}
 \contentsline {paragraph}{\nonumberline Boundary conditions.}{5}{section*.3}
 \contentsline {paragraph}{\nonumberline Basic state.}{6}{section*.4}

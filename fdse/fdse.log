@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  11 FEB 2021 14:58
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  13 FEB 2021 20:34
  restricted system commands enabled.
 **fdse.tex
 (./fdse.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.107 seconds
+luaotfload | main : initialization completed in 0.124 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3193,24 +3193,24 @@ Missing character: There is no ; (U+003B) in font nullfont!
 ] [17] [18] [19
 Missing character: There is no ; (U+003B) in font nullfont!
 ] [20] [21]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1333.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1333.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1335.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1335.
  (./fdse.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1333.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1333.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1335.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1335.
 Package rerunfilecheck Info: File `fdse.out' has not changed.
 (rerunfilecheck)             Checksum: FE7983CCB4540DD80A614A39F0882ABF;1339.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1333.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1335.
 )
 
 Here is how much of LuaTeX's memory you used:
  53361 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 14591 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 1658 glue, 1 kern, 624 attribute, 64 glue_spec, 624
+ 14609 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 1660 glue, 1 kern, 625 attribute, 64 glue_spec, 625
  attribute_list, 1 write nodes
    avail lists: 1:1,2:1173,3:480,4:122,5:265,6:2075,7:515,8:64,9:491,10:17,11:17
-4
+5
  55656 multiletter control sequences out of 65536+600000
  70 fonts using 14391071 bytes
  74i,13n,108p,8842b,866s stack positions out of 5000i,500n,10000p,200000b,100000s
@@ -3227,7 +3227,7 @@ usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf
 /fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/opentype/pub
 lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf>
-Output written on fdse.pdf (21 pages, 2239352 bytes).
+Output written on fdse.pdf (21 pages, 2239516 bytes).
 
 PDF statistics: 356 PDF objects out of 1000 (max. 8388607)
  280 compressed objects within 3 object streams

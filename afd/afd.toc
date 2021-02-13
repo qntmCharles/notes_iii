@@ -37,7 +37,8 @@
 \contentsline {subsection}{\numberline {4.3}Helicity conservation}{16}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Symmetries}{17}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Hyperbolic structure}{18}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Stress tensor \& virial theorem}{20}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.6}Stress tensor}{20}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.7}Virial theorem}{20}{subsection.4.7}
 \contentsline {section}{\numberline {5}Linear waves in homogeneous media}{22}{section.5}
 \contentsline {paragraph}{\nonumberline Interpretation.}{24}{section*.7}
 \contentsline {section}{\numberline {6}Non-linear waves, shocks and discontinuities}{25}{section.6}

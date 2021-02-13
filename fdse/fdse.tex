@@ -34,12 +34,12 @@ dynamic evolution is governed by a rich variety of physical processes occuring
 on a wide range of length and time scales. 
 
 \begin{itemize}
-	\item The Earth's core is formed by the solidifcation of a mixture of
+	\item The Earth's core is formed by the solidification of a mixture of
 		molten iron and various light elements, a process which drives
 		predominantly compositional convection in the liquid outer core, thus
 		producing the geodynamo responsible for the Earth's magnetic field. 
 	\item On million year timescales, the solid mantle convects, and as it
-		upwells to the surface it partially melts leading to the volcanism. 
+		upwells to the surface it partially melts leading to volcanism. 
 	\item At the surface, convection drives the motion of brittle plates which
 		are responsible for the Earth's topography as can be felt and imaged
 		through the seismic record (figure~\ref{fig:seismology})
@@ -80,7 +80,7 @@ apart by convection of the Earth's mantle.
 We wish to form a model describing the depth of the ocean floor near mid-ocean
 ridges. First we estimate the temperature field. Consider an idealised model
 with a flat surface (for now), observed plate spreading rate $U$, surface
-temperature $T_0$, deep mantle temperature $T_1$.
+temperature $T_0$, and deep mantle temperature $T_1$.
 The temperature field is described by the advection-diffusion equation
 \begin{equation}
 	\rho c_p \left(\frac{\partial T}{\partial t} + \symbf{u}\cdot\nabla T
@@ -232,7 +232,7 @@ Within the oceanic lithosphere we have a denssity field
 	\rho = \rho_m \left( 1- \alpha (T - T_1)\right)
 \end{equation}
 where $T=T(x,z)$ is the thermal model derived above, given by \eqref{eq:T}.
-Isostatic balance gives the following, which balances water weight, mantle
+Isostatic balance gives the following, which balances water weight and mantle
 weight, with water and mantle buoyancy. The ocean density is denoted by
 $\rho_w$.
 
@@ -255,7 +255,7 @@ ocean depth is therefore
 This model fits the data well near to the mid-ocean ridge, with crust age up
 to 75 million years. However, away from the ridge, the model breaks down as
 $w$ tends to a constant as $x \to \infty$. The breakdown of the model is due
-to convection: the infinite depth curst approximation breaks down and
+to convection: the infinite depth mantle approximation breaks down and
 convection dynamics become important.
 
 \section{Natural convection}
@@ -278,6 +278,7 @@ dynamically could be stable.
 		\draw (1, -3.5) node {$\beta < 0$};
 		\draw (1, 0.5) node {density profile};
 		\draw[red] (1, -4) node {statically stable};
+		\draw[blue,->] (0, -3) -- (1, -3) node[right] {$\rho$};
 	\end{tikzpicture}
 	\begin{tikzpicture}
 		\draw[blue] (2,0) -- (0, -3);
@@ -288,6 +289,7 @@ dynamically could be stable.
 		\draw (1, -3.5) node {$\beta > 0$};
 		\draw (1, 0.5) node {density profile};
 		\draw[red] (1, -4) node {statically unstable};
+		\draw[blue,->] (0, -3) -- (1, -3) node[right] {$\rho$};
 	\end{tikzpicture}
 \end{center}
 
@@ -333,7 +335,8 @@ There is instability if $\text{Ra} \gtrapprox \mathcal{O}(1)$.
 
 \subsection{Onset of convection}
 Consider a fluid of depth $h$ between $z=0$ and $z=h$ with density profile
-$\rho(z)$ and temperature difference $\Delta T$ across the depth.
+$\rho(z)$ and temperature difference $\Delta T$ across the depth, where the
+$z=0$ surface is warmer.
 
 \begin{center}
 	\begin{tikzpicture}[scale=1.2]
@@ -351,8 +354,8 @@ $\rho(z)$ and temperature difference $\Delta T$ across the depth.
 \end{center}
 
 The governing equations are conservation of mass \eqref{eq:masscons},
-conservation of momentum \eqref{eq:momcons}, and conservation of energy
-\eqref{eq:energycons}.
+conservation of momentum \eqref{eq:momcons}, and conservation of (thermal)
+energy \eqref{eq:energycons}.
 \begin{align}
 	\nabla \cdot \symbf{u} &= 0 \label{eq:masscons} \\
 	\rho \left( \frac{\partial \symbf{u}}{\partial t} +
@@ -376,7 +379,7 @@ state:
 	T &= T_0 + \Delta T \left(1-\frac{z}{h}\right) + T'(\symbf{x},t) \\
 	p &= p_0(z) + p'(\symbf{x},t) 
 \end{align}
-The linearied perturbation equations are thus
+The linearised perturbation equations are thus
 \begin{align}
 	\nabla \cdot \symbf{u}' &= 0  \\
 	\rho_0  \frac{\partial \symbf{u}'}{\partial t} &= - \nabla p' + \mu
@@ -403,8 +406,9 @@ henceforth) are
 	\nabla^2 \symbf{u} + \text{Ra}T \hat{\symbf{z}} \label{eq:L2:2}\\
 	\frac{\partial T}{\partial  t} - w &= \nabla^2 T  \label{eq:L2:3}
 \end{align}
-where the \emph{Prandtl number} $\text{Pr} = \frac{\mu/\rho_0}{\kappa}$ which
-quantifies the importance of viscous diffusion versus thermal diffusion.
+where the \emph{Prandtl number} is defined as $\text{Pr} =
+\frac{\mu/\rho_0}{\kappa}$ which quantifies the importance of viscous
+diffusion versus thermal diffusion.
 
 \paragraph{Boundary conditions.} We require boundary conditions on the
 temperature $T$ and velocity $\symbf{u}$. There are several possible
@@ -423,7 +427,7 @@ conditions, which may be mixed:
 \end{itemize}
 
 We eliminate pressure from the non-dimensionalised equations by taking
-$\hat{\symbf{z}}\cdot\nabla \times (\nabla \times \eqref{eq:L2:2}$. Recall the
+$\hat{\symbf{z}}\cdot\nabla \times (\nabla \times \eqref{eq:L2:2})$. Recall the
 vector identity
 \begin{equation}
 	\nabla \times (\nabla \times \symbf{A}) = \nabla (\nabla \cdot \symbf{A})
@@ -451,52 +455,52 @@ effective horizontal wavenumber. We have from the governing equations
 \end{align}
 where $D = \diffd/\diffd z$. The boundary in our case will be
 rigid, stress free, and fixed temperature. Note that this is not necessarily
-representative of the actual boundary conditions, but is useeful analytically.
- Thus at $z= 0, 1$ we have $w = 0$ (rigid), $D^2 w = 0$ (stress free) and $T=
- 0 $ (fixed temperature). Given these conditions, the heat equation implies
- $D^2 T = 0$ on $z=0,1$ and the momentum equation implies $D^4 w = 0$ on
- $z=0,1$. 
+representative of the actual boundary conditions, but is useful analytically.
+Thus at $z= 0, 1$ we have $w = 0$ (rigid), $D^2 w = 0$ (stress free) and $T=
+0 $ (fixed temperature). Given these conditions, the heat equation implies
+$D^2 T = 0$ on $z=0,1$ and the momentum equation implies $D^4 w = 0$ on
+$z=0,1$. 
 
- \paragraph{Marginal stability.} The marginal stability boundary is $\sigma =
- 0$ between growth ($\sigma > 0$) and decay ($\sigma < 0$). Combining
- \eqref{eq:L2:6} and \eqref{eq:L2:7} with $\sigma = 0$ we hae
- \begin{equation}
-	 (D^2 - a^2)^3 (\hat{T},\hat{w}) = -a^2 \text{Ra}(\hat{T},\hat{w})
- \end{equation}
- The solutions have structure 
- \begin{equation}
-	 (\hat{T}, \hat{w}) =  (\hat{T}_0, \hat{w}_0) \sin n \pi z
- \end{equation}
- Hence we have the eigenvalue condition $(n^2 \pi^2 + a^2)^3 = a^2 \text{Ra}$.
- Let $a^2 = \pi^2 b^2$. Then
- \begin{equation}
-	 \text{Ra} = \frac{(n^2 + b^2)^3 \pi^4}{b^2}
- \end{equation}
+\paragraph{Marginal stability.} The marginal stability boundary is $\sigma =
+0$ between growth ($\sigma > 0$) and decay ($\sigma < 0$). Combining
+\eqref{eq:L2:6} and \eqref{eq:L2:7} with $\sigma = 0$ we have
+\begin{equation}
+ (D^2 - a^2)^3 (\hat{T},\hat{w}) = -a^2 \text{Ra}(\hat{T},\hat{w})
+\end{equation}
+The solutions have structure 
+\begin{equation}
+ (\hat{T}, \hat{w}) =  (\hat{T}_0, \hat{w}_0) \sin n \pi z
+\end{equation}
+Hence we have the eigenvalue condition $(n^2 \pi^2 + a^2)^3 = a^2 \text{Ra}$.
+Let $a^2 = \pi^2 b^2$. Then
+\begin{equation}
+ \text{Ra} = \frac{(n^2 + b^2)^3 \pi^4}{b^2}
+\end{equation}
 
- The minimum Rayleigh number is at $n=1$ where $\text{Ra} = (1+b^2)^3
- \pi^4/b^2$:
- \begin{center}
-	 \begin{tikzpicture}[scale=1.6]
-		 \draw[thick,->] (-0.1, 0) -- (5, 0) node[right] {$b^2$};
-		 \draw[thick,->] (0, -0.1) -- (0, 3) node[left] {Ra};
-		 \draw[smooth,blue] plot[domain=0.035:3.89,samples=100]  ({\x},{(1+\x)^3/(10*\x)});
-		 \draw (0.5,0.1) -- (0.5, -0.1) node[below] {$1/2$};
-		 \draw (0.1, 0.675) -- (-0.1, 0.675) node[left]
-		 {$\text{Ra}_{\text{crit}}$};
-		\draw (0.5, 2) node {$\sim \frac{\pi^4}{b^2}$};
-		\draw (3, 1.5) node {$\sim \pi^4 b^4$};
-		\draw[blue] (3.8, 2.5) node {$\sigma = 0$};
-		\draw[red] (1.5, 0.5) node {stable $\sigma < 0$};
-		\draw[red] (1.5, 2.5) node {unstable $\sigma > 0$};
-	 \end{tikzpicture}
- \end{center}
+The minimum Rayleigh number is at $n=1$ where $\text{Ra} = (1+b^2)^3
+\pi^4/b^2$:
+\begin{center}
+ \begin{tikzpicture}[scale=1.6]
+	 \draw[thick,->] (-0.1, 0) -- (5, 0) node[right] {$b^2$};
+	 \draw[thick,->] (0, -0.1) -- (0, 3) node[left] {Ra};
+	 \draw[smooth,blue] plot[domain=0.035:3.89,samples=100]  ({\x},{(1+\x)^3/(10*\x)});
+	 \draw (0.5,0.1) -- (0.5, -0.1) node[below] {$1/2$};
+	 \draw (0.1, 0.675) -- (-0.1, 0.675) node[left]
+	 {$\text{Ra}_{\text{crit}}$};
+	\draw (0.5, 2) node {$\sim \frac{\pi^4}{b^2}$};
+	\draw (3, 1.5) node {$\sim \pi^4 b^4$};
+	\draw[blue] (3.8, 2.5) node {$\sigma = 0$};
+	\draw[red] (1.5, 0.5) node {stable $\sigma < 0$};
+	\draw[red] (1.5, 2.5) node {unstable $\sigma > 0$};
+ \end{tikzpicture}
+\end{center}
 
- Setting $\partial \text{Ra}/\partial b^2 = 0$ to find the critical Rayleigh
- number $\text{Ra}_{\text{crit}}$, we find
- \begin{equation}
-	 \text{Ra}_{\text{crit}} = \frac{27 \pi^4}{4} \approx 657.5 \hspace{2em}
-	 \text{at}\,\,\, a = \frac{\pi}{\sqrt{2}}
- \end{equation}
+Setting $\partial \text{Ra}/\partial b^2 = 0$ to find the critical Rayleigh
+number $\text{Ra}_{\text{crit}}$, we find
+\begin{equation}
+ \text{Ra}_{\text{crit}} = \frac{27 \pi^4}{4} \approx 657.5 \hspace{2em}
+ \text{at}\,\,\, a = \frac{\pi}{\sqrt{2}}
+\end{equation}
 Hence the dimensional wavelength at critical Rayleigh number is $2\pi h/a =
 2\sqrt{2} h \approx 2.8 h$. The convection process appears like so:
 \begin{center}
@@ -733,10 +737,8 @@ also have the Stefan condition
 \begin{equation}
 	\rho L \dot{a} = k \left.\frac{\partial T}{\partial x} \right|_{a^-}
 \end{equation}
-at $x = a(t)$. 
-
-Scaling from the thermal equation gives $x \sim \sqrt{\kappa t}$ as usual.
-From Stefan's condition we have
+at $x = a(t)$.  Scaling from the thermal equation gives $x \sim \sqrt{\kappa
+t}$ as usual.  From Stefan's condition we have
 \begin{equation}
 	\rho L \frac{x}{t} \sim k \frac{\Delta T}{x} = \rho c_p \kappa
 	\frac{\Delta T}{x}
@@ -1089,20 +1091,20 @@ high porosity. For context, random close-packed spheres have $\phi \approx
 Darcy's law represents the assumption that viscous dissipation at the pore
 scale balances the driving forces, pressure and buoyancy. We have
 \begin{equation}
-	\mu \u = - \symsf{K}(\phi)(\nabla p + \rho g \hat{\symbf{z}})
+	\mu \u = - \symsf{k}(\phi)(\nabla p + \rho g \hat{\symbf{z}})
 \end{equation}
 where $\u = \phi \tilde{\u}$ is the fluid flux per unit area and $\tilde{\u}$
 is the \emph{interstitial fluid velocity}, i.e. the actual fluid velocity. The
-tensor $\symsf{K}(\phi)$ is the \emph{permeability}, which characterises
+tensor $\symsf{k}(\phi)$ is the \emph{permeability}, which characterises
 the resistance to flow. In general, this is a tensor and depends on local
 properties; for example long grain-like particles favour motion along their
-long axis. $\symsf{K}$ reflects the geometry/tortuosity and porosity of the
+long axis. $\symsf{k}$ reflects the geometry/tortuosity and porosity of the
 medium. 
 \begin{eg}
 	The Kozeny-Carman equation for monodisperse random close packed spheres
 	gives
 	\begin{equation}
-		\symsf{K} = \frac{d^2}{180} \frac{\phi^3}{(1-\phi)^2}
+		\symsf{k} = \frac{d^2}{180} \frac{\phi^3}{(1-\phi)^2}
 	\end{equation}
 	where $d$ is the grain size.
 \end{eg}

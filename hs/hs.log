@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  10 FEB 2021 17:13
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  13 FEB 2021 18:26
  restricted system commands enabled.
 **hs.tex
 (./hs.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.119 seconds
+luaotfload | main : initialization completed in 0.111 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3187,7 +3187,7 @@ live2016/texmf-var/luatex-cache/generic/fonts/otl/lmroman6-regular.luc)(compilin
 g luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmromanslant10-regular.luc)
 (load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmrom
 anslant10-regular.luc) [2] [3] [4] [5]
-Overfull \hbox (4.83066pt too wide) in paragraph at lines 420--425
+Overfull \hbox (4.83066pt too wide) in paragraph at lines 424--429
 [][]\TU/lmss/bx/n/10.95 Nor-mal mode so-lu-tion.[][] \TU/lmr/m/n/10.95 Seek a s
 o-lu-tion $\l_fontspec_font 𝑤(𝑥, 𝑦, 𝑧, 𝑡) = 𝑊(𝑧)𝑒[]$ \T
 U/lmr/m/n/10.95 where $\l_fontspec_font 𝑘[], 𝑘[]$ \TU/lmr/m/n/10.95 are w
@@ -3199,7 +3199,7 @@ avenum-
 Package pgfplots Warning: 'fill between': Could not activate graphics layer 'pre
  main'. Filled path will be on top of the other ones. Please ensure that 'pre ma
 in' is somewhere in the layer list (or set '/tikz/fill between/on layer='). on i
-nput line 866.
+nput line 865.
 
 [12] <taylor_vortices.jpg, id=168, 322.97655pt x 149.65646pt>
 File: taylor_vortices.jpg Graphic file (type jpg)
@@ -3214,20 +3214,20 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 1134.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1134.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1134.
 Package rerunfilecheck Info: File `hs.out' has not changed.
-(rerunfilecheck)             Checksum: 4AAC2E670470B6CDD3C3CD90CA4B71C0;854.
+(rerunfilecheck)             Checksum: AF9E94751EB623DD1129EF421FC6A081;871.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1134.
 )
 
 Here is how much of LuaTeX's memory you used:
  53520 strings out of 494577
  100000,1977958 words of node,token memory allocated
- 18203 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2114 glue, 1 kern, 8 sub_mlist, 723 attribute, 64 g
-lue_spec, 723 attribute_list, 1 write nodes
-   avail lists: 1:1,2:2091,3:852,4:107,5:295,6:1762,7:638,8:86,9:655,10:17,11:11
-6
+ 18180 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2111 glue, 1 kern, 6 sub_mlist, 724 attribute, 64 g
+lue_spec, 724 attribute_list, 1 write nodes
+   avail lists: 1:1,2:2091,3:854,4:107,5:295,6:1779,7:643,8:86,9:656,10:17,11:11
+8
  55809 multiletter control sequences out of 65536+600000
- 69 fonts using 14259391 bytes
+ 69 fonts using 14259335 bytes
  74i,18n,108p,8840b,1863s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmroman10-bold.otf></usr/share/texmf/fonts/opentype/p
@@ -3241,7 +3241,7 @@ roman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsans10-bold.otf
 ></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/te
 xmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on hs.pdf (16 pages, 183456 bytes).
+Output written on hs.pdf (16 pages, 184360 bytes).
 
 PDF statistics: 305 PDF objects out of 1000 (max. 8388607)
  231 compressed objects within 3 object streams
