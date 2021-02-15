@@ -14,6 +14,8 @@
 \newcommand{\flux}{\symbf{\Phi}}
 \newcommand{\disp}{\symbf{\xi}}
 \renewcommand{\v}{\symbf{v}}
+\newcommand{\dif}[1]{\left[#1\right]_1^2}
+\newcommand{\M}{\mathcal{M}}
 
 \usetikzlibrary{shapes.misc}
 
@@ -1659,6 +1661,161 @@ In these cases the relevant solution of the inviscid Burgers equation is just
 $v = \text{const.}$ The slow and fast magnetoacoustic waves, though, are
 `generally nonlinear' and undergo steepening.
 
+\subsection{Shocks \& discontinuities}
+\subsubsection{Jump conditions}
+Discontinuities are resolved by diffusive processes (viscosity, thermal
+conduction or resistivity) that become more important on smaller length
+scales. We could solve the non-ideal (M)HD equations to resolve the internal
+structure of a shock. This internal solution could be matched onto external
+solutions in which diffusion is neglected. However, the matching conditions
+can be determined from conservation laws without resolving internal structure.
 
+Consider a shock front at rest at $x=0$ (make a Galilean transformation if
+necessary). Look for a stationary, 1D solution (equivalent to assuming a
+separation of scales) in which gas flows from left to right.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[dashed] (0,0) -- (0, 2) node[above] {shock front};
+		\draw[thick,->] (-2, 1) -- (-1, 1) node[midway, below] {$u_1$};
+		\draw[thick,->] (1, 1) -- (2, 1) node[midway, below] {$u_2$};
+		\draw (-1.5, 1.5) node {$\rho_1, p_1$};
+		\draw (1.5, 1.5) node {$\rho_2, p_2$};
+	\end{tikzpicture}
+\end{center}
+
+On the left is upstream, pre-shock material ($\rho_1, p_1$, etc.) and on the
+right is downstream, post-shock material ($\rho_2, p_2$, etc.) Consider any
+equation in conservative form
+\begin{equation}
+	\frac{\partial q}{\partial t} + \nabla \cdot \symbf{F} = 0
+\end{equation}
+For a stationary, 1D solution, $F_x$ is constant. Write the matching condition
+as
+\begin{equation}
+	\dif{F_x} = F_{x,2} - F_{x,1} = 0
+\end{equation}
+Including non-ideal effects gives rise to additional diffusive fluxes (not of
+mass but of momentum, energy, magnetic flux, etc.) The diffusive fluxes are
+negligible outside the shock, so they do not affect the jump conditions. This
+is valid as long as the new physics does not introduce any source terms in the
+equations. So the total energy is a properly conserved quantity, \emph{but not
+the entropy} (see later). 
+
+Consider the conservative form of the momentum equation:
+\begin{equation}
+	\frac{\partial}{\partial t}(\rho u_i) + \nabla \cdot \left(\rho u_i \u + \Pi
+	\symbf{e}_i - \frac{B_i \B}{\mu_0}\right) = 0
+\end{equation}
+Including gravity makes no difference to the jump conditions because $\Phi$ is
+continuous (it satisfies $\nabla^2 \Phi = 4\pi G \rho$). From mass
+conservation, we have
+\begin{equation}
+	\dif{\rho u_x} = 0
+\end{equation}
+From momentum conservation:
+\begin{align}
+	\dif{\rho u_x^2 + \Pi - \frac{B_x^2}{\mu_0}} &= 0 \\
+	\dif{\rho u_x u_y + \Pi - \frac{B_x B_y}{\mu_0}} &= 0 \\
+	\dif{\rho u_x u_z + \Pi - \frac{B_x B_z}{\mu_0}} &= 0
+\end{align}
+From the solenoidal condition $\nabla \cdot \B = 0$:
+\begin{equation}
+	\dif{B_x} =0 
+\end{equation}
+From the induction equation $\B_t + \nabla \times \symbf{E} = 0$:
+\begin{align}
+	\dif{u_x B_y - u_y B_x} = -\dif{E_z} &= 0 \\
+	\dif{u_x B_z - u_z B_x} = \dif{E_y} &= 0
+\end{align}
+These are the standard electromagnetic relations at an interface: continuity
+of $\bot$ component of $\B$ and $\parallel$ components of $\symbf{E}$. From
+total energy conservation:
+\begin{equation}
+	\dif{\rho u_x\left(\frac{1}{2}u^2 + h\right) + \frac{1}{\mu_0}(E_yB_z -
+	E_z B_y)} = 0
+\end{equation}
+Although the entropy in ideal MHD satisfies an equation of conservative form,
+\begin{equation}
+	\frac{\partial}{\partial t}(\rho s) + \nabla \cdot (\rho s \u) = 0
+\end{equation}
+the dissipation of energy within the shock provides a source term for entropy.
+The entropy flux is \emph{not} continuous across the shock.
+
+\subsubsection{Non-magnetic shocks}
+First consider a \emph{normal shock} ($u_y = u_z = 0$) with no magnetic field.
+We obtain the \emph{Rankine-Hugoniot relations}
+\begin{align}
+	\dif{\rho u_x} &= 0\\
+	\dif{\rho u_x^2 + p} &= 0\\
+	\dif{\rho u_x\left(\frac{1}{2}u_x^2 +h\right)} &= 0
+\end{align}
+The specific enthalpy of a perfect gas is
+\begin{equation}
+	h = \frac{\gamma}{\gamma -1}\frac{p}{\rho}
+\end{equation}
+The analytical solution is derived in example sheet 3. Introduce the upstream
+Mach number (the \emph{shock Mach number}):
+\begin{equation}
+	\M_1 = \frac{u_{x1}}{v_{s1}} > 0
+\end{equation}
+where $v_{s1}$ is the upstream adiabatic sound speed. Then we find
+\begin{align}
+	\frac{u_{x1}}{u_{x2}} = \frac{\rho_2}{\rho_1} &=
+	\frac{(\gamma+1)\M_1^2}{(\gamma-1)\M_1^2 + 2} \\
+	\frac{p_2}{p_1} &= \frac{2\gamma \M_1^2 - (\gamma-1)}{\gamma +1}\\
+	\M_2^2 &= \frac{2+(\gamma-1)\M_1^2}{2\gamma M_1^2 - (\gamma -1)}
+\end{align}
+Note that $\rho_2/\rho_1$ and $p_2/p_1$ are increasing functions of $\M_1$.
+The case $\M_1 = \M_2 = 1$ is trivial (no shock): $\rho_2/\rho_1 = 1$,
+$p_2/p_1 = 1$. Two cases exist in general:
+\begin{itemize}
+	\item \emph{Compression shock}
+		\begin{equation}
+			\M_1 > 1, \hspace{2em} \M_2 < 1, \hspace{2em} \rho_2 > \rho_1,
+			\hspace{2em} p_2 > p_1
+		\end{equation}
+	\item \emph{Rarefaction shock}
+		\begin{equation}
+			\M_1 < 1, \hspace{2em} \M_2 > 1, \hspace{2em} \rho_2 < \rho_1,
+			\hspace{2em} p_2 < p_1
+		\end{equation}
+\end{itemize}
+The entropy change $\dif{s}$ in passing through the shock is positive for
+compression shocks and negative for rarefaction shocks (see ES3, Q1).
+Therefore only compression shocks are physically realisable; rarefaction
+shocks are excluded by the second law of thermodynamics. All shocks involve
+dissipation and irreversibility.  The fact that $\M_1 > 1$ while $\M_2 < 1$
+means the shock travels supersonically relative to the upstream gas and
+subsonically relative to the downstream gas.
+
+\begin{itemize}
+	\item In the \emph{weak shock} limit $\M_1 - 1 \ll 1$ the relative
+		velocity of the fluid and the shock is close to the sound speed on
+		both sides.
+	\item In the \emph{strong shock} limit $\M_1 \gg 1$, common in
+		astrophysical applications,
+		\begin{align}
+			\frac{u_{x1}}{u_{x2}} = \frac{\rho_2}{\rho_1} &\to \frac{\gamma +
+			1}{\gamma -1} \\
+				\frac{p_2}{p_1} &\gg 1 \\
+				\M_2^2 &\to \frac{\gamma -1}{2 \gamma}
+		\end{align}
+\end{itemize}
+Note that the compression ratio $\rho_2/\rho_1$ is finite (and equal to $4$
+when $\gamma = 5/3$). In the rest frame of the undisturbed (upstream) gas the 
+\emph{shock speed} is $u_{\text{sh}} = -u_{x1}$. The downstream density,
+velocity (in that frame) and pressure in the limit of a strong shock are (to
+be used in section 7)
+\begin{align}
+	\rho_2 &= \left(\frac{\gamma +1}{\gamma -1}\right) \rho_1 \\
+	u_{x2} - u_{x1} &= \frac{2u_{\text{sh}}}{\gamma +1} \\
+	p_2 &= \frac{2 \rho_1 u_{\text{sh}}^2}{\gamma +1}
+\end{align}
+
+A lot of thermal energy is generated out of kinetic energy by a strong shock:
+\begin{equation}
+	e_2 = \frac{2 u_{\text{sh}}^2}{(\gamma+1)^2}
+\end{equation}
 
 \end{document}

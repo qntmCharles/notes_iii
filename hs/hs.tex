@@ -8,6 +8,7 @@
 \usetikzlibrary{shapes.misc, pgfplots.fillbetween}
 \renewcommand{\u}{\symbf{u}}
 \newcommand{\Ra}{\text{Ra}}
+\newcommand{\zint}{\int_{z_1}^{z_2}}
 
 \tikzset{cross/.style={cross out, draw=black, minimum
 size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
@@ -1074,7 +1075,7 @@ Substituting into \eqref{eq:l6:6} gives
 \begin{align}
 	i\alpha (U-c)(-i\alpha \phi) + \frac{\diffd}{\diffd z}\left[ \frac{\diffd
 	U}{\diffd z}\phi - (U-c)\frac{\diffd \phi}{\diffd z}\right] &= 0 \\
-	\implies (U-c)(\phi'' - \alpha^2 \phi) - U'' \phi &=0
+	\implies (U-c)(\phi'' - \alpha^2 \phi) - U'' \phi &=0 \label{eq:rayleigh}
 \end{align}
 with boundary conditions $\phi = 0$ at $z=z_1, z_2$. This is \emph{Rayleigh's
 equation (1880)}.
@@ -1112,7 +1113,7 @@ Integrate the first term by parts and note $\phi = \phi^* = 0$ at $z_1$ and
 $z_2$. Hence
 \begin{equation}
 	\int_{z_1}^{z_2} \left[\abs{\phi'}^2  + \alpha^2 \abs{\phi}^2 +
-	\frac{U''}{U-c}\abs{\phi}^2 \right] \diffd z =0
+	\frac{U''}{U-c}\abs{\phi}^2 \right] \diffd z =0 \label{eq:ipc}
 \end{equation}
 Take imaginary part:
 \begin{align}
@@ -1131,4 +1132,188 @@ Now $\abs{U-c}^2 > 0$ and $\abs{\phi}^2 > 0 $ so $U''$ must change sign
 somewhere in $\left[z_1,z_2\right]$. Thus $U''=0$ at least once is a necessary
 condition for inviscid instability, called the \emph{inflection point
 criterion}.
+
+\paragraph{Fj\o rtoft's condition.}
+A stronger form of the inflection point criterion was obtained by Fj\o rtoft
+(1950): given a monotonic mean velocity profile $U(z)$, a necessary condition
+for instability is that $U''(U-U_s) < 0$ for some $z \in \left[ z_1, z_2
+\right]$ with $U_s = U(z_s)$ where $U''(z_2) = 0$.
+
+To see this, take the real part of \eqref{eq:ipc} to get
+\begin{equation}
+	\int_{z_1}^{z_2} \frac{U''(U-c_r)}{\abs{U-c}^2} \abs{\phi}^2 \, \diffd z =
+	-\int_{z_1}^{z_2} \abs{\frac{\diffd \phi}{\diffd z}}^2 + \alpha^2
+	\abs{\phi}^2 \, \diffd z
+\end{equation}
+Add the term
+\begin{equation}
+	(c_r - U_s)\int_{z_1}^{z_2} \frac{U''}{\abs{U-c}^2} \abs{\phi}^2
+	\diffd z  = 0
+\end{equation}
+which vanishes if $c_i > 0$ by above. Then
+\begin{equation}
+	\int_{z_1}^{z_2} \frac{U''(U-U_s)}{\abs{U-c}^2} \abs{\phi}^2 \, \diffd z =
+	-\int_{z_1}^{z_2} \abs{\frac{\diffd \phi}{\diffd z}}^2 + \alpha^2
+	\abs{\phi}^2 \, \diffd z
+\end{equation}
+
+The RHS terms are negative definite, and $\abs{\phi^2} > 0$ as well as
+$\abs{U-c}^2 > 0$. Hence $U''(U-U_s) < 0$ somewhere in $\left[z_1,z_2\right]$.
+This means that the inflection point has to be a maximum (rather than a
+minimum) of the spanwise vorticity $U'(z)\hat{\symbf{y}}$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0) node[right] {$z=z_1$};
+		\draw[thick] (0, 2) -- (5, 2) node[right] {$z=z_2$};
+		\draw[dashed] (0, 1) -- (5, 1) node[right] {$z=z_s$};
+		\fill[gray!50] (0,0) rectangle (5, -0.5);
+		\fill[gray!50] (0,2) rectangle (5, 2.5);
+		\draw[blue] plot[domain=0:5] ({\x},{2/(1+e^(-2*(\x-2.5)))});
+		\draw[blue] (2.5, 0.8) node[right] {\small $\min U'$};
+		\draw[fill=blue,draw=none] (2.5, 1) circle (0.05);
+		\draw[blue,<->] (0, 1) -- (2.5-0.05, 1) node[midway,above] {$U_s$};
+		\draw[thick, ->] (0, 0) -- (0.5, 0) node[below] {$U$};
+		\draw[thick, ->] (0, 0) -- (0, 0.5) node[left] {$z$};
+		\draw[blue] (6, 1.5) node {$U - U_s > 0$};
+		\draw[blue] (6, 0.5) node {$U - U_s < 0$};
+		\draw[blue] (8, 1.5) node {$U'' > 0$};
+		\draw[blue] (8, 0.5) node {$U'' < 0$};
+		\draw[blue] (12, 1.2) node {$U''(U-U_s) \ge 0$ everywhere};
+		\draw[blue] (12, 0.8) node {$\implies$ stable};
+	\end{tikzpicture} \\
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0) node[right] {$z=z_1$};
+		\draw[thick] (0, 2) -- (5, 2) node[right] {$z=z_2$};
+		\draw[dashed] (0, 1) -- (5, 1) node[right] {$z=z_s$};
+		\fill[gray!50] (0,0) rectangle (5, -0.5);
+		\fill[gray!50] (0,2) rectangle (5, 2.5);
+		\draw[blue] plot[domain=0.029:2.971,samples=100] ({\x},{1+ tan(deg(\x-1.5))/10});
+		\draw[blue] (1.5, 0.8) node[right] {\small $\max U'$};
+		\draw[fill=blue,draw=none] (1.5, 1) circle (0.05);
+		\draw[blue,<->] (0, 1) -- (1.5-0.05, 1) node[midway,above] {$U_s$};
+		\draw[thick, ->] (0, 0) -- (0.5, 0) node[below] {$U$};
+		\draw[thick, ->] (0, 0) -- (0, 0.5) node[left] {$z$};
+		\draw[blue] (6, 1.5) node {$U - U_s > 0$};
+		\draw[blue] (6, 0.5) node {$U - U_s < 0$};
+		\draw[blue] (8, 1.5) node {$U'' < 0$};
+		\draw[blue] (8, 0.5) node {$U'' > 0$};
+		\draw[blue] (12, 1.2) node {$U''(U-U_s) \le 0$ everywhere};
+		\draw[blue] (12, 0.8) node {$\implies$ satisfies Fj\o rtoft's};
+		\draw[blue] (12, 0.4) node {condition};
+	\end{tikzpicture}
+\end{center}
+
+\paragraph{Howard's semicircle theorem}
+Due to Howard (1961). The unstable eigenvalues of the Rayleigh equation
+satisfy
+\begin{equation}
+	\left[ c_r - \frac{1}{2}(U_{\max} + U_{\min})\right]^2 + c_i^2 \le \left[
+	\frac{1}{2}(U_{\max}-U_{\min})\right]^2
+\end{equation}
+This is best viewed as a geometric condition: the unstable eigenvalues lie in
+a semicircle centred at $\frac{1}{2}(U_{\max}+U_{\min})$ of radius
+$\frac{1}{2}(U_{\max}-U_{\min})$.
+\begin{center}
+	\begin{tikzpicture}[scale=1.2]
+		\draw[thick,->] (0,0) -- (5, 0) node[right] {$c_r$};
+		\draw[thick,->] (0,0) -- (0, 3) node[left] {$c_i$};
+		\draw (0.5, 0) arc (180:0:2);
+		\draw[fill] (2.5, 0) circle (0.05);
+		\draw (0.5, 0) node[below] {\small $U_{\min}$};
+		\draw (4.5, 0) node[below] {\small $U_{\max}$};
+		\draw (2.5, 0) node[below] {\small $\frac{U_{\max}+U_{\min}}{2}$};
+		\draw[<->] (2.455,0.0224) -- (0.711,0.8944);
+		\draw (1.7,0.8) node {\small $\frac{U_{\max}-U_{\min}}{2}$};
+		\draw[blue,fill] (3.5, 1) circle (0.05);
+		\draw[blue] (3.5, 1) node[below] {$(c_r,c_i)$};
+	\end{tikzpicture}
+\end{center}
+
+Let $\Psi = \frac{\phi}{U-c}$. Rayleigh's equation \eqref{eq:rayleigh} in
+terms of $\Psi$ is
+\begin{equation}
+	(U-c)\left( \frac{\diffd^2}{\diffd z^2}\left[ (U-c)\Psi\right] - \alpha^2
+	(U-c)\Psi\right) = U''(U-c)\Psi
+\end{equation}
+Evaluating the derivative and simplifying gives
+\begin{equation}
+	\frac{\diffd}{\diffd z}\left[ (U-c)^2 \frac{\diffd \Psi}{\diffd z}\right]
+	= \alpha^2 (U-c)^2\Psi
+\end{equation}
+Multiply the equation by $\Psi^*$ and integrate over $\left[z_1,z_2\right]$:
+\begin{equation}
+	\int_{z_1}^{z_2} \Psi^*\left[(U-c)^2\Psi'\right]' \, \diffd z = \alpha^2
+	\zint (U-c)^2 \abs{\Psi}^2 \, \diffd z
+\end{equation}
+We then integrate by parts and note that $\Psi = \phi/(U-c) = 0$ on $z=z_1,
+z_2$. Hence
+\begin{equation}
+	\zint (U-c)^2 \left[ \abs{\Psi'}^2 + \alpha^2 \abs{\Psi}^2\right] \diffd z
+	= 0
+\end{equation}
+Denote the $\left[\dots\right]$ factor by $Q$. We have $Q > 0$ and $c \in
+\mathbb{C}$. Taking real and imaginary parts gives
+\begin{align}
+	\zint\left[ (U-c_r)^2 - c_i^2\right]Q \, \diffd z &= 0\\
+	-2c_i\zint (U-c_r)Q \, \diffd z &= 0
+\end{align}
+Since $Q$ is strictly positive, $U-c_r$ has to change sign in
+$\left[z_1,z_2\right]$. Hence 
+\begin{equation}
+	U_{\min} < c_r < U_{\max}
+\end{equation}
+Rewrite the imaginary part as
+\begin{equation}
+	\zint U Q \, \diffd z  = c_r \zint Q \, \diffd z
+	\label{eq:l7:1}
+\end{equation}
+and the real part as
+\begin{align}
+	\zint U^2 Q \, \diffd z &\hspace{.3em}= 2 c_r \zint UQ \, \diffd z + (-c_r^2 + c_i^2)
+	\zint Q \, \diffd z \\
+							&\stackrel{\eqref{eq:l7:1}}{=} 2c_r^2 \zint Q \,
+							\diffd z + (c_i^2 - c_r^2) \zint Q \, \diffd z \\
+							&\hspace{.3em}= (c_r^2 + c_i^2) \zint Q \, \diffd
+							z \label{eq:l7:2}
+\end{align}
+
+Now `notice' that
+\begin{equation}
+	\zint (U-U_{\min})(U-U_{\max})Q\, \diffd z \le 0
+\end{equation}
+since the first factor is $\ge 0$, the second is $\le 0$ and $Q > 0$.
+Expanding the terms we have
+\begin{equation}
+	\zint \left[ U^2 Q - (U_{\min} + U_{\max}) UQ + U_{\min} U_{\max} Q
+	\right]\diffd z \le 0
+\end{equation}
+Now using \eqref{eq:l7:1} and \eqref{eq:l7:2} we can rewrite as
+\begin{align}
+	\zint \left[ (c_r^2+c_i^2) - (U_{\min} + U_{\max})c_r +
+	U_{\min}U_{\max}\right] Q \,\diffd z &\le 0 \\
+	\implies \zint \left[ \left(c_r - \frac{U_{\max} + U_{\min}}{2}\right)^2  +
+	 U_{\min}U_{\max} - \left(\frac{U_{\min}+U_{\max}}{2}\right)^2 +
+	c_i^2\right] Q \,\diffd z &\le 0 \\
+	\implies \zint \left[ \left(c_r - \frac{U_{\max} + U_{\min}}{2}\right)^2  +
+	c_i^2 - \left(\frac{U_{\max}-U_{\min}}{2}\right)^2\right] Q \,\diffd z &\le 0
+\end{align}
+Equivalently we can write
+\begin{equation}
+	\left[ \left(c_r - \frac{U_{\max} + U_{\min}}{2}\right)^2  +
+	c_i^2 - \left(\frac{U_{\max}-U_{\min}}{2}\right)^2\right] \zint Q \,\diffd
+	z  \le 0
+\end{equation}
+But $\zint Q \, \diffd z > 0$ so
+\begin{equation}
+	\left(c_r - \frac{U_{\max} + U_{\min}}{2}\right)^2  +
+	c_i^2 - \left(\frac{U_{\max}-U_{\min}}{2}\right)^2 \le 0
+\end{equation}
+which establishes the semicircle theorem.
+
+\subsubsection{Predictions}
+For channel flow $\symbf{U}(z) = (1-z^2)\hat{\symbf{x}}$ we have $U'' \ne 0$,
+i.e. no inflection points, so no inviscid instability predicted. However,
+channel flow is linearly unstable at sufficiently high Reynolds number. We
+must add viscosity to gain a more accurate stability heuristic.
 \end{document}

@@ -17,3 +17,6 @@
 \contentsline {paragraph}{\nonumberline Comments.}{16}{section*.8}
 \contentsline {subsubsection}{\numberline {5.1.3}Properties of Rayleigh's equation.}{16}{subsubsection.5.1.3}
 \contentsline {paragraph}{\nonumberline Inflection point criterion.}{16}{section*.9}
+\contentsline {paragraph}{\nonumberline Fj\o rtoft's condition.}{17}{section*.10}
+\contentsline {paragraph}{\nonumberline Howard's semicircle theorem}{17}{section*.11}
+\contentsline {subsubsection}{\numberline {5.1.4}Predictions}{19}{subsubsection.5.1.4}
