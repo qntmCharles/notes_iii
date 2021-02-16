@@ -12,8 +12,10 @@
 \setmathfont{GFS NeoHellenic Math}[range=sfup/{latin,Latin}->it]
 \newcommand{\Ra}{\text{Ra}}
 \renewcommand{\u}{\symbf{u}}
+\newcommand{\veps}{\varepsilon}
 
-\usetikzlibrary{intersections, pgfplots.fillbetween}
+\usetikzlibrary{intersections, pgfplots.fillbetween, decorations.pathmorphing}
+\tikzset{snake it/.style={decorate, decoration=snake}}
 \begin{document}
 
 \institution{Cambridge Part III Maths}
@@ -1330,6 +1332,223 @@ the original coordinates
 	x_N= 2.08 \left( \frac{u_b V t}{\phi^2}\right)^{1/3}
 \end{equation}
 
+\section{Convection in porous media}
+A common example of convection in porous media is geothermal dissolution of
+$CO_2$. The sequestration of CO$_2$ into water changes the density to
+\begin{equation}
+	\rho = \rho_0 (1+\beta C)
+\end{equation}
+where $C$ is the concentration of CO$_2$. 
 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (5, 0) node [right] {$C$};
+		\draw[thick,->] (0,0) -- (0, 3) node[left] {$\rho$};
+		\draw (0, 1.5) -- (1, 1.8);
+		\draw (0, 1.5) node[left] {$\rho_0$};
+		\draw (0,0) -- (0, -0.1) node[below] {0, water};
+		\draw (4,0.1)-- (4,-0.1) node[below] {1, CO$_2$};
+		\draw[fill] (4, 0.6) circle (0.05);
+		\draw (0.1, 0.6) -- (-0.1, 0.6) node[left] {$\rho_{\text{CO}_2}$};
+	\end{tikzpicture}
+\end{center}
+
+The natural buoyancy velocity is then
+\begin{equation}
+	u_b \equiv \frac{\Delta \rho g k }{\mu} = \frac{\rho_0 \beta \Delta C g
+	k}{\mu}
+\end{equation}
+
+Convection is driven by dissolution of CO$_2$ into water. The timescale to
+convect over a distance $h$ is 
+\begin{equation}
+	\tau_{\text{ad}} \sim \frac{h}{u_b}
+\end{equation}
+whilst the timescale to diffuse over a distance $h$ is
+\begin{equation}
+	\tau_{\text{diff}} \sim \frac{h^2}{D}
+\end{equation}
+where $D$ is the diffusivity. We have convection if $\tau_{\text{ad}} <
+\tau_{\text{diff}}$, hence
+\begin{equation}
+	\frac{h}{u_b} < \frac{h^2}{D} \implies \Ra = \frac{u_b h}{D} =
+	\frac{\Delta \rho g k h }{\mu D}
+\end{equation}
+Note: it can be shown via similar analysis to pure convection that the onset
+of porous convection is at $\Ra_{\text{crit}} = 4\pi^2$.
+
+\subsection{Scaling for high $\Ra$ porous convection}
+For $\Ra \gg \Ra_c$ convective flux becomes independent of the depth of
+domain, as the interior is statistically well mixed as with high $\Ra$ pure
+convection. The Nusselt number is
+\begin{equation}
+	\text{Nu} = \frac{F}{D\Delta C/h} \propto h \sim \Ra = \lambda \Ra =
+	\frac{\lambda \rho_0 g \beta \Delta c k h}{D \mu}
+\end{equation}
+where $F$ is the convective flux. We therefore have
+\begin{equation}
+	F = \frac{\lambda \rho_0 g \beta k}{\mu} \Delta C^2 = \lambda u_b \Delta C
+\end{equation}
+
+\subsection{Dissolution from an unconfined aquifer}
+Consider a convective flux from a constant volume gravity current in an
+unconfined aquifer. Note that by constant volume we mean no input flux; the
+volume will decrease due to convection.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- (5, 0);
+		\draw[blue, smooth] plot[tension=0.8] coordinates {(0, -1.5) (2, -1.05)
+		(3, 0)};
+		\draw[blue] (3, 0) node[above] {$x_N(t)$};
+		\draw[blue,<->] (1.5, 0) -- (1.5, -1.23) node[midway,left] {$h(x,t)$};
+		\draw[red, snake it, ->] (0.5, -1.5) -- (0.5, -2.5);
+		\draw[red, snake it, ->] (1, -1.45) -- (1, -2.45);
+		\draw[red, snake it, ->] (1.5, -1.3) -- (1.5, -2.3);
+		\draw[red, snake it, ->] (2, -1.1) -- (2, -2.1);
+		\draw[red, snake it, ->] (2.5, -0.8) -- (2.5, -1.8);
+		\draw[red, snake it, ->] (3, -0.2) -- (3, -1.2);
+		\draw[red] (2, -2.5) node {$F$};
+	\end{tikzpicture}
+\end{center}
+
+Since the problem is set in an unconfined aquifer we may assume the convective
+flux $F$ is constant. The governing equation is then
+\begin{equation}
+	\phi \frac{\partial h}{\partial t} - u_b \frac{\partial}{\partial
+	x}\left(h \frac{\partial h}{\partial x}\right) = -F
+\end{equation}
+Denote the initial volume of the gravity current as $V$ (note this is a 2D
+volume). Non-dimensionalise the equations with scalings $h, x \sim
+\sqrt{V/\phi}$ and $t \sim u_b^{-1}\sqrt{V/\phi}$.
+\begin{equation}
+	h_t - (h h_x)_x = -\varepsilon
+\end{equation}
+where $\varepsilon = F/u_b$. Recall that for $\varepsilon = 0$ we get a
+self-similar solution:
+\begin{equation}
+	h_{\varepsilon=0} = t^{-1/3} f(xt^{-1/3}) = t^{-1/3}\cdot
+	\frac{1}{6}(\eta_N^2 - \eta^2)
+\end{equation}
+where $\eta = xt^{-1/3}$ and $\eta_N = 9^{1/3}$. For this problem we try
+ansatz $h= h_0 + ct$ for some undetermined constant $c$. Then
+\begin{align}
+	(h_0 + ct)_t &= ((h_0 + ct)(h_0)_x)_x - \veps \\
+	\implies \cancel{h_{0t}} + c &= \cancel{(h_0h_{0x})_x} + ct h_{0xx} -
+	\veps
+\end{align}
+Thus $c$ satisfies
+\begin{equation}
+	c = ct \cdot \frac{t^{-1/3}}{t^{2/3}} \left( -\frac{2}{6}\right) - \varepsilon
+	\implies c = -\frac{3\veps}{4}
+\end{equation}
+The full solution is
+\begin{equation}
+	h = \frac{1}{6}t^{-1/3}\left(9^{2/3} - \frac{x^2}{t^{2/3}}\right) -
+	\frac{3\veps t}{4}
+\end{equation}
+The extent of the current $x_N(t)$ is given by $h=0$
+\begin{equation}
+	\implies x_N(t) = \left(9^{2/3} t^{2/3} - \frac{9\veps}{2}t^2\right)^{1/2}
+\end{equation}
+\begin{center}
+	\begin{tikzpicture}[scale=1.6]
+		\draw[thick,->] (0,0) -- (4, 0) node[right] {$t$};
+		\draw[thick,->] (0,0) -- (0, 2.5) node[left] {$x_N$};
+		\draw[blue,smooth] plot[domain=0.01:3.246,samples=100]
+		({\x},{sqrt(9^(2/3)*\x^(2/3) - 0.9*\x*\x)});
+		\draw (1.424, 0.1) -- (1.424, -0.1) node[below] {$t_{\max}$};
+		\draw (3.247, 0.1) -- (3.247, -0.1)  node[below] {$t_{\text{end}}$};
+		\draw (0.1, 1.911) -- (-0.1, 1.911) node[left] {$x_{N,\max}$};
+	\end{tikzpicture}
+\end{center}
+
+The maximum extent and the time at which it is reached are
+\begin{align}
+	x_{N,\max} &= \left(\frac{2^3}{3\veps}\right)^{1/4} \\
+	t_{\text{end}} &= \left(\frac{2}{\veps}\right)^{3/4} 3^{-1/2}
+\end{align}
+
+\subsection{Charging/discharging of a groundwater aquifer}
+Consider rainfall at rate $R$ charging a groundwater aquifer with depth
+$h(x,t)$.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- (5, 0) node[below] {$x=L$};
+		\draw (0,-0.15) node[below] {$x=0$};
+		\draw[thick,->] (0,0) -- (1, 0) node[below] {$x$};
+		\draw[thick,->] (0,0) -- (0, 1) node[left] {$z$};
+		\draw[blue,fill=blue!60] (0,0) arc (0:-180:0.3);
+		\draw[blue] (-1.2, 0) node {river};
+		\draw[smooth,brown,thick] plot[domain=0.001:5,samples=100]
+		({\x},{sqrt(\x)});
+		\draw[smooth,blue] plot[domain=0.001:5,samples=100]
+		({\x},{0.8*sqrt(\x)});
+		\draw[dashed] (5,0) -- (5, 2.236);
+		\draw (5.2, 1.2) node[right] {drainage};
+		\draw (5.2, 0.8) node[right] {divide};
+		\draw[brown] (5, 2.236) node[right] {ground};
+		\draw[blue] (5, 1.789) node[right] {water table};
+		\draw[blue,<->] (3, 0) -- (3, 1.386) node[midway,right] {$h(x,t)$};
+		\draw[blue,snake it, ->] (1, 3.5) -- (1, 2.5);
+		\draw[blue,snake it, ->] (2, 3.5) -- (2, 2.5);
+		\draw[blue,snake it, ->] (3, 3.5) -- (3, 2.5);
+		\draw[blue,snake it, ->] (4, 3.5) -- (4, 2.5);
+		\draw[blue] (2.5, 3) node {$R$};
+	\end{tikzpicture}
+\end{center}
+
+The groundwater table evolution is given by
+\begin{equation}
+	\phi\frac{\partial h}{\partial t} = u_b \frac{\partial}{\partial x}\left(
+	h \frac{\partial h}{\partial x}\right) + R
+\end{equation}
+where $R$ is a top-hat function representing a period of rainfall:
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick, ->] (-2,0) -- (3, 0) node[right] {$t$};
+		\draw[thick,->] (0,0) -- (0, 2.5) node[left] {$R$};
+		\draw (0,0) node[below] {$t=0$};
+		\draw[blue] (-2,0) -- (0,0) -- (0, 1.5) -- (2, 1.5) -- (2, 0) --
+		(3,0);
+	\end{tikzpicture}
+\end{center}
+At the river, we assume $h(0, t) = 0$. At the drainage divide, which is the
+boundary between catchment basins, $\left.h_x\right|_{x=L} = 0$ by definition.
+
+\paragraph{Rainfall ($R \ne 0$).}
+At early times when rain is falling, we start from $h(x,0) \approx 0$. The
+far-field water table is $h_\infty \approx Rt/\phi$. Note at early times, the
+extent of the water table is not important. Near the river,
+\begin{equation}
+	\frac{\phi h}{t} \sim u_b \frac{h^2}{x^2} \sim R
+\end{equation}
+Thus $h$ and $x$ scale as
+\begin{equation}
+	h \sim \frac{Rt}{\phi}, \hspace{2em} x \sim
+	\left(\frac{u_b}{R}\right)^{1/2} h \sim
+	\left(\frac{u_b}{R}\right)^{1/2}\frac{Rt}{\phi} \sim \left(\frac{u_b
+	R}{\phi^2}\right)^{1/2} t
+\end{equation}
+The flux into the river is
+\begin{equation}
+	Q(0) = u_b h \left.\frac{\partial h}{\partial x} \right|_{x=0} \sim
+	u_b\frac{h^2}{x} \sim \frac{u_b^{1/2} R^{3/2}}{\phi} t
+\end{equation}
+
+Note: there is a self-similar solution for the evolution near the river at
+early times, with similarity variable $\eta$ and depth $h$ defined by
+\begin{equation}
+	\eta = \frac{x}{(u_bR/\phi^2)^{1/2} t}, \hspace{2em} h = \frac{Rt}{\phi}
+	f(\eta)
+\end{equation}
+where $f(\eta)$ satisfies
+\begin{equation}
+	f - \eta f' = (ff')' + 1
+\end{equation}
+subject to $f(0) = 0, f'(\eta \to \infty) = 0$. The term `early times' here
+refers to $x \ll L$, or equivalently
+\begin{equation}
+	t \ll \frac{\phi L}{(u_b R)^{1/2}}
+\end{equation}
 
 \end{document}

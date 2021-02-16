@@ -8,6 +8,7 @@
 \usetikzlibrary{shapes.misc, pgfplots.fillbetween}
 \renewcommand{\u}{\symbf{u}}
 \newcommand{\Ra}{\text{Ra}}
+\newcommand{\ReN}{\text{Re}}
 \newcommand{\zint}{\int_{z_1}^{z_2}}
 
 \tikzset{cross/.style={cross out, draw=black, minimum
@@ -1316,4 +1317,206 @@ For channel flow $\symbf{U}(z) = (1-z^2)\hat{\symbf{x}}$ we have $U'' \ne 0$,
 i.e. no inflection points, so no inviscid instability predicted. However,
 channel flow is linearly unstable at sufficiently high Reynolds number. We
 must add viscosity to gain a more accurate stability heuristic.
+
+\subsection{Viscous analysis}
+Consider a basic state $\symbf{U} = U(z)\hat{\symbf{x}}$ with $P = p_0 - Gx$
+and $U(z_1) = U_-, U(z_2) = U_+$. At leading order, Navier-Stokes gives
+\begin{equation}
+	-G = \frac{1}{\ReN}U''
+\end{equation}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0) node[right] {$z=z_1$};
+		\draw[thick] (0, 2) -- (5, 2) node[right] {$z=z_2$};
+		\fill[gray!50] (0,0) rectangle (5, -0.5);
+		\fill[gray!50] (0,2) rectangle (5, 2.5);
+		\draw[thick, ->] (0, 0) -- (0, 0.5) node[left] {$z$};
+		\draw[blue,dashed] (1.2, 0) -- (1.2, 2);
+		\draw[blue] plot[smooth,domain=0:2]
+		({0.5+2/(1+e^(-5*(\x-1)))},	{\x});
+		\draw[blue,->] (1.2, 0.4) -- (0.595, 0.4);
+		\draw[blue,->] (1.2, 0.8) -- (1.038, 0.8);
+		\draw[blue,->] (1.2, 1.2) -- (1.962, 1.2);
+		\draw[blue,->] (1.2, 1.6) -- (2.405, 1.6);
+		\draw (0.5, 0) node[below] {$U_-$};
+		\draw (2.5, 1.95) node[above] {$U_+$};
+	\end{tikzpicture}
+\end{center}
+
+Special cases are
+\begin{itemize}
+	\item Plane Poiseuille flow (PPF) $U(z) = 1-z^2$ in $\left[-1,1\right]$
+		and $G = 2/\ReN$,$U_+ = U_- = 0$.
+	\item Plane Couette flow (PCF) with $U(z) = z$ in $\left[-1,1\right]$ and
+		$G = 0$, $U_+ = 1$, $U_- = -1$.
+\end{itemize}
+The linearised Navier-Stokes equations for a perturbation $\u', p'$ are
+\begin{align}
+	\frac{\partial u'}{\partial t} + U \frac{\partial u'}{\partial x} + w'
+	\frac{\diffd U}{\diffd z} &= -\frac{\partial p'}{\partial x} +
+	\frac{1}{\ReN} \nabla^2 u' \label{eq:l8:1}\\
+	\frac{\partial v'}{\partial t} + U \frac{\partial v'}{\partial x}
+							  &= -\frac{\partial p'}{\partial y} + 
+							  \frac{1}{\ReN} \nabla^2 v' \label{eq:l8:2}\\
+	\frac{\partial w'}{\partial t} + U \frac{\partial w'}{\partial x}
+							  &= -\frac{\partial p'}{\partial z} + 
+							  \frac{1}{\ReN} \nabla^2 w' \label{eq:l8:3} \\
+	\frac{\partial u'}{\partial x} + \frac{\partial v'}{\partial y} +
+	\frac{\partial w'}{\partial z} &= 0\label{eq:l8:4}
+\end{align}
+
+The divergence of the first three equations is
+\begin{equation}
+	\nabla \cdot \begin{pmatrix} \eqref{eq:l8:1} \\ \eqref{eq:l8:2} \\
+	\eqref{eq:l8:3} \end{pmatrix} \implies \frac{\partial w'}{\partial x}
+	\frac{\diffd U}{\diffd z} + \frac{\diffd U}{\diffd z} \frac{\partial
+	w'}{\partial x} = -\nabla^2 p'
+\end{equation}
+Hence $\nabla^2 p' = -2 U' w'_x$. Now consider $\nabla^2 \eqref{eq:l8:3}$:
+\begin{equation}
+	\nabla^2 \left[ \frac{\partial w'}{\partial z} + U \frac{\partial
+	w'}{\partial x} \right] = -\frac{\partial}{\partial z} \nabla^2 p' +
+	\frac{1}{\ReN} \nabla^4 w' 
+\end{equation}
+Combining these results we have
+\begin{align}
+	\left[ \frac{\partial}{\partial t} + U\frac{\partial}{\partial x} -
+	\frac{1}{\ReN} \nabla^2 \right] \nabla^2 w' + U'' \frac{\partial
+	w'}{\partial x} + 2 \frac{\diffd U}{\diffd z} \frac{\partial^2
+w'}{\partial x \partial z} &= -\frac{\partial}{\partial z}\left( -2
+\frac{\diffd U}{\diffd z} \frac{\partial w'}{\partial x}\right) \\
+\implies \left[ \left( \frac{\partial}{\partial t} + U\frac{\partial}{\partial x} -
+\frac{1}{\ReN} \nabla^2\right)\nabla^2 - U''\frac{\partial}{\partial x}\right]
+w' &= 0 \label{eq:l8:5}
+\end{align}
+with boundary conditions $w' = w'_z = 0$ on the boundaries. This is a fourth
+order PDE with 4 boundary conditions, so $w'$ is fully determined. To close
+the problem we need another equation: first define the \emph{normal vorticity}
+\begin{equation}
+	\eta' \equiv \hat{\symbf{z}}\cdot \nabla \times \u = \frac{\partial
+	u'}{\partial y} - \frac{\partial v'}{\partial x}
+\end{equation}
+Now $\partial_y \eqref{eq:l8:1} - \partial_x \eqref{eq:l8:2}$ gives
+\begin{align}
+	\frac{\partial\eta'}{\partial t} + U\frac{\partial \eta'}{\partial x} +
+	\frac{\diffd U}{\diffd z} \frac{\partial w'}{\partial y} &= \frac{1}{\ReN}
+	\nabla^2 \eta' \\
+	\implies \left[ \frac{\partial}{\partial t} + U\frac{\partial}{\partial x} -
+	\frac{1}{\ReN} \nabla^2\right] \eta' = -\frac{\diffd U}{\diffd z}
+	\frac{\partial w'}{\partial y} \label{eq:l8:6}
+\end{align}
+with boundary conditions $\eta' = 0$ on the boundaries since tangential
+velocities vanish at the boundaries. We have reduced $(u',v',w',p') \to (w',
+\eta')$. Given $w'$ and $\eta'$ determined from \eqref{eq:l8:5} and
+\eqref{eq:l8:6}, we can generate $v', w', p'$ from
+\begin{align}
+	u'_x + v'_y &= -w'_z \\
+	u'_y - v'_x &= \eta' \\
+	\nabla^2 p' &= - 2U'w'_x
+\end{align}
+
+\subsubsection{Orr-Sommerfeld \& Squire Equations}
+Introduce normal modes / wavelike disturbances / apply a Fourier transform:
+\begin{equation}
+	(w', \eta')(x,y,z,t) = (\hat{w}(z), \hat{\eta}(z)) e^{i(\alpha x+ \beta y
+	- \alpha c t)}
+\end{equation}
+Let $k^2 = \alpha^2 + \beta^2$ be the total horizontal wavenumber. Then
+\eqref{eq:l8:5} and \eqref{eq:l8:6} become
+\begin{align}
+	\left[ i\alpha (U-c)(D^2 -k^2) - i\alpha U'' -
+	\frac{1}{\ReN}(D^2-k^2)^2\right]\hat{w} &= 0 \label{eq:l8:7} \\
+	\left[ i\alpha (U-c) - \frac{1}{\ReN} (D^2 - k^2)\right] \hat{\eta} &=
+	-i\beta U' \hat{w} \label{eq:l8:8}
+\end{align}
+where $D \equiv \frac{\diffd}{\diffd z}$ as usual. Equation~\eqref{eq:l8:7}
+is the \emph{Orr-Sommerfeld equation} (Orr 1907, Sommerfeld 1908) and
+equation~\eqref{eq:l8:8} is the Squire equation (Squire 1933).
+
+\begin{itemize}
+	\item The Orr-Sommerfeld (OS) equation is the viscous extension of the
+		Rayleigh equation.
+	\item System \eqref{eq:l8:7} and \eqref{eq:l8:8} has two types of
+		solution:
+		\begin{enumerate}
+			\item OS modes $(\hat{w},\hat{\eta})$ where $\hat{w}$ solves
+			\eqref{eq:l8:7} and $\hat{\eta}$ is the forced response in
+			\eqref{eq:l8:8}.
+		\item Squire modes $(0, \hat{\eta})$ which are always damped. Consider
+			$\eqref{eq:l8:8}/(-i\alpha)$:
+			\begin{equation}
+				c \hat{\eta} = U \hat{\eta} + \frac{i}{\alpha \ReN}
+				(D^2-k^2)\hat{\eta} 
+			\end{equation}
+			Multiply by $\hat{\eta}^*$:
+			\begin{equation}
+				c \abs{\hat{\eta}}^2 = U \abs{\hat{\eta}}^2 + \frac{i}{\alpha \ReN}
+				\hat{\eta}^*(D^2-k^2)\hat{\eta} 
+			\end{equation}
+			Take the imaginary part and integrate over $\left[z_1,z_2\right]$:
+			\begin{align}
+				c_i \zint \abs{\hat{\eta}}^2 \, \diffd z 
+				&= \frac{1}{\alpha
+					\ReN} \zint \frac{i\hat{\eta}^*(D^2-k^2)\hat{\eta} - 
+				(-i)\hat{\eta}(D^2-k^2)\hat{\eta}^*}{2i} \, \diffd z \\
+				&= \frac{1}{\alpha \ReN}\zint \frac{1}{2}( 
+				\hat{\eta}^*D^2\hat{\eta} + \hat{\eta} D^2
+				\hat{\eta}^*) - k^2 \abs{\hat{\eta}}^2 \, \diffd z \\
+				&= -\frac{1}{\alpha \ReN} \zint \abs{D \hat{\eta}}^2 + k^2
+				\abs{\hat{\eta}}^2 \, \diffd z < 0
+			\end{align}
+			Thus $c_i < 0$ so solutions are damped. 			
+		\end{enumerate}
+		Hence we just need to consider  the OS equation to establish instability.
+	\item Squire's theorem holds for the OS equation. The 3D version is
+		\begin{equation}
+			(U-c)(D^2 -k^2) \hat{w} - U'' \hat{w} - \frac{1}{i\alpha
+			\ReN}(D^2-k^2)^2 \hat{w} = 0
+		\end{equation}
+		Compare with the 2D version
+		\begin{equation}
+			(U-c)(D^2 -\hat{\alpha}^2) \hat{w} - U'' \hat{w} -
+			\frac{1}{i\hat{\alpha}\hat{\ReN}}(D^2-\hat{\alpha}^2)^2 \hat{w} = 0
+		\end{equation}
+		where $\hat{\alpha} = k^2 = \alpha^2 + \beta^2$ and
+		\begin{equation}
+			\hat{\ReN} = \frac{\alpha \ReN_{3D}}{\hat{\alpha}} =
+			\frac{\alpha}{\sqrt{\alpha^2 + \beta^2}}\ReN_{3D} \le \ReN_{3D}
+		\end{equation}
+		Thus each 3D OS mode corresponds to a 2D OS mode at a \emph{lower}
+		\ReN. Note this is a slightly different result from the inviscid case
+		where 2D always had a larger growth rate. We can instead note that if
+		the critical Reynolds number for linear stability is $\ReN_c$ then
+		\begin{equation}
+			\ReN_c = \min_{\alpha,\beta} \ReN_c(\alpha,\beta) = \min_{\alpha}
+			\ReN_c(\alpha,0)
+		\end{equation}
+		where the first equality defines $\ReN_c$ and the second is Squire's
+		theorem. This led to a focus on the 2D OS equation.
+	\item What is the connection between Rayleigh and OS equations? 
+		\begin{itemize}
+			\item OS is non-singular and has a countably infinite number of
+				eigenvalues and its eigenfunctions are complete (Scheisted
+				1960). Note if the interval of flow is unbounded, there is a
+				continuous spectrum of neutrally stable eigenfunctions in
+				addition to the discrete spectrum (Herron 1987). 
+			\item OS equation is fourth order whilst Rayleigh's equation is
+				second order. 2 OS modes approximate Rayleigh modes, the other
+				2 modes fix the boundary conditions at the walls (lots of work
+				on this -- see Drazin \& Reid (1981)).
+			\item Today it is absolutely routine to numerically solve the OS
+				eigenvalue problem for $\ReN \le 10^7$. Very famous paper by
+				Orszag (1971) used spectral methods as opposed to shooting
+				techniques or finite difference to predict $\ReN_c$ in channel
+				flow.
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Channel flow (PPF)}
+Thomas (1953) found $\ReN_c = 5780$ at $\alpha_c = 1.026$ using finite
+differences (FD). Further FD estimates came from Nachtshen (1964) with
+$(\ReN_c, \alpha_c) = (5767,1.02)$ and Grosch \& Salwen (1968) with $(\ReN_c,
+\alpha_c) = (5750, 1.025)$. The accepted result now is from Orszag (1971) with
+$\ReN_c = 5772.22$ at $\alpha_c = 1.02056$ using spectral methods.
+
 \end{document}
