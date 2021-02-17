@@ -1818,4 +1818,128 @@ A lot of thermal energy is generated out of kinetic energy by a strong shock:
 	e_2 = \frac{2 u_{\text{sh}}^2}{(\gamma+1)^2}
 \end{equation}
 
+\subsubsection{Oblique shocks}
+When $u_y$ or $u_z$ is non-zero, we also require
+\begin{equation}
+	\dif{\rho u_x u_y} = \dif{\rho u_x u_z} = 0
+\end{equation}
+Since $\rho u_x$ is continuous across the shock (and non-zero), we deduce that
+$\dif{u_y} = \dif{u_z} = 0$. Momentum and energy conservation apply as before,
+and we recover the Rankine-Hugoniot relations.
+
+\subsubsection{Other discontinuities}
+The discontinuity is not called a shock if there is no normal flow ($u_x =0$).
+In this case we can deduce only that $\dif{p} = 0$. Arbitrary discontinuities
+are allowed in $\rho, u_y$ and $u_z$. These are related to the entropy and
+vortical waves. A jump in $\rho$ is a \emph{contact discontinuity} and a jump
+in $u_y$ or $u_z$ is a \emph{tangential discontinuity} or \emph{vortex sheet}
+(vorticity proportional to $\delta(x)$). These discontinuities are not
+produced naturally by wave steepening, because the entropy and vortical waves
+do not steepen. However they do appear in the Riemann problem (see later) and
+other situations with discontinuous initial conditions.
+
+\subsubsection{MHD shocks and discontinuities}
+When a magnetic field is included, the jump conditions allow a wider variety
+of solutions. There are different types of discontinuity associated with the
+three MHD waves (Alfv\'{e}n, slow and fast), which we will not discuss here.
+Since the parallel components of $\B$ need not be continuous, it is pssible
+for them to `switch on' or `switch off' on passage through a shock. 
+
+A \emph{current sheet} is a tangential discontinuity in the magnetic field.
+For example, suppose $B_y$ changes sign across the interface, with $B_x = 0$.
+Then the current density $J_z \propto \delta(x)$.
+
+\subsubsection{The Riemann problem}
+The Riemann problem is a fundamental initial value problem for a hyperbolic
+system and plays a central role in some numerical methods for solving the
+equations of AFD.
+
+The initial condition at $t=0$ consists of two uniform states separated by a
+discontinuity at $x=0$. In the case of 1D gas dynamics, we have
+\begin{equation}
+	\rho = \begin{cases} \rho_L & x < 0 \\ \rho_R & x > 0 \end{cases}
+	\hspace{2em}
+	p = \begin{cases} p_L & x < 0 \\ p_R & x > 0 \end{cases}
+	\hspace{2em}
+	u_x = \begin{cases} u_L & x < 0 \\ u_R & x > 0 \end{cases}
+\end{equation}
+
+An example is the `shock tube' problem in which gas at different pressure is
+at rest either side of a partition which is released at $t=0$. It can be shown
+that the initial discontinuity resolves generically into three simple waves.
+The inner one is a contact discontinuity. The other ones are shocks or
+rarefaction waves (see below).
+
+The initial data define no natural length-scale, but they do allow a
+characteristic velocity scale $c$ to be defined (although not uniquely). The
+result is a \emph{similarity solution} in which variables depend on $x$ and
+$t$ only through the dimensionless combination $\xi = x/ct$. 
+
+Unlike the physical rarefaction shock, the \emph{rarefaction wave} (or
+\emph{expansion wave}) is a non-dissipative, homentropic, continuous simple
+wave in which $\nabla \cdot \u > 0$. If we seek a similarity solution $v =
+v(\xi)$ of the inviscid Burgers equation $v_t + vv_x = 0$ we find $v=x/t$ (or
+the trivial solution $v = \text{const}$). The characteristics form an
+\emph{expansion fan}.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-0.1, 0) -- (5, 0) node[right] {$x$};
+		\draw[thick,->] (0, -0.1) -- (0, 5) node[left] {$t$};
+		\draw (0,0) -- (5, 5);
+		\draw (0,0) -- (5, 4.6);
+		\draw (0,0) -- (5, 4.2);
+		\draw (0,0) -- (5, 3.8);
+		\draw (0,0) -- (5, 3.4);
+		\draw (0,0) -- (4.6, 5);
+		\draw (0,0) -- (4.2, 5);
+		\draw (0,0) -- (3.8, 5);
+		\draw (0,0) -- (3.4, 5);
+	\end{tikzpicture}
+\end{center}
+
+The `+' rarefaction wave has
+\begin{equation}
+	u+v_s = \frac{x}{t}, \hspace{2em} R_- = u - \frac{2 v_s}{\gamma -1} =
+	\text{const.}
+\end{equation}
+determined by the undisturbed right-hand state. The `-' rarefaction wave has
+\begin{equation}
+	u-v_s = \frac{x}{t}, \hspace{2em} R_+ = u + \frac{2 v_s}{\gamma -1} =
+	\text{const.}
+\end{equation}
+determined by the undisturbed left-hand state.  In each case $u$ and $v_s$ are
+linear functions of $x/t$ and
+\begin{equation}
+	\nabla \cdot \u = \left(\frac{2}{\gamma +1}\right)\frac{1}{t} > 0
+\end{equation}
+A typical outcome of a shock-tube problem consists of (from left to right):
+undisturbed region, rarefaction wave, uniform region, contact discontinuity,
+uniform region, shock, undisturbed region.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-5, 0) -- (5,0) node[right] {$x$};
+		\draw[thick,->] (0, -0.1) -- (0, 5) node[left] {$t$};
+		\draw (0,0) -- (5, 4);
+		\draw (0,0) -- (0.8, 5);
+		\draw (0,0) -- (-3.4, 5);
+		\draw (0,0) -- (-3.8, 5);
+		\draw (0,0) -- (-4.2, 5);
+		\draw (0,0) -- (-4.6, 5);
+		\draw (0,0) -- (-5, 5);
+		\draw (0,0) -- (-5, 4.6);
+		\draw (0,0) -- (-5, 4.2);
+		\draw (0,0) -- (-5, 3.8);
+		\draw (0,0) -- (-5, 3.4);
+		\draw (4, 1) node {undisturbed};
+		\draw (2.5, 4) node {uniform};
+		\draw (-0.8, 4) node {uniform};
+		\draw (-4, 1) node {undisturbed};
+	\end{tikzpicture}
+\end{center}
+
+In Godunov's method and related algorithms, the equations of AFD are advanced
+in time by solving (either exactly or approximately) a Riemann problem at each
+cell boundary.
 \end{document}
