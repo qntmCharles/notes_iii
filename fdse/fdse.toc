@@ -28,3 +28,5 @@
 \contentsline {subsection}{\numberline {6.2}Dissolution from an unconfined aquifer}{22}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Charging/discharging of a groundwater aquifer}{23}{subsection.6.3}
 \contentsline {paragraph}{\nonumberline Rainfall ($R \ne 0$).}{24}{section*.11}
+\contentsline {paragraph}{\nonumberline Aquifer discharge ($R=0$)}{25}{section*.12}
+\contentsline {subsection}{\numberline {6.4}Gravity currents with residual trapping}{25}{subsection.6.4}
