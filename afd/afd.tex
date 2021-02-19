@@ -1942,4 +1942,119 @@ uniform region, shock, undisturbed region.
 In Godunov's method and related algorithms, the equations of AFD are advanced
 in time by solving (either exactly or approximately) a Riemann problem at each
 cell boundary.
+
+\section{Spherical blast waves: supernovae}
+\subsection{Introduction}
+In this section $(r, \theta, \phi)$ are spherical polar coordinates. In a
+supernova, an energy of order $10^{51}$ erg ($10^{44}$ J) is released into the
+interstellar medium. An expanding spherical blast wave is formed as the
+explosion sweeps up the surrounding gas. Several good examples of these
+supernova remnants are observed in the galaxy, e.g. Tycho's supernova of 1572
+and Kepler's supernova of 1604.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{sn1572.jpg};
+	\caption{Tycho's supernova, SN1572. Source: Wikipedia.}
+\end{figure}
+
+The effect is similar to a bomb. Photographs of the first atomic bomb test in
+New Mexico in 1945 allowed both Sedov in the Soviet Union and Taylor in the UK
+to work out the bomb's energy ($20$ kt of TNT $\sim 10^{14}$ J). 
+
+Suppose an energy $E$ is released at $t=0, r=0$ and that the explosion is
+spherically symmetric. The external medium has density $\rho_0$ and pressure
+$p_0$. In the \emph{Sedov-Taylor phase} of the explosion, the pressure $p \gg
+p_0$. Then a strong shock is formed and the external pressure $p_0$ can be
+neglected (formally set to zero). Gravity is also negligible in the dynamics.
+
+\subsection{Governing equations}
+A spherically symmetric flow of a perfect gas with purely radial velocity $u_r
+= u(r,t)$ satisfies
+\begin{align}
+\left( \frac{\partial}{\partial t} + u \frac{\partial}{\partial r}\right)\rho
+&= -\frac{\rho}{r^2} \frac{\partial}{\partial r} (r^2 u) \label{eq:l13:1} \\
+\left( \frac{\partial}{\partial t} + u \frac{\partial}{\partial r}\right)u
+&= -\frac{1}{\rho} \frac{\partial p}{\partial r} \label{eq:l13:2} \\
+\left( \frac{\partial}{\partial t} + u \frac{\partial}{\partial r}\right) \ln
+	(p \rho^{-\gamma}) &= 0 \label{eq:l13:3}
+\end{align}
+which are the equations of mass continuity, momentum conservation and energy
+conservation. These imply the total energy equation
+\begin{equation}
+	\frac{\partial}{\partial t}\left(\frac{1}{2}\rho u^2 + \frac{p}{\gamma
+	-1}\right) + \frac{1}{r^2} \frac{\partial}{\partial r} \left[ r^2 \left(
+	\frac{1}{2}\rho u^2 + \frac{\gamma p}{\gamma -1}\right)u\right] = 0
+\end{equation}
+
+The shock is at $r=R(t)$ so the shock speed is $\dot{R}$. The equations are to
+be solved in $0 < r < R$ with the strong shock conditions at $r=R$:
+\begin{align}
+	\rho &= \frac{\gamma+1}{\gamma-1} \rho_0 \label{eq:l13:4}\\
+	u&= \frac{2 \dot{R}}{\gamma +1}\label{eq:l13:5}\\
+	p &= \frac{2\rho_0 \dot{R}^2}{\gamma +1} \label{eq:l13:6}
+\end{align}
+which are the Rankine-Hugoniot conditions in the limit of a strong shock. The
+total energy of the explosion is
+\begin{equation}
+	E = \int_0^R \left( \frac{1}{2}\rho u^2 + \frac{p}{\gamma -1}\right) 4\pi
+	r^2 \, \diffd r = \text{const.}
+\end{equation}
+The thermal energy of the external medium is negligible.
+
+\subsection{Dimensional analysis}
+The dimensional parameteres of the problem on which the solution might depend
+are $E$ and $\rho_0$. Their dimensions are
+\begin{equation}
+	\left[E\right] = M L^2 T^{-2}, \hspace{2em} \left[ \rho_0\right] = M
+	L^{-3}
+\end{equation}
+Together, they do not define a characteristic lengthscale, so the explosion is
+`scale-free' or `self-similar'. If the dimensional analysis includes the time
+$t$ since the explosion, however, we can find a time-dependent characteristic
+lengthscale. The radius of the shock must be
+\begin{equation}
+	R = \alpha \left( \frac{E t^2}{\rho_0}\right)^{1/5}
+\end{equation}
+where $\alpha$ is a dimensionless constant to be determined.
+
+\subsection{Similarity solution}
+Self-similarity is expressed using the dimensionless \emph{similarity
+variable} $\xi = r/R(t)$.  The solution has the form
+\begin{equation}
+	\rho = \rho_0 \tilde{\rho}(\xi), \hspace{2em} u = \dot{R} \tilde{u}(\xi),
+	\hspace{2em} p = \rho_0 \dot{R}^2 \tilde{p}(\xi)
+\end{equation}
+where $\tilde{\rho}, \tilde{u}$ and $\tilde{p}$ are dimensionless functions of
+$\xi$ to be determined. 
+
+Meaning: the graph of $u$ versus $r$, for example, has a constant shape but
+both axes of the graph are rescaled as time proceeds and the shock expands.
+
+\subsection{Dimensionless equations}
+Substitute the known forms $\rho = \rho_0 \tilde{\rho}, u = \dot{R} \tilde{u},
+p = \rho_0 \dot{R}^2 \tilde{p}$ into \eqref{eq:l13:1}--\eqref{eq:l13:3} and
+cancel dimensionless factors to get
+\begin{align}
+	(\tilde{u}-\xi) \tilde{\rho}' &= - \frac{\tilde{\rho}}{\xi^2}
+	\frac{\diffd}{\diffd \xi}(\xi^2 \tilde{u}) \\
+	(\tilde{u}-\xi)\tilde{u}' - \frac{3}{2}\tilde{u} &=
+	-\frac{\tilde{p}'}{\tilde{\rho}} \\
+	(\tilde{u}-\xi)\left(\frac{\tilde{p}'}{\tilde{p}} - \frac{\gamma
+	\tilde{\rho}'}{\tilde{\rho}}\right) -3 &= 0
+\end{align}
+This uses $\dot{R} \propto t^{-3/5}, \xi \propto R t^{-2/5}$. The strong shock
+conditions \eqref{eq:l13:4}--\eqref{eq:l13:6} at $r=R$ imply
+\begin{equation}
+	\tilde{\rho} = \frac{\gamma+1}{\gamma-1}, \hspace{2em} \tilde{u} =
+	\frac{2}{\gamma +1}, \hspace{2em} \tilde{p} = \frac{2}{\gamma +1}
+\end{equation}
+at $\xi = 1$. The total energy integral becomes a normalisation condition
+\begin{equation}
+	1 = \frac{16 \pi}{25} \alpha^5 \int_0^1 \left(
+	\frac{1}{2}\tilde{\rho}\tilde{u}^2 + \frac{\tilde{p}}{\gamma -1}\right)
+	\xi^2\, \diffd \xi
+\end{equation}
+that will determine the value of $\alpha$.
+
 \end{document}

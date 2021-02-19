@@ -1,0 +1,59 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Areas of application}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Theoretical varieties}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Characteristic features}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Useful data}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{Ideal gas dynamics}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Fluid variables}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Eulerian and Lagrangian viewpoints}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Material points and structures}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.4}{Equation of mass conservation}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.5}{Equation of motion}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.6}{Poisson's equation}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.7}{Thermal energy equation and equation of state}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.8}{Simplified models}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.9}{Microphysical basis}{section.2}% 15
+\BOOKMARK [3][-]{subsubsection.2.9.1}{Boltzmann equation}{subsection.2.9}% 16
+\BOOKMARK [3][-]{subsubsection.2.9.2}{Derivation of fluid equations}{subsection.2.9}% 17
+\BOOKMARK [2][-]{subsection.2.10}{Validity of fluid approach}{section.2}% 18
+\BOOKMARK [1][-]{section.3}{Ideal magnetohydrodynamics}{}% 19
+\BOOKMARK [2][-]{subsection.3.1}{Elementary derivation of MHD equations}{section.3}% 20
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Galilean electromagnetism}{subsection.3.1}% 21
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Induction equation}{subsection.3.1}% 22
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Lorentz force}{subsection.3.1}% 23
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Summary of the MHD equations}{subsection.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.2}{Physical interpretation of MHD}{section.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Kinematics of the magnetic field}{subsection.3.2}% 26
+\BOOKMARK [3][-]{subsubsection.3.2.2}{\(Partial\) analogy with vorticity}{subsection.3.2}% 27
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Lorentz force}{subsection.3.2}% 28
+\BOOKMARK [3][-]{subsubsection.3.2.4}{Differential rotation and torsional Alfv\351n waves}{subsection.3.2}% 29
+\BOOKMARK [3][-]{subsubsection.3.2.5}{Force-free fields}{subsection.3.2}% 30
+\BOOKMARK [3][-]{subsubsection.3.2.6}{Magnetostatic equilibrium and magnetic buoyancy}{subsection.3.2}% 31
+\BOOKMARK [1][-]{section.4}{Conservation laws \046 hyperbolic structure}{}% 32
+\BOOKMARK [2][-]{subsection.4.1}{Introduction}{section.4}% 33
+\BOOKMARK [2][-]{subsection.4.2}{Total energy equation}{section.4}% 34
+\BOOKMARK [2][-]{subsection.4.3}{Helicity conservation}{section.4}% 35
+\BOOKMARK [2][-]{subsection.4.4}{Symmetries}{section.4}% 36
+\BOOKMARK [2][-]{subsection.4.5}{Hyperbolic structure}{section.4}% 37
+\BOOKMARK [2][-]{subsection.4.6}{Stress tensor}{section.4}% 38
+\BOOKMARK [2][-]{subsection.4.7}{Virial theorem}{section.4}% 39
+\BOOKMARK [1][-]{section.5}{Linear waves in homogeneous media}{}% 40
+\BOOKMARK [1][-]{section.6}{Non-linear waves, shocks and discontinuities}{}% 41
+\BOOKMARK [2][-]{subsection.6.1}{1D gas dynamics}{section.6}% 42
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Method of characteristics}{subsection.6.1}% 43
+\BOOKMARK [3][-]{subsubsection.6.1.2}{A simple wave}{subsection.6.1}% 44
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Wave steepening}{subsection.6.1}% 45
+\BOOKMARK [2][-]{subsection.6.2}{Simple non-linear waves}{section.6}% 46
+\BOOKMARK [2][-]{subsection.6.3}{Shocks \046 discontinuities}{section.6}% 47
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Jump conditions}{subsection.6.3}% 48
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Non-magnetic shocks}{subsection.6.3}% 49
+\BOOKMARK [3][-]{subsubsection.6.3.3}{Oblique shocks}{subsection.6.3}% 50
+\BOOKMARK [3][-]{subsubsection.6.3.4}{Other discontinuities}{subsection.6.3}% 51
+\BOOKMARK [3][-]{subsubsection.6.3.5}{MHD shocks and discontinuities}{subsection.6.3}% 52
+\BOOKMARK [3][-]{subsubsection.6.3.6}{The Riemann problem}{subsection.6.3}% 53
+\BOOKMARK [1][-]{section.7}{Spherical blast waves: supernovae}{}% 54
+\BOOKMARK [2][-]{subsection.7.1}{Introduction}{section.7}% 55
+\BOOKMARK [2][-]{subsection.7.2}{Governing equations}{section.7}% 56
+\BOOKMARK [2][-]{subsection.7.3}{Dimensional analysis}{section.7}% 57
+\BOOKMARK [2][-]{subsection.7.4}{Similarity solution}{section.7}% 58
+\BOOKMARK [2][-]{subsection.7.5}{Dimensionless equations}{section.7}% 59
