@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {section}{\numberline {2}Kelvin-Helmholtz instability}{2}{section.2}
 \contentsline {section}{\numberline {3}Thermal instabilities: Rayleigh-Bernard convection}{4}{section.3}
-\contentsline {paragraph}{\nonumberline Governing equations.}{4}{section*.2}
+\contentsline {paragraph}{\nonumberline Governing equations.}{5}{section*.2}
 \contentsline {paragraph}{\nonumberline Boundary conditions.}{6}{section*.3}
 \contentsline {paragraph}{\nonumberline Basic state.}{6}{section*.4}
 \contentsline {paragraph}{\nonumberline Normal mode solution.}{7}{section*.5}
@@ -23,3 +23,7 @@
 \contentsline {subsection}{\numberline {5.2}Viscous analysis}{19}{subsection.5.2}
 \contentsline {subsubsection}{\numberline {5.2.1}Orr-Sommerfeld \& Squire Equations}{21}{subsubsection.5.2.1}
 \contentsline {subsubsection}{\numberline {5.2.2}Channel flow (PPF)}{22}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Other flows}{23}{subsubsection.5.2.3}
+\contentsline {paragraph}{\nonumberline Notes.}{23}{section*.13}
+\contentsline {section}{\numberline {6}Transient Growth \& IVPs}{24}{section.6}
+\contentsline {subsection}{\numberline {6.1}Example of IVP analysis}{24}{subsection.6.1}

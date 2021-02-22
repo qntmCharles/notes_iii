@@ -1985,6 +1985,7 @@ conservation. These imply the total energy equation
 	\frac{\partial}{\partial t}\left(\frac{1}{2}\rho u^2 + \frac{p}{\gamma
 	-1}\right) + \frac{1}{r^2} \frac{\partial}{\partial r} \left[ r^2 \left(
 	\frac{1}{2}\rho u^2 + \frac{\gamma p}{\gamma -1}\right)u\right] = 0
+	\label{eq:l13:energy}
 \end{equation}
 
 The shock is at $r=R(t)$ so the shock speed is $\dot{R}$. The equations are to
@@ -2037,17 +2038,18 @@ p = \rho_0 \dot{R}^2 \tilde{p}$ into \eqref{eq:l13:1}, \eqref{eq:l13:2},
 \eqref{eq:l13:3} and cancel dimensionless factors to get
 \begin{align}
 	(\tilde{u}-\xi) \tilde{\rho}' &= - \frac{\tilde{\rho}}{\xi^2}
-	\frac{\diffd}{\diffd \xi}(\xi^2 \tilde{u}) \\
+	\frac{\diffd}{\diffd \xi}(\xi^2 \tilde{u}) \label{eq:l13:7}\\
 	(\tilde{u}-\xi)\tilde{u}' - \frac{3}{2}\tilde{u} &=
-	-\frac{\tilde{p}'}{\tilde{\rho}} \\
+	-\frac{\tilde{p}'}{\tilde{\rho}} \label{eq:l13:8}\\
 	(\tilde{u}-\xi)\left(\frac{\tilde{p}'}{\tilde{p}} - \frac{\gamma
-	\tilde{\rho}'}{\tilde{\rho}}\right) -3 &= 0
+\tilde{\rho}'}{\tilde{\rho}}\right) -3 &= 0\label{eq:l13:9}
 \end{align}
 This uses $\dot{R} \propto t^{-3/5}, \xi \propto R t^{-2/5}$. The strong shock
 conditions \eqref{eq:l13:4}, \eqref{eq:l13:5}, \eqref{eq:l13:6} at $r=R$ imply
 \begin{equation}
 	\tilde{\rho} = \frac{\gamma+1}{\gamma-1}, \hspace{2em} \tilde{u} =
 	\frac{2}{\gamma +1}, \hspace{2em} \tilde{p} = \frac{2}{\gamma +1}
+	\label{eq:l13:BCs}
 \end{equation}
 at $\xi = 1$. The total energy integral becomes a normalisation condition
 \begin{equation}
@@ -2056,5 +2058,136 @@ at $\xi = 1$. The total energy integral becomes a normalisation condition
 	\xi^2\, \diffd \xi
 \end{equation}
 that will determine the value of $\alpha$.
+
+\subsection{First integral}
+The total energy equation \eqref{eq:l13:energy} is in 1D conservative form 
+\begin{equation}
+	\frac{\partial q}{\partial t} = \frac{\partial F}{\partial r} = 0
+	\label{eq:l14:1}
+\end{equation}
+with
+\begin{align}
+	q &= r^2 \left( \frac{1}{2} \rho u^2 + \frac{p}{\gamma -1}\right) \\
+	F &= r^2 \left( \frac{1}{2} \rho u^2 + \frac{\gamma p}{\gamma -1} \right)
+	u
+\end{align}
+
+For the similarity solution, we have
+\begin{equation}
+	q = \rho_0 R^2 \dot{R}^2 \tilde{q}(\xi), \hspace{2em} F = \rho_0 R^2
+	\dot{R}^3 \tilde{F}(\xi) \label{eq:l14:2}
+\end{equation}
+with
+\begin{align}
+	\tilde{q} &= \xi^2 \left( \frac{1}{2}\tilde{\rho}\tilde{u}^2 +
+	\frac{\tilde{p}}{\gamma -1}\right) \label{eq:l14:3}\\
+	\tilde{F} &= \xi^2 \left( \frac{1}{2}\tilde{\rho}\tilde{u}^2 +
+	\frac{\gamma \tilde{p}}{\gamma -1}\right) \tilde{u}\label{eq:l14:4}
+\end{align}
+Substitute \eqref{eq:l14:2} into \eqref{eq:l14:1}, noting that $R^2 \dot{R}^2
+\propto t^{4/5} t^{-6/5} \propto t^{-2/5} \propto R^{-1}$:
+\begin{align}
+	\rho_0 R^2 \dot{R}^2 \left[ -\frac{\dot{R}}{R} \tilde{q} + \frac{\diffd
+	\tilde{q}}{\diffd \xi} \left( -\frac{\dot{R}}{R} \xi \right) +
+	\frac{\dot{R}}{R} \frac{\diffd \tilde{F}}{\diffd \xi}\right] &= 0 \\
+	\implies -\tilde{q} - \xi \frac{\diffd \tilde{q}}{\diffd xi} +
+	\frac{\diffd \tilde{F}}{\diffd \xi} &= 0  \\
+	\implies \frac{\diffd}{\diffd \xi} \left( \tilde{F} - \xi \tilde{q}\right)
+									   &= 0
+\end{align}
+Hence $\tilde{F} - \xi \tilde{q} = \text{const.} = 0$ for a solution that is
+finite at $\xi = 0$. Using \eqref{eq:l14:3} and \eqref{eq:l14:4}, solve
+$\tilde{F} - \xi \tilde{q} = 0$ for $\tilde{p}$:
+\begin{equation}
+	\tilde{p} = \frac{(\gamma - 1)\tilde{\rho}\tilde{u}^2(\xi -
+	\tilde{u})}{2(\gamma \tilde{u} - \xi)}
+\end{equation}
+This is compatible with the boundary conditions at $\xi = 1$ expressed by
+\eqref{eq:l13:BCs}. Having found a first integral, we can dispense with the
+thermal energy equation \eqref{eq:l13:9}. Let $\tilde{u} = v \xi$. We now have
+from \eqref{eq:l13:7} and \eqref{eq:l13:8}:
+\begin{align}
+	(v-1)\frac{\diffd \ln \tilde{\rho}}{\diffd \ln \xi} &= -\frac{\diffd
+	v}{\diffd \ln \xi} - 3v \\
+	(v-1) \frac{\diffd v}{\diffd \ln \xi} + \frac{1}{\tilde{\rho}\xi^2}
+	\frac{\diffd}{\diffd \ln \xi} \left[ \frac{(\gamma -1)\tilde{\rho} \xi^2
+	v^2 (1-v)}{2(\gamma v-1)}\right] &= \frac{3}{2}v
+\end{align}
+Eliminate $\tilde{\rho}$:
+\begin{equation}
+	\frac{\diffd v}{\diffd \ln \xi} = \frac{v(\gamma v -
+		1) \left[5-(3\gamma-1)v\right]}{\gamma (\gamma+1) v^2 - 2(\gamma +1)v
+	+ 2}
+\end{equation}
+Invert and split into partial fractions:
+\begin{equation}
+\frac{\diffd \ln \xi}{\diffd v} = -\frac{2}{5v} + \frac{\gamma(\gamma
+	-1)}{(2\gamma +1)(\gamma v - 1)} + \frac{13\gamma^2 -7\gamma +
+	12}{5(2\gamma +1)\left[5-(3\gamma -1)v\right]}
+\end{equation}
+The solution is
+\begin{equation}
+	\xi \propto v^{-2/5} (\gamma v-1)^{(\gamma -1)/(2\gamma +1)}
+	\left[5-(3\gamma-1)v\right]^{-(13\gamma^2-7\gamma+12)/5(2\gamma
+	+1)(3\gamma -1)}
+\end{equation}
+Then
+\begin{align}
+	\frac{\diffd \ln \tilde{\rho}}{\diffd v} &= -\frac{1}{v-1} -
+	\frac{3v}{v-1}\frac{\diffd \ln \xi}{\diffd v}  \\
+	&= \frac{2}{(2-\gamma)(1-v)} + \frac{3\gamma}{(2\gamma+1)(\gamma v-1)} -
+	\frac{13\gamma^2 - 7\gamma +12}{(2-\gamma)(2\gamma+1) \left[5-(3\gamma
+	-1)v\right]}
+\end{align}
+The solution is
+\begin{equation}
+	\tilde{\rho} \propto (1-v)^{-2/(2-\gamma)}(\gamma
+	v-1)^{3/(2\gamma+1)}\left[5-(3\gamma-1)v\right]^{
+	(13\gamma^2-7\gamma+12)/(2-\gamma)(2\gamma
+	+1)(3\gamma -1)}
+\end{equation}
+For example, with $\gamma =5/3$:
+\begin{align}
+	\xi &\propto v^{-2/5} \left(\frac{5v}{3}-1\right)^{2/13}
+	\left(5-4v\right)^{-82/195} \\
+	\tilde{\rho} &\propto
+	(1-v)^{-6}\left(\frac{5v}{3}-1\right)^{9/13}(5-4v)^{82/13}
+\end{align}
+To satisfy $v=2/(\gamma+1) = 3/4$ and $\tilde{\rho} = (\gamma+1)/(\gamma-1) =
+4$ at $\xi = 1$ we have
+\begin{align}
+	\xi &= \left(\frac{4v}{3}\right)^{-2/5} \left(\frac{20v}{3}-4\right)^{2/13}
+	\left(\frac{5}{2}-2v\right)^{-82/195} \\
+	\tilde{\rho} &=
+	4(4-4v)^{-6}\left(\frac{20v}{3}-4\right)^{9/13}(\frac{5}{2}-2v)^{82/13}
+\end{align}
+Then, from the first integral
+\begin{equation}
+	\tilde{p} =
+	\frac{3}{4}\left(\frac{4v}{3}\right)^{6/5}(4-4v)^{-5}\left(\frac{5}{2}-2v\right)^{82/15}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{supernova.png}
+	\caption{Normalised solutions for $0 \le \xi \le 1$ with $\gamma =5/3$.}
+\end{figure}
+In this solution, $\xi$ ranges from 0 to 1, and $v$ from $3/5$ to $3/4$. The
+normalisation integral (numerically) gives $\alpha \approx 1.152$.
+
+\subsection{Applications}
+Some rough estimates from the above analysis:
+\begin{itemize}
+	\item For a supernova, $E \sim 10^{51}$ erg and $\rho_0 \sim 10^{-24}
+		\text{g}\cdot\text{cm}^{-3}$. Then $R \approx 6$pc and $\dot{R} \approx
+		2000 \text{km}\cdot\text{s}^{-1}$ at $t=1000$yr.
+	\item For the 1945 New Mexico explosion, $E \approx 8 \times 10^{20}$ erg,
+		$\rho_0 \approx 1.2 \times 10^{-3} \text{g}\cdot\text{cm}^{-3}$. Then
+		$R \approx 100$m and $\dot{R} \approx 4 \text{km}\cdot\text{s}^{-1}$
+		at $t=0.01$s.
+\end{itemize}
+
+The similarity method is useful in a wide range of nonlinear problems. In this
+case it reduced PDEs to integrable ODEs.
 
 \end{document}

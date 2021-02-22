@@ -1519,4 +1519,204 @@ $(\ReN_c, \alpha_c) = (5767,1.02)$ and Grosch \& Salwen (1968) with $(\ReN_c,
 \alpha_c) = (5750, 1.025)$. The accepted result now is from Orszag (1971) with
 $\ReN_c = 5772.22$ at $\alpha_c = 1.02056$ using spectral methods.
 
+Solving the Orrfield-Sommerfield equation with $\ReN = 7000, \alpha = 1, \beta
+=0$ gives the following plot.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (5, 0) node[right] {$c_r$};
+		\draw[thick,->] (0,0) -- (0, 5) node[left] {$c_i$};
+		\draw (0,0) node[below] {$0$};
+		\draw (4.5,0) node[below] {$1$};
+		\draw (0,0) node[left] {$-1$};
+		\draw (0,4.5) node[left] {$0$};
+		\draw (3, 0) node[below] {$2/3$};
+		\draw[red,dashed] (4.5, 0) -- (4.5, 5);
+		\draw[red,dashed] (0, 4.5) -- (5, 4.5);
+		\draw[fill] (3.01, 0.2) circle (0.05);
+		\draw[fill] (3, 0.6) circle (0.05);
+		\draw[fill] (3.02, 1.1) circle (0.05);
+		\draw[fill] (3, 1.4) circle (0.05);
+		\draw[fill] (2.98, 1.9) circle (0.05);
+		\draw[fill] (2.96, 2.3) circle (0.05);
+		\draw[fill] (3, 2.6) circle (0.05);
+		\draw[fill] (3.01, 3) circle (0.05);
+		\draw[fill] (3.23, 3.21) circle (0.05);
+		\draw[fill] (3.56, 3.53) circle (0.05);
+		\draw[fill] (3.91, 3.94) circle (0.05);
+		\draw[fill] (4.19, 4.21) circle (0.05);
+		\draw[fill] (4.41, 4.43) circle (0.05);
+		\draw[fill] (2.85, 3.16) circle (0.05);
+		\draw[fill] (2.58, 3.41) circle (0.05);
+		\draw[fill] (2.26, 3.75) circle (0.05);
+		\draw[fill] (1.97, 4.01) circle (0.05);
+		\draw[fill] (1.7, 4.27) circle (0.05);
+		\draw[fill] (1.36, 4.63) circle (0.05);
+		\draw[fill] (1.73, 4.08) circle (0.05);
+		\draw[fill] (2.18, 3.87) circle (0.05);
+		\draw[fill] (2.48, 3.39) circle (0.05);
+		\draw[fill] (2.86, 3.16) circle (0.05);
+		\draw[red] (1.5, 3.5) node {$A$};
+		\draw[red] (3.8, 4.2) node {$P$};
+		\draw[red] (3.5, 1.7) node {$S$};
+	\end{tikzpicture}
+\end{center}
+
+Note the single unstable eigenvalue with $c_i > 0$.  The eigenvalues arise in
+3 families, denoted $A$ for Airy, $P$ for Pekeris, and $S$ for Scheisted. 
+\begin{itemize}
+	\item $A$: $c_r \to 0$, wall modes, advected towards wall
+	\item $P$: $c_r \to 1$, centre modes, advected towards centreline
+	\item $S$: $c_r \approx 2/3$, identified by Mach (1976).
+\end{itemize}
+
+Note that a parabolic base state does not have an inflection point, but
+\emph{does} have an unstable mode for large $\ReN$. Hence viscosity must be
+destabilising. The unstable mode is called a Tollmien-Schlichting mode/wave
+(Tollmien 1935, Schlichting 1933). Tollmien was the first to show the OS
+equation has instability for non-inflection point profiles. 
+
+However, as $\ReN \to \infty$ we are left with the Rayleigh equation and
+stability, so somewhere in between they must match up. The stability diagram
+for the OS equation with finite Reynolds number appears as follows:
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (5.5, 0) node[right] {$\ReN$};
+		\draw[thick,->] (0,0) -- (0, 3) node[left] {$\alpha$};
+		\draw[red,dashed] (1.5, 0) -- (1.5, 1.2) -- (0, 1.2);
+		\draw[red,smooth] plot[tension=0.7] coordinates {(4.8, 0.15) (3.5,
+		0.3) (2.5, 0.5) (1.8, 0.7) (1.5, 1.2) (2.1, 1.8) (3, 1.2) (4, 0.65)
+		(4.8, 0.4)};
+		\draw[red] (2.2, 1.2) node {\tiny unstable};
+		\draw[red] (1, 2) node {\tiny stable};
+		\draw[blue,dashed] (4.2, 0.7) -- (5.2, 0.4) node[midway,above] {\tiny $\sim
+		\ReN^{-1/11}$};
+		\draw[blue,dashed] (4.1, 0.15) -- (5.1, 0.05) node[midway,below]
+		{\tiny $\sim \ReN^{-1/7}$};
+	\end{tikzpicture}
+\end{center}
+
+The neutral curve closes as there is no instability for $\ReN \to \infty$.
+
+\subsubsection{Other flows}
+\begin{table}[h]
+	\begin{tabular}{c|ccccc}
+		Type of flow & Profile & Stable? & $\ReN_{\text{crit}}$ &
+		$\alpha_{\text{crit}}$ & Proof? \\ \hline
+		Uniform & $U =$ const. & Yes & $\infty$ & -- & trivial \\
+		PCF & $U = z, \,\,z \in \left[-1,1\right]$ & Yes & $\infty$ & -- &
+		Romanov 1973 \\
+		PPF & $U = 1-z^2,\,\, z \in \left[-1,1\right]$ & No & 5772 & 1.02 & --
+		\\
+		Blasius BL & $U = f'(z), z \ge 0$* & No & 520 & 0.3 & -- \\
+		Shear layer & $U = \tanh z, -\infty < z < \infty$ & No & 0 & 0 & -- \\
+		Jet/wake & $U = \sech^2 z, -\infty < z < \infty$ & No & 4.02 & 0.17 &
+		-- \\
+		HPF (pipe flow) & $\symbf{U} = (1-r^2)\hat{\symbf{z}},\,\, 0 < r < 1$
+						& Yes & $\infty$ & -- & Chen et al., 2019?
+	\end{tabular}
+\end{table}
+
+\paragraph{Notes.}
+Blasius boundary layer (BL) profile $f$ solves $f''' + ff'' = 0$ subject to
+$f(0) = f'(0) = 0, f'(\infty) = 1$. This is boundary layer flow over an
+infinite plate. 
+
+HPF stands for Hagen-Poiseuille flow. Pipe flow observed to be unstable at
+$\ReN \approx \mathcal{O}(2000)$ (Reynolds, 1883). The transition is at
+$\mathcal{O}(2000)$ with reasonable care, $\mathcal{O}(12,000)$ with a very
+careful experiment to minimise disturbances. The world record is $\ReN \sim
+10^5$ accredited to Pfenniger 1961.  Conclusion: pipe flow is unstable to
+finite amplitude disturbances and threshold for instability \emph{decreases} as
+$\ReN \to \infty$.
+
+\section{Transient Growth \& IVPs}
+So far in this course, the analysis has been `modal' -- identifying
+eigenfunctions and eigenvalues of linear operators around basic states. This
+can miss interesting features of the linearised dynamics over `short' times.
+Need to consider initial value problems (IVPs).
+
+\subsection{Example of IVP analysis}
+Consider the initial value problem
+\begin{align}
+	\frac{\diffd}{\diffd t} \begin{pmatrix} v \\ \eta \end{pmatrix} &=
+	\begin{pmatrix} -\frac{1}{\ReN} & 0 \\ 1 & -\frac{2}{\ReN} \end{pmatrix}
+	\begin{pmatrix} v \\ \eta \end{pmatrix} + \begin{pmatrix} \eta^2 \\ -v\eta
+\end{pmatrix}\label{eq:l9:1} \\
+	&= \symsf{L}(\ReN) \begin{pmatrix} v \\ \eta \end{pmatrix} + \symbf{N}(v,
+	\eta)
+\end{align}
+The first term is the linear part, and the second is the nonlinear part
+emulating the nonlinearities of the dynamical equations. The eigenfunctions of
+$\symsf{L}$ are $-1/\ReN$ and $-2/\ReN$ so a basic state
+\begin{equation}
+	\begin{pmatrix} v \\ \eta \end{pmatrix} = \symbf{0}
+\end{equation}
+is linearly stable. Then we must ask if all disturbances decay exponentially?
+Certainly asymptotically ($t \to \infty$) \emph{but} not over short times. 
+
+We can solve \eqref{eq:l9:1} linearised:
+\begin{align}
+	\dot{v} &= -\frac{1}{\ReN} v &&\implies v(t) = v_0 e^{-t/\ReN} \\
+	\dot{\eta} &= v - \frac{2}{\ReN} \eta &&\implies (\eta e^{\frac{2t}{\ReN}})_t
+			   = v_0 e^{t/\ReN} \\
+			   & &&\implies \eta = \ReN v_0 e^{-t/\ReN} + (\eta_0 - \ReN
+		v_0)e^{-2t/\ReN}
+\end{align}
+Hence the solution is
+\begin{align}
+	\begin{pmatrix} v \\ \eta \end{pmatrix} &= v_0 \begin{pmatrix} 1 \\ \ReN
+	\end{pmatrix} e^{-t/\ReN} + (\eta_0 - \ReN v_0) \begin{pmatrix} 0 \\ 1
+	\end{pmatrix} e^{-2t/\ReN} \\
+	&= \begin{pmatrix} v_0\left(1-\frac{t}{\ReN}\right) + \mathcal{O}(t^2) \\
+		\eta_0 + t\left(v_0 - \frac{2\eta_0}{\ReN}\right) + \mathcal{O}(t^2)
+	\end{pmatrix}
+\end{align}
+
+The linearised solution demonstrates the possibility for short term
+\emph{algebraic} growth of $\eta$ provided $v_0 - 2\eta_0/\ReN > 0$. To make
+this more specific, define a norm
+\begin{equation}
+	E \equiv \frac{1}{2}\left(v^2 + \eta^2\right)
+\end{equation}
+and assume $\eta_0 = v_0 =1$. Then
+\begin{align}
+	E(t) &= \frac{1}{2}\left((1-t/\ReN + \dots)^2 + (1+t(1-2/\ReN) +
+	\dots)^2\right) \\
+		 &= 1 + \left(1-\frac{3}{\ReN}\right) t + \mathcal{O}(t^2)
+\end{align}
+So there is energy grwoth at least initially for $\ReN > 3$. What is going on?
+The eigenvectors of $\symsf{L}$ are
+\begin{align}
+	(\lambda_1, \u_1) &= (-\frac{1}{\ReN},
+	\frac{1}{\sqrt{1+\ReN^2}}\begin{pmatrix} 1 \\ \ReN \end{pmatrix} ) \\
+	(\lambda_2, \u_2) &= (-\frac{2}{\ReN},
+	\begin{pmatrix} 0 \\ 1\end{pmatrix} )
+\end{align}
+Note that these eigenvectors \emph{overlap}. They satisfy $\u_1^T \cdot \u_1 =
+\u_2^T \cdot \u_2 = 1$ and also
+\begin{equation}
+	\u_1^T \cdot \u_2 = \frac{\ReN}{\sqrt{1+\ReN^2}} \to 1
+	\,\,\,\text{as}\,\ReN \to \infty
+\end{equation}
+Hence the basis $\{\u_1,\u_2\}$ is very inefficient in representing
+disturbances directed along $v$. For example,
+\begin{equation}
+	\begin{pmatrix} 1 \\ 0 \end{pmatrix} =
+	\sqrt{1+\ReN^2}\u_1 - \ReN \u_2
+\end{equation}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (5, 0) node[right] {$v$};
+		\draw[thick,->] (0,0) -- (0, 3) node[left] {$\eta$};
+		\draw[blue,->] (0,0) -- (0, 2-0.05) node[midway,left] {$\u_2$};
+		\draw[blue,->] (0,0) -- (0.82, 1.824) node[midway,right] {$\u_1$};
+		\draw[blue,dashed] (0, 2) arc (90:0:2);
+		\draw[blue] (0,2) node[left] {$\begin{pmatrix} 0 \\ 1 \end{pmatrix}$};
+		\draw[blue,fill] (0,2) circle (0.05);
+	\end{tikzpicture}
+\end{center}
+
+Since $\u_1$ and $\u_2$ decay at different rates, `growth' appears as large
+coefficients $\sqrt{1+\ReN^2}, \ReN$ no longer largely cancel.
 \end{document}

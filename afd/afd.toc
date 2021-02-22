@@ -60,3 +60,5 @@
 \contentsline {subsection}{\numberline {7.3}Dimensional analysis}{35}{subsection.7.3}
 \contentsline {subsection}{\numberline {7.4}Similarity solution}{35}{subsection.7.4}
 \contentsline {subsection}{\numberline {7.5}Dimensionless equations}{35}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.6}First integral}{36}{subsection.7.6}
+\contentsline {subsection}{\numberline {7.7}Applications}{37}{subsection.7.7}
