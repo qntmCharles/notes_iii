@@ -10,6 +10,7 @@
 \newcommand{\Ra}{\text{Ra}}
 \newcommand{\ReN}{\text{Re}}
 \newcommand{\zint}{\int_{z_1}^{z_2}}
+\renewcommand{\y}{\symbf{y}}
 
 \tikzset{cross/.style={cross out, draw=black, minimum
 size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
@@ -1637,6 +1638,7 @@ can miss interesting features of the linearised dynamics over `short' times.
 Need to consider initial value problems (IVPs).
 
 \subsection{Example of IVP analysis}
+\label{sec:eg}
 Consider the initial value problem
 \begin{align}
 	\frac{\diffd}{\diffd t} \begin{pmatrix} v \\ \eta \end{pmatrix} &=
@@ -1719,4 +1721,226 @@ disturbances directed along $v$. For example,
 
 Since $\u_1$ and $\u_2$ decay at different rates, `growth' appears as large
 coefficients $\sqrt{1+\ReN^2}, \ReN$ no longer largely cancel.
+
+\subsection{Key points}
+\paragraph{Matrix $L$ is non-normal.}
+\begin{defn}
+	A matrix $L$ is non-normal if $L^T L \ne L L^T$, otherwise $L$ is normal.
+\end{defn}
+Note this definition is extensible to operators, i.e. an operator $L$ is
+normal if 
+\begin{equation}
+	\langle u, Lv \rangle = \langle L^T u, v \rangle \implies \langle u, L L^T
+	v \rangle = \langle u, L^T L v\rangle
+\end{equation}
+
+For the matrix $L$ defined in \eqref{eq:l9:1}, we have
+\begin{align}
+	L^T L = 
+	\begin{pmatrix}
+		-\inv{\ReN} & 1 \\ 0 & -\frac{2}{\ReN} 
+	\end{pmatrix}
+	\begin{pmatrix}
+		-\frac{1}{\ReN} & 0 \\ 1 & -\frac{2}{\ReN} 
+	\end{pmatrix}
+	&= \begin{pmatrix}
+		-\frac{1}{\ReN^2} + 1 & -\frac{2}{\ReN} \\ -\frac{2}{\ReN} &
+		\frac{4}{\ReN^2}
+	\end{pmatrix} \\
+	L L^T = 
+	\begin{pmatrix}
+		-\inv{\ReN} & 0 \\ 1 & -\frac{2}{\ReN} 
+	\end{pmatrix}
+	\begin{pmatrix}
+		-\frac{1}{\ReN} & 1 \\ 0 & -\frac{2}{\ReN} 
+	\end{pmatrix}
+	&= \begin{pmatrix}
+		\frac{1}{\ReN^2} & -\frac{1}{\ReN} \\ -\frac{1}{\ReN} &
+		\frac{4}{\ReN^2} + 1
+	\end{pmatrix}
+\end{align}
+So $L$ is non-normal.
+
+\paragraph{Normality implies complete set of orthonormal eigenvectors.}
+Hence a non-normal matrix has non-orthogonal eigenvectors. Consider all
+complex square matrices $\mathbb{C}^{n \times n}$ and denote the Hermitian
+conjugate by superscript $^H$. The space may be split into normal and
+non-normal categories as follows.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) circle (1);
+		\draw[name path = Aa, fill=red, opacity=0.2] (1,0) ellipse (2.5 and 1.5);
+		\draw (1,0) ellipse (2.5 and 1.5);
+		\draw (0.5,0) ellipse (3.5 and 2.5);
+		\draw[name path = Bb] (-4, 3) rectangle (5, -3);
+		\tikzfillbetween[of=Aa and Bb]{blue, opacity=0.2};
+		\draw (0,0.5) node {$L = L^H$};
+		\draw (0, 0) node {Hermitian};
+		\draw (0, -0.4) node {adjoint};
+		\draw[red] (2.1, 0.5) node {Normal};
+		\draw[red] (2.1, 0.1) node {matrices};
+		\draw[red] (2.1, -0.3) node {$LL^H = L^H L$};
+		\draw (-1.5, -1.2) node[rotate=-30] {Diagonalisable};
+		\draw (4.5, 2.5) node {$\mathbb{C}^{n\times n}$};
+		\draw[blue] (-2, 2) node {Non-normal matrices};
+		\draw[blue] (-2, 1.6) node {$LL^H \ne L^H L$};
+		\draw (4, -2) node {Defective};
+		\draw (4, -2.4) node {matrices};
+		\draw (6, 0) node {$\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$};
+		\draw[thick,->] (5.4, 0) -- (4, 1);
+		\draw (-5, 0) node {$\begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$};
+		\draw[thick,->] (-4.6, 0) -- (-2, 0.5);
+		\draw (-5.4, -1.7) node {$L$ from example};
+		\draw[thick,->] (-5, -1.5) -- (-2.5, 0);
+	\end{tikzpicture}
+\end{center}
+
+\paragraph{Choice of norm is important.}
+Consider a general matrix $L$ which is diagonalisable, i.e. $\exists Q$ such
+that $Q^{-1} L Q = \Lambda$, a diagonal matrix. Then there is no growth in the
+norm 
+\begin{equation}
+	E' \equiv \x^T (Q^{-1})^T Q^{-1} \x = \x^T \symsf{W} \x
+\end{equation}
+where $\symsf{W} = (Q^{-1})^T Q^{-1}$ is the \emph{weight}.
+
+\textbf{Proof:} let $\y = Q^{-1} \x$ and consider 
+\begin{align}
+	\frac{\diffd E'}{\diffd t} = \frac{\diffd}{\diffd t} \left( \y^T \cdot
+	\y\right) = \y^T \cdot \dot{\y} + \dot{\y}^T \cdot \dot{\y} &= 2 \y^T
+	\cdot \dot{\y} \\
+			  &= 2 (Q^{-1}\x)^TQ^{-1}\dot{\x} \\
+			  &= 2\x^T (Q^{-1})^T Q^{-1}\dot{\x} \\
+			  &= 2 \x^T (Q^{-1})^T Q^{-1} \dot{\x} \\
+			  &= 2 \x^T (Q^{-1})^T Q^{-1} L \x \hspace{2em} \text{since} \,\,
+			  \dot{\x} = L \x \\
+			  &= 2 \x^T (Q^{-1})^T Q^{-1} L Q Q^{-1} \x \\
+			  &= 2 \x^T (Q^{-1})^T \Lambda Q^{-1} \x \\
+			  &= 2 \y^T \Lambda \y 
+\end{align}
+Hence $\dot{E'}$ is negative if all eigenvalues of $\Re(\Lambda)$ are
+negative. The key here is that $\y = Q^{-1} \x$ transforms $\x$ into a basis
+of eigenvectors.  For example, for $L$ in the previous example we have
+\begin{equation}
+	Q = \begin{pmatrix} \frac{1}{\sqrt{1+\ReN^2}} & 0 \\
+	\frac{\ReN}{\sqrt{1+\ReN^2}} & 1 \end{pmatrix} \implies Q^{-1} =
+		\begin{pmatrix} \sqrt{1+\ReN^2} & 0 \\ -\ReN & 1 \end{pmatrix}
+\end{equation}
+Hence in the basis of eigenvectors $(v \,\,\, \eta)^T$ is
+\begin{equation}
+	Q^{-1}\x = Q^{-1} \begin{pmatrix} v \\ \eta \end{pmatrix} =
+	\begin{pmatrix} v \sqrt{1+\ReN^2} \\ \eta - \ReN v \end{pmatrix}
+\end{equation}
+So above result indicates 
+\begin{equation}
+	(1+\ReN^2)_v^2 + (\eta- \ReN v)^2 = E'
+\end{equation}
+decays. We can calculate explicitly:
+\begin{align}
+	\frac{\diffd E'}{\diffd t} 
+	&= 2(1+\ReN^2)v\dot{v} + 2(\eta-\ReN v)(\dot{\eta} - \ReN \dot{v}) \\
+	&= 2 (1+\ReN^2)\left(\frac{-1}{\ReN^2} v^2\right) + 2(\eta - \ReN
+	v)\left(2v - \frac{2\eta}{\ReN}\right) \\
+	&= -\frac{2(1+\ReN^2)}{\ReN} v^2 - \frac{4(\eta - \ReN v)^2}{\ReN}\\
+	&< 0 \,\,\, \text{for} \,\, v \ne 0, \eta \ne 0
+\end{align}
+
+\paragraph{Non-normality is necessary but not sufficient for transient
+growth.}
+Non-normality does not imply transient growth, but transient growth does imply
+non-normality. For example, consider the norm $E$ defined in
+section~\ref{sec:eg}, $E = (v^2 + \eta^2)/2$. We have
+\begin{align}
+	\dot{E} &= \left(v \,\,\,\, \eta\right) \begin{pmatrix} \dot{v} \\
+	\dot{\eta} \end{pmatrix} \\
+			&= -\frac{1}{\ReN} v^2 - \frac{2}{\ReN} \eta^2 + v \eta \\
+			&= -\left(\frac{1}{\sqrt{\ReN}} v - \frac{\sqrt{\ReN}}{2} \eta
+			\right)^2 + \left(\frac{\ReN^2 - 8}{4\ReN}\right) \eta^2
+			\label{eq:l10:1}
+\end{align}
+So provided $\ReN^2 < 8$, no growth is possible even though $L$ is non-normal.
+Note from \eqref{eq:l10:1} we can see that if $\ReN^2 > 8$ the maximum
+\emph{initial} growth is obtained for $v_0 = \frac{\ReN}{2}\eta_0$ so if $E_0
+=1$, then
+\begin{equation}
+	(v_0, \eta_0) = \left( \frac{\ReN\sqrt{2}}{\sqrt{4+\ReN^2}},
+	\frac{\sqrt{8}}{\sqrt{4+\ReN^2}}\right)
+\end{equation}
+maximises the initial growth.
+
+We can do the same analysis for the whole system
+\begin{align}
+	\dot{v} &= -\frac{1}{\ReN} v + \eta^2 \\
+	\dot{\eta} &= v - \frac{2}{\ReN} \eta - v \eta
+\end{align}
+as the non-linearity is energy preserving (exactly as in the Navier-Stokes
+equations). We have
+\begin{equation}
+	(v, \eta) \begin{pmatrix} \dot{v} \\ \dot{\eta} \end{pmatrix} 
+	= (v, \eta) L \begin{pmatrix} v \\ \eta \end{pmatrix}
+\end{equation}
+as before. Thus the non-linear terms satisfy
+\begin{equation}
+	(v, \eta) N(v, \eta) = 0 = v(\eta^2) + \eta(-v\eta)
+\end{equation}
+Hence \emph{any} initial condition will decay monotonically for $\ReN <
+\sqrt{8}$, i.e. $(v, \eta) = \symbf{0}$ is then a global attractor.
+
+Exactly the same type of analysis (energy stability analysis) can be done for
+the Navier-Stokes equations (hope to revisit later).
+
+\paragraph{How to find max growth and optimal ICs.}
+We can find the optimal initial conditions as a function of $T$, a chosen
+time. We have
+\begin{equation}
+	\frac{\diffd}{\diffd t}\begin{pmatrix} v \\ \eta \end{pmatrix} = L
+	\begin{pmatrix} v \\ \eta \end{pmatrix} \implies \begin{pmatrix} v \\ \eta
+	\end{pmatrix} = e^{Lt} \begin{pmatrix} v_0 \\ \eta_0 \end{pmatrix}
+\end{equation}
+Let $A \equiv e^{Lt}$. By direct calculation, we have
+\begin{equation}
+	A = \begin{pmatrix} e^{-t/\ReN} & 0 \\ \ReN(e^{-t/\ReN} - e^{-2t/\ReN}) &
+	e^{-2t/\ReN} \end{pmatrix}
+\end{equation}
+or more generally
+\begin{equation}
+	e^{\begin{pmatrix} \lambda_1 & 0 \\ 1 & \lambda_2\end{pmatrix}t} =
+	\sum_{n=0}^\infty \frac{1}{n!} \begin{pmatrix} \lambda_1 & 0 \\ 1 &
+		\lambda_2 \end{pmatrix}^n t^n = \begin{pmatrix} e^{\lambda_1 t} & 0 \\
+		\frac{e^{\lambda_1 t} - e^{\lambda_2 t}}{\lambda_1 - \lambda_2} &
+		e^{\lambda_2 t} \end{pmatrix}
+\end{equation}
+Define the \emph{energy gain} at time $T$
+\begin{align}
+	G(T; \ReN) &\equiv \max_{v_0, \eta_0} \frac{E(T)}{E(0)} \\
+			   &= \max_{v_0, \eta_0} \frac{(v(T) \,\,\,
+				   \eta(T))\begin{pmatrix}v(T) \\ \eta(T) \end{pmatrix}}{(v_0
+			   \,\,\, \eta_0) \begin{pmatrix} v_0 \\ \eta_0 \end{pmatrix}} \\
+			   &= \max_{v_0, \eta_0} \frac{ \left[ A(T) \begin{pmatrix} v_0 \\
+					   \eta_0 \end{pmatrix} \right]^T \left[ A(T)
+					   \begin{pmatrix} v_0 \\ \eta_0 \end{pmatrix} \right]
+					   }{(v_0 \,\,\, \eta_0)\begin{pmatrix} v_0 \\ \eta_0
+\end{pmatrix}} \\
+&= \max_{v_0, \eta_0} \frac{(v_0 \,\,\, \eta_0)A^T A \begin{pmatrix} v_0 \\
+		\eta_0 \end{pmatrix}}{(v_0 \,\,\, \eta_0)\begin{pmatrix} v_0 \\ \eta_0
+\end{pmatrix}}\\
+&= \left\Vert A \right\Vert_2^2
+\end{align}
+
+The maximum over $v_0, \eta_0$ is equivalent to the maximum eigenvalue of $A^T
+A$. Since $A^T A$ is real and symmetric, it is normal, so all eigenvalues are
+real. $A^TA$ is also positive definite, so all eigenvalues are positive. The
+norm
+\begin{equation}
+	\left\Vert A \right\Vert_2^2
+\end{equation}
+is usually computed using singular value decomposition (SVD). From the above,
+we have
+\begin{equation}
+	G = \sigma_1^2 = \text{largest eigenvalue of}\,\, A^T A
+\end{equation}
+and $\sigma_1$ is the largest singular value of $A$. The corresponding
+eigenvector is the optimal initial condition.
+
+
 \end{document}

@@ -1,4 +1,4 @@
-\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
 \contentsline {section}{\numberline {2}Kelvin-Helmholtz instability}{2}{section.2}
 \contentsline {section}{\numberline {3}Thermal instabilities: Rayleigh-Bernard convection}{4}{section.3}
 \contentsline {paragraph}{\nonumberline Governing equations.}{5}{section*.2}
@@ -27,3 +27,9 @@
 \contentsline {paragraph}{\nonumberline Notes.}{23}{section*.13}
 \contentsline {section}{\numberline {6}Transient Growth \& IVPs}{24}{section.6}
 \contentsline {subsection}{\numberline {6.1}Example of IVP analysis}{24}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Key points}{25}{subsection.6.2}
+\contentsline {paragraph}{\nonumberline Matrix $L$ is non-normal.}{25}{section*.14}
+\contentsline {paragraph}{\nonumberline Normality implies complete set of orthonormal eigenvectors.}{26}{section*.15}
+\contentsline {paragraph}{\nonumberline Choice of norm is important.}{26}{section*.16}
+\contentsline {paragraph}{\nonumberline Non-normality is necessary but not sufficient for transient growth.}{27}{section*.17}
+\contentsline {paragraph}{\nonumberline How to find max growth and optimal ICs.}{28}{section*.18}

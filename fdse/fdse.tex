@@ -1633,7 +1633,7 @@ current migrates through.
 
 Define saturation by
 \begin{equation}
-	s = \frac{\text{fraction of pore space filled with water}}{\text{total
+	s = \frac{\text{pore space filled with water}}{\text{total
 	pore space}}
 \end{equation}
 We will use two saturations in this problem: the initial saturation $s_i$
@@ -1725,12 +1725,147 @@ with boundary conditions
 	\dif{f(\zeta_b)} &= 0 \\
 	\dif{-\left.ff'\right|_{\zeta_b}} = \dif{f'(\zeta_b)} &= 0 
 \end{align}
-The governing equations are satisfied only for eigenvalues $\beta$. These
-eigenvalues are determined by
+The governing equations are satisfied only for eigenvalues $\beta$. The
+boundary position $\zeta_b$ is then determined by
 \begin{equation}
 	h_t(x_b) = 0 \implies \beta \zeta_b f'(\zeta_b) + (1-2\beta) f(\zeta_b) =
 	0
 \end{equation}
+
+\paragraph{Small trapping limit.}
+Consider the limit of small trapping $s_r \ll s_i$, where we can make
+analytical progress. Let $U_1 = U_2(1-\veps)$ with $\veps \ll 1$. Then
+\begin{equation}
+	\tilde{U} \equiv \frac{U_1}{U_2} = 1-\veps
+\end{equation}
+The rate of change of total volume of mobile fluid is
+\begin{align}
+	\frac{\diffd}{\diffd t} \int_0^{x_N} h \, \diffd x 
+	&= \int_0^{x_N} U_i (hh_x)_x \, \diffd x \\
+	&= \left.U_2 hh_x \right|_{x_b^-} - \left. U_1 hh_x\right|_{x_b^+}
+	\label{eq:l10:1}
+\end{align}
+Using the form $h = A t^{-\alpha}f(\zeta, 1-\veps)$, with $\zeta =
+x/Bt^\beta$, gives
+\begin{align}
+	\frac{\diffd}{\diffd t} \int_0^{x_N} h \, \diffd x 
+	&= \frac{\diffd}{\diffd t} \left[ AB t^{\beta-\alpha} \int_0^{x_N} f \,
+	\diffd \zeta \right] \\
+	&= (\beta - \alpha) AB t^{\beta-\alpha-1} \int_0^{\zeta_N} f \, \diffd
+	\zeta \\
+	&= U_2 \frac{(At^{-\alpha})^2}{Bt^\beta} \left[
+	\left.ff'\right|_{\zeta_b^-} -
+	(1-\veps)\left.ff'\right|_{\zeta_b^+}\right]
+\end{align}
+where the final equality follows from \eqref{eq:l10:1}. Now using $B^2/A
+\equiv U_2, \alpha = 1-2\beta$ and the boundary condition $ff'$ continuous at
+$\zeta=\zeta_b$, we have
+\begin{equation}
+	(3\beta -1)\int_0^{\zeta_N} f \, \diffd \zeta = \veps \left.
+	ff'\right|_{\zeta_b^+} \label{eq:l10:2}
+\end{equation}
+
+When $\veps = 0$, we have $\beta = 1/3$ exactly. If $\veps =0 $ we also have
+$f = (\zeta_N^2 - \zeta^2)/6$ with $\zeta_N = 9^{1/3}$. The condition
+$h_t(x_b) = 0$ gives
+\begin{align}
+	\left.f\right|_{\zeta_b} + \zeta_b \left. f'\right|_{\zeta_b} &= 0 \\
+	\implies \zeta_b &= \zeta_N/\sqrt{3}
+\end{align}
+Hence assuming $\beta$ is an $\mathcal{O}(\veps)$ correction to $1/3$,
+\eqref{eq:l10:2} becomes
+\begin{align}
+(3\beta-1) \int_0^{\zeta_N} \frac{1}{6}\left(\zeta_N^2 - \zeta^2\right) \,
+\diffd \zeta &= \veps \cdot \frac{1}{6}\left(\zeta_N^2 - \zeta_b^2\right)\cdot
+-\frac{2}{6}\zeta_b \\
+\implies \beta &= \frac{1}{3}-\frac{\veps}{3^{5/2}} \\
+			   &= \frac{1}{3}-\frac{s_r/s_i}{3^{5/2}}
+\end{align}
+
+\section{Saffman-Taylor fingering}
+\emph{Saffman-Taylor fingering} (also \emph{morphological instability} or
+\emph{viscous fingering}) is an instability between fluid of viscosity $\mu_1$
+injected into a porous medium saturated with fluid of viscosity $\mu_2$. In
+the case of a solid-liquid interface, this is also called
+\emph{Mullins-Sekeika fingering}. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[dashed] (0,0) -- (0, 5);
+		\draw[smooth,blue] plot[domain=0:5] ({0.5*sin(3*deg(\x))},{\x});
+		\draw (1.5, 2.5) node {$\mu_2$};
+		\draw (-1.5, 2.5) node {$\mu_1$};
+		\draw[thick,->] (-0.75, 3) -- (0.75, 3) node[above] {$U$};
+		\draw[thick,->] (0, 0) -- (0, 1) node[left] {$z$};
+		\draw[thick,->] (0, 0) -- (1, 0) node[right] {$y$};
+		\draw (-2, 5) circle (0.3);
+		\draw (-2, 5) node {1};
+		\draw (2, 5) circle (0.3);
+		\draw (2, 5) node {2};
+	\end{tikzpicture}
+\end{center}
+
+\paragraph{Basis for instability.}
+Darcy's law gives $\u_i = -k/\mu_i \nabla p_i$ for $i=1,2$. Since the
+interface moves at velocity $U$ we have
+\begin{equation}
+	U = u_1 = -\frac{k}{\mu_1} \frac{\partial p_1}{\partial x} = u_2 =
+	-\frac{k}{\mu_2} \frac{\partial p_2}{\partial x}
+\end{equation}
+
+If $\mu_1 < \mu_2$ then the pressure gradient is greatest in fluid 2, so
+the fingering perturbations grow and we have instability. If instead $\mu_1 >
+\mu_2$ then the perturbations decay and we have stability.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.2]
+		\draw[thick,->] (0,0) -- (5, 0) node[right] {$x$};
+		\draw[thick,->] (0,0) -- (0, 3) node[left] {$p$};
+		\draw[dashed] (2, 0) -- (2, 3);
+		\draw[blue] (0, 2) -- (4, 0);
+		\draw[blue] (4.5, 0.5) node {$\mu_1 = \mu_2$};
+		\draw[red] (0, 2) -- (2, 0.5) -- (4, 0);
+		\draw[red] (1, 0.6) node {$\mu_1 > \mu_2$};
+		\draw[red] (1, 0.3) node {stable};
+		\draw[red] (0, 2) -- (2, 1.5) -- (4, 0);
+		\draw[red] (3, 2) node {$\mu_1 < \mu_2$};
+		\draw[red] (3, 1.7) node {unstable};
+		\draw (0, 2) -- (-0.1, 2) node[left] {$p_{\text{in}}$};
+		\draw (0, 0) -- (-0.1, 0) node[left] {$p_{\text{out}}$};
+	\end{tikzpicture}
+\end{center}
+
+\paragraph{Pressure fields.}
+Consider a travelling frame of reference $y = x-\frac{Ut}{\phi}$. Then
+\begin{align}
+	p_1 &= -\frac{\mu_1 U}{k} y + p_0 \\
+	p_2 &= -\frac{\mu_2 U}{k} y + p_0
+\end{align}
+Now consider perturbations to the interface of the form
+\begin{equation}
+	y = \eta(z,t) = \tilde{\eta} e^{i\alpha z + \sigma t}
+\end{equation}
+Darcy's law and incompressibility (equivalently conservation of mass) give
+\begin{equation}
+	\u_i = -\frac{k}{\mu_i} \nabla p_i, \hspace{1em} \nabla \cdot \u_i = 0
+	 	 \implies \nabla^2 p_i = 0
+\end{equation}
+Hence the pressure field, including perturbations, must be of the form
+\begin{equation}
+	p_1 = p_0 - \frac{\mu_1 U}{k}y + \hat{p}_1(y)e^{i\alpha z + \sigma t}
+\end{equation}
+Requiring $\nabla^2 p_1 = 0$ gives
+\begin{align}
+	\frac{\partial^2 \hat{p}_1}{\partial y^2} - \alpha^2 \hat{p}_1 &= 0 \\
+	\implies \hat{p}_1(y) &= Ae^{\alpha y} 
+\end{align}
+where we have used the requirement that perturbations decay away from the
+interface. Applying the same theory to $p_2$ gives the pressure fields as
+\begin{align}
+	p_1 &= p_0 - \frac{\mu_1 U}{k} y + Ae^{i\alpha z + \alpha y + \sigma t} \\
+	p_2 &= p_0 - \frac{\mu_2 U}{k} y + Ae^{i\alpha z - \alpha y + \sigma t}
+\end{align}
+Next, match pressures and velocities at the interface.
 
 
 \end{document}
