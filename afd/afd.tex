@@ -2109,7 +2109,7 @@ from \eqref{eq:l13:7} and \eqref{eq:l13:8}:
 \begin{align}
 	(v-1)\frac{\diffd \ln \tilde{\rho}}{\diffd \ln \xi} &= -\frac{\diffd
 	v}{\diffd \ln \xi} - 3v \\
-	(v-1) \frac{\diffd v}{\diffd \ln \xi} + \frac{1}{\tilde{\rho}\xi^2}
+	(v-1)\left( \frac{\diffd v}{\diffd \ln \xi}+ v\right) + \frac{1}{\tilde{\rho}\xi^2}
 	\frac{\diffd}{\diffd \ln \xi} \left[ \frac{(\gamma -1)\tilde{\rho} \xi^2
 	v^2 (1-v)}{2(\gamma v-1)}\right] &= \frac{3}{2}v
 \end{align}
@@ -2189,5 +2189,148 @@ Some rough estimates from the above analysis:
 
 The similarity method is useful in a wide range of nonlinear problems. In this
 case it reduced PDEs to integrable ODEs.
+
+\section{Spherically symmetric steady flows}
+\subsection{Introduction}
+In this section $(r, \theta, \phi)$ are spherical polar coordinates. We will
+consider spherically symmetric steady flows in the context of stellar winds
+and accretion. Many stars, including the Sun, lose mass through a
+\emph{stellar wind}. The gas must be sufficiently hot to escape from the
+star's gravitational field.  Gravitating bodies can also accrete gas from the
+interstellar medium. The simplest models neglect rotation and magnetic fields
+and involve a steady, spherically symmetric flow.
+
+\subsection{Basic equations}
+Consider the purely radial flow of a perfect gas, either away from or towards
+a body of mass $M$. The gas is non-self-gravitating, so $\Phi = -GM/r$. The
+fluid variables are functions of $r$ only. The only velocity component is $u_r
+= u(r)$. Mass conservation implies
+\begin{equation}
+	4\pi r^2 \rho u = -\dot{M} = \text{const.}
+\end{equation}
+If $u > 0$ (a stellar wind), $-\dot{M}$ is the mass-loss rate. If $u < 0$,
+$\dot{M}$ is the mass accretion rate. Ignore the slow change in mass $M$. The
+thermal energy equation (assuming $\u \ne 0$) implies homentropic flow:
+\begin{equation}
+	p = K \rho^\gamma, \hspace{2em} K = \text{const.}
+\end{equation}
+This is also referred to as polytropic. The equation of motion (only one
+component) is
+\begin{equation}
+	\rho u \frac{\diffd u}{\diffd r} = -\rho \frac{\diffd \Phi}{\diffd r} -
+	\frac{\diffd p}{\diffd r}
+\end{equation}
+or we may use the integral form (Bernoulli's equation):
+\begin{equation}
+	\frac{1}{2}u^2 + \Phi + h = B = \text{const.}
+\end{equation}
+Recall for a perfect gas,
+\begin{equation}
+	h = \frac{\gamma}{\gamma -1}\frac{p}{\rho} = \frac{v_s^2}{\gamma -1}
+\end{equation}
+In highly subsonic flow, the $\frac{1}{2}u^2$ term is negligible and the gas
+is \emph{quasi-hydrostatic} with gravitational and pressure gradient forces
+balancing. In highly supersonic flow, the $h$ term is negligible and the flow
+is \emph{quasi-ballistic} (free falling). We are usually interested in
+transonic solutions that pass smoothly from subsonic to supersonic. 
+
+The aim is to solve for $u(r)$ and determine $\dot{M}$. At what rate does a
+star lose mass through a wind, or a black hole accrete mass from the
+surrounding medium? Assume $B > 0$; otherwise the flow cannot reach infinity.
+
+\subsection{First treatment}
+Use the equation of motion
+\begin{equation}
+	\rho u \frac{\diffd u}{\diffd r} = -\rho \frac{\diffd \Phi}{\diffd r} -
+	\frac{\diffd p}{\diffd r} \label{eq:l15:1}
+\end{equation}
+Rewrite the pressure gradient as
+\begin{align}
+	-\frac{\diffd p}{\diffd r} = -p \frac{\diffd \ln p}{\diffd r} 
+	&= -\gamma p \frac{\diffd \ln \rho}{\diffd r} \\
+	&= \rho v_s^2 \left( \frac{2}{r} + \frac{1}{u}\frac{\diffd u}{\diffd
+	r}\right)
+\end{align}
+Multiply \eqref{eq:l15:1} by $u/\rho$:
+\begin{equation}
+	(u^2 - v_s^2)\frac{\diffd u}{\diffd r} = u \left( \frac{2v_s^2}{r} -
+	\frac{\diffd \Phi}{\diffd r}\right)
+\end{equation}
+A critical point (\emph{sonic point}) occurs at any radius $r=r_s$ where
+$\abs{u} = v_s$. For the flow to pass smoothly form subsonic to supersonic,
+the right-hand side must vanish at the sonic point:
+\begin{equation}
+	\frac{2v_{ss}^2}{r_s} - \frac{GM}{r_s^2} = 0
+\end{equation}
+Evaluate Bernoulli's equation at the sonic point:
+\begin{equation}
+	\left(\frac{1}{2} + \frac{1}{\gamma -1}\right) v_{ss}^2 - \frac{GM}{r_s} =
+	B
+\end{equation}
+Deduce that
+\begin{equation}
+	v_{ss}^2 = \frac{2(\gamma -1)}{5-3\gamma}B, \hspace{2em} r_s =
+	\frac{5-3\gamma}{4(\gamma-1)} \frac{GM}{B}
+\end{equation}
+Assuming that $B > 0$ (see earlier), there is a unique transonic solution for
+$1 \le \gamma < 5/3$. The case $\gamma =1$ can be treated separately or by
+taking a limit. Now evaluate $\dot{M}$ at the sonic point:
+\begin{equation}
+	\abs{\dot{M}} = 4\pi r_s^2 \rho_s v_{ss}
+\end{equation}
+
+\subsection{Second treatment}
+Use Bernoulli's equation
+\begin{equation}
+	\frac{1}{2}u^2 - \frac{GM}{r} + \frac{v_s^2}{\gamma -1} = B
+	\label{eq:l15:2}
+\end{equation}
+Introduce the local Mach number $\M = \abs{u}/v_s$. Then
+\begin{equation}
+	4\pi r^2 \rho v_s \M = \abs{\dot{M}}, \hspace{2em} v_s^2 = \gamma K
+	\rho^{\gamma -1}
+\end{equation}
+Eliminate $\rho$:
+\begin{equation}
+	v_s^{\gamma +1} = \gamma K \left( \frac{\abs{\dot{M}}}{4\pi r^2
+	\M}\right)^{\gamma -1}
+\end{equation}
+Then \eqref{eq:l15:2} becomes
+\begin{equation}
+	\frac{1}{2}v_s^2 \M^2 - \frac{GM}{r} + \frac{v_s^2}{\gamma -1} = B
+\end{equation}
+Substitute for $v_s$ and separate variables:
+\begin{equation}
+	f(\M) = g(r)
+\end{equation}
+where
+\begin{align}
+	f(\M) &= (\gamma K)^{\frac{2}{\gamma +1}}
+	\left(\frac{\abs{\dot{M}}}{4\pi}\right)^{\frac{2(\gamma -1)}{\gamma +1}}
+	\left[ \frac{\M^{\frac{4}{\gamma +1}}}{2} + \frac{\M^{-\frac{2(\gamma
+	-1)}{\gamma +1}}}{\gamma -1}\right] \\
+	g(r) &= Br^{\frac{4(\gamma -1)}{\gamma +1}} + GM
+	r^{-\frac{5-3\gamma}{\gamma +1}}
+\end{align}
+
+Assume that $1 < \gamma < 5/3$ and $B > 0$. Each of $f$ and $g$ is the sum of
+a positive power and a negative power, with positive coefficients. $f(\M)$ has
+a minimum at $\M = 1$, and $g(r)$ has a minimum at
+\begin{equation}
+	r = \frac{5-3\gamma}{4(\gamma -1)}\frac{GM}{B}
+\end{equation}
+which is the sonic radius identified previously. A smooth passage through the
+sonic point is possible only if $\abs{\dot{M}}$ has a special value, so that
+the minima of $f$ and $g$ are equal.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{stellar_wind.png}
+\end{figure}
+
+If $\abs{\dot{M}}$ is too large then the solution does not work for all $r$.
+If $\abs{\dot{M}}$ is too small then the solution remains subsonic (or
+supersonic) for all $r$, which may not agree with the boundary conditions.
+
+
 
 \end{document}
