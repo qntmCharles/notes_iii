@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  23 FEB 2021 12:38
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  25 FEB 2021 12:37
  restricted system commands enabled.
 **fdse.tex
 (./fdse.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.105 seconds
+luaotfload | main : initialization completed in 0.106 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3178,7 +3178,7 @@ fonts/otl/lmroman6-regular.luc) [1
 (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-bold.luc)
 (load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmrom
 an8-bold.luc)
-<earthquakes.png, id=147, 1697.34125pt x 900.36375pt>
+<earthquakes.png, id=152, 1697.34125pt x 900.36375pt>
 File: earthquakes.png Graphic file (type png)
  <use earthquakes.png>
 Package luatex.def Info: earthquakes.png used on input line 59.
@@ -3188,9 +3188,9 @@ ular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/
 otl/lmromanslant10-regular.luc) [2<./earthquakes.png>] [3] [4] [5] [6] [7]
 [8] [9] [10] [11] [12] [13] [14] [15] [16
 Missing character: There is no ; (U+003B) in font nullfont!
-] [17] [18] [19
+] [17] [18] [19] [20
 Missing character: There is no ; (U+003B) in font nullfont!
-] [20] [21]
+] [21]
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
 (Font)              scaled to size 12.00018pt on input line 1381.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
@@ -3226,30 +3226,30 @@ Package pgfplots Warning: 'fill between': Could not activate graphics layer 'pre
 in' is somewhere in the layer list (or set '/tikz/fill between/on layer='). on i
 nput line 1625.
 
-[25
+[25] [26
 Missing character: There is no ; (U+003B) in font nullfont!
-] [26] [27] [28] [29]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1871.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1871.
+] [27] [28] [29] [30] [31] [32] [33]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2067.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2067.
  (./fdse.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1871.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1871.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2067.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2067.
 Package rerunfilecheck Info: File `fdse.out' has not changed.
-(rerunfilecheck)             Checksum: E2BDF9585822CF55D21A469151816F7C;1820.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1871.
+(rerunfilecheck)             Checksum: 6497436497801EC3096E82CFC2834B43;1897.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2067.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54121 strings out of 494577
+ 54190 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 21774 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2515 glue, 1 kern, 920 attribute, 64 glue_spec, 920
- attribute_list, 1 write nodes
-   avail lists: 1:1,2:2467,3:769,4:136,5:270,6:2001,7:646,8:78,9:596,10:17,11:16
-9
- 56338 multiletter control sequences out of 65536+600000
- 127 fonts using 29024599 bytes
- 74i,18n,388p,8842b,1080s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 24239 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2821 glue, 1 kern, 1 sub_mlist, 1000 attribute, 64 
+glue_spec, 1000 attribute_list, 1 write nodes
+   avail lists: 1:1,2:2113,3:709,4:136,5:303,6:2104,7:651,8:80,9:731,10:17,11:18
+1
+ 56402 multiletter control sequences out of 65536+600000
+ 127 fonts using 29024479 bytes
+ 74i,19n,388p,8842b,1080s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/
 fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype/p
 ublic/lm/lmroman10-bold.otf></usr/share/texmf/fonts/opentype/public/lm-math/lati
@@ -3264,10 +3264,10 @@ usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf
 lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb>
-Output written on fdse.pdf (29 pages, 2292765 bytes).
+Output written on fdse.pdf (33 pages, 2306042 bytes).
 
-PDF statistics: 434 PDF objects out of 1000 (max. 8388607)
- 348 compressed objects within 4 object streams
- 86 named destinations out of 1000 (max. 131072)
- 216 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 456 PDF objects out of 1000 (max. 8388607)
+ 366 compressed objects within 4 object streams
+ 91 named destinations out of 1000 (max. 131072)
+ 224 words of extra memory for PDF output out of 10000 (max. 10000000)
 

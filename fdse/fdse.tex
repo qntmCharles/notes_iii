@@ -1783,11 +1783,12 @@ Hence assuming $\beta$ is an $\mathcal{O}(\veps)$ correction to $1/3$,
 \end{align}
 
 \section{Saffman-Taylor fingering}
-\emph{Saffman-Taylor fingering} (also \emph{morphological instability} or
-\emph{viscous fingering}) is an instability between fluid of viscosity $\mu_1$
-injected into a porous medium saturated with fluid of viscosity $\mu_2$. In
-the case of a solid-liquid interface, this is also called
-\emph{Mullins-Sekeika fingering}. 
+\emph{Saffman-Taylor fingering} (also \emph{viscous fingering}) is an
+instability between fluid of viscosity $\mu_1$ injected into a porous medium
+saturated with fluid of viscosity $\mu_2$. In the case of a solid-liquid
+interface, this is also called \emph{Mullins-Sekeika fingering} (or
+\emph{morphological instability}).
+. 
 
 \begin{center}
 	\begin{tikzpicture}
@@ -1865,7 +1866,202 @@ interface. Applying the same theory to $p_2$ gives the pressure fields as
 	p_1 &= p_0 - \frac{\mu_1 U}{k} y + Ae^{i\alpha z + \alpha y + \sigma t} \\
 	p_2 &= p_0 - \frac{\mu_2 U}{k} y + Ae^{i\alpha z - \alpha y + \sigma t}
 \end{align}
-Next, match pressures and velocities at the interface.
+Next, match pressures and velocities at the interface. Pressure continuity
+along the perturbed interface requires
+\begin{align}
+	p_1(\eta) &= p_2(\eta)\\
+	\implies \left.p_1 \right|_0 + \left. \frac{\partial p_1}{\partial
+y}\right|_0 \hat{\eta} &= \left.p_2 \right|_0 + \left. \frac{\partial p_2}{\partial
+y}\right|_0 \hat{\eta} \\
+\implies p_0 + A + \left(-\frac{\mu_1 U}{k} + \cancel{\alpha
+A}\right)\hat{\eta} &= 
+p_0 + B + \left(-\frac{\mu_2 U}{k} - \cancel{\alpha
+B}\right)\hat{\eta}
+\end{align}
+Cancelled terms are negligible since $A, B = \mathcal{O}(\hat{\eta})$, i.e. 
+terms are second order. Velocity continuity at the interface requires
+\begin{equation}
+	\left[\u \cdot \hat{\symbf{n}}\right]_{y=\eta} = 0 
+\end{equation}
+where $\hat{\symbf{n}}$ is the unit normal to the interface.  Taylor expanding
+as before, we have
+\begin{equation}
+	\left.u_1\right|_0 + \left. \frac{\partial u_1}{\partial y}\right|_0
+	\hat{\eta} = \left.u_2\right|_0 + \left. \frac{\partial
+	u_2}{\partial y} \right|_0 \hat{\eta}
+\end{equation}
+Now note
+\begin{equation}
+	\phi \frac{\partial \eta}{\partial t} = \phi \sigma \hat{\eta} =
+	-\frac{k}{\mu_1} \alpha A = \frac{k}{\mu_2}\alpha B
+\end{equation}
+Hence the velocity continuity condition becomes
+\begin{align}
+	-\frac{\mu_1 \phi \sigma}{k \alpha} - \frac{\mu_1 U}{k}\hat{\symbf{\eta}}
+	&= \frac{\mu_2 \phi \sigma}{k \alpha} \hat{\eta} - \frac{\mu_2
+	U}{k}\hat{\eta}  \\
+	\implies \sigma &= \frac{\alpha U}{\phi} \frac{\mu_2 - \mu_1}{\mu_2 + 
+	\mu_1}
+\end{align}
+Hence the system is unstable for $\mu_2 > \mu_1$, as expected. Most unstable
+for $\alpha \to \infty$, i.e. the smallest wavelengths (UV catastrophe).
+Thus regularisation needed: additional physics at the smallest wavelengths,
+e.g. surface tension. Surface tension introduces a pressure discontinuity at
+the interface
+\begin{equation}
+	p_1 - p_2 = \gamma \kappa = 2\gamma \nabla \cdot \hat{\symbf{n}}
+\end{equation}
+where $\hat{\symbf{n}}$ is the normal to the interface as before. Hence
+\begin{equation}
+	\hat{\symbf{n}} = \frac{\nabla (y-\eta)}{\abs{\nabla(y-\eta)}} \approx
+	\hat{\symbf{y}} - \eta_z \hat{\symbf{z}}
+\end{equation}
+Then $\nabla \cdot \symbf{\hat{n}} = -\eta_{zz}$, so the pressure condition
+becomes
+\begin{align}
+	\left.p_1 \right|_0 + \left. \frac{\partial p_1}{\partial
+y}\right|_0 \hat{\eta} &= \left.p_2 \right|_0 + \left. \frac{\partial p_2}{\partial
+y}\right|_0 \hat{\eta} -2\gamma \eta_{zz} \\
+\implies p_0 + A - \frac{\mu_1 U}{k}\hat{\eta} &= p_0 + B - \frac{\mu_2
+U}{k}\hat{\eta} + 2\gamma \alpha^2 \hat{\eta}
+\end{align}
+where the second order terms are dropped as before. The growth rate is then
+\begin{align}
+	\sigma &= \frac{\alpha U}{\phi} \left( \frac{\mu_2 - \mu_1}{\mu_2 + \mu_1}
+	- \alpha^2 \frac{2\gamma k}{(\mu_2+\mu_1)U}\right) \\
+		   &= \frac{\alpha U}{\phi} \left( m - \frac{m+1}{\text{Ca}} k
+		   \alpha^2\right)
+\end{align}
+where $m$ is the \emph{mobility ratio}
+\begin{equation}
+	m = \frac{\mu_2 - \mu_1}{\mu_2 + \mu_1}
+\end{equation}
+and $\text{Ca} = \mu_2 U/\gamma$ is the \emph{capillary number}.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.6]
+		\draw[thick,->] (0,0) -- (4, 0) node[right] {$\alpha$};
+		\draw[thick,->] (0,-0.3) -- (0, 2) node[left] {$\sigma$};
+		\draw[smooth,blue] plot[domain=0:3.4] ({\x},{\x*(1-0.1*\x*\x)});
+		\draw (0.1, 1.217) -- (-0.1, 1.217) node[left] {$\sigma_{\max}$};
+		\draw (1.826, 0.1) -- (1.826, -0.1) node[below] {$\alpha_{\max}$};
+	\end{tikzpicture}
+\end{center}
+
+Maximum growth rate occurs at wavelength
+\begin{equation}
+	\alpha_{\max} = \left(\frac{\text{Ca}\,m}{3(m+1)}\right)^{1/2} k^{-1/2}
+\end{equation}
+Surface tension suppresses the smallest wavelengths, providing wavelength
+selection for the instability.
+
+\section{Solidifcation of binary eutectic mixtures}
+A natural example is the solidification of sea ice in polar oceans. The
+problem is an extension of previous solidification problems with concentration
+as an additional species to handle. Consider a phase diagram of temperature
+and concentration:
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (0, 5) node[left] {$T$};
+		\draw[thick] (0,0) -- (8, 0) node[midway,below] {$C$};
+		\draw[thick] (8,0) -- (8, 5);
+		\draw (0,0) node[below] {water};
+		\draw (8,0) node[below] {salt};
+		\draw (8, -0.4) node[below] {NaCl};
+		\draw[blue,smooth] plot[tension=0.8] coordinates {(0, 2) (1.5, 1.6) (3, 0)};
+		\draw[blue,smooth] plot[tension=0.8] coordinates {(0, 2) (1.5*0.2,
+		1.6) (3*0.2, 0)};
+		\draw[blue,smooth] plot[tension=0.8] coordinates {(8, 4.5) (5, 3.5) (3, 0)};
+		\draw[blue,smooth] plot[tension=0.8] coordinates {(8, 4.5) (8-3*0.2,
+		3.5) (8-5*0.2, 0)};
+		\draw[blue] (3, 4) node {liquid};
+		\draw (0, 2) -- (-0.1, 2) node[left] {$T_m (0^{\circ}C)$};
+		\draw (0, 0) -- (-0.1, 0) node[left] {$T_E (\sim -21^{\circ}C)$};
+		\draw (8, 4.5) -- (8.1, 4.5) node[right] {$801^{\circ}C$};
+		\draw (3, 0) -- (3, -0.1) node[below] {$C_E$};
+		\draw (1.2, 2) node[blue,rotate=-20] {liquidus $T_L$};
+		\draw (1.5, 0.7) node[blue] {\small mushy};
+		\draw (1.5, 0.4) node[blue] {\small layer};
+		\draw (-1.5, 1) node[blue] {solidus $T_S$};
+		\draw[blue,->] (-0.5, 1) -- (0.4, 1);
+		\draw[blue] (0.25, 0.5) node[rotate=90] {\tiny solid};
+	\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+	\item The freezing/melting temperature or \emph{liquidus} is a function of
+		concentration:
+		\begin{equation}
+			T_L = T_L(C)
+		\end{equation}
+	\item The solution is solid below the \emph{solidus} 
+		\begin{equation}
+			T_S(C) = k_D T_L(C)
+		\end{equation}
+		where $k_D$ is the \emph{partition coefficient}. For ice, $k_D \approx
+		0$ so ice is `pure' water.
+
+	\item Between the solidus and liquidus, solid and liquid phases coexist in
+		equilibrium.
+	\item The \emph{eutectic temperature} $T_E$ is the temperature at which
+		both water and salt form ice crystals. Below $T_E$, a solid solution
+		forms.
+\end{itemize}
+
+For a freezing system, the interfacial conditions are now obtained by
+\emph{both} temperature and concentration considerations.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[fill=gray!20,draw=none] (0,0) rectangle (-0.5, 3);
+		\draw[thick] (0,0) -- (0, 3);
+		\draw[dashed] (2, 0) -- (2, 3);
+		\draw (1, 3.5) node {solid};
+		\draw[red,fill] (0, 0.3) circle (0.05);
+		\draw[red] (0, 0.3) node[left] {$T_B$};
+		\draw[red] (0, 0.3) -- (2, 1.3);
+		\draw[red,fill] (2, 1.3) circle (0.05);
+		\draw[red] (2, 1.3) node[left] {$T_i$};
+		\draw[red, smooth] plot coordinates {(2, 1.3) (2.5, 1.55)
+		(3.2, 1.7) (5, 1.8) (6, 1.8)};
+		\draw[red] (6, 1.8) node[right] {$T_\infty$};
+		\draw[blue] (0, 0) -- (2, 0);
+		\draw[blue,dashed] (2, 0) -- (2, 0.8);
+		\draw[blue,fill] (0,0) circle (0.05);
+		\draw[blue] (0, 0) node[left] {$C_S$};
+		\draw[blue,fill] (2, 0.8) circle (0.05);
+		\draw[blue,smooth] plot coordinates {(2, 0.8) (2.5, 0.3) (4, 0.1)
+		(6,0.1)};
+		\draw[blue] (6, 0.1) node[right] {$C_0$};
+		\draw (2, -0.2) node {$x=a(t)$};
+	\end{tikzpicture}
+\end{center}
+Note $T_i = T_L(C_i)$ and take $C_S = 0$ i.e. the solid is pure ice. Assume a
+liquidus of the form
+\begin{equation}
+	T_L(C) = -mC
+\end{equation}
+so that $T_m = 0^{\circ}C$.  Temperature is governed by
+\begin{equation}
+	\frac{\partial T}{\partial t} = \kappa \frac{\partial^2 T}{\partial x^2}
+	\hspace{2em} 0 < x < \infty
+\end{equation}
+where we have assumed equal thermal properties in each phase. Concentration is
+governed by
+\begin{equation}
+	\frac{\partial C}{\partial t} = D \frac{\partial^2 C}{\partial x^2}
+	\hspace{2em} a < x < \infty
+\end{equation}
+where $D$ is the salt diffusivity. The interfacial conditions are
+\begin{align}
+	T_i &= T_L(C_i) = -mC_i\\
+	\rho L \dot{a} &= k\left.\frac{\partial T}{\partial x}\right|_{a^-} - k
+	\left.\frac{\partial T}{\partial x}\right|_{a^+} \hspace{2em} \text{Stefan
+	condition}\\
+	(C_i-C_S)\dot{a} &= -D \left.\frac{\partial C}{\partial x}\right|_{a^+}
+	\hspace{3em} \text{Conservation of solute}
+\end{align}
+
 
 
 \end{document}
