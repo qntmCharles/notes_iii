@@ -2324,12 +2324,127 @@ sonic point is possible only if $\abs{\dot{M}}$ has a special value, so that
 the minima of $f$ and $g$ are equal.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{stellar_wind.png}
+	\includegraphics[width=0.8\textwidth]{stellar_wind.png}
 \end{figure}
 
 If $\abs{\dot{M}}$ is too large then the solution does not work for all $r$.
 If $\abs{\dot{M}}$ is too small then the solution remains subsonic (or
 supersonic) for all $r$, which may not agree with the boundary conditions.
+
+The ($r, \M)$ plane shows an X-type critical point at $(r_s, 1)$
+(figure~\ref{fig:stellarwind}). For $r \ll
+r_s$ the subsonic solution is close to a hydrostatic atmosphere. The
+supersonic solution is close to free fall. For $r \gg r_s$ the subsonic
+solution approaches a uniform state ($p = $const., $\rho = $const.) The
+supersonic solution is close to $u =$const., so $\rho \propto r^{-2}$.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{stellar_plot.png}
+	\caption{Solution curves for a stellar wind or accretion flow in the case
+	$\gamma = 4/3$.}
+	\label{fig:stellarwind}
+\end{figure}
+
+\subsection{Stellar wind}
+For a stellar wind the appropriate solution is subsonic (quasi-hydrostatic) at
+small $r$, supersonic (coasting) at large $r$. Parker (1958) first presented
+this model of the solar wind. The mass loss rate $\dot{M}$ can be determined
+from the quasi-hydrostatic region, e.g. $\rho$ and $T$ at the base of the
+corona. A completely hydrostatic solution is unacceptable unless the external
+medium can provide a significant non-zero pressure. Subsonic solutions with
+$\abs{\dot{M}}$ less than the critical value are usually unacceptable for
+similar reasons. The interstellar medium arrests the supersonic solar wind in
+a \emph{termination shock} well beyond Pluto's orbit.
+
+\subsection{Accretion}
+In spherical or Bondi (1952) accretion, we consider a gas which is uniform and
+at rest at infinity (pressure $p_0$, density $\rho_0$):
+\begin{equation}
+	B = \frac{v_{s0}^2}{\gamma -1} \implies v_{ss}^2 =
+	\frac{2v_{s0}^2}{5-3\gamma}
+\end{equation}
+Appropriate solutions are subsonic (uniform) at large $r$, supersonic (free
+falling) at small $r$. If the accreting object has a dense surface (a star
+rather than a black hole), the flow will be arrested by a shock above the
+surface. 
+
+The accretion rate of the transonic solution is
+\begin{align}
+	\dot{M} &= 4\pi r_s^2 \rho_s v_{ss} \\
+			&= 4\pi r_s^2 \rho_0 v_{s0}
+			\left(\frac{v_{ss}}{v_{s0}}\right)^{\frac{\gamma+1}{\gamma-1}} \\
+			&= f(\gamma) \dot{M}_B
+\end{align}
+where
+\begin{equation}
+	\dot{M}_B = \frac{\pi G^2 M^2 \rho_0}{v_{s0}^3} = 4\pi r_a^2 \rho_0 v_{s0}
+\end{equation}
+is the characteristic \emph{Bondi accretion rate} and
+\begin{equation}
+	f(\gamma) = \left(
+	\frac{2}{5-3\gamma}\right)^{\frac{5-3\gamma}{2(\gamma-1)}}
+\end{equation}
+is a dimensionless factor. Here,
+\begin{equation}
+	r_a = \frac{GM}{2v_{s0}^2}
+\end{equation}
+is the nominal \emph{accretion radius}, roughly the radius within which the
+mass $M$ captures the surrounding medium into a supersonic inflow. Note
+$f(\gamma) \to e^{3/2}$ as $\gamma \to 1$ and $f(\gamma) \to 1$ as $\gamma \to
+5/3$. The case $\gamma =1$ admits a sonic point, but the important case
+$\gamma = 5/3$ does not.
+
+At different times in its life, a star may gain mass from, or lose mass to,
+its environment. Currently the sun is losing mass at $-\dot{M} \approx 2
+\times 10^{-4} \,M_{\text{sun}} \,\text{yr}^{-1}$. If it were not, it could
+theoretically accrete at $\dot{M}_B \approx 3 \times 10^{-15}\, M_{\text{sun}}
+\,\text{yr}^{-1}$ from the interstellar medium.
+
+\section{Axisymmetric rotating magnetised flows}
+\subsection{Introduction}
+In this section $(r, \phi, z)$ are cylindrical polar coordinates. Stellar
+winds and jets from accretion discs are examples of outflows in which rotation
+and magnetic fields are often important or essential. We consider steady
+$(\partial_t = 0$), axisymmetric ($\partial_\phi = 0$) models based on ideal
+MHD.
+
+\subsection{Axisymmetric representation}
+The solenoidal condition for an axisymmetric magnetic field is
+\begin{equation}
+	\frac{1}{r}\frac{\partial}{\partial r}\left(rB_r\right) + \frac{\partial
+	B_z}{\partial z} = 0
+\end{equation}
+We may write
+\begin{equation}
+	B_r = -\frac{1}{r}\frac{\partial \psi}{\partial z}, \hspace{2em} B_z =
+	\frac{1}{r}\frac{\partial \psi}{\partial r}
+\end{equation}
+where $\psi(r,z)$ is the \emph{magnetic flux function}. This is related to the
+vector potential by $\psi = r A_\phi$. The magentic flux contained inside the
+circle ($r =$const., $z=$const.) is
+\begin{equation}
+	\int_0^r B_z(r',z)2\pi r' \, \diffd r' = 2\pi \psi(r,z)
+\end{equation}
+plus a constant that can be set to $0$: see figure~\ref{fig:axisym_B}. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{flux_function.png}
+	\caption{Magnetic flux function and poloidal magnetic field.}
+	\label{fig:axisym_B}
+\end{figure}
+
+Since $\B \cdot \nabla \psi = 0$, $\psi$ labels the magnetic field lines or
+their surfaces of revolution, known as \emph{magnetic surfaces}. We have
+\begin{align}
+	\B &= \nabla \psi \times \nabla \phi + B_\phi \hat{\symbf{\phi}} \\
+	   &= -\frac{1}{r} \hat{\symbf{\phi}}\times \nabla \psi + B_\phi
+	   \hat{\symbf{\phi}} \\
+	   &= \B_p + B_\phi \hat{\symbf{\phi}}
+\end{align}
+where $\B_p$ is the poloidal (meridional) part and $B_\phi$ is the toroidal
+(azimuthal) part. Note that $\nabla \cdot \B = \nabla \cdot \B_p = 0$.
+
 
 
 
