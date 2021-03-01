@@ -2443,7 +2443,160 @@ their surfaces of revolution, known as \emph{magnetic surfaces}. We have
 	   &= \B_p + B_\phi \hat{\symbf{\phi}}
 \end{align}
 where $\B_p$ is the poloidal (meridional) part and $B_\phi$ is the toroidal
-(azimuthal) part. Note that $\nabla \cdot \B = \nabla \cdot \B_p = 0$.
+(azimuthal) part. Note that $\nabla \cdot \B = \nabla \cdot \B_p = 0$. We can
+also write the velocity as
+\begin{equation}
+	\u = \u_p + u_\phi \symbf{e}_\phi
+\end{equation}
+although $\nabla \cdot \u_p \ne 0$ in general.
+
+\subsection{Mass loading \& angular velocity}
+The steady ideal induction equation
+\begin{equation}
+	\nabla \times (\u \times \B) = 0
+\end{equation}
+implies
+\begin{equation}
+	\u \times \B = -\symbf{E} = \nabla \Phi_e
+\end{equation}
+where $\Phi_e$ is the electrostatic potential. Now
+\begin{align}
+	\u \times \B &= (\u_p + u_\phi \symbf{e}_\phi) \times (\B_p + B_\phi
+	\symbf{e}_\phi) \\
+				 &= \left[\symbf{e}_\phi \times (u_\phi \B_p - B_\phi
+				 \u_p)\right] + \left[ \u_p \times \B_p\right] \\
+				&\hspace{4.5em} \text{poloidal} \hspace{5.3em} \text{toroidal}
+\end{align}
+
+For an axisymmetric solution with $\partial_\phi \Phi_e = 0$,
+\begin{equation}
+	\u_p \times \B_p = 0
+\end{equation}
+i.e. the poloidal velocity is parallel to the poloidal magnetic field. Let
+$\rho \u_p = k \B_p$ where $k$ is the \emph{mass loading}, i.e. the ratio of
+mass flux to magnetic flux. 
+
+The steady equation of mass conservation is
+\begin{align}
+	0 &= \nabla \cdot (\rho \u) \\
+	  &= \nabla \cdot (\rho \u_p) \\
+	  &= \nabla \cdot (k \B_p) \\
+	  &= \B_p \cdot \nabla k
+\end{align}
+Therefore $k = k(\psi)$, i.e. $k$ is a \emph{surface function}, constant on
+each magnetic surface. We now have
+\begin{align}
+	\u \times \B &= \symbf{e}_\phi \times (u_\phi \B_p - B_\phi \u_p) \\
+				 &= \left( \frac{u_\phi}{r} - \frac{kB_\phi}{r\rho}\right)
+				 \nabla \psi
+\end{align}
+Take the curl:
+\begin{equation}
+	0 = \nabla \left( \frac{u_\phi}{r} - \frac{kB_\phi}{r\rho}\right) \times
+	\nabla \psi
+\end{equation}
+
+Therefore
+\begin{equation}
+	\frac{u_\phi}{r} - \frac{kB_\phi}{r\rho} = \omega
+\end{equation}
+where $\omega(\psi)$ is another surface function, known as the \emph{angular
+velocity of the magnetic surface}. The complete velocity field is then
+\begin{equation}
+	\u = \frac{k\B}{\rho} + r\omega \symbf{e}_\phi
+\end{equation}
+i.e. total velocity is parallel to the total magnetic in a frame rotating with
+angular velocity $\omega$ (for each individual magnetic surface). It is useful
+to think of the fluid being constained to move along the field line like a
+bead on a rotating wire.
+
+\subsection{Entropy}
+The steady thermal energy equation
+\begin{equation}
+	\u \cdot \nabla s = 0
+\end{equation}
+implies $\u_p \cdot \nabla s = 0$, so $\B_p \cdot \nabla s = 0$, i.e.
+\begin{equation}
+	s= s(\psi)
+\end{equation}
+is another surface function.
+
+\subsection{Angular momentum}
+The $\phi$ component of the equation of motion is
+\begin{align}
+	\rho\left( \u_p \cdot \nabla u_\phi + \frac{u_r u_\phi}{r}\right) &=
+	\frac{1}{\mu_0}\left(\B_p \cdot \nabla B_\phi + \frac{B_r
+	B_\phi}{r}\right) \\
+	\implies \frac{1}{r}\rho \u_p \cdot \nabla(ru_\phi) - \frac{1}{\mu_0 r}
+	\B_p \cdot \nabla(rB_\phi) &= 0 \\
+	\implies \frac{1}{r}\B_p \cdot \nabla \left( kr u_\phi -
+	\frac{rB_\phi}{\mu_0}\right) &= 0
+\end{align}
+and so
+\begin{equation}
+	ru_\phi = \frac{r B_\phi}{\mu_0 k} + l
+\end{equation}
+where $l = l(\psi)$ is another surface function, the \emph{angular momentum
+invariant}. $l$ is the angular momentum removed in the outflow per unit mass,
+although part of the torque is carried by $\B$.
+
+\subsection{The Alfv\'{e}n surface}
+Define the \emph{poloidal Alfv\'{e}n number} (cf. Mach number)
+\begin{equation}
+	A = \frac{u_p}{v_{ap}}
+\end{equation}
+Then
+\begin{equation}
+	A^2 = \frac{\mu_0 \rho u_p^2}{B_p^2} = \frac{\mu_0 k^2}{\rho}
+\end{equation}
+and so $A \propto \rho^{-1/2}$ on each magnetic surface. Consider the two
+equations
+\begin{equation}
+	\frac{u_\phi}{r} = \frac{k B_\phi}{r\rho} + \omega, \hspace{2em} ru_\phi =
+	\frac{r B_\phi}{\mu_0 k} + l
+\end{equation}
+Eliminate $B_\phi$ to obtain
+\begin{align}
+	u_\phi &= \frac{r^2 \omega - A^2 l}{r(1-A^2)} \\
+		   &= \left(\frac{1}{1-A^2}\right)r\omega + \left(\frac{A^2}{A^2
+		   -1}\right) \frac{l}{r}
+\end{align}
+For $A \ll 1$ we have
+\begin{equation}
+	u_\phi \approx r \omega
+\end{equation}
+i.e. co-rotation with the magnetic surface. For $A \gg 1$ we have
+\begin{equation}
+	u_\phi \approx \frac{l}{r}
+\end{equation}
+i.e. conservation of angular momentum.
+The point $r = r_a(\psi)$ where $A=1$ is called the \emph{Alfv\'{e}n point}.
+The locus of Alfv\'{e}n points for different magnetic surfaces is called the
+\emph{Alfv\'{e}n surface}. To avoid a singularity there we require 
+\begin{equation}
+	l = r_a^2 \omega
+\end{equation}
+Typically the outflow will start at low velocity in high-density material,
+where $A \ll 1$. We can therefore identify $\omega$ as the angular velocity
+$u_\phi/r = \Omega_0$ of the footpoint $r=r_0$ of the magnetic field line at
+the source of the outflow. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{astro_jet.png}
+	\caption{Acceleration through an Alfv\'{e}n point along a poloidal
+		magnetic field line, leading to angular momentum loss and magnetic
+	braking.}
+\end{figure}
+
+If mass is lost at a rate $\dot{M}$ in the outflow, angular momentum is lost
+at a rate $\dot{M} l = \dot{M} r_a^2 \Omega_0$. In contrast, in a hydrodynamic
+outflow, angular momentum is conserved by fluid elements and is therefore lost
+at a rate $\dot{M}r_0^2 \Omega_0$. A highly efficient removal of angular
+momentum occurs if $r_a/r_0 \gg 1$ (the \emph{magnetic lever arm}). The loss
+of angular momentum through a stellar wind is called \emph{magnetic braking}.
+For the Sun, $r_a$ is between $20 R_{\text{sun}}$ and $30 R_{\text{sun}}$.
+
 
 
 

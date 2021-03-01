@@ -11,6 +11,7 @@
 \newcommand{\ReN}{\text{Re}}
 \newcommand{\zint}{\int_{z_1}^{z_2}}
 \renewcommand{\y}{\symbf{y}}
+\renewcommand{\L}{\mathcal{L}}
 
 \tikzset{cross/.style={cross out, draw=black, minimum
 size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
@@ -24,7 +25,7 @@ size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
 \title{Hydrodynamic Stability}
 \lecturer{Prof. Richard Kerswell}
 \notetaker{Charles Powell}
-\date{Lent 2020}
+\date{Lent 2021}
 
 \maketitle
 \suggestionsspiel
@@ -1941,6 +1942,278 @@ we have
 \end{equation}
 and $\sigma_1$ is the largest singular value of $A$. The corresponding
 eigenvector is the optimal initial condition.
+
+\subsection{Singular value decomposition}
+In the previous section we refer to singular value decomposition; here we
+demonstrate existence and uniqueness of SVD.
+
+\paragraph{Theorem.}
+Every matrix $A \in \mathbb{C}^{m \times n}$ has a SVD
+\begin{equation}
+	A = U \Sigma V^H
+\end{equation}
+where $U \in \mathbb{C}^{m \times m}$ and $V \in \mathbb{C}^{n \times n}$ are
+unitary and $\Sigma = \text{diag}(\sigma_i) \in \mathbb{R}^{m \times n}$ with
+$\sigma_1 < \sigma_2 < \dots$.  Furthermore, the singular values
+$\{\sigma_j\}$ are uniquely determined and if $A$ is square ($m=n$) and the
+$\sigma_j$ are distinct then the left and right singular vectors $\{u_j\}$,
+$\{v_j\}$ are uniquely determined up to complex signs. Note in particular that
+$\sigma_j \in \mathbb{R}$.
+
+How can we relate eigenvalues of $A^T A$ to the singular values of $A$? Given
+$A = U \Sigma V^H$ where $U^H U = I, V^H V = I$ and $\Sigma$ is diagonal, we
+have
+\begin{equation}
+	AV = U\Sigma
+\end{equation}
+so $A$ maps columns of $V$ onto columns of $U$ with `scale' factors in
+$\Sigma$, i.e. the singular values. For example,
+\begin{equation}
+	A\symbf{v}_i = \sigma_i \symbf{u}_i
+\end{equation}
+Similarly, $A^T = V \Sigma U^H$ so $A^T U = V \Sigma$ and $A^T$ maps columns
+of $U$ back to columns of $V$, e.g. $A^T \symbf{u}_i = \sigma_i \symbf{v}_i$.
+Hence
+\begin{align}
+	\sigma_i \symbf{v}_i = A^T \symbf{u}_i &= A^T \left(\frac{1}{\sigma_1} A
+		\symbf{v}_i\right) \\
+	\implies A^T A \symbf{v}_i &= \sigma_i^2 \symbf{v}_i
+\end{align}
+
+Thus $\sigma_i^2$ are eigenvalues of $A^T A$. Since $\sigma_i$ are ordered so
+that $\sigma_1 > \sigma_2 > \dots$, $G = \sigma_1^2$ is the square of the
+largest singular value of $A$.  
+
+Note if $A$ is normal then singular values are eigenvalues. If $A$ is
+non-normal, this does not hold.
+
+\subsection{Energy growth in viscous channel flows}
+This section is largely based on research work by Reddy \& Henningson, JFM,
+\textbf{252}, pp. 209--238 (1993). Consider pressure driven flow through a
+channel.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0);
+		\draw[draw=none,fill=gray!20] (0,0) rectangle (5, -0.5);
+		\draw[thick] (0,2) -- (5, 2);
+		\draw[draw=none,fill=gray!20] (0,2) rectangle (5, 2.5);
+		\draw[blue,dashed] (2,0) -- (2,2);
+		\draw[blue, smooth] plot[domain=-1:1] ({3-\x*\x},{1+\x});
+		\draw (6, 1) node {low pressure};
+		\draw (-1.5, 1) node {high pressure};
+		\draw (5,2) node[right] {$y=1$};
+		\draw (5,0) node[right] {$y=-1$};
+		\draw[->] (0, 1) -- (0.5,1) node[right] {$x$};
+		\draw[->] (0, 1) -- (0, 1.5) node[left] {$y$};
+	\end{tikzpicture}
+\end{center}
+
+The basic state is $\symbf{U} = U(y)\symbf{\hat{x}}$ with $U(y) = 1-y^2$ and
+$\nabla P = -\frac{2}{\ReN}\hat{\symbf{x}}$. Consider a perturbation $(\u,
+p)$:
+\begin{align}
+	\symbf{u}_{\text{total}} &= U(y)\hat{\symbf{x}} + \u \\
+	p_{\text{total}} &= P + p 
+\end{align}
+
+The linearised Navier-Stokes are (as usual)
+\begin{align}
+	\frac{\partial \u}{\partial t} + \u \cdot \nabla \symbf{U} +
+	\symbf{U} \cdot \nabla \hat{\u} + \nabla p &= \frac{1}{\text{Re}} \nabla^2
+	\u \label{eq:l11:1}\\
+	\nabla \cdot \u &= 0
+\end{align}
+
+First, consider $\hat{\symbf{y}} \cdot \nabla \times \eqref{eq:l11:1}$:
+\begin{equation}
+	\left(\frac{\partial}{\partial t} + U \frac{\partial}{\partial x}\right)
+	\eta + \frac{\partial v}{\partial z} \frac{\diffd U}{\diffd y} =
+	\frac{1}{\ReN} \nabla^2 \eta
+\end{equation}
+where $\eta = \symbf{\hat{y}} \cdot \nabla \times \u = \partial_z u -
+\partial_x w$ (using $\u = (u, v, w)$ as usual). Consider also
+$\hat{\symbf{y}} \cdot \nabla \times (\nabla \times \eqref{eq:l11:1})$ which
+gives
+\begin{equation}
+	\left(\frac{\partial}{\partial t} + U \frac{\partial}{\partial x}\right)
+	\nabla^2 v - \frac{\partial v}{\partial x} \frac{\diffd^2 U}{\diffd y^2} =
+		\frac{1}{\ReN} \nabla^4 v
+\end{equation}
+The no-slip boundary conditions $u = v = w = 0$ on $y = \pm 1$ translates to
+BCs on $\eta$ and $v$:
+\begin{align}
+	\eta(y=\pm 1) &= 0 \\
+	v(y=\pm 1) &= 0 \\
+	\left.\frac{\partial v}{\partial y}\right|_{y=\pm 1} &= 0
+\end{align}
+where the last condition follows from $\nabla \cdot \u = 0$ and the fact
+tangential derivatives also vanish on $y = \pm 1$. We have reduced the second
+order system for 3 variables $(u, v, w)$ supplemented by $\nabla \cdot \u$ and
+$p$ into a second and fourth order system for $v$ and $\eta$. 
+
+We now take a Fourier transform in $x$ and $z$, i.e. write
+\begin{equation}
+	\left[ v(\x,t), \eta(\x,t)\right] = \left[ \hat{v}(y,t),
+	\hat{\eta}(y,t)\right] e^{i(\alpha x + \beta z)}
+\end{equation}
+Then write
+\begin{equation}
+	\frac{\partial}{\partial t} \begin{pmatrix} \hat{v} \\ \hat{\eta}
+		\end{pmatrix} = \begin{pmatrix} \L_{os} & 0 \\ \L_c & \L_{sq}
+		\end{pmatrix} \begin{pmatrix} \hat{v} \\ \hat{\eta} \end{pmatrix} = \L
+		\begin{pmatrix} \hat{v} \\ \hat{\eta}\end{pmatrix} \label{eq:l11:2}
+\end{equation}
+where
+\begin{align}
+	\L_{os} &= \frac{1}{D^2 -k^2} \left[ \frac{1}{\ReN} (D^2-k^2)^2 - i\alpha
+	U (D^2-k^2) + i \alpha D^2 U\right] \\
+	\L_c &= -i\beta D U \\
+	\L_{sq} &= \frac{1}{\ReN} (D^2 - k^2) - i\alpha U
+\end{align}
+with $D \equiv \diffd/\diffd y$ and $k^2 = \alpha^2 + \beta^2$. The operators
+$\L_{os}$ and $\L_c$ are the Orr-Sommerfeld (Orr 1907 \& Sommerfeld 1908) and
+Squire (Squire 1933) operators, and $\L_c$ is the coupling operator. Notice
+that the structure of \eqref{eq:l11:2} is reminiscent of the introductory
+model in section~\ref{sec:eg}. 
+
+We can write the solution to the IVP \eqref{eq:l11:2} in terms of an
+eigenfunction expansion since they form a complete set (Diprima \& Habetler
+1969) using the norm \eqref{eq:norm} defined later. Let $\{\lambda_j\}$
+and $\{\mu_j\}$ be the eigenvalues of $\L_{os}$ and $\L_{sq}$ respectively.
+Then
+\begin{equation}
+	\hat{\symbf{v}} = \begin{pmatrix} \hat{v}(y,t) \\ \hat{\eta}(y,t)
+		\end{pmatrix} = \sum_j A_j e^{\lambda_j t} \begin{pmatrix}
+	\tilde{v}_j(y) \\ \tilde{\eta}_j^p(y) \end{pmatrix} + \sum_j B_j e^{\mu_j
+	t} \begin{pmatrix} 0 \\ \tilde{\eta}_j(y) \end{pmatrix} \label{eq:l11:3}
+\end{equation}
+The first sum is of OS modes, where $\{\tilde{v}_j\}$ are the
+eigenfunctions of $\L_{os}$, and $\{\tilde{\eta}_j^p\}$ are the forced normal
+vorticity ($\eta$) functions corresponding to the velocity functions. The
+second sum is of Squire modes, where $\{\tilde{\eta}_j\}$ are the
+eigenfunctions of $\L_{sq}$. The coefficients $\{A_j\}$ and $\{B_j\}$ are set
+by the initial conditions.
+
+We now combine the eigenvalues $\lambda_j$ and $\mu_j$ into a set
+\begin{equation}
+	\Lambda = \{ \lambda_j, \mu_j\}
+\end{equation}
+with $\Lambda_j$ ordered by decreasing real part. Further, define the
+corresponding eigenfunctions to $\Lambda_j$ as
+\begin{equation}
+	\symbf{\tilde{q}}_j(y) = \begin{pmatrix} \tilde{v}_j(y) \\
+	\tilde{\eta}_j(y) \end{pmatrix}
+\end{equation}
+The solution may then be written
+\begin{equation}
+	\hat{\symbf{v}}(y,t) = \sum_j a_j \symbf{\tilde{q}}_j(y) e^{\Lambda_j t}
+	\label{eq:l11:4}
+\end{equation}
+
+Typically, we use the (kinetic) energy norm $E = \iint_{\alpha,\beta}
+E(\alpha, \beta) \diffd \alpha \diffd \beta$ where
+\begin{equation}
+	E(\alpha,\beta) = \frac{1}{2}\int_{-1}^1 \{ \abs{\hat{u}}^2 +
+	\abs{\hat{v}}^2 + \abs{\hat{w}}^2 \} \diffd y
+\end{equation}
+
+To determine $u$ and $w$ in terms of $v$ and $\eta$, consider $\eta = u_z -
+w_x = i\beta u - i\alpha w$. Hence
+\begin{equation}
+	\nabla \cdot \u = 0 \implies -D v = i\alpha u + i\beta w
+\end{equation}
+In matrix form we have
+\begin{equation}
+	\begin{pmatrix} 
+		i\alpha & i\beta \\ i\beta & -i\alpha \end{pmatrix} \begin{pmatrix} u
+		\\ w \end{pmatrix} = \begin{pmatrix} -D v \\ \eta \end{pmatrix}
+\end{equation}
+Finally, inverting this equation gives
+\begin{equation}
+	\begin{pmatrix} u \\ w \end{pmatrix} = \frac{1}{k^2}\begin{pmatrix}
+	-i\alpha & -i\beta \\ -i\beta & i\alpha \end{pmatrix} \begin{pmatrix} -Dv
+	\\ \eta \end{pmatrix}
+\end{equation}
+Hence $u$ and $w$ can be written
+\begin{align}
+	u &= \frac{i\alpha Dv - i\beta \eta}{k^2} \\
+	w &= \frac{i\beta Dv + i\alpha \eta}{k^2}
+\end{align}
+The energy norm may then be written as
+\begin{equation}
+	E(\alpha, \beta) = \norm{\symbf{\hat{v}}}^2= \frac{1}{2k^2} \int_{-1}^1
+	\abs{D \hat{v}}^2 + k^2 \abs{\hat{v}}^2 + \abs{\hat{\eta}}^2 \, \diffd y
+	\label{eq:norm}
+\end{equation}
+
+We now wish to determine the energy growth gain, defined by
+\begin{equation}
+	G(\alpha, \beta; \ReN, t) = \sup_{\symbf{\hat{v}}(y,0)}
+	\frac{\norm{\hat{\symbf{v}}(y,t)}^2}{\norm{\hat{\symbf{v}}(y,0)}^2}
+\end{equation}
+
+Using the solution \eqref{eq:l11:4} (from \eqref{eq:l11:3}) derived above, we
+have (note that supremum is now equivalently taken over initial condition
+coefficients $\symbf{a}$)
+\begin{align}
+	G &= \sup_{\symbf{a}} \frac{ \norm{ \sum_j a_j \tilde{\symbf{q}}_j
+	e^{\Lambda_j t}}^2 }{ \norm{ \sum_j a_j \tilde{\symbf{q}}_j}^2 } \\
+	  &= \sup_{\symbf{a}} \frac{ \sum_i^N \sum_j^N a_i^* e^{\Lambda_i^* t}
+		  \langle \tilde{\symbf{q}}_i, \tilde{\symbf{q}}_j \rangle a_j
+	  e^{\Lambda_j t}}{ \sum_i^N \sum_j^N a_i^*
+  \langle \tilde{\symbf{q}}_i, \tilde{\symbf{q}}_j \rangle a_j} \\
+\end{align}
+where $\langle\cdot,\cdot\rangle$ is the inner product
+\begin{equation}
+	\langle \tilde{\symbf{q}}_j, \tilde{\symbf{q}}_l\rangle = \frac{1}{2k^2}
+	\int_{-1}^1 (D \hat{v}_j)^* D\hat{v}_l + k^2 \hat{v}_j^* \hat{v}_l +
+	\hat{\eta}_j^* \hat{\eta}_l \, \diffd y
+\end{equation}
+Let $A_{ij} = \langle \tilde{\symbf{q}}_i, \tilde{\symbf{q}}_l\rangle$. Then
+$A \in \mathbb{C}^{N \times N}$ is Hermitian ($A_{ij}^* = A_{ji}$) and
+positive definite (the norm is positive definite). Then there exists a matrix
+$F$ such that $A = F^H F$ (Cholesky decomposition). Using the notation
+\begin{equation}
+	e^{\Lambda t} = \text{diag}(e^{\Lambda_1 t}, e^{\Lambda_2 t}, \dots )
+\end{equation}
+we can write the growth gain as
+\begin{align}
+	G &= \sup_{\symbf{a}} \frac{\sum \sum a_i^* e^{\Lambda_i^* t} (F^H F)_{ij}
+	a_j e^{\Lambda_j t}}{\sum \sum a_i^* (F^H F)_{ij} a_j} \\
+	  &= \sup_{\symbf{a}} \frac{(F e^{\Lambda t} \symbf{a})^H (Fe^{\Lambda
+	  t}\symbf{a})}{(F\symbf{a})^H(F\symbf{a})}
+\end{align}
+Let $\x = F\symbf{a}$. Then we can take the supremum over $\x$ and write
+\begin{align}
+	G &= \sup_{\x} \frac{(Fe^{\Lambda t} F^{-1}\x)^H(Fe^{\Lambda
+	t}F^{-1}\x)}{\x^H \x} \\
+	  &= \sup_{\x} \frac{\norm{Fe^{\Lambda t}F^{-1}\x}^2}{\norm{\x}^2} \\
+	  &= \norm{Fe^{\Lambda t}F^{-1}}^2_2
+\end{align}
+where $\norm{\cdot}^2_2$ is the matrix norm defined by
+\begin{equation}
+	\norm{A}_p \equiv \sup_{\x \ne 0} \frac{\norm{A \x}_p}{\norm{\x}_p}
+\end{equation}
+and the $p$-norm is
+\begin{equation}
+	\norm{\x}_p = \left(\sum_i x_i^p\right)^{1/p}
+\end{equation}
+Note if $\symbf{\tilde{q}}_j$ are orthogonal (i.e. $\L$ is normal) then $A$ is
+diagonal, so $F$ is diagonal. Hence
+\begin{align}
+	\norm{F e^{\Lambda t} F^{-1}}^2 &= \norm{e^{\Lambda t}}^2 \\
+									&= \max_{\lambda_j} \abs{e^{\lambda_j
+									t}}^2  \\
+									&= \max_{\lambda_j} e^{2\Re(\lambda_j)t}
+\end{align}
+so the norm is determined by eigenvalues of $A$ in this case.
+
+
+
+
+
+
 
 
 \end{document}

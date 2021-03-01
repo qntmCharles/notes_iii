@@ -72,3 +72,7 @@
 \contentsline {section}{\numberline {9}Axisymmetric rotating magnetised flows}{42}{section.9}
 \contentsline {subsection}{\numberline {9.1}Introduction}{42}{subsection.9.1}
 \contentsline {subsection}{\numberline {9.2}Axisymmetric representation}{42}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Mass loading \& angular velocity}{43}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}Entropy}{44}{subsection.9.4}
+\contentsline {subsection}{\numberline {9.5}Angular momentum}{44}{subsection.9.5}
+\contentsline {subsection}{\numberline {9.6}The Alfv\'{e}n surface}{45}{subsection.9.6}

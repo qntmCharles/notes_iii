@@ -33,3 +33,6 @@
 \contentsline {paragraph}{\nonumberline Choice of norm is important.}{26}{section*.16}
 \contentsline {paragraph}{\nonumberline Non-normality is necessary but not sufficient for transient growth.}{27}{section*.17}
 \contentsline {paragraph}{\nonumberline How to find max growth and optimal ICs.}{28}{section*.18}
+\contentsline {subsection}{\numberline {6.3}Singular value decomposition}{28}{subsection.6.3}
+\contentsline {paragraph}{\nonumberline Theorem.}{29}{section*.19}
+\contentsline {subsection}{\numberline {6.4}Energy growth in viscous channel flows}{29}{subsection.6.4}
