@@ -12,6 +12,7 @@
 \newcommand{\zint}{\int_{z_1}^{z_2}}
 \renewcommand{\y}{\symbf{y}}
 \renewcommand{\L}{\mathcal{L}}
+\renewcommand{\k}{\symbf{k}}
 
 \tikzset{cross/.style={cross out, draw=black, minimum
 size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
@@ -2207,13 +2208,325 @@ diagonal, so $F$ is diagonal. Hence
 									t}}^2  \\
 									&= \max_{\lambda_j} e^{2\Re(\lambda_j)t}
 \end{align}
-so the norm is determined by eigenvalues of $A$ in this case.
+so the norm is determined by eigenvalues of $A$ in this case. As mentioned
+previously, the 2-norm of any matrix can be computed by SVD. 
 
+\paragraph{How is $G$ estimated?}
+Recall eigenvalues of $\L_{os}$ generically form a $Y$-shape when plotted in
+the complex plane:
 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (5, 0) node[right] {$c_r$};
+		\draw[thick,->] (0,0) -- (0, 5) node[left] {$c_i$};
+		\draw (0,0) node[below] {$0$};
+		\draw (4.5,0) node[below] {$1$};
+		\draw (0,0) node[left] {$-1$};
+		\draw (0,4.5) node[left] {$0$};
+		\draw (3, 0) node[below] {$2/3$};
+		\draw[red,dashed] (4.5, 0) -- (4.5, 5);
+		\draw[red,dashed] (0, 4.5) -- (5, 4.5);
+		\draw[fill] (3.01, 0.2) circle (0.05);
+		\draw[fill] (3, 0.6) circle (0.05);
+		\draw[fill] (3.02, 1.1) circle (0.05);
+		\draw[fill] (3, 1.4) circle (0.05);
+		\draw[fill] (2.98, 1.9) circle (0.05);
+		\draw[fill] (2.96, 2.3) circle (0.05);
+		\draw[fill] (3, 2.6) circle (0.05);
+		\draw[fill] (3.01, 3) circle (0.05);
+		\draw[fill] (3.23, 3.21) circle (0.05);
+		\draw[fill] (3.56, 3.53) circle (0.05);
+		\draw[fill] (3.91, 3.94) circle (0.05);
+		\draw[fill] (4.19, 4.21) circle (0.05);
+		\draw[fill] (4.41, 4.43) circle (0.05);
+		\draw[fill] (2.85, 3.16) circle (0.05);
+		\draw[fill] (2.58, 3.41) circle (0.05);
+		\draw[fill] (1.97, 4.01) circle (0.05);
+		\draw[fill] (1.36, 4.43) circle (0.05);
+		\draw[fill] (2.18, 3.87) circle (0.05);
+		\draw[fill] (2.86, 3.16) circle (0.05);
+		\draw[blue] (4.41, 4.43) node[right] {$2$};
+		\draw[blue] (1.36, 4.43) node[left] {$1$};
+		\draw[blue] (4.19, 4.21) node[right] {$3$};
+		\draw[blue] (1.97, 4.01) node[left] {$4$};
+		\draw[blue] (3.91, 3.94) node[right] {$5$};
+		\draw[blue] (2.18, 3.87) node[right] {$6$};
+		\draw[blue] (3.56, 3.53) node[right] {$7$};
+		\draw[blue,dashed] (3,3) circle (0.7);
+	\end{tikzpicture}
+\end{center}
 
+Once again, note that eigenvalue with imaginary part close to $0$. At $\ReN =
+5772$, this eigenvalue becomes unstable. Numbering the eigenvalues by
+descending imaginary part, we can ask how many eigenvalues are required for an
+accurate estimate of $G$? It turns out we just need to include the `neck' of
+the $Y$-shape, circled in blue. This corresponds to the first 15 (roughly)
+eigenvalues.
 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (5, 0) node[right] {$N$};
+		\draw[thick,->] (0,0) -- (0, 3) node[left] {$G$};
+		\draw[blue,smooth] plot[domain=0:5] ({\x},{1/(0.4+exp(-3*(\x-1)))});
+		\draw (0.75, 0.1) -- (0.75, -0.1) node[below] {$5$};
+		\draw (1.5, 0.1) -- (1.5, -0.1) node[below] {$10$};
+		\draw (2.25, 0.1) -- (2.25, -0.1) node[below] {$15$};
+		\draw[dashed] (2.25, 0) -- (2.25, 3);
+		\draw[->] (2.25, 2.8) -- (2.75, 2.8);
+		\draw (2.75, 2.8) node[right] {convergence};
+	\end{tikzpicture}
+\end{center}
 
+A plot of max growth rate $G$ against time $T$ demonstrates an \emph{envelope} --
+there is not necessarily a mode which matches the maximum growth rate at all
+times $T$, but instead numerous different modes which may yield the maximum
+growth rate at a \emph{specific} time $T$. The envelope decays for large $T$
+as only linear instability modes remain. The key point is that the optimal
+initial conditions depend on the time $T$ at which $G$ should be maximised.
 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (5, 0) node[right] {$T$};
+		\draw[thick,->] (0,0) -- (0, 3) node[left] {$G$};
+		\draw[blue,smooth] plot[tension=0.8] coordinates {(0, 0.3) (1, 1) (2, 2.5)
+			(3, 1.5) (4, 0.8) (5, 0.4)};
+		\draw[purple,dashed,->,smooth] plot[tension=0.8] coordinates {(0, 0.3)
+			(0.5, 0.5) (1, 1) (2, 1.8) (2.8, 1)};
+		\draw[purple,fill] (1, 1) circle (0.05);
+		\draw[purple,dashed,->,smooth] plot[tension=0.8] coordinates {(0, 0.1)
+		(1, 0.4) (2, 1.2) (3, 1.45) (3.6, 0.7)};
+		\draw[purple,fill] (3.2, 1.32) circle (0.05);
+		\draw[red,dashed] (0,0) -- (4, 0.8);
+		\draw[red] (4, 0.8) -- (5.5, 1.1) node[right] {linear instability};
+		\draw[dashed] (2.1, 3) -- (2.1, -0.1) node[below] {$t_{\max}$};
+	\end{tikzpicture}
+\end{center}
 
+\paragraph{Optimal growth in wall-bounded shear flows.}
+The optimal growth gains $G$ and the time $t_{\max}$ at which this maximum is
+reached is shown in the table below for a some canonical wall-bounded shear
+flows. 
+\begin{table}
+	\centering
+	\begin{tabular}{c|ccccc}
+		& $G$ & $t_{\max}$ & $\alpha$ & $\beta$ & ref.\\ \hline
+		PPF & $2\times 10^{-4} \ReN^2$ & $0.076\ReN$ & 0 & 2.04 & (1) \\
+		PCF & $1.2\times 10^{-3} \ReN^2$ & $0.117\ReN$ & $\frac{35}{\ReN}$ &
+		1.6 & (1) \\
+		Pipe flow & $7\times 10^{-5} \ReN^2$ & $0.048\ReN$ & 0 & 1 & (2) \\
+		Blasius BL & $1.5\times 10^{-3} \ReN^2$ & $0.778\ReN$ & 0 & 0.65 & (3) \\
+	\end{tabular}
+\end{table}
+
+Notice in particular that the maximum growth gain $G \sim \ReN^2$ and
+$t_{\max} \sim \ReN$. Also, the maximum growth has $\beta$ non-zero (2D
+spanwise variation) in contrast to Squire's theorem (2D streamwise variation).
+References:
+\begin{enumerate}
+	\item Trefethen et al. (1993)
+	\item Schmid \& Henningson (1994)
+	\item Butler \& Farrel (1992)
+\end{enumerate}
+
+\subsection{Mechanisms of transient growth}
+Take the $(v, \eta)$ equations 
+\begin{align}
+	\left(\frac{\partial}{\partial t} + U \frac{\partial}{\partial x}\right)
+	\eta + \frac{\partial v}{\partial z} \frac{\diffd U}{\diffd y} &=
+	\frac{1}{\ReN} \nabla^2 \eta \\
+	\left(\frac{\partial}{\partial t} + U \frac{\partial}{\partial x}\right)
+	\nabla^2 v - \frac{\partial v}{\partial x} \frac{\diffd^2 U}{\diffd y^2}
+								&= \frac{1}{\ReN} \nabla^4 v
+\end{align}
+and consider infinite shear $U(y) = \alpha y$ in an unbounded domain.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-2, 0) -- (2, 0) node[right] {$x$};
+		\draw[thick,->] (0, -2) -- (0, 2) node[left] {$y$};
+		\draw[thick,blue] (1,2) -- (-1, -2);
+		\draw[blue,->] (0, 0.5) -- (0.25, 0.5);
+		\draw[blue,->] (0, 1) -- (0.5, 1);
+		\draw[blue,->] (0, 1.5) -- (0.75, 1.5);
+		\draw[blue,->] (0, -0.5) -- (-0.25, -0.5);
+		\draw[blue,->] (0, -1) -- (-0.5, -1);
+		\draw[blue,->] (0, -1.5) -- (-0.75, -1.5);
+	\end{tikzpicture}
+\end{center}
+
+Note $\left[\alpha\right] = T^{-1}, \left[\nu\right] = L^2 T^{-1}$ are the
+only parameters in the problem so we
+cannot define an inherent lengthscale which is independent of $\ReN$ (i.e. if
+we used $\nu, \alpha$ to form a lengthscale, $\ReN \sim 1$ necessarily.)
+Hence we return to units:
+\begin{align}
+	\left(\frac{\partial}{\partial t} + \alpha y \frac{\partial}{\partial x}\right)
+	\nabla^2 v -\nu \nabla^4 v &= 0 \label{eq:l12:1}\\
+	\left(\frac{\partial}{\partial t} + \alpha y \frac{\partial}{\partial x}\right)
+	\eta - \nu \nabla^2 \eta &= -\alpha \frac{\partial v}{\partial z}
+	\label{eq:l12:2}
+\end{align}
+
+Recall $\eta \equiv \hat{\symbf{y}}\cdot\nabla \times \u = u_z - w_x$. Look
+for \emph{Kelvin modes} of the form
+\begin{equation}
+	\left[v,\eta\right](\x,t) =
+	\left[\hat{v},\hat{\eta}\right](t)e^{i\symbf{k}(t)\cdot\x}
+\end{equation}
+
+From \eqref{eq:l12:1} we have
+\begin{align}
+	\left(\frac{\partial}{\partial t} + \alpha y \frac{\partial}{\partial
+	x}\right) \left(-\k^2(t)\hat{v}(t)e^{i\k(t)\cdot\x}\right) 
+	&= \nu \k^4 \hat{v}e^{i\k\cdot\x} \\
+	-(\k^2 \hat{v})_t e^{i\k\cdot\x} - \k^2
+	\hat{v}(i\k_t\cdot\x)e^{i\k\cdot\x} - \alpha \k^2 y
+	\hat{v}(ik_1)e^{i\k\cdot\x} &= \nu \k^4 \hat{v}e^{i\k\cdot\x} \\
+	-(\k^2\hat{v})_t - i\k_t\cdot\x\k^2\hat{v} - \alpha \k^2 y \hat{v}ik_1
+								&= \nu \k^4 \hat{v}
+\end{align}
+Separating into components which are $\x$-dependent and $\x$-independent gives
+\begin{align}
+	-(\k^2\hat{v})_t &= \nu \k^4 \hat{v} \label{eq:l12:3}\\
+	-i\k_t\cdot\x - \alpha k_1 y &= 0 \label{eq:l12:4}
+\end{align}
+The second equation \eqref{eq:l12:4} can also be written
+\begin{equation}
+	\dot{k}_1 x + \dot{k}_2 y + \dot{k}_3 z + \alpha k_1 y = 0
+\end{equation}
+Hence $\dot{k}_1 = \dot{k}_3 = 0$ and $\dot{k}_2 = -\alpha k_1$ so
+\begin{align}
+	k_1 &= k_{01} \\
+	k_2 &= k_{02} - \alpha k_{01} t \\
+	k_3 &= k_{03}
+\end{align}
+Now \eqref{eq:l12:3} can be written
+\begin{align}
+	(\k^2 \hat{v})_t &= -\nu \k^2 (\k^2 \hat{v}) \\
+	\implies \k^2 \hat{v} &= \k_0^2 \hat{v}(0) e^{-\nu \int_0^t
+	\k^2(\tau)\,\diffd \tau} \\
+		\implies \hat{v}(t) &= \frac{\k_0^2}{\k^2(t)} \hat{v}(0) e^{-\nu \int_0^t
+	\k^2(\tau)\,\diffd \tau} 
+\end{align}
+
+Then from \eqref{eq:l12:2}
+\begin{equation}
+	\hat{\eta}_t + \nu \k^2(t)\hat{\eta} = -i\alpha k_3 \hat{v}(t)
+\end{equation}
+It is useful to look at two 2D special cases.
+\paragraph{2D with $\partial_z = 0$ (no spanwise variation).}
+If there is no spanwise variation then $k_3 = 0$ and all the `action' is in
+the $\hat{v}$ equation, as the $\hat{\eta}$ equation is unforced. We have
+\begin{equation}
+	\hat{v}(t) = \hat{v}(0)\frac{k_{01}^2 + k_{02}^2}{k_{01}^2 +
+	(k_{02}-\alpha k_{01}t)^2}e^{-\nu \int_0^t
+	\k^2(\tau)\,\diffd \tau} 
+\end{equation}
+If $k_{02} \gg k_{01}$, we expect large growth on `fast' times
+$\mathcal{O}(1)$, as opposed to $\mathcal{O}(1/\nu)$ times. We see this as
+follows: denote the $\k_0^2/\k^2$ factor as $A$. Then
+\begin{itemize}
+	\item At $t=0$, $A \sim 1$.
+	\item At $t=k_{02}/\alpha k_{01}$, $A \to \frac{k_{02}^2}{k_{01}^2} \gg
+		1$.
+	\item At $t=2k_{02}/\alpha k_{01}$, $A \to 1$.
+\end{itemize}
+Incompressibility combined with $\u = \hat{u}(t)\exp(i\k(t)\cdot\x)$ gives
+\begin{equation}
+	ik_1 \hat{u} = i k_2 \hat{v} = 0
+\end{equation}
+i.e. $\k$ is perpendicular to $(u,v)$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-2,0) -- (5,0) node[right] {$x$};
+		\draw[thick,->] (0, -3) -- (0, 3) node[left] {$y$};
+		\draw[blue,dashed] (-1.5, -3) -- (-1.5, 3);
+		\draw[blue] (-1, 3) -- (-2, -3);
+		\draw[blue,->] (-1.5,1) -- (-1.5+0.33333/2,1);
+		\draw[blue,->] (-1.5,2) -- (-1.5+0.33333,2);
+		\draw[blue,->] (-1.5,-1) -- (-1.5+0.33333/2,-1);
+		\draw[blue,->] (-1.5,-2) -- (-1.5+0.33333,-2);
+		\draw[red,->] (0,0) -- (1, 3) node[right] {$\k(t=0)$};
+		\draw[red,->] (0,0) -- (1, -3) node[right] {$\k(t=\frac{2k_{02}}{\alpha
+		k_{01}})$};
+		\draw[very thick,red,->] (0,0) -- (1,0);
+		\draw[red] (1, 0.5) node[right] {$\k(t=\frac{k_{02}}{\alpha k_{01}})$};
+		\draw[purple,->] (0,2) -- (1.2, 1.6);
+		\draw[purple,<-] (0.05,2.15) -- (1.25, 1.75);
+		\draw[purple,->] (0.1,2.3) -- (1.3, 1.9);
+		\draw[purple,<-] (0.15,2.45) -- (1.35, 2.05);
+		\draw[purple,<-] (0.9, 0.5) -- (0.9, -0.5);
+		\draw[purple,->] (0.75, 0.5) -- (0.75, -0.5);
+		\draw[purple,<-] (0.6, 0.5) -- (0.6, -0.5);
+		\draw[purple,->] (0.45, 0.5) -- (0.45, -0.5);
+		\draw[purple,<-] (0,-2) -- (1.2,- 1.6);
+		\draw[purple,->] (0.05,-2.15) -- (1.25,- 1.75);
+		\draw[purple,<-] (0.1,-2.3) -- (1.3,- 1.9);
+		\draw[purple,->] (0.15,-2.45) -- (1.35,- 2.05);
+		\draw[purple,thick,->] (2, 2) arc (90:-90:2);
+		\draw[purple] (5, 2) node {Shear `turns'};
+		\draw[purple] (5, 1.5) node {velocity field};
+	\end{tikzpicture}
+\end{center}
+
+This is the \emph{Orr mechanism} (1907). The energy is maximised at $t=
+k_{02}/\alpha k_{01}$. The initial conditions point into the shear, with the
+energy growth arising as the shear `rotates' the velocity field. It is a 2D
+mechanism, inviscid (happens quickly), and growth is $\mathcal{O}(\ReN^0)$.
+
+\paragraph{2D with $\partial_x = 0$ (no streamwise variation).}
+If there is no streamwise variation then $k_1 = 0$, hence $k$ is constant.
+Then
+\begin{align}
+	\hat{v}(t) &= \hat{v}(0) e^{-\nu \k^2 t} \\
+	\hat{\eta} + \nu \k^2 \hat{\eta} &= -i\alpha k_3 \hat{v} = -i\alpha k_3
+	\hat{v}(0) e^{-\nu \k^2 t} \\
+	\implies \left(\hat{\eta}e^{\nu \k^2 t}\right)_t &= -i\alpha k_3
+	\hat{v}(0) \\
+	\implies \hat{\eta}(t) &= \hat{\eta}_0 e^{-\nu \k^2 t} - i\alpha k_3 t
+	\hat{v}(0) e^{-\nu \k^2 t}
+\end{align}
+
+The exponential factors damp $\hat{\eta}$, but the $t$ factor in the second
+term provides the possibility of algebraic growth. In the case of no
+streamwise variation we have $\eta = i k_3 u$, so
+\begin{equation}
+	\hat{u}(t) = \left[ \hat{u}(0) - \alpha t \hat{v}(0)\right] e^{-\nu \k^2
+	t}
+\end{equation}
+Hence we expect algebraic growth in $\hat{u}$ of amplitude
+$\mathcal{O}(1/\nu)$, so growth in energy of order $\mathcal{O}(1/\nu^2) =
+\mathcal{O}(\ReN^2)$. This explains the previous observations that $G_{\max}
+= \mathcal{O}(\ReN^2)$ and $t_{\max} = \mathcal{O}(\ReN)$. This is the
+\emph{lift-up mechanism} whereby small, slowly decaying velocities advect
+fluid across the shear.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- (5,0) -- (6, 1.5) -- (1, 1.5) -- (0,0);
+		\draw[blue,dashed] (2.5, 0.5) -- (2.5, 3);
+		\draw[blue, smooth] plot[tension=0.8] coordinates {(2.5, 0.5) (3.4,
+		1.5) (3.6, 3)};
+		\draw[blue,->] (2.5, 1.6) -- (3.42, 1.6);
+		\draw[blue,->] (2.5, 2.5) -- (3.58, 2.5);
+		\draw[blue] (3.65, 2.5) node[right] {basic shear};
+		\draw[purple] (4.5, 0.8) ellipse (0.15 and 0.3);
+		\draw[purple] (1.5, 0.8) [partial ellipse = 90:270:0.15 and 0.3];
+		\draw[purple] (4.5, 1.1) -- (1.5, 1.1);
+		\draw[purple] (4.5, 0.5) -- (1.5, 0.5);
+		\draw[purple,->,thick] (4, 0.8) [partial ellipse = 70:240:0.2 and
+		0.4];
+		\draw[purple,->,thick] (3, 0.8) [partial ellipse = 70:240:0.2 and
+		0.4];
+		\draw[purple,->,thick] (2, 0.8) [partial ellipse = 70:240:0.2 and
+		0.4];
+		\draw[purple] (6, 0.8) node[right] {streamwise rolls};
+	\end{tikzpicture}
+\end{center}
+
+Streamwise rolls advect slower flowing fluid away from the boundary and faster
+flowing fluid towards the boundary. This causes a large anomaly in the
+streamwise flow component. Streamwise rolls decay over a $\mathcal{O}(\ReN)$
+timescale, which gives $\mathcal{O}(\ReN^2)$ growth.
 
 \end{document}

@@ -14,6 +14,8 @@
 \renewcommand{\u}{\symbf{u}}
 \newcommand{\veps}{\varepsilon}
 \newcommand{\dif}[1]{\left[#1\right]^+_-}
+\newcommand{\C}{\mathcal{C}}
+\renewcommand{\S}{\mathcal{S}}
 
 \usetikzlibrary{intersections, pgfplots.fillbetween, decorations.pathmorphing}
 \tikzset{snake it/.style={decorate, decoration=snake}}
@@ -2061,6 +2063,254 @@ where $D$ is the salt diffusivity. The interfacial conditions are
 	(C_i-C_S)\dot{a} &= -D \left.\frac{\partial C}{\partial x}\right|_{a^+}
 	\hspace{3em} \text{Conservation of solute}
 \end{align}
+
+\subsection{Morphological instability}
+Consider the case of solidification \& viscous fingering at a solid-liquid
+interface, known as morphological instability. This instability:
+\begin{itemize}
+	\item increases surface area of the interface
+	\item enhances the release of latent heat
+	\item raises temperature $T$
+	\item enhances rejection of solute (within interstices)
+\end{itemize}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[fill=gray!20,draw=none] (0,0) rectangle (-1.5, 3);
+		\draw[thick] (0,0) -- (0, 3);
+		\draw[dashed] (1.5, 0) -- (1.5, 3);
+		\draw (-0.75, 3.5) node {solid};
+		\draw (3, 3.5) node {liquid};
+		\draw[red] (-1.5, 0.5) -- (0, 1.3);
+		\draw[red, smooth] plot coordinates {(0, 1.3) (0.5, 1.55)
+		(1.2, 1.7) (3, 1.9) (4, 1.95)};
+		\draw[purple, smooth] plot[tension=0.5] coordinates {(0, 1.3) (0.5, 1.65)
+		(1.2, 1.72) (3, 1.8) (4, 1.8)};
+		\draw[red] (4, 2) node[right] {$T_\infty$};
+		\draw[purple] (4, 1.65) node[right] {$T_L(C)$};
+		\draw[blue] (-1.5, 0) -- (0, 0);
+		\draw[blue] (-1.5, 0) node[left] {$C_S = 0$};
+		\draw[blue,smooth] plot coordinates {(0, 0.8) (0.5, 0.3) (2, 0.1)
+		(4,0.1)};
+		\draw[blue] (4, 0.1) node[right] {$C_0$};
+		\draw (0.75, -0.5) node {constitutional};
+		\draw (0.75, -1) node {supercooling};
+
+		\draw[very thick, ->] (5, 1.5) -- (6, 1.5);
+		\draw (6.5, 3) -- (6.5, 0);
+		\draw[dashed] (7.5, 3) -- (7.5, 0);
+		\draw[dashed] (8.5, 3) -- (8.5, 0);
+		\draw[red] (6.5, 1) -- (8.5, 2) -- ( 10, 2) node[right] {\small $T_\infty$};
+		\draw[red] (7, 0.8) node {\tiny $T_L(C)$};
+		\draw[blue,smooth] plot[domain=0:3,samples=100] ({8+0.4*sin(10*deg(\x))},{\x});
+		\draw (8, -0.5) node {region of mixed};
+		\draw (8, -1) node {phase `mushy layer'};
+	\end{tikzpicture}
+\end{center}
+
+The phenomenon leads to a porous medium in thermodynamic equilibrium with a
+\emph{solid fraction} $\phi$ (note the clash of notation!) determined by local
+$T, C$ via liquidus $T_L(C)$.
+
+\paragraph{Global conservation of solute.}
+Conservation of solute in the mushy layer between $0 \le x \le b(t)$ is
+expressed by
+\begin{equation}
+	\int_0^{b(t)} (1-\phi)C_L(T) \, \diffd x = C_0 b(t)
+\end{equation}
+where $\phi(x,t)$ is the local volume fraction of solid, i.e. $1-\phi$ is the
+\emph{liquid fraction}. Here, $C_L(T)$ is the liquidus concentration
+determined by the temperature. That is, in the mushy layer we have interstices
+of pure solid with $C_S =0$ and $C_L$ is the concentration of the liquid in
+between. $C_0$ is the concentration of the solute in the liquid.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0) node[right] {$x=0$};
+		\draw[dashed](0, 2) -- (5, 2) node[right] {$x=b(t)$};
+		\draw (2.5, -1) node {solid};
+		\draw (2.5, 3) node {liquid};
+		\draw[red] (3, 0) -- (4, 2) node[above] {$T_0$};
+		\draw[red] (3,0) node[below] {$T_B$};
+		\draw[purple] (1,2) -- (2.5, 0);
+		\draw[purple] (1,2) node[above] {$C_0$};
+		\draw[purple] (1,-0.5) node[below] {$C_S=0$};
+		\draw[purple,->] (1,-0.5) -- (1, 0.5);
+		\draw[blue,smooth] plot coordinates {(0.3, 0) (0.4, 0.4) (0.35, 0.5)
+		(0.6, 1) (0.55, 1.2) (0.8, 1.5) (0.75, 1.6) (1, 1.7) (1.2, 1.5) (1.3,
+		1.4) (1.45, 0.9) (1.4, 0.8) (1.6, 0.4) (1.55, 0.3) (1.7, 0)};
+		\begin{scope}[shift={(1.4,0)}]
+			\draw[blue,smooth] plot coordinates {(0.3, 0) (0.4, 0.4) (0.35, 0.5)
+			(0.6, 1) (0.55, 1.2) (0.8, 1.5) (0.75, 1.6) (1, 1.7) (1.2, 1.5) (1.3,
+			1.4) (1.45, 0.9) (1.4, 0.8) (1.6, 0.4) (1.55, 0.3) (1.7, 0)};
+		\end{scope}
+		\begin{scope}[shift={(2.8,0)}]
+			\draw[blue,smooth] plot coordinates {(0.3, 0) (0.4, 0.4) (0.35, 0.5)
+			(0.6, 1) (0.55, 1.2) (0.8, 1.5) (0.75, 1.6) (1, 1.7) (1.2, 1.5) (1.3,
+			1.4) (1.45, 0.9) (1.4, 0.8) (1.6, 0.4) (1.55, 0.3) (1.7, 0)};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+We will use a simplified model of \emph{bulk} properties:
+\begin{enumerate}
+	\item Take quasi-static approximation for temperature:
+		\begin{equation}
+			T = T_B + (T_0-T_B)\frac{x}{b}
+		\end{equation}
+		where $T_0 = T_L(C_0)$.
+	\item All impurities are accomodated within the mushy layer, i.e. $C =
+		C_0$ for $x > b(t)$.
+	\item Linear liquid approximation
+		\begin{equation}
+			T_L = T_0 - m(C-C_0)
+		\end{equation}
+	\item Ignore heat transfer in liquid
+\end{enumerate}
+
+\paragraph{Box model.}
+Consider the `trial function' $\phi =$ const. in global solute conservation.
+We have
+\begin{equation}
+	\int_0^b (1-\phi)C_L(T)\,\diffd x \approx (1-\phi) \frac{C_B + C_0}{2} b =
+	C_0 b
+\end{equation}
+Then the solid fraction may be written
+\begin{equation}
+	\phi = \frac{1}{2\C -1}
+\end{equation}
+where $\C = C_B/(C_B-C_0)$. Note when $\C \gg 1$, we can approximate $\phi
+\approx 1/2\C \approx \mathcal{O}(\C^{-1})$. With the same trial function, the
+Stefan condition gives
+\begin{equation}
+	\phi \rho_S L \dot{b} = \overline{k}(\phi) \frac{T_0 - T_B}{b}
+\end{equation}
+where $\overline{k} = k_s \phi + k_l (1-\phi)$ which is exact for 
+\emph{lamella} (solidification fingers) parallel to $\nabla T$. The boundary
+position is then
+\begin{equation}
+	b = \left( \frac{2}{\S} \frac{\overline{k}}{k_s \phi} \kappa_s
+	t\right)^{1/2}
+\end{equation}
+where $\S$ is the Stefan number defined by
+\begin{equation}
+	\S = \frac{L}{c_p(T_0-T_B)}
+\end{equation}
+Note that for $k_l \ll k_s$ we have
+\begin{equation}
+	\frac{\overline{k}}{k_s \phi} = 1+ \frac{k_l}{k_s} \frac{1-\phi}{\phi}
+	\approx 1
+\end{equation}
+For ice, $k_s \approx 5 k_l$. Also note: growth of mushy layer scales as $b
+\propto \sqrt{\kappa t}$ which is constrained by the thermal field, \emph{not}
+diffusion of solute.
+
+\paragraph{`Ideal' mushy layer.} Take $\rho, c_p, k$ independent of phase. The
+conservation equations are then:
+\begin{itemize}
+	\item Conservation of energy
+		\begin{equation}
+			\rho c_p \left( \frac{\partial T}{\partial t} + \u \cdot \nabla
+			T\right) = k \nabla^2 T + \rho L \frac{\partial \phi}{\partial t}
+			\label{eq:l11:1}
+		\end{equation}
+		where the final term represents the internal release of latent heat.
+	\item Conservation of solute
+		\begin{equation}
+			(1-\phi)\frac{\partial C}{\partial t} + \u \cdot \nabla C =
+			\cancel{\nabla \cdot \left[ D(1-\phi) \nabla C\right]} + C \frac{\partial
+			\phi}{\partial t}\label{eq:l11:2}
+		\end{equation}
+		where the diffusion term is negligible for $D/\kappa \ll 1$. The final
+		term represents the internal release of solute.
+	\item Conservation of mass
+		\begin{equation}
+			\nabla \cdot \u = 0 \label{eq:l11:3}
+		\end{equation}
+	\item Conservation of momentum (Darcy's law)
+		\begin{equation}
+			\u = -\frac{\Pi}{\mu} \left[ \nabla p - (\rho -
+			\rho_0)g\right]\label{eq:l11:4}
+		\end{equation}
+		where $\Pi$ is now being used for permeability since $k$ is the
+		thermal conductivity.
+\end{itemize}
+To supplement these conservation equations we have the requirement of phase
+equilibrium (constrained by the liquidus)
+\begin{equation}
+	T = T_L(C) = T_L(C_0) - m(C-C_0)\label{eq:l11:5}
+\end{equation}
+and the equation of state
+\begin{equation}
+	\rho = \rho_0 \left[ 1 - \alpha(T-T_0) + \beta
+	(C-C_0)\right]\label{eq:l11:6}
+\end{equation}
+
+\paragraph{Heat capacity for a stagnant mushy layer}
+Consider a mushy layer at rest $\u = 0$. Conservation of solute
+\eqref{eq:l11:2} gives
+\begin{align}
+	(1-\phi)\frac{\partial C}{\partial t} &= C\frac{\partial \phi}{\partial t}
+	\\
+	\implies \frac{\partial}{\partial t}\left[ (1-\phi)C\right] &= 0
+\end{align}
+Hence $(1-\phi)C = C_0$ is constant. Then the solid fraction is
+\begin{equation}
+	\phi = 1-\frac{C_0}{C}
+\end{equation}
+The time derivative of $\phi$ can then be determined as
+\begin{equation}
+	\frac{\partial \phi}{\partial t} = \frac{C_0}{C^2} \frac{\partial
+	C}{\partial t} = -\frac{C_0}{mC^2}\frac{\partial T}{\partial t}
+\end{equation}
+using \eqref{eq:l11:5}. Substituting into \eqref{eq:l11:1} we have
+\begin{align}
+	\rho c_p \left[ 1 + \frac{L}{c_p}\frac{C_0}{mC^2}\right] \frac{\partial
+	T}{\partial t} &= k\nabla^2 T \\
+	\implies \rho c_{p,\text{eff}} \frac{\partial T}{\partial t} = k \nabla^2
+	T
+\end{align}
+where the effective heat capacity is
+\begin{equation}
+	c_{p,\text{eff}} = c_p \left[ 1 + \frac{L}{c_p} \frac{C_0}{mC^2}\right]
+\end{equation}
+We now partially non-dimensionalise using scalings $T \sim \Delta T = T_0 -
+T_B$ and $C \sim \Delta C = C_B -C_0$. Define the new variable
+\begin{equation}
+	\theta = \frac{T-T_0}{\Delta T} = \frac{C-C_0}{\Delta C}
+\end{equation}
+noting $\Delta T = m \Delta C$. We therefore have 
+\begin{align}
+	\frac{\partial \theta}{\partial t} + \u \cdot \nabla \theta &= \kappa
+	\nabla^2 \theta + \S \frac{\partial \phi}{\partial t} \\
+	(1-\phi)\frac{\partial \theta}{\partial t} + \u \cdot \nabla \theta &=
+	-(\C-\theta)\frac{\partial \phi}{\partial t}
+\end{align}
+where we can now write $\S = L/c_p \Delta T$ and $\C = C_0/\Delta C$.
+
+For a \emph{stagnant} mushy layer $\u = 0$ we get
+\begin{align}
+	(1-\phi)\frac{\partial \theta}{\partial t} &= -(\C - \theta)\frac{\partial
+	\phi}{\partial t} \\
+		\implies \frac{\partial}{\partial t}\left[ (1-\phi)(\C-\theta)\right]
+		&= 0 \\
+	(1-\phi)(\C-\theta) = \text{const.} &= \C
+\end{align}
+Hence we can write the solid fraction profile as
+\begin{equation}
+	\phi = \frac{-\theta}{\C-\theta}
+\end{equation}
+which is determined in terms of $\theta(x,t)$. For $\C \gg 1, \phi \ll 1$ and
+$\phi_t \approx -\frac{1}{\C}\theta_t$. Hence
+\begin{equation}
+	\left(1+\frac{\S}{\C}\right) \frac{\partial \theta}{\partial t} = \kappa
+	\nabla^2 \theta
+\end{equation}
+The internal release of latent heat results in a modified (non-dimensional)
+heat capacity.
+
+
+
 
 
 

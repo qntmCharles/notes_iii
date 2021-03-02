@@ -36,3 +36,8 @@
 \contentsline {subsection}{\numberline {6.3}Singular value decomposition}{28}{subsection.6.3}
 \contentsline {paragraph}{\nonumberline Theorem.}{29}{section*.19}
 \contentsline {subsection}{\numberline {6.4}Energy growth in viscous channel flows}{29}{subsection.6.4}
+\contentsline {paragraph}{\nonumberline How is $G$ estimated?}{32}{section*.20}
+\contentsline {paragraph}{\nonumberline Optimal growth in wall-bounded shear flows.}{33}{section*.21}
+\contentsline {subsection}{\numberline {6.5}Mechanisms of transient growth}{34}{subsection.6.5}
+\contentsline {paragraph}{\nonumberline 2D with $\partial _z = 0$ (no spanwise variation).}{35}{section*.23}
+\contentsline {paragraph}{\nonumberline 2D with $\partial _x = 0$ (no streamwise variation).}{36}{section*.24}

@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}Plate cooling}{3}{section.2}
-\contentsline {subsection}{\numberline {2.1}Thermal problem}{3}{subsection.2.1}
+\contentsline {section}{\numberline {2}Plate cooling}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Thermal problem}{2}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Ocean depth away from mid-ocean ridge}{4}{subsection.2.2}
 \contentsline {section}{\numberline {3}Natural convection}{5}{section.3}
 \contentsline {subsection}{\numberline {3.1}Static stability}{6}{subsection.3.1}
@@ -35,3 +35,8 @@
 \contentsline {paragraph}{\nonumberline Basis for instability.}{29}{section*.14}
 \contentsline {paragraph}{\nonumberline Pressure fields.}{29}{section*.15}
 \contentsline {section}{\numberline {8}Solidifcation of binary eutectic mixtures}{31}{section.8}
+\contentsline {subsection}{\numberline {8.1}Morphological instability}{33}{subsection.8.1}
+\contentsline {paragraph}{\nonumberline Global conservation of solute.}{33}{section*.16}
+\contentsline {paragraph}{\nonumberline Box model.}{34}{section*.17}
+\contentsline {paragraph}{\nonumberline `Ideal' mushy layer.}{35}{section*.18}
+\contentsline {paragraph}{\nonumberline Heat capacity for a stagnant mushy layer}{35}{section*.19}
