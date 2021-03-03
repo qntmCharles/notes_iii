@@ -16,6 +16,7 @@
 \renewcommand{\v}{\symbf{v}}
 \newcommand{\dif}[1]{\left[#1\right]_1^2}
 \newcommand{\M}{\mathcal{M}}
+\newcommand{\veps}{\varepsilon}
 
 \usetikzlibrary{shapes.misc}
 
@@ -2596,6 +2597,128 @@ at a rate $\dot{M}r_0^2 \Omega_0$. A highly efficient removal of angular
 momentum occurs if $r_a/r_0 \gg 1$ (the \emph{magnetic lever arm}). The loss
 of angular momentum through a stellar wind is called \emph{magnetic braking}.
 For the Sun, $r_a$ is between $20 R_{\text{sun}}$ and $30 R_{\text{sun}}$.
+
+\subsection{The Bernoulli function}
+The total energy equation for a steady flow is
+\begin{equation}
+	\nabla \cdot \left[ \rho \u(\frac{1}{2}u^2 + \Phi + h) +
+	\frac{\symbf{E}\times\B}{\mu}\right] = 0
+\end{equation}
+Now since
+\begin{equation}
+	\u = \frac{k\B}{\rho} + r \omega \symbf{e}_\phi
+\end{equation}
+we have
+\begin{align}
+	\symbf{E} &= -\u \times \B \\
+			  &= -r \omega \symbf{e}_\phi \times \B \\
+			  &= -r\omega \symbf{e}_\phi \times \B_p
+\end{align}
+which is purely poloidal. Thus
+\begin{equation}
+	(\symbf{E}\times\B)_p = \symbf{E} \times (B_\phi \symbf{e}_\phi) =
+	-r\omega B_\phi \B_p
+\end{equation}
+The total energy equation is therefore
+\begin{align}
+	\nabla \cdot \left[ k \B_p(\frac{1}{2}\u^2 + \Phi + h) - \frac{r\omega
+	B_\phi}{\mu_0}\B_p\right] &= 0\\
+	\B_p \cdot \nabla \left[ k\left(\frac{1}{2}\u^2 + \Phi + h -\frac{r\omega
+	B_\phi}{\mu_0 k}\right)\right] &= 0\\
+	\frac{1}{2}\u^2 + \Phi + h -\frac{r\omega B_\phi}{\mu_0 k} &= \veps 
+\end{align}
+where $\veps = \veps(\psi)$ is another surface function, the \emph{energy
+invariant}. An alternative invariant is
+\begin{align}
+	\tilde{\veps} &= \veps - l\omega \\
+				  &= \frac{1}{2}\u^2 + \Phi + h -\frac{r\omega B_\phi}{\mu_0
+				  k} - \left(ru_\phi - \frac{rB_\phi}{\mu_0 k}\right)\omega \\
+				  &= \frac{1}{2}\u^2 + \Phi + h - ru_\phi \omega \\
+				  &= \frac{1}{2}u_p^2 + \frac{1}{2}(u_\phi - r\omega)^2 +
+				  \Phi_{cg} + h
+\end{align}
+where
+\begin{equation}
+	\Phi_{cg} = \Phi - \frac{1}{2}\omega^2 r^2
+\end{equation}
+is the centrifugal-gravitational potential associated with the magnetic
+surface. $\tilde{\veps}$ is the Bernoulli function of the flow in the frame
+rotating with angular velocity $\omega$. In this frame the flow is strictly
+parallel to $\B$, so the Lorentz force does no work:
+\begin{equation}
+	(\symbf{J}\times\B)\perp\B \implies (\symbf{J}\times\B)\perp(\u-r\omega
+	\symbf{e}_\phi)
+\end{equation}
+
+\subsection{Summary}
+We integrated almost all of the MHD equations, reducing hem to algebraic
+qeuations on each magnetic surface. If $\B_p$ (or equivalently $\psi$) is
+known, these equations determine the solution on each magnetic surface. We
+must also
+\begin{itemize}
+	\item specify the initial conditions at the source
+	\item ensure the solution passes smoothly through critical points where
+		$\abs{\u_p}$ matches the speeds of slow and fast magnetoacoustic waves
+		(ES3, Q5)
+\end{itemize}
+
+The component of the equation of motion perpendicular to $\B_p$ remains to be
+solved. This \emph{transfield} or \emph{Grad-Shafranov} equation determines
+the shape of the magnetic surfaces. It is a complicated nonlinear PDE for
+$\psi(r,z)$.
+
+\subsection{Acceleration from the surface of an accretion disc}
+Consider the launching of an outflow from a thin accretion disc. The angular
+velocity of the disc corresponds to circular Keplerian orbital motion around a
+central mass $M$:
+\begin{equation}
+	\Omega(r) = \left(\frac{GM}{r^3}\right)^{1/2}
+\end{equation}
+For a field line with footpoint at $r=r_0$, the angular velocity of the field
+line is
+\begin{equation}
+	\omega = \Omega(r_0)
+\end{equation}
+Then
+\begin{equation}
+	\Phi_{cg} = -GM(r^2+z^2)^{-1/2} - \frac{1}{2}\frac{GM}{r_0^3}r^2
+\end{equation}
+In the sub-Alfv\'{e}nic region we have
+\begin{equation}
+\tilde{\veps} \approx \frac{1}{2}\u_p^2 + \Phi_{cg} + h
+\end{equation}
+If the gas is very hot ($h \sim GM/r_0$) an outflow can be driven thermally
+(as in a stellar wind). Of more interest is the possibility of a dynamically
+driven outflow. For a `cold' wind $h$ makes a negligible contribution in the
+Bernoulli equation. Whether the flow accelerates or not along the field line
+depends on the variation of $\Phi_{cg}$. 
+
+In units such that $r_0 =1$, the equation of the equipotential passing through
+the footpoint $(r_0,0)$ is
+\begin{equation}
+	(r^2 + z^2)^{-1/2} + \frac{r^2}{2} = \frac{3}{2}
+\end{equation}
+Rearrange to get
+\begin{equation}
+	z^2 = \frac{(4-r^2)(r^2-1)^2}{(3-r^2)^2} =
+	\frac{(4-r^2)(r+1)^2(r-1)^2}{(3-r^2)^2}
+\end{equation}
+Now close to the footpoint (1,0) we have
+\begin{equation}
+	z^2 \approx 3(r-1)^2 \implies z \approx \pm \sqrt{3}(r-1)
+\end{equation}
+The footpoint lies at saddle point of $\Phi_{cg}$. If the inclination $i$ of
+the field line to the vertical exceeds $30^{\circ}$, the flow is acccelerated
+without thermal assistance. This is \emph{magnetocentrifugal accceleration}.
+The critical equipotential has an asymptote at $r=r_0\sqrt{3}$. The field line
+must continue to expand sufficiently in the radial direction to sustain the
+acceleration.
+
+
+
+
+
+
 
 
 

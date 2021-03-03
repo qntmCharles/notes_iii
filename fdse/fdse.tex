@@ -14,7 +14,7 @@
 \renewcommand{\u}{\symbf{u}}
 \newcommand{\veps}{\varepsilon}
 \newcommand{\dif}[1]{\left[#1\right]^+_-}
-\newcommand{\C}{\mathcal{C}}
+\renewcommand{\C}{\mathcal{C}}
 \renewcommand{\S}{\mathcal{S}}
 
 \usetikzlibrary{intersections, pgfplots.fillbetween, decorations.pathmorphing}
@@ -2101,7 +2101,8 @@ interface, known as morphological instability. This instability:
 		\draw[dashed] (7.5, 3) -- (7.5, 0);
 		\draw[dashed] (8.5, 3) -- (8.5, 0);
 		\draw[red] (6.5, 1) -- (8.5, 2) -- ( 10, 2) node[right] {\small $T_\infty$};
-		\draw[red] (7, 0.8) node {\tiny $T_L(C)$};
+		\draw[red] (8.7, 1) node[right] {\small $T_L(C)$};
+		\draw[red,->] (8.7, 1) -- (8, 1.7);
 		\draw[blue,smooth] plot[domain=0:3,samples=100] ({8+0.4*sin(10*deg(\x))},{\x});
 		\draw (8, -0.5) node {region of mixed};
 		\draw (8, -1) node {phase `mushy layer'};
@@ -2185,9 +2186,9 @@ Stefan condition gives
 \begin{equation}
 	\phi \rho_S L \dot{b} = \overline{k}(\phi) \frac{T_0 - T_B}{b}
 \end{equation}
-where $\overline{k} = k_s \phi + k_l (1-\phi)$ which is exact for 
-\emph{lamella} (solidification fingers) parallel to $\nabla T$. The boundary
-position is then
+where $\overline{k} = k_s \phi + k_l (1-\phi)$ (which is exact for 
+\emph{lamella} parallel to $\nabla T$ i.e. mushy layer composed of parallel
+layers). The boundary position is then
 \begin{equation}
 	b = \left( \frac{2}{\S} \frac{\overline{k}}{k_s \phi} \kappa_s
 	t\right)^{1/2}

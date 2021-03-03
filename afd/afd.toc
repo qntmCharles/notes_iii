@@ -1,78 +1,81 @@
-\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
-\contentsline {subsection}{\numberline {1.1}Areas of application}{3}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Theoretical varieties}{3}{subsection.1.2}
-\contentsline {paragraph}{\nonumberline Hydrodynamics (HD) / Newtonian gas dynamics:}{3}{section*.2}
-\contentsline {paragraph}{\nonumberline Magnetohydrodynamics (MHD):}{3}{section*.3}
-\contentsline {subsection}{\numberline {1.3}Characteristic features}{3}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Useful data}{3}{subsection.1.4}
-\contentsline {section}{\numberline {2}Ideal gas dynamics}{4}{section.2}
-\contentsline {subsection}{\numberline {2.1}Fluid variables}{4}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Eulerian and Lagrangian viewpoints}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Material points and structures}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Equation of mass conservation}{4}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Equation of motion}{5}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Poisson's equation}{5}{subsection.2.6}
-\contentsline {subsection}{\numberline {2.7}Thermal energy equation and equation of state}{5}{subsection.2.7}
-\contentsline {subsection}{\numberline {2.8}Simplified models}{6}{subsection.2.8}
-\contentsline {subsection}{\numberline {2.9}Microphysical basis}{7}{subsection.2.9}
-\contentsline {subsubsection}{\numberline {2.9.1}Boltzmann equation}{7}{subsubsection.2.9.1}
-\contentsline {subsubsection}{\numberline {2.9.2}Derivation of fluid equations}{8}{subsubsection.2.9.2}
-\contentsline {subsection}{\numberline {2.10}Validity of fluid approach}{9}{subsection.2.10}
-\contentsline {section}{\numberline {3}Ideal magnetohydrodynamics}{9}{section.3}
-\contentsline {subsection}{\numberline {3.1}Elementary derivation of MHD equations}{9}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Galilean electromagnetism}{9}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}Induction equation}{10}{subsubsection.3.1.2}
-\contentsline {subsubsection}{\numberline {3.1.3}Lorentz force}{10}{subsubsection.3.1.3}
-\contentsline {subsubsection}{\numberline {3.1.4}Summary of the MHD equations}{11}{subsubsection.3.1.4}
-\contentsline {subsection}{\numberline {3.2}Physical interpretation of MHD}{12}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Kinematics of the magnetic field}{12}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}(Partial) analogy with vorticity}{12}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Lorentz force}{13}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Differential rotation and torsional Alfv\'{e}n waves}{13}{subsubsection.3.2.4}
-\contentsline {subsubsection}{\numberline {3.2.5}Force-free fields}{14}{subsubsection.3.2.5}
-\contentsline {subsubsection}{\numberline {3.2.6}Magnetostatic equilibrium and magnetic buoyancy}{15}{subsubsection.3.2.6}
-\contentsline {section}{\numberline {4}Conservation laws \& hyperbolic structure}{15}{section.4}
-\contentsline {subsection}{\numberline {4.1}Introduction}{15}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Total energy equation}{16}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Helicity conservation}{17}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Symmetries}{18}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Hyperbolic structure}{19}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Stress tensor}{21}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}Virial theorem}{21}{subsection.4.7}
-\contentsline {section}{\numberline {5}Linear waves in homogeneous media}{23}{section.5}
-\contentsline {paragraph}{\nonumberline Interpretation.}{25}{section*.7}
-\contentsline {section}{\numberline {6}Non-linear waves, shocks and discontinuities}{26}{section.6}
-\contentsline {subsection}{\numberline {6.1}1D gas dynamics}{26}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}Method of characteristics}{27}{subsubsection.6.1.1}
-\contentsline {subsubsection}{\numberline {6.1.2}A simple wave}{27}{subsubsection.6.1.2}
-\contentsline {subsubsection}{\numberline {6.1.3}Wave steepening}{28}{subsubsection.6.1.3}
-\contentsline {subsection}{\numberline {6.2}Simple non-linear waves}{28}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Shocks \& discontinuities}{29}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Jump conditions}{29}{subsubsection.6.3.1}
-\contentsline {subsubsection}{\numberline {6.3.2}Non-magnetic shocks}{31}{subsubsection.6.3.2}
-\contentsline {subsubsection}{\numberline {6.3.3}Oblique shocks}{32}{subsubsection.6.3.3}
-\contentsline {subsubsection}{\numberline {6.3.4}Other discontinuities}{32}{subsubsection.6.3.4}
-\contentsline {subsubsection}{\numberline {6.3.5}MHD shocks and discontinuities}{32}{subsubsection.6.3.5}
-\contentsline {subsubsection}{\numberline {6.3.6}The Riemann problem}{32}{subsubsection.6.3.6}
-\contentsline {section}{\numberline {7}Spherical blast waves: supernovae}{34}{section.7}
-\contentsline {subsection}{\numberline {7.1}Introduction}{34}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Governing equations}{34}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Dimensional analysis}{35}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}Similarity solution}{35}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}Dimensionless equations}{36}{subsection.7.5}
-\contentsline {subsection}{\numberline {7.6}First integral}{36}{subsection.7.6}
-\contentsline {subsection}{\numberline {7.7}Applications}{38}{subsection.7.7}
-\contentsline {section}{\numberline {8}Spherically symmetric steady flows}{38}{section.8}
-\contentsline {subsection}{\numberline {8.1}Introduction}{38}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Basic equations}{38}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}First treatment}{39}{subsection.8.3}
-\contentsline {subsection}{\numberline {8.4}Second treatment}{40}{subsection.8.4}
-\contentsline {subsection}{\numberline {8.5}Stellar wind}{41}{subsection.8.5}
-\contentsline {subsection}{\numberline {8.6}Accretion}{41}{subsection.8.6}
-\contentsline {section}{\numberline {9}Axisymmetric rotating magnetised flows}{42}{section.9}
-\contentsline {subsection}{\numberline {9.1}Introduction}{42}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Axisymmetric representation}{42}{subsection.9.2}
-\contentsline {subsection}{\numberline {9.3}Mass loading \& angular velocity}{43}{subsection.9.3}
-\contentsline {subsection}{\numberline {9.4}Entropy}{44}{subsection.9.4}
-\contentsline {subsection}{\numberline {9.5}Angular momentum}{44}{subsection.9.5}
-\contentsline {subsection}{\numberline {9.6}The Alfv\'{e}n surface}{45}{subsection.9.6}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Areas of application}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Theoretical varieties}{3}{subsection.1.2}%
+\contentsline {paragraph}{\nonumberline Hydrodynamics (HD) / Newtonian gas dynamics:}{3}{section*.2}%
+\contentsline {paragraph}{\nonumberline Magnetohydrodynamics (MHD):}{3}{section*.3}%
+\contentsline {subsection}{\numberline {1.3}Characteristic features}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Useful data}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Ideal gas dynamics}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Fluid variables}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Eulerian and Lagrangian viewpoints}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Material points and structures}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Equation of mass conservation}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Equation of motion}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Poisson's equation}{5}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Thermal energy equation and equation of state}{5}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Simplified models}{6}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Microphysical basis}{7}{subsection.2.9}%
+\contentsline {subsubsection}{\numberline {2.9.1}Boltzmann equation}{7}{subsubsection.2.9.1}%
+\contentsline {subsubsection}{\numberline {2.9.2}Derivation of fluid equations}{8}{subsubsection.2.9.2}%
+\contentsline {subsection}{\numberline {2.10}Validity of fluid approach}{9}{subsection.2.10}%
+\contentsline {section}{\numberline {3}Ideal magnetohydrodynamics}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Elementary derivation of MHD equations}{9}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Galilean electromagnetism}{9}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Induction equation}{10}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Lorentz force}{10}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Summary of the MHD equations}{11}{subsubsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.2}Physical interpretation of MHD}{12}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Kinematics of the magnetic field}{12}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}(Partial) analogy with vorticity}{12}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Lorentz force}{13}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Differential rotation and torsional Alfv\'{e}n waves}{13}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Force-free fields}{14}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Magnetostatic equilibrium and magnetic buoyancy}{15}{subsubsection.3.2.6}%
+\contentsline {section}{\numberline {4}Conservation laws \& hyperbolic structure}{15}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Introduction}{15}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Total energy equation}{16}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Helicity conservation}{17}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Symmetries}{18}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Hyperbolic structure}{19}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Stress tensor}{21}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Virial theorem}{21}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Linear waves in homogeneous media}{23}{section.5}%
+\contentsline {paragraph}{\nonumberline Interpretation.}{25}{section*.7}%
+\contentsline {section}{\numberline {6}Non-linear waves, shocks and discontinuities}{26}{section.6}%
+\contentsline {subsection}{\numberline {6.1}1D gas dynamics}{26}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Method of characteristics}{27}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}A simple wave}{27}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.3}Wave steepening}{28}{subsubsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.2}Simple non-linear waves}{28}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Shocks \& discontinuities}{29}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Jump conditions}{29}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Non-magnetic shocks}{31}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Oblique shocks}{32}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Other discontinuities}{32}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}MHD shocks and discontinuities}{32}{subsubsection.6.3.5}%
+\contentsline {subsubsection}{\numberline {6.3.6}The Riemann problem}{32}{subsubsection.6.3.6}%
+\contentsline {section}{\numberline {7}Spherical blast waves: supernovae}{34}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Introduction}{34}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Governing equations}{34}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Dimensional analysis}{35}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Similarity solution}{35}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Dimensionless equations}{36}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}First integral}{36}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Applications}{38}{subsection.7.7}%
+\contentsline {section}{\numberline {8}Spherically symmetric steady flows}{38}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Introduction}{38}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Basic equations}{38}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}First treatment}{39}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Second treatment}{40}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Stellar wind}{41}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Accretion}{41}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Axisymmetric rotating magnetised flows}{42}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Introduction}{42}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Axisymmetric representation}{42}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Mass loading \& angular velocity}{43}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Entropy}{44}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Angular momentum}{44}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}The Alfv\'{e}n surface}{45}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}The Bernoulli function}{46}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}Summary}{47}{subsection.9.8}%
+\contentsline {subsection}{\numberline {9.9}Acceleration from the surface of an accretion disc}{47}{subsection.9.9}%
