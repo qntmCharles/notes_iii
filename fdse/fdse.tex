@@ -14,7 +14,7 @@
 \renewcommand{\u}{\symbf{u}}
 \newcommand{\veps}{\varepsilon}
 \newcommand{\dif}[1]{\left[#1\right]^+_-}
-\renewcommand{\C}{\mathcal{C}}
+\newcommand{\C}{\mathcal{C}}
 \renewcommand{\S}{\mathcal{S}}
 
 \usetikzlibrary{intersections, pgfplots.fillbetween, decorations.pathmorphing}
@@ -339,6 +339,7 @@ versus via convection. If $\text{Ra}$ is large, the flow is more turbulent.
 There is instability if $\text{Ra} \gtrapprox \mathcal{O}(1)$.
 
 \subsection{Onset of convection}
+\label{sec:conv}
 Consider a fluid of depth $h$ between $z=0$ and $z=h$ with density profile
 $\rho(z)$ and temperature difference $\Delta T$ across the depth, where the
 $z=0$ surface is warmer.
@@ -2310,7 +2311,210 @@ $\phi_t \approx -\frac{1}{\C}\theta_t$. Hence
 The internal release of latent heat results in a modified (non-dimensional)
 heat capacity.
 
+\subsection{Convection in mushy layers}
+Consider a mushy layer subject to constant heat flux and constant pressure at
+the lower boundary $z=h$ where $T=T_0$ and $T=T_B$ at $z=0$ with $T_B < T_0$.
+The canonical example is sea ice.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0) node[right] {$z=h$};
+		\draw[thick] (0, 2) -- (5, 2) node[right] {$z=0$};
+		 \draw[red] (2.5, 0) node[below] {$T_0$};
+		 \draw[red] (2.5, 2) node[above] {$T_B$};
+	\end{tikzpicture}
+\end{center}
+These boundary conditions are chosen for convenience: constant heat flux
+implies a layer of fixed thickness, and constant pressure resembles an open
+lower boundary (e.g. polar ocean underneath sea ice layer).
 
+Non-dimensionalise the problem using scalings:
+\begin{equation}
+	L \sim h, \hspace{2em} t \sim \frac{h^2 \Omega}{\kappa},\hspace{2em} u \sim
+	\frac{\kappa}{h\Omega},\hspace{2em} p \sim \beta^* \Delta C \rho_o g h
+\end{equation}
+where $\Omega = 1 + \S/\C$. \textcolor{red}{What is $\beta^*$???} The
+governing equations are then
+\begin{align}
+	\frac{\partial \theta}{\partial t} + \u \cdot \nabla \theta &= \nabla^2
+	\theta \\
+	\u &= -R_m \left[ \nabla p + \theta \hat{\symbf{z}}\right] 
+\end{align}
+where the Rayleigh number $R_m$ in this case is
+\begin{equation}
+	R_m = \frac{\rho_0 g \beta^* \Delta C \pi h}{\kappa \mu} \Omega
+\end{equation}
+The solution resembles the convection rolls seen in section~\ref{sec:conv},
+except the constant heat boundary means we now see only half of the rolls:
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (5, 0) node[right] {$z=h$};
+		\draw[thick] (0, 2) -- (5, 2) node[right] {$z=0$};
+		\draw[red,->] (0.1, 0) arc (180:90:1.2);
+		\draw[red] (1.3, 1.2) arc (90:0:1.2);
+		\draw[red,->] (0.5, 0) arc (180:90:0.8);
+		\draw[red] (1.3, 0.8) arc (90:0:0.8);
+		\draw[red,->] (4.9, 0) arc (0:90:1.2);
+		\draw[red] (3.7, 1.2) arc (90:180:1.2);
+		\draw[red,->] (4.5, 0) arc (0:90:0.8);
+		\draw[red] (3.7, 0.8) arc (90:180:0.8);
+	\end{tikzpicture}
+\end{center}
+
+The critical Rayleigh number is $R_m = \pi^2$ at $\alpha = \pi/2$.
+\begin{enumerate}
+	\item Convection is driven by compositional buoyancy, but limited by
+		thermal dissipation.
+	\item Critical condition for convection is modified by phase change via
+		$\Omega = 1+\S/\C$. Large latent heat implies more unstable
+		convection.
+\end{enumerate}
+
+Consider temperature-concentration profiles:
+\begin{center}
+	\begin{tikzpicture}
+		\draw[red] (0,0) -- (3,  -5);
+		\draw[red] (0,0) node[left] {$T$};
+		\draw[red] (3, 0) node[right] {cold};
+		\draw[red] (3, -5) node[right] {warm};
+		\draw[purple,fill] (1, -5/3) circle (0.05);
+		\draw[purple,fill] (1, -4) circle (0.05);
+		\draw[purple,fill] (2.4, -4) circle (0.05);
+		\draw[purple] (1, -5/3) -- (1, -4) -- (2.4, -4);
+		\draw[purple] (1, -5/3) node[left] {1};
+		\draw[purple] (1, -4) node[left] {2};
+		\draw[purple] (2.4, -4) node[right] {3};
+		\draw[blue] (10,0) -- (7, -5);
+		\draw[blue] (10,0) node[right] {$C$};
+		\draw[blue] (7, 0) node[left] {salty};
+		\draw[blue] (7, -5) node[left] {fresh};
+		\draw[purple,fill] (9, -5/3) circle (0.05);
+		\draw[purple,fill] (9, -4) circle (0.05);
+		\draw[purple,fill] (8, -4) circle (0.05);
+		\draw[purple] (9, -5/3) -- (9, -4) -- (8, -4);
+		\draw[purple] (9, -5/3) node[right] {1};
+		\draw[purple] (9, -4) node[right] {2};
+		\draw[purple] (8, -4) node[left] {3};
+	\end{tikzpicture}
+\end{center}
+
+A parcel of melt sea ice is cold and dense so descends ($1 \to 2$), losing heat and
+salinity. The parcel rapidly thermally equilibriates ($2 \to 3$) to the liquidus in the
+mushy layer, as thermal diffusion is fast. In contrast, diffusion of solute is
+slow so the ceontration does not reach equilibrium. Salt must dissolve ice
+to reach equilibrium. Note that
+\begin{equation}
+	\frac{\partial \phi}{\partial t} = -\frac{1}{\C} \frac{\diffD
+	\theta}{\diffD t}
+\end{equation}
+so dissolution occurs when the temperature of a moving fluid parcel
+increases.
+
+\section{Poroelasticity}
+\subsection{Flows of two-phase mixtures}
+Consider the flow/deformation of \emph{both} the fluid and solid matrix, e.g.
+compaction of sediments, poroelastic deformation, melt generation in the
+mantle. 
+
+\paragraph{Conservation of mass.} Treat both phases as separately
+incompressible and use the Boussinesq limit ($\rho_s \approx \rho_l$).
+Conservation of mass is then expressed by
+\begin{align}
+	\phi_t + \nabla \cdot (\phi \u_s) &= \Gamma &&\text{Solid}  \\
+	(1-\phi)_t + \nabla \cdot \left[ (1-\phi)\u_f\right] &=
+	-\Gamma &&\text{Liquid}
+\end{align}
+where $\phi$ is the solid fraction and $\Gamma$ is the solidifcation rate.
+Note the average velocity
+\begin{equation}
+	\overline{\u} = \phi \u_s + (1-\phi)\u_f
+\end{equation}
+satisfies $\nabla \cdot \overline{\u}$ by above. Each phase itself is
+\emph{not} separately divergence free (despite being separately
+incompressible).
+
+\paragraph{Conservation of momentum.} Assume Stokes flow for both phases, i.e.
+$\text{Re} \ll 1$. Conservation of momentum is expressed by
+\begin{align}
+	0 &= -\nabla \cdot (\phi \symsf{\sigma}_s) + \phi \rho_s \symbf{g} -
+	\symbf{h} &&\text{Solid} \\
+	0 &= -\nabla \cdot \left[(1-\phi) \symsf{\sigma}_f\right] + (1-\phi)
+	\rho_f \symbf{g} + \symbf{h} &&\text{Liquid}
+\end{align}
+where $\symsf{\sigma}_s, \symsf{\sigma}_f$ are the solid, fluid stress
+tensors and $\symbf{h}$ is the force exerted between phases.
+
+Consider the limit where deformation of the solid phase is much more difficult
+than the fluid phase, e.g. $\mu_f \ll \mu_s$. Then
+\begin{equation}
+	\symsf{\sigma}_f = -p\symsf{I} + \mu_s \left(\nabla \u_f + \nabla
+	\u_f^T\right) \approx -p\symsf{I}
+\end{equation}
+Take the interaction force to be
+\begin{equation}
+	\symbf{h} = c(\u_f - \u_s)+p\nabla \phi
+\end{equation}
+Conservation of momentum in the fluid is then
+\begin{equation}
+	0 = -\nabla \cdot \left[ (1-\phi)(-p\symsf{I})\right] + (1-\phi) \rho_f
+	\symbf{g} + c(\u_f - \u_s) + p\nabla \phi
+\end{equation}
+Hence we have
+\begin{equation}
+	c(\u_f - \u_s) = -(1-\phi)\left[\nabla p + \rho_f \symbf{g}\right]
+\end{equation}
+We choose $c = \mu_f(1-\phi)^2/\Pi$ to recover Darcy's law. Then
+\begin{equation}
+	(1-\phi) (\u_f - \u_s) = -\frac{\Pi}{\mu_f}\left[\nabla p + \rho_f
+	\symbf{g}\right]
+\end{equation}
+describes deformation of the solid matrix. Note that the fluid and solid
+matrix jointly support mechanical load. Consider the total stress
+\begin{align}
+	\symsf{\sigma} &= \phi \symsf{\sigma}_s + (1-\phi)\symsf{\phi}_f \\
+				   &= \phi \symsf{\sigma}_s - (1-\phi)p \symsf{I} \\
+				   &= \phi(\symsf{\sigma}_s + p\symsf{I}) - p \symsf{I}
+\end{align}
+Hence part of the isotropic solid stress is supported by the pore pressure.
+Introduce \emph{Tarzaghi's effectiver stress} $\symsf{\sigma}_e =
+\phi(\symsf{\sigma}_s + p\symsf{I})$.  Then
+\begin{equation}
+	\nabla \cdot \symsf{\sigma} = \nabla \cdot \left[\symsf{\sigma}_e
+	-p\symsf{I}\right] = \left[\phi \rho_s + (1-\phi)\rho_f\right] \symbf{g}
+\end{equation}
+
+\paragraph{Poroelasticity.} We must choose a rheology to describe the solid.
+Consider moderate fluid stresses, a solid that deforms elastically (small
+deformation), e.g. aquifers, subglacial hydrology. In general, the effective
+stress can be written
+\begin{equation}
+	\symsf{\sigma}_e = \symsf{\sigma}_e(\nabla \symbf{\xi}) = (K -
+	\frac{2}{3}G)\nabla\cdot\symbf{\xi}\symsf{I} + G(\nabla \symbf{\xi} +
+	\nabla \symbf{\xi}^T)
+\end{equation}
+where $\symbf{\xi}$ is the deformation, $K$ is the bulk modulus and $G$ is the
+shear modulus. We can simplify this by using an isotropic, linear elastic
+model:
+\begin{equation}
+	\symsf{\sigma}_e = E\frac{\phi_0 - \phi}{\phi_0}
+\end{equation}
+Then
+\begin{align}
+	\nabla \cdot \symsf{\sigma} &= \nabla \cdot \symsf{\sigma}_e - \nabla p
+	\\
+								&= -\frac{E}{\phi_0}\nabla \phi - \nabla p \\
+								&= \overline{\rho}\symbf{g}
+\end{align}
+
+\paragraph{Applied load.} Consider a stress $-\symsf{\sigma}_L$ applied to the
+solid matrix (e.g. porous plunger). Then
+\begin{equation}
+	-\symsf{\sigma}_L = E \frac{\phi_0 - \phi}{\phi_0}
+\end{equation}
+Rearranging for $\phi$ we have
+\begin{equation}
+	\phi = \phi_0\left(1+\frac{\symsf{\sigma}_L}{E}\right)
+\end{equation}
 
 
 
