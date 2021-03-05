@@ -6,6 +6,7 @@
 
 \RequirePackage{fancyhdr} % Fancy headers
 \pagestyle{fancy} % Section in header
+\fancyhead[L]{}
 \RequirePackage{mathtools} % Mathtools
 \mathtoolsset{
     showonlyrefs=true % Only number referenced equations

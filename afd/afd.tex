@@ -1264,6 +1264,7 @@ energies associated with individual directions. This is particularly relevant
 in cases where anisotropy is introduced by rotation or a magnetic field.
 
 \section{Linear waves in homogeneous media}
+\label{sec:pert}
 In ideal MHD the density, pressure and magnetic field evolve according to
 \begin{align}
 	\frac{\partial \rho}{\partial t} &= - \u \cdot \nabla \rho -\rho \nabla
@@ -2725,11 +2726,146 @@ The critical equipotential has an asymptote at $r=r_0\sqrt{3}$. The field line
 must continue to expand sufficiently in the radial direction to sustain the
 acceleration.
 
+\subsection{Magnetically driven accretion}
+To allow a quantity of mass $\Delta M_{\text{acc}}$ to be accreted from radius
+$r_0$, its orbital angular momentum $r_0^2 \Omega_0 \Delta M_{\text{acc}}$
+must be removed. The angular momentum removed by a quantity of mass $\Delta
+M_{\text{jet}}$ flowing out in a magnetized jet from radius $r_0$ is
+$l\Delta M_{\text{jet}} = r_a^2 \Omega_0 \Delta M_{\text{jet}}$. Therefore
+accretion can in principle be driven by an outflow, with
+\begin{equation}
+	\frac{\dot{M}_{\text{acc}}}{\dot{M}_{\text{jet}}} \approx
+	\frac{r_a^2}{r_0^2}
+\end{equation}
+The magnetic lever arm allows an efficient removal of angular momentum if
+$r_a^2 \gg r_0^2$. 
 
+\section{Waves and instabilities in stratified rotating astrophysical bodies}
+\subsection{The energy principle}
+From section~\ref{sec:pert}: the lineariesd equation of motion for small
+displacements $\disp(\x,t)$ from a general static equilibrium in ideal MHD is
+\begin{equation}
+	\rho \frac{\partial^2 \disp}{\partial t^2} = -\rho \nabla \delta \flux -
+	\delta \rho \nabla \flux - \nabla \delta \Pi + \frac{1}{\mu_0}(\delta \B
+	\cdot \nabla \B + \B \cdot \nabla \delta \B)
+\end{equation}
+where the Eulerian perturbations are given by
+\begin{align}
+	\delta \rho &= -\disp \cdot \nabla \rho - \rho \nabla \cdot \disp \\
+	\delta p &= -\disp \cdot \nabla p - \gamma p \nabla \cdot \disp \\
+	\delta \B &= \B \cdot \nabla \disp - \B (\nabla \cdot \disp) - \disp \cdot
+			  \nabla \B\\
+	\delta \Pi &= \delta p + \frac{\B \cdot \delta \B}{\mu_0} \\
+			   &= -\disp \cdot \nabla \Pi - \left( \gamma p +
+			   \frac{\B^2}{\mu_0}\right) \nabla \cdot \disp + \frac{1}{\mu_0}
+			   \B \cdot (\B \cdot \nabla \disp)
+\end{align}
+and 
+\begin{equation}
+	\nabla^2 \delta \Phi = 4\pi G \delta \rho = -4\pi G \nabla \cdot (\rho
+	\disp)
+\end{equation}
 
+Thee equation of motion can be written as
+\begin{equation}
+	\rho \frac{\partial^2 \xi_i}{\partial t^2} = -\rho \frac{\partial \delta
+	\Phi}{\partial x_i} - \rho \xi_j \frac{\partial^2 \Phi}{\partial x_i
+	\partial x_j} + \frac{\partial}{\partial x_j} \left( V_{ijkl} \frac{\partial
+	\xi_k}{\partial x_l}\right)
+\end{equation}
+where
+\begin{equation}
+	V_{ijkl} = \left[ (\gamma -1)p + \frac{\B^2}{2\mu_0}\right] \delta_{ij}
+	\delta_{kl} + \left( p + \frac{\B^2}{2\mu_0}\right) \delta_{il}
+	\delta_{jk} + \frac{1}{\mu_0} B_j B_l \delta_{ik} - \frac{1}{\mu_0}(B_i
+	B_j \delta_{kl} + B_k B_l \delta_{ij})
+\end{equation}
+is a tensor with the symmetry $V_{ijkl} = V_{klij}$. This is of the form
+\begin{equation}
+	\frac{\partial^2 \disp}{\partial t^2} = \mathcal{F} \disp \label{eq:l19:1}
+\end{equation}
+where $\mathcal{F}$ is a linear differential operator (or
+integro-differential, if self-gravitation is included). The force operator
+$\mathcal{F}$ is self-adjoint with respect to the inner product
+\begin{equation}
+	\langle \symbf{\eta}, \disp \rangle = \int \rho \symbf{\eta}^* \cdot \disp
+	\, \diffd V
+\end{equation}
+if appropriate boundary conditions apply to the vector fields $\disp$ and
+$\symbf{\eta}$. Let $\delta \Psi$ be the potential perturbation
+associated with the displacement $\symbf{\eta}$, so
+\begin{equation}
+	\nabla^2 \delta \Psi = -4\pi G \nabla \cdot (\rho \symbf{\eta})
+\end{equation}
+Then (integrals over all space)
+\begin{align}
+	\langle \symbf{\eta}, \mathcal{F} \disp \rangle 
+	&= \int \left[ -\rho \eta_i^* \frac{\partial \delta \Phi}{\partial x_i} -
+	\rho \eta_i^* \xi_j \frac{\partial^2 \Phi}{\partial x_i \partial x_j} +
+	\eta_i^* \frac{\partial}{\partial x_j}\left( V_{ijkl} \frac{\partial
+	\xi_k}{\partial x_l}\right) \right] \, \diffd V \\
+	&= \int \left[ -\delta \Phi \frac{\nabla^2 \delta \Psi^*}{4\pi G} - \rho
+	\xi_i \eta_j^* \frac{\partial^2 \Phi}{\partial x_i \partial x_j} -
+	V_{ijkl} \frac{\partial \xi_k}{\partial x_l}\frac{\partial
+	\eta_i^*}{\partial x_j} \right] \, \diffd V\\
+	&= \int \left[ \frac{\nabla(\delta \Phi) \cdot \nabla(\delta \Psi^*)}{4\pi
+	G} - \rho \xi_i \eta_j^* \frac{\partial^2 \Phi}{\partial x_i \partial x_j}
+	+ \xi_k \frac{\partial}{\partial x_l} \left( V_{ijkl} \frac{\partial
+	\eta_i^*}{\partial x_j} \right) \right] \, \diffd V \\
+	&= \int \left[ -\delta \Psi^* \frac{\nabla^2 \delta \Phi}{4 \pi G} - \rho
+	\xi_i \eta_j^* \frac{\partial^2 \Phi}{\partial x_i \partial x_j} + \xi_i
+	\frac{\partial}{\partial x_j} \left( V_{klij} \frac{\partial
+	\eta_k^*}{\partial x_l}\right) \right] \, \diffd V \\
+	&= \int \left[ -\rho \xi_i \frac{\partial \delta \Psi^*}{\partial x_i} -
+	\rho \xi_i \eta_j^* \frac{\partial^2 \Phi}{\partial x_i \partial x_j} +
+	\xi_i \frac{\partial}{\partial x_j} \left( V_{ijkl} \frac{\partial
+	\eta_k^*}{\partial x_l} \right) \right] \, \diffd V \\
+	&= \langle \mathcal{F} \symbf{\eta}, \disp \rangle
+\end{align}
+We assumed:
+\begin{itemize}
+	\item the exterior is a medium of zero density in which the force-free
+		limit of MHD holds
+	\item $\B$ decays sufficiently fast as $\abs{\x} \to \infty$ to allow
+		integration by parts (using the divergence theorem) ignoring surface
+		terms
+	\item the body is isolated and self-gravitating, so $\delta \Phi =
+		\mathcal{O}(r^{-1})$ or in fact $\mathcal{O}(r^{-2})$ if $\delta M =
+		0$.
+\end{itemize}
+We used the symmetries of $\partial^2 \Phi/\partial x_i \partial x_j$ and
+$V_{ijkl}$. The functional
+\begin{align}
+	W\left[\disp\right] &= -\frac{1}{2}\langle \disp, \mathcal{F} \disp
+	\rangle \\
+						&= \frac{1}{2}\int \left( -\frac{\abs{\nabla \delta
+						\Phi}^2}{4 \pi G} + \rho \xi_i^* \xi_j
+						\frac{\partial^2 \Phi}{\partial x_i}{\partial x_j} +
+						V_{ijkl} \frac{\partial \xi_i^*}{\partial x_j}
+						\frac{\partial \xi_k}{\partial x_l} \right) \, \diffd
+						V
+\end{align}
+is therefore real and represents the change in potential energy associated
+with $\disp$. 
 
-
-
+Since the basic state is static, consider normal-mode solutions to
+\eqref{eq:l19:1} of the form
+\begin{equation}
+	\disp = \Re\left[ \tilde{\disp}(\x) e^{-i\omega t}\right]
+\end{equation}
+for which we obtain
+\begin{equation}
+	-\omega^2 \tilde{\disp} = \mathcal{F} \tilde{\disp}
+\end{equation}
+and
+\begin{equation}
+	\omega^2 = -\frac{\langle \tilde{\disp}, \mathcal{F} \tilde{\disp}
+	\rangle}{\langle \tilde{\disp}, \tilde{\disp} \rangle} =
+	\frac{2W\left[\tilde{\disp}\right]}{\langle \tilde{\disp},
+		\tilde{\disp}\rangle}
+\end{equation}
+Therefore $\omega^2$ is real and we have either oscillations ($\omega^2 > 0$)
+or instability ($\omega^2 < 0$).
 
 
 
