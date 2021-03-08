@@ -41,3 +41,7 @@
 \contentsline {subsection}{\numberline {6.5}Mechanisms of transient growth}{34}{subsection.6.5}
 \contentsline {paragraph}{\nonumberline 2D with $\partial _z = 0$ (no spanwise variation).}{35}{section*.23}
 \contentsline {paragraph}{\nonumberline 2D with $\partial _x = 0$ (no streamwise variation).}{36}{section*.24}
+\contentsline {subsection}{\numberline {6.6}Orr-Sommerfeld operator is non-normal}{37}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.7}Energy stability analysis}{37}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.8}Time stepping to growth}{38}{subsection.6.8}
+\contentsline {subsubsection}{\numberline {6.8.1}Constrained optimisation (linear)}{39}{subsubsection.6.8.1}

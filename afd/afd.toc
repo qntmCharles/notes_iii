@@ -82,3 +82,4 @@
 \contentsline {subsection}{\numberline {9.10}Magnetically driven accretion}{48}{subsection.9.10}
 \contentsline {section}{\numberline {10}Waves and instabilities in stratified rotating astrophysical bodies}{49}{section.10}
 \contentsline {subsection}{\numberline {10.1}The energy principle}{49}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Spherically symmetric star}{52}{subsection.10.2}

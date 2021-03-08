@@ -2742,7 +2742,7 @@ $r_a^2 \gg r_0^2$.
 
 \section{Waves and instabilities in stratified rotating astrophysical bodies}
 \subsection{The energy principle}
-From section~\ref{sec:pert}: the lineariesd equation of motion for small
+From section~\ref{sec:pert}: the linearised equation of motion for small
 displacements $\disp(\x,t)$ from a general static equilibrium in ideal MHD is
 \begin{equation}
 	\rho \frac{\partial^2 \disp}{\partial t^2} = -\rho \nabla \delta \flux -
@@ -2865,8 +2865,188 @@ and
 		\tilde{\disp}\rangle}
 \end{equation}
 Therefore $\omega^2$ is real and we have either oscillations ($\omega^2 > 0$)
-or instability ($\omega^2 < 0$).
+or instability ($\omega^2 < 0$). The expression
+\begin{equation}
+	\omega^2 = \Lambda\left[\disp\right] = 
+	\frac{2W\left[\tilde{\disp}\right]}{\langle \tilde{\disp},
+		\tilde{\disp}\rangle}
+\end{equation}
+satisfies the usual Rayleigh-Ritz variational principle for self-adjoint
+eigenvalue problems. The eigenvalues $\omega^2$ are the stationary values of
+$\Lambda\left[\disp\right]$ among trial displacements $\disp$ satisfying the
+boundary conditions. The lowest eigenvalue is the global minimum of
+$\Lambda\left[\disp\right]$. Therefore the equilibrium is unstable iff
+$W\left[\disp\right] < 0$ for some trial displacement $\disp$ satisfying the
+boundary conditions. This is the \emph{energy principle}. 
 
+This discussion is incomplete because it assumes that the eigenfunctions form
+a complete set. In general a continuous spectrum, not associated with
+square-integrable modes, is also present. However, a necessary and sufficient
+condition for instability is that $W\left[\disp\right] < 0$ as described
+above. To see this, consider (twice) the energy of the perturbation,
+\begin{align}
+	\frac{\diffd}{\diffd t} \left( \langle \dot{\disp},\dot{\disp}\rangle +
+	2W\left[\disp\right]\right) &= \langle \ddot{\disp},\dot{\disp}\rangle +
+	\langle \dot{\disp}, \ddot{\disp}\rangle - \langle \dot{\disp},
+	\mathcal{F} \disp \rangle - \langle \disp, \mathcal{F}\dot{\disp}\rangle
+	\\
+								&= \langle \mathcal{F}\disp, \dot{\disp}\rangle
+								+ \langle \dot{\disp},\mathcal{F}\disp\rangle
+								- \langle \dot{\disp}, \mathcal{F}\disp
+								\rangle - \langle \mathcal{F} \disp,
+								\dot{\disp}\rangle \\
+								&= 0
+\end{align}
+Therefore
+\begin{equation}
+	\langle \dot{\disp},\dot{\disp}\rangle + 2W\left[\disp\right] = 2E =
+	\text{const.}
+\end{equation}
+where $E$ is determined by the initial data $\disp_0$ and $\dot{\disp}_0$. If
+$W$ is positive definite then the equilibrium is stable because $\disp$ is
+limited by the constraint $W\left[\disp\right] \le E$. 
+
+Suppose that a (real) trial displacement $\symbf{\eta}$ can be found for which
+\begin{equation}
+	\frac{2W\left[\symbf{\eta}\right]}{\langle \symbf{\eta},
+	\symbf{\eta}\rangle} = -\gamma^2
+\end{equation}
+where $\gamma >0$. Choose initial conditions $\disp_0 = \symbf{\eta}$ and
+$\dot{\disp}_0 = \gamma \symbf{\eta}$. Then
+\begin{equation}
+	\langle \dot{\disp},\dot{\disp}\rangle + 2W\left[\disp\right] = 2E = 0
+\end{equation}
+Let
+\begin{equation}
+	a(t) = \ln \left( \frac{\langle \disp, \disp \rangle}{\langle
+	\symbf{\eta}, \symbf{\eta}\rangle}\right)
+\end{equation}
+so that
+\begin{equation}
+	\frac{\diffd a}{\diffd t} = \frac{2\langle \disp,
+	\dot{\disp}\rangle}{\langle \disp, \disp \rangle}
+\end{equation}
+and
+\begin{align}
+	\frac{\diffd^2 a}{\diffd t^2}
+	&= \frac{2(\langle \disp,
+		\mathcal{F}\disp\rangle + \langle
+		\dot{\disp},\dot{\disp}\rangle)\langle\disp,\disp\rangle -
+	4\langle\disp,\dot{\disp}\rangle^2}{\langle \disp, \disp \rangle^2} \\
+	&= \frac{2(-2W\left[\disp\right]+ \langle
+		\dot{\disp},\dot{\disp}\rangle)\langle\disp,\disp\rangle -
+	4\langle\disp,\dot{\disp}\rangle^2}{\langle \disp, \disp \rangle^2} \\
+	&= \frac{4(\langle
+		\dot{\disp},\dot{\disp}\rangle\langle\disp,\disp\rangle -
+	\langle\disp,\dot{\disp}\rangle^2)}{\langle \disp, \disp \rangle^2} \\
+	&\ge 0
+\end{align}
+by the Cauchy-Schwarz inequality. Thus 
+\begin{align}
+	\frac{\diffd a}{\diffd t} &\ge \dot{a}_0 = 2\gamma \\
+	\implies a &\ge 2\gamma t + a_0 = 2 \gamma t
+\end{align}
+Therefore the disturbance with these initial conditions grows at least as fast
+as $\exp(\gamma t)$ and the equilibrium is unstable.
+
+\subsection{Spherically symmetric star}
+Consider the simplest model of a star which is spherically symmetric, and we
+neglect rotation and magnetic fields. Further, assume the star is in
+hydrostatic equilibrium so that $p(r)$ and $\rho(r)$ satisfy
+\begin{equation}
+	\frac{\diffd p}{\diffd r} = -\rho g
+\end{equation}
+with
+\begin{equation}
+	g(r) = \frac{\diffd \Phi}{\diffd r} = \frac{G}{r^2} \int_0^r \rho(r') 4\pi
+	r'^2 \, \diffd r'
+\end{equation}
+The stratification induced by gravity provides a non-uniform background for
+wave propagation. In this case the linearised equation of motion is
+\begin{equation}
+	\rho \frac{\partial^2 \disp}{\partial t^2} = -\rho \nabla \delta \flux -
+	\delta \rho \nabla \flux - \nabla \delta p
+\end{equation}
+with
+\begin{align}
+	\delta \rho &= -\nabla \cdot (\rho \disp) \\
+	\delta p &= -\gamma p \nabla \cdot \disp - \disp \cdot \nabla p \\
+	\nabla^2 \delta \Phi &= 4\pi G \delta \rho
+\end{align}
+For normal modes $\propto \exp(-i\omega t)$ the equation of motion becomes
+\begin{equation}
+	\rho \omega^2 \disp  = \rho \nabla \delta \flux +
+	\delta \rho \nabla \flux + \nabla \delta p
+\end{equation}
+Taking the dot product with $\disp^*$ and integrating over the volume $V$ of
+the star gives
+\begin{equation}
+	\omega^2 \int_V \rho \abs{\disp}^2 \, \diffd V = \int_V \disp^* \cdot
+	\left( \rho \nabla \delta \Phi + \delta \rho \nabla \Phi + \nabla \delta p
+	\right) \, \diffd V
+\end{equation}
+where $V$ is the volume of the star. At the surface $S = \partial V$ of the
+star, we assume that $\rho$ and $p$ vanish. Then $\delta p$ also vanishes on
+$S$ (assuming that $\disp$ and its derivatives are bounded). Integrate the
+$\delta p$ term by parts:
+\begin{align}
+	\int_V \disp^* \cdot \nabla \delta p \, \diffd V 
+	&= -\int_V (\nabla \cdot \disp)^* \delta p \, \diffd V \\
+	&= \int_V \frac{1}{\gamma p} (\delta p + \disp \cdot \nabla p)^* \delta p
+	\, \diffd V \\
+	&= \int_V \left[ \frac{\abs{\delta p}^2}{\gamma p} + \frac{1}{\gamma p}
+	(\disp^* \cdot \nabla p)(-\disp \cdot \nabla p - \gamma p \nabla \cdot
+	\disp)\right] \, \diffd V
+\end{align}
+The $\delta \rho$ term partially cancels with this:
+\begin{align}
+	\int_V \disp^* \cdot (\delta \rho \nabla \Phi) \, \diffd V 
+	&= \int_V (-\disp^* \cdot \nabla p) \frac{\delta \rho}{\rho} \, \diffd V \\
+	&= \int_V (\disp^* \cdot \nabla p)(\nabla \cdot \disp + \disp \cdot \nabla
+	\ln \rho) \, \diffd V
+\end{align}
+The $\delta \Phi$ can be transformed as in the previous section to give
+\begin{equation}
+	\int_V \rho \disp^* \cdot \nabla \delta \Phi \, \diffd V = -\int_\infty
+	\frac{\abs{\nabla \delta \Phi}^2}{4\pi G} \, \diffd V
+\end{equation}
+(integral over all space). Thus
+\begin{align}
+	\omega^2 \int_V \rho \abs{\disp}^2 \, \diffd V 
+	&= -\int_\infty
+	\frac{\abs{\nabla \delta \Phi}^2}{4\pi G} \, \diffd V + \int_V \left[ 
+	\frac{\abs{\delta p}^2}{\gamma p} -	(\disp^* \cdot \nabla
+	p)(\frac{1}{\gamma}\disp \cdot \nabla \ln p - \disp \cdot
+	\nabla \ln \rho)\right] \, \diffd V \\
+	&= -\int_\infty \frac{\abs{\nabla \delta \Phi}^2}{4\pi G} \, \diffd V +
+	\int_V \left( \frac{\abs{\delta p}^2}{\gamma p} + \rho N^2
+	\abs{\xi_r}^2\right) \, \diffd V
+\end{align}
+where $N(r)$ is the Brunt-V\"{a}is\"{a}l\"{a} frequency (or \emph{buoyancy
+frequency}) given by
+\begin{equation}
+	N^2 = g \left( \frac{1}{\gamma} \frac{\diffd \ln p}{\diffd r} -
+	\frac{\diffd \ln \rho}{\diffd r} \right) \propto g \frac{\diffd s}{\diffd
+	r}
+\end{equation}
+$N$ is the frequency of oscillation of a fluid element that is displaced
+vertically in a stably stratified atmosphere if it maintains pressure
+equilibrium with its surroundings. Stratification is stable if $s$ increases
+outwards. The expression
+\begin{equation}
+	\omega^2 \int_V \rho \abs{\disp}^2 \, \diffd V 
+	= -\int_\infty \frac{\abs{\nabla \delta \Phi}^2}{4\pi G} \, \diffd V +
+	\int_V \left( \frac{\abs{\delta p}^2}{\gamma p} + \rho N^2
+	\abs{\xi_r}^2\right) \, \diffd V
+\end{equation}
+satisfies the energy principle. There are three contributions to $\omega^2$:
+the self-gravitational term (destabilising), the acoustic term (stabilising)
+and the buoyancy term (stabilising if $N^2 > 0$). If $N^2 < 0$ for any
+interval of $r$, a trial displacement can be found such that $\omega^2 < 0$.
+This is donee by localising $\xi_r$ in that interval and arranging the other
+components of $\disp$ such that $\delta p = 0$. Therefore the star is unstable
+if $\partial s/\partial r < 0$ anywhere. This is \emph{Schwarzchild's
+criterion} for convective instability.
 
 
 

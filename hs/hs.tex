@@ -7,12 +7,15 @@
 
 \usetikzlibrary{shapes.misc, pgfplots.fillbetween}
 \renewcommand{\u}{\symbf{u}}
+\newcommand{\U}{\symbf{U}}
 \newcommand{\Ra}{\text{Ra}}
 \newcommand{\ReN}{\text{Re}}
 \newcommand{\zint}{\int_{z_1}^{z_2}}
+\newcommand{\veps}{\varepsilon}
 \renewcommand{\y}{\symbf{y}}
 \renewcommand{\L}{\mathcal{L}}
 \renewcommand{\k}{\symbf{k}}
+\renewcommand{\v}{\symbf{v}}
 
 \tikzset{cross/.style={cross out, draw=black, minimum
 size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
@@ -2529,4 +2532,256 @@ flowing fluid towards the boundary. This causes a large anomaly in the
 streamwise flow component. Streamwise rolls decay over a $\mathcal{O}(\ReN)$
 timescale, which gives $\mathcal{O}(\ReN^2)$ growth.
 
+\subsection{Orr-Sommerfeld operator is non-normal}
+The adjoint operator is dependent on the choice of the inner product. Recall
+$D \equiv \diffd/\diffd y$ and define the inner product here as
+\begin{align}
+	\langle \v_1, \v_2 \rangle &\equiv \int_{-1}^1 (D\v_1)^*(D\v_2) + k^2
+	\v_1^*\v_2 \, \diffd y \\
+							   &= \int_{-1}^1 \v_1^*\left[(k^2-D^2)\v_2\right]
+							   \, \diffd y
+\end{align}
+Hence we have
+\begin{align}
+	\langle \v_1, \L_{os}\v_2\rangle &= \int_{-1}^1 \v_1^*(k^2-D^2)\{
+		\frac{1}{D^2 -k^2} \left[ \frac{1}{\ReN} (D^2 -k^2)^2 - i\alpha
+	U(D^2-k^2) + i\alpha D^2 U\right]\}\v_2 \,\diffd y \\
+									 &= \langle \L_{os}^\dagger \v_1, \v_2
+									 \rangle
+\end{align}
+by definition of $\L_{os}^\dagger$. Hence the adjoint may be written
+\begin{equation}
+	\L_{os}^\dagger = 	\frac{1}{D^2 -k^2} \left[i\alpha
+	U(D^2-k^2) + 2i\alpha DUD+ \frac{1}{\ReN} (D^2 -k^2)^2 \right]
+\end{equation}
+It can be shown that $\langle \v_1, \L_{os}^\dagger \L_{os} \v_2 \rangle \ne
+\langle \v_1, \L_{os}\L_{os}^\dagger \v_2 \rangle$ for all $\v_1, \v_2$. Hence
+$\L_{os}$ is a non-normal operator, so we can expect energy growth even if the
+eigenvalues of $\L_{os}$ indicate damping.
+
+\subsection{Energy stability analysis}
+Consider the Navier-Stokes equations with a specified velocity boundary condition
+$\u = \U_b$ on $\partial V$. Suppose there is a steady basic flow $\U(\x)$.
+Consider disturbances to the basic state $\u = \U + \hat{\u}, p = P +
+\hat{p}$. The Navier-Stokes equations become
+\begin{align}
+	\nabla \cdot \hat{\u} &= 0 \\
+	\frac{\partial \hat{\u}}{\partial t} + \U \cdot \nabla \hat{\u} +
+	\hat{\u}\cdot\nabla \U + \nabla \hat{p} - \frac{1}{\ReN} \nabla^2 \hat{\u}
+						  &= - \hat{\u}\cdot\nabla \hat{\u} \label{eq:l13:1}\\
+		\implies \frac{\partial \hat{\u}}{\partial t} - \L
+	\hat{\u} &= -\hat{\u}\cdot\nabla \hat{\u} \label{eq:l13:2}
+\end{align}
+where $\L$ is defined by \eqref{eq:l13:1}. The boundary conditions on
+$\hat{\u}$ are $\hat{\u} = 0$ on $\partial V$. Using energy norm $\langle \u,
+\v \rangle = \int \u \cdot \v \, \diffd V$, apply to disturbance equation
+\eqref{eq:l13:2} by taking $\langle \hat{\u},\eqref{eq:l13:2}\rangle$ to get
+\begin{equation}
+	\frac{\partial}{\partial t} \langle \frac{1}{2}\hat{\u}^2\rangle  =
+	\langle \hat{\u}, \L\hat{\u}\rangle - \langle \hat{\u},
+	\hat{\u}\cdot\nabla\hat{\u} \rangle
+\end{equation}
+The last term vanishes since
+\begin{align}
+	\int \hat{\u} \cdot (\hat{\u}\cdot\nabla\hat{\u}) \, \diffd V 
+	&= \int \hat{\u}\cdot\nabla(\frac{1}{2}\hat{\u}^2) \, \diffd V \\
+	&= \int \nabla \cdot (\frac{1}{2}\hat{\u}^2 \hat{\u}) -
+\cancel{\frac{1}{2}\hat{\u}^2 \nabla \cdot \hat{\u}} \, \diffd V \\
+	&= \oint_{\partial V} \frac{1}{2} \hat{\u}^2 \hat{\u}\cdot\diffd \symbf{S}
+	= 0
+\end{align}
+		
+We now split the operator $\L$ into symmetric and anti-symmetric parts:
+\begin{equation}
+\frac{\partial}{\partial t} \langle \frac{1}{2}\hat{\u}^2 \rangle = \langle
+\hat{\u}, \frac{1}{2}(\L + \L^\dagger)\hat{\u}\rangle + \langle \hat{\u},
+\frac{1}{2}(\L-\L^\dagger)\hat{\u}\rangle
+\end{equation}
+Once again the last term vanishes since
+\begin{equation}
+	\langle \hat{\u}, \frac{1}{2}(\L-\L^\dagger)\hat{\u}\rangle = \frac{1}{2}
+	\langle \hat{\u}, \L \hat{\u} \rangle - \frac{1}{2}\langle \L \hat{\u},
+	\hat{\u} \rangle = 0
+\end{equation}
+by definition of the adjoint $\L^\dagger$ and symmetry of the inner product.
+Thus we have
+\begin{equation}
+	\frac{\partial}{\partial t} \langle \frac{1}{2}\hat{\u}^2 \rangle = \langle
+	\hat{\u}, \frac{1}{2}(\L + \L^\dagger)\hat{\u}\rangle
+\end{equation}
+Note that $\L + \L^\dagger$ is a self-adjoint operator:
+$(\L+\L^\dagger)^\dagger = \L^\dagger + \L$. Hence it is normal with real
+eigenvalues. For energy growth (LHS $> 0$) we need an eigenvalue of $\L +
+\L^\dagger$ to be positive. Recall, for linear instability, we need an
+eigenvalue of $\L$ to have a positive real part.
+
+Let $\ReN_E$ be the first Reynold's number for energy growth and
+$\ReN_L$ be the linear instability threshold. Then generically
+\begin{equation}
+	0 \le \ReN_E \le \ReN_L
+\end{equation}
+The first inequality is usually strict (Serrin, 1959) and the region $\ReN_E
+\le \ReN \le \ReN_L$ is the region where energy growth is possible without
+eigenvalue instability. 
+
+\begin{eg}
+	For Plane Couette Flow (PCF), $\ReN_E = 20.67$ and $\ReN_L = \infty$. For
+	$0 \le \ReN < \ReN_E$ no growth is possible at all, hence the basic flow
+	$\U$ is a global attractor: all initial conditions will decay back to the
+	basic flow.
+\end{eg}
+
+\begin{eg}
+	For a uniformly rotating flow, in the rotating frame the Navier-Stokes
+	equations are
+	\begin{equation}
+		\frac{\partial \u}{\partial t} + 2\symbf{\Omega} \times \u + \u \cdot
+		\nabla \u + \nabla p = \frac{1}{\ReN} \nabla^2 \u
+	\end{equation}
+	as well as $\nabla \cdot \u = 0$ and we use boundary condition $\u =
+	\symbf{0}$ on $\partial V$ which is the boundary of some region under
+	consideration (e.g. for an object in the uniformly rotating flow,
+	$\partial V$ is the objects surface). Energy stability analysis gives
+	\begin{equation}
+		\frac{\partial}{\partial t} \langle \frac{1}{2}\u^2\rangle =
+		-\frac{1}{\ReN} \langle \abs{\nabla \u}^2\rangle < 0
+	\end{equation}
+	so the flow is absolutely stable.
+\end{eg}
+
+\subsection{Time stepping to growth}
+The matrix/SVD approach to calculating transient growth is only really
+feasible for 1D or possibly 2D problems because of the size of the matrices. A
+better approach is a matrix-free method which is extendable to time-dependent
+problems, different norms, and \emph{adding non-linearity}.
+
+\subsubsection{Constrained optimisation (linear)}
+Consider the energy growth of small disturbances on top of a base flow
+$\u_{\text{lam}}$ by forming the Lagrangian
+\begin{align}
+	G &= G(\u, p, \lambda, \symbf{\nu}, \pi; T) \\
+	  &= \langle \frac{1}{2} \abs{\u(\x, T)}^2\rangle &&\text{objective
+	  functional}\\
+	  &+ \lambda(\x,t) \left[ \langle \frac{1}{2}\abs{\u(\x,0)}^2\rangle -1 \right]
+	  &&\text{initial amplitude condition} \\
+	  &+ \int_0^T \langle \symbf{\nu}(\x,t) \cdot \left[ \frac{\partial
+	  \u}{\partial t} + \u_{\text{lam}} \cdot \nabla \u + \u \cdot \nabla
+	  \u_{\text{lam}} + \nabla p - \frac{1}{\ReN} \nabla^2 \u \right] \rangle
+	\, \diffd t &&\text{satisfies NS equations} \\
+				&+ \int_0^T \langle \pi(\x,t) \nabla \cdot \u \rangle \,
+	\diffd t &&\text{satisfies incompressibility}
+\end{align}
+where $\langle \chi \rangle \equiv \int \chi \, \diffd V$. The first term is
+the energy functional to be optimisied, and the remaining terms enforce unit
+initial amplitude, Navier-Stokes, and incompressibility via Lagrange
+multipliers $\lambda, \symbf{\nu}, \pi$ respectively. The Euler-Lagrange
+equations to `stationarise' $G$ follow by expanding perturbations $\u
++\delta\u, p + \delta p$, etc. and requiring the \emph{first variations}
+$\frac{\delta G}{\delta \u}, \frac{\delta G}{\delta p}$, etc. vanish. For
+variations of $p$ we have
+\begin{align}
+	0 = \int_0^T \langle \frac{\delta G}{\delta p} \delta p \rangle \, \diffd
+	t  &\equiv \int_0^T \langle \symbf{\nu}\cdot\nabla \delta p\rangle \,
+	\diffd t \\
+	   &= \int_0^T \langle \nabla \cdot (\symbf{\nu} p) - \delta p \nabla
+	   \cdot \symbf{\nu} \rangle \, \diffd t \\
+	   &= \int_0^T \oint \symbf{\nu} \delta p \cdot \diffd \symbf{S} - \langle
+	   \delta p \nabla \cdot \symbf{\nu} \rangle \, \diffd t
+\end{align}
+Hence we require $\symbf{\nu} = \symbf{0}$ on $\partial V$ and $\nabla \cdot
+\symbf{\nu} = 0$ throughout $V$. Now consider variations of $\u$ (with
+$\delta \u = \symbf{0}$ on $\partial V$)
+\begin{align}
+	0 = \int_0^T \langle \frac{\delta G}{\delta \u} \cdot \delta \u\rangle \,
+	\diffd t &= \langle \u(\x, T) \delta \u(\x, T)\rangle + \lambda \langle
+	\u(\x, 0) \cdot \delta \u(\x, 0)\rangle + \int_0^T \langle \pi \nabla
+	\cdot \delta \u\rangle \, \diffd t \\
+			 &+ \int_0^T \langle \symbf{\nu}\cdot\left[\frac{\partial \delta
+			 \u}{\partial t} + \u_{\text{lam}} \cdot \nabla \delta \u + \delta
+			 \u \cdot \nabla \u_{\text{lam}} - \frac{1}{\ReN} \nabla^2 \delta
+			 \u \right] \rangle \, \diffd t \\
+			 &= \langle \delta \u(\x,T) \cdot\left[ \u(\x, T) +
+			 \symbf{\nu}(\x, T) \right] \rangle + \langle \delta \u(\x,0)
+			 \cdot \left[ \lambda \u(\x, 0) - \symbf{\nu}(\x, 0)\right]
+			 \rangle \\
+			 &+ \int_0^T \langle \delta \u \cdot \left[ -\frac{\partial
+			 \symbf{\nu}}{\partial t} - \u_{\text{lam}} \cdot \nabla
+			 \symbf{\nu} + \symbf{\nu} \cdot (\nabla \u_{\text{lam}})^T -
+			 \nabla \pi - \frac{1}{\ReN} \nabla^2 \symbf{\nu} \right] \rangle
+			 \, \diffd t
+\end{align}
+
+The expression $\left[\dots\right]$ in the final integral is called the
+\emph{dual (linearised) Navier-Stokes equation}. Hence for $\frac{\delta
+G}{\delta \u} = 0$ we have
+\begin{align}
+	\u(\x, T) + \symbf{\nu}(\x, T) &= 0 \label{eq:l13:3} \\
+	\lambda \u(\x, 0) - \symbf{\nu}(\x, 0) &= 0 \label{eq:l13:4}\\
+	\frac{\partial \symbf{\nu}}{\partial t} + \u_{\text{lam}} \cdot \nabla
+	\symbf{\nu} - \symbf{\nu} \cdot (\nabla \u_{\text{lam}})^T + \nabla \pi +
+	\frac{1}{\ReN} \nabla^2 \symbf{\nu} &= 0 \hspace{1em}\forall t \in
+	\left[0,T\right] \label{eq:l13:5}
+\end{align}
+These together with equations imposed by the Lagrange multipliers must all be
+solved. The system of equations are solved iteratively as follows.
+\begin{enumerate}
+	\item Choose $\u^{(0)}(\x, 0)$ such that 
+		\begin{equation}
+			\langle \frac{1}{2}\abs{\u^{(0)}(\x, 0)}^2\rangle = 1
+		\end{equation}
+		Then construct $\u^{(n+1)}(\x,0)$ from $\u^{(n)}(\x,0)$ as follows.
+	\item Solve the linearised Navier-Stokes equations to time step from $t=0$
+		to $t=T$ to get $\u^{(n)}(\x,0)$.
+	\item Use constraint \eqref{eq:l13:3} to find $\symbf{\nu}^{(n)}(\x,T) =
+		-\u^{(n)}(\x, T)$.
+	\item Solve the lineariseed dual Navier-Stokes equations to time step
+		backwards from $t=T$ to $t=0$ to get $\symbf{\nu}^{(n)}(\x,0)$. Note
+		time-stepping backwards is natural as $\symbf{\nu}$ satisfies an
+		`anti-diffusion' equation of the form $\symbf{\nu}_t \sim -\nabla^2
+		\symbf{\nu}$.
+	\item Use the result (prior to imposing \eqref{eq:l13:4})
+		\begin{equation}
+			\frac{\partial G}{\partial \delta \u(\x,0)} = \lambda
+			\u^{(n)}(\x,0) - \symbf{\nu}(\x, 0)
+		\end{equation}
+		to step $\u$ to increase $G$. This may be achieved via \emph{steepest
+		ascent}:
+		\begin{equation}
+			\u^{(n+1)}(\x,0) = \u^{(n)}(\x,0) + \veps \left[ \frac{\delta
+			G}{\delta \u^{(n)}(\x,0)}\right]
+		\end{equation}
+		i.e. take a small step $\veps$ in the direction where $G$ increases.
+		Then
+		\begin{equation}
+			\u^{(n+1)}(\x,0) = \u^{(n)}(\x,0) + \veps(\lambda \u^{(n)}(\x,0) -
+			\symbf{\nu}^{(n)}(\x,0))
+		\end{equation}
+		with $\lambda$ chosen such that 
+		\begin{equation}
+			 1 = \frac{1}{2}\langle \abs{\u^{(n+1)}(\x,0)}^2\rangle
+		 \end{equation}
+		 Here, $\veps$ is a small adjustable stepping parameter.
+\end{enumerate}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) node {$\u^{(n)}(\x,0)$};
+		\draw[thick,->] (1, 0) -- (9, 0) node[midway,below] {time-step
+		linearised NS forwards};
+		\draw (1.5, 0) node[above] {$t=0$};
+		\draw (8.5, 0) node[above] {$t=T$};
+		\draw (10, 0) node {$\u^{(n)}(\x,T)$};
+		\draw[thick,->] (10, -0.5) -- (10, -2.5) node[midway,right] {use \eqref{eq:l13:3}};
+		\draw (10, -3) node {$\symbf{\nu}^{(n)}(\x, T)$};
+		\draw[thick,->] (9, -3) -- (1, -3) node[midway, below] {time-step dual
+		NS backwards};
+		\draw (8.5, -3) node[above] {$t=T$};
+		\draw (1.5, -3) node[above] {$t=0$};
+		\draw (0, -3) node {$\symbf{\nu}^{(n)}(\x, 0)$};
+		\draw[thick,->] (0, -2.5) -- (0, -0.5);
+		\draw (0, -1) node[left] {steepest ascent};
+		\draw (0, -1.5) node[left] {on $\u^{(n)}(\x,0)$ to};
+		\draw (0, -2) node[left] {obtain $\u^{(n+1)}(\x,0)$};
+	\end{tikzpicture}
+\end{center}
 \end{document}
