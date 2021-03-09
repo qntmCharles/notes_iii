@@ -2401,7 +2401,7 @@ Consider temperature-concentration profiles:
 A parcel of melt sea ice is cold and dense so descends ($1 \to 2$), losing heat and
 salinity. The parcel rapidly thermally equilibriates ($2 \to 3$) to the liquidus in the
 mushy layer, as thermal diffusion is fast. In contrast, diffusion of solute is
-slow so the ceontration does not reach equilibrium. Salt must dissolve ice
+slow so the concentration does not reach equilibrium. Salt must dissolve ice
 to reach equilibrium. Note that
 \begin{equation}
 	\frac{\partial \phi}{\partial t} = -\frac{1}{\C} \frac{\diffD
@@ -2467,11 +2467,12 @@ We choose $c = \mu_f(1-\phi)^2/\Pi$ to recover Darcy's law. Then
 \begin{equation}
 	(1-\phi) (\u_f - \u_s) = -\frac{\Pi}{\mu_f}\left[\nabla p + \rho_f
 	\symbf{g}\right]
+	\label{eq:darcy}
 \end{equation}
 describes deformation of the solid matrix. Note that the fluid and solid
 matrix jointly support mechanical load. Consider the total stress
 \begin{align}
-	\symsf{\sigma} &= \phi \symsf{\sigma}_s + (1-\phi)\symsf{\phi}_f \\
+	\symsf{\sigma} &= \phi \symsf{\sigma}_s + (1-\phi)\symsf{\sigma}_f \\
 				   &= \phi \symsf{\sigma}_s - (1-\phi)p \symsf{I} \\
 				   &= \phi(\symsf{\sigma}_s + p\symsf{I}) - p \symsf{I}
 \end{align}
@@ -2503,7 +2504,7 @@ Then
 	\nabla \cdot \symsf{\sigma} &= \nabla \cdot \symsf{\sigma}_e - \nabla p
 	\\
 								&= -\frac{E}{\phi_0}\nabla \phi - \nabla p \\
-								&= \overline{\rho}\symbf{g}
+								&= \overline{\rho}\symbf{g} \label{eq:l14:1}
 \end{align}
 
 \paragraph{Applied load.} Consider a stress $-\symsf{\sigma}_L$ applied to the
@@ -2516,7 +2517,204 @@ Rearranging for $\phi$ we have
 	\phi = \phi_0\left(1+\frac{\symsf{\sigma}_L}{E}\right)
 \end{equation}
 
+\subsection{Static compaction}
+Consider a model applicable to lake/sea floor sediments in which a static
+fluid flow compacts a porous medium due to pressure. No fluid flow implies
+pore pressure is hydrostatic
+\begin{equation}
+	\frac{\partial p}{\partial z} = -\rho_f g
+\end{equation}
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-1.5,4) -- (-1.5, 0) -- (1.5, 0) -- (1.5, 4);
+		\draw[blue,smooth] plot[domain=-1.5:1.5] ({\x},{4+0.1*sin(4*2*pi/3*deg(\x))});
+		\draw[dashed] (-1.5, 2) -- (1.5, 2) node[right] {$z=h$};
+		\draw (1.5, 0) node[right] {$z=0$};
+		\draw (1.5, 1) node[right] {porous medium};
+		\draw (1.5, 3) node[right] {fluid};
+		\draw[red,smooth] plot[tension=0.5] coordinates {(-0.5, 2) (-0.4, 1.5) (0, 0.5) (0.5, 0)};
+		\draw[red] (0.5, 1) node {$\phi(z)$};
+	\end{tikzpicture}
+\end{center}
+Using the poroelastic linear model \eqref{eq:l14:1} gives
+\begin{align}
+	-\frac{E}{\phi_0}\frac{\partial \phi}{\partial z} - \frac{\partial
+	p}{\partial z} &= \left[ \phi \rho_s + (1-\phi)\rho_f\right] g \\
+	\implies -\frac{E}{\phi_0}\frac{\partial \phi}{\partial z} &= \phi(\rho_s
+	\rho_f) g
+\end{align}
+Requiring $\phi(h) = \phi_0$, i.e. a stress free upper surface, gives
+\begin{equation}
+	\phi = \phi_0 \exp\left[\frac{\phi_0 \Delta \rho g }{E} (h-z)\right]
+\end{equation}
+There is evidently a natural compaction length $\delta$ given by
+\begin{equation}
+	\delta = \frac{E}{\phi_0 \Delta \rho g}
+\end{equation}
 
+\subsection{Dynamic compaction}
+Now consider compaction with a fluid flux $Q$ in the $-\symbf{\hat{z}}$
+direction. In this case $\phi$ may be time-dependent.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-1.5,4) -- (-1.5, 0) -- (1.5, 0) -- (1.5, 4);
+		\draw[blue,smooth] plot[domain=-1.5:1.5] ({\x},{4+0.1*sin(4*2*pi/3*deg(\x))});
+		\draw[dashed] (-1.5, 2) -- (1.5, 2) node[right] {$z=h$};
+		\draw (1.5, 0) node[right] {$z=0$};
+		\draw (1.5, 1) node[right] {porous medium};
+		\draw (1.5, 3) node[right] {fluid};
+		\draw[red,smooth] plot[tension=0.5] coordinates {(-0.5, 2) (-0.4, 1.5) (0, 0.5) (0.5, 0)};
+		\draw[red] (0.5, 1) node {$\phi(z,t)$};
+		\draw[thick,->] (0, 0.2) -- (0, -0.8) node[right] {$Q$};
+	\end{tikzpicture}
+\end{center}
+Conservation of mass equations are
+\begin{align}
+	\phi_t + (\phi w_s)_z &= 0 \label{eq:l14:3} \\
+	(1-\phi)_t + \left[(1-\phi)w_f\right]_z &= 0
+\end{align}
+Combining these equations and integrating gives the total mass flux, hence we
+have
+\begin{equation}
+	\phi w_s + (1-\phi)w_f = -Q
+	\label{eq:l14:2}
+\end{equation}
+The poroelastic version of Darcy's law \eqref{eq:darcy} gives
+\begin{equation}
+	(1-\phi)(w_f - w_s) = -\frac{\pi}{\mu_f} (\frac{\partial p}{\partial z} +
+	\rho_f g) = -(Q+w_s)
+\end{equation}
+where the last equality follows from \eqref{eq:l14:2}. Substituting into
+conservation of mass in the solid \eqref{eq:l14:3} we find
+\begin{equation}
+	\frac{\partial \phi}{\partial t} - Q\frac{\partial \phi}{\partial z} =
+	\frac{\partial}{\partial z} \left[ \frac{\phi \pi}{\mu_f} \left(
+	\frac{E}{\phi_0} \frac{\partial \phi}{\partial z} + \phi \Delta \rho
+	g\right) \right]
+\end{equation}
+Note $\partial_t = Q = 0$ recovers the static result. Steady state compaction
+$\phi_t = 0, w_s = 0$ gives
+\begin{align}
+	Q &= \frac{\pi}{\mu_f} \left[ \frac{E}{\phi_0}\frac{\partial \phi}{\partial
+	z} + \phi \Delta \rho g\right] \\
+	\phi &= \frac{\mu_f Q \phi_0}{\pi E} \delta
+	\left(1-e^{(h-z)/\delta}\right) + \phi_0 e^{(h-z)/\delta} \\
+		 &\approx \phi_0 + \frac{\mu Q \phi_0}{\pi E} (h-z) \hspace{1em}
+		 \text{for}\,\,\, h \ll \delta
+\end{align}
 
+\subsection{Pore-pressure variations in a confined aquifer}
+Consider a confined aquifer with large lateral length and depth $h(x,t) + H$
+where the perturbation height $h$ is posed as being due to pressure variation
+in the porous medium.  We consider the influence of depth variations on a
+poroelastic medium constituting the aquifer. The problem is relevant to solid
+earth tides and how pressure is communicated subglacially. Take solid fraction
+\begin{equation}
+	\phi = \Phi(x,t) \exp \left[ \frac{\delta \rho g \phi_0}{E} (h+H-z)\right]
+\end{equation}
+where $\Phi(x,t)$ is the solid fraction at the top of the aquifer. If
+\begin{equation}
+	h + H \ll \frac{E}{\phi_0 \Delta \rho g}
+\end{equation}
+then we may neglect vertical variations and linearise $\phi(x,z,t) \approx
+\Phi(x,t)$. Since over long lateral length scales the fluid velocity
+dominates $u_f \gg u_s$, we have
+\begin{equation}
+	\int_0^{h+H} \phi \, \diffd z = \text{const.} \implies (h+H)\Phi = H\Phi_0
+\end{equation}
+from local solid mass conservation, where $\Phi_0$ is the reference solid
+fraction. Now horizontal stress balance gives
+\begin{align}
+	\nabla \cdot \symsf{\sigma}_e \cdot \hat{\symbf{x}} - \frac{\partial
+	p}{\partial x} &= 0 \\
+	\implies -\frac{E}{\phi_0}\frac{\partial \phi}{\partial x} = \frac{\partial
+	p}{\partial x}
+\end{align}
+Consequently the modified Darcy's law becomes
+\begin{equation}
+	(1-\phi)u_f \approx \frac{\pi E}{\mu_f \phi_0} \frac{\partial
+	\phi}{\partial x} = -\frac{\pi E}{\mu_f \phi_0} \frac{H}{(h+H)^2}
+	\frac{\partial h}{\partial x}
+\end{equation}
+Local fluid mass conservation is
+\begin{align}
+	\frac{\partial}{\partial t} \left[(h+H)(1-\phi)\right] +
+	\frac{\partial}{\partial x} \left[ (h+H)(1-\phi)u_f\right] &= 0 \\
+	\implies \frac{\partial h}{\partial t} = \frac{\partial}{\partial x}
+	\left[\frac{\pi E}{\mu_f} \frac{H}{H+h}\frac{\partial h}{\partial x}
+	\right]
+\end{align}
+but for typical values deformation is small, $h \ll H$, hence
+\begin{equation}
+	\frac{\partial h}{\partial t} \approx \frac{\pi E}{\mu_f} \frac{\partial^2
+	h}{\partial x^2}\label{eq:l14:4}
+\end{equation}
+Stress balance at the top surface is
+\begin{align}
+	-p + \hat{\symbf{z}}\cdot\symsf{\sigma}_e \cdot \hat{\symbf{z}} &= -p_0 \\
+	-p + E\frac{\phi_0-\phi}{\phi_0} &= -p_0 \\
+	p-p_0 &= E\frac{\phi_0-\phi}{\phi_0} = E\frac{h}{H}\label{eq:l14:5}
+\end{align}
+where $p_0$ is the \emph{overburden pressure}. Combining \eqref{eq:l14:4} and
+\eqref{eq:l14:5} gives
+\begin{equation}
+	\frac{\partial p}{\partial t} = \frac{\pi E}{\mu_f} \frac{\partial^2
+	p}{\partial x^2}
+\end{equation}
+
+\section{Terrestrial ice sheets}
+In this section we consider ice sheets lying over land (e.g. Greenland). Ice
+sheets are fed by snowfall at high latitudes and are terminated on land by
+surface melting/ablation. They flow as a viscous current on timescales longer
+than months.
+
+\subsection{Two dimensional model}
+Consider a two dimensional model of an ice sheet with a uniform (flat)
+bedrock. We consider a region between the \emph{ice divide} $x=0$ where ice
+separates and the \emph{nose} $x=x_N$ where the ice sheet terminates.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.6]
+		\draw[thick] (0,0) -- (5, 0) node[right] {$x$};
+		\draw[blue,smooth] plot coordinates {(0, 1) (2, 0.9) (3, 0.7) (3.7,
+		0.4) (4, 0)};
+		\draw[dashed] (0,0) -- (0, 1.5);
+		\draw[red,dashed] (3,0) -- (3, 1.5);
+		\draw[red, smooth] plot[tension=0.8] coordinates {(3.1, 0) (3.25, 0.3) (3.3, 0.6)};
+		\draw[red] (3.1,0) node[below] {$u_b$};
+		\draw[red] (3.1, 0.7) node[right] {$u(x,z,t)$};
+		\draw (0,0) node[below] {$x=0$};
+		\draw (0,1.5) node[above] {ice divide};
+		\draw (4, 0) node[below] {$x=x_N$};
+		\draw[blue,snake it,->] (2, 2) -- (2, 1) node[midway,right] {$a$};
+		\draw[blue,snake it,->] (4.2, 0.2) -- (4.2, 1.2) node[midway,right] {$a$};
+		\draw[dashed] (0, 0.8) -- (5, 0.8) node[right] {$h=h_s$};
+	\end{tikzpicture}
+\end{center}
+
+We suppose there is an accumulation/ablation rate $a=a(x,t,h)$ (consider only
+$a_N < 0$) which is positive above the \emph{snow line} $h = h_s$ and negative
+below it. The governing equation for the ice sheet depth $h$ is
+\begin{equation}
+	\frac{\partial h}{\partial t} + \frac{\partial q}{\partial x} = a
+\end{equation}
+where $q$ is the mass flux and we assume it is given by
+\begin{equation}
+	q = -\frac{\rho g}{3\mu} h^3 \frac{\partial h}{\partial x}
+\end{equation}
+as for a gravity current. The boundary conditions are
+\begin{align}
+	q &= 0 \hspace{1em} \text{at}\,\,\, x=0 \\
+	q &= 0 \hspace{1em} \text{at}\,\,\, x=x_N \\
+	h &= 0 \hspace{1em} \text{at}\,\,\, x=x_N
+\end{align}
+
+Suppose the accumulation/ablate rate $a \sim A$ has characteristic amplitude.
+Let $h \sim h_s, t \sim h_s/A, x \sim \left(\frac{\rho g h_s^4}{3\mu
+A}\right)^{1/2}$. The dimensionless governing equation is then
+\begin{equation}
+	\frac{\partial h}{\partial t} = \frac{\partial}{\partial x} \left( h^3
+	\frac{\partial h}{\partial x}\right) + a
+\end{equation}
 
 \end{document}

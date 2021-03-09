@@ -1884,7 +1884,7 @@ equations). We have
 	(v, \eta) \begin{pmatrix} \dot{v} \\ \dot{\eta} \end{pmatrix} 
 	= (v, \eta) L \begin{pmatrix} v \\ \eta \end{pmatrix}
 \end{equation}
-as before. Thus the non-linear terms satisfy
+as before. Thus the nonlinear terms satisfy
 \begin{equation}
 	(v, \eta) N(v, \eta) = 0 = v(\eta^2) + \eta(-v\eta)
 \end{equation}
@@ -2784,4 +2784,267 @@ solved. The system of equations are solved iteratively as follows.
 		\draw (0, -2) node[left] {obtain $\u^{(n+1)}(\x,0)$};
 	\end{tikzpicture}
 \end{center}
+
+\paragraph{Application.}
+Consider flow through a rapid pipe expansion. The flow has a parabolic profile
+typical of pipe flow upstream and far downstream of the expansion inlet. Noise
+is introduced at the inlet A. Transient growth can mean this noise is
+magnified significantly at B but ultimately decays downstream at C if linearly
+stable. See Cantwell et al., Phys Fluids, \textbf{22} (2010) 034101.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0, 0.5) -- (2, 0.5) -- (2, 1.5) -- (7, 1.5);
+		\draw (0, -0.5) -- (2, -0.5) -- (2, -1.5) -- (7, -1.5);
+		\draw[blue,dashed] (1, 0.5) -- (1, -0.5);
+		\draw[blue, smooth] plot[domain=-0.5:0.5] ({1.25-\x*\x},{\x});
+		\draw[blue,dashed] (7, 1.5) -- (7, -1.5);
+		\draw[blue, smooth] plot[domain=-1.5:1.5] ({7+0.3*1.5*1.5-0.3*\x*\x},{\x});
+		\draw[blue,smooth, ->] plot coordinates {(2, 0.5) (2.5, 0.65) (3, 1)};
+		\draw[blue,smooth] plot coordinates {(3, 1) (3.5, 1.3) (4, 1.45) (4.5, 1.5)};
+		\draw[blue,smooth, ->] plot coordinates {(2, -0.5) (2.5, -0.65) (3, -1)};
+		\draw[blue,smooth] plot coordinates {(3, -1) (3.5, -1.3) (4, -1.45) (4.5, -1.5)};
+		\draw[blue,rotate=40,->] (2.6, -0.8) [partial ellipse=-90:90:0.45 and 0.25];
+		\draw[blue,rotate=40,->] (2.6, -0.8) [partial ellipse=90:270:0.45 and 0.25];
+		\draw[blue,rotate=-40,<-] (2.6, 0.8) [partial ellipse=-90:90:0.45 and 0.25];
+		\draw[blue,rotate=-40,<-] (2.6, 0.8) [partial ellipse=90:270:0.45 and 0.25];
+		\draw[red,smooth] plot[domain=0:1] ({1.3+\x/2},{0.05*sin(deg(25*\x))});
+		\draw[red,smooth] plot[domain=0:1.5] ({4+\x/2},{0.5*sin(deg(15*\x))});
+		\draw[red,smooth] plot[domain=0:1] ({6+\x/2},{0.01*sin(deg(15*\x))});
+		\draw[red] (1.3+0.25,0) node[below] {A};
+		\draw[red] (4+0.425,-0.4) node[below] {B};
+		\draw[red] (6+0.25,0) node[below] {C};
+	\end{tikzpicture}
+\end{center}
+
+\paragraph{Comments.}
+\begin{itemize}
+	\item It is easy to change the objective functional in this method: all
+		difficulties lie in handling the governing equation rather than the
+		objective functional.
+	\item It is easy to handle a basic state $\u_{\text{lam}}(\x,t)$ which is
+		time dependent. The matrix approach assumes a steady basic state.
+	\item The variational approach can be extended to nonlinear disturbances
+		easily.
+\end{itemize}
+
+\subsubsection{Constrained optimisation (nonlinear)}
+Consider as an example the nonlinear system
+\begin{equation}
+	\frac{\diffd \x}{\diffd t} = \begin{pmatrix} -x + 10y \\
+	y(10e^{-x^1/100}-y)(y-1) \end{pmatrix} = \symbf{f}(\x)
+	\label{eq:l14:1}
+\end{equation}
+See Kerswell et al., Prog. Rep. Phys \textbf{77} (2014) 085901 for a more
+in-depth discussion. A phase portrait of this dynamical system may be plotted
+with sample trajectories as follows. Red points indicate a fixed point.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick,->] (-1, 0) -- (15, 0) node[right] {$x$};
+		\draw[thick,->] (0, -2) -- (0, 4) node[left] {$y$};
+		\draw[dashed, thick, purple,->] (-1, 2) -- (8, 2);
+		\draw[dashed, thick, purple] (8, 2) -- (12, 2);
+		\draw[dashed, thick, purple,<-] (12, 2) -- (15, 2);
+		\draw (10, 0) -- (10, -0.1) node[below] {$10$};
+		\draw (14, 0) -- (14, -0.1) node[below] {$\sim14$};
+		\draw[red,fill] (0,0) circle (0.05);
+		\draw[red] (0,0.2) node[left] {$L$};
+		\draw[red,fill] (10,2) circle (0.05);
+		\draw[red] (10, 2) node[below] {$S$};
+		\draw[red,fill] (14,3) circle (0.05);
+		\draw[red] (14, 3) node[left] {$T$};
+		\draw[blue,smooth,->] plot[tension=0.6] coordinates {(0, 1.1*2) (7,
+			1.13*2) (8.9,
+			1.2*2) (9.9, 1.34*2) (10.3, 1.47*2) (10.78,
+			1.6*2) (11.4, 1.75*2) (12, 1.86*2) (12.66, 1.91*2) (13.27, 1.9*2)
+			(13.8, 1.86*2) (14.2, 1.79*2) (14.54, 1.73*2) (14.77, 1.66*2)
+			(14.9, 1.61*2) (15, 1.56*2)};
+		\draw[blue,smooth,->] plot[tension=0.6] coordinates {(0, 1.03*2)
+			(8, 1.08*2) (10, 1.1*2) (10.6, 1.14*2) (10.99, 1.29*2) (11.45, 1.43*2)
+			(12.1, 1.58*2) (12.49, 1.64*2) (12.87, 1.67*2) (13.25, 1.69*2)
+			(13.6, 1.69*2) (13.9, 1.66*2) (14.1, 1.64*2) (14.34, 1.6*2)
+			(14.49, 1.57*2) (14.6, 1.54*2) (14.66, 1.52*2) (14.7, 1.49*2)
+			(14.7, 1.47*2) (14.66, 1.43*2) (14.56, 1.4*2) (14.45, 1.38*2)
+			(14.32, 1.37*2) (14.2, 1.36*2) (14.1, 1.36*2) (14.02, 1.37*2)
+			(13.96, 1.37*2)};
+		\draw[blue,smooth,->] plot[tension=0.6] coordinates {(5, 0.97*2)
+			(7, 0.95*2) (8.017, 0.878*2) (8.046, 0.749*2) (7.76, 0.539*2) (7.09, 0.287*2)
+			(6.64, 0.181*2) (5.63, 0.054*2)};
+		\draw[blue,smooth,->] plot[tension=0.6] coordinates {(9.41,
+			0.885*2) (9.34, 0.8475*2) (9.24, 0.798*2) (8.89, 0.656*2)
+			(8.28, 0.451*2) (7.39, 0.23*2) (6.86, 0.14*2)};
+		\draw[blue,smooth,->] plot[tension=0.6] coordinates {(3.373,
+			-0.5*2) (2.808, -0.15*2) (2.454, -0.055*2) (2.19, -0.021*2)
+			(1.97, -0.008*2)};
+		\draw[blue,smooth,->] plot[tension=0.6] coordinates {(3.34,
+			0.841*2) (3.76, 0.704*2) (3.99, 0.517*2) (4, 0.323*2) (3.85,
+			0.172*2) (3.6, 0.0812*2) (3.31, 0.036*2) (2.74, 0.006*2)};
+	\end{tikzpicture}
+\end{center}
+
+The fixed points are labelled $L$ for `laminar' state, $S$ for the saddle on
+the basin boundary, and $T$ for `turbulent' state. The basin of attraction of
+the fixed point $L$ is $y < 1$. Transient growth appears in a region close to
+the origin: consider a `zoomed in' view of the fixed point $L$. The
+trajectories temporarily increase distance from the origin, hence there is
+brief energy growth.
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.9]
+		\draw[thick] (-3, 0) -- (3,0);
+		\draw[thick] (0, -3) -- (0, 3);
+		\draw[red,dashed](-3, -1.3) -- (3, 1.3);
+		\draw[red,dashed] (-2.5, -3) -- (2.5, 3);
+		\draw[red] (2.5,3) node[right] {energy growth starts};
+		\draw[red] (3, 1.3) node[right] {energy growth stops};
+		\draw[blue,smooth,rotate=70,->] plot[domain=-1.8:-1.5] ({\x},{\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=-2.4:-2]
+		({\x},{0.7*0.7*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=-2.8:-2.4]
+		({\x},{0.55*0.55*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=-1.5:-0.5] ({\x},{\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=-2:-1]
+		({\x},{0.7*0.7*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=-2.4:-1.5]
+		({\x},{0.55*0.55*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70] plot[domain=-0.5:0.5] ({\x},{\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70] plot[domain=-1:1]
+		({\x},{0.7*0.7*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70] plot[domain=-1.5:1.5]
+		({\x},{0.55*0.55*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=1.8:1.5] ({\x},{\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=2.4:2]
+		({\x},{0.7*0.7*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=2.8:2.4]
+		({\x},{0.55*0.55*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=1.5:0.5] ({\x},{\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=2:1]
+		({\x},{0.7*0.7*\x*\x*\x-2*\x});
+		\draw[blue,smooth,rotate=70,->] plot[domain=2.4:1.5]
+		({\x},{0.55*0.55*\x*\x*\x-2*\x});
+	\end{tikzpicture}
+\end{center}
+
+The key question is how to identify the important perturbation of lowest
+ampltiude which triggers \emph{transition}, i.e. which puts the system in a
+different basin of attraction. The approach considered here is constrained
+nonlinear optimisation in the sense that we use the full Navier-Stokes
+equations as constraints. The growth function is then a function of $T$
+\emph{and} the initial energy $E_0$, since we can no longer assume it is
+infinitesimally small. New terms arise in the first variation, due to the
+non-linear term $\u \cdot \nabla \u$ in the Navier-Stokes equations:
+\begin{align}
+	\int_0^T \langle \frac{\delta G}{\delta \u} \cdot \delta \u \rangle \,
+	\diffd t &= \dots + \int_0^T \langle \symbf{\nu}\cdot\left[\delta \u \cdot
+	\nabla \u + \u \cdot \delta \u \right] \rangle \, \diffd t \\
+			 &= \dots + \int_0^T \langle \delta \u \cdot \left[ (\nabla \u)^T
+			 \cdot \symbf{\nu} - \u \cdot \nabla \symbf{\nu}\right]\rangle \,
+			 \diffd t
+\end{align}
+The dual Navier-Stokes equation is then
+\begin{equation}
+	-\frac{\partial \symbf{\nu}}{\partial t} + \left[ \nabla(\u +
+	\u_{\text{lam}})\right]^T \cdot \symbf{\nu} - (\u + \u_{\text{lam}})\cdot
+	\nabla \symbf{\nu} - \nabla \pi - \frac{1}{\ReN} \nabla^2 \symbf{\nu} = 0
+\end{equation}
+
+Notice the following:
+\begin{itemize}
+	\item We now need to integrate the \emph{full} Navier-Stokes equations
+		forward in time.
+	\item Dual Navier-Stokes remains linear in $\symbf{\nu}$ \emph{but} it now
+		depends on $\u$. A question of implementation is then whether to store
+		the velocity field, or recalculate on the fly.
+	\item $G$ depends on the initial energy $E_0$ as well as time $T$.
+\end{itemize}
+
+Returning to the example \eqref{eq:l14:1}, we have
+\begin{equation}
+	G = x^2(T) + y^2(T) -\lambda\left[E_0 -x^2(0) - y^2(0)\right] + \int_0^T
+	\symbf{\nu}(t) \cdot \left[ \frac{\diffd \x}{\diffd t} - \symbf{f}(\x) \right] \,
+	\diffd t
+\end{equation}
+Consider the $\symbf{\nu}\cdot\symbf{f}$ term:
+\begin{align}
+	-\symbf{\nu}\cdot\symbf{f} &= -\nu_1(-x+10y) - \nu_2
+	(y^2-y)(10e^{-x^2/100}-y) \\
+	\delta_\x (-\symbf{\nu}\cdot\symbf{f}) &= \nu_1 \delta x - 10\nu_1 \delta
+	y - \nu_2 (2y-1)\delta y(10e^{-x^2/100}-y) -
+	\nu_2(y^2-y)(-\frac{x}{5}e^{-x^2/100}\delta x - \delta y) \\
+	&= \delta \x \cdot \begin{pmatrix}
+		\nu_1 + \frac{x}{5}\nu_2 (y^2-y)e^{-x^2/100} \\
+		-10\nu_1 - \nu_2(2y-1)(10e^{-x^2/100}-y)+\nu_2(y^2-y)
+	\end{pmatrix}
+\end{align}
+Hence the Euler-Lagrange equations are
+\begin{align}
+	\frac{\delta G}{\delta \x} &= -\dot{\symbf{\nu}} + \begin{pmatrix} \nu_1 +
+		\frac{x}{5}\nu_2(y^2-y)e^{-x^2/100} \\ -10\nu_1 -
+	\nu_2(2y-1)(10e^{-x^2/100} -y)+\nu_2(y^2-y) \end{pmatrix} = 0\\
+	\frac{\delta G}{\delta \symbf{\nu}} &= \dot{\x} - \symbf{f}(\x) = 0 \\
+	\frac{\delta G}{\delta \x(T)} &=  2\x(T) + \symbf{\nu}(T) = 0 \\
+	\frac{\delta G}{\delta \x(0)} &= 2\lambda \x(0) - \symbf{\nu}(0) = 0
+\end{align}
+Note that for constant $E_0$ the initial conditions lie on a circle in the
+$(x,y)$ plane. Hence parametrise the initial conditions for fixed $E_0$ by
+angle $\theta$ from the $x$-axis. Choose $T=2$ (arbitrary, but illustrative
+choice).
+\begin{itemize}
+	\item For initial energy $E_0 = 10^{-8}$ we find $G$ very small, an
+		approximately linear picture (since small energy) and symmetry $\theta
+		\to \theta+\pi$.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick,->] (-0.1, 0) -- (5.2, 0) node[right] {$\theta/\pi$};
+				\draw[thick,->] (0,-0.1) -- (0, 3) node[left] {$G$};
+				\draw (0.1, 2.5) -- (-0.1, 2.5) node[left] {$0.04$};
+				\draw (1.25, 0.1) -- (1.25, -0.1) node[below] {$1/2$};
+				\draw (2.5, 0.1) -- (2.5, -0.1) node[below] {$1$};
+				\draw (3.75, 0.1) -- (3.75, -0.1) node[below] {$3/2$};
+				\draw (5, 0.1) -- (5, -0.1) node[below] {$2$};
+				\draw[red, smooth] plot[domain=0:5,samples=100]
+				({\x},{sin(4*pi/5*deg(\x)-25)+1.5});
+				\draw[dashed] (2.5, 0) -- (2.5, 3);
+			\end{tikzpicture}
+		\end{center}
+	\item Initial energy $E_0 = 0.9$. We now find asymmetry in $\theta$ and a
+		peak near $\theta = \pi/2$, indicating some preference in initial
+		conditions. $G$ is also slightly larger.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick,->] (-0.1, 0) -- (5.2, 0) node[right] {$\theta/\pi$};
+				\draw[thick,->] (0,-0.1) -- (0, 3) node[left] {$G$};
+				\draw (0.1, 2.5) -- (-0.1, 2.5) node[left] {$0.35$};
+				\draw (1.25, 0.1) -- (1.25, -0.1) node[below] {$1/2$};
+				\draw (2.5, 0.1) -- (2.5, -0.1) node[below] {$1$};
+				\draw (3.75, 0.1) -- (3.75, -0.1) node[below] {$3/2$};
+				\draw (5, 0.1) -- (5, -0.1) node[below] {$2$};
+				\draw[red,smooth] plot[domain=0:5,samples=100]
+				({\x},{0.3+2.2*exp(-(\x-1.25)*(\x-1.25)*10)});
+				\draw[dashed] (2.5, 0) -- (2.5, 3);
+			\end{tikzpicture}
+		\end{center}
+	\item Initial energy $E_0 = 1.0001$. A `minimal seed' is clearly
+		identified for transition, i.e. the first time an initial condition
+		exists which will move to another basin of attraction. Note that $G$
+		is significantly larger despite a small increase in $E_0$: this is
+		indicate of the fact the trajectory moves far from the origin,
+		approaching the $T$ fixed point and consequently the energy (distance
+		from origin) is much larger.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick,->] (-0.1, 0) -- (5.2, 0) node[right] {$\theta/\pi$};
+				\draw[thick,->] (0,-0.1) -- (0, 3) node[left] {$G$};
+				\draw (0.1, 2.5) -- (-0.1, 2.5) node[left] {$250$};
+				\draw (1.25, 0.1) -- (1.25, -0.1) node[below] {$1/2$};
+				\draw (2.5, 0.1) -- (2.5, -0.1) node[below] {$1$};
+				\draw (3.75, 0.1) -- (3.75, -0.1) node[below] {$3/2$};
+				\draw (5, 0.1) -- (5, -0.1) node[below] {$2$};
+				\draw[red,smooth] plot[domain=0:5,samples=500]
+				({\x},{2.5*exp(-(\x-1.25)*(\x-1.25)*500)});
+				\draw[dashed] (2.5, 0) -- (2.5, 3);
+			\end{tikzpicture}
+		\end{center}
+\end{itemize}
+
 \end{document}

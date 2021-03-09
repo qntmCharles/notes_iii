@@ -45,3 +45,6 @@
 \contentsline {subsection}{\numberline {6.7}Energy stability analysis}{37}{subsection.6.7}
 \contentsline {subsection}{\numberline {6.8}Time stepping to growth}{38}{subsection.6.8}
 \contentsline {subsubsection}{\numberline {6.8.1}Constrained optimisation (linear)}{39}{subsubsection.6.8.1}
+\contentsline {paragraph}{\nonumberline Application.}{40}{section*.25}
+\contentsline {paragraph}{\nonumberline Comments.}{41}{section*.26}
+\contentsline {subsubsection}{\numberline {6.8.2}Constrained optimisation (nonlinear)}{41}{subsubsection.6.8.2}

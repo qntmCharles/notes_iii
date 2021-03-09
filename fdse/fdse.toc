@@ -47,3 +47,8 @@
 \contentsline {paragraph}{\nonumberline Conservation of momentum.}{38}{section*.21}
 \contentsline {paragraph}{\nonumberline Poroelasticity.}{39}{section*.22}
 \contentsline {paragraph}{\nonumberline Applied load.}{39}{section*.23}
+\contentsline {subsection}{\numberline {9.2}Static compaction}{39}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Dynamic compaction}{40}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}Pore-pressure variations in a confined aquifer}{41}{subsection.9.4}
+\contentsline {section}{\numberline {10}Terrestrial ice sheets}{42}{section.10}
+\contentsline {subsection}{\numberline {10.1}Two dimensional model}{42}{subsection.10.1}
