@@ -3048,6 +3048,162 @@ components of $\disp$ such that $\delta p = 0$. Therefore the star is unstable
 if $\partial s/\partial r < 0$ anywhere. This is \emph{Schwarzchild's
 criterion} for convective instability.
 
+\subsection{Modes of an incompressible sphere}
+In this subsection $(r, \theta, \phi)$ are spherical polar coordinates.
+Analytical solutions can be obtained for a homogeneous incompressible `star'
+of mass $M$ and radius $R$ with density profile
+\begin{equation}
+	\rho = \left( \frac{3M}{4\pi R^3}\right) H(R-r)
+\end{equation}
+where $H$ is the Heaviside step function. For $r \le R$ we have
+\begin{equation}
+	g = \frac{GMr}{R^3}, \hspace{2em} p = \frac{3GM^2(R^2-r^2)}{8\pi R^6}
+\end{equation}
+For an incompressible fluid,
+\begin{align}
+	\nabla \cdot \disp &= 0 \\
+	\delta \rho = -\disp \cdot \nabla \rho &= \xi_r \left( \frac{3M}{4\pi
+	R^3}\right) \delta(r-R)
+\end{align}
+and
+\begin{equation}
+	\nabla^2 \delta \Phi = 4\pi G \delta \rho = \xi_r \left(
+	\frac{3GM}{R^3}\right)\delta(r-R)
+\end{equation}
+Here $\delta p$ is indeterminate and is independent of $\disp$. The linearised
+equation of motion is
+\begin{equation}
+	-\rho \omega^2 \disp = -\rho \nabla \delta \Phi - \nabla \delta p
+\end{equation}
+So we have potential flow where
+\begin{equation}
+	\disp = \nabla U, \hspace{2em} \nabla^2 U = 0 \,\,\, (r \le R)
+\end{equation}
+and $U$ satisfies
+\begin{equation}
+	-\rho \omega^2 U = - \rho \delta \Phi - \delta p
+\end{equation}
+Appropriate solutions of Laplace's equation which are regular at $r=0$ are the
+\emph{solid spherical harmonics} (with arbitrary normalisation)
+\begin{equation}
+	U = r^l Y_l^m(\theta,\phi)
+\end{equation}
+where $l$ and $m$ are integers with $l \ge \abs{m}$. From
+\begin{equation}
+	\nabla^2 \delta \Phi = \xi_r\left(\frac{3GM}{R^3}\right)\delta(r-R)
+\end{equation}
+we have
+\begin{equation}
+	\delta \Phi = \begin{cases}
+		Ar^lY_l^m & r < R \\
+		Br^{-l-1}Y_l^m & r > R
+	\end{cases}
+\end{equation}
+where $A$ and $B$ are constants to be determined. Matching conditions at $r=R$
+are
+\begin{equation}
+	\left[\delta \Phi\right]^+_- = 0, \hspace{2em} \left[ \frac{\partial
+	\delta \Phi}{\partial r} \right]^+_- = \xi_r \left(\frac{3GM}{R^3}\right)
+\end{equation}
+Thus
+\begin{align}
+	BR^{-l-1} - AR^l &= 0 \\
+	-(l+1)BR^{-l-2} -lAR^{l-1} &= lR^{l-1}\left(\frac{3GM}{R^3}\right) 
+\end{align}
+which has solution
+\begin{equation}
+	A = -\frac{l}{2l+1}\left(\frac{3GM}{R^3}\right), \hspace{2em} B =
+	AR^{2l+1}
+\end{equation}
+At $r=R$ the Lagrangian pressure perturbation should vanish:
+\begin{align}
+	\Delta p = \delta p + \disp \cdot \nabla p &= 0 \\
+	\implies\left(\frac{3M}{4\pi R^3}\right)\left[ \omega^2 R^l +
+	\frac{l}{2l+1}\left(\frac{3GM}{R^3}\right)R^l\right] -
+	\frac{3GM^2}{4\pi R^5}lR^{l-1} &= 0
+\end{align}
+Hence the frequency is
+\begin{align}
+	\omega^2 &= \left( l - \frac{3l}{2l+1}\right)\frac{GM}{R^3} \label{eq:l21:1}\\
+					  &= \frac{2l(l-1)}{2l+1}\frac{GM}{R^3}
+\end{align}
+
+This result was obtained by Lord Kelvin. Since $\omega^2 \ge 0$, the star is
+stable. Note that $l=0$ corresponds to $\disp = 0$ (trivial solution) and
+$l=1$ corresponds to $\disp = \text{const.}$ (translational mode of zero
+frequency). The remaining modes are non-trivial and are called \emph{$f$
+modes} (fundamental modes). They are surface gravity waves, related to ocean
+waves for which $\omega^2 = gk$. In expression \eqref{eq:l21:1} the first term
+in brackets derives from surface gravity and the second derives from
+self-gravity.
+
+\subsection{The plane-parallel atmosphere}
+The local dynamics of a stellar atmosphere can be studied in a Cartesian
+approximation. Take $\symbf{g} = -g\hat{\symbf{z}}$ to be constant. For
+hydrostatic equilibrium
+\begin{equation}
+	\frac{\diffd p}{\diffd z} = -\rho g
+\end{equation}
+
+\subsubsection{Isothermal atmosphere}
+Take $p = c_s^2 \rho$ in equilibrium, with $c_s$ constant:
+\begin{equation}
+	\rho = \rho_0 e^{-z/H}, \hspace{2em} p = p_0 e^{-z/H}
+\end{equation}
+where $H = c_s^2/g$ is the \emph{isothermal scale-height.} In this case the
+buoyancy frequency is
+\begin{align}
+	N^2 &= g \left(\frac{1}{\gamma}\frac{\diffd \ln p}{\diffd z} - \frac{\diffd
+	\ln \rho}{\diffd z} \right) \\
+		&= \left(1-\frac{1}{\gamma}\right) \frac{g}{H} \\
+		&= \text{const.}
+\end{align}
+Hence an isothermal atmosphere is
+\begin{itemize}
+	\item \emph{stably (subadiabatically)\footnote{
+		In adiabatic stratification the vertical temperature gradient is that of a
+		fluid parcel which does not gain or lose any heat to the environment.
+		In subadiabatic stratification the vertical temperature gradient (or
+		\emph{lapse rate}) is smaller than adiabatic.
+		} stratified} ($N^2 >
+		0$) if $\gamma > 1$
+	\item \emph{neutrally (adiabatically) stratified} ($N^2 = 0$) if $\gamma
+		= 1$
+\end{itemize}
+
+\subsubsection{Polytropic atmosphere}
+Take $p \propto \rho^{1+1/m}$ in equilibrium, where $m$ is a positive
+constant. In general $1+1/m \ne \gamma$. For hydrostatic equilibrium,
+\begin{equation}
+	\rho^{1/m} \frac{\diffd \rho}{\diffd z} \propto -\rho g \implies
+	\rho^{1/m} \propto -z
+\end{equation}
+if the top of the atmosphere is at $z=0$, with vacuum above. Let
+\begin{equation}
+	\rho = \rho_0 \left( -\frac{z}{H}\right)^m
+\end{equation}
+for $z < 0$, where $\rho_0$ and $H$ are constants. Then
+\begin{equation}
+	p = p_0 \left(-\frac{z}{H}\right)^{m+1}
+\end{equation}
+where
+\begin{equation}
+	p_0 = \frac{\rho_0 g H}{m+1}
+\end{equation}
+to satisfy $\diffd p/\diffd z = -\rho g$. In this case the buoyancy frequency
+is
+\begin{equation}
+	N^2 = \left(m - \frac{m+1}{\gamma} \right) \frac{g}{-z}
+\end{equation}
+A polytropic atmosphere is
+\begin{itemize}
+	\item \emph{stably (subadiabatically) stratified} ($N^2 > 0$) if $\gamma >
+		1+1/m$
+	\item \emph{neutrally (adiabatically) stratified} ($N^2 = 0$) if $\gamma =
+		1+1/m$
+	\item \emph{unstably (superadiabatically) stratified} ($N^2 < 0$) if
+		$\gamma < 1+1/m$
+\end{itemize}
 
 
 
