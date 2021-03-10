@@ -2207,8 +2207,8 @@ For ice, $k_s \approx 5 k_l$. Also note: growth of mushy layer scales as $b
 \propto \sqrt{\kappa t}$ which is constrained by the thermal field, \emph{not}
 diffusion of solute.
 
-\paragraph{`Ideal' mushy layer.} Take $\rho, c_p, k$ independent of phase. The
-conservation equations are then:
+\subsection{`Ideal' mushy layer} 
+Take $\rho, c_p, k$ independent of phase. The conservation equations are then:
 \begin{itemize}
 	\item Conservation of energy
 		\begin{equation}
@@ -2231,11 +2231,12 @@ conservation equations are then:
 		\end{equation}
 	\item Conservation of momentum (Darcy's law)
 		\begin{equation}
-			\u = -\frac{\Pi}{\mu} \left[ \nabla p - (\rho -
-			\rho_0)g\right]\label{eq:l11:4}
+			\u = -\frac{\Pi}{\mu} \left[ \nabla p + \rho \symbf{g}\right]\label{eq:l11:4}
 		\end{equation}
 		where $\Pi$ is now being used for permeability since $k$ is the
-		thermal conductivity.
+		thermal conductivity. Note care must be taken with the sign of
+		components of $\symbf{g}$: a `check' is that $\u = 0$ should recover
+		hydrostatic balance.
 \end{itemize}
 To supplement these conservation equations we have the requirement of phase
 equilibrium (constrained by the liquidus)
@@ -2248,7 +2249,7 @@ and the equation of state
 	(C-C_0)\right]\label{eq:l11:6}
 \end{equation}
 
-\paragraph{Heat capacity for a stagnant mushy layer}
+\subsection{Heat capacity for a stagnant mushy layer}
 Consider a mushy layer at rest $\u = 0$. Conservation of solute
 \eqref{eq:l11:2} gives
 \begin{align}
@@ -2332,7 +2333,8 @@ Non-dimensionalise the problem using scalings:
 	L \sim h, \hspace{2em} t \sim \frac{h^2 \Omega}{\kappa},\hspace{2em} u \sim
 	\frac{\kappa}{h\Omega},\hspace{2em} p \sim \beta^* \Delta C \rho_o g h
 \end{equation}
-where $\Omega = 1 + \S/\C$. \textcolor{red}{What is $\beta^*$???} The
+where $\Omega = 1 + \S/\C$. Here $\beta^* = \beta-m\alpha$ which follows from
+using $\Delta T = -m\Delta C$ to get $\Delta \rho = \rho_0 \beta^* \Delta C$. The
 governing equations are then
 \begin{align}
 	\frac{\partial \theta}{\partial t} + \u \cdot \nabla \theta &= \nabla^2
@@ -2344,7 +2346,8 @@ where the Rayleigh number $R_m$ in this case is
 	R_m = \frac{\rho_0 g \beta^* \Delta C \pi h}{\kappa \mu} \Omega
 \end{equation}
 The solution resembles the convection rolls seen in section~\ref{sec:conv},
-except the constant heat boundary means we now see only half of the rolls:
+except we now see only half of the rolls since the constant pressure boundary
+condition implies no tangential velocity component by Darcy's law.
 
 \begin{center}
 	\begin{tikzpicture}

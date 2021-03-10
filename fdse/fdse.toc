@@ -1,24 +1,24 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}
 \contentsline {section}{\numberline {2}Plate cooling}{2}{section.2}
 \contentsline {subsection}{\numberline {2.1}Thermal problem}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Ocean depth away from mid-ocean ridge}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.2}Ocean depth away from mid-ocean ridge}{5}{subsection.2.2}
 \contentsline {section}{\numberline {3}Natural convection}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}Static stability}{6}{subsection.3.1}
 \contentsline {paragraph}{\nonumberline Scaling analysis.}{6}{section*.5}
 \contentsline {subsection}{\numberline {3.2}Onset of convection}{7}{subsection.3.2}
-\contentsline {paragraph}{\nonumberline Non-dimensionalising.}{7}{section*.6}
+\contentsline {paragraph}{\nonumberline Non-dimensionalising.}{8}{section*.6}
 \contentsline {paragraph}{\nonumberline Boundary conditions.}{8}{section*.7}
 \contentsline {paragraph}{\nonumberline Normal modes.}{8}{section*.8}
 \contentsline {paragraph}{\nonumberline Marginal stability.}{9}{section*.9}
 \contentsline {subsection}{\numberline {3.3}High Rayleigh number convection}{10}{subsection.3.3}
-\contentsline {paragraph}{\nonumberline Boundary layer analysis.}{10}{section*.10}
-\contentsline {section}{\numberline {4}Solidification/melting}{11}{section.4}
-\contentsline {subsection}{\numberline {4.1}The Stefan condition}{11}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}1D solification from a cooled boundary}{12}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Quasi-steady approximation}{13}{subsubsection.4.2.1}
+\contentsline {paragraph}{\nonumberline Boundary layer analysis.}{11}{section*.10}
+\contentsline {section}{\numberline {4}Solidification/melting}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}The Stefan condition}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}1D solification from a cooled boundary}{13}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Quasi-steady approximation}{14}{subsubsection.4.2.1}
 \contentsline {subsection}{\numberline {4.3}Phase change and fluid flow}{14}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Solidification with vigorous convection}{15}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Earth's core}{15}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.5}Earth's core}{16}{subsection.4.5}
 \contentsline {section}{\numberline {5}Flows in porous media}{17}{section.5}
 \contentsline {subsection}{\numberline {5.1}Darcy's law}{18}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Porous gravity currents}{18}{subsection.5.2}
@@ -38,15 +38,15 @@
 \contentsline {subsection}{\numberline {8.1}Morphological instability}{33}{subsection.8.1}
 \contentsline {paragraph}{\nonumberline Global conservation of solute.}{33}{section*.16}
 \contentsline {paragraph}{\nonumberline Box model.}{34}{section*.17}
-\contentsline {paragraph}{\nonumberline `Ideal' mushy layer.}{35}{section*.18}
-\contentsline {paragraph}{\nonumberline Heat capacity for a stagnant mushy layer}{35}{section*.19}
-\contentsline {subsection}{\numberline {8.2}Convection in mushy layers}{36}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.2}`Ideal' mushy layer}{35}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Heat capacity for a stagnant mushy layer}{35}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Convection in mushy layers}{36}{subsection.8.4}
 \contentsline {section}{\numberline {9}Poroelasticity}{38}{section.9}
 \contentsline {subsection}{\numberline {9.1}Flows of two-phase mixtures}{38}{subsection.9.1}
-\contentsline {paragraph}{\nonumberline Conservation of mass.}{38}{section*.20}
-\contentsline {paragraph}{\nonumberline Conservation of momentum.}{38}{section*.21}
-\contentsline {paragraph}{\nonumberline Poroelasticity.}{39}{section*.22}
-\contentsline {paragraph}{\nonumberline Applied load.}{39}{section*.23}
+\contentsline {paragraph}{\nonumberline Conservation of mass.}{38}{section*.18}
+\contentsline {paragraph}{\nonumberline Conservation of momentum.}{38}{section*.19}
+\contentsline {paragraph}{\nonumberline Poroelasticity.}{39}{section*.20}
+\contentsline {paragraph}{\nonumberline Applied load.}{39}{section*.21}
 \contentsline {subsection}{\numberline {9.2}Static compaction}{39}{subsection.9.2}
 \contentsline {subsection}{\numberline {9.3}Dynamic compaction}{40}{subsection.9.3}
 \contentsline {subsection}{\numberline {9.4}Pore-pressure variations in a confined aquifer}{41}{subsection.9.4}

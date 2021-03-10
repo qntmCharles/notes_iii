@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  9 MAR 2021 17:11
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  10 MAR 2021 14:12
  restricted system commands enabled.
 **fdse.tex
 (./fdse.tex
@@ -3178,7 +3178,7 @@ fonts/otl/lmroman6-regular.luc) [1
 (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-bold.luc)
 (load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmrom
 an8-bold.luc)
-<earthquakes.png, id=198, 1697.34125pt x 900.36375pt>
+<earthquakes.png, id=208, 1697.34125pt x 900.36375pt>
 File: earthquakes.png Graphic file (type png)
  <use earthquakes.png>
 Package luatex.def Info: earthquakes.png used on input line 61.
@@ -3229,27 +3229,27 @@ nput line 1628.
 [25] [26
 Missing character: There is no ; (U+003B) in font nullfont!
 ] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
-[40] [41] [42]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2720.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2720.
+[40] [41] [42] [43]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2723.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2723.
  (./fdse.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2720.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2720.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2723.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2723.
 Package rerunfilecheck Info: File `fdse.out' has not changed.
-(rerunfilecheck)             Checksum: 42783B42434A4E762E72C3C81A2B284B;2538.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2720.
+(rerunfilecheck)             Checksum: B0C943CB1FE9AF3140AF52A208EB6740;2697.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2723.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54509 strings out of 494577
+ 54512 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 33478 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 3949 glue, 1 kern, 2 sub_mlist, 1335 attribute, 64 
-glue_spec, 1335 attribute_list, 1 write nodes
-   avail lists: 1:1,2:1495,3:708,4:136,5:307,6:2766,7:568,8:80,9:731,10:17,11:24
-9
- 56680 multiletter control sequences out of 65536+600000
- 127 fonts using 29024959 bytes
+ 33600 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 3963 glue, 1 kern, 2 sub_mlist, 1341 attribute, 64 
+glue_spec, 1341 attribute_list, 1 write nodes
+   avail lists: 1:1,2:1483,3:708,4:136,5:307,6:2836,7:717,8:80,9:731,10:17,11:25
+2
+ 56682 multiletter control sequences out of 65536+600000
+ 127 fonts using 29024359 bytes
  74i,19n,388p,8842b,1080s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/
 fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype/p
@@ -3265,10 +3265,10 @@ usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf
 lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb>
-Output written on fdse.pdf (42 pages, 2353117 bytes).
+Output written on fdse.pdf (43 pages, 2353434 bytes).
 
-PDF statistics: 579 PDF objects out of 1000 (max. 8388607)
- 479 compressed objects within 5 object streams
- 132 named destinations out of 1000 (max. 131072)
- 296 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 592 PDF objects out of 1000 (max. 8388607)
+ 491 compressed objects within 5 object streams
+ 133 named destinations out of 1000 (max. 131072)
+ 312 words of extra memory for PDF output out of 10000 (max. 10000000)
 
