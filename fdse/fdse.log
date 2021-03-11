@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  10 MAR 2021 14:12
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  11 MAR 2021 12:53
  restricted system commands enabled.
 **fdse.tex
 (./fdse.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.105 seconds
+luaotfload | main : initialization completed in 0.106 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3178,7 +3178,7 @@ fonts/otl/lmroman6-regular.luc) [1
 (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8-bold.luc)
 (load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmrom
 an8-bold.luc)
-<earthquakes.png, id=208, 1697.34125pt x 900.36375pt>
+<earthquakes.png, id=233, 1697.34125pt x 900.36375pt>
 File: earthquakes.png Graphic file (type png)
  <use earthquakes.png>
 Package luatex.def Info: earthquakes.png used on input line 61.
@@ -3229,27 +3229,27 @@ nput line 1628.
 [25] [26
 Missing character: There is no ; (U+003B) in font nullfont!
 ] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
-[40] [41] [42] [43]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2723.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2723.
+[40] [41] [42] [43] [44] [45] [46]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2928.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2928.
  (./fdse.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2723.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2723.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2928.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2928.
 Package rerunfilecheck Info: File `fdse.out' has not changed.
-(rerunfilecheck)             Checksum: B0C943CB1FE9AF3140AF52A208EB6740;2697.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2723.
+(rerunfilecheck)             Checksum: 8BB09B60FACFE8A4BBDEDC9DD1D30B80;3082.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2928.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54512 strings out of 494577
+ 54649 strings out of 494577
  100000,1648299 words of node,token memory allocated
- 33600 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 3963 glue, 1 kern, 2 sub_mlist, 1341 attribute, 64 
-glue_spec, 1341 attribute_list, 1 write nodes
-   avail lists: 1:1,2:1483,3:708,4:136,5:307,6:2836,7:717,8:80,9:731,10:17,11:25
-2
- 56682 multiletter control sequences out of 65536+600000
- 127 fonts using 29024359 bytes
+ 36203 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 4270 glue, 1 kern, 4 sub_mlist, 1453 attribute, 64 
+glue_spec, 1453 attribute_list, 1 write nodes
+   avail lists: 1:1,2:1839,3:706,4:136,5:309,6:2972,7:717,8:80,9:731,10:17,11:25
+8
+ 56802 multiletter control sequences out of 65536+600000
+ 127 fonts using 29024479 bytes
  74i,19n,388p,8842b,1080s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/
 fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype/p
@@ -3265,10 +3265,10 @@ usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf
 lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb>
-Output written on fdse.pdf (43 pages, 2353434 bytes).
+Output written on fdse.pdf (46 pages, 2368725 bytes).
 
-PDF statistics: 592 PDF objects out of 1000 (max. 8388607)
- 491 compressed objects within 5 object streams
- 133 named destinations out of 1000 (max. 131072)
- 312 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 641 PDF objects out of 1000 (max. 8388607)
+ 536 compressed objects within 6 object streams
+ 150 named destinations out of 1000 (max. 131072)
+ 352 words of extra memory for PDF output out of 10000 (max. 10000000)
 

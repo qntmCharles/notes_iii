@@ -1,5 +1,5 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}Plate cooling}{2}{section.2}
+\contentsline {section}{\numberline {2}Plate cooling}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Thermal problem}{3}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Ocean depth away from mid-ocean ridge}{5}{subsection.2.2}
 \contentsline {section}{\numberline {3}Natural convection}{6}{section.3}
@@ -50,5 +50,13 @@
 \contentsline {subsection}{\numberline {9.2}Static compaction}{39}{subsection.9.2}
 \contentsline {subsection}{\numberline {9.3}Dynamic compaction}{40}{subsection.9.3}
 \contentsline {subsection}{\numberline {9.4}Pore-pressure variations in a confined aquifer}{41}{subsection.9.4}
-\contentsline {section}{\numberline {10}Terrestrial ice sheets}{42}{section.10}
-\contentsline {subsection}{\numberline {10.1}Two dimensional model}{42}{subsection.10.1}
+\contentsline {section}{\numberline {10}Ice sheets}{42}{section.10}
+\contentsline {subsection}{\numberline {10.1}Terrestrial ice sheets}{42}{subsection.10.1}
+\contentsline {subsubsection}{\numberline {10.1.1}Two dimensional model}{42}{subsubsection.10.1.1}
+\contentsline {subsubsection}{\numberline {10.1.2}Dynamics near the front}{43}{subsubsection.10.1.2}
+\contentsline {subsection}{\numberline {10.2}Marine ice sheets}{44}{subsection.10.2}
+\contentsline {subsubsection}{\numberline {10.2.1}Ice shelf height}{44}{subsubsection.10.2.1}
+\contentsline {subsubsection}{\numberline {10.2.2}Governing equations}{44}{subsubsection.10.2.2}
+\contentsline {paragraph}{\nonumberline Stress balances.}{44}{section*.22}
+\contentsline {paragraph}{\nonumberline Conservation of mass.}{45}{section*.23}
+\contentsline {paragraph}{\nonumberline Boundary conditions.}{46}{section*.24}

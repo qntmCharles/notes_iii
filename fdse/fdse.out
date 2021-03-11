@@ -33,5 +33,10 @@
 \BOOKMARK [2][-]{subsection.9.2}{Static compaction}{section.9}% 33
 \BOOKMARK [2][-]{subsection.9.3}{Dynamic compaction}{section.9}% 34
 \BOOKMARK [2][-]{subsection.9.4}{Pore-pressure variations in a confined aquifer}{section.9}% 35
-\BOOKMARK [1][-]{section.10}{Terrestrial ice sheets}{}% 36
-\BOOKMARK [2][-]{subsection.10.1}{Two dimensional model}{section.10}% 37
+\BOOKMARK [1][-]{section.10}{Ice sheets}{}% 36
+\BOOKMARK [2][-]{subsection.10.1}{Terrestrial ice sheets}{section.10}% 37
+\BOOKMARK [3][-]{subsubsection.10.1.1}{Two dimensional model}{subsection.10.1}% 38
+\BOOKMARK [3][-]{subsubsection.10.1.2}{Dynamics near the front}{subsection.10.1}% 39
+\BOOKMARK [2][-]{subsection.10.2}{Marine ice sheets}{section.10}% 40
+\BOOKMARK [3][-]{subsubsection.10.2.1}{Ice shelf height}{subsection.10.2}% 41
+\BOOKMARK [3][-]{subsubsection.10.2.2}{Governing equations}{subsection.10.2}% 42
