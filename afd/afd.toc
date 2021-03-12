@@ -87,3 +87,4 @@
 \contentsline {subsection}{\numberline {10.4}The plane-parallel atmosphere}{55}{subsection.10.4}
 \contentsline {subsubsection}{\numberline {10.4.1}Isothermal atmosphere}{55}{subsubsection.10.4.1}
 \contentsline {subsubsection}{\numberline {10.4.2}Polytropic atmosphere}{55}{subsubsection.10.4.2}
+\contentsline {subsubsection}{\numberline {10.4.3}Astroseismology}{56}{subsubsection.10.4.3}

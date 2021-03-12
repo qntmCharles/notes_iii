@@ -1307,6 +1307,7 @@ harmonic time dependence. The linearised equation of motion is
 	\rho \frac{\partial^2 \disp}{\partial t^2} = -\rho \nabla \delta \flux -
 	\delta \rho \nabla \flux - \nabla \delta \Pi + \frac{1}{\mu_0}(\delta \B
 	\cdot \nabla \B + \B \cdot \nabla \delta \B)
+	\label{eq:eom}
 \end{equation}
 where the total pressure perturbation is
 \begin{align}
@@ -3045,7 +3046,7 @@ and the buoyancy term (stabilising if $N^2 > 0$). If $N^2 < 0$ for any
 interval of $r$, a trial displacement can be found such that $\omega^2 < 0$.
 This is donee by localising $\xi_r$ in that interval and arranging the other
 components of $\disp$ such that $\delta p = 0$. Therefore the star is unstable
-if $\partial s/\partial r < 0$ anywhere. This is \emph{Schwarzchild's
+if $\partial s/\partial r < 0$ anywhere. This is \emph{Schwarzschild's
 criterion} for convective instability.
 
 \subsection{Modes of an incompressible sphere}
@@ -3205,6 +3206,200 @@ A polytropic atmosphere is
 		$\gamma < 1+1/m$
 \end{itemize}
 
+\subsubsection{Astroseismology}
+Return to the linearised equations \eqref{eq:eom}, looking for solutions of
+the form
+\begin{equation}
+	\disp = \Re\left[ \tilde{\disp}(z)\exp(-i\omega t + i\symbf{k}_h \cdot
+	\x)\right], \,\,\, \text{etc.}
+\end{equation}
+where $h$ denotes a horizontal vector with only $x$ and $y$ components. Then
+\begin{align}
+	-\rho \omega^2 \disp_h &= -i\symbf{k}_h \delta p \\
+	-\rho \omega^2 \xi_z &= -g \delta \rho - \frac{\diffd \delta p}{\diffd z}
+	\\
+	\delta \rho &= -\xi_z \frac{\diffd \rho}{\diffd z} - \rho \Delta \\
+	\delta p &= -\xi_z \frac{\diffd p}{\diffd z} - \gamma p \Delta
+\end{align}
+where
+\begin{equation}
+	\Delta = \nabla \cdot \disp = i\symbf{k}_h \cdot \disp_h + \frac{\diffd
+	\xi_z}{\diffd z}
+\end{equation}
+Note we have neglected self-gravity in the atmosphere so $\delta \Phi = 0$
+which amounts to the Cowling approximation whereby $\Phi$ is specified. Only
+two $z$-derivatives of perturbations arise: $\diffd \delta p/\diffd z$ and
+$\diffd \xi_z / \diffd z$. This is a second-order system of ODEs, combined
+with algebraic equations (e.g. $\Delta$).
+
+Eliminate $\disp_h$:
+\begin{equation}
+	\Delta = -\frac{k_h^2}{\rho \omega^2} \delta p + \frac{\diffd
+	\xi_z}{\diffd z}
+\end{equation}
+where $k_h = \abs{\symbf{k}_h}$. Eliminate $\delta \rho$:
+\begin{equation}
+	-\rho \omega^2 \xi_z = g \xi_z \frac{\diffd \rho}{\diffd z} = \rho g
+	\Delta - \frac{\diffd \delta p}{\diffd z}
+\end{equation}
+Consider these two ODES in combination with the remaining algebraic equation
+\begin{equation}
+	\delta p = \rho g \xi_z - \gamma p \Delta
+\end{equation}
+First approach: solve the algebraic equation for $\Delta$ and substitute to
+obtain two coupled ODEs
+\begin{align}
+	\frac{\diffd \xi_z}{\diffd z} &= \frac{g}{v_s^2} \xi_z + \frac{1}{\rho
+	v_s^2} \left( \frac{v_s^2 k_h^2}{\omega^2} - 1\right) \delta p \\
+	\frac{\diffd \delta p}{\diffd z} &= \rho (\omega^2 - N^2) \xi_z -
+	\frac{g}{v_s^2} \delta p
+\end{align}
+where $v_s^2 k_h^2$ is the square of the \emph{Lamb frequency}, i.e. the
+($z$-dependent) frequency of a horizontal sound wave of wavenumber $k_h$. In a
+short-wavelength (WKB) approximation, where $\xi_z \propto \exp\left[i\int
+k_z(z)\,\diffd z\right]$ with $k_z \gg g/v_s^2$, the local dispersion relation
+derived from these ODEs is
+\begin{equation}
+	v_s^2 k_z^2 = (\omega^2 - N^2)\left(1-\frac{v_s^2 k_h^2}{\omega^2}\right)
+\end{equation}
+
+Propagating waves ($k_z^2 > 0$) are possible when
+\begin{itemize}
+	\item $\omega^2 > \max(v_s^2 k_h^2, N^2)$: these are \emph{p modes},
+		acoustic waves (`p' for pressure)
+	\item $0 < \omega^2 < \min(v_s^2 k_h^2, N^2)$: these are \emph{g modes},
+		internal gravity waves (`g' for gravity)
+\end{itemize}
+There is a special incompressible solution in which $\Delta = 0$, i.e. $\delta
+p = \rho g \xi_z$:
+\begin{equation}
+	\frac{\diffd \xi_z}{\diffd z} = \frac{gk_h^2}{\omega^2} \xi_z,
+	\hspace{2em} \frac{\diffd \xi_z}{\diffd z} = \frac{\omega^2}{g}\xi_z
+\end{equation}
+Hence for compatibility we require
+\begin{equation}
+	\frac{gk_h^2}{\omega^2} = \frac{\omega^2}{g} \implies \omega^2 = \pm gk_h
+\end{equation}
+The acceptable solution in which $\xi_z$ decays with depth is
+\begin{equation}
+	\omega^2 = gk_h, \hspace{2em} \xi_z \propto \exp(k_h z)
+\end{equation}
+This is a \emph{surface gravity wave} known in stellar oscillations as the
+\emph{f mode} (fundamental mode). It is vertically evanescent.
+
+The other wave solutions (p and g modes) can be found analytically in the
+case of a polytropic atmosphere. Eliminate variables in favour of $\Delta$
+(algebra omitted: see official notes) to obtain
+\begin{equation}
+	z \frac{\diffd^2 \Delta}{\diffd z^2} + (m+2) \frac{\diffd \Delta}{\diffd
+	z} - (A + k_h z)k_h \Delta = 0
+\end{equation}
+where
+\begin{equation}
+	A = \frac{m+1}{\gamma} \frac{\omega^2}{gk_h} + \left( m -
+	\frac{m+1}{\gamma}\right) \frac{gk_h}{\omega^2}
+\end{equation}
+is a dimensionless constant. Now let $\Delta = w(z) e^{k_h z}$ to obtain
+\begin{equation}
+	z \frac{\diffd^2 w}{\diffd z^2} + (m+2+2k_h z) \frac{\diffd w}{\diffd z} -
+	(A-m-2)k_h w = 0
+\end{equation}
+This is related to the \emph{confluent hypergeometric equation}. There is a
+regular singular point at $z=0$. Using the method of Frobenius, seek
+power-series solutions
+\begin{equation}
+	w = \sum_{r=0}^\infty a_r z^{\sigma + r}
+\end{equation}
+where $\sigma$ is to be determined and $a_0 \ne 0$. The resulting indicial
+equation is
+\begin{equation}
+	\sigma (\sigma + m + 1) = 0
+\end{equation}
+The regular solution has $\sigma = 0$ with recurrence relation
+\begin{equation}
+	\frac{a_{r+1}}{a_r} = \frac{(A-m-2-2r)k_h}{(r+1)(r+m+2)}
+\end{equation}
+In the case of an infinite series,
+\begin{equation}
+	\frac{a_{r+1}}{a_r} \sim -\frac{2k_h}{r} \,\,\,\,\, \text{as}\,\,\, r \to
+	\infty
+\end{equation}
+so $w$ behaves like $e^{-2k_h z}$ as $z \to -\infty$ and $\Delta$ diverges
+like $e^{-k_h z}$ (recall $z$ is increasingly negative moving down through the
+atmosphere). Solutions in which $\Delta$ decays with depth are those for which
+the series terminates and $w$ is a polynomial. For a polynomial of degree
+$n-1$ ($n \ge 1$) we require $a_n = 0$ hence
+\begin{equation}
+	A = 2n+m
+\end{equation}
+This gives a quadratic equation for $\omega^2$:
+\begin{equation}
+	\frac{m+1}{\gamma} \left(\frac{\omega^2}{gk_h}\right)^2 -
+	(2n+m)\left(\frac{\omega^2}{gk_h}\right) +
+	\left(m-\frac{m+1}{\gamma}\right) = 0
+\end{equation}
+A negative root for $\omega^2$ (i.e. instability) exists if and only if
+\begin{equation}
+	m - \frac{m+1}{\gamma} < 0
+\end{equation}
+or equivalently $N^2 < 0$, as expected from Schwarzschild's criterion. For $n
+\gg 1$, the large root is
+\begin{equation}
+	\frac{\omega^2}{gk_h} \sim \frac{2n\gamma}{m+1}
+\end{equation}
+which are p modes with $\omega^2 \propto v_s^2$ and the small root is
+\begin{equation}
+	\frac{\omega^2}{gk_h} \sim \frac{1}{2n}\left(m - \frac{m+1}{\gamma}\right)
+\end{equation}
+which are g modes with $\omega^2 \propto N^2$. The f mode is the `trivial'
+solution $\Delta = 0$. p (pressure) modes are acoustic waves which rely on
+compressibility. g (gravity) modes are gravity waves, which rely on buoyancy.
+Typical branches of the dispersion relation are shown in figure~\ref{fig:pgf}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{pgf_modes.png}
+	\caption{Dispersion relation, in arbitrary units, for a stably stratified
+	plane-parallel polytropic atmosphere with $m=3$ and $\gamma = 5/3$.
+	The dashed line is the $f$ mode. Above it are the first ten $p$ modes
+	and below it are the first ten $g$ modes. Each curve is a parabola.
+	}
+	\label{fig:pgf}
+\end{figure}
+
+Comparison with observational data from the Sun demonstrates the parabolic
+dispersion relation: see figure~\ref{fig:rhodes}. In solar-type stars, the
+inner part (radiative zone) is convectively stable ($N^2 > 0$) and the outer
+part (convective zone) is unstable ($N^2 < 0$): see figure~\ref{fig:nsquared}.
+However, the convection is so efficient that only a very small entropy
+gradient is required to sustain the convective heat flux, so $N^2$ is very
+small and negative in the convective zone. Although $g$ modes propagate in the
+radiative zone  at frequencies smaller than $N$, they cannot reach the
+surface. Only $f$ and $p$ modes (excited by convection) are observed at the
+solar surface. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{helio.png}
+	\caption{Power spectrum of medium angular degree solar oscillations,
+		computed for 144 days of data from the MDI instrument aboard SOHO.
+	Credit: E. J. Rhodes et al.}
+	\label{fig:rhodes}
+\end{figure}
+
+In more massive stars, the situation is reversed. Then $f$, $p$ and $g$ modes
+can be observed, in principle, at the surface. $g$ modes are particularly well
+observed in certain classes of white dwarf.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{nsquared.png}
+	\caption{A standard model of the present Sun, up to the photosphere.
+	Squared buoyancy frequency is plotted versus fractional radius. In the
+	convective region of the log plot where $N^2 < 0$, the dotted line shows the
+	logarithm of $-N^2$ instead.}
+	\label{fig:nsquared}
+\end{figure}
 
 
 \end{document}
