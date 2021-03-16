@@ -4,7 +4,7 @@
 \contentsline {paragraph}{\nonumberline Hydrodynamics (HD) / Newtonian gas dynamics:}{3}{section*.2}
 \contentsline {paragraph}{\nonumberline Magnetohydrodynamics (MHD):}{3}{section*.3}
 \contentsline {subsection}{\numberline {1.3}Characteristic features}{3}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Useful data}{3}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.4}Useful data}{4}{subsection.1.4}
 \contentsline {section}{\numberline {2}Ideal gas dynamics}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}Fluid variables}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Eulerian and Lagrangian viewpoints}{4}{subsection.2.2}
@@ -88,3 +88,7 @@
 \contentsline {subsubsection}{\numberline {10.4.1}Isothermal atmosphere}{55}{subsubsection.10.4.1}
 \contentsline {subsubsection}{\numberline {10.4.2}Polytropic atmosphere}{55}{subsubsection.10.4.2}
 \contentsline {subsubsection}{\numberline {10.4.3}Astroseismology}{56}{subsubsection.10.4.3}
+\contentsline {subsection}{\numberline {10.5}Rotating fluid bodies}{59}{subsection.10.5}
+\contentsline {subsubsection}{\numberline {10.5.1}Equilibrium}{60}{subsubsection.10.5.1}
+\contentsline {paragraph}{\nonumberline Accretion disc around a body.}{61}{section*.19}
+\contentsline {subsubsection}{\numberline {10.5.2}Linear perturbations}{61}{subsubsection.10.5.2}

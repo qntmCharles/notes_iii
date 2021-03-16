@@ -3401,5 +3401,152 @@ observed in certain classes of white dwarf.
 	\label{fig:nsquared}
 \end{figure}
 
+\subsection{Rotating fluid bodies}
+In this subsection $(r,\phi,z)$ are cylindrical polar coordinates.
+
+\subsubsection{Equilibrium}
+The equations of ideal gas dynamics in cylindrical polars are
+\begin{align}
+	\frac{\diffD u_r}{\diffD t} - \frac{u_\phi^2}{r} &= -\frac{\partial
+	\Phi}{\partial r} - \frac{1}{\rho} \frac{\partial p}{\partial r} \\
+	\frac{\diffD u_\phi}{\diffD t} + \frac{u_r u_\phi}{r} &=
+	-\frac{1}{r}\frac{\partial \Phi}{\partial \phi} - \frac{1}{\rho
+	r}\frac{\partial p}{\partial \phi} \\
+	\frac{\diffD u_z}{\diffD t} &= -\frac{\partial \Phi}{\partial z} -
+	\frac{1}{\rho}\frac{\partial p}{\partial z} \\
+	\frac{\diffD \rho}{\diffD t} &= -\rho \nabla \cdot \u \\
+	\frac{\diffD p}{\diffD t} &= -\gamma p \nabla \cdot \u
+\end{align}
+where
+\begin{align}
+	\nabla \cdot \u &= \frac{1}{r}\frac{\partial}{\partial r}(ru_r) +
+	\frac{1}{r}\frac{\partial u_\phi}{\partial \phi} + \frac{\partial
+	u_z}{\partial z} \\
+	\frac{\diffD}{\diffD t} &= \frac{\partial}{\partial t} + u_r
+	\frac{\partial}{\partial r} + \frac{u_\phi}{r}\frac{\partial}{\partial
+	\phi} + u_z\frac{\partial}{\partial z} 
+\end{align}
+
+Consider a steady, axisymmetric basic state with density $\rho(r,z)$, pressure
+$p(r,z)$, gravitational potential $\Phi(r,z)$ and with differential rotation
+\begin{equation}
+	\u = r\Omega(r,z)\hat{\symbf{\phi}}
+\end{equation}
+
+For equilibrium we require
+\begin{equation}
+	-r\Omega^2 \hat{\symbf{r}} = -\nabla \Phi - \frac{1}{\rho}\nabla p
+\end{equation}
+Take the curl to obtain
+\begin{align}
+	-r\frac{\partial \Omega^2}{\partial z} \hat{\symbf{\phi}} &= \nabla p
+	\times \nabla \frac{1}{\rho} \\
+				&= \nabla T \times \nabla s
+\end{align}
+This is the vorticity equation in a steady state, sometimes called the
+\emph{thermal wind equation}. The equilibrium is \emph{barotropic} if $\nabla
+p$ is parallel to $\nabla \rho$, i.e. $p = p(\rho)$, otherwise it is
+\emph{baroclinic}. In a barotropic state, $\Omega$ is independent of $z$:
+$\Omega = \Omega(r)$ (a version of the Taylor-Proudman theorem). We can also
+write
+\begin{equation}
+	\frac{1}{\rho}\nabla p = \symbf{g} = -\nabla \Phi + r\Omega^2
+	\hat{\symbf{r}}
+\end{equation}
+where $\symbf{g}$ is the \emph{effective gravity}, including the centrifugal
+force associated with the (non-uniform) rotation. In a barotropic state with
+$\Omega(r)$ we can write
+\begin{align}
+	\symbf{g} &= - \nabla \Phi_{cg} \\
+	\Phi_{cg} &= \Phi(r,z) + \Psi(r) \\
+	\Psi &= -\int r\Omega^2 \, \diffd r
+\end{align}
+where the arbitrary constant from the indefinite integral is to be determined.
+Since $p = p(\rho)$ in the equilibrium state, we can define the
+\emph{pseudo-enthalpy} $\tilde{h}(\rho)$ such that $\diffd \tilde{h} = \diffd
+p/\rho$. An example is a polytropic model for which
+\begin{equation}
+	p = K \rho^{1+1/m}, \hspace{2em} \tilde{h} = (m+1)K\rho^{1/m}
+\end{equation}
+where $m$ is the polytropic index ($\tilde{h}$ is the true enthalpy only if
+the equilibrium is homentropic). The equilibrium condition then reduces to
+\begin{equation}
+	0 = -\nabla \Phi_{cg} - \nabla \tilde{h}
+\end{equation}
+or equivalently
+\begin{equation}
+	\Phi + \Psi + \tilde{h} = C = \text{const.} \label{eq:l23:1}
+\end{equation}
+
+\paragraph{Accretion disc around a body.}
+Take for example an accretion disc around a central body of mass $M$.  For a
+non-self-gravitating disc,
+\begin{equation}
+	\Phi = -GM(r^2+z^2)^{-1/2}
+\end{equation}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[fill=gray!40,draw=none] (-6, -0.5) -- (6, 0.5) -- (6, -0.5) -- (-6, 0.5)
+		-- (-6, -0.5);
+		\draw[fill] (0,0) circle (0.2);
+		\draw (0,-0.2) node[below] {$M$};
+	\end{tikzpicture}
+\end{center}
+
+Assume the disc is barotropic. Define the additive constant in $\tilde{h}$
+such that $\tilde{h} = 0$ at the surfaces $z = \pm H(r)$ of the disc where
+$\rho = p = 0$. Then \eqref{eq:l23:1} evaluated at the disc surface is
+\begin{equation}
+	-GM(r^2+H^2)^{-1/2} + \Psi(r) = C
+\end{equation}
+from which
+\begin{equation}
+	r\Omega^2 = - \frac{\diffd}{\diffd r} \left[ GM(r^2+H^2)^{-1/2}\right]
+\end{equation}
+For example, if $H = \veps r$ with $\veps$ the constant aspect ratio of the
+disc, then
+\begin{equation}
+	\Omega^2 = (1+\veps^2)^{-1/2} \frac{GM}{r^3}
+\end{equation}
+Hence the thinner the disc is, the closer it is to Keplerian rotation. This
+occurs since a thicker disc has a large outwards pressure gradient which
+compensates for some of the inward gravitational force, i.e. the centrifugal
+acceleration is smaller (sub-Keplerian). Having related $\Omega(r)$ and
+$H(r)$, we can find $\tilde{h}$ (and so $\rho$ and $p$) from \eqref{eq:l23:1}.
+
+\subsubsection{Linear perturbations}
+Since the basic state is independent of $t$ and $\phi$, consider linear
+perturbations of the form
+\begin{equation}
+	\Re\left[\delta u_r(r,z) \exp(-i\omega t+ im\phi)\right]
+\end{equation}
+and similar for other variables, where $m \in \mathbb{Z}$ is the azimuthal
+wavenumber. The linearised equations in the Cowling approximation ($\delta
+\Phi = 0$) are
+\begin{align}
+	-i\hat{\omega}\delta u_r - 2\Omega \delta u_\phi &=
+	-\frac{1}{\rho}\frac{\partial \delta p}{\partial r} + \frac{\delta
+	\rho}{\rho^2} \frac{\partial p}{\partial r} \\
+	-i\hat{\omega} \delta u_\phi + \frac{1}{r}\delta \u \cdot \nabla(r^2
+	\Omega) &= -\frac{im\delta p}{\rho r} \\
+	-i\hat{\omega}\delta u_z &= -\frac{1}{\rho}\frac{\partial \delta
+	p}{\partial z} + \frac{\delta \rho}{\rho^2}\frac{\partial p}{\partial z}
+	\\
+	-i\hat{\omega} \delta \rho + \delta \u \cdot \nabla \rho &= -\rho
+	\nabla \cdot \delta \u \\
+	-i\hat{\omega}\delta p + \delta \u \cdot \nabla p &= -\gamma p \nabla \cdot \delta
+	\u \\
+	\nabla \cdot \delta \u &= \frac{1}{r}\frac{\partial}{\partial r}(r\delta
+	u_r) + \frac{im\delta u_\phi}{r} + \frac{\partial \delta u_z}{\partial z}
+\end{align}
+where 
+\begin{equation}
+	\hat{\omega} = \omega - m\Omega
+\end{equation}
+is the intrinsic frequency, i.e. the angular frequency of the wave measured in
+a frame of reference rotating with the local angular velocity of the fluid.
+
+
 
 \end{document}
