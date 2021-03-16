@@ -2841,9 +2841,11 @@ provided by the surrounding water.
 \begin{align}
 	\rho g H &= \rho_w g (H-h) \\
 	\implies h &= \frac{g'}{g}H
+	\label{eq:flotation}
 \end{align}
 where $g' = \frac{\rho_w - \rho}{\rho_w}g$ is the \emph{reduced gravity}. Note
-that typically $h \sim H/7$.
+that typically $h \sim H/7$. The result \eqref{eq:flotation} may be referred
+to as the \emph{flotation condition}.
 
 \subsubsection{Governing equations}
 \paragraph{Stress balances.} Consider the stress balances on a small section
@@ -2889,7 +2891,8 @@ Then
 using $u_x + w_z = 0$ by incompressibility. The forces $N(x)$ are then
 \begin{align}
 	N &= \int_{h-H}^h \symsf{\sigma}_{xx} \, \diffd z \\
-	  &= -\frac{1}{2}\rho g H^2 + 4\mu H \frac{\partial u}{\partial x}
+	  &= -\frac{1}{2}\rho g H^2 + 4\mu H \frac{\partial u}{\partial
+	  x}\label{eq:l15:idk}
 \end{align}
 Horizontal balance on a section of shelf then balances the stress $N_x$
 with the stress from the horizontal component of the buoyancy force:
@@ -2910,19 +2913,227 @@ This is a hyperbolic equation for $H$ given $u$.
 \paragraph{Boundary conditions.} At the nose $x=x_N$ we have two boundary
 conditions
 \begin{align}
-	N &= -\frac{1}{2}\rho_w g b^2 \\
-	\dot{x}_N &= u_N
+	N &= -\frac{1}{2}\rho_w g b^2 \label{eq:l15:3}\\
+	\dot{x}_N &= u_N \label{eq:l15:4}
 \end{align}
 where the first specifies the force on the nose as being provided solely by
 the horizontal buoyancy force, and the second defines the nose velocity $u_N$.
 
 At the grounding line $x=x_G$ we have two boundary conditions
 \begin{align}
-	H &= H_g \\
-	Hu &= q_G
+	H &= H_G \label{eq:l15:5}\\
+	Hu &= q_G \label{eq:l15:6}
 \end{align}
-where the first specifies the thickness of the shelf at the grounding line and
-the second enforces a constant flux into the ice shelf.
+where the first specifies that the floating depth of the ice equals the depth
+of the sea at the grounding line, and the second enforces a
+constant flux into the ice shelf. 
 
+\paragraph{Example.} Let $H = H_0, q = q_0 = Hu$ at $x=0$. Integrate
+\eqref{eq:l15:1} and use the flotation condition \eqref{eq:flotation} combined
+with \eqref{eq:l15:3} and \eqref{eq:l15:idk} at the nose to eliminate the
+integration constant, hence
+\begin{equation}
+	\frac{\partial u}{\partial x} = \frac{\rho g'}{8\mu} H
+\end{equation}
+where $g' = \Delta \rho g/\rho$. The solution is then
+\begin{align}
+	u &= \frac{q_0}{H_0} + \int_0^x \frac{\rho g'}{8\mu} H(\xi, t) \, \diffd
+	\xi \\
+	  &= \frac{q_0}{H_0} + \frac{\rho g' q_0}{8\mu} (t-t_0) \label{eq:l15:7}
+\end{align}
+where $t_0(x)$ is the time at which fluid now at $x$ left $x=0$. Note: this is
+effectively a switch between Eulerian and Lagrangian perspectives of mass
+conservation. Therefore integrating \eqref{eq:l15:7} gives
+\begin{equation}
+	x = \frac{q_0}{H_0}(t-t_0) + \frac{\rho g' q_0}{16\mu} (t-t_0)^2
+	\label{eq:l15:8}
+\end{equation}
+Now from mass conservation \eqref{eq:l15:2} we have
+\begin{align}
+	H_t + uH_x &= -Hu_x \\
+	\implies \frac{\diffD H}{\diffD t} &= -\frac{\rho g'}{8\mu} H^2 \\
+	\implies \frac{1}{H} -\frac{1}{H_0} &= \frac{\rho g'}{8\mu} (t-t_0)
+	\label{eq:l15:9}
+\end{align}
+Combine \eqref{eq:l15:8} and \eqref{eq:l15:9} to give the profile of shelf
+thickness
+\begin{equation}
+	H = H_0 \left[ 1+ \frac{\rho g'}{4\mu} \frac{H_0^2 x}{q_0}\right]^{-1/2}
+\end{equation}
+and from \eqref{eq:l15:8}
+\begin{equation}
+	x_N(t) = \frac{q_0}{H_0}t + \frac{\rho g'}{16\mu} t^2
+\end{equation}
+The first term is due to extrusion of the ice sheet into the ice shelf, whilst
+the second term is due to buoyancy-driven extension of the ice sheet.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[blue,thick,smooth, name path = A] plot[tension=0.8] coordinates {(0,-2)
+		(1.5, -1.5) (3, -1.2) (5, -1)};
+		\draw[blue,thick,smooth, name path = B] plot[tension=0.8] coordinates {(0,
+		0.7) (1.5, 0.54) (4.5, 0.42) (5, 0.4)};
+		\tikzfillbetween[of=A and B, soft clip={(0.5, 3) rectangle (1.5, -3)}]{blue!20};
+		\tikzfillbetween[of=A and B, soft clip={(2.5, 3) rectangle (4.5, -3)}]{blue!20};
+		\draw[blue,thick] (1.5, -1.5) -- (1.5, 0.54);
+		\draw[blue,thick] (0.5, -1.82) -- (0.5, 0.64);
+		\draw[blue,thick] (2.5, -1.27) -- (2.5, 0.5);
+		\draw[blue,thick] (4.5, -1.05) -- (4.5, 0.42);
+		\draw[dashed] (0,0) -- (5, 0) node[right] {$z=0$};
+		\draw[very thick,->] (1.7, -0.5) -- (2.3, -0.5);
+		\draw[blue,thick,smooth] plot[tension=0.8] coordinates {(0,-2)
+		(1.5, -1.5) (3, -1.2) (5, -1)};
+		\draw[blue,thick,smooth] plot[tension=0.8] coordinates {(0,
+		0.7) (1.5, 0.54) (4.5, 0.42) (5, 0.4)};
+		\draw (5,-1) node[right] {profile $H(x)$};
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Grounding line}
+Consider the dynamics of grounding lines. The flotation condition
+\eqref{eq:flotation} is first satisfied by the shelf at the grounding line:
+\begin{equation}
+	h(x_G(t)) = \frac{\rho_w - \rho}{\rho} b(x_G(t))
+\end{equation}
+This condition must be satisfied for all time, hence we can differentiate
+\begin{equation}
+	\dot{x}_G \left.\frac{\partial h}{\partial x}\right|_{x_G^-} +
+	\left.\frac{\partial h}{\partial t}\right|_{x_G^-}
+	= \frac{\rho_w - \rho}{\rho} \dot{x}_G b'(x_G)
+\end{equation}
+Rearranging gives
+\begin{equation}
+	\left[ \frac{\Delta \rho}{\rho} b'(x_G) - \left.\frac{\partial h}{\partial
+	x}\right|_{x_G^-} \right] \dot{x}_G = \left.\frac{\partial h}{\partial
+	t}\right|_{x_G^-} = -\left.\frac{\partial q}{\partial x}\right|_{x_G^-}
+	\label{eq:l16:1}
+\end{equation}
+We require an additional condition, that normal forces are balanced at the
+grounding line:
+\begin{equation}
+	\left[ N \right]^{x_G^+}_{x_G^-} = 0
+\end{equation}
+In the shelf,
+\begin{align}
+	N &= -\frac{1}{2}\rho g H^2 + 4\mu H \frac{\partial u}{\partial x} \\
+	  &= -\frac{1}{2}\rho g H^2 + \frac{1}{2}\rho g' H^2 \\
+	  &= -\frac{1}{2}\rho_w g b^2
+\end{align}
+This is the hydrostatic force of the ocean pushing on the sheet at the
+grounding line. The presence of the shelf hass no influence on the 2D ice
+sheet. In the sheet,
+\begin{align}
+	N &= \int_{-b}^h \symsf{\sigma}_{xx} \, \diffd z \\
+	  &= -\frac{1}{2} \rho g H^2 + 4\mu \int_{-b}^H \frac{\partial u}{\partial
+	  x} \, \diffd z \\
+	  &= -\frac{1}{2} \rho g H^2 + 4\mu \left[ \frac{\partial q}{\partial x} -
+	  u(h)\frac{\partial h}{\partial x} - u(-b)\frac{\partial b}{\partial x}
+	  \right] 
+\end{align}
+with parabolic velocity profile (following from lubrication theory with no
+slip at bottom, no stress at surface)
+\begin{equation}
+	u = -\frac{\rho g}{2\mu} \frac{\partial h}{\partial x}(z+b)(2H-(z+b))
+\end{equation}
+Then
+\begin{equation}
+	N = -\frac{1}{2}\rho_g H^2 + 4\mu \left[ \frac{\partial q}{\partial x} +
+	\frac{\rho g}{2\mu} H^2 \left(\frac{\partial h}{\partial
+	x}\right)^2\right]
+\end{equation}
+From \eqref{eq:l16:1} we then find
+\begin{equation}
+	\dot{x}_G = \frac{\frac{\rho g}{2\mu} H^2 h_x^2 - \frac{\rho g'}{8\mu}
+	H^2}{\frac{\Delta \rho}{\rho}b'(x_G) - \left.h_x\right|_{x_G^-}}
+\end{equation}
+In steady state $\dot{x}_G = 0$ we have
+\begin{align}
+	\frac{\rho g}{2\mu} h_x^2 &= \frac{\rho g'}{8\mu} \\
+	\implies \frac{\partial h}{\partial x} &= -\frac{1}{2}\sqrt{\frac{\Delta
+	\rho}{\rho}}
+\end{align}
+The flux is then
+\begin{equation}
+	q = -\frac{\rho g}{3\mu} H^3 h_x = \frac{\rho g}{6\mu} \sqrt{\frac{\Delta
+	\rho}{\rho}} H^3 = q(H)
+\end{equation}
+
+\subsubsection{Grounding line stability}
+See Weertman 1974 for further details on this topic. The stability of the
+grounding line is determined by the slope of the ground:
+\begin{itemize}
+	\item \textbf{Prograde slope}: if $x_G$ advances, $H$ increases, hence $q
+		\sim H^3$ increases. Thus the \emph{sheet} thins, so $x_G$ retreats.
+		This situation is stable.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[draw=none,fill=gray!40,rotate=-22] (0,0) rectangle (5.4, -0.2);
+				\draw[thick] (0,0) -- (5, -2);
+				\draw[dashed] (0,0) -- (5, 0);
+				\draw[blue] (1,1) -- (3, 0.2) -- (3, -1.2);
+			\end{tikzpicture}
+		\end{center}
+	\item \textbf{Retrograde slope}: if $x_G$ advances, $H$ decreases, hence
+		$q \sim H^3$ decreases, so the \emph{sheet} thickens, thus $x_G$
+		advances further. This situation is unstable.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[draw=none,fill=gray!40,rotate=22] (0,0) rectangle (5.4, -0.2);
+				\draw[thick] (0,0) -- (5, 2);
+				\draw[dashed] (0,1.5) -- (3.8, 1.5);
+				\draw[blue] (0,2) -- (3, 2) -- (3, 1.2);
+			\end{tikzpicture}
+		\end{center}
+\end{itemize}
+
+\subsubsection{Buttressing}
+Thus far we have only considered the vertical and extensional directions of
+the ice shelf. Buttressing is resistance to flow at the side walls of the ice
+shelf. In the ice \emph{sheet}, vertical shear stresses dominate. In the ice
+\emph{shelf}, horizonal shear stresses dominate.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0, 3) node[right] {top view};
+		\draw[blue,thick] (0, 0) -- (5, 0) node[right] {$y=0$};
+		\draw[blue,thick] (0, 2) -- (5, 2) node[right] {$y=W$};
+		\draw[dashed] (1.5, 2.5) -- (1.5, -0.5);
+		\draw (1.75, -0.5) node[below] {$x_G$};
+		\draw[dashed] (2, 2.5) -- (2, -0.5);
+		\draw[blue,dashed] (0.5, 0) -- (0.5, 2);
+		\draw[blue,dashed] (4, 0) -- (4, 2);
+		\draw[blue,smooth] plot[domain=-1:1,samples=100]
+		({0.5+0.5*(1-\x*\x*\x*\x*\x*\x*\x*\x)},{1+\x});
+		\draw[blue,->] (0.5, 1.5) -- (1, 1.5);
+		\draw[blue,->] (0.5, 1) -- (1, 1);
+		\draw[blue,->] (0.5, 0.5) -- (1, 0.5);
+		\draw[blue,smooth] plot[domain=-1:1,samples=100] ({4.5-0.5*\x*\x},{1+\x});
+		\draw[blue,->] (4, 1.5) -- (4.375, 1.5);
+		\draw[blue,->] (4, 1) -- (4.5, 1);
+		\draw[blue,->] (4, 0.5) -- (4.375, 0.5);
+	\end{tikzpicture}
+\end{center}
+
+In the shelf,
+\begin{equation}
+	u = -\frac{\rho g}{2\mu}\frac{\partial h}{\partial x} y(W-y)
+\end{equation}
+The additional horizonal force in the $x$-direction from buttressing is given
+by
+\begin{align}
+	-B &= \frac{1}{W}\int_{x_G^+}^{x_N} H\mu\left.\frac{\partial u}{\partial
+	y}\right|_{y=0}^{y=W} \,
+	\diffd x \\
+	   &= -\frac{1}{2}\rho g \left.H^2\right|_{x_G^+}
+\end{align}
+Finally we get
+\begin{equation}
+	\dot{x}_G = \frac{\frac{\rho g}{2\mu} H^2 h_x^2 - \frac{\rho g'}{8\mu}
+	(H^2-H_+^2)}{\frac{\rho_w}{\rho}b'(x_G) - \left.\frac{\partial h}{\partial
+	x}\right|_{x_G^-}}
+\end{equation}
+where $H_+ = \lim_{x\to x_G^+} H$ in the shelf dominated by horizontal shear
+stresses. Note that the buttressing force tends to \emph{advance} the
+grounding line position, so can mitigate instability/retreat of the grounding
+line.
 
 \end{document}

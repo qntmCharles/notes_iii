@@ -202,7 +202,7 @@ to waves of all wavelengths. The instability may be remedied
 		$\alpha$), e.g. Drazin page 50 equation 3.21.
 \end{itemize}
 
-\section{Thermal instabilities: Rayleigh-Bernard convection}
+\section{Thermal instabilities: Rayleigh-Benard convection}
 Consider two parallel plates separated by distance $L$ with fluid subject to
 gravity and temperatue difference $\Delta T$ between the plates. The lower
 plate is heated to $T_0 + \Delta T$ whilst the upper plate is fixed at
@@ -1823,7 +1823,7 @@ where $\symsf{W} = (Q^{-1})^T Q^{-1}$ is the \emph{weight}.
 			  &= 2 \x^T (Q^{-1})^T \Lambda Q^{-1} \x \\
 			  &= 2 \y^T \Lambda \y 
 \end{align}
-Hence $\dot{E'}$ is negative if all eigenvalues of $\Re(\Lambda)$ are
+Hence $\dot{E'}$ is negative if all eigenvalues of $\Lambda$ are
 negative. The key here is that $\y = Q^{-1} \x$ transforms $\x$ into a basis
 of eigenvectors.  For example, for $L$ in the previous example we have
 \begin{equation}
@@ -2447,8 +2447,8 @@ i.e. $\k$ is perpendicular to $(u,v)$.
 		\draw[blue] (-1, 3) -- (-2, -3);
 		\draw[blue,->] (-1.5,1) -- (-1.5+0.33333/2,1);
 		\draw[blue,->] (-1.5,2) -- (-1.5+0.33333,2);
-		\draw[blue,->] (-1.5,-1) -- (-1.5+0.33333/2,-1);
-		\draw[blue,->] (-1.5,-2) -- (-1.5+0.33333,-2);
+		\draw[blue,->] (-1.5,-1) -- (-1.5-0.33333/2,-1);
+		\draw[blue,->] (-1.5,-2) -- (-1.5-0.33333,-2);
 		\draw[red,->] (0,0) -- (1, 3) node[right] {$\k(t=0)$};
 		\draw[red,->] (0,0) -- (1, -3) node[right] {$\k(t=\frac{2k_{02}}{\alpha
 		k_{01}})$};
@@ -3046,5 +3046,461 @@ choice).
 			\end{tikzpicture}
 		\end{center}
 \end{itemize}
+
+
+\section{Weakly nonlinear analysis}
+We now allow disturbances to have finite amplitude. In this section we ask
+what happens `beyond' a linear instability. Consider for example the marginal
+stability curve for Rayleigh-Benard convection. When $\Ra = \Ra^* > \Ra_c$ we
+find a band of unstable eigenvalues corresponding to disturbances which
+(initially) grow exponentially.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.6]
+		\draw[red,smooth] plot[domain=0.341:4.263]
+		({\x},{(4+\x*\x)^3/(200*\x*\x)});
+		\draw[thick,->] (0,0) -- (5, 0) node[right] {$k$};
+		\draw[thick,->] (0,0) -- (0, 3) node[left] {$\Ra$};
+		\draw[dashed,red] (1.414, 0.54) -- (0, 0.54) node[left] {$\Ra_c$};
+		\draw[dashed,red] (1.414, 0.54) -- (1.414, -2.5) node[below] {$k^*$};
+		\draw (3.9, 1.5) node {$\Re\left[\lambda\right] = 0$};
+		\draw (4, 0.5) node {stable};
+		\draw (2, 2.5) node {unstable};
+		\draw[blue,dashed] (0.661, -2.5) -- (0.661, 1);
+		\draw[blue,dashed] (2.719, -2.5) -- (2.719, 1);
+		\draw[blue] (0.661, 1) -- (2.719, 1) node[midway,above] {unstable
+		$\lambda$};
+		\draw[blue,dashed] (0.661, 1) -- (0, 1) node[left] {$\Ra^*$};
+		\begin{scope}[shift={(0,-4)}]
+			\draw[thick,->] (0,1.5) -- (5, 1.5) node[right] {$k$};
+			\draw[thick,->] (0,1) -- (0, 3) node[left]
+			{$\Re\left[\lambda\right]$};
+			\draw[blue,smooth] plot[domain=0.485:2.746]
+			({\x},{1.5-0.05*\x*(\x+10)*(\x-0.661)*(\x-2.719)});
+			\draw[red,smooth] plot[domain=0.828:1.837]
+			({\x},{1.5-0.1*\x*(\x+10)*(\x-0.315)*(\x-2)-1.039});
+			\draw[blue] (2.8, 1.3) node {$\Ra = \Ra^*$};
+			\draw[red] (2.3, 1) node {$\Ra = \Ra_c$};
+			\draw[blue,thick,<->] (0.661, 3) -- (2.719, 3) node[right] {band
+			of unstable disturbances};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+Unstable disturbances cannot keep growing exponentially. Eventually,
+dispersion and more importantly nonlinear effects exert their influences to
+limit growth. In general, there are two situations:
+\begin{itemize}
+	\item \textbf{Small systems}: allowable wavenumbers $k$ are discretised
+		and so if $\Ra$ is sufficiently close to (but larger than) $\Ra_c$,
+		only \emph{one} normal mode is unstable. In this case, there is no
+		need to worry about dispersion; only nonlinear effects are important
+		and the amplitude of disturbances is governed by the \emph{Landau
+		equation} to be derived later.
+
+		For example, consider a periodic flow $u(x) = u(x+L)$: $e^{ikx}$ is a
+		solution if $e^{ikL} = 1$, i.e. $k = \pm \frac{2\pi n}{L}$ for $n \in
+		\mathbb{N}$. Hence wavenumbers are discretised. For small $L$, only
+		one of these wavenumbers will yield a growing mode.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick,->] (0,0) -- (0, 3) node[left]
+				{$\Re\left[\lambda\right]$};
+				\draw[thick,->] (0, 1.5) -- (4, 1.5) node[right] {$k$};
+				\draw[red,smooth] plot[domain=0.3:3.7]
+				({\x},{1.5-0.3*(\x-1)*(\x-3)});
+				\draw[red,dashed] (0.5, 1.5-0.375) -- (0.5, 1.5) node[above]
+				{$n_1$};
+				\draw[red,dashed] (3.5, 1.5-0.375) -- (3.5, 1.5) node[above]
+				{$n_1+2$};
+				\draw[red,dashed] (2, 1.8) -- (2, 1.5) node[below] {$n_1+1$};
+				\draw[blue,<-] (2,2) arc (150:90:0.8) node[right] {only growing
+				mode};
+			\end{tikzpicture}
+		\end{center}
+	\item \textbf{Spatially-extended systems}: here, there really is an
+		unstable band of wavenumbers and we must include dispersion as well.
+		The amplitude of disturbances is governed by the \emph{Ginsburg-Landau
+		equation}, derived later.
+\end{itemize}
+
+Analysis for both cases can be severe. In the following section we illustrate
+ideas using a model problem.
+
+\subsection{Weakly nonlinear theory: small systems}
+Consider the following problem as a simplifed proxy to the Navier-Stokes
+equations, retaining nonlinear terms. 
+\begin{align}
+	\frac{\partial u}{\partial t} - \sin u &= \frac{1}{\ReN} \frac{\partial^2
+	u}{\partial z^2} \label{eq:l15:1}\\
+		u &= u(z,t) = 0 \,\,\,\text{at}\,\,\, z=0,\pi
+\end{align}
+The base state is $u=0$. Consider small disturbances: the linearised
+perturbation $u'$ satisfies
+\begin{align}
+	u'_t - u' &= \frac{1}{\ReN} u'_{zz} \\
+	u' &= 0 \,\,\,\text{at}\,\,\,z=0,\pi
+\end{align}
+
+Solve using Fourier series: assume $u'$ is of the form
+\begin{equation}
+	u'(z,t) = \sum_{n=1}^\infty A_n(t)\sin nz
+\end{equation}
+which implicitly satisfies $u'(0) = 0$. Then
+\begin{align}
+	\frac{\diffd A_n}{\diffd t} - A_n &= -\frac{n^2}{\ReN} A_n \\
+	\frac{\diffd A_n}{\diffd t} &= \left(1-\frac{n^2}{\ReN}\right) A_n \\
+	\implies A_n(t) &= A_n(0)e^{\left(1-\frac{n^2}{\ReN}\right)t}
+\end{align}
+From this solution we see instability arises if $1-n^2/\ReN > 0$, i.e. $\ReN >
+n^2$. Hence the critical Reynolds number is $\ReN_c = 1$ and for $1 < \ReN < 4$
+there exists precisely one unstable mode. The key idea is that $A_1$ will grow
+\emph{until nonlinear terms become important}. Thus to make progress in the
+analysis we wish to determine when nonlinear terms reach an order comparable to
+linear terms. Let $u'$ have an amplitude $\veps$, i.e
+\begin{equation}
+	u' = \veps A(t) \sin z
+\end{equation}
+where we assume $A = \mathcal{O}(1)$. Return to the full problem
+\eqref{eq:l15:1} with $\ReN = \ReN_c + \Delta \ReN$ where $\Delta \ReN \ll
+\ReN_c = 1$. We have
+\begin{align}
+	\veps \frac{\partial A}{\partial t} \sin z - \left[ \veps A \sin z -
+	\frac{\veps^3 A^3 \sin^3 z}{3!} + \dots\right]
+	&= \frac{1}{\ReN_c + \Delta \ReN}\left(-\veps A \sin z\right) \\
+	\implies \veps \frac{\partial A}{\partial t} \sin z - \veps A \sin z +
+	\frac{\veps^3}{6}A^3 \sin^3 z + \dots &= -\frac{\veps A \sin
+	z}{\ReN_c}\left[1-\frac{\Delta \ReN}{\ReN_c} + \dots \right] 
+\end{align}
+The leading balance is thus (noting $A_t = 0$ at marginal stability)
+\begin{equation}
+	-\veps A \sin z = -\frac{\veps A \sin z}{\ReN_c}
+\end{equation}
+leaving next order terms
+\begin{equation}
+	\veps \frac{\partial A}{\partial t} \sin z + \frac{\veps^3}{6}A^3 \sin^3 z
+	= \frac{\Delta \ReN}{\ReN_c^2} \veps A \sin z
+\end{equation}
+The first term is $\mathcal{O}(\veps A_t)$, the second term is
+$\mathcal{O}(\veps^3)$ and the last term is $\mathcal{O}(\veps\Delta \ReN)$.
+We wish to balance terms, hence scalings are set by
+\begin{equation}
+	\frac{\partial A}{\partial t} = \mathcal{O}(\veps^2) = \Delta \ReN
+\end{equation}
+
+Given this `rough' analysis, we now construct a formal expansion. Let
+\begin{equation}
+	u = \veps u_1 + \veps^3 u_3 + \dots
+\end{equation}
+where $u_1 = A(T) \sin z$ and $T = \veps^2 t$ (cf. method of multiple scales,
+Perturbation Methods) hence $\partial_t = \veps^2 \partial_T$. Further, let
+\begin{equation}
+	\ReN - \ReN_c = \veps^2 \ReN_2 = \Delta \ReN
+\end{equation}
+where $\ReN_2 = \pm 1$ depending on whether $\ReN > \ReN_c$ or $\ReN <
+\ReN_c$ respectively. We assume $\ReN > \ReN_c$, hence $\veps = \sqrt{\ReN -
+\ReN_c}$. Substitute into \eqref{eq:l15:1} to get
+\begin{align}
+	\veps^2 \frac{\partial}{\partial T}\left[ \veps u_1 + \veps^3 u_3 +
+	\dots\right] - \sin(\veps u_1 + \veps^3 u_3 + \dots) &= \frac{1}{\ReN_c +
+	\veps^2} \frac{\partial^2}{\partial z^2}\left[\veps u_1 + \veps^3 u_3 +
+	\dots \right] \\
+	\veps^2 \frac{\partial}{\partial T}\left[ \veps u_1 + \veps^3 u_3 + \dots
+	\right] - (\veps u_1 + \veps^3 u_3) + \frac{(\veps u_1 + \veps^3
+	u_3)^3}{3!} + \dots &= \frac{1}{\ReN_c}\left(1-\frac{\veps}{\ReN_c}\right)
+	\frac{\partial^2}{\partial z^2}\left[ \veps u_1 + \veps^3 u_3 + \dots
+	\right]
+\end{align}
+Equate terms of equal power in $\veps$:
+\begin{align}
+	\mathcal{O}(\veps): \hspace{8.35em}-u_1 &=\frac{1}{\ReN_c}\frac{\partial^2
+	u_1}{\partial z^2}\label{eq:l15:2} \\
+	\mathcal{O}(\veps^3): \hspace{3em}\frac{\partial u_1}{\partial T} - u_3 +
+	\frac{1}{6}u_1^3 &= \frac{1}{\ReN_c}\frac{\partial^2 u_3}{\partial z^2} -
+	\frac{1}{\ReN_c^2}\frac{\partial^2 u_1}{\partial z^2}\label{eq:l15:3}
+\end{align}
+At first order, \eqref{eq:l15:2} is satisfied by $u_1 = A(T)\sin z$ with
+$\ReN_C = 1$ as expected. Rewrite \eqref{eq:l15:3}:
+\begin{equation}
+	\left[\frac{1}{\ReN_c} \frac{\partial^2}{\partial z^2} + 1 \right] u_3 =
+	\frac{\partial u_1}{\partial T} + \frac{1}{6}u_1^3 + \frac{1}{\ReN^2_c}
+	\frac{\partial^2 u_1}{\partial z^2} \label{eq:l15:4}
+\end{equation}
+with $u_3 = 0$ at $z=0,\pi$. This is a forced equation for $u_3$ with
+homogeneous boundary conditions.
+
+\paragraph{Fredholm alternative.} To proceed, we must import some operator
+theory which will provide a condition for solutions of \eqref{eq:l15:4} to
+exist and ultimately yield the Landau equation. For a matrix equation
+$\symsf{A}\x = \symbf{b}$,
+\begin{enumerate}
+	\item if $\symsf{A}\x = 0$ has no non-trivial solution, $\symsf{A}$ is
+		invertible hence
+		\begin{equation}
+			\x = \symsf{A}^{-1}\symbf{b}
+		\end{equation}
+		is the unique solution.
+	\item if $\det \symsf{A} = 0$ then either $\symbf{b} \in
+		\mathrm{range}(\symsf{A})$ and there are an infinite number of
+		solutiosn, or $\symbf{b} \not\in \mathrm{range}(\symsf{A})$ and there
+		are no solutions. Existence of a solution can be deduced without
+		determining $\mathrm{range}(\symsf{A})$: if $\det \symsf{A} = 0$ then
+		there exists $\symbf{y}$ such that $\symbf{y}^T \symsf{A} = 0$. Hence
+		taking the dot product of the matrix equation with $\symbf{y}^T$ (on
+		the left) gives
+		\begin{equation}
+			\symbf{y}^T\symsf{A}\x = 0 =  \symbf{y}^T \symbf{b}
+		\end{equation}
+		for a solution. This is the \emph{solveability condition}.
+\end{enumerate}
+The \emph{Fredholm alternative} is the analogous operator version of the
+above. The PDE \eqref{eq:l15:4} has either
+\begin{itemize}
+	\item a unique solution if
+		\begin{equation}
+			\left[\frac{1}{\ReN_c}\frac{\partial^2}{\partial z^2} + 1\right]
+			u_3 = 0
+		\end{equation}
+		has no solutions (so operator invertible);
+	\item no solution or an infinite number of solutions if
+		\begin{equation}
+			\left[\frac{1}{\ReN_c}\frac{\partial^2}{\partial z^2} + 1\right]
+			u_3 = 0
+		\end{equation}
+		has a solution.
+\end{itemize}
+We already know that
+\begin{equation}
+	\left[\frac{1}{\ReN_c}\frac{\partial^2}{\partial z^2} + 1\right]
+	u_1 = 0
+\end{equation}
+so a solveability condition must be satisfied for $u_3$ to exist, i.e. for our
+expansion to make sense. This leadings to the Landau equation without solving
+for $u_3$! 
+
+Multiply \eqref{eq:l15:4} by $u_1$ (equivalently multiply by $\sin z$) and
+integrate over the domain $z \in \left[0,\pi\right]$:
+\begin{equation}
+	\int_0^\pi \sin z \left[ \frac{1}{\ReN_c}\frac{\partial^2}{\partial z^2} +
+	1\right] u_3 \, \diffd z = \int_0^\pi \sin z \left(
+	\frac{\partial u_1}{\partial T} + \frac{1}{6}u_1^3 + \frac{1}{\ReN^2_c}
+	\frac{\partial^2 u_1}{\partial z^2} \right) \, \diffd z
+\end{equation}
+Denote the operator applied to $u_3$ in the integrand by $\mathcal{L}$ (note
+$\L u_1 = 0$). By noting that $\L$ is self-adjoint, or equivalently
+integrating by parts, we have
+\begin{align}
+	\int_0^\pi u_3 \cancel{\L \sin z} \, \diffd z &= \int_0^\pi \sin z \left(
+	\frac{\partial u_1}{\partial T} + \frac{1}{6}u_1^3 + \frac{1}{\ReN^2_c}
+	\frac{\partial^2 u_1}{\partial z^2} \right) \, \diffd z \\
+	\implies \int_0^\pi \sin z \left(
+	\frac{\partial u_1}{\partial T} + \frac{1}{6}u_1^3 + \frac{1}{\ReN^2_c}
+	\frac{\partial^2 u_1}{\partial z^2} \right) \, \diffd z &= 0 \\
+	\implies \int_0^\pi \sin z \left[ \sin z \frac{\diffd A}{\diffd T} +
+	\frac{1}{6}A^3 \sin^3 z - \frac{A}{\ReN_c^2} \sin z \right] \, \diffd z &=
+	0
+\end{align}
+Evaluating the integral yields the \emph{Landau equation} governing $A$:
+\begin{equation}
+	\frac{\diffd A}{\diffd T} = \frac{1}{\ReN_c^2} A - \frac{1}{8} A^3 = A -
+	\frac{1}{8}A^3
+\end{equation}
+
+If $A^3$ is small, we get exponential growth on slow timescale $\veps^2 t$.
+When $A$ becomes large enough, $A_T$ becomes negative and growth stops. Note
+the following.
+\begin{itemize}
+	\item As $\ReN \to \ReN_c$ the leading spatial character of the flow is
+		determined by the unstable eigenfunction of the linear problem, and
+		temporal evolution is given by the Landau equation.
+	\item Notice the absence of an $A^2$ term: it is missing due to
+		reflectional syummetry of the original problem (if $u$ is a solution,
+		so is $-u$), a property we expect to carry over to the Landau equation.
+	\item By plotting a phase portrait we can determine the long-term
+		behaviour of solutions to the Landau equation.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thick,->] (-0.1, 0) -- (8, 0) node[right] {$T$};
+				\draw[thick,->] (0, -2) -- (0, 2) node[left] {$A$};
+				\draw[dashed] (8, 1.2) -- (0, 1.2) node[left] {$\sqrt{8}$};
+				\draw[dashed] (8, -1.2) -- (0, -1.2) node[left] {$-\sqrt{8}$};
+				\draw[red,->,smooth] plot[domain=0.1:1.5]
+				({\x},{1.2+0.3*exp(-\x)});
+				\draw[red,->,smooth] plot[domain=0.2:4]
+				({\x},{1.25+exp(-\x)});
+				\draw[red,->,smooth] plot[domain=0.1:1.5]
+				({\x},{-1.2-0.3*exp(-\x)});
+				\draw[red,->,smooth] plot[domain=0.2:4]
+				({\x},{-1.25-exp(-\x)});
+				\draw[red,->,smooth] plot[domain=0.1:2.5]
+				({\x},{1.15/(1+exp(-3*(\x-1)))});
+				\draw[red,->,smooth] plot[domain=0.1:2.5]
+				({\x+1.5},{1.15/(1+exp(-3*(\x-1)))});
+				\draw[red,->,smooth] plot[domain=0.1:2.5]
+				({\x+3},{1.15/(1+exp(-3*(\x-1)))});
+				\draw[red,->,smooth] plot[domain=0.1:2.5]
+				({\x},{-1.15/(1+exp(-3*(\x-1)))});
+				\draw[red,->,smooth] plot[domain=0.1:2.5]
+				({\x+1.5},{-1.15/(1+exp(-3*(\x-1)))});
+				\draw[red,->,smooth] plot[domain=0.1:2.5]
+				({\x+3},{-1.15/(1+exp(-3*(\x-1)))});
+
+			\end{tikzpicture}
+		\end{center}
+		If $A(0) > 0$, then $A(T) \to \sqrt{8}$ as $T \to \infty$. If $A(0) <
+		0$, then $A(T) \to -\sqrt{8}$ as $T \to \infty$. Hence
+		\begin{equation}
+			u \to \pm \veps \sqrt{8}\sin z = \pm \sqrt{8(\ReN - \ReN_c)}\sin z
+		\end{equation}
+	\item Plotting $A$ against $\veps^2$ shows the stability of steady
+		solutions to the Landau equation. Solid lines are stable, dashed lines
+		are unstable.
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[->] (-2, 0) -- (5, 0) node[right] {$\ReN-\ReN_c$};
+				\draw[->] (0, -2) -- (0, 2) node[left] {$A$};
+				\draw[thick,blue] (-2, 0) -- (0,0);
+				\draw[thick,blue,dashed] (0,0) -- (5, 0);
+				\draw[thick,blue] plot[domain=0:5,samples=100] ({\x},{sqrt(\x)});
+				\draw[thick,blue] plot[domain=0:5,samples=100] ({\x},{-sqrt(\x)});
+				\draw[red,->] (-1.5, -1) -- (-1.5, -0.5);
+				\draw[red,->] (-0.5, -1) -- (-0.5, -0.5);
+				\draw[red,->] (-1.5, 1) -- (-1.5, 0.5);
+				\draw[red,->] (-0.5, 1) -- (-0.5, 0.5);
+				\draw[red,->] (0.5, 0) -- (0.5, 0.5);
+				\draw[red,->] (0.5, 1.4) -- (0.5, 0.9);
+				\draw[red,->] (1.5, 0.5) -- (1.5, 1);
+				\draw[red,->] (1.5, 1.9) -- (1.5, 1.4);
+				\draw[red,->] (2.5, 0.8) -- (2.5, 1.3);
+				\draw[red,->] (2.5, 2.2) -- (2.5, 1.7);
+				\draw[red,->] (3.5, 1.17) -- (3.5, 1.67);
+				\draw[red,->] (3.5, 2.57) -- (3.5, 2.07);
+				\draw[red,->] (0.5, 0) -- (0.5, -0.5);
+				\draw[red,->] (0.5, -1.4) -- (0.5, -0.9);
+				\draw[red,->] (1.5, -0.5) -- (1.5, -1);
+				\draw[red,->] (1.5, -1.9) -- (1.5, -1.4);
+				\draw[red,->] (2.5, -0.8) -- (2.5, -1.3);
+				\draw[red,->] (2.5, -2.2) -- (2.5, -1.7);
+				\draw[red,->] (3.5, -1.17) -- (3.5, -1.67);
+				\draw[red,->] (3.5, -2.57) -- (3.5, -2.07);
+				\draw (-2, 0.2) node[right] {\tiny stable};
+				\draw (5, 1.9) node[left] {\tiny stable};
+				\draw (5,-1.9) node[left] {\tiny stable};
+				\draw (5, 0.2) node[left] {\tiny unstable};
+			\end{tikzpicture}
+		\end{center}
+		Arrows indicate the direction solutions move through the $(A,\veps^2)$
+		phase space, based on the sign of $A_T$. Eventually, all solutions end
+		up on stable branches. The situation demonstrated here is referred to
+		as a \emph{supercritical pitchfork bifurcation} at $T=0$.
+	\item The Landau equation can be extended, e.g.
+		\begin{equation}
+			A_T = \alpha_1 A + \alpha_2 A^3 + \alpha_3 A^5 + \dots
+		\end{equation}
+		An $A^5$ term would further complicate the phase plot given above.
+	\item A \emph{subcritical pitchfork bifurcation} requires $\alpha_2 > 0$.
+	\item If the frequency were non-zero at the bifurcation point $T=0$ we
+		would instead find a \emph{Hopf bifurcation}. This cannot occur in
+		this model problem or convection in general, but does arise in shear flows.
+\end{itemize}
+
+\subsection{Weakly nonlinear theory: extended systems}
+In the case of spatially extended systems, it is no longer valid to assume
+only one mode is unstable for $\veps^2 > 0$. We now need to include the fact
+that dispersion will occur, meaning energy moves between wavenumbers. 
+\begin{center}
+	\begin{tikzpicture}[scale=1.4]
+		\draw[thick,->] (0,0) -- (0, 3) node[left]
+		{$\Re\left[\lambda\right]$};
+		\draw[thick,->] (0, 1.5) -- (4, 1.5) node[right] {$k$};
+		\draw[blue,smooth] plot[domain=0.3:3.7]
+		({\x},{1.5-0.3*(\x-1)*(\x-3)});
+		\draw[fill,blue] (1, 1.5) circle (0.05);
+		\draw[fill,blue] (3, 1.5) circle (0.05);
+		\draw[<->] (1, 1) -- (3, 1) node[midway,below]
+		{$\mathcal{O}(\veps)$};
+		\draw[<->] (3, 1.5) -- (3, 1.8) node[midway,right]
+		{$\mathcal{O}(\veps^2)$};
+	\end{tikzpicture}
+\end{center}
+
+By assumption, we have that the unstable of range of wavenumbers is
+$\mathcal{O}(\veps)$ wide, so $\Re\left[\lambda\right] = \mathcal{O}(\veps^2)$
+since a maximum is locally parabolic. Hence look for a solution
+\begin{equation}
+	u = \veps \left(A(X,T) e^{ikx} +  A^*(X,T)e^{-ikx}\right) + \text{h.o.t.}
+\end{equation}
+where $T = \veps^2 t$ and $X = \veps x$. This gives rise to an additional term
+of the form $A_{XX}$ in the Landau equation, which now becomes
+\begin{equation}
+	A_T = \alpha A + \beta A_{XX} \pm \abs{A}^2A
+\end{equation}
+and in general $A$ is complex. This is the \emph{Ginsburg-Landau equation}.
+This equation describes, for example, the slow modulation of rolls just above
+criticality in Rayleigh-Benard convection. 
+
+\subsubsection{Spatially periodic solutions}
+Consider solutions to the Ginsburg-Landau equation of the form $A(X,T) =
+ae^{i\kappa X}$. Then
+\begin{align}
+	a(\alpha - \beta \kappa^2) - a^3 &= 0 \\
+	\implies a &= \sqrt{\alpha - \beta \kappa^2}
+\end{align}
+where the negative sign has been chosen to yield a balance. This corresponds
+to a total solution
+\begin{equation}
+	u = \veps \sqrt{\alpha - \beta K^2} e^{i(k+\veps \kappa)x}
+\end{equation}
+The maximum amplitude occurs at $\kappa=0$, and the amplitude tends to $0$ as
+$\kappa \to \sqrt{\alpha/\beta}$. Analysis of the stability of these states
+yields \emph{Eckhaus instability}.
+
+\subsubsection{Localised solutions}
+Stable flows may have localised solutions as the nonlinearity is
+destabilising, so that in some parts of the domain a large amplitude
+disturbance may equilibriate only in that region.  If bifurcation is
+subcritical and $\alpha < 0$, i.e. $\ReN < \ReN_c$, then
+\begin{equation}
+	A_T = \alpha A + \beta A_{XX} + A^3
+\end{equation}
+Look for a steady, real solution, hence
+\begin{equation}
+	A_{XX} = \lambda A - \mu A^3
+\end{equation}
+where $\lambda = -\alpha/\beta > 0$ and $\mu = 1/\beta > 0$. Rearrange to get
+\begin{align}
+	\frac{\diffd}{\diffd A}\left(\frac{1}{2}A_{X}^2\right) &= \lambda A - \mu
+	A^3 \\
+	A_X &= A \sqrt{\lambda - \frac{1}{2}\mu A^2} \\
+	\implies \int \frac{\diffd A}{A\sqrt{\lambda - \frac{1}{2}\mu A^2}} &= X
+\end{align}
+Note that the constant of integration has been disregarded for convenience
+(simply translates solution).  The solution is then
+\begin{equation}
+	A = \sqrt{\frac{2\lambda}{\mu}} \sech(\sqrt{\lambda}X)
+\end{equation}
+which corresponds to a total solution
+\begin{equation}
+	u = \veps \sqrt{\frac{2\lambda}{\mu}} \sech (\veps \sqrt{\lambda}x)e^{ikx}
+\end{equation}
+The $\sech$ factor localises the solution whilst the $e^{ikx}$ factor provides
+global oscillation.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.4]
+		\draw[thick,->] (-5, 0) -- (5, 0) node[right] {$x$};
+		\draw[thick,->] (0, -1.5) -- (0, 1.5) node[left]
+		{$\Re\left[u\right]$};
+		\draw[red,smooth] plot[domain=-5:5, samples=200] ({\x},{1/cosh(\x)});
+		\draw[red,smooth] plot[domain=-5:5, samples=200] ({\x},{-1/cosh(\x)});
+		\draw[blue,smooth] plot[domain=-5:5, samples=200]
+		({\x},{cos(10*deg(\x))/cosh(\x)});
+		\draw[blue,<->] (0.935, -1) -- (1.562, -1) node[midway,below] {roll
+		$\lambda$};
+		\draw[red] (2, 0.5) node[rotate=-16] {modulation};
+	\end{tikzpicture}
+\end{center}
+
+
 
 \end{document}

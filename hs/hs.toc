@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}Kelvin-Helmholtz instability}{2}{section.2}
-\contentsline {section}{\numberline {3}Thermal instabilities: Rayleigh-Bernard convection}{4}{section.3}
+\contentsline {section}{\numberline {2}Kelvin-Helmholtz instability}{3}{section.2}
+\contentsline {section}{\numberline {3}Thermal instabilities: Rayleigh-Benard convection}{5}{section.3}
 \contentsline {paragraph}{\nonumberline Governing equations.}{5}{section*.2}
 \contentsline {paragraph}{\nonumberline Boundary conditions.}{6}{section*.3}
 \contentsline {paragraph}{\nonumberline Basic state.}{6}{section*.4}
@@ -8,43 +8,49 @@
 \contentsline {section}{\numberline {4}Centrifugal instabilities}{10}{section.4}
 \contentsline {subsection}{\numberline {4.1}Rayleigh's criterion}{10}{subsection.4.1}
 \contentsline {paragraph}{\nonumberline What distributions of $I(r)$ could be stable?}{11}{section*.6}
-\contentsline {subsection}{\numberline {4.2}Derivation via linear stability analysis}{11}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}Derivation via linear stability analysis}{12}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Taylor vortices}{13}{subsection.4.3}
-\contentsline {section}{\numberline {5}Parallel shear flows}{14}{section.5}
-\contentsline {subsection}{\numberline {5.1}Inviscid analysis}{14}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}Squire's transformation (Squire, 1933)}{15}{subsubsection.5.1.1}
+\contentsline {section}{\numberline {5}Parallel shear flows}{15}{section.5}
+\contentsline {subsection}{\numberline {5.1}Inviscid analysis}{15}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Squire's transformation (Squire, 1933)}{16}{subsubsection.5.1.1}
 \contentsline {subsubsection}{\numberline {5.1.2}Rayleigh's equation}{16}{subsubsection.5.1.2}
-\contentsline {paragraph}{\nonumberline Comments.}{16}{section*.8}
-\contentsline {subsubsection}{\numberline {5.1.3}Properties of Rayleigh's equation.}{16}{subsubsection.5.1.3}
-\contentsline {paragraph}{\nonumberline Inflection point criterion.}{16}{section*.9}
-\contentsline {paragraph}{\nonumberline Fj\o rtoft's condition.}{17}{section*.10}
+\contentsline {paragraph}{\nonumberline Comments.}{17}{section*.8}
+\contentsline {subsubsection}{\numberline {5.1.3}Properties of Rayleigh's equation.}{17}{subsubsection.5.1.3}
+\contentsline {paragraph}{\nonumberline Inflection point criterion.}{17}{section*.9}
+\contentsline {paragraph}{\nonumberline Fj\o rtoft's condition.}{18}{section*.10}
 \contentsline {paragraph}{\nonumberline Howard's semicircle theorem}{18}{section*.11}
-\contentsline {subsubsection}{\numberline {5.1.4}Predictions}{19}{subsubsection.5.1.4}
-\contentsline {subsection}{\numberline {5.2}Viscous analysis}{19}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Orr-Sommerfeld \& Squire Equations}{21}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Channel flow (PPF)}{22}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Other flows}{23}{subsubsection.5.2.3}
-\contentsline {paragraph}{\nonumberline Notes.}{23}{section*.13}
+\contentsline {subsubsection}{\numberline {5.1.4}Predictions}{20}{subsubsection.5.1.4}
+\contentsline {subsection}{\numberline {5.2}Viscous analysis}{20}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Orr-Sommerfeld \& Squire Equations}{22}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Channel flow (PPF)}{23}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Other flows}{24}{subsubsection.5.2.3}
+\contentsline {paragraph}{\nonumberline Notes.}{24}{section*.13}
 \contentsline {section}{\numberline {6}Transient Growth \& IVPs}{24}{section.6}
-\contentsline {subsection}{\numberline {6.1}Example of IVP analysis}{24}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Key points}{25}{subsection.6.2}
-\contentsline {paragraph}{\nonumberline Matrix $L$ is non-normal.}{25}{section*.14}
+\contentsline {subsection}{\numberline {6.1}Example of IVP analysis}{25}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Key points}{26}{subsection.6.2}
+\contentsline {paragraph}{\nonumberline Matrix $L$ is non-normal.}{26}{section*.14}
 \contentsline {paragraph}{\nonumberline Normality implies complete set of orthonormal eigenvectors.}{26}{section*.15}
-\contentsline {paragraph}{\nonumberline Choice of norm is important.}{26}{section*.16}
-\contentsline {paragraph}{\nonumberline Non-normality is necessary but not sufficient for transient growth.}{27}{section*.17}
-\contentsline {paragraph}{\nonumberline How to find max growth and optimal ICs.}{28}{section*.18}
-\contentsline {subsection}{\numberline {6.3}Singular value decomposition}{28}{subsection.6.3}
-\contentsline {paragraph}{\nonumberline Theorem.}{29}{section*.19}
-\contentsline {subsection}{\numberline {6.4}Energy growth in viscous channel flows}{29}{subsection.6.4}
-\contentsline {paragraph}{\nonumberline How is $G$ estimated?}{32}{section*.20}
-\contentsline {paragraph}{\nonumberline Optimal growth in wall-bounded shear flows.}{33}{section*.21}
-\contentsline {subsection}{\numberline {6.5}Mechanisms of transient growth}{34}{subsection.6.5}
-\contentsline {paragraph}{\nonumberline 2D with $\partial _z = 0$ (no spanwise variation).}{35}{section*.23}
-\contentsline {paragraph}{\nonumberline 2D with $\partial _x = 0$ (no streamwise variation).}{36}{section*.24}
-\contentsline {subsection}{\numberline {6.6}Orr-Sommerfeld operator is non-normal}{37}{subsection.6.6}
-\contentsline {subsection}{\numberline {6.7}Energy stability analysis}{37}{subsection.6.7}
-\contentsline {subsection}{\numberline {6.8}Time stepping to growth}{38}{subsection.6.8}
-\contentsline {subsubsection}{\numberline {6.8.1}Constrained optimisation (linear)}{39}{subsubsection.6.8.1}
-\contentsline {paragraph}{\nonumberline Application.}{40}{section*.25}
-\contentsline {paragraph}{\nonumberline Comments.}{41}{section*.26}
-\contentsline {subsubsection}{\numberline {6.8.2}Constrained optimisation (nonlinear)}{41}{subsubsection.6.8.2}
+\contentsline {paragraph}{\nonumberline Choice of norm is important.}{27}{section*.16}
+\contentsline {paragraph}{\nonumberline Non-normality is necessary but not sufficient for transient growth.}{28}{section*.17}
+\contentsline {paragraph}{\nonumberline How to find max growth and optimal ICs.}{29}{section*.18}
+\contentsline {subsection}{\numberline {6.3}Singular value decomposition}{29}{subsection.6.3}
+\contentsline {paragraph}{\nonumberline Theorem.}{30}{section*.19}
+\contentsline {subsection}{\numberline {6.4}Energy growth in viscous channel flows}{30}{subsection.6.4}
+\contentsline {paragraph}{\nonumberline How is $G$ estimated?}{33}{section*.20}
+\contentsline {paragraph}{\nonumberline Optimal growth in wall-bounded shear flows.}{34}{section*.21}
+\contentsline {subsection}{\numberline {6.5}Mechanisms of transient growth}{35}{subsection.6.5}
+\contentsline {paragraph}{\nonumberline 2D with $\partial _z = 0$ (no spanwise variation).}{36}{section*.23}
+\contentsline {paragraph}{\nonumberline 2D with $\partial _x = 0$ (no streamwise variation).}{37}{section*.24}
+\contentsline {subsection}{\numberline {6.6}Orr-Sommerfeld operator is non-normal}{38}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.7}Energy stability analysis}{38}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.8}Time stepping to growth}{39}{subsection.6.8}
+\contentsline {subsubsection}{\numberline {6.8.1}Constrained optimisation (linear)}{40}{subsubsection.6.8.1}
+\contentsline {paragraph}{\nonumberline Application.}{41}{section*.25}
+\contentsline {paragraph}{\nonumberline Comments.}{42}{section*.26}
+\contentsline {subsubsection}{\numberline {6.8.2}Constrained optimisation (nonlinear)}{42}{subsubsection.6.8.2}
+\contentsline {section}{\numberline {7}Weakly nonlinear analysis}{44}{section.7}
+\contentsline {subsection}{\numberline {7.1}Weakly nonlinear theory: small systems}{46}{subsection.7.1}
+\contentsline {paragraph}{\nonumberline Fredholm alternative.}{47}{section*.27}
+\contentsline {subsection}{\numberline {7.2}Weakly nonlinear theory: extended systems}{49}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}Spatially periodic solutions}{50}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Localised solutions}{50}{subsubsection.7.2.2}

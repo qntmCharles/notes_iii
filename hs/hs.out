@@ -1,6 +1,6 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Kelvin-Helmholtz instability}{}% 2
-\BOOKMARK [1][-]{section.3}{Thermal instabilities: Rayleigh-Bernard convection}{}% 3
+\BOOKMARK [1][-]{section.3}{Thermal instabilities: Rayleigh-Benard convection}{}% 3
 \BOOKMARK [1][-]{section.4}{Centrifugal instabilities}{}% 4
 \BOOKMARK [2][-]{subsection.4.1}{Rayleigh's criterion}{section.4}% 5
 \BOOKMARK [2][-]{subsection.4.2}{Derivation via linear stability analysis}{section.4}% 6
@@ -26,3 +26,8 @@
 \BOOKMARK [2][-]{subsection.6.8}{Time stepping to growth}{section.6}% 26
 \BOOKMARK [3][-]{subsubsection.6.8.1}{Constrained optimisation \(linear\)}{subsection.6.8}% 27
 \BOOKMARK [3][-]{subsubsection.6.8.2}{Constrained optimisation \(nonlinear\)}{subsection.6.8}% 28
+\BOOKMARK [1][-]{section.7}{Weakly nonlinear analysis}{}% 29
+\BOOKMARK [2][-]{subsection.7.1}{Weakly nonlinear theory: small systems}{section.7}% 30
+\BOOKMARK [2][-]{subsection.7.2}{Weakly nonlinear theory: extended systems}{section.7}% 31
+\BOOKMARK [3][-]{subsubsection.7.2.1}{Spatially periodic solutions}{subsection.7.2}% 32
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Localised solutions}{subsection.7.2}% 33
