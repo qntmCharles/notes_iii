@@ -92,3 +92,4 @@
 \contentsline {subsubsection}{\numberline {10.5.1}Equilibrium}{60}{subsubsection.10.5.1}
 \contentsline {paragraph}{\nonumberline Accretion disc around a body.}{61}{section*.19}
 \contentsline {subsubsection}{\numberline {10.5.2}Linear perturbations}{61}{subsubsection.10.5.2}
+\contentsline {subsubsection}{\numberline {10.5.3}The H\o iland criteria}{62}{subsubsection.10.5.3}

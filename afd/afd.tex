@@ -3440,7 +3440,7 @@ For equilibrium we require
 Take the curl to obtain
 \begin{align}
 	-r\frac{\partial \Omega^2}{\partial z} \hat{\symbf{\phi}} &= \nabla p
-	\times \nabla \frac{1}{\rho} \\
+	\times \nabla \frac{1}{\rho} \label{eq:thermwind} \\
 				&= \nabla T \times \nabla s
 \end{align}
 This is the vorticity equation in a steady state, sometimes called the
@@ -3547,6 +3547,192 @@ where
 is the intrinsic frequency, i.e. the angular frequency of the wave measured in
 a frame of reference rotating with the local angular velocity of the fluid.
 
+Eliminate $\delta u_\phi$ and $\delta \rho$ to get
+\begin{align}
+	(\hat{\omega}^2 - A)\delta u_r - B \delta u_z &=
+	-\frac{i\hat{\omega}}{\rho}\left(\frac{\partial \delta p}{\partial r} -
+	\frac{\partial p}{\partial r} \frac{\delta p}{\gamma p}\right) + 2\Omega
+	\frac{i m \delta p}{\rho r} \\
+	-C\delta u_r + (\hat{\omega}^2 - D)\delta u_z &=
+	-\frac{i\hat{\omega}}{\rho}\left(\frac{\partial \delta p}{\partial z} -
+	\frac{\partial p}{\partial z} \frac{\delta p}{\gamma p}\right)
+\end{align}
+where
+\begin{align}
+	A &= \frac{2\Omega}{r}\frac{\partial}{\partial r}(r^2\Omega) -
+	\frac{1}{\rho}\frac{\partial p}{\partial r} \left(\frac{1}{\gamma
+	p}\frac{\partial p}{\partial r} - \frac{1}{\rho}\frac{\partial
+	\rho}{\partial r}\right) \\
+	B &= \frac{2\Omega}{r}\frac{\partial}{\partial z}(r^2\Omega) -
+	\frac{1}{\rho}\frac{\partial p}{\partial r} \left(\frac{1}{\gamma
+	p}\frac{\partial p}{\partial z} - \frac{1}{\rho}\frac{\partial
+	\rho}{\partial z}\right) \\
+	C &= -\frac{1}{\rho}\frac{\partial p}{\partial z} \left(\frac{1}{\gamma
+	p}\frac{\partial p}{\partial r} - \frac{1}{\rho}\frac{\partial
+	\rho}{\partial r}\right) \\
+	D &= -\frac{1}{\rho}\frac{\partial p}{\partial z} \left(\frac{1}{\gamma
+	p}\frac{\partial p}{\partial z} - \frac{1}{\rho}\frac{\partial
+	\rho}{\partial z}\right)
+\end{align}
+
+Note that $A, B, C$ and $D$ involve $r$ and $z$ derivatives of the specific
+angular momentum $r^2 \Omega$ and the specific entropy $s$. The thermal wind
+equation \eqref{eq:thermwind} implies $B = C$, so the matrix
+\begin{equation}
+	M = \begin{pmatrix} A & B \\ C & D \end{pmatrix} = \begin{pmatrix} A & B
+ 	\\ B & D \end{pmatrix}
+\end{equation}
+is symmetric.
+
+\subsubsection{The H\o iland criteria}
+Introduce the Lagrangian displacement $\disp$ via
+\begin{equation}
+	\Delta \u = \delta \u + \disp \cdot \nabla \u = \frac{\diffD \disp}{\diffD
+	t}
+\end{equation}
+i.e.
+\begin{align}
+	\delta u_r &= -i\hat{\omega} \xi_r \\
+	\delta u_\phi &= -i\hat{\omega}\xi_\phi - r\disp \cdot \nabla \Omega \\
+	\delta u_z &= -i\hat{\omega} \xi_z 
+\end{align}
+Note that
+\begin{equation}
+	\frac{1}{r}\frac{\partial}{\partial r}(r\delta u_r) + \frac{im\delta
+	u_\phi}{r} + \frac{\partial \delta u_z}{\partial z} =
+	-i\hat{\omega}\left[\frac{1}{r}\frac{\partial}{\partial r}(r\xi_r) +
+	\frac{im\xi_\phi}{r} + \frac{\partial \xi_z}{\partial z} \right]
+\end{equation}
+The linearised equations are an eigenvalue problem for $\omega$ but it is not
+self-adjoint except when $m=0$ (axisymmetric perturbations). In this case,
+\begin{align}
+	(\omega^2 - A)\xi_r - B \xi_z &= \frac{1}{\rho}\left(\frac{\partial \delta
+	p}{\partial r} - \frac{\partial p}{\partial r} \frac{\delta p}{\gamma
+	p}\right) \\
+		-B\xi_r + (\omega^2 - D) \xi_z &= \frac{1}{\rho}\left(\frac{\partial
+		\delta p}{\partial z} - \frac{\partial p}{\partial z} \frac{\delta
+	p}{\gamma p}\right)
+\end{align}
+with
+\begin{equation}
+	\delta p = -\gamma p \nabla \cdot \disp - \disp \cdot \nabla p
+\end{equation}
+Multiply the first equation by $\rho \xi_r^*$ and the second by $\rho \xi_z^*$
+and integrate over the fluid volume $V$ (with boundary conditions $\delta p =
+0$)
+\begin{align}
+	\omega^2 \int_V \rho\left(\abs{\xi_r}^2 + \abs{\xi_z}^2\right) \, \diffd V
+	&= \int_V \left[ \rho Q(\disp) + \disp^* \cdot \nabla \delta p -
+	\frac{\delta p}{\gamma p} \disp^* \cdot \nabla p \right] \, \diffd V \\
+	&= \int_V \left[ \rho Q(\disp) - \frac{\delta p}{\gamma p}(\gamma p \nabla
+	\cdot \disp^* + \disp^* \cdot \nabla p)\right] \, \diffd V \\
+	&= \int_V \left( \rho Q(\disp) + \frac{\abs{\delta p}^2}{\gamma p} \right)
+	\,\diffd V
+\end{align}
+where
+\begin{align}
+	Q(\disp) &= A\abs{\xi_r}^2 + B(\xi_r^* \xi_z + \xi_z^* \xi_r) +
+	D\abs{\xi_z}^2 \\
+	 &= \left( \xi_r^*, \, \xi_z^*\right) \begin{pmatrix} A & B \\ B &
+		D \end{pmatrix} \begin{pmatrix} \xi_r \\ \xi_z \end{pmatrix}
+\end{align}
+is the (real) Hermitian form associated with $M$. Note that the integral does
+not involve $\xi_\phi$. If we had included self-gravity, there would be
+another, negative contribution to $\omega^2$. 
+
+The integral relation above shows that $\omega^2$ is real. A variational property
+ensures that instability to \emph{axisymmetric perturbations} occurs if and
+only if
+\begin{equation}
+	\int_V \left(\rho Q(\disp) + \frac{\abs{\delta p}^2}{\gamma
+	p}\right)\,\diffd V
+\end{equation}
+can be made negative by a trial displacement. If $Q$ is positive definite then
+$\omega^2 > 0$ and we have stability. Now the characteristic equation of $M$
+is
+\begin{equation}
+	\lambda^2 - (A+D)\lambda + AD - B^2 = 0
+\end{equation}
+The eigenvalues $\lambda_\pm$ are both positive if and only if
+\begin{equation}
+	A + D > 0, \hspace{2em} AD - B^2 > 0 \label{eq:l24:1}
+\end{equation}
+If these conditions are satisfied throughout the fluid then $Q > 0$, which
+implies $\omega^2 > 0$, so that fluid is stable to axisymmetric perturbations
+(neglecting self-gravitation).
+
+The conditions \eqref{eq:l24:1} are also necessary for stability. If one of
+the eigenvalues is negative in some region, then a trial displacement can be
+found which is localised in that region, has $\delta p = 0$ and $Q < 0$,
+implying instability. (By choosing $\disp$ in the correct direction and tuning
+$\nabla \cdot \disp$ appropriately, it is possible to arrange for $\delta p =
+-\gamma p \nabla \cdot \disp - \disp \cdot \nabla p$ to vanish.)
+
+Using $l = r^2 \Omega$ (specific angular momentum) and $s = c_p(\gamma^{-1}\ln
+p - \ln \rho) + \text{const.}$ (specific entropy of a perfect gas), we have
+\begin{align}
+	A &= \frac{1}{r^3} \frac{\partial l^2}{\partial r} -
+	\frac{g_r}{c_p}\frac{\partial s}{\partial r} \\
+	B &= \frac{1}{r^3}\frac{\partial l^2}{\partial z} -
+	\frac{g_r}{c_p}\frac{\partial s}{\partial z} =
+	-\frac{g_z}{c_p}\frac{\partial s}{\partial r} \\
+	D &= -\frac{g_z}{c_p}\frac{\partial s}{\partial z}
+\end{align}
+so the two conditions \eqref{eq:l24:1} become
+\begin{equation}
+	\frac{1}{r^3}\frac{\partial l^2}{\partial r} -
+	\frac{1}{c_p}\symbf{g}\cdot\nabla s > 0
+\end{equation}
+and
+\begin{equation}
+	-g_z\left(\frac{\partial l^2}{\partial r} \frac{\partial s}{\partial z} -
+	\frac{\partial l^2}{\partial z} \frac{\partial s}{\partial r}\right) > 0
+\end{equation}
+These are the \emph{H\o iland stability criteria.} If the criteria are
+marginally satisfied, a further investigation may be required.
+
+In the homentropic case $s = \text{const.}$ (a barotropic model) they reduce
+to the \emph{Rayleigh criterion} for centrifugal stability,
+\begin{equation}
+	\frac{\diffd l^2}{\diffd r} > 0
+\end{equation}
+where the derivative is now total since $l = l(r)$ in a barotropic model. This
+states that the specific angular momentum should increase with radius for
+stability.
+
+The second H\o iland criterion is equivalent to
+\begin{equation}
+	(\symbf{\hat{r}} \times (-\symbf{g}))\cdot(\nabla l^2 \times \nabla s) >
+	0
+\end{equation}
+In other words, the vector $\symbf{\hat{r}}\times (-\symbf{g})$ and $\nabla
+l^2 \times \nabla s$ should be parallel (rather than antiparallel). In a
+rotating star, for stability we require that the specific angular momentum
+should increase with $r$ on each surface of constant entropy.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[draw=none,fill=yellow!50] (0,0) ellipse (3 and 2.5);
+		\draw[fill] (0,0) circle (0.05);
+		\draw[fill] (1.5, 1.4) circle (0.05);
+		\draw[thick,->] (1.5, 1.4) -- ++ (1,0.9) node[right] {$\nabla s$};
+		\draw[thick,->] (1.5, 1.4) -- ++ (0.65,1.25) node[right] {$-\symbf{g}$};
+		\draw[thick,->] (1.5, 1.4) -- ++ (1.3,0.5) node[right] {$\nabla l^2$};
+		\draw[thick,->] (1.5, 1.4) -- ++ (1.4,0) node[right]
+		{$\symbf{\hat{r}}$};
+		\draw (0, -0.5) node {\Large stable};
+		\begin{scope}[shift={(8, 0)}]
+			\draw[draw=none,fill=yellow!50] (0,0) ellipse (3 and 2.5);
+			\draw[fill] (0,0) circle (0.05);
+			\draw[fill] (1.5, 1.4) circle (0.05);
+			\draw[thick,->] (1.5, 1.4) -- ++ (1,0.9) node[right] {$\nabla l^2$};
+			\draw[thick,->] (1.5, 1.4) -- ++ (0.65,1.25) node[right] {$-\symbf{g}$};
+			\draw[thick,->] (1.5, 1.4) -- ++ (1.3,0.5) node[right] {$\nabla s$};
+			\draw[thick,->] (1.5, 1.4) -- ++ (1.4,0) node[right]
+			{$\symbf{\hat{r}}$};
+			\draw (0, -0.5) node {\Large unstable};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
 
 
 \end{document}

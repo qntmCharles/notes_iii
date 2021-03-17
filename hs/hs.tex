@@ -1805,25 +1805,26 @@ Consider a general matrix $L$ which is diagonalisable, i.e. $\exists Q$ such
 that $Q^{-1} L Q = \Lambda$, a diagonal matrix. Then there is no growth in the
 norm 
 \begin{equation}
-	E' \equiv \x^T (Q^{-1})^T Q^{-1} \x = \x^T \symsf{W} \x
+	E' \equiv \x^H (Q^{-1})^H Q^{-1} \x = \x^H \symsf{W} \x
 \end{equation}
-where $\symsf{W} = (Q^{-1})^T Q^{-1}$ is the \emph{weight}.
+where $\symsf{W} = (Q^{-1})^H Q^{-1}$ is the \emph{weight}.
 
 \textbf{Proof:} let $\y = Q^{-1} \x$ and consider 
 \begin{align}
-	\frac{\diffd E'}{\diffd t} = \frac{\diffd}{\diffd t} \left( \y^T \cdot
-	\y\right) = \y^T \cdot \dot{\y} + \dot{\y}^T \cdot \dot{\y} &= 2 \y^T
-	\cdot \dot{\y} \\
-			  &= 2 (Q^{-1}\x)^TQ^{-1}\dot{\x} \\
-			  &= 2\x^T (Q^{-1})^T Q^{-1}\dot{\x} \\
-			  &= 2 \x^T (Q^{-1})^T Q^{-1} \dot{\x} \\
-			  &= 2 \x^T (Q^{-1})^T Q^{-1} L \x \hspace{2em} \text{since} \,\,
-			  \dot{\x} = L \x \\
-			  &= 2 \x^T (Q^{-1})^T Q^{-1} L Q Q^{-1} \x \\
-			  &= 2 \x^T (Q^{-1})^T \Lambda Q^{-1} \x \\
-			  &= 2 \y^T \Lambda \y 
+	\frac{\diffd E'}{\diffd t} = \frac{\diffd}{\diffd t} \left( \y^H \cdot
+	\y\right) &= \y^H \cdot \dot{\y} + \dot{\y}^H \cdot \dot{\y}\\
+			  &= (Q^{-1}\dot{\x})^HQ^{-1}\x + (Q^{-1}\x)^H Q^{-1}\dot{\x}
+			  \hspace{2em}\text{assuming} \,\, \dot{Q} = 0 \\
+			  &= \x^H L^H (Q^{-1})^H Q^{-1}\x + \x^H (Q^{-1})^H Q^{-1} L
+			  \x \hspace{2em} \text{since}\,\, \dot{\x}=L\x \\
+			  &= \x^H Q^{-H} Q^H L^H Q^{-H} Q^{-1} \x + \x^H Q^{-H} Q^{-1}L Q
+			  Q^{-1} \x \\
+			  &= \y^H \Lambda^* \y + \y^H \Lambda \y  \hspace{2em}
+			  \text{since} \,\, \Lambda^* = Q^H L^H Q^{-H}\\
+			  &= \y^H (\Lambda^* + \Lambda) \y \\
+			  &= 2\y^H \Re\left[\Lambda\right] \y
 \end{align}
-Hence $\dot{E'}$ is negative if all eigenvalues of $\Lambda$ are
+Hence $\dot{E'}$ is negative if all eigenvalues of $\Re\left[\Lambda\right]$ are
 negative. The key here is that $\y = Q^{-1} \x$ transforms $\x$ into a basis
 of eigenvectors.  For example, for $L$ in the previous example we have
 \begin{equation}
