@@ -2354,12 +2354,13 @@ and consider infinite shear $U(y) = \alpha y$ in an unbounded domain.
 		\draw[blue,->] (0, -0.5) -- (-0.25, -0.5);
 		\draw[blue,->] (0, -1) -- (-0.5, -1);
 		\draw[blue,->] (0, -1.5) -- (-0.75, -1.5);
+		\draw[blue] (2, 1.5) node {$U(y) = \alpha y$};
 	\end{tikzpicture}
 \end{center}
 
 Note $\left[\alpha\right] = T^{-1}, \left[\nu\right] = L^2 T^{-1}$ are the
 only parameters in the problem so we
-cannot define an inherent lengthscale which is independent of $\ReN$ (i.e. if
+cannot define an intrinsic lengthscale which is independent of $\ReN$ (i.e. if
 we used $\nu, \alpha$ to form a lengthscale, $\ReN \sim 1$ necessarily.)
 Hence we return to units:
 \begin{align}
@@ -2617,7 +2618,7 @@ eigenvalues. For energy growth (LHS $> 0$) we need an eigenvalue of $\L +
 eigenvalue of $\L$ to have a positive real part.
 
 Let $\ReN_E$ be the first Reynold's number for energy growth and
-$\ReN_L$ be the linear instability threshold. Then generically
+$\ReN_L$ the linear instability threshold. Then generically
 \begin{equation}
 	0 \le \ReN_E \le \ReN_L
 \end{equation}
@@ -2833,7 +2834,7 @@ stable. See Cantwell et al., Phys Fluids, \textbf{22} (2010) 034101.
 Consider as an example the nonlinear system
 \begin{equation}
 	\frac{\diffd \x}{\diffd t} = \begin{pmatrix} -x + 10y \\
-	y(10e^{-x^1/100}-y)(y-1) \end{pmatrix} = \symbf{f}(\x)
+	y(10e^{-x^2/100}-y)(y-1) \end{pmatrix} = \symbf{f}(\x)
 	\label{eq:l14:1}
 \end{equation}
 See Kerswell et al., Prog. Rep. Phys \textbf{77} (2014) 085901 for a more
@@ -2928,11 +2929,12 @@ brief energy growth.
 
 The key question is how to identify the important perturbation of lowest
 ampltiude which triggers \emph{transition}, i.e. which puts the system in a
-different basin of attraction. The approach considered here is constrained
-nonlinear optimisation in the sense that we use the full Navier-Stokes
-equations as constraints. The growth function is then a function of $T$
-\emph{and} the initial energy $E_0$, since we can no longer assume it is
-infinitesimally small. New terms arise in the first variation, due to the
+different basin of attraction. The initial conditions of such a perturbation
+are referred to as a \emph{minimal seed}. The approach considered here is
+constrained nonlinear optimisation in the sense that we use the full
+Navier-Stokes equations as constraints. The growth function is then a function
+of $T$ \emph{and} the initial energy $E_0$, since we can no longer assume it
+is infinitesimally small. New terms arise in the first variation, due to the
 non-linear term $\u \cdot \nabla \u$ in the Navier-Stokes equations:
 \begin{align}
 	\int_0^T \langle \frac{\delta G}{\delta \u} \cdot \delta \u \rangle \,
@@ -3025,7 +3027,7 @@ choice).
 				\draw[dashed] (2.5, 0) -- (2.5, 3);
 			\end{tikzpicture}
 		\end{center}
-	\item Initial energy $E_0 = 1.0001$. A `minimal seed' is clearly
+	\item Initial energy $E_0 = 1.0001$. A \emph{minimal seed} is clearly
 		identified for transition, i.e. the first time an initial condition
 		exists which will move to another basin of attraction. Note that $G$
 		is significantly larger despite a small increase in $E_0$: this is
@@ -3081,7 +3083,7 @@ find a band of unstable eigenvalues corresponding to disturbances which
 			\draw[red,smooth] plot[domain=0.828:1.837]
 			({\x},{1.5-0.1*\x*(\x+10)*(\x-0.315)*(\x-2)-1.039});
 			\draw[blue] (2.8, 1.3) node {$\Ra = \Ra^*$};
-			\draw[red] (2.3, 1) node {$\Ra = \Ra_c$};
+			\draw[red] (2.35, 1) node {$\Ra = \Ra_c$};
 			\draw[blue,thick,<->] (0.661, 3) -- (2.719, 3) node[right] {band
 			of unstable disturbances};
 		\end{scope}
@@ -3093,11 +3095,12 @@ dispersion and more importantly nonlinear effects exert their influences to
 limit growth. In general, there are two situations:
 \begin{itemize}
 	\item \textbf{Small systems}: allowable wavenumbers $k$ are discretised
-		and so if $\Ra$ is sufficiently close to (but larger than) $\Ra_c$,
-		only \emph{one} normal mode is unstable. In this case, there is no
-		need to worry about dispersion; only nonlinear effects are important
-		and the amplitude of disturbances is governed by the \emph{Landau
-		equation} to be derived later.
+		and so if $\Ra$ (or an equivalently parameter, e.g. $\ReN$) is
+		sufficiently close to (but larger than) $\Ra_c$, only \emph{one}
+		normal mode is unstable.  In this case, there is no need to worry
+		about dispersion; only nonlinear effects are important and the
+		amplitude of disturbances is governed by the \emph{Landau equation} to
+		be derived later.
 
 		For example, consider a periodic flow $u(x) = u(x+L)$: $e^{ikx}$ is a
 		solution if $e^{ikL} = 1$, i.e. $k = \pm \frac{2\pi n}{L}$ for $n \in
@@ -3221,7 +3224,7 @@ Equate terms of equal power in $\veps$:
 	\frac{1}{\ReN_c^2}\frac{\partial^2 u_1}{\partial z^2}\label{eq:l15:3}
 \end{align}
 At first order, \eqref{eq:l15:2} is satisfied by $u_1 = A(T)\sin z$ with
-$\ReN_C = 1$ as expected. Rewrite \eqref{eq:l15:3}:
+$\ReN_c = 1$ as expected. Rewrite \eqref{eq:l15:3}:
 \begin{equation}
 	\left[\frac{1}{\ReN_c} \frac{\partial^2}{\partial z^2} + 1 \right] u_3 =
 	\frac{\partial u_1}{\partial T} + \frac{1}{6}u_1^3 + \frac{1}{\ReN^2_c}
@@ -3243,7 +3246,7 @@ $\symsf{A}\x = \symbf{b}$,
 		is the unique solution.
 	\item if $\det \symsf{A} = 0$ then either $\symbf{b} \in
 		\mathrm{range}(\symsf{A})$ and there are an infinite number of
-		solutiosn, or $\symbf{b} \not\in \mathrm{range}(\symsf{A})$ and there
+		solutions, or $\symbf{b} \not\in \mathrm{range}(\symsf{A})$ and there
 		are no solutions. Existence of a solution can be deduced without
 		determining $\mathrm{range}(\symsf{A})$: if $\det \symsf{A} = 0$ then
 		there exists $\symbf{y}$ such that $\symbf{y}^T \symsf{A} = 0$. Hence
@@ -3252,7 +3255,7 @@ $\symsf{A}\x = \symbf{b}$,
 		\begin{equation}
 			\symbf{y}^T\symsf{A}\x = 0 =  \symbf{y}^T \symbf{b}
 		\end{equation}
-		for a solution. This is the \emph{solveability condition}.
+		for a solution. This is a \emph{solvability condition}.
 \end{enumerate}
 The \emph{Fredholm alternative} is the analogous operator version of the
 above. The PDE \eqref{eq:l15:4} has either
@@ -3262,7 +3265,7 @@ above. The PDE \eqref{eq:l15:4} has either
 			\left[\frac{1}{\ReN_c}\frac{\partial^2}{\partial z^2} + 1\right]
 			u_3 = 0
 		\end{equation}
-		has no solutions (so operator invertible);
+		has no (non-trivial) solutions (so operator invertible);
 	\item no solution or an infinite number of solutions if
 		\begin{equation}
 			\left[\frac{1}{\ReN_c}\frac{\partial^2}{\partial z^2} + 1\right]
@@ -3275,8 +3278,8 @@ We already know that
 	\left[\frac{1}{\ReN_c}\frac{\partial^2}{\partial z^2} + 1\right]
 	u_1 = 0
 \end{equation}
-so a solveability condition must be satisfied for $u_3$ to exist, i.e. for our
-expansion to make sense. This leadings to the Landau equation without solving
+so a solvability condition must be satisfied for $u_3$ to exist, i.e. for our
+expansion to make sense. This leads to the Landau equation without solving
 for $u_3$! 
 
 Multiply \eqref{eq:l15:4} by $u_1$ (equivalently multiply by $\sin z$) and
@@ -3309,7 +3312,7 @@ Evaluating the integral yields the \emph{Landau equation} governing $A$:
 
 If $A^3$ is small, we get exponential growth on slow timescale $\veps^2 t$.
 When $A$ becomes large enough, $A_T$ becomes negative and growth stops. Note
-the following.
+the following:
 \begin{itemize}
 	\item As $\ReN \to \ReN_c$ the leading spatial character of the flow is
 		determined by the unstable eigenfunction of the linear problem, and
@@ -3317,8 +3320,9 @@ the following.
 	\item Notice the absence of an $A^2$ term: it is missing due to
 		reflectional syummetry of the original problem (if $u$ is a solution,
 		so is $-u$), a property we expect to carry over to the Landau equation.
-	\item By plotting a phase portrait we can determine the long-term
-		behaviour of solutions to the Landau equation.
+	\item By plotting sample trajectories and considering the sign of $\diffd
+		A / \diffd T$ we can determine the long-term behaviour of solutions to
+		the Landau equation.
 		\begin{center}
 			\begin{tikzpicture}
 				\draw[thick,->] (-0.1, 0) -- (8, 0) node[right] {$T$};
@@ -3358,7 +3362,7 @@ the following.
 		are unstable.
 		\begin{center}
 			\begin{tikzpicture}
-				\draw[->] (-2, 0) -- (5, 0) node[right] {$\ReN-\ReN_c$};
+				\draw[->] (-2, 0) -- (5, 0) node[right] {$\veps^2 = \ReN-\ReN_c$};
 				\draw[->] (0, -2) -- (0, 2) node[left] {$A$};
 				\draw[thick,blue] (-2, 0) -- (0,0);
 				\draw[thick,blue,dashed] (0,0) -- (5, 0);
@@ -3398,11 +3402,13 @@ the following.
 		\begin{equation}
 			A_T = \alpha_1 A + \alpha_2 A^3 + \alpha_3 A^5 + \dots
 		\end{equation}
-		An $A^5$ term would further complicate the phase plot given above.
+		An $A^5$ term would further complicate the phase plot given above,
+		potentially adding a saddle bifurcation to the system.
 	\item A \emph{subcritical pitchfork bifurcation} requires $\alpha_2 > 0$.
 	\item If the frequency were non-zero at the bifurcation point $T=0$ we
-		would instead find a \emph{Hopf bifurcation}. This cannot occur in
-		this model problem or convection in general, but does arise in shear flows.
+		would instead find a \emph{Hopf bifurcation}. This does not occur in
+		this model problem or convection in general, but does arise in shear
+		flows.
 \end{itemize}
 
 \subsection{Weakly nonlinear theory: extended systems}
@@ -3476,7 +3482,7 @@ where $\lambda = -\alpha/\beta > 0$ and $\mu = 1/\beta > 0$. Rearrange to get
 	\implies \int \frac{\diffd A}{A\sqrt{\lambda - \frac{1}{2}\mu A^2}} &= X
 \end{align}
 Note that the constant of integration has been disregarded for convenience
-(simply translates solution).  The solution is then
+(simply translates the solution).  The solution is then
 \begin{equation}
 	A = \sqrt{\frac{2\lambda}{\mu}} \sech(\sqrt{\lambda}X)
 \end{equation}

@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  17 MAR 2021 17:58
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  18 MAR 2021 21:41
  restricted system commands enabled.
 **hs.tex
 (./hs.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.108 seconds
+luaotfload | main : initialization completed in 0.113 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3233,36 +3233,36 @@ nput line 1781.
 Missing character: There is no ; (U+003B) in font nullfont!
 ] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40]
 [41]
-Overfull \hbox (2.98138pt too wide) in paragraph at lines 2883--2884
+Overfull \hbox (2.98138pt too wide) in paragraph at lines 2884--2885
  [] 
  []
 
 [42] [43] [44] [45] [46]
-Overfull \hbox (17.78143pt too wide) in paragraph at lines 3214--3214
+Overfull \hbox (17.78143pt too wide) in paragraph at lines 3217--3217
 [] 
  []
 
 [47] [48] [49] [50] [51]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3507.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3507.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3513.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3513.
  (./hs.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3507.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3507.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3513.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3513.
 Package rerunfilecheck Info: File `hs.out' has not changed.
 (rerunfilecheck)             Checksum: 0ADB65106F9AC20283EDF53820395639;2530.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3507.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3513.
 )
 
 Here is how much of LuaTeX's memory you used:
  56375 strings out of 494577
  100000,1977958 words of node,token memory allocated
- 53799 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 6505 glue, 1 kern, 37 sub_mlist, 1916 attribute, 64
- glue_spec, 1916 attribute_list, 1 write nodes
-   avail lists: 1:21,2:4743,3:1430,4:143,5:421,6:2161,7:795,8:128,9:872,10:17,11
+ 53831 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 6509 glue, 1 kern, 37 sub_mlist, 1917 attribute, 64
+ glue_spec, 1917 attribute_list, 1 write nodes
+   avail lists: 1:20,2:4747,3:1431,4:143,5:419,6:2164,7:796,8:128,9:872,10:17,11
 :170
  58506 multiletter control sequences out of 65536+600000
- 110 fonts using 25004095 bytes
+ 110 fonts using 25003783 bytes
  74i,19n,108p,8840b,1863s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/
 fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype/p
@@ -3277,7 +3277,7 @@ f></usr/share/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf
 /fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype
 /public/lm/lmroman12-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/latxfont/line10.pfb>
-Output written on hs.pdf (51 pages, 414457 bytes).
+Output written on hs.pdf (51 pages, 414686 bytes).
 
 PDF statistics: 737 PDF objects out of 1000 (max. 8388607)
  585 compressed objects within 6 object streams
