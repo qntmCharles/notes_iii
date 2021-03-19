@@ -253,14 +253,14 @@ $\Gamma_1 = \gamma$. Adopting this very common assumption, we write
 \subsection{Simplified models}
 A \emph{perfect gas} may be defined as an ideal gas with constant $c_v, c_p,
 \gamma$ and $\mu$. Equipartition of energy for a classical gas with $n$
-degrees of freeodm per particle gives
+degrees of freedom per particle gives
 \begin{equation}
 	\gamma = 1 + \frac{2}{n}
 \end{equation}
 
 For a classical monatomic gas with $n=3$ translational degrees of freedom,
 $\gamma = 5/3$. This is relevant for fully ionised matter. For a classical
-diatomic gas with two addditional rotational degrees of freeodm, $n=5$ and
+diatomic gas with two addditional rotational degrees of freedom, $n=5$ and
 $\gamma = 7/5$. This is relevant for molecular hydrogen. In reality,
 $\Gamma_1$ is variable when the gas undergoes ionisation or when the gas and
 radiation pressures are comparable. 
@@ -692,7 +692,7 @@ axisymmetric torsional oscillations:
 \end{equation}
 The azimuthal component of the equation of motion is then
 \begin{equation}
-	\rho r \frac{\partial \Omega}{\partial t} = \frac{1}{\mu_09 r} \B_p \cdot
+	\rho r \frac{\partial \Omega}{\partial t} = \frac{1}{\mu_0 r} \B_p \cdot
 	\nabla( r \B_\phi)
 \end{equation}
 Combine with the induction equation above to give
@@ -2424,7 +2424,7 @@ We may write
 	\frac{1}{r}\frac{\partial \psi}{\partial r}
 \end{equation}
 where $\psi(r,z)$ is the \emph{magnetic flux function}. This is related to the
-vector potential by $\psi = r A_\phi$. The magentic flux contained inside the
+vector potential by $\psi = r A_\phi$. The magnetic flux contained inside the
 circle ($r =$const., $z=$const.) is
 \begin{equation}
 	\int_0^r B_z(r',z)2\pi r' \, \diffd r' = 2\pi \psi(r,z)
@@ -2455,7 +2455,7 @@ also write the velocity as
 although $\nabla \cdot \u_p \ne 0$ in general.
 
 \subsection{Mass loading \& angular velocity}
-The steady ideal induction equation
+The steady induction equation in ideal MHD,
 \begin{equation}
 	\nabla \times (\u \times \B) = 0
 \end{equation}
@@ -2509,10 +2509,10 @@ velocity of the magnetic surface}. The complete velocity field is then
 \begin{equation}
 	\u = \frac{k\B}{\rho} + r\omega \symbf{e}_\phi
 \end{equation}
-i.e. total velocity is parallel to the total magnetic in a frame rotating with
-angular velocity $\omega$ (for each individual magnetic surface). It is useful
-to think of the fluid being constained to move along the field line like a
-bead on a rotating wire.
+i.e. total velocity is parallel to the total magnetic field in a frame
+rotating with angular velocity $\omega$ (for each individual magnetic
+surface). It is useful to think of the fluid being constrained to move along
+the field line like a bead on a rotating wire.
 
 \subsection{Entropy}
 The steady thermal energy equation
@@ -2583,7 +2583,14 @@ The locus of Alfv\'{e}n points for different magnetic surfaces is called the
 Typically the outflow will start at low velocity in high-density material,
 where $A \ll 1$. We can therefore identify $\omega$ as the angular velocity
 $u_\phi/r = \Omega_0$ of the footpoint $r=r_0$ of the magnetic field line at
-the source of the outflow. 
+the source of the outflow. If mass is lost at a rate $\dot{M}$ in the outflow,
+angular momentum is lost at a rate $\dot{M} l = \dot{M} r_a^2 \Omega_0$. In
+contrast, in a hydrodynamic outflow, angular momentum is conserved by fluid
+elements and is therefore lost at a rate $\dot{M}r_0^2 \Omega_0$. A highly
+efficient removal of angular momentum occurs if $r_a/r_0 \gg 1$ (the
+\emph{magnetic lever arm}). The loss of angular momentum through a stellar
+wind is called \emph{magnetic braking}.  For the Sun, $r_a$ is between $20
+R_{\text{sun}}$ and $30 R_{\text{sun}}$.
 
 \begin{figure}[h]
 	\centering
@@ -2592,14 +2599,6 @@ the source of the outflow.
 		magnetic field line, leading to angular momentum loss and magnetic
 	braking.}
 \end{figure}
-
-If mass is lost at a rate $\dot{M}$ in the outflow, angular momentum is lost
-at a rate $\dot{M} l = \dot{M} r_a^2 \Omega_0$. In contrast, in a hydrodynamic
-outflow, angular momentum is conserved by fluid elements and is therefore lost
-at a rate $\dot{M}r_0^2 \Omega_0$. A highly efficient removal of angular
-momentum occurs if $r_a/r_0 \gg 1$ (the \emph{magnetic lever arm}). The loss
-of angular momentum through a stellar wind is called \emph{magnetic braking}.
-For the Sun, $r_a$ is between $20 R_{\text{sun}}$ and $30 R_{\text{sun}}$.
 
 \subsection{The Bernoulli function}
 The total energy equation for a steady flow is
@@ -2654,8 +2653,8 @@ parallel to $\B$, so the Lorentz force does no work:
 \end{equation}
 
 \subsection{Summary}
-We integrated almost all of the MHD equations, reducing hem to algebraic
-qeuations on each magnetic surface. If $\B_p$ (or equivalently $\psi$) is
+We integrated almost all of the MHD equations, reducing them to algebraic
+equations on each magnetic surface. If $\B_p$ (or equivalently $\psi$) is
 known, these equations determine the solution on each magnetic surface. We
 must also
 \begin{itemize}
@@ -2672,8 +2671,8 @@ $\psi(r,z)$.
 
 \subsection{Outflow from an accretion disc}
 Consider the launching of an outflow from a thin accretion disc. The angular
-velocity of the disc corresponds to circular Keplerian orbital motion around a
-central mass $M$:
+velocity of the disc corresponds (approximately) to circular Keplerian orbital
+motion around a central mass $M$:
 \begin{equation}
 	\Omega(r) = \left(\frac{GM}{r^3}\right)^{1/2}
 \end{equation}
@@ -2692,9 +2691,10 @@ In the sub-Alfv\'{e}nic region we have
 \end{equation}
 If the gas is very hot ($h \sim GM/r_0$) an outflow can be driven thermally
 (as in a stellar wind). Of more interest is the possibility of a dynamically
-driven outflow. For a `cold' wind $h$ makes a negligible contribution in the
-Bernoulli equation. Whether the flow accelerates or not along the field line
-depends on the variation of $\Phi_{cg}$. 
+driven outflow. For a `cold' wind, the enthalpy $h$ makes a negligible
+contribution in the Bernoulli equation. Whether the flow accelerates or not
+along the field line depends on the variation of $\Phi_{cg}$ along the field
+line. 
 
 \begin{figure}[h]
 	\centering
@@ -2720,7 +2720,7 @@ Now close to the footpoint (1,0) we have
 \begin{equation}
 	z^2 \approx 3(r-1)^2 \implies z \approx \pm \sqrt{3}(r-1)
 \end{equation}
-The footpoint lies at saddle point of $\Phi_{cg}$. If the inclination $i$ of
+The footpoint lies at a saddle point of $\Phi_{cg}$. If the inclination $i$ of
 the field line to the vertical exceeds $30^{\circ}$, the flow is acccelerated
 without thermal assistance. This is \emph{magnetocentrifugal accceleration}.
 The critical equipotential has an asymptote at $r=r_0\sqrt{3}$. The field line
@@ -2761,13 +2761,13 @@ where the Eulerian perturbations are given by
 			   \frac{\B^2}{\mu_0}\right) \nabla \cdot \disp + \frac{1}{\mu_0}
 			   \B \cdot (\B \cdot \nabla \disp)
 \end{align}
-and 
+and we allow self-gravitation via 
 \begin{equation}
 	\nabla^2 \delta \Phi = 4\pi G \delta \rho = -4\pi G \nabla \cdot (\rho
 	\disp)
 \end{equation}
 
-Thee equation of motion can be written as
+The equation of motion can be written as
 \begin{equation}
 	\rho \frac{\partial^2 \xi_i}{\partial t^2} = -\rho \frac{\partial \delta
 	\Phi}{\partial x_i} - \rho \xi_j \frac{\partial^2 \Phi}{\partial x_i
@@ -2793,7 +2793,7 @@ $\mathcal{F}$ is self-adjoint with respect to the inner product
 	\, \diffd V
 \end{equation}
 if appropriate boundary conditions apply to the vector fields $\disp$ and
-$\symbf{\eta}$. Let $\delta \Psi$ be the potential perturbation
+$\symbf{\eta}$. Let $\delta \Psi$ be the gravitational potential perturbation
 associated with the displacement $\symbf{\eta}$, so
 \begin{equation}
 	\nabla^2 \delta \Psi = -4\pi G \nabla \cdot (\rho \symbf{\eta})
@@ -2826,10 +2826,10 @@ Then (integrals over all space)
 We assumed:
 \begin{itemize}
 	\item the exterior is a medium of zero density in which the force-free
-		limit of MHD holds
+		limit of MHD holds;
 	\item $\B$ decays sufficiently fast as $\abs{\x} \to \infty$ to allow
 		integration by parts (using the divergence theorem) ignoring surface
-		terms
+		terms;
 	\item the body is isolated and self-gravitating, so $\delta \Phi =
 		\mathcal{O}(r^{-1})$ or in fact $\mathcal{O}(r^{-2})$ if $\delta M =
 		0$.
@@ -2849,7 +2849,7 @@ $V_{ijkl}$. The functional
 is therefore real and represents the change in potential energy associated
 with $\disp$. 
 
-Since the basic state is static, consider normal-mode solutions to
+Assuming the basic state is static, consider normal-mode solutions to
 \eqref{eq:l19:1} of the form
 \begin{equation}
 	\disp = \Re\left[ \tilde{\disp}(\x) e^{-i\omega t}\right]
@@ -3006,7 +3006,7 @@ The $\delta \rho$ term partially cancels with this:
 	&= \int_V (\disp^* \cdot \nabla p)(\nabla \cdot \disp + \disp \cdot \nabla
 	\ln \rho) \, \diffd V
 \end{align}
-The $\delta \Phi$ can be transformed as in the previous section to give
+The $\delta \Phi$ term can be transformed as in the previous section to give
 \begin{equation}
 	\int_V \rho \disp^* \cdot \nabla \delta \Phi \, \diffd V = -\int_\infty
 	\frac{\abs{\nabla \delta \Phi}^2}{4\pi G} \, \diffd V
@@ -3044,7 +3044,7 @@ satisfies the energy principle. There are three contributions to $\omega^2$:
 the self-gravitational term (destabilising), the acoustic term (stabilising)
 and the buoyancy term (stabilising if $N^2 > 0$). If $N^2 < 0$ for any
 interval of $r$, a trial displacement can be found such that $\omega^2 < 0$.
-This is donee by localising $\xi_r$ in that interval and arranging the other
+This is done by localising $\xi_r$ in that interval and arranging the other
 components of $\disp$ such that $\delta p = 0$. Therefore the star is unstable
 if $\partial s/\partial r < 0$ anywhere. This is \emph{Schwarzschild's
 criterion} for convective instability.
@@ -3069,7 +3069,7 @@ For an incompressible fluid,
 and
 \begin{equation}
 	\nabla^2 \delta \Phi = 4\pi G \delta \rho = \xi_r \left(
-	\frac{3GM}{R^3}\right)\delta(r-R)
+	\frac{3GM}{R^3}\right)\delta(r-R) \label{eq:modes:1}
 \end{equation}
 Here $\delta p$ is indeterminate and is independent of $\disp$. The linearised
 equation of motion is
@@ -3089,10 +3089,7 @@ Appropriate solutions of Laplace's equation which are regular at $r=0$ are the
 \begin{equation}
 	U = r^l Y_l^m(\theta,\phi)
 \end{equation}
-where $l$ and $m$ are integers with $l \ge \abs{m}$. From
-\begin{equation}
-	\nabla^2 \delta \Phi = \xi_r\left(\frac{3GM}{R^3}\right)\delta(r-R)
-\end{equation}
+where $l$ and $m$ are integers with $l \ge \abs{m}$. From \eqref{eq:modes:1}
 we have
 \begin{equation}
 	\delta \Phi = \begin{cases}
@@ -3226,7 +3223,7 @@ where
 	\Delta = \nabla \cdot \disp = i\symbf{k}_h \cdot \disp_h + \frac{\diffd
 	\xi_z}{\diffd z}
 \end{equation}
-Note we have neglected self-gravity in the atmosphere so $\delta \Phi = 0$
+Note we have neglected self-gravity in the atmosphere so $\delta \Phi = 0$,
 which amounts to the Cowling approximation whereby $\Phi$ is specified. Only
 two $z$-derivatives of perturbations arise: $\diffd \delta p/\diffd z$ and
 $\diffd \xi_z / \diffd z$. This is a second-order system of ODEs, combined
@@ -3242,7 +3239,7 @@ where $k_h = \abs{\symbf{k}_h}$. Eliminate $\delta \rho$:
 	-\rho \omega^2 \xi_z = g \xi_z \frac{\diffd \rho}{\diffd z} = \rho g
 	\Delta - \frac{\diffd \delta p}{\diffd z}
 \end{equation}
-Consider these two ODES in combination with the remaining algebraic equation
+Consider these two ODEs in combination with the remaining algebraic equation
 \begin{equation}
 	\delta p = \rho g \xi_z - \gamma p \Delta
 \end{equation}
@@ -3265,9 +3262,9 @@ derived from these ODEs is
 
 Propagating waves ($k_z^2 > 0$) are possible when
 \begin{itemize}
-	\item $\omega^2 > \max(v_s^2 k_h^2, N^2)$: these are \emph{p modes},
+	\item $\omega^2 > \max(v_s^2 k_h^2, N^2)$: these are \emph{$p$ modes},
 		acoustic waves (`p' for pressure)
-	\item $0 < \omega^2 < \min(v_s^2 k_h^2, N^2)$: these are \emph{g modes},
+	\item $0 < \omega^2 < \min(v_s^2 k_h^2, N^2)$: these are \emph{$g$ modes},
 		internal gravity waves (`g' for gravity)
 \end{itemize}
 There is a special incompressible solution in which $\Delta = 0$, i.e. $\delta
@@ -3347,13 +3344,13 @@ or equivalently $N^2 < 0$, as expected from Schwarzschild's criterion. For $n
 \begin{equation}
 	\frac{\omega^2}{gk_h} \sim \frac{2n\gamma}{m+1}
 \end{equation}
-which are p modes with $\omega^2 \propto v_s^2$ and the small root is
+which are $p$ modes with $\omega^2 \propto v_s^2$ and the small root is
 \begin{equation}
 	\frac{\omega^2}{gk_h} \sim \frac{1}{2n}\left(m - \frac{m+1}{\gamma}\right)
 \end{equation}
-which are g modes with $\omega^2 \propto N^2$. The f mode is the `trivial'
-solution $\Delta = 0$. p (pressure) modes are acoustic waves which rely on
-compressibility. g (gravity) modes are gravity waves, which rely on buoyancy.
+which are $g$ modes with $\omega^2 \propto N^2$. The f mode is the `trivial'
+solution $\Delta = 0$. $p$ (pressure) modes are acoustic waves which rely on
+compressibility. $g$ (gravity) modes are gravity waves, which rely on buoyancy.
 Typical branches of the dispersion relation are shown in figure~\ref{fig:pgf}.
 
 \begin{figure}[h]
@@ -3733,6 +3730,77 @@ should increase with $r$ on each surface of constant entropy.
 		\end{scope}
 	\end{tikzpicture}
 \end{center}
+
+\newpage
+\appendix
+\section{Useful Equation Sets}
+\subsection{Ideal gas dynamics}
+The equations of \emph{ideal gas dynamics} (defn) are
+\begin{align}
+	\frac{\diffD \rho}{\diffD t} &= -\rho \nabla \cdot \u &&\text{Mass
+	conservation} \\
+		\rho \frac{\diffD \u}{\diffD t} &= -\rho \nabla \Phi - \nabla p
+										&&\text{Momentum conservation} \\
+		\nabla^2 \Phi &= 4\pi G \rho &&\text{Poisson's equation} \\
+		\frac{\diffD s}{\diffD t} &= 0 &&\text{Thermal energy equation} \\
+		\frac{\diffD p}{\diffD t} &= -\gamma p \nabla \cdot \u &&\text{Thermal
+		energy equation (w/o radiation pressure)} \\
+\end{align}
+For a perfect gas, specific entropy may be expressed as
+\begin{equation}
+	s = c_v \ln \frac{p}{\rho^\gamma} + \text{const.}
+\end{equation}
+
+\subsection{Ideal magnetohydrodynamics}
+The equations of \emph{ideal MHD} are
+\begin{align}
+	\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \symbf{u}) &= 0
+										&&\text{Mass conservation}\\
+	\rho \frac{\diffD \symbf{u}}{\diffD t} &= - \rho \nabla \Phi - \nabla p +
+	\frac{1}{\mu_0}(\nabla \times \symbf{B})\times\symbf{B} &&\text{Momentum
+	conservation}\\
+	\frac{\diffD s}{\diffD t} &= 0 &&\text{Thermal energy equation} \\
+	\frac{\partial \symbf{B}}{\partial t} &= \nabla \times (\symbf{u} \times
+	\symbf{B}) &&\text{Ideal induction equation}\\
+	\nabla \cdot \symbf{B} &= 0 &&\text{Solenoidal condition}
+\end{align}
+supplemented by an equation of state, Poisson's equation, etc., as required.
+Equations can be combined to form the \emph{total energy equation}:
+\begin{equation}
+	\frac{\partial}{\partial t} \left[ \rho (\frac{1}{2}\u^2 + \Phi +
+	\rho) + \frac{\B^2}{2\mu_0} \right] + \nabla \cdot \left[ \rho \u
+	(\frac{1}{2}\u^2 + \Phi + h) + \frac{\symbf{E}\times\B}{\mu_0}\right] = 0
+\end{equation}
+where $h = e + p/\rho$ is the \emph{specific enthalpy}.
+
+\subsection{Perturbation equations}
+The linearised equation of motion for a displacement $\disp(\x,t)$ from a
+general static equilibrium is
+\begin{equation}
+	\rho \frac{\partial^2 \disp}{\partial t^2} = -\rho \nabla \delta \flux -
+	\delta \rho \nabla \flux - \nabla \delta \Pi + \frac{1}{\mu_0}(\delta \B
+	\cdot \nabla \B + \B \cdot \nabla \delta \B)
+\end{equation}
+where
+\begin{align}
+	\delta \rho &= -\disp \cdot \nabla \rho - \rho \nabla \cdot \disp \\
+	\delta p &= -\disp \cdot \nabla p - \gamma p \nabla \cdot \disp \\
+	\delta \B &= \nabla \times (\disp \times \B) \\
+			  &= \B \cdot \nabla \disp - \B (\nabla \cdot \disp) - \disp \cdot
+			  \nabla \B
+\end{align}
+and the total pressure perturbation is
+\begin{align}
+	\delta \Pi &= \delta p + \frac{1}{\mu_0}\B \cdot \delta \B \\
+			   &= -\disp \cdot \nabla \Pi - \left(\gamma p +
+			   \frac{B^2}{\mu_0}\right)\nabla \cdot \disp + \frac{1}{\mu_0} \B \cdot
+			   (\B \cdot \nabla \disp)
+\end{align}
+The gravitational potential perturbation satisfies
+\begin{equation}
+	\nabla^2 \delta \flux = 4\pi G \delta \rho
+\end{equation}
+
 
 
 \end{document}
