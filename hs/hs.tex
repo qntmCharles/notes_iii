@@ -74,9 +74,9 @@ Let $\u = \symbf{U}(\x) + \hat{\u}(\x,t), p = P + \hat{p}$. Then
 	\symbf{U} \cdot \nabla \hat{\u} + \cancel{\hat{\u}\cdot\nabla\hat{\u}} +
 	\nabla \hat{p} = \frac{1}{\text{Re}} \nabla^2 \hat{\u}
 \end{equation}
-The term $\hat{u}\cdot\nabla \symbf{U}$ is stabilising whilst the term
-$\nabla^2 \hat{u} / \text{Re}$ is destabilising. Therefore, we expect stability
-as $\text{Re} \to 0$ the stabilising term dominates, and instability as
+The term $\hat{u}\cdot\nabla \symbf{U}$ is destabilising whilst the term
+$\nabla^2 \hat{u} / \text{Re}$ is stabilising. Therefore, we expect stability
+as $\text{Re} \to 0$ when the stabilising term dominates, and instability as
 $\text{Re} \to \infty$ when the destablising term dominates. Thus there exists
 some value $\text{Re}_{\text{crit}}$ at which instability arises. We will ask
 what this value is, and what is the form of the initial
@@ -230,7 +230,7 @@ The basic state consists of no motion, with heat transfer by conduction only.
 The governing equations are those of momentum, mass, and (thermal) energy
 conservation.
 \begin{align}
-	\rho \frac{\diffD \u}{\diffD t} + \nabla p &= \mu \nabla^2 \u + \rho g
+	\rho \frac{\diffD \u}{\diffD t} + \nabla p &= \mu \nabla^2 \u - \rho g
 	\hat{\symbf{z}} \\
 	\frac{\partial T}{\partial t} + \u \cdot \nabla T &= \kappa \nabla^2 T \\
 	\frac{\diffD \rho}{\diffD t} + \rho \nabla \cdot \u &= 0
@@ -252,7 +252,7 @@ Most cases of interest have $\Delta T$ and $\Delta \rho$ small, i.e. $\Delta
 
 Define $\theta = T - T_0$. The governing equations are now
 \begin{align}
-	\rho_0 \frac{\diffD \u}{\diffD t} + \nabla p &= \mu \nabla^2 \u +
+	\rho_0 \frac{\diffD \u}{\diffD t} + \nabla p &= \mu \nabla^2 \u -
 	\rho_0(1-\alpha \theta)g \hat{\symbf{z}} \\
 	\frac{\partial \theta}{\partial t} + \u \cdot \nabla \theta &= \kappa
 	\nabla^2 \theta \\
@@ -1031,14 +1031,14 @@ problem in $c \in \mathbb{C}$. Instability  corresponds to $c_i > 0$ and $c_i
 \le 0$ for stability.
 
 \subsubsection{Squire's transformation (Squire, 1933)}
-Before  attempting to solve \eqref{eq:l6:1}--\eqref{eq:l6:4}, we consider
+Before attempting to solve \eqref{eq:l6:1}--\eqref{eq:l6:4}, we consider
 Squire's transformation. Define the transformed variables
 \begin{equation}
 	\tilde{\alpha} = \sqrt{\alpha^2 + \beta^2},\hspace{1em} \tilde{u} =
 	\frac{\alpha \hat{u} + \beta \hat{v}}{\tilde{\alpha}}, \hspace{1em}
 	\tilde{p} = \frac{\tilde{\alpha}\hat{p}}{\alpha}
 \end{equation}
-Construct $(\alpha\eqref{eq:l6:1} + \beta\eqref{eq:l6:2})/\alpha$:
+Construct $(\alpha\eqref{eq:l6:1} + \beta\eqref{eq:l6:2})/\tilde{\alpha}$:
 \begin{equation}
 	i\tilde{\alpha}(U-c)\tilde{u} + \frac{\diffd  U}{\diffd z} \hat{w} +
 	i\tilde{\alpha}\tilde{p} =  0\label{eq:l6:5}
@@ -1144,7 +1144,7 @@ criterion}.
 A stronger form of the inflection point criterion was obtained by Fj\o rtoft
 (1950): given a monotonic mean velocity profile $U(z)$, a necessary condition
 for instability is that $U''(U-U_s) < 0$ for some $z \in \left[ z_1, z_2
-\right]$ with $U_s = U(z_s)$ where $U''(z_2) = 0$.
+\right]$ with $U_s = U(z_s)$ where $U''(z_s) = 0$.
 
 To see this, take the real part of \eqref{eq:ipc} to get
 \begin{equation}
@@ -1211,7 +1211,7 @@ minimum) of the spanwise vorticity $U'(z)\hat{\symbf{y}}$.
 	\end{tikzpicture}
 \end{center}
 
-\paragraph{Howard's semicircle theorem}
+\paragraph{Howard's semicircle theorem.}
 Due to Howard (1961). The unstable eigenvalues of the Rayleigh equation
 satisfy
 \begin{equation}
@@ -1484,7 +1484,7 @@ equation~\eqref{eq:l8:8} is the Squire equation (Squire 1933).
 			(U-c)(D^2 -\hat{\alpha}^2) \hat{w} - U'' \hat{w} -
 			\frac{1}{i\hat{\alpha}\hat{\ReN}}(D^2-\hat{\alpha}^2)^2 \hat{w} = 0
 		\end{equation}
-		where $\hat{\alpha} = k^2 = \alpha^2 + \beta^2$ and
+		where $\hat{\alpha}^2 = k^2 = \alpha^2 + \beta^2$ and
 		\begin{equation}
 			\hat{\ReN} = \frac{\alpha \ReN_{3D}}{\hat{\alpha}} =
 			\frac{\alpha}{\sqrt{\alpha^2 + \beta^2}}\ReN_{3D} \le \ReN_{3D}
@@ -2175,7 +2175,7 @@ where $\langle\cdot,\cdot\rangle$ is the inner product
 	\int_{-1}^1 (D \hat{v}_j)^* D\hat{v}_l + k^2 \hat{v}_j^* \hat{v}_l +
 	\hat{\eta}_j^* \hat{\eta}_l \, \diffd y
 \end{equation}
-Let $A_{ij} = \langle \tilde{\symbf{q}}_i, \tilde{\symbf{q}}_l\rangle$. Then
+Let $A_{ij} = \langle \tilde{\symbf{q}}_i, \tilde{\symbf{q}}_j\rangle$. Then
 $A \in \mathbb{C}^{N \times N}$ is Hermitian ($A_{ij}^* = A_{ji}$) and
 positive definite (the norm is positive definite). Then there exists a matrix
 $F$ such that $A = F^H F$ (Cholesky decomposition). Using the notation
@@ -2208,9 +2208,9 @@ Note if $\symbf{\tilde{q}}_j$ are orthogonal (i.e. $\L$ is normal) then $A$ is
 diagonal, so $F$ is diagonal. Hence
 \begin{align}
 	\norm{F e^{\Lambda t} F^{-1}}^2 &= \norm{e^{\Lambda t}}^2 \\
-									&= \max_{\lambda_j} \abs{e^{\lambda_j
+									&= \max_{\Lambda_j} \abs{e^{\Lambda_j
 									t}}^2  \\
-									&= \max_{\lambda_j} e^{2\Re(\lambda_j)t}
+									&= \max_{\Lambda_j} e^{2\Re(\Lambda_j)t}
 \end{align}
 so the norm is determined by eigenvalues of $A$ in this case. As mentioned
 previously, the 2-norm of any matrix can be computed by SVD. 
@@ -2733,7 +2733,7 @@ solved. The system of equations are solved iteratively as follows.
 		\end{equation}
 		Then construct $\u^{(n+1)}(\x,0)$ from $\u^{(n)}(\x,0)$ as follows.
 	\item Solve the linearised Navier-Stokes equations to time step from $t=0$
-		to $t=T$ to get $\u^{(n)}(\x,0)$.
+		to $t=T$ to get $\u^{(n)}(\x,T)$.
 	\item Use constraint \eqref{eq:l13:3} to find $\symbf{\nu}^{(n)}(\x,T) =
 		-\u^{(n)}(\x, T)$.
 	\item Solve the lineariseed dual Navier-Stokes equations to time step
@@ -2743,8 +2743,8 @@ solved. The system of equations are solved iteratively as follows.
 		\symbf{\nu}$.
 	\item Use the result (prior to imposing \eqref{eq:l13:4})
 		\begin{equation}
-			\frac{\partial G}{\partial \delta \u(\x,0)} = \lambda
-			\u^{(n)}(\x,0) - \symbf{\nu}(\x, 0)
+			\frac{\delta G}{\delta \u(\x,0)} = \lambda
+			\u(\x,0) - \symbf{\nu}(\x, 0)
 		\end{equation}
 		to step $\u$ to increase $G$. This may be achieved via \emph{steepest
 		ascent}:
@@ -3095,7 +3095,7 @@ dispersion and more importantly nonlinear effects exert their influences to
 limit growth. In general, there are two situations:
 \begin{itemize}
 	\item \textbf{Small systems}: allowable wavenumbers $k$ are discretised
-		and so if $\Ra$ (or an equivalently parameter, e.g. $\ReN$) is
+		and so if $\Ra$ (or an equivalent parameter, e.g. $\ReN$) is
 		sufficiently close to (but larger than) $\Ra_c$, only \emph{one}
 		normal mode is unstable.  In this case, there is no need to worry
 		about dispersion; only nonlinear effects are important and the
@@ -3194,7 +3194,7 @@ We wish to balance terms, hence scalings are set by
 
 Given this `rough' analysis, we now construct a formal expansion. Let
 \begin{equation}
-	u = \veps u_1 + \veps^3 u_3 + \dots
+	u' = \veps u_1 + \veps^3 u_3 + \dots
 \end{equation}
 where $u_1 = A(T) \sin z$ and $T = \veps^2 t$ (cf. method of multiple scales,
 Perturbation Methods) hence $\partial_t = \veps^2 \partial_T$. Further, let

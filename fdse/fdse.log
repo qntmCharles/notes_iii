@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  17 MAR 2021 13:39
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  7 APR 2021 14:48
  restricted system commands enabled.
 **fdse.tex
 (./fdse.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.194 seconds
+luaotfload | main : initialization completed in 0.163 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3265,7 +3265,7 @@ glue_spec, 1542 attribute_list, 1 write nodes
    avail lists: 1:1,2:1737,3:771,4:143,5:287,6:2462,7:678,8:77,9:607,10:17,11:22
 2
  57141 multiletter control sequences out of 65536+600000
- 127 fonts using 29024599 bytes
+ 127 fonts using 29024359 bytes
  74i,19n,388p,8842b,1080s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/truetype/neohellenic/GFSNeohellenicMath.otf></usr/share/texmf/
 fonts/opentype/public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype/p
@@ -3281,7 +3281,7 @@ usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf
 lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb>
-Output written on fdse.pdf (49 pages, 2389070 bytes).
+Output written on fdse.pdf (49 pages, 2389093 bytes).
 
 PDF statistics: 695 PDF objects out of 1000 (max. 8388607)
  587 compressed objects within 6 object streams

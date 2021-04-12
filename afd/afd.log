@@ -1,6 +1,6 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  19 MAR 2021 15:02
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 APR 2021 20:22
  restricted system commands enabled.
-**afd.tex
+**afd
 (./afd.tex
 LaTeX2e <2017/01/01> patch level 3
 Lua module: luaotfload-main 2016/06/16 2.70003 OpenType layout system.
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.117 seconds
+luaotfload | main : initialization completed in 0.111 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3205,14 +3205,14 @@ File: steepening.png Graphic file (type png)
 Package luatex.def Info: steepening.png used on input line 1607.
 (luatex.def)             Requested size: 139.98894pt x 66.0702pt.
 
-[29<./steepening.png>] [30] [31] [32] [33]
-<sn1572.jpg, id=679, 2409.0pt x 2409.0pt>
+[29<./steepening.png>] [30] [31] [32] [33] [34]
+<sn1572.jpg, id=683, 2409.0pt x 2409.0pt>
 File: sn1572.jpg Graphic file (type jpg)
  <use sn1572.jpg>
 Package luatex.def Info: sn1572.jpg used on input line 1961.
 (luatex.def)             Requested size: 233.31255pt x 233.30513pt.
- [34] [35<./sn1572.jpg>] [36] [37] <supernova.png, id=730, 601.24625pt x 611.28
-375pt>
+ [35<./sn1572.jpg>]
+[36] [37] <supernova.png, id=729, 601.24625pt x 611.28375pt>
 File: supernova.png Graphic file (type png)
 
 <use supernova.png>
@@ -3223,23 +3223,20 @@ Package luatex.def Info: supernova.png used on input line 2176.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [38] [39<./supernova.png>] [40]
-<stellar_wind.png, id=750, 1311.90125pt x 635.37375pt>
+<stellar_wind.png, id=749, 1311.90125pt x 635.37375pt>
 File: stellar_wind.png Graphic file (type png)
  <use stellar_wind.png>
 Package luatex.def Info: stellar_wind.png used on input line 2331.
 (luatex.def)             Requested size: 373.30148pt x 180.79254pt.
 
-<stellar_plot.png, id=752, 844.15375pt x 816.04875pt>
+<stellar_plot.png, id=751, 844.15375pt x 816.04875pt>
 File: stellar_plot.png Graphic file (type png)
  <use stellar_plot.png>
 Package luatex.def Info: stellar_plot.png used on input line 2346.
 (luatex.def)             Requested size: 233.31255pt x 225.541pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [41<./stellar_wind.png>] [42<./stellar_plot.png>]
-<flux_function.png, id=768, 722.7pt x 712.6625pt>
+<flux_function.png, id=769, 722.7pt x 712.6625pt>
 File: flux_function.png Graphic file (type png)
  <use flux_function.png>
 Package luatex.def Info: flux_function.png used on input line 2436.
@@ -3249,12 +3246,16 @@ Package luatex.def Info: flux_function.png used on input line 2436.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [43] [44<./flux_function.png>] [45]
-<astro_jet.png, id=784, 773.89125pt x 731.73375pt>
+<astro_jet.png, id=785, 773.89125pt x 731.73375pt>
 File: astro_jet.png Graphic file (type png)
  <use astro_jet.png>
 Package luatex.def Info: astro_jet.png used on input line 2597.
 (luatex.def)             Requested size: 186.64719pt x 176.47942pt.
- [46<./astro_jet.png>] [47] <outflow.png, id=795, 994.71625pt x 937.5025pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46] [47<./astro_jet.png>] <outflow.png, id=796, 994.71625pt x 937.5025pt>
 File: outflow.png Graphic file (type png)
 
 <use outflow.png>
@@ -3277,18 +3278,18 @@ LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
 (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman9-italic.lu
 c)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fonts/otl/lmr
 oman9-italic.luc) [56] [57] [58]
-<pgf_modes.png, id=864, 992.70876pt x 952.55875pt>
+<pgf_modes.png, id=865, 992.70876pt x 952.55875pt>
 File: pgf_modes.png Graphic file (type png)
  <use pgf_modes.png>
 Package luatex.def Info: pgf_modes.png used on input line 3360.
 (luatex.def)             Requested size: 279.97789pt x 268.64777pt.
 
-<helio.png, id=867, 481.3182pt x 433.62pt>
+<helio.png, id=868, 481.3182pt x 433.62pt>
 File: helio.png Graphic file (type png)
  <use helio.png>
 Package luatex.def Info: helio.png used on input line 3382.
 (luatex.def)             Requested size: 233.31255pt x 210.19296pt.
- [59<./pgf_modes.png>] <nsquared.png, id=877, 1214.5375pt x 553.06625pt>
+ [59<./pgf_modes.png>] <nsquared.png, id=878, 1214.5375pt x 553.06625pt>
 File: nsquared.png Graphic file (type png)
  <use nsquared.png>
 Package luatex.def Info: nsquared.png used on input line 3395.
@@ -3305,16 +3306,16 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3808.
 )
 
 Here is how much of LuaTeX's memory you used:
- 53714 strings out of 494577
- 125007,1648299 words of node,token memory allocated
- 59788 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 7316 glue, 1 kern, 25 sub_mlist, 2003 attribute, 64
- glue_spec, 2003 attribute_list, 1 write nodes
-   avail lists: 1:8,2:855,3:939,4:204,5:420,6:2701,7:736,8:119,9:860,10:17,11:25
-4
+ 53713 strings out of 494577
+ 100000,1648299 words of node,token memory allocated
+ 59806 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 7318 glue, 1 kern, 25 sub_mlist, 2004 attribute, 64
+ glue_spec, 2004 attribute_list, 1 write nodes
+   avail lists: 1:11,2:851,3:948,4:201,5:414,6:2561,7:736,8:119,9:860,10:17,11:2
+38
  55805 multiletter control sequences out of 65536+600000
  102 fonts using 22119647 bytes
- 74i,22n,108p,8841b,1011s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 74i,22n,108p,8837b,1011s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman9-italic.otf></usr/share/texmf
 /fonts/opentype/public/lm/lmroman9-regular.otf></usr/share/texmf/fonts/opentype/
 public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroma
@@ -3330,10 +3331,10 @@ ublic/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsans
 10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></u
 sr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on afd.pdf (67 pages, 2141985 bytes).
+Output written on afd.pdf (67 pages, 2141852 bytes).
 
-PDF statistics: 1046 PDF objects out of 1200 (max. 8388607)
- 885 compressed objects within 9 object streams
+PDF statistics: 1047 PDF objects out of 1200 (max. 8388607)
+ 886 compressed objects within 9 object streams
  215 named destinations out of 1000 (max. 131072)
  776 words of extra memory for PDF output out of 10000 (max. 10000000)
 

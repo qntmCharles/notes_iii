@@ -11,7 +11,7 @@
 
 \newcommand{\B}{\symbf{B}}
 \renewcommand{\u}{\symbf{u}}
-\newcommand{\flux}{\symbf{\Phi}}
+\newcommand{\flux}{\Phi}
 \newcommand{\disp}{\symbf{\xi}}
 \renewcommand{\v}{\symbf{v}}
 \newcommand{\dif}[1]{\left[#1\right]_1^2}
@@ -289,7 +289,7 @@ where quantum degeneracy is important.
 
 \subsection{Microphysical basis}
 It is useful to understand the way in which the fluid-dynamical equations are
-derived microphysical considerations. The simplest model involves identical
+derived from microphysical considerations. The simplest model involves identical
 neutral particles of mass $m$ of negligible size with no internal degrees of
 freedom.
 
@@ -415,7 +415,7 @@ The mean free path is $\lambda = 1/n\sigma$.
 \subsection{Elementary derivation of MHD equations}
 \emph{Magnetohydrodynamics} (MHD) is the dynamics of an electrically
 conducting fluid (a full or partially ionised gas or a liquid metal)
-containing a magnetic field. It is a fushion of fluid dynamics and
+containing a magnetic field. It is a fusion of fluid dynamics and
 electromagnetism.
 
 \subsubsection{Galilean electromagnetism}
@@ -592,9 +592,9 @@ This is exactly the same equation satisfied by a material line element
 (section 2.3). Therefore a magnetic field line (an integral curve of
 $\B/\rho$) is advected and distorted by the fluid in the same way as a
 material curve. A complementary property is that the magnetic flux $\delta
-\flux = \B \cdot \delta\symbf{S}$ through a material surface is conserved:
+\flux = \B \cdot \delta\symbf{S}$ through a material surface element is conserved:
 \begin{align}
-	\frac{\diffD \flux}{\diffD t} &= \frac{\diffD \B}{\diffD t} \cdot \delta
+	\frac{\diffD \delta\flux}{\diffD t} &= \frac{\diffD \B}{\diffD t} \cdot \delta
 	\symbf{S} + \B \cdot \frac{\diffD \delta \symbf{S}}{\diffD t} \\ 
 								  &= \left( B_j \frac{\partial u_i}{\partial
 								  x_j} - B_i \frac{\partial u_j}{\partial x_j}
@@ -861,7 +861,7 @@ Rewrite the Lorentz force term:
 Using mass conservation:
 \begin{equation}
 	\frac{\partial}{\partial t} \left[ \rho (\frac{1}{2}\u^2 + \Phi +
-	\rho)\right] + \nabla \cdot \left[ \rho \u (\frac{1}{2}\u^2 + \Phi + \rho)
+	e)\right] + \nabla \cdot \left[ \rho \u (\frac{1}{2}\u^2 + \Phi + e)
 	+ p \u\right] = \frac{1}{\mu_0} (\nabla \times \B) \cdot \symbf{E}
 \end{equation}
 Finally, consider the magnetic energy:
@@ -873,7 +873,7 @@ Finally, consider the magnetic energy:
 The total energy equation is then
 \begin{equation}
 	\frac{\partial}{\partial t} \left[ \rho (\frac{1}{2}\u^2 + \Phi +
-	\rho) + \frac{\B^2}{2\mu_0} \right] + \nabla \cdot \left[ \rho \u
+	e) + \frac{\B^2}{2\mu_0} \right] + \nabla \cdot \left[ \rho \u
 	(\frac{1}{2}\u^2 + \Phi + h) + \frac{\symbf{E}\times\B}{\mu_0}\right] = 0
 \end{equation}
 where $h = e + p/\rho$ is the \emph{specific enthalpy} and we have used the
@@ -908,7 +908,7 @@ Hence in conservative form we have
 \end{equation}
 The total energy equation is then
 \begin{equation}
-	\frac{\partial}{\partial t} \left[ \rho (\frac{1}{2}\u^2 + \rho) -
+	\frac{\partial}{\partial t} \left[ \rho (\frac{1}{2}\u^2 + e) -
 	\frac{g^2}{8\pi G} + \frac{\B^2}{2\mu_0} \right] + \nabla \cdot \left[ \rho \u
 	(\frac{1}{2}\u^2 + \Phi + h) + \frac{\Phi}{4\pi G} \frac{\partial \nabla
 	\Phi}{\partial t} + \frac{\symbf{E}\times\B}{\mu_0}\right] = 0
@@ -977,7 +977,7 @@ The \emph{cross-helicity} in a volume $V$ is
 \end{equation}
 It is helpful to write the equation of motion in ideal MHD in the form
 \begin{equation}
-	\frac{\partial u}{\partial t} + (\nabla \times \u) \times \u + \nabla
+	\frac{\partial \u}{\partial t} + (\nabla \times \u) \times \u + \nabla
 	(\frac{1}{2}\u^2 + \Phi + h) = T \nabla s + \frac{1}{\mu_0 \rho} (\nabla
 	\times \B) \times \B
 	\label{eq:motion_2}
@@ -1168,7 +1168,7 @@ For a general vector field $\symbf{v}$, it can be shown that
 	\symbf{v})\times\symbf{v}
 \end{align}
 In the magnetic case ($\symbf{v} = \B$) this simplifies to $(\nabla \times
-\B)\times \B)$. In the gravitational case ($\symbf{v} = \symbf{g}$) it
+\B)\times \B$. In the gravitational case ($\symbf{v} = \symbf{g}$) it
 simplifies to $(\nabla \cdot \symbf{g})\symbf{g} = - 4\pi G \rho \symbf{g}$,
 which becomes the force per unit volume $\rho \symbf{g}$ when divided by
 $-4\pi G$.
@@ -1176,7 +1176,7 @@ $-4\pi G$.
 \subsection{Virial theorem}
 The \emph{virial equations} are the spatial moments of the equation of motion.
 They provide integral measures of the balance of forces acting on the fluid.
-THe first moments are generally most useful. Recall
+The first moments are generally most useful. Recall
 \begin{equation}
 	\rho \frac{\diffD u_i}{\diffD t} = \frac{\partial \symsf{T}_{ji}}{\partial
 	x_j}
@@ -1406,7 +1406,7 @@ which simplifies to (divide by $\rho^2 k^4$):
 \begin{equation}
 	v_p^4 - (v_s^2 + v_a^2)v_p^2 + v_s^2 v_a^2 \cos^2 \theta = 0
 \end{equation}
-The two solutions
+where$v_s^2 =\gamma p/\rho$ is the adiabatic sound speed. The two solutions
 \begin{equation}
 	v_p^2 = \frac{1}{2}(v_s^2 + v_a^2) \pm \left[ \frac{1}{4}(v_s^2+v_a^2)^2 -
 	v_s^2 v_a^2 \cos^2 \theta \right]^{1/2}
@@ -1550,7 +1550,7 @@ that occurs outside the domain of dependence. Similarly, the solution at $P$
 cannot influence anything outside the domain of influence.
 
 \subsubsection{A simple wave}
-Suppose $R_-$ is uniform: the sme constant value on every $C_-$ characteristic
+Suppose $R_-$ is uniform: the same constant value on every $C_-$ characteristic
 emanating from an undisturbed region to the right. Its value everywhere is
 that of the undisturbed region:
 \begin{equation}
@@ -2094,7 +2094,7 @@ Substitute \eqref{eq:l14:2} into \eqref{eq:l14:1}, noting that $R^2 \dot{R}^2
 	\rho_0 R^2 \dot{R}^2 \left[ -\frac{\dot{R}}{R} \tilde{q} + \frac{\diffd
 	\tilde{q}}{\diffd \xi} \left( -\frac{\dot{R}}{R} \xi \right) +
 	\frac{\dot{R}}{R} \frac{\diffd \tilde{F}}{\diffd \xi}\right] &= 0 \\
-	\implies -\tilde{q} - \xi \frac{\diffd \tilde{q}}{\diffd xi} +
+	\implies -\tilde{q} - \xi \frac{\diffd \tilde{q}}{\diffd \xi} +
 	\frac{\diffd \tilde{F}}{\diffd \xi} &= 0  \\
 	\implies \frac{\diffd}{\diffd \xi} \left( \tilde{F} - \xi \tilde{q}\right)
 									   &= 0
