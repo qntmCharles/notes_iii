@@ -232,7 +232,7 @@ balance between the weight of the curst and the buoyancy force:
 	\rho_c (h-b) g = (\rho_m - \rho_c) gb
 \end{equation}
 
-Within the oceanic lithosphere we have a denssity field
+Within the oceanic lithosphere we assume a temperature-dependent density
 \begin{equation}
 	\rho = \rho_m \left( 1- \alpha (T - T_1)\right)
 \end{equation}
@@ -312,7 +312,7 @@ Suppose the parcel moves up a distance $h$ in time $\tau$.
 	\end{tikzpicture}
 \end{center}
 
-The rise of the fluid parcel relasess potential energy $E$ which scales as
+The rise of the fluid parcel releases potential energy $E$ which scales as
 \begin{equation}
 	E \sim (\Delta \rho l^3) g h \sim (\rho_0 \beta h l^3) g h \sim \rho_0
 	\beta g h^2 l^3
@@ -337,6 +337,12 @@ Define the \emph{Rayleigh number}
 which quantifies the ratio of timescales of thermal transport via diffusion
 versus via convection. If $\text{Ra}$ is large, the flow is more turbulent.
 There is instability if $\text{Ra} \gtrapprox \mathcal{O}(1)$.
+
+Note that typically we define $\text{Ra}$ in terms of a thermal gradient. Then
+$\beta = \rho_0^{-1}\frac{\diffd \rho}{\diffd z} \sim \alpha \Delta T / L$ and
+\begin{equation}
+	\text{Ra} = \frac{\rho_0 \alpha g \Delta T L^3}{\kappa \mu}
+\end{equation}
 
 \subsection{Onset of convection}
 \label{sec:conv}
@@ -602,7 +608,7 @@ have
 	F_h = \frac{k \Delta T}{h} f(\text{Ra},\text{Pr}) &\sim \frac{k \Delta
 	T}{h} \text{Ra}^{1/3} \\
 	\implies F_h &= \lambda(\text{Pr})k \left( \frac{\rho_0 g
-	\alpha}{K\mu}\right)^{1/3} \Delta T^{4/3}
+	\alpha}{\kappa\mu}\right)^{1/3} \Delta T^{4/3}
 \end{align}
 for some function $\lambda$.
 
@@ -656,7 +662,7 @@ Hence the Nusselt number can be written
 For $\Ra_{\text{crit}} \approx 1100$, the Nusselt number is thus $\text{Nu}
 \approx 0.077 \Ra^{1/3}$ which matches well with experiment.
 
-\section{Solidification/melting}.
+\section{Solidification/melting}
 Applications of solidification/melting theory include
 \begin{itemize}
 	\item Formation of Earth's crust (early 1800s)
@@ -870,7 +876,7 @@ Note the following:
 	\item The ratio of frame advection to flow compression is
 		\begin{equation}
 			\frac{\text{advection}}{\text{compression}} \sim \frac{v}{Ez} \sim
-			\frac{v}{E\delta T} \sim \frac{v}{\sqrt{E\kappa}} \sim
+			\frac{v}{E\delta_T} \sim \frac{v}{\sqrt{E\kappa}} \sim
 			\frac{1}{\mathcal{S}}
 		\end{equation}
 		So neglect of frame advection is valid if $\mathcal{S} \gg 1$.
@@ -1010,14 +1016,14 @@ Consider the two choices of limiting cases:
 
 The balance of heat fluxes is
 \begin{equation}
-	4\pi R_0^2 F_m = \frac{4\pi}{3}\left[ R_0^3 - R_i^3\right] \rho c_p
+	4\pi R_0^2 F_m = \frac{4\pi}{3}\left[ R_o^3 - R_i^3\right] \rho c_p
 	\frac{\partial T_m}{\partial t} + \rho L 4\pi R_i^2 \frac{\diffd
 	R_i}{\diffd t}
 \end{equation}
 In case 2 the $R_i^3$ term in the first RHS term is neglected. In this
 case,
 \begin{equation}
-	4\pi R_0^2 F_m = \frac{4\pi}{3} R_0^3 \rho c_p \cdot \frac{4\pi}{3}
+	4\pi R_o^2 F_m = \frac{4\pi}{3} R_o^3 \rho c_p \cdot \frac{4\pi}{3}
 	\frac{G T_m \delta \rho}{L} R_i \dot{R}_i + \rho L4\pi R_i^2 \dot{R}_i
 \end{equation}
 Hence the time averaged mantle heat flux is
@@ -1026,7 +1032,7 @@ Hence the time averaged mantle heat flux is
 \end{equation}
 where $\zeta = R_i/R_o$, the Stefan number is $\mathcal{S} = \rho L R_o/m$ and
 \begin{equation}
-	m = \frac{2}{9} R_0^3 \rho c_p \frac{G T_m \delta \rho}{L}
+	m = \frac{2}{9} R_o^3 \rho c_p \frac{G T_m \delta \rho}{L}
 \end{equation}
 Real-world measurements give $\zeta = 1/3, \mathcal{S} = 0.4$, so growth is
 controlled by the mantle heat flux balancing cooling (rather than latent
@@ -1387,14 +1393,14 @@ domain, as the interior is statistically well mixed as with high $\Ra$ pure
 convection. The Nusselt number is
 \begin{equation}
 	\text{Nu} = \frac{F}{D\Delta C/h} \propto h \sim \Ra = \lambda \Ra =
-	\frac{\lambda \rho_0 g \beta \Delta c k h}{D \mu}
+	\frac{\lambda \rho_0 g \beta \Delta C k h}{D \mu}
 \end{equation}
 where $F$ is the convective flux. We therefore have
 \begin{equation}
 	F = \frac{\lambda \rho_0 g \beta k}{\mu} \Delta C^2 = \lambda u_b \Delta C
 \end{equation}
 
-\subsection{Dissolution from an unconfined aquifer}
+\subsection{Dissolution into an unconfined aquifer}
 Consider a convective flux from a constant volume gravity current in an
 unconfined aquifer. Note that by constant volume we mean no input flux; the
 volume will decrease due to convection.
@@ -1682,7 +1688,7 @@ in the mass flux conditions.
 Recall that for $s_r = 0$, $\mathcal{U}_1 = \mathcal{U}_2$ with solution
 \begin{equation}
 	h = \left( \frac{\mathcal{V}^2}{\mathcal{U}_1 t}\right)^{1/3} f(\eta),
-	\hspace{2em} \eta = \frac{x}{(\mathcal{U}_1\mathcal{V}t)^{1/2}},
+	\hspace{2em} \eta = \frac{x}{(\mathcal{U}_1\mathcal{V}t)^{1/3}},
 	\hspace{2em} f = \frac{1}{6}\left( 9^{2/3} - \eta^2\right)
 \end{equation}
 For $s_r \ne 0$, $\mathcal{U}_1 \ne \mathcal{U}_2$ and the initial condition
@@ -1737,15 +1743,15 @@ boundary position $\zeta_b$ is then determined by
 
 \paragraph{Small trapping limit.}
 Consider the limit of small trapping $s_r \ll s_i$, where we can make
-analytical progress. Let $U_1 = U_2(1-\veps)$ with $\veps \ll 1$. Then
+analytical progress. Let $\mathcal{U}_1 = \mathcal{U}_2(1-\veps)$ with $\veps \ll 1$. Then
 \begin{equation}
-	\tilde{U} \equiv \frac{U_1}{U_2} = 1-\veps
+	\tilde{\mathcal{U}} \equiv \frac{\mathcal{U}_1}{\mathcal{U}_2} = 1-\veps
 \end{equation}
 The rate of change of total volume of mobile fluid is
 \begin{align}
 	\frac{\diffd}{\diffd t} \int_0^{x_N} h \, \diffd x 
-	&= \int_0^{x_N} U_i (hh_x)_x \, \diffd x \\
-	&= \left.U_2 hh_x \right|_{x_b^-} - \left. U_1 hh_x\right|_{x_b^+}
+	&= \int_0^{x_N} \mathcal{U}_i (hh_x)_x \, \diffd x \\
+	&= \left.\mathcal{U}_2 hh_x \right|_{x_b^-} - \left. \mathcal{U}_1 hh_x\right|_{x_b^+}
 	\label{eq:l10:1}
 \end{align}
 Using the form $h = A t^{-\alpha}f(\zeta, 1-\veps)$, with $\zeta =
@@ -1791,7 +1797,6 @@ instability between fluid of viscosity $\mu_1$ injected into a porous medium
 saturated with fluid of viscosity $\mu_2$. In the case of a solid-liquid
 interface, this is also called \emph{Mullins-Sekeika fingering} (or
 \emph{morphological instability}).
-. 
 
 \begin{center}
 	\begin{tikzpicture}
@@ -1847,7 +1852,7 @@ Consider a travelling frame of reference $y = x-\frac{Ut}{\phi}$. Then
 \end{align}
 Now consider perturbations to the interface of the form
 \begin{equation}
-	y = \eta(z,t) = \tilde{\eta} e^{i\alpha z + \sigma t}
+	y = \eta(z,t) = \hat{\eta} e^{i\alpha z + \sigma t}
 \end{equation}
 Darcy's law and incompressibility (equivalently conservation of mass) give
 \begin{equation}
@@ -1867,7 +1872,7 @@ where we have used the requirement that perturbations decay away from the
 interface. Applying the same theory to $p_2$ gives the pressure fields as
 \begin{align}
 	p_1 &= p_0 - \frac{\mu_1 U}{k} y + Ae^{i\alpha z + \alpha y + \sigma t} \\
-	p_2 &= p_0 - \frac{\mu_2 U}{k} y + Ae^{i\alpha z - \alpha y + \sigma t}
+	p_2 &= p_0 - \frac{\mu_2 U}{k} y + Be^{i\alpha z - \alpha y + \sigma t}
 \end{align}
 Next, match pressures and velocities at the interface. Pressure continuity
 along the perturbed interface requires
@@ -1893,7 +1898,7 @@ as before, we have
 	\hat{\eta} = \left.u_2\right|_0 + \left. \frac{\partial
 	u_2}{\partial y} \right|_0 \hat{\eta}
 \end{equation}
-Now note
+Now note the velocity at the interface is
 \begin{equation}
 	\phi \frac{\partial \eta}{\partial t} = \phi \sigma \hat{\eta} =
 	-\frac{k}{\mu_1} \alpha A = \frac{k}{\mu_2}\alpha B
@@ -1958,7 +1963,7 @@ Maximum growth rate occurs at wavelength
 Surface tension suppresses the smallest wavelengths, providing wavelength
 selection for the instability.
 
-\section{Solidifcation of binary eutectic mixtures}
+\section{Solidification of binary eutectic mixtures}
 A natural example is the solidification of sea ice in polar oceans. The
 problem is an extension of previous solidification problems with concentration
 as an additional species to handle. Consider a phase diagram of temperature
@@ -2163,7 +2168,7 @@ We will use a simplified model of \emph{bulk} properties:
 		where $T_0 = T_L(C_0)$.
 	\item All impurities are accomodated within the mushy layer, i.e. $C =
 		C_0$ for $x > b(t)$.
-	\item Linear liquid approximation
+	\item Linear liquidus approximation
 		\begin{equation}
 			T_L = T_0 - m(C-C_0)
 		\end{equation}
@@ -2331,7 +2336,7 @@ lower boundary (e.g. polar ocean underneath sea ice layer).
 Non-dimensionalise the problem using scalings:
 \begin{equation}
 	L \sim h, \hspace{2em} t \sim \frac{h^2 \Omega}{\kappa},\hspace{2em} u \sim
-	\frac{\kappa}{h\Omega},\hspace{2em} p \sim \beta^* \Delta C \rho_o g h
+	\frac{\kappa}{h\Omega},\hspace{2em} p \sim \beta^* \Delta C \rho_0 g h
 \end{equation}
 where $\Omega = 1 + \S/\C$. Here $\beta^* = \beta-m\alpha$ which follows from
 using $\Delta T = -m\Delta C$ to get $\Delta \rho = \rho_0 \beta^* \Delta C$. The
@@ -2343,7 +2348,7 @@ governing equations are then
 \end{align}
 where the Rayleigh number $R_m$ in this case is
 \begin{equation}
-	R_m = \frac{\rho_0 g \beta^* \Delta C \pi h}{\kappa \mu} \Omega
+	R_m = \frac{\rho_0 g \beta^* \Delta C \Pi h}{\kappa \mu} \Omega
 \end{equation}
 The solution resembles the convection rolls seen in section~\ref{sec:conv},
 except we now see only half of the rolls since the constant pressure boundary
@@ -2480,7 +2485,7 @@ matrix jointly support mechanical load. Consider the total stress
 				   &= \phi(\symsf{\sigma}_s + p\symsf{I}) - p \symsf{I}
 \end{align}
 Hence part of the isotropic solid stress is supported by the pore pressure.
-Introduce \emph{Tarzaghi's effectiver stress} $\symsf{\sigma}_e =
+Introduce \emph{Tarzaghi's effective stress} $\symsf{\sigma}_e =
 \phi(\symsf{\sigma}_s + p\symsf{I})$.  Then
 \begin{equation}
 	\nabla \cdot \symsf{\sigma} = \nabla \cdot \left[\symsf{\sigma}_e
@@ -2584,25 +2589,25 @@ have
 \end{equation}
 The poroelastic version of Darcy's law \eqref{eq:darcy} gives
 \begin{equation}
-	(1-\phi)(w_f - w_s) = -\frac{\pi}{\mu_f} (\frac{\partial p}{\partial z} +
+	(1-\phi)(w_f - w_s) = -\frac{\Pi}{\mu_f} (\frac{\partial p}{\partial z} +
 	\rho_f g) = -(Q+w_s)
 \end{equation}
 where the last equality follows from \eqref{eq:l14:2}. Substituting into
 conservation of mass in the solid \eqref{eq:l14:3} we find
 \begin{equation}
 	\frac{\partial \phi}{\partial t} - Q\frac{\partial \phi}{\partial z} =
-	\frac{\partial}{\partial z} \left[ \frac{\phi \pi}{\mu_f} \left(
+	\frac{\partial}{\partial z} \left[ \frac{\phi \Pi}{\mu_f} \left(
 	\frac{E}{\phi_0} \frac{\partial \phi}{\partial z} + \phi \Delta \rho
 	g\right) \right]
 \end{equation}
 Note $\partial_t = Q = 0$ recovers the static result. Steady state compaction
 $\phi_t = 0, w_s = 0$ gives
 \begin{align}
-	Q &= \frac{\pi}{\mu_f} \left[ \frac{E}{\phi_0}\frac{\partial \phi}{\partial
+	Q &= \frac{\Pi}{\mu_f} \left[ \frac{E}{\phi_0}\frac{\partial \phi}{\partial
 	z} + \phi \Delta \rho g\right] \\
-	\phi &= \frac{\mu_f Q \phi_0}{\pi E} \delta
+	\phi &= \frac{\mu_f Q \phi_0}{\Pi E} \delta
 	\left(1-e^{(h-z)/\delta}\right) + \phi_0 e^{(h-z)/\delta} \\
-		 &\approx \phi_0 + \frac{\mu Q \phi_0}{\pi E} (h-z) \hspace{1em}
+		 &\approx \phi_0 + \frac{\mu Q \phi_0}{\Pi E} (h-z) \hspace{1em}
 		 \text{for}\,\,\, h \ll \delta
 \end{align}
 
@@ -2613,7 +2618,7 @@ in the porous medium.  We consider the influence of depth variations on a
 poroelastic medium constituting the aquifer. The problem is relevant to solid
 earth tides and how pressure is communicated subglacially. Take solid fraction
 \begin{equation}
-	\phi = \Phi(x,t) \exp \left[ \frac{\delta \rho g \phi_0}{E} (h+H-z)\right]
+	\phi = \Phi(x,t) \exp \left[ \frac{\Delta \rho g \phi_0}{E} (h+H-z)\right]
 \end{equation}
 where $\Phi(x,t)$ is the solid fraction at the top of the aquifer. If
 \begin{equation}
@@ -2635,8 +2640,8 @@ fraction. Now horizontal stress balance gives
 \end{align}
 Consequently the modified Darcy's law becomes
 \begin{equation}
-	(1-\phi)u_f \approx \frac{\pi E}{\mu_f \phi_0} \frac{\partial
-	\phi}{\partial x} = -\frac{\pi E}{\mu_f \phi_0} \frac{H}{(h+H)^2}
+	(1-\phi)u_f \approx \frac{\Pi E}{\mu_f \phi_0} \frac{\partial
+	\phi}{\partial x} = -\frac{\Pi E}{\mu_f \phi_0} \frac{H}{(h+H)^2}
 	\frac{\partial h}{\partial x}
 \end{equation}
 Local fluid mass conservation is
@@ -2644,12 +2649,12 @@ Local fluid mass conservation is
 	\frac{\partial}{\partial t} \left[(h+H)(1-\phi)\right] +
 	\frac{\partial}{\partial x} \left[ (h+H)(1-\phi)u_f\right] &= 0 \\
 	\implies \frac{\partial h}{\partial t} = \frac{\partial}{\partial x}
-	\left[\frac{\pi E}{\mu_f} \frac{H}{H+h}\frac{\partial h}{\partial x}
+	\left[\frac{\Pi E}{\mu_f} \frac{H}{H+h}\frac{\partial h}{\partial x}
 	\right]
 \end{align}
 but for typical values deformation is small, $h \ll H$, hence
 \begin{equation}
-	\frac{\partial h}{\partial t} \approx \frac{\pi E}{\mu_f} \frac{\partial^2
+	\frac{\partial h}{\partial t} \approx \frac{\Pi E}{\mu_f} \frac{\partial^2
 	h}{\partial x^2}\label{eq:l14:4}
 \end{equation}
 Stress balance at the top surface is
@@ -2661,7 +2666,7 @@ Stress balance at the top surface is
 where $p_0$ is the \emph{overburden pressure}. Combining \eqref{eq:l14:4} and
 \eqref{eq:l14:5} gives
 \begin{equation}
-	\frac{\partial p}{\partial t} = \frac{\pi E}{\mu_f} \frac{\partial^2
+	\frac{\partial p}{\partial t} = \frac{\Pi E}{\mu_f} \frac{\partial^2
 	p}{\partial x^2}
 \end{equation}
 
@@ -2916,17 +2921,16 @@ conditions
 	N &= -\frac{1}{2}\rho_w g b^2 \label{eq:l15:3}\\
 	\dot{x}_N &= u_N \label{eq:l15:4}
 \end{align}
-where the first specifies the force on the nose as being provided solely by
-the horizontal buoyancy force, and the second defines the nose velocity $u_N$.
+where the first specifies the lateral forces at the nose are balanced by
+buoyancy,  and the second defines the nose velocity $u_N$.
 
 At the grounding line $x=x_G$ we have two boundary conditions
 \begin{align}
 	H &= H_G \label{eq:l15:5}\\
 	Hu &= q_G \label{eq:l15:6}
 \end{align}
-where the first specifies that the floating depth of the ice equals the depth
-of the sea at the grounding line, and the second enforces a
-constant flux into the ice shelf. 
+which specify continuity of ice thickness and volume flux between the
+(terrestrial) ice shelf and (marine) ice sheet.
 
 \paragraph{Example.} Let $H = H_0, q = q_0 = Hu$ at $x=0$. Integrate
 \eqref{eq:l15:1} and use the flotation condition \eqref{eq:flotation} combined
@@ -2965,7 +2969,7 @@ and from \eqref{eq:l15:8}
 	x_N(t) = \frac{q_0}{H_0}t + \frac{\rho g'}{16\mu} t^2
 \end{equation}
 The first term is due to extrusion of the ice sheet into the ice shelf, whilst
-the second term is due to buoyancy-driven extension of the ice sheet.
+the second term is due to buoyancy-driven extension of the ice shelf.
 
 \begin{center}
 	\begin{tikzpicture}
@@ -3020,7 +3024,7 @@ In the shelf,
 	  &= -\frac{1}{2}\rho_w g b^2
 \end{align}
 This is the hydrostatic force of the ocean pushing on the sheet at the
-grounding line. The presence of the shelf hass no influence on the 2D ice
+grounding line. The presence of the shelf has no influence on the 2D ice
 sheet. In the sheet,
 \begin{align}
 	N &= \int_{-b}^h \symsf{\sigma}_{xx} \, \diffd z \\
@@ -3037,7 +3041,7 @@ slip at bottom, no stress at surface)
 \end{equation}
 Then
 \begin{equation}
-	N = -\frac{1}{2}\rho_g H^2 + 4\mu \left[ \frac{\partial q}{\partial x} +
+	N = -\frac{1}{2}\rho g H^2 + 4\mu \left[ \frac{\partial q}{\partial x} +
 	\frac{\rho g}{2\mu} H^2 \left(\frac{\partial h}{\partial
 	x}\right)^2\right]
 \end{equation}
@@ -3080,8 +3084,8 @@ grounding line is determined by the slope of the ground:
 			\begin{tikzpicture}
 				\draw[draw=none,fill=gray!40,rotate=22] (0,0) rectangle (5.4, -0.2);
 				\draw[thick] (0,0) -- (5, 2);
-				\draw[dashed] (0,1.5) -- (3.8, 1.5);
-				\draw[blue] (0,2) -- (3, 2) -- (3, 1.2);
+				\draw[dashed] (0,2.5) -- (5, 2.5);
+				\draw[blue] (0,2.75) -- (3, 2.75) -- (3, 1.2);
 			\end{tikzpicture}
 		\end{center}
 \end{itemize}

@@ -25,7 +25,7 @@
 \contentsline {subsection}{\numberline {5.3}Constant volume gravity current (porous \& unconfined)}{20}{subsection.5.3}
 \contentsline {section}{\numberline {6}Convection in porous media}{22}{section.6}
 \contentsline {subsection}{\numberline {6.1}Scaling for high $\text {Ra}$ porous convection}{23}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Dissolution from an unconfined aquifer}{23}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}Dissolution into an unconfined aquifer}{23}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Charging/discharging of a groundwater aquifer}{24}{subsection.6.3}
 \contentsline {paragraph}{\nonumberline Rainfall ($R \ne 0$).}{25}{section*.11}
 \contentsline {paragraph}{\nonumberline Aquifer discharge ($R=0$)}{25}{section*.12}
@@ -34,7 +34,7 @@
 \contentsline {section}{\numberline {7}Saffman-Taylor fingering}{29}{section.7}
 \contentsline {paragraph}{\nonumberline Basis for instability.}{29}{section*.14}
 \contentsline {paragraph}{\nonumberline Pressure fields.}{29}{section*.15}
-\contentsline {section}{\numberline {8}Solidifcation of binary eutectic mixtures}{31}{section.8}
+\contentsline {section}{\numberline {8}Solidification of binary eutectic mixtures}{31}{section.8}
 \contentsline {subsection}{\numberline {8.1}Morphological instability}{33}{subsection.8.1}
 \contentsline {paragraph}{\nonumberline Global conservation of solute.}{33}{section*.16}
 \contentsline {paragraph}{\nonumberline Box model.}{34}{section*.17}

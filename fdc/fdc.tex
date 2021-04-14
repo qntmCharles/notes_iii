@@ -316,9 +316,9 @@ and dispersion relation
 \end{center}
 
 This is the dispersion relation for rotating internal waves. They have phase
-speed $\symbf{c}_p = w/\symbf{k}$ and group velocity 
+speed $\symbf{c}_p = \omega/\symbf{k}$ and group velocity 
 \begin{equation}
-	\symbf{c}_g = \frac{\partial w}{\partial \symbf{k}} = \pm f \frac{(-km, -lm, k^2
+	\symbf{c}_g = \frac{\partial \omega}{\partial \symbf{k}} = \pm f \frac{(-km, -lm, k^2
 		+ l^2)}{\abs{\symbf{k}}^{3/2}}
 \end{equation}
 Note that $\symbf{c}_p\cdot\symbf{c}_g = 0$. Also note $\abs{\omega} \le \abs{f}$.
@@ -834,7 +834,7 @@ streamfunction} $\psi \equiv \frac{g \eta}{f}$. In terms of this
 streamfunction we have
 \begin{align}
 	\symbf{u} &\approx - \nabla \times (\psi \hat{\symbf{k}}) \\
-	\zeta &= (\nabla \times \symbf{u})\hat{\symbf{k}} \approx \nabla^2 \psi
+	\zeta &= \hat{\symbf{k}}\cdot\nabla \times \symbf{u} \approx \nabla^2 \psi
 \end{align}
 
 \paragraph{Assumption 2: small changes in $f$}
@@ -913,7 +913,7 @@ relative vorticity to surface height
 	\frac{\nabla^2 \psi}{-\frac{f_0^2 \psi}{g H_0}} \sim \frac{R_D^2}{L^2}
 \end{equation}
 
-Hence relativity vorticity dominates at scales small compared to $R_D$ whilst
+Hence relative vorticity dominates at scales small compared to $R_D$ whilst
 surface height dominates at scales large compared to $R_D$.
 
 \subsubsection{Physical interpretation of Rossby waves}
@@ -966,7 +966,7 @@ $\symbf{\tau}_w$. We have
 Consider $\nabla \times \eqref{eq:lsoc1} \cdot \hat{\symbf{k}}$ and
 \eqref{eq:lsoc2} which implies modified PV conservation
 \begin{equation}
-	\frac{\diffD}{\diffD t} \left( \frac{\zeta + f}{H}\right) = \frac{1}{H}
+	\frac{\diffD}{\diffD t} \left( \frac{\zeta + f}{H}\right) = 
 	\nabla \times \left( \frac{\symbf{\tau}_w}{\rho H} \right) \cdot
 	\hat{\symbf{k}} \label{eq:lsocPV}
 \end{equation}
@@ -975,7 +975,7 @@ Thus we see frictional forcing modifies PV conservation. Assuming $H$ is
 constant, $\zeta \ll f$ ($\Ro \ll 1$), and using the $\beta$-plane
 approximation $f = f_0 + \beta y$, \eqref{eq:lsocPV} becomes
 \begin{equation}
-	\beta v = \frac{1}{\rho H} \left(\nabla \times \symbf{\tau}_w\right) \cdot
+	\beta v = \frac{1}{\rho} \left(\nabla \times \symbf{\tau}_w\right) \cdot
 	\hat{\symbf{k}}\label{eq:sb}
 \end{equation}
 This is called \emph{Sverdrup balance}. Physically, the North/South advection
@@ -986,8 +986,8 @@ wind.
 Consider steady circulation in a rectangular basin, driven by a wind stress
 curl
 \begin{equation}
-	w(y) = \frac{\left(\nabla \times \symbf{\tau}_w\right)\cdot\hat{\symbf{k}}}{\rho
-	H} \label{eq:wbc1}
+	w(y) = \frac{\left(\nabla \times
+	\symbf{\tau}_w\right)\cdot\hat{\symbf{k}}}{\rho} \label{eq:wbc1}
 \end{equation}
 
 \begin{center}
@@ -1258,7 +1258,7 @@ dissipationless motion. The quantity that is instead conserved is the
 \end{equation}
 where $T$ is temperature. The corresponding buoyancy frequency is
 \begin{equation}
-	N^2 = -\frac{g}{\theta} \frac{\diffd \theta}{\diffd z}
+	N^2 = \frac{g}{\theta} \frac{\diffd \theta}{\diffd z}
 \end{equation}
 
 In this course we will use the Boussinesq approximation for the atmosphere and
@@ -1601,7 +1601,7 @@ the relativity vorticity term to the stretching term is $1/\Bu$. If $\Bu \ll
 1$ then relative vorticity dominates, whilst if $\Bu \gg 1$ then stretching
 dominates. If $\Bu \sim 1$ the terms are comparable and the ratio of
 horizontal to vertical scales $L/D \sim N /f_0$ is implied by this condition
-as is called \emph{Prandtl's ratio of scales}.
+and is called \emph{Prandtl's ratio of scales}.
 
 The 3D quasi-geostrophic equations have a structural similarity to the
 equations of 2D vortex dynamics, in that there is a non-local dependence of
@@ -1611,7 +1611,7 @@ vertical and the PV field in a localised region at a given level influences
 the $\psi$ field outside that region on the same level \emph{and} at other
 levels.
 
-If $N$ is constant in height, then the PV operator is isotropic in scales
+If $N$ is constant in height, then the PV operator is isotropic in scaled
 coordinates $x, y, Nz/f_0$. The evolution equations are not isotropic since
 the flow only has horizontal components. Therefore we expect solutions of the
 QG equations to tend towards isotropy in the coordinates above, but the
@@ -2294,7 +2294,8 @@ The Ertel PV of the basic state is
  must be some mechanism by which SI equilibriates. 
  
  \paragraph{How does $fq < 0$ develop?}
- Recall the Omega equation
+ Recall that conservation of QGPV $Q$ is modified by convective and frictional
+ forcing:
  \begin{equation}
 	 \frac{\diffD q}{\diffD t} = \symbf{\omega}_a \cdot \nabla D + \nabla b
 	 \cdot \nabla \times \symbf{F} = \nabla \cdot (\symbf{\omega}_a D - \nabla
@@ -2302,7 +2303,7 @@ The Ertel PV of the basic state is
  \end{equation}
 since $\nabla \cdot \symbf{\omega}_a = 0$ and div curl vanishes. Consider the
 region $0 \le z \le H$ and neglect horizontal fluxes.  Enforce boundary
-conditions $w = 0$ on $z=0, H$. Then integrating the Omega equation we have
+conditions $w = 0$ on $z=0, H$. Then integrating we have
 \begin{equation}
 	\frac{\partial}{\partial t} \int_0^H \overline{q} \, \diffd z = \left[
 		\overline{(\symbf{\omega}_a \cdot \hat{\symbf{k}})}D - \overline{\nabla b \times

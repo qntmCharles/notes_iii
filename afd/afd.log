@@ -1,6 +1,6 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  8 APR 2021 20:22
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  12 APR 2021 12:14
  restricted system commands enabled.
-**afd
+**afd.tex
 (./afd.tex
 LaTeX2e <2017/01/01> patch level 3
 Lua module: luaotfload-main 2016/06/16 2.70003 OpenType layout system.
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.111 seconds
+luaotfload | main : initialization completed in 0.103 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3306,7 +3306,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3808.
 )
 
 Here is how much of LuaTeX's memory you used:
- 53713 strings out of 494577
+ 53714 strings out of 494577
  100000,1648299 words of node,token memory allocated
  59806 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 7318 glue, 1 kern, 25 sub_mlist, 2004 attribute, 64
@@ -3314,8 +3314,8 @@ Here is how much of LuaTeX's memory you used:
    avail lists: 1:11,2:851,3:948,4:201,5:414,6:2561,7:736,8:119,9:860,10:17,11:2
 38
  55805 multiletter control sequences out of 65536+600000
- 102 fonts using 22119647 bytes
- 74i,22n,108p,8837b,1011s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 102 fonts using 22119559 bytes
+ 74i,22n,108p,8841b,1011s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman9-italic.otf></usr/share/texmf
 /fonts/opentype/public/lm/lmroman9-regular.otf></usr/share/texmf/fonts/opentype/
 public/lm/lmroman6-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroma
@@ -3331,7 +3331,7 @@ ublic/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsans
 10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></u
 sr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on afd.pdf (67 pages, 2141852 bytes).
+Output written on afd.pdf (67 pages, 2141850 bytes).
 
 PDF statistics: 1047 PDF objects out of 1200 (max. 8388607)
  886 compressed objects within 9 object streams

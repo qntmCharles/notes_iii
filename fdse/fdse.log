@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  7 APR 2021 14:48
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Debian)  (format=lualatex 2019.8.21)  13 APR 2021 16:47
  restricted system commands enabled.
 **fdse.tex
 (./fdse.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.163 seconds
+luaotfload | main : initialization completed in 0.106 seconds
 Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
 (./jknotes.cls
 Document Class: jknotes 2015/12/26 JKNotes
@@ -3192,39 +3192,39 @@ Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 ] [21]
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 12.00018pt on input line 1384.
+(Font)              scaled to size 12.00018pt on input line 1390.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 11.99982pt on input line 1384.
+(Font)              scaled to size 11.99982pt on input line 1390.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1384.
+(hyperref)                removing `math shift' on input line 1390.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1384.
+(hyperref)                removing `math shift' on input line 1390.
 
 [22](compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmromanslant8-
 regular.luc)(load luc: /home/cwp/.texlive2016/texmf-var/luatex-cache/generic/fon
 ts/otl/lmromanslant8-regular.luc) [23] [24]
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 10.00015pt on input line 1603.
+(Font)              scaled to size 10.00015pt on input line 1609.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 7.0001pt on input line 1603.
+(Font)              scaled to size 7.0001pt on input line 1609.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(1)/m/n' will be
-(Font)              scaled to size 5.00008pt on input line 1603.
+(Font)              scaled to size 5.00008pt on input line 1609.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 9.99985pt on input line 1603.
+(Font)              scaled to size 9.99985pt on input line 1609.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 6.9999pt on input line 1603.
+(Font)              scaled to size 6.9999pt on input line 1609.
 LaTeX Font Info:    Font shape `TU/LatinModernMath(2)/m/n' will be
-(Font)              scaled to size 4.99992pt on input line 1603.
+(Font)              scaled to size 4.99992pt on input line 1609.
  [25]
 
 Package pgfplots Warning: 'fill between': Could not activate graphics layer 'pre
  main'. Filled path will be on top of the other ones. Please ensure that 'pre ma
 in' is somewhere in the layer list (or set '/tikz/fill between/on layer='). on i
-nput line 1628.
+nput line 1634.
 
 [26
 Missing character: There is no ; (U+003B) in font nullfont!
@@ -3234,36 +3234,36 @@ Missing character: There is no ; (U+003B) in font nullfont!
 Package pgfplots Warning: 'fill between': Could not activate graphics layer 'pre
  main'. Filled path will be on top of the other ones. Please ensure that 'pre ma
 in' is somewhere in the layer list (or set '/tikz/fill between/on layer='). on i
-nput line 2976.
+nput line 2980.
 
 
 Package pgfplots Warning: 'fill between': Could not activate graphics layer 'pre
  main'. Filled path will be on top of the other ones. Please ensure that 'pre ma
 in' is somewhere in the layer list (or set '/tikz/fill between/on layer='). on i
-nput line 2977.
+nput line 2981.
 
 [46] [47
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 ] [48] [49]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3139.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3139.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3143.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3143.
  (./fdse.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3139.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3139.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3143.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3143.
 Package rerunfilecheck Info: File `fdse.out' has not changed.
-(rerunfilecheck)             Checksum: FDB930B8A41F1001FF793623B22E0560;3307.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3139.
+(rerunfilecheck)             Checksum: CC39A77A034FA3F2705F57CB88BF17B7;3308.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3143.
 )
 
 Here is how much of LuaTeX's memory you used:
  55004 strings out of 494577
  100000,1977958 words of node,token memory allocated
- 38561 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 4556 glue, 1 kern, 4 sub_mlist, 1542 attribute, 64 
-glue_spec, 1542 attribute_list, 1 write nodes
-   avail lists: 1:1,2:1737,3:771,4:143,5:287,6:2462,7:678,8:77,9:607,10:17,11:22
-2
+ 38640 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 4565 glue, 1 kern, 4 sub_mlist, 1546 attribute, 64 
+glue_spec, 1546 attribute_list, 1 write nodes
+   avail lists: 1:1,2:1737,3:771,4:143,5:292,6:2465,7:678,8:77,9:607,10:17,11:22
+4
  57141 multiletter control sequences out of 65536+600000
  127 fonts using 29024359 bytes
  74i,19n,388p,8842b,1080s stack positions out of 5000i,500n,10000p,200000b,100000s
@@ -3281,7 +3281,7 @@ usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf
 lic/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman1
 2-bold.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
 ine10.pfb>
-Output written on fdse.pdf (49 pages, 2389093 bytes).
+Output written on fdse.pdf (49 pages, 2389494 bytes).
 
 PDF statistics: 695 PDF objects out of 1000 (max. 8388607)
  587 compressed objects within 6 object streams
