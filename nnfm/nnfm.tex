@@ -985,7 +985,7 @@ Substitute $r = a \srate/\srate_a$:
 This is valid for all values of $\srate_a$. Rearranging and differentiating
 with respect to $\srate_a$ we have
 \begin{equation}
-	\eta(\srate_a) = \frac{1}{\srate_a^3} \frac{\diffd}{\diffd \srate^a}
+	\eta(\srate_a) = \frac{1}{\srate_a^3} \frac{\diffd}{\diffd \srate}
 	\left[ \frac{T \srate_a^3}{2\pi a^3}\right]
 \end{equation}
 
@@ -1412,7 +1412,7 @@ the plate suddenly changes to $\sigma_0 < \sigma_y$.
 \end{center}
 
 Physically, the unyielded domain appears near $y=0$ and propagates into the
-yielded region. Let $y=y_0(t)$ be the yielded surface, so that $0 \le y \le
+yielded region. Let $y=y_0(t)$ be the yield surface, so that $0 \le y \le
 y_0$ is the unyielded region region and $y > y_0$ is the unyielded region. On
 the yield surface, we require $\abs{\sigma} = \sigma_y$ by definition, and
 also require the velocity to be continuous across the yield surface.
@@ -2677,7 +2677,7 @@ plates. The units of the three free parameters are
 	\\
 	\left[b_2, b_{11} \right] &= \text{stress} \times \text{time}^2
 \end{align}
-Hence $b_2/b_1 = \Psi_1 / \eta$ is a timescale, which is in fact a good
+Hence $\Psi_1 / \eta \propto \b_2/b_1$ is a timescale, which is in fact a good
 estimate for relaxation time $\lambda$.
 
 \paragraph{Model validity.}
@@ -2892,7 +2892,7 @@ p_N$ constant in the direction of the flow, then $(\symbf{u}_N, p)$ is a
 solution to the second-order fluid Stokes equations with
 \begin{equation}
 	p = p_N + \frac{b_2}{b_1} \frac{\partial p_N}{\partial t} +
-	\frac{b_{11}}{b_1} \symbf{u} \cdot \nabla p_N + \frac{b_2}{4}
+	\frac{b_{11}}{b_1} \symbf{u}_N \cdot \nabla p_N + \frac{b_2}{4}
 	\symbfsf{\srate}_N : \symbfsf{\srate}_N + \frac{b_{11}-b_2}{2} (\nabla
 	\symbf{u}_N) : (\nabla \symbf{u}_N)^T
 \end{equation}
@@ -3005,9 +3005,9 @@ To summarise:
 \end{enumerate}
 The problem is supplemented by boundary conditions which could specify the
 velocity (easier) or the stress (more difficult: involves $\symbfsf{\tau}_1$).
-The algebra may sometimes be complex but this method as it is systematic and 
-can continue to higher order. However, there are diminishing returns on the
-usefulness at each order. 
+The algebra may sometimes be complex but this method is useful as it is
+systematic and can continue to higher order. However, there are diminishing
+returns on the usefulness at each order. 
 
 \section{Non-linear Differential Models}
 So far, we have seen a series of models with strengths and issues.
@@ -3527,7 +3527,7 @@ See diagram below: blue quantities are unchanged, red quantities have changed.
 	\end{tikzpicture}
 \end{center}
 
-The net radial face acting on each parcel of fluid is now
+The net radial force acting on each parcel of fluid is now
 \begin{align}
 	\Delta f_2 &= \text{net force acting on \circled{2} along}\,\, r \\
 			&= f_1^P - \frac{\symbfsf{\tau}_2}{r_1} \\
@@ -3577,7 +3577,7 @@ modes of instability.
 
 \subsection{Shear-banding}
 Consider simple steady shear flow. In some complex fluids we see
-shear-bonding, for example in micelles, where for the same shear stress there
+shear-banding, for example in micelles, where for the same shear stress there
 are two regions with distinct shear rates. The instability arises from the
 non-monotonic relationship between shear stress and shear rate. Here, we
 consider a simple mathematical illustration.

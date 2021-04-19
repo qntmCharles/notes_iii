@@ -120,7 +120,7 @@ Kinematic boundary conditions on a fluid-fluid interface are
 		stresses
 \end{itemize}
 
-Kinematic boundary conditions on a rigid boundary are
+Kinematic boundary conditions on a stationary rigid boundary are
 \begin{itemize}
 	\item No flux: $\symbf{u} \cdot \symbf{n} = 0$
 	\item No slip: $\symbf{u} \times \symbf{n} = \symbf{0}$
@@ -376,7 +376,7 @@ Proof. Let $\symbf{u}^* = \symbf{u}_1 - \symbf{u}_2$. From lemma~\ref{l1},
 \end{equation}
 
 Thus $e^* = 0$ in $V$. Hence we can deduce $\symbf{u}^*$ consists entirely of
-rigid body motion: $\symbf{u}^* = \symbf{U} + \symbf{\Omega} \times \symbf{u}$. Using the
+rigid body motion: $\symbf{u}^* = \symbf{U} + \symbf{\Omega} \times \symbf{x}$. Using the
 boundary conditions, we have $\symbf{U} = \symbf{\Omega} = 0$ thus $\symbf{u}_1 =
 \symbf{u}_2$, i.e. Stokes flows are unique.
 
@@ -407,14 +407,14 @@ Proof. Apply the lemma twice.
 Proof. We have
 \begin{equation}
 	\begin{aligned}
-		0 &\l\symsf{e} 2\mu \int (\symsf{e} - \symsf{e}^S):(\symsf{e}-\symsf{e}^S) \, \diffd V \\
-		  &\l\symsf{e} 2\mu \int \symsf{e}:\symsf{e} - \symsf{e}^S:\symsf{e}^S \, \diffd V + 4\mu \int \symsf{e}^S : (\symsf{e}^S
+		0 &\le 2\mu \int (\symsf{e} - \symsf{e}^S):(\symsf{e}-\symsf{e}^S) \, \diffd V \\
+		  &\le 2\mu \int \symsf{e}:\symsf{e} - \symsf{e}^S:\symsf{e}^S \, \diffd V + 4\mu \int \symsf{e}^S : (\symsf{e}^S
 		-\symsf{e})\,\diffd V
 	\end{aligned}
 \end{equation}
 
 Applying the lemma with $\symbf{u}^I = \symbf{u}^S - \symbf{u}$, the last term is $0$
-since $\symbf{u}^I = 0$ on $\partial V$ and $\symbf{F}^S = 0$ on $V$. Thus
+since $\symbf{u}^I = 0$ on $\partial V$ and $\symbf{F}^S = 0$ in $V$. Thus
 \begin{equation}
 	0 \le \mathcal{D} - \mathcal{D}^S
 \end{equation}
@@ -623,9 +623,9 @@ Hence we have
 	\begin{aligned}
 		\nabla \inv{r} &= -\frac{\x}{r^3} \\
 		\nabla \nabla \inv{r} &= -\frac{\symsf{I}}{r^3} +
-		\frac{3\x\cdot\x}{r^5} \\
+		\frac{3\x\x}{r^5} \\
 		\nabla_i \nabla_j \nabla_k \inv{r} &= \nabla_i \left(
-		-\frac{\delta_{jk}}{r^3} + \frac{3x_j\cdot x_k}{r^5}\right)\\
+		-\frac{\delta_{jk}}{r^3} + \frac{3x_j x_k}{r^5}\right)\\
 		&= \frac{3(x_i \delta_{jk} + x_j \delta_{ik} + x_k \delta_{ij})}{r^5}
 		- \frac{15 x_i x_j x_k}{r^7}
 	\end{aligned}
@@ -764,7 +764,7 @@ is
 \begin{equation}
 	\symbf{u} = \frac{Q\x}{4\pi r^3}
 \end{equation}
-which is obtained using Papkovich-Neuber potentials
+which is obtained using either of the Papkovich-Neuber potentials
 \begin{equation}
 	\chi = \alpha \frac{Q}{r}, \hspace{2em} \symbf{\Phi} = \beta Q \nabla \inv{r}
 \end{equation}
@@ -855,7 +855,7 @@ we need harmonic functions of $\x, \symbf{U}$ which are linear in $\symbf{U}$; d
 at $\infty$; and are true tensors. We choose
 \begin{equation}
 	\frac{1}{2\mu} \symbf{\Phi} = \alpha \symbf{U} \inv{r}, \hspace{2em}
-	\frac{1}{2\mu} \chi = \beta \symbf{u} \cdot \nabla \inv{r}
+	\frac{1}{2\mu} \chi = \beta \symbf{U} \cdot \nabla \inv{r}
 \end{equation}
 
 This gives a solution which is a superposition of a Stokeslet and a source
@@ -1067,12 +1067,13 @@ $\symbf{u}'$ and $\hat{\symbf{u}}$ gives
 Now $\hat{\symbf{V}}$ is arbitrary and contribution from $\int \symbf{u}^P \cdot
 \hat{\symbfsf{\Sigma}}\cdot\symbf{n}\,\diffd S$ is given by
 \begin{equation}
-\begin{pmatrix} \symbf{U} & \symbf{\Sigma}\end{pmatrix} \begin{pmatrix} \symsf{A} &
+\begin{pmatrix} \symbf{U} & \symbf{\Omega}\end{pmatrix} \begin{pmatrix} \symsf{A} &
 \symsf{B} \\ \symsf{B}^T & \symsf{D} \end{pmatrix} \begin{pmatrix}
 \hat{\symbf{V}} \\ \symbf{0} \end{pmatrix}
 \end{equation}
 
-Hence we have \emph{Fax\'{e}n's first formula}
+Hence the force exerted by the particle is given by \emph{Fax\'{e}n's first
+formula}
 \begin{equation}
 	\symbf{F} = \symsf{A}\cdot\symbf{U} + \symsf{B} \cdot \symbf{\Omega} - \int
 	\symbf{u}^\infty(\x) \cdot
@@ -1117,7 +1118,7 @@ stresslet $\symsf{S}$ exerted, by using other test flows.
 
 \paragraph{Application to two sedimenting spheres.}
 Consider two rigid spheres of radius $a$ sedimenting under a given force
-$\symbf{F}$. We wish to calculate the flal speed $\symbf{U}$ to
+$\symbf{F}$. We wish to calculate the fall speed $\symbf{U}$ to
 $\mathcal{O}(a^3/R^3)$. One sphere moves in the far-field flow of the other
 sphere, which itself depends on the force, couple, and stresslet exerted at
 leading order. $\symbf{F}$ and $\symbf{G} = 0$ are the same for each sphere, hence
@@ -1169,7 +1170,7 @@ this to hold. Hence
 \end{equation}
 
 \begin{enumerate}
-	\item The above follows the sign conventions: $\symbf{n}$ is out of $v$, and
+	\item The above follows the sign conventions: $\symbf{n}$ is out of $V$, and
 		we have $\y - \x$ as  the argument.
 	\item $\symbf{f}$ is often not included, i.e. there is no body force or
 		$\symbf{f}$ is absorbed into modified pressure
@@ -1227,7 +1228,7 @@ rigid body.
 \end{enumerate}
 
 \lecture{28/10/20}
-\subsubsection{Representation for droplets}
+\subsubsection{Representation for droplets (non-examinable)}
 Consider a droplet occupying a volume $V_1$ with viscosity $\lambda \mu$ in a
 surrounding fluid volume $V_2$ with viscosity $\mu$. Let $\symbf{n}$ be
 \emph{out} of the droplet. Use viscosity $\mu$ in the Stokeslet tensor
@@ -1289,7 +1290,7 @@ determine droplet shapes and evolution.
 			conditions.
 	\end{enumerate}
 \end{eg}
-\subsubsection{Representation by Stokeslets alone}
+\subsubsection{Representation by Stokeslets alone (non-examinable)}
 Consider the flow outside a moving body, e.g. swimming micro-organisms. Though
 we are interested in the flow $\symbf{u}$ in $V$, we imagine a flow $\symbf{u}^*$ in $V^*$
 with $\mu^* = \mu$ and $\symbf{u}^* = \symbf{u}$ on $\partial V$. Such a flow exists if
